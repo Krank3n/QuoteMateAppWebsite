@@ -13,9 +13,6 @@
 /tmp
 /out-tsc
 
-# expo build output
-/public/app/_expo/
-
 # debug
 npm-debug.log*
 yarn-debug.log*
