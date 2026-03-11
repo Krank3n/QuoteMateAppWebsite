@@ -1,0 +1,1311 @@
+{
+  "site": {
+    "url": "https://quotemateapp.au",
+    "name": "QuoteMate",
+    "tagline": "Professional Quotes & Invoices for Australian Tradies",
+    "appStoreUrl": "#",
+    "playStoreUrl": "#",
+    "webAppUrl": "#"
+  },
+  "trades": [
+    {
+      "slug": "electricians",
+      "name": "Electricians",
+      "singular": "Electrician",
+      "keyword": "electrical",
+      "icon": "zap",
+      "description": "Create professional electrical quotes with auto-populated materials like cable, switchboards, GPOs, RCDs, and lighting. QuoteMate pulls real-time pricing from Bunnings and Mitre 10 so you never underquote a job again.",
+      "heroTitle": "Electrical Quoting Made Easy",
+      "painPoint": "Stop wasting hours pricing up cable runs and switchboard upgrades manually.",
+      "features": ["Auto-suggest wiring, switches, and fittings", "RCD and safety switch pricing built in", "Lighting package templates", "Electrical compliance notes on quotes"],
+      "commonJobs": [
+        {"name": "Switchboard upgrade", "desc": "Includes new board, RCDs, safety switches, and circuit breakers."},
+        {"name": "LED downlight installation", "desc": "Covers transformers, wiring, hole cutting, and dimmer switches."},
+        {"name": "Power point additions", "desc": "New GPOs with cable runs, conduit, and back-box installation."},
+        {"name": "Ceiling fan installation", "desc": "Wiring, mounting bracket, and fan assembly with light kit."},
+        {"name": "Smoke alarm replacement", "desc": "Hard-wired interconnected alarms to meet current AS 3786 standards."},
+        {"name": "EV charger installation", "desc": "Dedicated circuit, charger unit, and any switchboard upgrades needed."}
+      ],
+      "avgQuoteRange": "$300 – $15,000",
+      "templateSnippet": "Install 10x LED downlights in open-plan living area with dimmer switch"
+    },
+    {
+      "slug": "plumbers",
+      "name": "Plumbers",
+      "singular": "Plumber",
+      "keyword": "plumbing",
+      "icon": "droplet",
+      "description": "Generate accurate plumbing quotes in minutes. QuoteMate auto-suggests pipes, fittings, fixtures, and hot water systems with live Bunnings and Mitre 10 pricing — so your quotes are always spot-on.",
+      "heroTitle": "Plumbing Quotes in Minutes, Not Hours",
+      "painPoint": "No more guessing pipe lengths and fitting quantities — let AI do the heavy lifting.",
+      "features": ["Auto-suggest pipes, fittings, and valves", "Hot water system pricing", "Bathroom fixture packages", "Drainage and stormwater templates"],
+      "commonJobs": [
+        {"name": "Blocked drain clearing", "desc": "Jet blasting, CCTV inspection, and root cutting if needed."},
+        {"name": "Hot water system replacement", "desc": "Remove old unit, supply and install new system with all connections."},
+        {"name": "Bathroom rough-in", "desc": "All pipe work for basin, shower, toilet, and bath before tiling."},
+        {"name": "Tap and mixer installation", "desc": "Supply and fit new tapware with isolation valves and flexi hoses."},
+        {"name": "Toilet replacement", "desc": "Remove old suite, install new pan and cistern with water connection."},
+        {"name": "Gas fitting", "desc": "Gas line installation, appliance connection, and compliance testing."}
+      ],
+      "avgQuoteRange": "$200 – $20,000",
+      "templateSnippet": "Replace electric hot water system with 250L Rheem gas unit including all plumbing connections"
+    },
+    {
+      "slug": "carpenters",
+      "name": "Carpenters",
+      "singular": "Carpenter",
+      "keyword": "carpentry",
+      "icon": "hammer",
+      "description": "Build accurate carpentry quotes with real-time timber pricing from Bunnings and Mitre 10. QuoteMate handles everything from deck builds to pergolas, with AI-powered material lists and quantity calculations.",
+      "heroTitle": "Carpentry Quoting Without the Guesswork",
+      "painPoint": "Timber prices change weekly — QuoteMate keeps your quotes accurate with live pricing.",
+      "features": ["Real-time timber and hardware pricing", "Deck and pergola calculators", "Framing material auto-suggestions", "Staircase and balustrade templates"],
+      "commonJobs": [
+        {"name": "Timber deck build", "desc": "Bearers, joists, decking boards, posts, and all hardware."},
+        {"name": "Pergola construction", "desc": "Posts, beams, rafters, battens, and concrete footings."},
+        {"name": "Fence installation", "desc": "Posts, rails, palings or panels, concrete, and hardware."},
+        {"name": "Staircase build", "desc": "Stringers, treads, risers, balustrade, and handrail."},
+        {"name": "Door and window installation", "desc": "Frame preparation, fitting, trimming, and weatherproofing."},
+        {"name": "Shelving and cabinetry", "desc": "Custom shelving, built-in units, or flat-pack assembly."}
+      ],
+      "avgQuoteRange": "$500 – $50,000",
+      "templateSnippet": "Build a 5x4m Merbau hardwood deck with 3 stairs and stainless steel balustrade"
+    },
+    {
+      "slug": "painters",
+      "name": "Painters",
+      "singular": "Painter",
+      "keyword": "painting",
+      "icon": "paintbrush",
+      "description": "Create professional painting quotes that account for surface area, coats, and paint type. QuoteMate calculates litres needed and pulls current Dulux and Bunnings paint pricing automatically.",
+      "heroTitle": "Professional Painting Quotes in 2 Minutes",
+      "painPoint": "Stop manually calculating paint volumes and prep materials for every room.",
+      "features": ["Paint volume calculator by room size", "Interior and exterior templates", "Prep material auto-suggestions", "Multi-room quote builder"],
+      "commonJobs": [
+        {"name": "Full interior repaint", "desc": "Walls and ceilings across all rooms — prep, prime, and two coats."},
+        {"name": "Exterior house painting", "desc": "Wash, scrape, prime, and repaint weatherboards, render, or brick."},
+        {"name": "Feature wall", "desc": "Single accent wall with colour consultation and clean edges."},
+        {"name": "Ceiling painting", "desc": "Flat white ceiling coat with crack filling and spot priming."},
+        {"name": "Deck and fence staining", "desc": "Sand, clean, and apply two coats of decking oil or stain."},
+        {"name": "Commercial painting", "desc": "Office, retail, or warehouse — includes after-hours scheduling."}
+      ],
+      "avgQuoteRange": "$500 – $25,000",
+      "templateSnippet": "Full interior repaint of 3-bedroom house — walls and ceilings, 2 coats Dulux Wash & Wear"
+    },
+    {
+      "slug": "landscapers",
+      "name": "Landscapers",
+      "singular": "Landscaper",
+      "keyword": "landscaping",
+      "icon": "trees",
+      "description": "Quote landscaping jobs accurately with real-time pricing on pavers, soil, mulch, turf, and plants from Bunnings and Mitre 10. QuoteMate calculates quantities for any area size.",
+      "heroTitle": "Landscaping Quotes That Win Jobs",
+      "painPoint": "Calculating cubic metres of soil, tonnes of gravel, and square metres of turf is tedious — let AI handle it.",
+      "features": ["Cubic metre and tonne calculators", "Paving and retaining wall templates", "Turf and garden bed estimators", "Irrigation material pricing"],
+      "commonJobs": [
+        {"name": "Garden design and planting", "desc": "Plant selection, soil preparation, mulching, and garden edging."},
+        {"name": "Retaining wall construction", "desc": "Concrete sleepers, blocks, or timber — including drainage."},
+        {"name": "Paving and pathways", "desc": "Base preparation, pavers or flagstone, edging, and jointing sand."},
+        {"name": "Turf laying", "desc": "Site levelling, soil prep, turf supply, and starter fertiliser."},
+        {"name": "Irrigation installation", "desc": "Pop-up sprinklers, drip lines, controller, and valve setup."},
+        {"name": "Mulching and soil preparation", "desc": "Weed removal, soil conditioning, and bulk mulch delivery."}
+      ],
+      "avgQuoteRange": "$1,000 – $60,000",
+      "templateSnippet": "Lay 80sqm of Sir Walter turf with soil preparation, fertiliser, and edging"
+    },
+    {
+      "slug": "builders",
+      "name": "Builders",
+      "singular": "Builder",
+      "keyword": "building",
+      "icon": "building",
+      "description": "Streamline your building quotes with AI-powered material suggestions and real-time pricing. From renovations to new builds, QuoteMate handles complex multi-trade quotes with ease.",
+      "heroTitle": "Building Quotes — Fast, Accurate, Professional",
+      "painPoint": "Multi-trade quotes with hundreds of line items shouldn't take days to prepare.",
+      "features": ["Multi-trade quote sections", "Renovation and extension templates", "Structural material pricing", "Progress claim and staged invoicing"],
+      "commonJobs": [
+        {"name": "Bathroom renovation", "desc": "Demo, waterproofing, plumbing, tiling, and fixture installation."},
+        {"name": "Kitchen renovation", "desc": "Cabinetry, benchtops, splashback, plumbing, and electrical."},
+        {"name": "Home extension", "desc": "Foundations, framing, roofing, and internal fitout."},
+        {"name": "Granny flat build", "desc": "Full turnkey build — slab, frame, lockup, and finishing."},
+        {"name": "Garage conversion", "desc": "Insulation, lining, flooring, electrical, and entry modifications."},
+        {"name": "Structural repairs", "desc": "Restumping, beam replacement, crack repair, and underpinning."}
+      ],
+      "avgQuoteRange": "$5,000 – $200,000+",
+      "templateSnippet": "Full bathroom renovation including demolition, waterproofing, tiling, plumbing, and fixtures"
+    },
+    {
+      "slug": "roofers",
+      "name": "Roofers",
+      "singular": "Roofer",
+      "keyword": "roofing",
+      "icon": "home",
+      "description": "Create roofing quotes with accurate material calculations for Colorbond, tiles, and guttering. QuoteMate factors in roof pitch, area, and waste percentages automatically.",
+      "heroTitle": "Roofing Quotes Done Right",
+      "painPoint": "Roof area calculations and waste factors make quoting slow — QuoteMate speeds it up.",
+      "features": ["Colorbond and tile quantity calculators", "Gutter and fascia templates", "Roof restoration pricing", "Sarking and insulation auto-add"],
+      "commonJobs": [
+        {"name": "Colorbond re-roofing", "desc": "Strip old roof, new Colorbond sheets, flashings, and ridge capping."},
+        {"name": "Tile roof restoration", "desc": "Rebedding, repointing, cleaning, sealing, and broken tile replacement."},
+        {"name": "Gutter replacement", "desc": "Remove old gutters, install new Colorbond gutters and downpipes."},
+        {"name": "Roof leak repair", "desc": "Locate leak source, replace damaged materials, and reseal."},
+        {"name": "Skylight installation", "desc": "Cut opening, install flashing kit, skylight unit, and internal trim."},
+        {"name": "Roof insulation", "desc": "Batts or blown-in insulation with vapour barrier installation."}
+      ],
+      "avgQuoteRange": "$1,000 – $30,000",
+      "templateSnippet": "Full Colorbond re-roof of single-storey 180sqm home including gutters and fascia"
+    },
+    {
+      "slug": "tilers",
+      "name": "Tilers",
+      "singular": "Tiler",
+      "keyword": "tiling",
+      "icon": "grid",
+      "description": "Generate tiling quotes with precise square metre calculations, waste factors, and adhesive quantities. QuoteMate pulls tile and grout pricing from Bunnings and specialty suppliers.",
+      "heroTitle": "Tiling Quotes — Precise and Professional",
+      "painPoint": "Calculating tile quantities with cuts and waste is fiddly — let AI get it right.",
+      "features": ["Square metre calculator with waste %", "Adhesive and grout auto-calculation", "Waterproofing material add-ons", "Floor and wall tile templates"],
+      "commonJobs": [
+        {"name": "Bathroom floor and wall tiling", "desc": "Waterproofing, tile supply, adhesive, grouting, and silicone."},
+        {"name": "Kitchen splashback", "desc": "Subway, mosaic, or large-format tiles with edge trim."},
+        {"name": "Laundry tiling", "desc": "Floor and splashback tiling with waterproofing to wet areas."},
+        {"name": "Outdoor patio tiling", "desc": "Non-slip porcelain or natural stone on a prepared slab."},
+        {"name": "Pool surround tiling", "desc": "Salt-resistant, slip-rated tiles with proper falls and drainage."},
+        {"name": "Tile repair and replacement", "desc": "Match existing tiles, remove damaged ones, and re-grout."}
+      ],
+      "avgQuoteRange": "$500 – $15,000",
+      "templateSnippet": "Tile bathroom floor (6sqm) and walls (18sqm) with 300x600 porcelain tiles including waterproofing"
+    },
+    {
+      "slug": "concreters",
+      "name": "Concreters",
+      "singular": "Concreter",
+      "keyword": "concreting",
+      "icon": "layers",
+      "description": "Quote concreting jobs with automatic cubic metre calculations, reinforcement mesh, and finish options. QuoteMate includes pump hire and formwork in your material estimates.",
+      "heroTitle": "Concreting Quotes in Minutes",
+      "painPoint": "Cubic metre calculations, mesh quantities, and pump costs add up — QuoteMate handles the maths.",
+      "features": ["Cubic metre calculator by area and depth", "Reinforcement mesh and rebar pricing", "Exposed aggregate and stamp options", "Formwork and pump hire estimates"],
+      "commonJobs": [
+        {"name": "Concrete driveway", "desc": "Excavation, formwork, mesh, concrete pour, and finish options."},
+        {"name": "Shed slab", "desc": "Site prep, boxing, mesh, pour, and float finish."},
+        {"name": "Concrete patio", "desc": "Exposed aggregate, plain, or coloured concrete with edging."},
+        {"name": "Footpath and crossover", "desc": "Council-spec crossover with kerb cuts and correct falls."},
+        {"name": "Retaining wall footings", "desc": "Excavation, rebar, formwork, and structural concrete pour."},
+        {"name": "Pool surrounds", "desc": "Slip-resistant finish, coping tiles, and proper drainage falls."}
+      ],
+      "avgQuoteRange": "$1,500 – $25,000",
+      "templateSnippet": "Pour 60sqm exposed aggregate concrete driveway with mesh reinforcement and formwork"
+    },
+    {
+      "slug": "fencers",
+      "name": "Fencers",
+      "singular": "Fencer",
+      "keyword": "fencing",
+      "icon": "fence",
+      "description": "Create fencing quotes with auto-calculated post spacing, paling counts, and rail lengths. QuoteMate pulls real-time pricing for Colorbond, timber, and aluminium fencing from Bunnings.",
+      "heroTitle": "Fencing Quotes — Quick and Accurate",
+      "painPoint": "Counting palings and calculating post holes per linear metre is tedious — automate it.",
+      "features": ["Linear metre to materials calculator", "Colorbond, timber, and aluminium options", "Gate and post-hole pricing", "Retaining and boundary templates"],
+      "commonJobs": [
+        {"name": "Colorbond fence installation", "desc": "Steel posts, rails, and Colorbond panels with concrete footings."},
+        {"name": "Timber paling fence", "desc": "Treated pine posts, rails, and palings — capped or lapped."},
+        {"name": "Pool fencing", "desc": "Compliant glass, aluminium, or steel pool fencing to AS 1926."},
+        {"name": "Aluminium slat fence", "desc": "Powder-coated aluminium slats with posts and concealed fixings."},
+        {"name": "Gate installation", "desc": "Pedestrian or driveway gates — swing, sliding, or automated."},
+        {"name": "Fence repair and replacement", "desc": "Replace damaged posts, rails, or palings and re-level."}
+      ],
+      "avgQuoteRange": "$1,000 – $15,000",
+      "templateSnippet": "Install 25 linear metres of 1.8m Colorbond fencing with 1 single gate and concrete post footings"
+    },
+    {
+      "slug": "cleaners",
+      "name": "Cleaners",
+      "singular": "Cleaner",
+      "keyword": "cleaning",
+      "icon": "sparkles",
+      "description": "Quote cleaning jobs professionally with room-based or hourly pricing. QuoteMate helps commercial and residential cleaners send branded quotes with detailed scope of works.",
+      "heroTitle": "Professional Cleaning Quotes That Win Clients",
+      "painPoint": "Handwritten quotes don't inspire confidence — send polished, branded PDFs instead.",
+      "features": ["Room-based and hourly pricing modes", "Recurring service templates", "Supply and consumable pricing", "End-of-lease and builder clean templates"],
+      "commonJobs": [
+        {"name": "End of lease clean", "desc": "Full bond-back clean — oven, carpets, windows, and all surfaces."},
+        {"name": "Regular domestic clean", "desc": "Weekly or fortnightly clean — kitchen, bathrooms, floors, and dusting."},
+        {"name": "Commercial office cleaning", "desc": "After-hours office clean — desks, kitchenette, toilets, and vacuuming."},
+        {"name": "Builder's clean", "desc": "Post-construction clean-up — dust removal, window scraping, and debris."},
+        {"name": "Carpet steam cleaning", "desc": "Hot water extraction per room with stain pre-treatment."},
+        {"name": "Window cleaning", "desc": "Interior and exterior glass, frames, tracks, and fly screens."}
+      ],
+      "avgQuoteRange": "$150 – $5,000",
+      "templateSnippet": "End of lease clean for 3-bedroom, 2-bathroom house including oven, carpets, and windows"
+    },
+    {
+      "slug": "hvac-technicians",
+      "name": "HVAC Technicians",
+      "singular": "HVAC Technician",
+      "keyword": "HVAC",
+      "icon": "thermometer",
+      "description": "Create HVAC quotes with unit pricing, ductwork estimates, and installation materials. QuoteMate pulls current pricing on split systems, ducted units, and accessories from suppliers.",
+      "heroTitle": "HVAC Quoting — Cool, Calm, Professional",
+      "painPoint": "Pricing up split system installs and ducted units with brackets, pipes, and electrical shouldn't take all day.",
+      "features": ["Split system and ducted unit pricing", "Refrigerant pipe and bracket auto-add", "Multi-room system templates", "Service and maintenance quote templates"],
+      "commonJobs": [
+        {"name": "Split system installation", "desc": "Indoor and outdoor unit, pipework, electrical, and bracket."},
+        {"name": "Ducted air conditioning", "desc": "Central unit, ductwork, zone controllers, and vents."},
+        {"name": "Evaporative cooler install", "desc": "Roof-mounted unit, ducting, and controller wiring."},
+        {"name": "AC service and re-gas", "desc": "Filter clean, coil wash, gas check, and refrigerant top-up."},
+        {"name": "Ventilation system install", "desc": "Exhaust fans, ductwork, and ceiling or wall vents."},
+        {"name": "Heating system replacement", "desc": "Remove old heater, supply and install new ducted or split unit."}
+      ],
+      "avgQuoteRange": "$800 – $20,000",
+      "templateSnippet": "Supply and install 7kW Daikin split system in living room including bracket, pipes, and electrical"
+    },
+    {
+      "slug": "renderers",
+      "name": "Renderers",
+      "singular": "Renderer",
+      "keyword": "rendering",
+      "icon": "paintroller",
+      "description": "Generate rendering quotes with accurate square metre calculations and material costs. QuoteMate calculates cement render, acrylic render, and texture coat quantities automatically.",
+      "heroTitle": "Rendering Quotes — Fast and Accurate",
+      "painPoint": "Calculating bags of render per square metre with different thicknesses is tedious — automate it.",
+      "features": ["Render quantity calculator by area", "Cement, acrylic, and texture coat options", "Prep and primer material auto-add", "Scaffold hire estimates"],
+      "commonJobs": [
+        {"name": "Full house cement render", "desc": "Sand and cement render with scratch coat and top coat."},
+        {"name": "Acrylic render over brick", "desc": "Flexible acrylic finish over existing brickwork — no cracking."},
+        {"name": "Texture coat application", "desc": "Decorative texture finish — sponge, trowel, or rolled patterns."},
+        {"name": "Render repair and patch", "desc": "Cut out damaged render, re-key, and patch to match existing."},
+        {"name": "Feature wall rendering", "desc": "Polished plaster, Venetian, or textured feature finish."},
+        {"name": "Commercial rendering", "desc": "Large-scale rendering for retail, office, or multi-unit builds."}
+      ],
+      "avgQuoteRange": "$2,000 – $25,000",
+      "templateSnippet": "Acrylic render full exterior of double-storey brick house (approx 220sqm) including primer"
+    },
+    {
+      "slug": "glaziers",
+      "name": "Glaziers",
+      "singular": "Glazier",
+      "keyword": "glazing",
+      "icon": "square",
+      "description": "Create glazing quotes with glass type, size, and installation pricing. QuoteMate helps glaziers quote everything from window replacements to shower screens and splashbacks.",
+      "heroTitle": "Glazing Quotes — Clear and Professional",
+      "painPoint": "Quoting custom glass sizes with different types and thicknesses is complex — simplify it.",
+      "features": ["Glass type and thickness pricing", "Shower screen and splashback templates", "Window replacement calculators", "Mirror and balustrade templates"],
+      "commonJobs": [
+        {"name": "Shower screen installation", "desc": "Frameless, semi-frameless, or framed — measured and fitted."},
+        {"name": "Window glass replacement", "desc": "Remove broken pane, re-glaze with clear, tinted, or safety glass."},
+        {"name": "Glass splashback", "desc": "Colour-backed toughened glass, measured, cut, and installed."},
+        {"name": "Glass balustrade", "desc": "Toughened or laminated panels with spigots or channel."},
+        {"name": "Mirror installation", "desc": "Custom-cut mirrors with polished edges and adhesive or clips."},
+        {"name": "Shopfront glazing", "desc": "Commercial-grade toughened glass with aluminium framing."}
+      ],
+      "avgQuoteRange": "$300 – $10,000",
+      "templateSnippet": "Supply and install frameless glass shower screen (1200x2000mm) with chrome hinges and wall channels"
+    },
+    {
+      "slug": "solar-installers",
+      "name": "Solar Installers",
+      "singular": "Solar Installer",
+      "keyword": "solar",
+      "icon": "sun",
+      "description": "Quote solar installations with panel, inverter, and mounting system pricing. QuoteMate helps solar installers create professional quotes that include STC rebate breakdowns.",
+      "heroTitle": "Solar Quotes That Convert",
+      "painPoint": "Customers compare multiple solar quotes — make yours the most professional and detailed.",
+      "features": ["Panel and inverter package pricing", "STC rebate calculator", "Mounting system and cabling auto-add", "Battery storage add-on templates"],
+      "commonJobs": [
+        {"name": "Residential solar panel installation", "desc": "Panels, inverter, racking, wiring, and meter setup."},
+        {"name": "Battery storage add-on", "desc": "Battery unit, hybrid inverter upgrade, and switchboard work."},
+        {"name": "Solar hot water system", "desc": "Roof-mounted collectors, tank, and plumbing connections."},
+        {"name": "Commercial solar installation", "desc": "Large-scale array, commercial inverter, and monitoring system."},
+        {"name": "EV charger with solar", "desc": "Dedicated solar-linked circuit with smart charger unit."},
+        {"name": "Solar panel cleaning and maintenance", "desc": "Panel wash, connection check, and performance report."}
+      ],
+      "avgQuoteRange": "$4,000 – $30,000",
+      "templateSnippet": "Supply and install 6.6kW solar system with 16x 415W panels, 5kW hybrid inverter, and 10kWh battery"
+    },
+    {
+      "slug": "cabinet-makers",
+      "name": "Cabinet Makers",
+      "singular": "Cabinet Maker",
+      "keyword": "cabinetry",
+      "icon": "cabinet",
+      "description": "Create detailed cabinetry quotes with material breakdowns for board, hardware, and benchtops. QuoteMate helps cabinet makers price up kitchens, vanities, and built-in wardrobes.",
+      "heroTitle": "Cabinetry Quotes — Detailed and Professional",
+      "painPoint": "Pricing up kitchens with dozens of components and hardware items takes forever — speed it up.",
+      "features": ["Kitchen and vanity package templates", "Board, hardware, and benchtop pricing", "Drawer runner and hinge auto-calculation", "Wardrobe and storage unit templates"],
+      "commonJobs": [
+        {"name": "Kitchen cabinetry", "desc": "Custom carcasses, doors, drawers, soft-close hardware, and benchtop."},
+        {"name": "Bathroom vanity", "desc": "Wall-hung or freestanding vanity with stone or laminate top."},
+        {"name": "Built-in wardrobe", "desc": "Shelving, hanging rails, drawers, and sliding or hinged doors."},
+        {"name": "Laundry cabinetry", "desc": "Overhead and base cabinets with trough cutout and splashback."},
+        {"name": "Entertainment unit", "desc": "Custom TV unit with cable management and floating shelves."},
+        {"name": "Home office desk", "desc": "Built-in desk with storage, cable routing, and task lighting."}
+      ],
+      "avgQuoteRange": "$3,000 – $40,000",
+      "templateSnippet": "Supply and install full kitchen cabinetry with stone benchtop, soft-close drawers, and overhead cupboards"
+    },
+    {
+      "slug": "plasterers",
+      "name": "Plasterers",
+      "singular": "Plasterer",
+      "keyword": "plastering",
+      "icon": "layers",
+      "description": "Generate plastering quotes with accurate sheet counts, compound quantities, and cornicing lengths. QuoteMate calculates materials based on wall and ceiling areas automatically.",
+      "heroTitle": "Plastering Quotes Made Simple",
+      "painPoint": "Counting plasterboard sheets and calculating compound for every room is slow — automate it.",
+      "features": ["Plasterboard sheet calculator", "Compound and tape auto-quantities", "Cornice and ceiling rose pricing", "Repair and patch templates"],
+      "commonJobs": [
+        {"name": "New build plasterboard installation", "desc": "Supply and fix plasterboard to stud frames, tape, and set."},
+        {"name": "Ceiling replacement", "desc": "Remove old ceiling, install new plasterboard, and skim coat."},
+        {"name": "Cornice installation", "desc": "Cove, square, or decorative cornice — mitre-cut and set."},
+        {"name": "Plaster repair and patching", "desc": "Patch holes, fill cracks, and sand smooth ready for painting."},
+        {"name": "Feature wall bulkheads", "desc": "Framing, plasterboard, and finishing for custom bulkhead designs."},
+        {"name": "Commercial fitout plastering", "desc": "Partition walls, ceilings, and fire-rated plasterboard systems."}
+      ],
+      "avgQuoteRange": "$1,000 – $20,000",
+      "templateSnippet": "Plasterboard and set entire single-storey 3-bedroom house including 90mm cornice throughout"
+    },
+    {
+      "slug": "flooring-installers",
+      "name": "Flooring Installers",
+      "singular": "Flooring Installer",
+      "keyword": "flooring",
+      "icon": "grid",
+      "description": "Create flooring quotes with square metre pricing, underlay calculations, and transition strip quantities. QuoteMate covers timber, laminate, vinyl, and carpet installations.",
+      "heroTitle": "Flooring Quotes — Step Up Your Game",
+      "painPoint": "Calculating flooring with waste, underlay, and transitions for each room adds up — let AI handle it.",
+      "features": ["Square metre calculator with waste %", "Underlay and adhesive auto-add", "Timber, vinyl, laminate, and carpet options", "Transition and scotia pricing"],
+      "commonJobs": [
+        {"name": "Timber floor installation", "desc": "Solid or engineered hardwood — tongue and groove with secret nailing."},
+        {"name": "Vinyl plank flooring", "desc": "Click-lock luxury vinyl planks with underlay and transitions."},
+        {"name": "Laminate flooring", "desc": "Floating laminate with underlay, beading, and door trims."},
+        {"name": "Carpet supply and lay", "desc": "Carpet and underlay with gripper strips, seaming, and doorplates."},
+        {"name": "Floor sanding and polishing", "desc": "Sand back to raw timber, stain if needed, and apply three coats."},
+        {"name": "Subfloor preparation", "desc": "Levelling compound, moisture barrier, and plywood overlay."}
+      ],
+      "avgQuoteRange": "$1,500 – $20,000",
+      "templateSnippet": "Supply and install hybrid vinyl plank flooring in 3-bedroom house (approx 85sqm) including underlay and scotia"
+    },
+    {
+      "slug": "locksmiths",
+      "name": "Locksmiths",
+      "singular": "Locksmith",
+      "keyword": "locksmith",
+      "icon": "key",
+      "description": "Quote locksmith jobs with lock, key, and hardware pricing. QuoteMate helps locksmiths create professional quotes for residential and commercial lock installations.",
+      "heroTitle": "Locksmith Quotes — Secure and Professional",
+      "painPoint": "Quoting across different lock brands and security levels needs clear, detailed pricing — QuoteMate delivers.",
+      "features": ["Residential and commercial lock pricing", "Master key system templates", "Electronic access control quotes", "Emergency call-out rate templates"],
+      "commonJobs": [
+        {"name": "Lock replacement", "desc": "Remove old lock, supply and fit new lever or knob set."},
+        {"name": "Deadbolt installation", "desc": "Drill door and frame, install single or double-cylinder deadbolt."},
+        {"name": "Master key system", "desc": "Pin locks to a master suite — multiple doors, one master key."},
+        {"name": "Electronic lock installation", "desc": "Smart lock or keypad with programming and backup key setup."},
+        {"name": "Lock rekeying", "desc": "Repin existing locks so old keys no longer work."},
+        {"name": "Safe opening and repair", "desc": "Non-destructive safe opening, combination reset, or lock repair."}
+      ],
+      "avgQuoteRange": "$100 – $5,000",
+      "templateSnippet": "Supply and install new Lockwood deadbolt and passage set to front and back doors"
+    },
+    {
+      "slug": "pest-controllers",
+      "name": "Pest Controllers",
+      "singular": "Pest Controller",
+      "keyword": "pest control",
+      "icon": "bug",
+      "description": "Create pest control quotes with treatment type, area size, and chemical costs. QuoteMate helps pest controllers quote termite inspections, general sprays, and rodent treatments professionally.",
+      "heroTitle": "Pest Control Quotes — Professional and Detailed",
+      "painPoint": "Clients want to know exactly what they're paying for — send detailed, itemised pest control quotes.",
+      "features": ["Treatment area calculators", "Termite inspection and barrier templates", "General pest spray packages", "Rodent and wildlife control templates"],
+      "commonJobs": [
+        {"name": "General pest spray", "desc": "Interior and exterior barrier spray for common household pests."},
+        {"name": "Termite inspection", "desc": "Full property inspection with thermal or radar detection report."},
+        {"name": "Termite barrier installation", "desc": "Chemical or physical barrier system around footings and entry points."},
+        {"name": "Rodent treatment", "desc": "Bait stations, entry point sealing, and follow-up monitoring."},
+        {"name": "Cockroach treatment", "desc": "Gel baiting, crack-and-crevice treatment, and harbourage spray."},
+        {"name": "Ant and spider treatment", "desc": "Perimeter spray and targeted nest treatment with residual product."}
+      ],
+      "avgQuoteRange": "$150 – $8,000",
+      "templateSnippet": "Full internal and external general pest treatment for 4-bedroom house including roof void and subfloor"
+    },
+    {
+      "slug": "demolishers",
+      "name": "Demolition Contractors",
+      "singular": "Demolition Contractor",
+      "keyword": "demolition",
+      "icon": "hammer",
+      "description": "Quote demolition jobs with waste removal, skip bin, and labour estimates. QuoteMate helps demolition contractors price residential and commercial strip-outs and full demolitions.",
+      "heroTitle": "Demolition Quotes — Clear and Competitive",
+      "painPoint": "Demo jobs involve waste disposal, asbestos checks, and council fees — capture everything in your quote.",
+      "features": ["Skip bin and waste removal pricing", "Asbestos inspection line items", "Strip-out and full demo templates", "Council permit fee reminders"],
+      "commonJobs": [
+        {"name": "Bathroom demolition", "desc": "Strip tiles, fixtures, waterproofing, and plasterboard to stud."},
+        {"name": "Kitchen strip-out", "desc": "Remove cabinetry, benchtops, splashback, and appliances."},
+        {"name": "Full house demolition", "desc": "Complete knockdown, site clearing, and waste disposal."},
+        {"name": "Internal wall removal", "desc": "Non-structural wall removal with make-good to ceiling and floor."},
+        {"name": "Concrete removal", "desc": "Jackhammer, break up, load, and dispose of concrete."},
+        {"name": "Commercial fitout demolition", "desc": "Strip partitions, ceilings, and flooring back to base build."}
+      ],
+      "avgQuoteRange": "$1,000 – $50,000",
+      "templateSnippet": "Full bathroom demolition including tiles, fixtures, waterproofing, and waste removal to skip bin"
+    },
+    {
+      "slug": "garage-door-installers",
+      "name": "Garage Door Installers",
+      "singular": "Garage Door Installer",
+      "keyword": "garage doors",
+      "icon": "door",
+      "description": "Create garage door quotes with door, motor, and installation pricing. QuoteMate helps garage door installers quote roller doors, sectional doors, and motor replacements.",
+      "heroTitle": "Garage Door Quotes — Open Up More Business",
+      "painPoint": "Each garage door quote needs door type, motor, tracks, and installation — bundle it all in one professional quote.",
+      "features": ["Roller and sectional door pricing", "Motor and remote package templates", "Track and spring replacement quotes", "Custom size and colour options"],
+      "commonJobs": [
+        {"name": "Roller door installation", "desc": "Steel or aluminium roller door with tracks, springs, and motor."},
+        {"name": "Sectional door installation", "desc": "Insulated or non-insulated panels with track and opener."},
+        {"name": "Motor replacement", "desc": "Remove old motor, supply and install new opener unit."},
+        {"name": "Spring and cable repair", "desc": "Replace worn torsion springs, cables, and balance adjustment."},
+        {"name": "Door panel replacement", "desc": "Swap damaged panels and realign for smooth operation."},
+        {"name": "Remote programming", "desc": "New remotes, wall buttons, and smartphone app integration."}
+      ],
+      "avgQuoteRange": "$800 – $6,000",
+      "templateSnippet": "Supply and install B&D sectional garage door (5000x2400mm) with Merlin motor and 2 remotes"
+    },
+    {
+      "slug": "welders",
+      "name": "Welders & Fabricators",
+      "singular": "Welder",
+      "keyword": "welding",
+      "icon": "flame",
+      "description": "Create welding and fabrication quotes with material, labour, and finishing costs. QuoteMate helps welders quote balustrades, gates, structural steel, and custom fabrication work.",
+      "heroTitle": "Welding Quotes — Strong and Professional",
+      "painPoint": "Pricing steel by the metre with cutting, welding, and finishing is complex — simplify it with QuoteMate.",
+      "features": ["Steel and aluminium material pricing", "Balustrade and gate templates", "Structural steel estimating", "Powder coating and galvanising add-ons"],
+      "commonJobs": [
+        {"name": "Steel balustrade fabrication", "desc": "Custom steel or stainless balustrade — fabricated, galvanised, and installed."},
+        {"name": "Driveway gate", "desc": "Swing or sliding gate with steel frame, infill, and automation."},
+        {"name": "Structural steel work", "desc": "Beams, columns, and lintels — fabricated to engineer specs."},
+        {"name": "Handrail installation", "desc": "Stainless, mild steel, or aluminium handrails to AS 1428 standards."},
+        {"name": "Custom metal fabrication", "desc": "One-off brackets, frames, guards, or decorative metalwork."},
+        {"name": "Repair and modification welding", "desc": "On-site weld repairs, reinforcement, and structural modifications."}
+      ],
+      "avgQuoteRange": "$500 – $20,000",
+      "templateSnippet": "Fabricate and install 8 linear metres of aluminium balustrade with glass infill panels and powder coating"
+    },
+    {
+      "slug": "arborists",
+      "name": "Arborists",
+      "singular": "Arborist",
+      "keyword": "tree services",
+      "icon": "tree",
+      "description": "Quote tree removal, pruning, and stump grinding jobs with equipment hire and waste disposal costs. QuoteMate helps arborists create clear, professional quotes customers trust.",
+      "heroTitle": "Tree Service Quotes — Branch Out Professionally",
+      "painPoint": "Tree jobs vary hugely in scope — QuoteMate helps you itemise access, equipment, and disposal clearly.",
+      "features": ["Tree removal and pruning templates", "Stump grinding pricing", "Crane and chipper hire estimates", "Green waste disposal costs"],
+      "commonJobs": [
+        {"name": "Tree removal", "desc": "Fell or section-remove tree, chip branches, and haul away."},
+        {"name": "Tree pruning and shaping", "desc": "Crown thin, deadwood, or shape to improve health and clearance."},
+        {"name": "Stump grinding", "desc": "Grind stump below ground level and backfill with mulch."},
+        {"name": "Palm tree removal", "desc": "Section-cut palm, remove fronds, trunk, and root ball."},
+        {"name": "Hedge trimming", "desc": "Shape and maintain hedges to desired height and density."},
+        {"name": "Emergency storm damage", "desc": "Urgent call-out for fallen trees, hanging limbs, and debris clearing."}
+      ],
+      "avgQuoteRange": "$300 – $15,000",
+      "templateSnippet": "Remove 12m eucalyptus tree including stump grinding, wood chipping, and green waste removal"
+    }
+  ],
+  "cities": [
+    {
+      "slug": "sydney",
+      "name": "Sydney",
+      "state": "NSW",
+      "population": "5.3 million",
+      "description": "Australia's largest city",
+      "localNote": "From the Inner West to the Northern Beaches, Western Sydney to the Sutherland Shire"
+    },
+    {
+      "slug": "melbourne",
+      "name": "Melbourne",
+      "state": "VIC",
+      "population": "5.1 million",
+      "description": "Australia's cultural capital",
+      "localNote": "From the CBD to the Mornington Peninsula, Geelong corridor to the Yarra Ranges"
+    },
+    {
+      "slug": "brisbane",
+      "name": "Brisbane",
+      "state": "QLD",
+      "population": "2.6 million",
+      "description": "Queensland's capital",
+      "localNote": "From the CBD to the Gold Coast corridor, Ipswich to Redcliffe and the Sunshine Coast"
+    },
+    {
+      "slug": "perth",
+      "name": "Perth",
+      "state": "WA",
+      "population": "2.2 million",
+      "description": "Western Australia's capital",
+      "localNote": "From Fremantle to Joondalup, Armadale to Rockingham and Mandurah"
+    },
+    {
+      "slug": "adelaide",
+      "name": "Adelaide",
+      "state": "SA",
+      "population": "1.4 million",
+      "description": "South Australia's capital",
+      "localNote": "From the CBD to the Adelaide Hills, Gawler to Seaford and the Barossa"
+    },
+    {
+      "slug": "gold-coast",
+      "name": "Gold Coast",
+      "state": "QLD",
+      "population": "700,000",
+      "description": "Australia's holiday capital",
+      "localNote": "From Surfers Paradise to Coolangatta, Nerang to Ormeau and the Hinterland"
+    },
+    {
+      "slug": "canberra",
+      "name": "Canberra",
+      "state": "ACT",
+      "population": "470,000",
+      "description": "Australia's capital city",
+      "localNote": "From Belconnen to Tuggeranong, Woden to Gungahlin and Queanbeyan"
+    },
+    {
+      "slug": "hobart",
+      "name": "Hobart",
+      "state": "TAS",
+      "population": "250,000",
+      "description": "Tasmania's capital",
+      "localNote": "From the CBD to Kingston, Glenorchy to Clarence and the Eastern Shore"
+    },
+    {
+      "slug": "newcastle",
+      "name": "Newcastle",
+      "state": "NSW",
+      "population": "500,000",
+      "description": "NSW's second largest city",
+      "localNote": "From the CBD to Charlestown, Maitland to Lake Macquarie and the Hunter Valley"
+    },
+    {
+      "slug": "wollongong",
+      "name": "Wollongong",
+      "state": "NSW",
+      "population": "310,000",
+      "description": "The Gong — NSW's third largest city",
+      "localNote": "From the CBD to Shellharbour, Kiama to Helensburgh and the Illawarra region"
+    }
+  ],
+  "quoteTemplates": [
+    {
+      "slug": "deck-quote-template",
+      "name": "Deck Building Quote Template",
+      "trade": "carpenters",
+      "keyword": "deck quote template",
+      "description": "Free deck building quote template for Australian tradies. Includes timber materials, hardware, labour, and GST — ready to customise and send to clients.",
+      "materials": ["Decking boards (Merbau, treated pine, composite)", "Joists and bearers", "Concrete footings", "Coach bolts and screws", "Stainless steel balustrade", "Stair treads and stringers"],
+      "steps": ["Measure deck area and access", "Select decking material and profile", "Calculate joists, bearers, and footings", "Add balustrade and stairs if needed", "Include labour and markup", "Generate and send professional PDF quote"]
+    },
+    {
+      "slug": "bathroom-renovation-quote-template",
+      "name": "Bathroom Renovation Quote Template",
+      "trade": "builders",
+      "keyword": "bathroom renovation quote template",
+      "description": "Free bathroom renovation quote template. Covers demolition, waterproofing, tiling, plumbing, fixtures, and electrical — everything for a professional bathroom reno quote.",
+      "materials": ["Demolition and waste removal", "Waterproofing membrane and tape", "Wall and floor tiles", "Tile adhesive and grout", "Vanity, toilet, and tapware", "Shower screen"],
+      "steps": ["Assess existing bathroom and scope", "Quote demolition and waste removal", "Add waterproofing materials and labour", "Calculate tiling quantities with waste", "Select fixtures and fittings", "Include all trades (plumbing, electrical, tiling)"]
+    },
+    {
+      "slug": "fence-quote-template",
+      "name": "Fence Installation Quote Template",
+      "trade": "fencers",
+      "keyword": "fence quote template",
+      "description": "Free fence installation quote template for Colorbond, timber, and aluminium fencing. Auto-calculate posts, panels, and concrete per linear metre.",
+      "materials": ["Fence panels or palings", "Steel or timber posts", "Concrete for post footings", "Rails and brackets", "Gate and hinges", "Caps and rivets"],
+      "steps": ["Measure boundary length and access", "Choose fence type (Colorbond, timber, aluminium)", "Calculate posts, panels, and rails", "Add gates and hardware", "Include post hole digging and concrete", "Generate branded PDF quote with GST"]
+    },
+    {
+      "slug": "kitchen-renovation-quote-template",
+      "name": "Kitchen Renovation Quote Template",
+      "trade": "builders",
+      "keyword": "kitchen renovation quote template",
+      "description": "Free kitchen renovation quote template. Covers cabinetry, benchtops, appliances, plumbing, electrical, and tiling — a complete kitchen reno quoting guide.",
+      "materials": ["Cabinetry (base, wall, tall)", "Stone or laminate benchtop", "Sink and tapware", "Appliances (oven, cooktop, rangehood)", "Splashback tiles or glass", "Electrical and plumbing rough-in"],
+      "steps": ["Measure kitchen layout and scope", "Design cabinetry and select materials", "Choose benchtop material and edge profile", "Select appliances and fixtures", "Add plumbing and electrical requirements", "Include demolition, installation, and finishing"]
+    },
+    {
+      "slug": "painting-quote-template",
+      "name": "House Painting Quote Template",
+      "trade": "painters",
+      "keyword": "house painting quote template",
+      "description": "Free house painting quote template for interior and exterior painting. Calculates paint volumes, prep materials, and labour per room or area.",
+      "materials": ["Interior paint (walls and ceilings)", "Exterior paint", "Primer and undercoat", "Filler, sandpaper, and prep materials", "Drop sheets and masking tape", "Brushes, rollers, and trays"],
+      "steps": ["Measure walls and ceilings per room", "Assess surface condition and prep needed", "Calculate paint volumes (litres per sqm)", "Select paint brand and finish", "Add prep materials and consumables", "Include labour hours and access equipment"]
+    },
+    {
+      "slug": "concrete-driveway-quote-template",
+      "name": "Concrete Driveway Quote Template",
+      "trade": "concreters",
+      "keyword": "concrete driveway quote template",
+      "description": "Free concrete driveway quote template. Covers excavation, formwork, mesh, concrete, and finishing — everything for a professional driveway quote.",
+      "materials": ["Concrete (standard, exposed aggregate, or coloured)", "Reinforcement mesh (SL72 or SL82)", "Formwork timber", "Crushed rock base", "Poly membrane", "Control joint strips"],
+      "steps": ["Measure driveway area and depth", "Calculate cubic metres of concrete", "Add reinforcement mesh quantities", "Include formwork and base preparation", "Select finish type (plain, exposed, stamped)", "Add pump hire if needed and labour costs"]
+    },
+    {
+      "slug": "solar-installation-quote-template",
+      "name": "Solar Panel Installation Quote Template",
+      "trade": "solar-installers",
+      "keyword": "solar installation quote template",
+      "description": "Free solar panel installation quote template. Includes panels, inverter, mounting, electrical, and STC rebate breakdown for Australian solar installations.",
+      "materials": ["Solar panels (e.g., 415W)", "Inverter (string or micro)", "Mounting rails and clamps", "DC and AC cabling", "Isolator switches", "Battery storage (optional)"],
+      "steps": ["Assess roof orientation and shading", "Design system size based on usage", "Select panel and inverter brands", "Calculate STC rebate", "Add mounting, cabling, and electrical", "Present net price after rebate with ROI estimate"]
+    },
+    {
+      "slug": "pergola-quote-template",
+      "name": "Pergola Construction Quote Template",
+      "trade": "carpenters",
+      "keyword": "pergola quote template",
+      "description": "Free pergola construction quote template for timber and steel pergolas. Covers posts, beams, rafters, roofing, and council approval requirements.",
+      "materials": ["Posts (timber or steel)", "Beams and rafters", "Roofing (polycarbonate, Colorbond, or shade cloth)", "Post brackets and stirrups", "Concrete footings", "Fascia and trims"],
+      "steps": ["Measure pergola area and height", "Choose material (hardwood, treated pine, steel)", "Calculate posts, beams, and rafter spacing", "Select roofing type", "Add footings and hardware", "Note any council approval requirements"]
+    },
+    {
+      "slug": "electrical-switchboard-upgrade-quote-template",
+      "name": "Switchboard Upgrade Quote Template",
+      "trade": "electricians",
+      "keyword": "switchboard upgrade quote template",
+      "description": "Free switchboard upgrade quote template for Australian electricians. Covers new switchboard, safety switches, circuit breakers, and compliance testing.",
+      "materials": ["New switchboard enclosure", "RCDs / safety switches", "Circuit breakers (MCBs)", "Main switch", "Cable and conduit", "Labels and compliance stickers"],
+      "steps": ["Inspect existing switchboard and circuits", "Determine number of circuits and RCD requirements", "Select switchboard size and brand", "Quote circuit breakers and safety switches", "Include labour and compliance testing", "Add certificate of compliance to quote"]
+    },
+    {
+      "slug": "hot-water-system-replacement-quote-template",
+      "name": "Hot Water System Replacement Quote Template",
+      "trade": "plumbers",
+      "keyword": "hot water system quote template",
+      "description": "Free hot water system replacement quote template. Covers unit supply, installation, connections, tempering valve, and old unit removal for gas, electric, and heat pump systems.",
+      "materials": ["Hot water unit (gas, electric, or heat pump)", "Tempering valve", "Pipe fittings and connections", "Gas fittings (if applicable)", "Pressure and temperature relief valve", "Pipe insulation"],
+      "steps": ["Assess current hot water system and location", "Recommend replacement type and size", "Quote unit supply and delivery", "Include plumbing and gas connections", "Add tempering valve and compliance", "Include old unit removal and disposal"]
+    },
+    {
+      "slug": "retaining-wall-quote-template",
+      "name": "Retaining Wall Quote Template",
+      "trade": "landscapers",
+      "keyword": "retaining wall quote template",
+      "description": "Free retaining wall quote template for timber, concrete sleeper, and block retaining walls. Includes materials, drainage, and engineering requirements.",
+      "materials": ["Retaining wall blocks or sleepers", "Steel posts (galvanised H-beams)", "Concrete footings", "Drainage gravel and ag pipe", "Geotextile fabric", "Backfill material"],
+      "steps": ["Measure wall length, height, and access", "Choose wall type (timber, block, concrete sleeper)", "Calculate post spacing and footing depth", "Add drainage behind wall", "Include engineering certification if over 600mm", "Generate quote with materials and labour"]
+    },
+    {
+      "slug": "roof-restoration-quote-template",
+      "name": "Roof Restoration Quote Template",
+      "trade": "roofers",
+      "keyword": "roof restoration quote template",
+      "description": "Free roof restoration quote template for tile and Colorbond roofs. Covers cleaning, repairs, repointing, sealing, and painting — complete roof restoration quoting.",
+      "materials": ["High-pressure roof cleaning", "Broken tile replacement", "Repointing compound (flexible)", "Roof sealer / primer", "Roof membrane paint (2 coats)", "Valley and flashing repairs"],
+      "steps": ["Inspect roof condition and access", "Quote high-pressure cleaning", "Itemise repairs (tiles, ridges, valleys)", "Add repointing of ridge caps", "Include sealer and 2 coats of membrane paint", "Factor in scaffold or safety rail hire"]
+    },
+    {
+      "slug": "split-system-installation-quote-template",
+      "name": "Split System Installation Quote Template",
+      "trade": "hvac-technicians",
+      "keyword": "split system installation quote template",
+      "description": "Free split system air conditioning installation quote template. Covers unit supply, bracket, piping, electrical, and commissioning for residential and commercial installs.",
+      "materials": ["Indoor and outdoor split system unit", "Wall mounting bracket", "Refrigerant copper piping", "Electrical cable and isolator", "Drain pipe and fittings", "Pipe cover / ducting (optional)"],
+      "steps": ["Assess room size and cooling requirements", "Select unit capacity (kW) and brand", "Determine mounting positions and pipe run", "Quote unit supply and installation labour", "Include electrical connection and isolator", "Add commissioning and warranty details"]
+    },
+    {
+      "slug": "end-of-lease-cleaning-quote-template",
+      "name": "End of Lease Cleaning Quote Template",
+      "trade": "cleaners",
+      "keyword": "end of lease cleaning quote template",
+      "description": "Free end of lease cleaning quote template for bond cleans. Covers every room, oven, carpets, and windows with a bond-back guarantee — ready to send to tenants.",
+      "materials": ["General cleaning supplies", "Oven and rangehood degreaser", "Carpet steam cleaning", "Window cleaning inside and out", "Bathroom mould treatment", "Garage and outdoor sweep"],
+      "steps": ["Confirm property size (bedrooms and bathrooms)", "List all rooms and areas included", "Add oven and rangehood deep clean", "Include carpet steam cleaning", "Add window cleaning (inside and out)", "Note bond-back guarantee terms"]
+    },
+    {
+      "slug": "granny-flat-quote-template",
+      "name": "Granny Flat Construction Quote Template",
+      "trade": "builders",
+      "keyword": "granny flat quote template",
+      "description": "Free granny flat construction quote template. Covers slab, frame, roofing, plumbing, electrical, kitchen, bathroom, and finishing for compliant granny flat builds.",
+      "materials": ["Concrete slab and footings", "Timber or steel frame", "Roofing (Colorbond)", "External cladding", "Internal plasterboard and insulation", "Kitchen and bathroom fixtures"],
+      "steps": ["Confirm granny flat size and layout", "Check council requirements and CDC/DA", "Quote slab, frame, and roofing", "Add plumbing, electrical, and HVAC", "Include kitchen, bathroom, and finishes", "Break into progress payment stages"]
+    },
+    {
+      "slug": "pool-fencing-quote-template",
+      "name": "Pool Fencing Quote Template",
+      "trade": "fencers",
+      "keyword": "pool fencing quote template",
+      "description": "Free pool fencing quote template compliant with Australian standards AS1926.1. Covers glass, aluminium, and tubular steel pool fencing with self-closing gate.",
+      "materials": ["Glass panels or aluminium/tubular steel panels", "Spigots or posts", "Self-closing, self-latching gate", "Gate hinges and latch hardware", "Concrete core holes", "Compliance certificate"],
+      "steps": ["Measure pool fence perimeter", "Choose fence type (frameless glass, semi-frameless, aluminium)", "Calculate panels, posts, and spigots", "Include compliant self-closing gate", "Add core drilling and installation", "Note AS1926.1 compliance and inspection"]
+    },
+    {
+      "slug": "staircase-quote-template",
+      "name": "Staircase Construction Quote Template",
+      "trade": "carpenters",
+      "keyword": "staircase quote template",
+      "description": "Free staircase construction quote template for timber, steel, and concrete stairs. Covers stringers, treads, risers, balustrade, and BCA compliance.",
+      "materials": ["Stair stringers (timber or steel)", "Treads and risers", "Balustrade posts and handrail", "Balustrade infill (glass, wire, timber)", "Brackets and fixings", "Stair nosing strips"],
+      "steps": ["Measure floor-to-floor height and available space", "Calculate number of risers and tread depth", "Select materials for stringers and treads", "Design balustrade to BCA requirements", "Include all hardware and fixings", "Add labour for fabrication and installation"]
+    },
+    {
+      "slug": "termite-treatment-quote-template",
+      "name": "Termite Treatment Quote Template",
+      "trade": "pest-controllers",
+      "keyword": "termite treatment quote template",
+      "description": "Free termite treatment quote template for inspections, chemical barriers, and baiting systems. Covers AS3660.2 compliance for Australian termite management.",
+      "materials": ["Termite inspection (AS3660.2)", "Chemical termiticide (e.g., Termidor)", "Reticulation system (if applicable)", "Bait stations (monitoring and in-ground)", "Drilling and injection equipment", "Annual inspection plan"],
+      "steps": ["Conduct full termite inspection", "Identify species and extent of activity", "Recommend treatment type (chemical barrier or baiting)", "Quote chemical and labour for treatment zone", "Include annual monitoring program", "Provide compliance documentation"]
+    },
+    {
+      "slug": "gutter-replacement-quote-template",
+      "name": "Gutter Replacement Quote Template",
+      "trade": "roofers",
+      "keyword": "gutter replacement quote template",
+      "description": "Free gutter replacement quote template for Colorbond guttering, fascia, and downpipes. Covers removal, supply, installation, and leaf guard options.",
+      "materials": ["Colorbond guttering (quad or half-round)", "Fascia board (Colorbond or timber)", "Downpipes and elbows", "Gutter brackets and screws", "Leaf guard / gutter mesh (optional)", "Silicone and pop rivets"],
+      "steps": ["Measure gutter run lengths and downpipe positions", "Select gutter profile and Colorbond colour", "Quote removal of existing gutters", "Calculate guttering, brackets, and downpipes", "Add fascia replacement if needed", "Include leaf guard option as add-on"]
+    },
+    {
+      "slug": "epoxy-floor-coating-quote-template",
+      "name": "Epoxy Floor Coating Quote Template",
+      "trade": "flooring-installers",
+      "keyword": "epoxy floor coating quote template",
+      "description": "Free epoxy floor coating quote template for garages, warehouses, and commercial spaces. Covers surface preparation, primer, epoxy coat, and topcoat.",
+      "materials": ["Diamond grinding / surface preparation", "Epoxy primer", "Epoxy base coat (colour)", "Anti-slip aggregate (optional)", "Polyurethane topcoat", "Joint filler and crack repair"],
+      "steps": ["Measure floor area and assess condition", "Quote surface preparation (grinding, patching)", "Select epoxy system and colour", "Calculate primer, base coat, and topcoat quantities", "Add anti-slip if required", "Include curing time in project timeline"]
+    },
+    {
+      "slug": "shower-screen-quote-template",
+      "name": "Shower Screen Installation Quote Template",
+      "trade": "glaziers",
+      "keyword": "shower screen quote template",
+      "description": "Free shower screen installation quote template for frameless, semi-frameless, and framed shower screens. Covers glass, hardware, and waterproofing.",
+      "materials": ["Toughened safety glass panel(s)", "Hinges (wall-to-glass or glass-to-glass)", "Wall channels and U-channels", "Handle and towel rail", "Silicone sealant", "Waterproof membrane (if needed)"],
+      "steps": ["Measure shower opening and glass sizes", "Choose screen type (frameless, semi-frameless, framed)", "Select glass thickness and hardware finish", "Quote glass supply and delivery", "Include installation and silicone sealing", "Add waterproofing if required"]
+    },
+    {
+      "slug": "colorbond-fence-quote-template",
+      "name": "Colorbond Fence Quote Template",
+      "trade": "fencers",
+      "keyword": "colorbond fence quote template",
+      "description": "Free Colorbond fence quote template. Covers panels, posts, rails, concrete, gates, and installation — the most popular fence type in Australia.",
+      "materials": ["Colorbond fence sheets", "Steel posts (C-section)", "Top and bottom rails", "Post caps and brackets", "Concrete for post footings", "Gate frame, hinges, and latch"],
+      "steps": ["Measure boundary length and mark post positions", "Select Colorbond colour and fence height", "Calculate panels, posts, and rails", "Add gate(s) with hinges and latch", "Include post hole digging and concrete", "Generate professional PDF quote"]
+    },
+    {
+      "slug": "led-downlight-installation-quote-template",
+      "name": "LED Downlight Installation Quote Template",
+      "trade": "electricians",
+      "keyword": "LED downlight installation quote template",
+      "description": "Free LED downlight installation quote template. Covers downlight supply, wiring, transformers, dimmer switches, and patching for residential and commercial installs.",
+      "materials": ["LED downlights (IC-rated)", "LED drivers / transformers", "Dimmer switch (trailing edge)", "Electrical cable (TPS)", "Junction boxes and connectors", "Ceiling patching (if needed)"],
+      "steps": ["Count downlight positions per room", "Select downlight type, colour temperature, and wattage", "Determine if dimmer switch is needed", "Quote downlight supply and electrical labour", "Include any ceiling patching or painting", "Add compliance testing"]
+    },
+    {
+      "slug": "driveway-gate-quote-template",
+      "name": "Driveway Gate Quote Template",
+      "trade": "welders",
+      "keyword": "driveway gate quote template",
+      "description": "Free driveway gate quote template for swing and sliding gates in steel and aluminium. Covers gate fabrication, motor automation, intercom, and installation.",
+      "materials": ["Gate frame and infill (steel or aluminium)", "Gate posts or tracks", "Hinges or sliding wheel kit", "Gate motor and automation kit", "Intercom or keypad (optional)", "Powder coating or galvanising"],
+      "steps": ["Measure driveway opening and clearances", "Choose gate style (swing, sliding, bi-fold)", "Select material and finish", "Add motor and automation if required", "Include intercom or access control", "Quote fabrication, finishing, and installation"]
+    },
+    {
+      "slug": "tree-removal-quote-template",
+      "name": "Tree Removal Quote Template",
+      "trade": "arborists",
+      "keyword": "tree removal quote template",
+      "description": "Free tree removal quote template for residential and commercial tree services. Covers tree felling, stump grinding, chipping, and green waste disposal.",
+      "materials": ["Tree felling and sectional dismantling", "Stump grinding (below ground)", "Wood chipping on-site", "Crane hire (if required)", "Traffic management (if required)", "Green waste removal to tip"],
+      "steps": ["Assess tree species, size, and condition", "Determine access and proximity to structures", "Choose removal method (fell, section, crane)", "Quote stump grinding depth", "Include green waste disposal", "Add council permit if required"]
+    },
+    {
+      "slug": "bathroom-tiling-quote-template",
+      "name": "Bathroom Tiling Quote Template",
+      "trade": "tilers",
+      "keyword": "bathroom tiling quote template",
+      "description": "Free bathroom tiling quote template for floor and wall tiling. Covers tile supply, waterproofing, adhesive, grout, and finishing — with waste calculations.",
+      "materials": ["Floor tiles", "Wall tiles", "Tile adhesive (flexible)", "Grout (matching colour)", "Waterproofing membrane", "Tile trim and silicone"],
+      "steps": ["Measure floor and wall areas", "Calculate tile quantities with 10% waste", "Select adhesive type for substrate", "Add waterproofing if required", "Include grout, trim, and silicone", "Quote labour per square metre"]
+    },
+    {
+      "slug": "concrete-slab-quote-template",
+      "name": "Concrete Slab Quote Template",
+      "trade": "concreters",
+      "keyword": "concrete slab quote template",
+      "description": "Free concrete slab quote template for shed slabs, house slabs, and garage floors. Covers excavation, formwork, reinforcement, concrete pour, and finishing.",
+      "materials": ["Excavation and levelling", "Compacted crushed rock base", "Poly vapour barrier", "Reinforcement mesh (SL72, SL82, or trench mesh)", "Concrete (N20 or N25 mix)", "Edge formwork and control joints"],
+      "steps": ["Measure slab area and determine depth", "Calculate excavation and base material", "Select reinforcement type for load", "Calculate cubic metres of concrete", "Include pump hire if not accessible", "Add finishing (steel trowel, broom, or exposed)"]
+    },
+    {
+      "slug": "carpet-cleaning-quote-template",
+      "name": "Carpet Steam Cleaning Quote Template",
+      "trade": "cleaners",
+      "keyword": "carpet cleaning quote template",
+      "description": "Free carpet steam cleaning quote template for residential and commercial carpet cleaning. Covers steam extraction, stain treatment, and deodorising per room.",
+      "materials": ["Hot water extraction / steam cleaning", "Pre-spray treatment", "Stain spot treatment", "Deodoriser application", "Sanitiser (optional)", "Carpet protector (optional)"],
+      "steps": ["Count rooms and measure carpet areas", "Assess carpet condition and staining", "Quote per room or per square metre", "Add stain treatment as line items", "Include deodoriser and sanitiser options", "Note drying time expectations"]
+    },
+    {
+      "slug": "render-house-quote-template",
+      "name": "House Rendering Quote Template",
+      "trade": "renderers",
+      "keyword": "house rendering quote template",
+      "description": "Free house rendering quote template for cement, acrylic, and texture coat rendering. Covers surface preparation, render application, and scaffold hire.",
+      "materials": ["Render base coat (cement or acrylic)", "Render finish coat / texture", "Primer / bonding agent", "Corner beads and stop beads", "Scaffold hire", "Masking and drop sheets"],
+      "steps": ["Measure all external wall areas", "Deduct windows and doors", "Assess surface condition and prep needed", "Select render type and finish", "Calculate render quantities by sqm", "Add scaffold hire and access equipment"]
+    },
+    {
+      "slug": "kitchen-splashback-quote-template",
+      "name": "Kitchen Splashback Quote Template",
+      "trade": "glaziers",
+      "keyword": "kitchen splashback quote template",
+      "description": "Free kitchen splashback quote template for glass and tile splashbacks. Covers measurement, supply, cutouts, and installation behind cooktops and benchtops.",
+      "materials": ["Toughened glass panels (6mm)", "Colour backing (painted or vinyl)", "Silicone adhesive", "Powerpoint and switch cutouts", "Edge polishing", "Protective packaging"],
+      "steps": ["Measure splashback area precisely", "Account for powerpoint and switch cutouts", "Select glass colour or tile type", "Quote glass supply with cutouts", "Include delivery and installation", "Note cure time before use"]
+    },
+    {
+      "slug": "plasterboard-installation-quote-template",
+      "name": "Plasterboard Installation Quote Template",
+      "trade": "plasterers",
+      "keyword": "plasterboard installation quote template",
+      "description": "Free plasterboard installation quote template. Covers plasterboard supply, fixing, setting, sanding, and cornice — for new builds and renovations.",
+      "materials": ["Plasterboard sheets (10mm or 13mm)", "Plasterboard screws", "Paper tape and base coat compound", "Finishing compound (top coat)", "Cornice (55mm or 90mm)", "Cornice cement"],
+      "steps": ["Measure wall and ceiling areas", "Calculate sheet count with waste", "Select board type (standard, moisture-resistant, fire-rated)", "Quote fixing, taping, and setting", "Add cornice supply and installation", "Include sanding and clean-up"]
+    },
+    {
+      "slug": "vinyl-plank-flooring-quote-template",
+      "name": "Vinyl Plank Flooring Quote Template",
+      "trade": "flooring-installers",
+      "keyword": "vinyl plank flooring quote template",
+      "description": "Free vinyl plank flooring quote template for hybrid and luxury vinyl plank (LVP) installations. Covers supply, underlay, transitions, and scotia.",
+      "materials": ["Hybrid / luxury vinyl plank flooring", "Underlay (if not pre-attached)", "Transition strips (T-bar, reducer, end cap)", "Scotia or quarter round", "Adhesive or double-sided tape (if glue-down)", "Moisture barrier (if on concrete)"],
+      "steps": ["Measure floor areas room by room", "Add 10% waste factor for cuts", "Select plank style, colour, and thickness", "Include underlay if needed", "Calculate transitions between rooms", "Add scotia around perimeter"]
+    },
+    {
+      "slug": "ev-charger-installation-quote-template",
+      "name": "EV Charger Installation Quote Template",
+      "trade": "electricians",
+      "keyword": "EV charger installation quote template",
+      "description": "Free EV charger installation quote template for home and commercial electric vehicle charging. Covers charger supply, wiring, switchboard upgrade, and commissioning.",
+      "materials": ["EV charger unit (7kW or 22kW)", "Dedicated circuit cable (6mm or 10mm TPS)", "Circuit breaker and RCD", "Conduit and cable support", "Mounting bracket", "Switchboard upgrade (if required)"],
+      "steps": ["Assess switchboard capacity", "Determine cable run distance to charger", "Select charger type and power level", "Quote charger supply and electrical work", "Include switchboard upgrade if needed", "Add commissioning and user setup"]
+    },
+    {
+      "slug": "paving-quote-template",
+      "name": "Paving Installation Quote Template",
+      "trade": "landscapers",
+      "keyword": "paving quote template",
+      "description": "Free paving installation quote template for driveways, patios, and pathways. Covers excavation, base preparation, pavers, edging, and jointing sand.",
+      "materials": ["Pavers (clay, concrete, or natural stone)", "Road base / crushed rock", "Bedding sand", "Polymeric jointing sand", "Edge restraints / border pavers", "Geotextile fabric"],
+      "steps": ["Measure paving area and pattern layout", "Calculate excavation depth and base material", "Select paver type, size, and colour", "Calculate paver quantity with 5% waste", "Add edge restraints and jointing", "Include compaction and clean-up"]
+    },
+    {
+      "slug": "commercial-cleaning-quote-template",
+      "name": "Commercial Office Cleaning Quote Template",
+      "trade": "cleaners",
+      "keyword": "commercial cleaning quote template",
+      "description": "Free commercial office cleaning quote template for regular and one-off office cleans. Covers cleaning frequency, scope of works, and consumables supply.",
+      "materials": ["General surface cleaning", "Vacuum and mop all floors", "Kitchen and breakroom cleaning", "Bathroom sanitisation", "Bin emptying and relining", "Consumables supply (soap, paper towel, toilet paper)"],
+      "steps": ["Inspect office size and layout", "Determine cleaning frequency (daily, 2x, 3x weekly)", "List scope of works per visit", "Quote consumables supply separately", "Include window cleaning frequency", "Present weekly or monthly pricing"]
+    },
+    {
+      "slug": "smoke-alarm-installation-quote-template",
+      "name": "Smoke Alarm Installation Quote Template",
+      "trade": "electricians",
+      "keyword": "smoke alarm installation quote template",
+      "description": "Free smoke alarm installation quote template compliant with Australian standards. Covers interconnected photoelectric alarms for new installs and upgrades.",
+      "materials": ["Interconnected photoelectric smoke alarms", "Mounting bases", "Interconnect cable (if hardwired)", "Wireless interconnect module (if applicable)", "Battery backup units", "Compliance certificate"],
+      "steps": ["Count required alarm positions per AS3786", "Determine interconnection method (wired or wireless)", "Select alarm brand and model", "Quote alarm supply and installation", "Include old alarm removal and disposal", "Provide compliance certificate and documentation"]
+    },
+    {
+      "slug": "wardrobe-fitout-quote-template",
+      "name": "Built-in Wardrobe Quote Template",
+      "trade": "cabinet-makers",
+      "keyword": "built-in wardrobe quote template",
+      "description": "Free built-in wardrobe quote template for walk-in robes and reach-in wardrobes. Covers shelving, hanging rails, drawers, doors, and hardware.",
+      "materials": ["Melamine or plywood panels", "Shelving (fixed and adjustable)", "Hanging rails (chrome)", "Soft-close drawer runners", "Wardrobe doors (sliding or hinged)", "Handles and hardware"],
+      "steps": ["Measure wardrobe opening and depth", "Design internal layout (hanging, shelves, drawers)", "Select board finish and door style", "Calculate panel and hardware quantities", "Quote manufacture and installation", "Include any electrical for lighting"]
+    },
+    {
+      "slug": "stump-grinding-quote-template",
+      "name": "Stump Grinding Quote Template",
+      "trade": "arborists",
+      "keyword": "stump grinding quote template",
+      "description": "Free stump grinding quote template for residential and commercial stump removal. Covers grinding depth, root removal, backfill, and site clean-up.",
+      "materials": ["Stump grinding (below ground level)", "Root grinding (surface roots)", "Backfill soil or mulch", "Turf patch (optional)", "Site clean-up", "Green waste removal"],
+      "steps": ["Count stumps and measure diameters", "Assess access for grinding equipment", "Determine grinding depth required", "Quote per stump based on size", "Include backfill and site levelling", "Add turf or seed restoration if requested"]
+    },
+    {
+      "slug": "bathroom-waterproofing-quote-template",
+      "name": "Bathroom Waterproofing Quote Template",
+      "trade": "builders",
+      "keyword": "bathroom waterproofing quote template",
+      "description": "Free bathroom waterproofing quote template compliant with AS3740. Covers membrane, bond breaker, corners, and wet area waterproofing for showers, floors, and balconies.",
+      "materials": ["Liquid waterproofing membrane", "Reinforcing tape (corners and joints)", "Bond breaker tape", "Primer / sealer", "Hob formwork (shower)", "Waterproofing certificate"],
+      "steps": ["Measure wet area floor and wall zones", "Prepare substrate (clean, prime, repair)", "Apply bond breaker to internal corners", "Apply reinforcing tape to all joints", "Apply 2 coats of membrane with drying time", "Issue waterproofing compliance certificate"]
+    },
+    {
+      "slug": "ducted-aircon-quote-template",
+      "name": "Ducted Air Conditioning Quote Template",
+      "trade": "hvac-technicians",
+      "keyword": "ducted air conditioning quote template",
+      "description": "Free ducted air conditioning installation quote template. Covers unit supply, ductwork, zones, controllers, and electrical for whole-home climate control.",
+      "materials": ["Ducted AC unit (indoor and outdoor)", "Flexible ductwork and plenums", "Diffusers and return air grilles", "Zone controller and motorised dampers", "Thermostat / wall controller", "Refrigerant piping and electrical"],
+      "steps": ["Calculate cooling/heating load per room", "Select unit capacity and brand", "Design duct layout and zone plan", "Quote unit supply, ductwork, and zones", "Include electrical and refrigerant piping", "Add commissioning and zone balancing"]
+    },
+    {
+      "slug": "laundry-renovation-quote-template",
+      "name": "Laundry Renovation Quote Template",
+      "trade": "builders",
+      "keyword": "laundry renovation quote template",
+      "description": "Free laundry renovation quote template. Covers cabinetry, benchtop, trough, tiling, plumbing, and electrical for a complete laundry makeover.",
+      "materials": ["Laundry cabinetry (base and overhead)", "Benchtop (laminate or stone)", "Laundry trough and tapware", "Wall and floor tiles", "Plumbing rough-in and connections", "Electrical (GPOs and lighting)"],
+      "steps": ["Measure laundry layout and plumbing positions", "Design cabinetry and select materials", "Choose trough, tapware, and benchtop", "Add tiling for floor and splashback", "Include plumbing and electrical work", "Quote demolition, installation, and finishing"]
+    },
+    {
+      "slug": "garage-door-replacement-quote-template",
+      "name": "Garage Door Replacement Quote Template",
+      "trade": "garage-door-installers",
+      "keyword": "garage door replacement quote template",
+      "description": "Free garage door replacement quote template for roller and sectional doors. Covers door supply, motor, remotes, old door removal, and installation.",
+      "materials": ["Garage door (roller or sectional)", "Door motor / opener unit", "Remote controls (x2)", "Wall-mount button", "Weather seals and bottom rail", "Safety beam sensors"],
+      "steps": ["Measure garage opening (width x height)", "Select door type, material, and colour", "Choose motor and smart-home options", "Quote old door removal and disposal", "Include new door and motor installation", "Add programming and safety testing"]
+    },
+    {
+      "slug": "outdoor-kitchen-quote-template",
+      "name": "Outdoor Kitchen Quote Template",
+      "trade": "builders",
+      "keyword": "outdoor kitchen quote template",
+      "description": "Free outdoor kitchen quote template. Covers BBQ, benchtops, cabinetry, plumbing, gas, electrical, and roofing for the ultimate Aussie alfresco setup.",
+      "materials": ["Built-in BBQ or cooktop", "Stone or granite benchtop", "Outdoor cabinetry (marine grade)", "Sink and tapware", "Gas line connection", "Electrical (GPOs and lighting)"],
+      "steps": ["Design outdoor kitchen layout and features", "Select BBQ/cooktop and bench materials", "Quote cabinetry and stone fabrication", "Add plumbing for sink and gas connection", "Include electrical for lighting and GPOs", "Add roofing or pergola if needed"]
+    },
+    {
+      "slug": "window-replacement-quote-template",
+      "name": "Window Replacement Quote Template",
+      "trade": "glaziers",
+      "keyword": "window replacement quote template",
+      "description": "Free window replacement quote template for aluminium, timber, and uPVC windows. Covers measurement, supply, removal, installation, and flashing.",
+      "materials": ["New window frames (aluminium, timber, or uPVC)", "Double glazed glass units", "Flashing and sill trims", "Sealant and foam", "Internal trims and reveals", "Fly screens"],
+      "steps": ["Measure all window openings precisely", "Select frame material and colour", "Choose glass type (single, double, low-E)", "Quote window supply and delivery", "Include old window removal and disposal", "Add installation, flashing, and internal finishing"]
+    },
+    {
+      "slug": "timber-floor-sanding-quote-template",
+      "name": "Timber Floor Sanding & Polishing Quote Template",
+      "trade": "flooring-installers",
+      "keyword": "timber floor sanding quote template",
+      "description": "Free timber floor sanding and polishing quote template. Covers sanding, filling, staining, and coating for hardwood and engineered timber floors.",
+      "materials": ["Drum and edge sanding (3 grades)", "Timber filler (colour matched)", "Timber stain (optional)", "Polyurethane coating (water or oil-based)", "Sanding screens and pads", "Masking and protection"],
+      "steps": ["Measure total floor area", "Assess floor condition and existing finish", "Quote sanding (drum, edge, and detail)", "Add gap filling and repairs", "Select finish type and sheen level", "Include 2-3 coats of polyurethane with dry time"]
+    }
+  ],
+  "guides": [
+    {
+      "slug": "how-to-quote-a-bathroom-renovation",
+      "title": "How to Quote a Bathroom Renovation in Australia",
+      "trade": "builders",
+      "keyword": "how to quote a bathroom renovation",
+      "description": "Learn how to quote a bathroom renovation accurately. Covers demolition, waterproofing, tiling, plumbing, fixtures, and labour — with real costs and tips for Australian tradies.",
+      "relatedTemplate": "bathroom-renovation-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Bathroom Renovation Quote", "body": "A professional bathroom renovation quote should cover demolition and waste removal, waterproofing (AS3740 compliance), tiling (floor and walls), plumbing (rough-in and fixtures), electrical (lighting, exhaust fan, heated towel rail), fixtures (vanity, toilet, shower screen, tapware), and any structural or gyprocking work. Missing any of these can lead to costly variations mid-job." },
+        { "heading": "Typical Costs for a Bathroom Reno in 2026", "body": "A standard bathroom renovation in Australia costs between $15,000 and $35,000 depending on size, finishes, and location. Budget bathrooms start around $10,000–$15,000, mid-range renovations sit at $20,000–$30,000, and high-end bathrooms with premium tiles and fixtures can exceed $40,000. Always quote materials at current prices — don't rely on last month's pricing." },
+        { "heading": "How to Price Materials Accurately", "body": "The biggest quoting mistake is using outdated material prices. Tile prices, adhesive, waterproofing membrane, and fixture costs change regularly. Use QuoteMate to pull real-time pricing from Bunnings and Mitre 10 so your quotes always reflect today's costs. Include a 10% waste factor on tiles and adhesive." },
+        { "heading": "Labour Pricing Tips", "body": "Break labour into trades: demolition (1–2 days), plumbing rough-in (1 day), waterproofing (1 day + drying), tiling (2–4 days), plumbing fit-off (1 day), electrical (half day), and finishing. Quote each trade separately or as a total. Don't forget to include your margin on sub-contracted trades." },
+        { "heading": "Common Quoting Mistakes to Avoid", "body": "1. Forgetting waterproofing compliance costs. 2. Underestimating demolition and waste removal. 3. Not accounting for plumbing relocations. 4. Using old tile prices. 5. Not including a contingency for hidden issues (rotten framing, asbestos). Add a 5–10% contingency line item for renovations." }
+      ],
+      "tips": ["Always inspect the existing bathroom in person before quoting", "Include a clear scope of works with inclusions AND exclusions", "Break the quote into sections (demo, waterproofing, tiling, plumbing, fixtures)", "Use real-time pricing — material costs change frequently", "Add a 5–10% contingency for unforeseen issues", "Include payment terms and a timeline estimate"]
+    },
+    {
+      "slug": "how-to-quote-a-deck-build",
+      "title": "How to Quote a Deck Build in Australia",
+      "trade": "carpenters",
+      "keyword": "how to quote a deck build",
+      "description": "Step-by-step guide on how to quote a timber deck build. Covers Merbau, treated pine, and composite options with materials, labour, and pricing for Australian carpenters.",
+      "relatedTemplate": "deck-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Deck Quote", "body": "A complete deck quote should cover: site preparation and excavation, concrete footings and stirrups, bearers and joists (species, size, and spacing), decking boards (species, profile, and fixings), stairs and landing if required, balustrade (if over 1m above ground), and all hardware (bolts, brackets, screws, joist hangers). Always specify the timber species and grade." },
+        { "heading": "Deck Material Costs in 2026", "body": "Merbau decking: $80–$130/sqm for boards alone. Treated pine: $40–$70/sqm. Composite decking: $100–$200/sqm. Substructure (bearers, joists, footings) typically adds $60–$100/sqm depending on height and span. Total material cost for a standard Merbau deck is typically $150–$250/sqm before labour." },
+        { "heading": "How to Calculate Labour", "body": "A standard deck build takes roughly 1.5–3 days per 10sqm for an experienced carpenter. Labour rates for deck building in Australia range from $50–$90/hour or $80–$150/sqm as a fixed rate. Factor in complexity: multi-level decks, stairs, and balustrades take significantly longer. Always price stairs and balustrade as separate line items." },
+        { "heading": "Council Approvals and Compliance", "body": "Decks over 1m above ground or over a certain area typically need council approval (DA or CDC). Decks attached to the house may require engineer-certified connection details. Pool-adjacent decks must comply with pool fencing regulations. Include a line item for council application fees if applicable, and note compliance requirements in your quote." },
+        { "heading": "Common Deck Quoting Mistakes", "body": "1. Not accounting for timber waste (allow 10–15%). 2. Forgetting post holes and concrete footings. 3. Underquoting stairs — they're labour-intensive. 4. Not specifying hidden vs face-fixed decking (hidden fixing costs more). 5. Ignoring site access difficulties that increase labour time." }
+      ],
+      "tips": ["Measure the site yourself — don't rely on customer measurements", "Specify timber species, grade, and profile in the quote", "Include 10–15% waste factor on decking boards", "Quote stairs as a separate line item — they're often underquoted", "Check if council approval is required before quoting", "Use real-time timber pricing — it fluctuates significantly"]
+    },
+    {
+      "slug": "how-to-quote-a-kitchen-renovation",
+      "title": "How to Quote a Kitchen Renovation in Australia",
+      "trade": "builders",
+      "keyword": "how to quote a kitchen renovation",
+      "description": "Complete guide to quoting a kitchen renovation. Covers cabinetry, benchtops, appliances, plumbing, electrical, tiling, and labour costs for Australian tradies.",
+      "relatedTemplate": "kitchen-renovation-quote-template",
+      "sections": [
+        { "heading": "What Goes Into a Kitchen Renovation Quote", "body": "A kitchen renovation quote should cover: demolition and removal of existing kitchen, cabinetry (base, wall, and tall units), benchtop (laminate, stone, timber), sink and tapware, appliances (oven, cooktop, rangehood, dishwasher), splashback (tiles or glass), plumbing (relocations and connections), electrical (GPOs, lighting, rangehood), and painting/finishing." },
+        { "heading": "Kitchen Renovation Costs in 2026", "body": "Budget kitchen renovation: $10,000–$20,000 (flat-pack cabinetry, laminate benchtop). Mid-range: $20,000–$40,000 (custom cabinetry, stone benchtop). High-end: $40,000–$80,000+ (premium materials, high-end appliances). Cabinetry alone accounts for 30–40% of the total cost. Always get current pricing on stone benchtops — they vary significantly by supplier." },
+        { "heading": "How to Price Cabinetry and Benchtops", "body": "Cabinetry pricing varies hugely: flat-pack from $3,000–$8,000, custom from $8,000–$25,000+. Stone benchtops: $400–$1,200/linear metre installed depending on stone type and edge profile. Quote benchtops as a separate line item with cutouts for sink and cooktop specified. Always confirm benchtop templating is included." },
+        { "heading": "Managing Multiple Trades", "body": "Kitchen renovations involve multiple trades: demolition, plumbing rough-in, electrical rough-in, plastering, cabinetry install, benchtop template and install, plumbing fit-off, electrical fit-off, splashback, and painting. Coordinate timing carefully and quote each trade separately so the client can see the breakdown." },
+        { "heading": "Quoting Tips for Kitchens", "body": "1. Always conduct a site visit and measure up yourself. 2. Confirm appliance models and sizes before designing cabinetry. 3. Include demolition and tip fees. 4. Quote plumbing relocations separately — they add significant cost. 5. Specify what's included and excluded clearly to avoid scope creep." }
+      ],
+      "tips": ["Site visit and measure-up is essential — never quote from photos alone", "Confirm all appliance selections before quoting cabinetry", "Quote benchtop templating, supply, and installation as separate line items", "Include a clear allowance for plumbing and electrical relocations", "Specify painting scope — is it just splashback area or full kitchen?", "Add a timeline showing trade sequence and expected completion date"]
+    },
+    {
+      "slug": "how-to-quote-a-fence-installation",
+      "title": "How to Quote a Fence Installation in Australia",
+      "trade": "fencers",
+      "keyword": "how to quote a fence installation",
+      "description": "Guide to quoting fence installations accurately. Covers Colorbond, timber, and aluminium fencing with per-metre pricing, materials, and labour for Australian fencers.",
+      "relatedTemplate": "fence-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Fencing Quote", "body": "A fencing quote should cover: post holes and concrete footings, posts (steel or timber), rails (top and bottom), panels or palings, gate(s) with hardware, removal of old fence (if applicable), and any retaining required due to level changes. Always specify fence height, material, and colour. Include a site plan or diagram if possible." },
+        { "heading": "Fencing Costs Per Metre in 2026", "body": "Colorbond fencing: $75–$120/linear metre installed. Timber paling fence: $60–$100/linear metre. Aluminium slat fence: $150–$300/linear metre. Pool fencing (glass): $300–$600/linear metre. Gates add $300–$800 each depending on type. These prices include posts, concrete, and installation labour." },
+        { "heading": "How to Calculate Materials", "body": "For Colorbond: posts every 2.4m, 2 rails per bay, 1 sheet per bay. For timber: posts every 2.4m, 3 rails per bay, 14–16 palings per bay (depending on width). Concrete: approximately 1–2 bags per post. Always add 5% waste on materials. QuoteMate calculates all of this automatically from the linear metre measurement." },
+        { "heading": "Dealing with Level Changes", "body": "Sloping sites add complexity. For Colorbond, you can step the fence in increments matching the post spacing. For timber, you can either step or rack the palings to follow the slope. Significant level changes may require retaining walls or sleeper walls below the fence — quote this as a separate item." },
+        { "heading": "Common Fencing Quote Mistakes", "body": "1. Not inspecting the fence line for obstacles (trees, stumps, rock). 2. Forgetting to include old fence removal. 3. Not accounting for sloping ground. 4. Underquoting gates — they take as long as 3–4m of fence. 5. Not checking boundary positions with a survey." }
+      ],
+      "tips": ["Walk the entire fence line before quoting", "Check for underground services before committing to post positions", "Clarify boundary position with the neighbour", "Quote gate(s) as separate line items", "Include old fence removal if applicable", "Note if any retaining is required due to level changes"]
+    },
+    {
+      "slug": "how-to-quote-painting-a-house",
+      "title": "How to Quote Painting a House in Australia",
+      "trade": "painters",
+      "keyword": "how to quote painting a house",
+      "description": "Learn how to quote interior and exterior house painting. Covers paint calculation, surface preparation, labour rates, and pricing tips for Australian painters.",
+      "relatedTemplate": "painting-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Painting Quote", "body": "A painting quote should cover: surface preparation (washing, sanding, filling, scraping), primer/undercoat (if needed), paint coats (usually 2), masking and protection, access equipment (ladders, scaffolding), and clean-up. Specify the paint brand, colour, and finish (matt, low sheen, semi-gloss, gloss) for each area." },
+        { "heading": "How to Calculate Paint Quantities", "body": "One litre of paint covers approximately 12–16sqm per coat, depending on the surface and paint type. For a standard 3-bedroom house interior: walls require roughly 40–60 litres, ceilings 15–25 litres. Always add 10% extra for touch-ups and waste. Use QuoteMate to auto-calculate volumes based on room dimensions." },
+        { "heading": "Interior vs Exterior Pricing", "body": "Interior painting: $20–$40/sqm (walls and ceilings, 2 coats). Exterior painting: $30–$60/sqm (due to prep, access, and weather risk). A full interior repaint for a 3-bedroom house typically costs $5,000–$12,000. Full exterior: $6,000–$18,000 depending on size, height, and surface condition." },
+        { "heading": "Surface Preparation — The Key to a Good Quote", "body": "Prep work is where most painters underquote. Assess: peeling or flaking paint (needs scraping and sanding), cracks and holes (filling and sanding), mould or mildew (treatment before painting), bare timber (priming), and previously unpainted surfaces (sealer/primer). Always inspect every surface during your site visit and factor prep time into your quote." },
+        { "heading": "Quoting Tips for Painters", "body": "1. Always quote after an in-person inspection — never quote from photos. 2. Break the quote into sections: prep, paint supply, and labour. 3. Specify how many coats (never assume the client knows). 4. Include access equipment costs for 2+ storey homes. 5. Note exclusions clearly (e.g., 'does not include wallpaper removal')." }
+      ],
+      "tips": ["Inspect every surface in person before quoting", "Specify paint brand, colour code, and finish for each area", "Quote prep work as a visible line item so clients see the value", "Include the number of coats for each surface", "Factor in access — scaffolding adds significant cost for exteriors", "Use current paint prices — they change with each price rise"]
+    },
+    {
+      "slug": "how-to-quote-a-concrete-driveway",
+      "title": "How to Quote a Concrete Driveway in Australia",
+      "trade": "concreters",
+      "keyword": "how to quote a concrete driveway",
+      "description": "Step-by-step guide to quoting concrete driveways. Covers plain, exposed aggregate, and stamped concrete with material calculations, labour, and pricing.",
+      "relatedTemplate": "concrete-driveway-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Concrete Driveway Quote", "body": "A concrete driveway quote should cover: excavation and soil removal, crushed rock base preparation, formwork, reinforcement mesh (SL72 or SL82), concrete supply (specify MPa and finish type), concrete pump hire (if not accessible), expansion joints and control joints, and finishing (plain, broom, exposed aggregate, or stamped)." },
+        { "heading": "Concrete Driveway Costs in 2026", "body": "Plain concrete: $60–$90/sqm. Broom finish: $65–$95/sqm. Exposed aggregate: $100–$160/sqm. Stamped/stencilled: $90–$140/sqm. Coloured concrete: $80–$120/sqm. These prices include excavation, formwork, mesh, concrete, and finishing. Pump hire adds $500–$1,500 depending on distance and volume." },
+        { "heading": "How to Calculate Concrete Volume", "body": "Volume = Length x Width x Depth. Standard driveway depth is 100mm (0.1m). For a 50sqm driveway: 50 x 0.1 = 5 cubic metres. Always add 5–10% extra for waste and slight variations in ground level. Concrete is ordered in cubic metres and typically delivered in truck loads of 5–6m3. Part loads attract a short-load fee." },
+        { "heading": "Reinforcement and Base Preparation", "body": "Standard driveways use SL72 mesh (light vehicle traffic). Heavy vehicle crossovers may require SL82 or trench mesh with deeper edges. Base preparation: minimum 75mm of compacted crushed rock. Remove any organic material or soft spots. Poor base preparation is the number one cause of cracked driveways." },
+        { "heading": "Tips for Accurate Concrete Quoting", "body": "1. Visit the site to check access for the concrete truck. 2. Measure carefully — even 100mm error on a big driveway changes the volume significantly. 3. Check if existing concrete needs removal (additional cost). 4. Factor in weather risk — concrete pours can't happen in rain. 5. Include aftercare instructions for the client." }
+      ],
+      "tips": ["Measure the site yourself — never rely on customer measurements", "Check concrete truck access to the site", "Include short-load fees if ordering less than 5m3", "Quote exposed aggregate or coloured concrete as a premium add-on", "Factor in existing concrete removal if applicable", "Specify curing time (usually 7 days before vehicle traffic)"]
+    },
+    {
+      "slug": "how-to-quote-a-solar-installation",
+      "title": "How to Quote a Solar Panel Installation in Australia",
+      "trade": "solar-installers",
+      "keyword": "how to quote a solar installation",
+      "description": "Guide to quoting residential solar installations. Covers system sizing, STC rebates, panel and inverter selection, and how to present competitive solar quotes.",
+      "relatedTemplate": "solar-installation-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Solar Quote", "body": "A solar installation quote should include: panel brand, model, and wattage; inverter brand and capacity; number of panels and system size (kW); mounting system; electrical work (isolators, meter board upgrade if needed); STC rebate breakdown showing gross and net price; expected annual energy production (kWh); estimated payback period; and warranty details for panels and inverter." },
+        { "heading": "System Sizing Guide", "body": "A typical Australian household uses 15–25kWh per day. A 6.6kW system (16x 415W panels) produces approximately 24–28kWh/day in most Australian locations. Size the system based on the customer's electricity bill and roof space. Oversizing slightly is common since feed-in tariffs offset excess production. Always check roof orientation and shading." },
+        { "heading": "STC Rebate Calculations", "body": "The STC (Small-scale Technology Certificate) rebate significantly reduces the upfront cost. The number of STCs depends on system size, location (postcode zone), and the current deeming period. In 2026, a 6.6kW system in Sydney generates roughly 80–90 STCs. At approximately $37–$40 per STC, that's a $3,000–$3,600 rebate. Always show the gross price and rebate as separate line items." },
+        { "heading": "Presenting a Competitive Solar Quote", "body": "Customers typically get 3+ solar quotes, so presentation matters. Include: a clear price breakdown (not just a total), the STC rebate as a visible line item, estimated annual savings in dollars, payback period calculation, and warranty summary. A professional PDF quote with your logo and ABN builds trust. QuoteMate generates this automatically." },
+        { "heading": "Common Solar Quoting Mistakes", "body": "1. Not checking roof condition (may need repairs before installation). 2. Ignoring shading from trees or neighbouring buildings. 3. Not factoring in meter board upgrades. 4. Quoting a system too large for the available roof space. 5. Not showing the STC rebate breakdown clearly. 6. Forgetting to include electrical safety inspection costs." }
+      ],
+      "tips": ["Always conduct a site visit or use satellite imagery to check roof suitability", "Show the STC rebate as a separate line item — customers want to see the discount", "Include estimated annual production and dollar savings", "Specify warranty periods for panels, inverter, and workmanship separately", "Check if meter board upgrade is needed and include it in the quote", "Present payback period to help the customer justify the investment"]
+    },
+    {
+      "slug": "how-to-quote-a-pergola",
+      "title": "How to Quote a Pergola Build in Australia",
+      "trade": "carpenters",
+      "keyword": "how to quote a pergola",
+      "description": "How to quote a pergola construction project. Covers timber and steel options, roofing, footings, council requirements, and pricing for Australian carpenters and builders.",
+      "relatedTemplate": "pergola-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Pergola Quote", "body": "A pergola quote should cover: concrete footings and post brackets, posts (timber or steel), beams and rafters (size and spacing), roofing (polycarbonate, Colorbond, shade cloth, or open), fascia and trims, guttering (if solid roof), hardware (bolts, brackets, stirrups), and any electrical (lighting, fans, GPOs). Specify all timber species and sizes." },
+        { "heading": "Pergola Costs in 2026", "body": "Timber pergola (treated pine, open roof): $250–$400/sqm. Hardwood pergola with Colorbond roof: $400–$700/sqm. Steel frame with Colorbond: $500–$900/sqm. A standard 4x3m pergola typically costs $5,000–$15,000 total depending on materials and roofing. Insulated panel roofing (e.g., SolarSpan) is the premium option at $150–$250/sqm for roofing alone." },
+        { "heading": "Footings and Structural Requirements", "body": "Standard pergola posts require 400x400mm concrete footings at minimum 450mm deep (check local requirements). Posts are typically 100x100mm or 125x125mm hardwood, or 90x90mm steel. Beam sizes depend on span — always refer to span tables or get engineering advice for spans over 3m. Connected pergolas (attached to the house) may need an engineer's certificate." },
+        { "heading": "Council Approvals", "body": "Pergola rules vary by state and council. Generally, pergolas under 20sqm and under 2.7m high that aren't in front setbacks are exempt from approval in most states. However, rules vary significantly. Always check with the local council before quoting. If approval is required, add council application fees and any engineering certification costs to the quote." },
+        { "heading": "Quoting Tips", "body": "1. Measure the area and check ground levels on site. 2. Confirm if the pergola will be freestanding or attached to the house. 3. Include lighting and electrical as an add-on option. 4. Quote roofing as a separate section so clients can compare options. 5. Note any council approval requirements and costs." }
+      ],
+      "tips": ["Confirm freestanding vs attached — attached pergolas have different structural requirements", "Check council exemption rules before quoting", "Quote multiple roofing options so clients can compare", "Include lighting and fan options as add-ons", "Specify timber species and sizes in the quote", "Add guttering and downpipe costs if using a solid roof"]
+    },
+    {
+      "slug": "how-to-quote-electrical-work",
+      "title": "How to Quote Electrical Work in Australia",
+      "trade": "electricians",
+      "keyword": "how to quote electrical work",
+      "description": "Guide for electricians on how to quote residential and commercial electrical jobs. Covers pricing strategies, material costs, compliance, and common electrical quoting mistakes.",
+      "relatedTemplate": "electrical-switchboard-upgrade-quote-template",
+      "sections": [
+        { "heading": "Electrical Quoting Fundamentals", "body": "Electrical quotes should itemise: materials (cable, switches, GPOs, lights, breakers), labour (by the hour or fixed price per task), compliance testing and certificates, and any access requirements (roof space, under-floor, cherry picker). Always specify the brand and model of major items like switchboards, RCDs, and light fittings." },
+        { "heading": "Pricing Strategies for Electricians", "body": "Common approaches: hourly rate ($80–$120/hour + materials), per-point pricing ($100–$200 per power or light point), or fixed-price packages for standard jobs. For larger jobs, fixed-price quotes win more work because customers know the total upfront. Always include a clause for additional work discovered during the job." },
+        { "heading": "Common Electrical Job Costs in 2026", "body": "Switchboard upgrade: $1,500–$4,000. Power point installation: $150–$250 per point. Downlight installation: $80–$150 per light. Safety switch installation: $200–$350. Ceiling fan installation: $200–$400. EV charger installation: $1,500–$3,500. These are installed prices including materials and labour." },
+        { "heading": "Compliance and Certificates", "body": "All electrical work in Australia must be performed by a licensed electrician and comply with AS/NZS 3000 (Wiring Rules). Include the cost of compliance testing and issuing a Certificate of Compliance (CCEW) in every quote. For switchboard upgrades, you'll also need to notify the DNSP (Distribution Network Service Provider)." },
+        { "heading": "Electrical Quoting Mistakes", "body": "1. Not inspecting the existing wiring before quoting. 2. Underestimating cable runs through difficult access areas. 3. Forgetting compliance testing and certificate costs. 4. Not factoring in switchboard capacity for new circuits. 5. Quoting per-point without checking the switchboard first." }
+      ],
+      "tips": ["Always inspect the switchboard before quoting new circuits", "Include compliance testing and certificates in every quote", "Check access — cable runs through insulation or brick add time", "Quote cable runs and point installations separately", "Specify if the switchboard needs upgrading to accommodate new circuits", "Use real-time pricing for materials — electrical supplies fluctuate"]
+    },
+    {
+      "slug": "how-to-quote-plumbing-work",
+      "title": "How to Quote Plumbing Work in Australia",
+      "trade": "plumbers",
+      "keyword": "how to quote plumbing work",
+      "description": "Complete guide for plumbers on how to quote residential plumbing jobs. Covers pricing, material costs, common jobs, and tips for winning more work in Australia.",
+      "relatedTemplate": "hot-water-system-replacement-quote-template",
+      "sections": [
+        { "heading": "Plumbing Quote Essentials", "body": "Every plumbing quote should include: a description of the work, materials list with quantities and prices, labour (hours or fixed price), call-out fee (if applicable), GST, and compliance certificates. For renovation work, include rough-in and fit-off as separate line items since they happen at different stages of the build." },
+        { "heading": "Pricing Methods for Plumbers", "body": "Hourly rate: $90–$140/hour + materials. Fixed price: preferred by customers and wins more jobs. Call-out fee: $80–$150 for the first 30 minutes. For regular maintenance (blocked drains, tap replacements), fixed pricing is standard. For renovation work, quote a fixed price for rough-in and fit-off separately." },
+        { "heading": "Common Plumbing Job Costs in 2026", "body": "Blocked drain: $150–$500. Tap replacement: $150–$350. Toilet replacement: $300–$600. Hot water system replacement: $1,500–$3,500. Bathroom rough-in: $2,000–$5,000. Gas fitting (per appliance): $200–$500. These are typical installed prices for the Sydney/Melbourne market — regional areas may vary." },
+        { "heading": "Quoting Renovation Plumbing", "body": "Bathroom and kitchen renovation plumbing is typically quoted in two stages: rough-in (moving pipes, installing new waste and water lines before tiling) and fit-off (connecting fixtures after tiling is complete). Always specify what's included in each stage. Plumbing relocations (moving a toilet or shower) add significant cost and should be quoted separately." },
+        { "heading": "Tips for Winning More Plumbing Jobs", "body": "1. Respond to quote requests within 24 hours. 2. Provide a detailed, professional PDF quote — not a text message estimate. 3. Include photos of the existing work in your assessment. 4. Offer options (e.g., repair vs replace). 5. Follow up within 48 hours if you haven't heard back. A professional quote makes you look more trustworthy than competitors." }
+      ],
+      "tips": ["Always inspect the job in person — hidden pipe issues are common", "Quote rough-in and fit-off separately for renovations", "Include a call-out fee for diagnostic work", "Specify hot water system brand and capacity in the quote", "Note any asbestos risk in older homes requiring plumbing work", "Use real-time pricing for fixtures and fittings"]
+    },
+    {
+      "slug": "how-to-quote-a-retaining-wall",
+      "title": "How to Quote a Retaining Wall in Australia",
+      "trade": "landscapers",
+      "keyword": "how to quote a retaining wall",
+      "description": "Guide to quoting retaining wall construction. Covers timber, concrete sleeper, and block retaining walls with material calculations, drainage, and engineering costs.",
+      "relatedTemplate": "retaining-wall-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Retaining Wall Quote", "body": "A retaining wall quote should cover: excavation, posts or footings, wall material (sleepers, blocks, or stone), drainage (ag pipe, gravel, geofabric), backfill, engineering (if over 600mm), and site clean-up. Always specify the wall type, height, and length. Include a diagram or photo reference if possible." },
+        { "heading": "Retaining Wall Costs by Type", "body": "Timber sleeper wall: $200–$400/linear metre. Concrete sleeper wall: $300–$600/linear metre. Besser block wall (rendered): $350–$550/linear metre. Natural stone: $400–$800/linear metre. Costs increase significantly with height — a 1.5m wall costs roughly double a 600mm wall per linear metre due to posts, engineering, and drainage." },
+        { "heading": "Engineering Requirements", "body": "In most Australian states, retaining walls over 600mm high require engineering certification. Walls over 1m may also need council approval. Engineering fees: $500–$2,000 depending on complexity. Always check before quoting. Include engineering costs as a line item and note that the design may affect material quantities." },
+        { "heading": "Drainage Is Critical", "body": "Every retaining wall needs proper drainage. Include: 100mm ag pipe at the base wrapped in geofabric, 200–300mm of 20mm drainage gravel behind the wall, geofabric between gravel and soil, and weep holes or drainage outlets at the base. Poor drainage is the number one cause of retaining wall failure. Always include full drainage in your quote." },
+        { "heading": "Quoting Tips", "body": "1. Visit the site to check soil type and access. 2. Check for underground services before quoting. 3. Include engineering for walls over 600mm. 4. Always include proper drainage — cutting corners here leads to wall failure. 5. Account for spoil removal if excavation is required." }
+      ],
+      "tips": ["Check soil type on site — clay and rock increase costs", "Include engineering costs for walls over 600mm", "Always quote proper drainage — it's non-negotiable", "Account for access — tight sites increase labour and equipment costs", "Check for underground services before committing to a wall position", "Quote spoil removal separately if significant excavation is needed"]
+    },
+    {
+      "slug": "how-to-quote-a-roof-restoration",
+      "title": "How to Quote a Roof Restoration in Australia",
+      "trade": "roofers",
+      "keyword": "how to quote a roof restoration",
+      "description": "Step-by-step guide to quoting roof restorations. Covers tile and Colorbond roofs with cleaning, repairs, repointing, sealing, and painting costs.",
+      "relatedTemplate": "roof-restoration-quote-template",
+      "sections": [
+        { "heading": "What a Roof Restoration Quote Should Include", "body": "A complete roof restoration quote covers: high-pressure cleaning, broken tile replacement, ridge cap repointing with flexible compound, valley and flashing repairs, sealer/primer coat, two coats of roof membrane paint, gutter clean-out, and safety equipment (harnesses, edge protection, or scaffold). Always specify the paint brand, colour, and warranty." },
+        { "heading": "Roof Restoration Costs in 2026", "body": "Standard single-storey tile roof restoration: $3,500–$7,000. Double-storey: $5,500–$12,000. Colorbond re-coating: $3,000–$6,000 for single-storey. Costs depend on roof area, condition, access, and the number of repairs needed. Ridge cap repointing alone costs $40–$70/linear metre. Broken tile replacement: $20–$40 per tile." },
+        { "heading": "Inspecting Before Quoting", "body": "Always inspect the roof before quoting. Check: number of broken or cracked tiles, ridge cap condition (cracked pointing), valley irons (rusted or worn), flashing condition, gutter and fascia state, and overall roof surface condition. Take photos during inspection and note the specific repairs needed. This prevents surprises and builds client trust." },
+        { "heading": "Safety and Access Costs", "body": "Roof work requires fall protection under WHS regulations. Include the cost of: safety harness systems, edge protection or scaffold for steep or high roofs, and access equipment. For single-storey homes, a harness system is usually sufficient ($200–$400 per job). Double-storey or steep roofs may require scaffold at $1,500–$5,000." },
+        { "heading": "Roof Restoration Quoting Mistakes", "body": "1. Not inspecting the roof in person. 2. Underestimating repair quantities. 3. Forgetting safety equipment costs. 4. Not accounting for double-storey access complexity. 5. Quoting cheap paint that won't last — use quality roof membrane for a warranty-backed result." }
+      ],
+      "tips": ["Always inspect the roof before quoting — drone photos help", "Itemise repairs separately so the client sees the value", "Use quality roof membrane paint with a manufacturer warranty", "Include safety equipment costs in every quote", "Factor in weather delays for the project timeline", "Offer a maintenance plan after restoration for recurring revenue"]
+    },
+    {
+      "slug": "how-to-quote-a-split-system-installation",
+      "title": "How to Quote a Split System Installation in Australia",
+      "trade": "hvac-technicians",
+      "keyword": "how to quote a split system installation",
+      "description": "Guide for HVAC technicians on quoting split system air conditioning installations. Covers unit selection, piping, electrical, and installation costs.",
+      "relatedTemplate": "split-system-installation-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Split System Quote", "body": "A split system installation quote should cover: indoor and outdoor unit (brand, model, capacity), wall bracket for outdoor unit, refrigerant piping (length and diameter), electrical cable and dedicated circuit, drain pipe, pipe cover/ducting (cosmetic), and commissioning/testing. Always specify the unit brand, model, and kW capacity." },
+        { "heading": "Split System Costs in 2026", "body": "2.5kW unit (small bedroom): $1,200–$1,800 installed. 5kW unit (living room): $1,800–$2,800 installed. 7kW unit (large living area): $2,200–$3,500 installed. 8.5kW+ unit (open plan): $3,000–$4,500 installed. These prices include supply, back-to-back installation, and electrical. Long pipe runs or difficult access add $200–$800." },
+        { "heading": "Pipe Run and Electrical Considerations", "body": "Standard back-to-back installation (indoor and outdoor units on the same wall) keeps pipe runs short and costs down. Longer pipe runs (up to 20m) require more refrigerant copper piping and increase cost by $30–$50 per additional metre. Electrical: most split systems need a dedicated circuit from the switchboard — check if capacity exists." },
+        { "heading": "Sizing the Right Unit", "body": "Undersized units work harder, cost more to run, and fail sooner. Oversized units short-cycle and don't dehumidify properly. Calculate capacity based on room size, insulation, window area, and orientation. A general guide: 120–150W per sqm for well-insulated rooms, 150–200W per sqm for poorly insulated rooms. Always recommend the right size, even if it's more expensive." },
+        { "heading": "Quoting Tips for HVAC", "body": "1. Conduct a site visit to assess mounting positions and pipe run. 2. Check switchboard capacity for the new circuit. 3. Offer multiple unit options (good, better, best). 4. Include warranty details in the quote. 5. Note the energy star rating and running costs to help customers decide." }
+      ],
+      "tips": ["Conduct a site visit to plan unit positions and pipe run", "Check switchboard capacity — an upgrade may be needed", "Offer 2–3 unit options at different price points", "Include the energy star rating and estimated running costs", "Quote pipe covers as an optional extra for a neat finish", "Specify warranty periods for unit, compressor, and labour separately"]
+    },
+    {
+      "slug": "how-to-quote-landscaping",
+      "title": "How to Quote a Landscaping Job in Australia",
+      "trade": "landscapers",
+      "keyword": "how to quote a landscaping job",
+      "description": "Complete guide to quoting landscaping jobs. Covers garden design, turf, paving, retaining walls, irrigation, and pricing strategies for Australian landscapers.",
+      "relatedTemplate": "paving-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Landscaping Quote", "body": "A landscaping quote should cover: site preparation (clearing, levelling, soil amendment), hardscaping (paving, retaining walls, edging), softscaping (turf, garden beds, plants, mulch), irrigation, drainage, lighting, and clean-up. Break the quote into sections so clients can prioritise or stage the work if budget is tight." },
+        { "heading": "Landscaping Costs in 2026", "body": "Turf laying: $25–$45/sqm (including soil prep). Paving: $80–$180/sqm installed. Garden bed with plants and mulch: $100–$200/sqm. Irrigation: $10–$20/sqm for automatic drip systems. A typical front and backyard landscaping project: $15,000–$50,000. Small courtyard makeover: $5,000–$15,000." },
+        { "heading": "How to Price Earthworks and Site Prep", "body": "Site preparation often accounts for 20–30% of a landscaping quote. Bobcat hire: $80–$120/hour (or $500–$800/day). Soil supply: $50–$80/cubic metre delivered. Crushed rock: $40–$70/cubic metre. Tip fees for green waste and soil: $150–$300 per load. Always visit the site to assess how much earthwork is needed." },
+        { "heading": "Quoting Plants and Softscaping", "body": "Plant costs vary enormously: tube stock ($3–$8), 200mm pots ($12–$25), 300mm pots ($25–$50), advanced trees ($150–$500+). Mulch: $60–$100/cubic metre delivered. Quote plants by species and pot size, and include a planting labour rate. A good planting guide: budget $80–$150/sqm for established garden beds." },
+        { "heading": "Winning More Landscaping Jobs", "body": "1. Include a simple design sketch or plan. 2. Break the quote into stages so clients can budget. 3. Offer a 'good, better, best' approach for materials. 4. Include before/after photos of similar past work. 5. Send a professional PDF quote — not a handwritten estimate. 6. Follow up within 48 hours." }
+      ],
+      "tips": ["Visit the site to assess access, soil type, and drainage", "Break large quotes into stages so clients can prioritise", "Include a simple design sketch — even a hand-drawn plan helps", "Quote plant species and pot sizes specifically", "Include irrigation as a standard recommendation, not an afterthought", "Factor in seasonal timing — some work is best done in specific seasons"]
+    },
+    {
+      "slug": "how-to-quote-tiling",
+      "title": "How to Quote a Tiling Job in Australia",
+      "trade": "tilers",
+      "keyword": "how to quote tiling",
+      "description": "Guide for tilers on how to quote floor and wall tiling jobs. Covers per-sqm pricing, material calculations, waste factors, and waterproofing requirements.",
+      "relatedTemplate": "bathroom-tiling-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Tiling Quote", "body": "A tiling quote should cover: tile supply (or note if supplied by client), tile adhesive (flexible for wet areas), grout (colour-matched), waterproofing (if wet area), tile trim and edge strips, silicone, substrate preparation, and labour. Always specify tile size and layout pattern, as large-format tiles require more skilled labour." },
+        { "heading": "Tiling Costs Per Square Metre in 2026", "body": "Labour only (tiles supplied by client): $50–$90/sqm for standard tiles, $70–$120/sqm for large-format (600x600+). Supply and install: $100–$250/sqm depending on tile quality. Waterproofing: $30–$50/sqm additional. Common adhesive: $25–$40/20kg bag (covers 4–5sqm). Grout: $15–$25/5kg bag." },
+        { "heading": "Calculating Tile Quantities", "body": "Always add a waste factor: 10% for standard grid layouts, 15% for diagonal or herringbone patterns, and 15–20% for rooms with many cuts (small bathrooms). For a 6sqm bathroom floor with 10% waste: 6 x 1.1 = 6.6sqm of tiles needed. Use the same formula for adhesive coverage calculations." },
+        { "heading": "Waterproofing Requirements", "body": "All wet areas (showers, bathroom floors, laundries) require waterproofing to AS3740 before tiling. Include: liquid membrane (2 coats), reinforcing tape for internal corners and joints, bond breaker tape, and a waterproofing certificate. Some tilers do their own waterproofing, others sub it out — either way, include it in the quote." },
+        { "heading": "Tiling Quote Mistakes", "body": "1. Not accounting for waste in tile quantities. 2. Forgetting waterproofing costs in wet areas. 3. Underquoting large-format tile labour. 4. Not specifying who supplies the tiles (if customer-supplied, note they need to order extra). 5. Not including substrate prep — uneven surfaces need levelling." }
+      ],
+      "tips": ["Always add 10–15% waste factor on tile quantities", "Specify tile size and pattern — large-format tiles cost more to install", "Include waterproofing as a line item for all wet areas", "Check substrate levelness on site — levelling compound adds cost", "Clarify who supplies the tiles and who is responsible for extras", "Quote trim, silicone, and threshold strips — they add up"]
+    },
+    {
+      "slug": "how-to-quote-tree-removal",
+      "title": "How to Quote Tree Removal in Australia",
+      "trade": "arborists",
+      "keyword": "how to quote tree removal",
+      "description": "Guide for arborists on quoting tree removal jobs. Covers assessment, pricing by size, stump grinding, crane hire, and council permit requirements.",
+      "relatedTemplate": "tree-removal-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Tree Removal Quote", "body": "A tree removal quote should cover: tree assessment (species, size, condition), removal method (felling, sectional dismantling, or crane-assisted), stump grinding (depth and diameter), green waste disposal (chipping, tip, or firewood), site clean-up, and any council permit requirements. Include photos of the tree in your quote for clarity." },
+        { "heading": "Tree Removal Costs by Size in 2026", "body": "Small tree (under 5m): $300–$800. Medium tree (5–10m): $800–$2,500. Large tree (10–20m): $2,500–$8,000. Very large or hazardous tree (20m+): $5,000–$15,000+. Stump grinding: $200–$600 per stump depending on diameter. Crane hire (if needed): $1,500–$5,000+ per day. These prices vary by access and complexity." },
+        { "heading": "Assessing Risk and Access", "body": "The two biggest cost factors in tree removal are risk and access. Trees near power lines, buildings, or fences require sectional dismantling (climbing and lowering pieces with ropes). Trees in backyards with limited access may need a crane. Always assess these factors on-site and reflect the complexity in your pricing." },
+        { "heading": "Council Permits", "body": "Many councils require permits for removing trees over a certain size (often 3m+ or trunk diameter over 150mm). Some species are protected regardless of size. Check council rules before quoting and include permit fees ($50–$500) as a line item. Note the typical permit processing time so the client knows the timeline." },
+        { "heading": "Quoting Tips for Arborists", "body": "1. Always inspect the tree in person. 2. Check for power lines — contact the DNSP if lines are within 2m. 3. Include stump grinding as a standard option, not an afterthought. 4. Offer to leave mulch on-site as a free option (reduces tip fees). 5. Provide a clear timeline — tree removal is time-sensitive in storm season." }
+      ],
+      "tips": ["Always inspect the tree in person before quoting", "Check for power lines and contact the DNSP if needed", "Include stump grinding as a standard line item", "Check council permit requirements for the tree species and size", "Offer firewood and mulch options to reduce waste costs", "Factor in traffic management if the tree is near a road"]
+    },
+    {
+      "slug": "how-to-quote-a-granny-flat",
+      "title": "How to Quote a Granny Flat Build in Australia",
+      "trade": "builders",
+      "keyword": "how to quote a granny flat",
+      "description": "Comprehensive guide to quoting granny flat construction. Covers council requirements, slab, frame, roofing, fit-out, and per-sqm pricing for Australian builders.",
+      "relatedTemplate": "granny-flat-quote-template",
+      "sections": [
+        { "heading": "Granny Flat Quote Breakdown", "body": "A granny flat quote should be broken into stages: site works and slab, frame and roof, lock-up (windows, doors, cladding), rough-in (plumbing, electrical, HVAC), internal lining (plasterboard, insulation), fit-out (kitchen, bathroom, flooring, paint), and external works (landscaping, driveway, fencing). Present each stage with its own subtotal." },
+        { "heading": "Granny Flat Costs in 2026", "body": "Basic 1-bedroom granny flat (40sqm): $100,000–$150,000. Standard 2-bedroom (60sqm): $150,000–$220,000. Premium finish (60sqm): $200,000–$300,000. Per-square-metre cost: $2,500–$4,500/sqm depending on finishes. These prices include all trades, approvals, and site connections but exclude land value." },
+        { "heading": "Council Approvals (CDC vs DA)", "body": "In NSW, granny flats up to 60sqm can be approved via a Complying Development Certificate (CDC) if they meet specific criteria (lot size, setbacks, floor space ratio). CDCs are faster (10–20 business days) and cheaper ($2,000–$5,000). If CDC criteria aren't met, a Development Application (DA) is required — $5,000–$15,000 and 3–6 months. Include approval costs in your quote." },
+        { "heading": "Managing the Build Process", "body": "Granny flat builds involve multiple trades and inspections over 12–20 weeks. Structure your quote with progress payments aligned to milestones: deposit (10%), slab completion (15%), frame and roof (20%), lock-up (20%), rough-in (10%), and practical completion (25%). This protects both you and the client." },
+        { "heading": "Common Granny Flat Quoting Mistakes", "body": "1. Not including service connections (sewer, water, electrical) which can cost $5,000–$20,000. 2. Underestimating site preparation costs. 3. Forgetting council and certification fees. 4. Not including landscaping and external works. 5. Quoting without a proper site assessment (slope, access, services)." }
+      ],
+      "tips": ["Conduct a thorough site assessment including a survey and geotech report", "Include service connection costs — they're often the biggest surprise", "Structure the quote with progress payment stages", "Check CDC eligibility before quoting DA costs", "Include a preliminary timeline with key milestones", "Factor in variations allowance for unexpected ground conditions"]
+    },
+    {
+      "slug": "how-to-quote-a-colorbond-fence",
+      "title": "How to Quote a Colorbond Fence in Australia",
+      "trade": "fencers",
+      "keyword": "how to quote colorbond fencing",
+      "description": "Detailed guide to quoting Colorbond fence installations. Covers per-metre pricing, material calculations, gate options, and installation tips for Australian fencers.",
+      "relatedTemplate": "colorbond-fence-quote-template",
+      "sections": [
+        { "heading": "Colorbond Fence Quote Essentials", "body": "Every Colorbond fence quote should include: fence sheets, posts (C-section or tubular), top and bottom rails, post caps, concrete for footings, gate(s) if required, removal of old fence (if applicable), and any retaining needed. Specify the fence height (1.5m, 1.8m, or 2.1m) and Colorbond colour. Include a site plan showing the fence line." },
+        { "heading": "Colorbond Fencing Costs Per Metre in 2026", "body": "1.5m height: $70–$95/linear metre installed. 1.8m height (standard): $85–$120/linear metre installed. 2.1m height: $100–$140/linear metre installed. Single pedestrian gate: $350–$600. Double driveway gate: $700–$1,200. Sliding gate (manual): $1,000–$2,000. These prices include all materials, post holes, concrete, and installation." },
+        { "heading": "Material Calculations", "body": "For standard 1.8m Colorbond fencing: posts every 2.38m (matching sheet width), 1 fence sheet per bay, 2 rails per bay, 1 post cap per post, and 1.5–2 bags of concrete per post hole. For 20 linear metres: 9 posts, 8 sheets, 16 rails, 9 caps, and approximately 15 bags of concrete. QuoteMate calculates this automatically." },
+        { "heading": "Gates and Access Points", "body": "Gates are the most commonly underquoted item. A standard single gate requires: gate frame, sheet infill, hinges, latch, drop bolt (for double gates), and concrete for gate posts. Gate posts need to be heavier duty than fence posts. Always confirm the number, size, and swing direction of gates during the site visit." },
+        { "heading": "Site Factors That Affect Pricing", "body": "1. Sloping ground — requires stepping the fence (adds 10–20% to cost). 2. Rocky ground — post holes take longer (add $20–$50 per post). 3. Limited access — materials need to be carried in (add labour). 4. Old fence removal and disposal — add $8–$15 per metre. 5. Retaining sleepers below the fence for level changes." }
+      ],
+      "tips": ["Walk the entire fence line and mark post positions on site", "Dial Before You Dig — check for underground services", "Confirm the boundary line with the neighbour before starting", "Quote gates as separate, detailed line items", "Account for sloping ground — it adds complexity and cost", "Use real-time Colorbond pricing — colours have different pricing"]
+    },
+    {
+      "slug": "how-to-quote-flooring",
+      "title": "How to Quote Flooring Installation in Australia",
+      "trade": "flooring-installers",
+      "keyword": "how to quote flooring installation",
+      "description": "Guide for flooring installers on quoting timber, vinyl, laminate, and carpet jobs. Covers per-sqm pricing, underlay, transitions, and subfloor preparation.",
+      "relatedTemplate": "vinyl-plank-flooring-quote-template",
+      "sections": [
+        { "heading": "What to Include in a Flooring Quote", "body": "A flooring quote should cover: flooring product (brand, range, colour), underlay (type and thickness), subfloor preparation (levelling, moisture barrier), transition strips between rooms, scotia or quarter-round around perimeters, removal of existing flooring (if applicable), and furniture moving (if offered). Always specify the total area including waste." },
+        { "heading": "Flooring Costs Per Square Metre in 2026", "body": "Hybrid vinyl plank (supply and install): $60–$120/sqm. Engineered timber: $80–$160/sqm. Solid hardwood: $100–$200/sqm. Laminate: $40–$80/sqm. Carpet (supply and install): $50–$120/sqm. Subfloor levelling: $20–$50/sqm additional. These prices include underlay where required." },
+        { "heading": "Subfloor Preparation", "body": "Subfloor condition is the most overlooked cost in flooring quotes. Check for: levelness (3mm deviation over 1m is the maximum for most products), moisture (test concrete slabs with a moisture meter), cracks and damage, and existing floor coverings that need removal. Self-levelling compound costs $20–$50/sqm and can make or break a job." },
+        { "heading": "Waste Calculations", "body": "Standard installation in rectangular rooms: add 10% waste. Rooms with many angles or hallways: add 12–15%. Diagonal or herringbone patterns: add 15–20%. Always explain the waste factor to the client — they often question why you're ordering more than the measured area. Include this in the quote notes." },
+        { "heading": "Quoting Tips", "body": "1. Measure every room yourself — don't trust builder or customer measurements. 2. Check subfloor moisture on concrete slabs. 3. Always include transitions between flooring types. 4. Quote furniture moving as an optional extra. 5. Include a lead time for product ordering — popular colours can take 2–4 weeks." }
+      ],
+      "tips": ["Measure every room yourself — even 5% error on a large area is significant", "Test concrete subfloor moisture before committing to a price", "Include 10–15% waste in your material calculations", "Quote transitions between rooms as individual line items", "Check door clearances — doors may need trimming", "Include product lead time in your quote timeline"]
+    }
+  ]
+}
