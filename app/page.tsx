@@ -325,7 +325,7 @@ export default function HomePage() {
       </main>
       <Footer />
 
-      {/* Structured Data */}
+      {/* Structured Data - SoftwareApplication */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -343,6 +343,32 @@ export default function HomePage() {
           "url": "https://quotemateapp.au",
           "email": "hello@quotemateapp.au"
         }
+      })}} />
+
+      {/* Structured Data - Organization */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "QuoteMate",
+        "url": "https://quotemateapp.au",
+        "logo": "https://quotemateapp.au/assets/logo.png",
+        "email": "hello@quotemateapp.au",
+        "description": "AI-powered quoting and invoicing app built for Australian tradies.",
+        "sameAs": []
+      })}} />
+
+      {/* Structured Data - FAQPage */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
       })}} />
     </>
   );

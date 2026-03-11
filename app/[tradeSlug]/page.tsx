@@ -43,6 +43,7 @@ export default async function TradePage({ params }: Props) {
   if (!trade) notFound();
 
   const templates = getTemplatesForTrade(trade.slug);
+  const faqItems = getTradeFAQs(trade);
 
   return (
     <>
@@ -127,7 +128,7 @@ export default async function TradePage({ params }: Props) {
         <section className="seo-faq">
           <div className="container">
             <h2 className="section-title">Frequently Asked Questions</h2>
-            <FAQ items={getTradeFAQs(trade)} />
+            <FAQ items={faqItems} />
           </div>
         </section>
 
@@ -173,6 +174,20 @@ export default async function TradePage({ params }: Props) {
         </section>
       </main>
       <Footer />
+
+      {/* Structured Data - FAQPage */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        }))
+      })}} />
     </>
   );
 }
