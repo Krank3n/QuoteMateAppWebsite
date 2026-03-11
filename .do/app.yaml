@@ -1,0 +1,30 @@
+features:
+- buildpack-stack=ubuntu-22
+domains:
+- domain: quotemateapp.au
+  type: PRIMARY
+  zone: quotemateapp.au
+- domain: www.quotemateapp.au
+  type: ALIAS
+  zone: quotemateapp.au
+ingress:
+  rules:
+  - component:
+      name: quotemate-web
+    match:
+      path:
+        prefix: /
+name: quotemate-website
+region: syd
+services:
+- build_command: npm install && npm run build
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: Krank3n/QuoteMateAppWebsite
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: apps-s-1vcpu-0.5gb
+  name: quotemate-web
+  run_command: npm start
+  source_dir: /

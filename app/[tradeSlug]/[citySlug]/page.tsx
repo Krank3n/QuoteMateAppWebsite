@@ -108,12 +108,16 @@ export default async function TradeCityPage({ params }: Props) {
           <div className="container">
             <h2 className="section-title">Common {trade.keyword.charAt(0).toUpperCase() + trade.keyword.slice(1)} Jobs in {city.name}</h2>
             <div className="jobs-grid">
-              {trade.commonJobs.map((job, i) => (
-                <div key={i} className="job-card">
-                  <h3>{job}</h3>
-                  <p>Quote {job.toLowerCase()} jobs in {city.name} quickly with QuoteMate.</p>
-                </div>
-              ))}
+              {trade.commonJobs.map((job, i) => {
+                const jobName = typeof job === 'string' ? job : job.name;
+                const jobDesc = typeof job === 'string' ? `Quote ${job.toLowerCase()} jobs in ${city.name} quickly with QuoteMate.` : job.desc;
+                return (
+                  <div key={i} className="job-card">
+                    <h3>{jobName}</h3>
+                    <p>{jobDesc}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

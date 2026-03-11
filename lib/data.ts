@@ -10,7 +10,7 @@ export interface Trade {
   heroTitle: string;
   painPoint: string;
   features: string[];
-  commonJobs: string[];
+  commonJobs: (string | { name: string; desc: string })[];
   avgQuoteRange: string;
   templateSnippet: string;
 }
@@ -64,13 +64,13 @@ export interface FAQ {
   answer: string;
 }
 
-const data = rawData as {
+const data = rawData as unknown as {
   site: SiteData;
   trades: Trade[];
   cities: City[];
   quoteTemplates: QuoteTemplate[];
   guides: Guide[];
-  faqData: FAQ[];
+  faqData?: FAQ[];
 };
 
 export const { site, trades, cities, quoteTemplates, guides } = data;
