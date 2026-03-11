@@ -278,7 +278,7 @@ export default function HomePage() {
                 </div>
                 <h3>Web</h3>
                 <p>Any browser</p>
-                <a href="#" className="btn btn-secondary btn-store-sm">Open Web App</a>
+                <a href="/app" className="btn btn-secondary btn-store-sm">Open Web App</a>
               </div>
             </div>
           </div>

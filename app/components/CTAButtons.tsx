@@ -22,7 +22,7 @@ export default function CTAButtons({ className = '', showWebLink = false }: CTAB
           </span>
         </a>
       </div>
-      {showWebLink && <a href="#" className="hero-web-link">Or try it on the web &rarr;</a>}
+      {showWebLink && <a href="/app" className="hero-web-link">Or try it on the web &rarr;</a>}
     </>
   );
 }
