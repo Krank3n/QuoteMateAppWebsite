@@ -14,7 +14,7 @@ export default function CTAButtons({ className = '', showWebLink = false }: CTAB
             App Store
           </span>
         </a>
-        <a href="#" className="btn btn-store" aria-label="Get it on Google Play">
+        <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU" className="btn btn-store" aria-label="Get it on Google Play">
           <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor" aria-hidden="true"><path d="M1.22.56L11.35 10.5 1.22 20.44C.97 19.95.78 19.37.78 18.71V2.29C.78 1.63.97 1.05 1.22.56zM13.04 12.18l2.68 2.68-8.66 5.02 5.98-7.7zM17.37 9.57l2.34 1.36c.65.38.65.99 0 1.36l-2.34 1.36-2.94-2.04 2.94-2.04zM7.06 4.12l8.66 5.02-2.68 2.68-5.98-7.7z"/></svg>
           <span>
             <small>Get it on</small>

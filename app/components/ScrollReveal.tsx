@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const revealElements = document.querySelectorAll('[data-reveal]');
 
@@ -24,7 +27,7 @@ export default function ScrollReveal() {
     } else {
       revealElements.forEach((el) => el.classList.add('revealed'));
     }
-  }, []);
+  }, [pathname]);
 
   return null;
 }
