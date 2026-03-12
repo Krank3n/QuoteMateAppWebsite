@@ -254,6 +254,40 @@
         }
     }
 
+    // --- Android Install Bottom Sheet ---
+    var installSheet = document.getElementById('android-install-sheet');
+    var installSheetClose = document.getElementById('install-sheet-close');
+
+    if (installSheet) {
+        var isAndroid = /Android/i.test(navigator.userAgent);
+        var installDismissed = localStorage.getItem('qm_install_dismissed');
+
+        if (isAndroid && !installDismissed) {
+            // Show after a delay, and after cookie banner if needed
+            var delay = cookieBanner && !localStorage.getItem('qm_cookie_consent') ? 4000 : 2000;
+            setTimeout(function () {
+                installSheet.classList.add('visible');
+                track('install_sheet_shown', { platform: 'android' });
+            }, delay);
+        }
+
+        if (installSheetClose) {
+            installSheetClose.addEventListener('click', function () {
+                installSheet.classList.remove('visible');
+                localStorage.setItem('qm_install_dismissed', Date.now());
+                track('install_sheet_dismissed', { platform: 'android' });
+            });
+        }
+
+        // Track click on the install button
+        var installBtn = installSheet.querySelector('.install-sheet-btn');
+        if (installBtn) {
+            installBtn.addEventListener('click', function () {
+                track('install_sheet_clicked', { platform: 'android' });
+            });
+        }
+    }
+
     // --- Helper: Get closest section ID ---
     function getClosestSection(el) {
         var section = el.closest('section[id]');
