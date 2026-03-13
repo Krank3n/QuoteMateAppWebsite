@@ -47,6 +47,7 @@ export default function Header({ homeLinks = false }: HeaderProps) {
           <li role="none"><Link href={`${prefix}#pricing`} role="menuitem" onClick={closeMenu}>Pricing</Link></li>
           <li role="none"><Link href={`${prefix}#trades`} role="menuitem" onClick={closeMenu}>Trades</Link></li>
           <li role="none"><Link href={`${prefix}#faq`} role="menuitem" onClick={closeMenu}>FAQ</Link></li>
+          <li role="none"><Link href="/articles" role="menuitem" onClick={closeMenu}>Articles</Link></li>
         </ul>
 
         <Link href={`${prefix}#download`} className="btn btn-primary nav-cta">Download App</Link>

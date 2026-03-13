@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import CookieBanner from './components/CookieBanner';
 import ScrollReveal from './components/ScrollReveal';
 import Analytics from './components/Analytics';
 
@@ -39,7 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Analytics />
         {children}
-        <CookieBanner />
         <ScrollReveal />
       </body>
     </html>

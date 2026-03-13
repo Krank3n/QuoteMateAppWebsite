@@ -21,12 +21,15 @@ export default function Footer() {
               <li><Link href="/#faq">FAQ</Link></li>
               <li><Link href="/trades">Quoting by Trade</Link></li>
               <li><Link href="/templates">Quote Templates</Link></li>
-              <li><Link href="/blog">Quoting Guides</Link></li>
+              <li><Link href="/articles">Quoting Guides</Link></li>
             </ul>
           </div>
           <div className="footer-links">
-            <h4>Legal</h4>
+            <h4>Company</h4>
             <ul>
+              <li><Link href="/about">About</Link></li>
+              <li><Link href="/pricing">Pricing</Link></li>
+              <li><Link href="/compare">Compare</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
               <li><Link href="/terms">Terms of Service</Link></li>
             </ul>
@@ -53,7 +56,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="footer-badges">
-            <a href="#" className="btn btn-store btn-store-xs" aria-label="Download on the App Store">
+            <a href="/app" className="btn btn-store btn-store-xs" aria-label="Try QuoteMate on the web">
               <svg width="14" height="16" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true"><path d="M16.52 12.46c-.03-3.13 2.55-4.63 2.67-4.71-1.45-2.12-3.72-2.41-4.53-2.45-1.93-.2-3.77 1.14-4.74 1.14-.98 0-2.49-1.11-4.1-1.08-2.11.03-4.06 1.23-5.15 3.12-2.2 3.81-.56 9.45 1.58 12.54 1.05 1.52 2.3 3.22 3.94 3.16 1.58-.06 2.18-1.02 4.09-1.02 1.91 0 2.46 1.02 4.13.99 1.7-.03 2.78-1.55 3.82-3.08 1.2-1.76 1.7-3.47 1.73-3.56-.04-.02-3.31-1.27-3.34-5.05zM13.39 3.51C14.26 2.44 14.85.99 14.7-.5c-1.33.05-2.94.89-3.89 2.01-.86.99-1.6 2.56-1.4 4.07 1.48.12 2.99-.76 3.98-2.07z"/></svg>
               <span>App Store</span>
             </a>

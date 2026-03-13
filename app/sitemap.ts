@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { trades, cities, quoteTemplates, guides } from '@/lib/data';
+import { competitors } from './compare/data';
 
 export const dynamic = 'force-static';
 
@@ -13,7 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/privacy`, lastModified, changeFrequency: 'monthly', priority: 0.3 },
     { url: `${baseUrl}/trades`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/templates`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/blog`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/articles`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/pricing`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/about`, lastModified, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${baseUrl}/compare`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
   ];
 
   const tradePages: MetadataRoute.Sitemap = trades.map((trade) => ({
@@ -40,11 +44,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const blogPages: MetadataRoute.Sitemap = guides.map((guide) => ({
-    url: `${baseUrl}/blog/${guide.slug}`,
+    url: `${baseUrl}/articles/${guide.slug}`,
     lastModified,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages];
+  const comparePages: MetadataRoute.Sitemap = competitors.map((comp) => ({
+    url: `${baseUrl}/compare/${comp.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages];
 }
