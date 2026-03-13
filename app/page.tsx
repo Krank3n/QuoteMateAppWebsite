@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import FAQ from './components/FAQ';
 import CTAButtons from './components/CTAButtons';
+import EmailSignup from './components/EmailSignup';
+import ContactForm from './components/ContactForm';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -83,8 +85,10 @@ export default function HomePage() {
               <div className="phone-mockup">
                 <div className="phone-notch"></div>
                 <div className="phone-screen">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://hansendev.com.au/assets/projects/sim-screen-quotemate.gif" alt="QuoteMate app demo showing quote creation" loading="eager" width={270} height={585} />
+                  <video autoPlay loop muted playsInline width={270} height={585} aria-label="QuoteMate app demo showing quote creation">
+                    <source src="/assets/demo.webm" type="video/webm" />
+                    <source src="/assets/demo.mp4" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -366,6 +370,28 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Email Signup */}
+        <section className="email-signup" id="signup">
+          <div className="container">
+            <div className="email-signup-content" data-reveal="">
+              <h2 className="section-title">Stay in the <span className="text-gradient">Loop</span></h2>
+              <p className="section-subtitle">Get quoting tips, new feature updates, and tradie business advice — straight to your inbox. No spam, unsubscribe anytime.</p>
+              <EmailSignup />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section className="contact-section" id="contact">
+          <div className="container">
+            <div className="contact-content" data-reveal="">
+              <h2 className="section-title">Get in <span className="text-gradient">Touch</span></h2>
+              <p className="section-subtitle">Got a question, feature request, or feedback? We&rsquo;d love to hear from you.</p>
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="final-cta" id="download">
           <div className="container">
@@ -414,7 +440,11 @@ export default function HomePage() {
         "logo": "https://quotemateapp.au/assets/logo.png",
         "email": "hello@quotemateapp.au",
         "description": "AI-powered quoting and invoicing app built for Australian tradies.",
-        "sameAs": []
+        "sameAs": [
+          "https://www.facebook.com/quotemateapp",
+          "https://www.instagram.com/quotemateapp",
+          "https://www.linkedin.com/company/quotemateapp"
+        ]
       })}} />
 
       {/* Structured Data - FAQPage */}

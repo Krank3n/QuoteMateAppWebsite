@@ -188,6 +188,27 @@ export default async function TradePage({ params }: Props) {
           }
         }))
       })}} />
+
+      {/* Structured Data - Service */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": `QuoteMate for ${trade.name}`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS, Android, Web",
+        "description": trade.description,
+        "url": `https://quotemateapp.au/quotes-for-${trade.slug}`,
+        "offers": [
+          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free" },
+          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro", "billingIncrement": "month" }
+        ],
+        "provider": {
+          "@type": "Organization",
+          "name": "QuoteMate",
+          "url": "https://quotemateapp.au",
+          "areaServed": { "@type": "Country", "name": "Australia" }
+        }
+      })}} />
     </>
   );
 }

@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
   },
-  other: {
-    'apple-itunes-app': 'app-id=PLACEHOLDER',
+  alternates: {
+    languages: { 'en-AU': 'https://quotemateapp.au' },
   },
 };
 
