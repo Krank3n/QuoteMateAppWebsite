@@ -1046,6 +1046,18 @@ ul {
     font-size: 0.9375rem;
 }
 
+.signup-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     .signup-form {
         flex-direction: column;
@@ -1099,6 +1111,74 @@ ul {
     color: var(--color-text-secondary);
     font-size: 0.8125rem;
     line-height: 1.6;
+}
+
+/* --- Article Filters --- */
+.article-filters {
+    margin-bottom: 32px;
+}
+
+.article-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-bg-darkest);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    color: var(--color-text-secondary);
+}
+
+.article-search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-text-primary);
+    font-size: 0.9375rem;
+}
+
+.article-search-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+}
+
+.article-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-pill {
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-darkest);
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.filter-pill:hover {
+    border-color: rgba(249, 115, 22, 0.3);
+    color: var(--color-text-primary);
+}
+
+.filter-pill-active {
+    background: rgba(249, 115, 22, 0.15);
+    border-color: #f97316;
+    color: #f97316;
+}
+
+.article-no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 48px 0;
+    font-size: 0.9375rem;
 }
 
 /* --- Comparison Table --- */

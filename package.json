@@ -6,17 +6,24 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-article": "tsx scripts/generate-article.ts"
   },
   "dependencies": {
+    "@google/genai": "^1.45.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.3.1",
     "next": "^15.3.0",
+    "nodemailer": "^8.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   }
 }

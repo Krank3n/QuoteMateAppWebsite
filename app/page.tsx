@@ -420,7 +420,7 @@ export default function HomePage() {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
-          "reviewCount": "25",
+          "reviewCount": "3",
           "bestRating": "5"
         },
         "author": {

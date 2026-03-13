@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'QuoteMate',
-    images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
+    images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
   },
   twitter: {
     card: 'summary_large_image',
-    images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
+    images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
   },
   alternates: {
     languages: { 'en-AU': 'https://quotemateapp.au' },
