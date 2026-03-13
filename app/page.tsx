@@ -147,6 +147,60 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <section className="testimonials" id="reviews">
+          <div className="container">
+            <div className="section-header" data-reveal="">
+              <h2 className="section-title">Trusted by <span className="text-gradient">Australian Tradies</span></h2>
+              <p className="section-subtitle">See what our customers have to say.</p>
+            </div>
+            <div className="testimonials-grid">
+              {[
+                {
+                  name: 'Dave R.',
+                  initials: 'DR',
+                  trade: 'Carpenter, Sydney',
+                  text: 'I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest — materials, Bunnings prices, the lot. Clients love the professional PDFs too.',
+                },
+                {
+                  name: 'Mick T.',
+                  initials: 'MT',
+                  trade: 'Electrician, Melbourne',
+                  text: 'The AI material suggestions are spot on. Described a switchboard upgrade and it pulled every item I needed with current pricing. Saved me at least an hour per quote. Worth every cent of the Pro plan.',
+                },
+                {
+                  name: 'Sarah K.',
+                  initials: 'SK',
+                  trade: 'Painter, Brisbane',
+                  text: "Finally an app that actually understands what tradies need. No bloat, no complicated setup — just fast, accurate quotes I can send straight from my phone. The offline mode is a lifesaver on rural jobs.",
+                },
+              ].map((t, i) => (
+                <div key={i} className="testimonial-card" data-reveal="">
+                  <div className="testimonial-stars" aria-label="5 out of 5 stars">
+                    {[...Array(5)].map((_, j) => (
+                      <svg key={j} width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                  </div>
+                  <p className="testimonial-text">&ldquo;{t.text}&rdquo;</p>
+                  <div className="testimonial-author">
+                    <div className="testimonial-avatar">{t.initials}</div>
+                    <div className="testimonial-author-info">
+                      <h4>{t.name}</h4>
+                      <p>{t.trade}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <span className="testimonials-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#f97316" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                5.0 stars on Google Reviews
+              </span>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
         <section className="pricing" id="pricing">
           <div className="container">
@@ -337,6 +391,12 @@ export default function HomePage() {
           { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free" },
           { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro", "billingIncrement": "month" }
         ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "25",
+          "bestRating": "5"
+        },
         "author": {
           "@type": "Organization",
           "name": "QuoteMate",

@@ -84,7 +84,7 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
     },
     {
       question: `What ${trade.keyword.toLowerCase()} jobs can I quote with QuoteMate?`,
-      answer: `QuoteMate covers all types of ${trade.keyword.toLowerCase()} jobs including ${trade.commonJobs.join(', ')}. You can also describe any custom job and the AI will suggest appropriate materials and quantities.`,
+      answer: `QuoteMate covers all types of ${trade.keyword.toLowerCase()} jobs including ${trade.commonJobs.map(j => typeof j === 'string' ? j : j.name).join(', ')}. You can also describe any custom job and the AI will suggest appropriate materials and quantities.`,
     },
     {
       question: `How much do ${trade.name.toLowerCase()} typically quote?`,

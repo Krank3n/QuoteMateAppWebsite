@@ -553,6 +553,98 @@ ul {
     line-height: 1.5;
 }
 
+/* --- Testimonials Section --- */
+.testimonials {
+    padding: 96px 0;
+    background: var(--color-bg-dark);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.testimonial-card {
+    background: var(--color-bg-darkest);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    transition: all var(--transition);
+}
+
+.testimonial-card:hover {
+    border-color: rgba(249, 115, 22, 0.3);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 16px;
+}
+
+.testimonial-stars svg {
+    color: #f97316;
+    fill: #f97316;
+}
+
+.testimonial-text {
+    color: var(--color-text-tertiary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(249, 115, 22, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.testimonial-author-info h4 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+}
+
+.testimonial-author-info p {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+}
+
+.testimonials-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-top: 40px;
+}
+
 /* --- Pricing Section --- */
 .pricing {
     padding: 96px 0;

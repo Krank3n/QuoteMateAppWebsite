@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'QuoteMate',
-    images: ['/assets/og-image.png'],
+    images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/assets/og-image.png'],
+    images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'QuoteMate — AI-powered quoting app for Australian tradies' }],
   },
   other: {
     'apple-itunes-app': 'app-id=PLACEHOLDER',
