@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ReferralContent from './components/ReferralContent';
 
 export default function NotFound() {
   return (
     <>
       <Header homeLinks />
-      <main>
+      <ReferralContent />
+      <main id="not-found-content">
         <section className="seo-hero" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
           <div className="container">
             <div className="seo-hero-content" style={{ textAlign: 'center' }}>

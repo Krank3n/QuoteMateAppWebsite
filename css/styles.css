@@ -322,6 +322,38 @@ ul {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* --- Hero Background Animation --- */
+@keyframes float-orb-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(60px, -80px) scale(1.1); }
+    50% { transform: translate(-40px, -120px) scale(0.95); }
+    75% { transform: translate(80px, -40px) scale(1.05); }
+}
+
+@keyframes float-orb-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-80px, 60px) scale(1.05); }
+    50% { transform: translate(60px, 40px) scale(1.15); }
+    75% { transform: translate(-40px, -60px) scale(0.9); }
+}
+
+@keyframes float-orb-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(100px, -60px) scale(1.1); }
+    66% { transform: translate(-60px, 80px) scale(0.95); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes grid-shimmer {
+    0% { opacity: 0.03; }
+    50% { opacity: 0.06; }
+    100% { opacity: 0.03; }
+}
+
 /* --- Hero Section --- */
 .hero {
     padding: calc(var(--nav-height) + 64px) 0 80px;
@@ -330,16 +362,102 @@ ul {
     align-items: center;
     position: relative;
     overflow: hidden;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(249, 115, 22, 0.04) 0%, transparent 100%),
+        var(--color-bg-darkest);
 }
 
+/* Dot grid pattern */
 .hero::before {
     content: '';
     position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+    inset: 0;
+    background-image: radial-gradient(rgba(249, 115, 22, 0.15) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+    animation: grid-shimmer 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Gradient line accent at top */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: var(--nav-height);
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.3), rgba(251, 146, 60, 0.5), rgba(249, 115, 22, 0.3), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Floating orbs container */
+.hero-bg-effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    will-change: transform;
+}
+
+.hero-orb--1 {
+    width: 500px;
+    height: 500px;
+    top: -10%;
+    right: -5%;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.03) 50%, transparent 70%);
+    animation: float-orb-1 20s ease-in-out infinite;
+}
+
+.hero-orb--2 {
+    width: 400px;
+    height: 400px;
+    bottom: -10%;
+    left: -8%;
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.08) 0%, rgba(234, 88, 12, 0.02) 50%, transparent 70%);
+    animation: float-orb-2 25s ease-in-out infinite;
+}
+
+.hero-orb--3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 50%;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+    animation: float-orb-3 18s ease-in-out infinite;
+}
+
+.hero-orb--4 {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 20%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.05) 0%, transparent 70%);
+    animation: float-orb-2 22s ease-in-out infinite reverse;
+}
+
+/* Glowing accent ring behind phone */
+.hero-glow-ring {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(249, 115, 22, 0.15), rgba(251, 146, 60, 0.05), rgba(249, 115, 22, 0.1), rgba(251, 191, 36, 0.05), rgba(249, 115, 22, 0.15));
+    filter: blur(60px);
+    animation: pulse-glow 4s ease-in-out infinite;
     pointer-events: none;
 }
 
@@ -348,6 +466,8 @@ ul {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-title {
@@ -387,6 +507,7 @@ ul {
 .hero-phone {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .phone-mockup {
@@ -399,9 +520,11 @@ ul {
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.05),
         0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(249, 115, 22, 0.08),
         inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     overflow: hidden;
     padding: 12px;
+    z-index: 1;
 }
 
 .phone-notch {
@@ -440,6 +563,26 @@ ul {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* --- Section Divider Glow --- */
+.features,
+.pricing,
+.platforms {
+    position: relative;
+}
+
+.features::before,
+.pricing::before,
+.platforms::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), rgba(251, 146, 60, 0.35), rgba(249, 115, 22, 0.2), transparent);
+    pointer-events: none;
 }
 
 /* --- Features Section --- */
@@ -916,12 +1059,21 @@ ul {
 .final-cta::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+    inset: 0;
+    background:
+        radial-gradient(ellipse 50% 80% at 50% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.final-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 60%);
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 60%);
+    opacity: 0.5;
     pointer-events: none;
 }
 
