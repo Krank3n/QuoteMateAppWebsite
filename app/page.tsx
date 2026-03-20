@@ -6,6 +6,7 @@ import FAQ from './components/FAQ';
 import CTAButtons from './components/CTAButtons';
 import EmailSignup from './components/EmailSignup';
 import ContactForm from './components/ContactForm';
+import WalkthroughVideo from './components/WalkthroughVideo';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -82,15 +83,7 @@ export default function HomePage() {
               <CTAButtons showWebLink />
             </div>
             <div className="hero-phone" data-reveal="">
-              <div className="phone-mockup">
-                <div className="phone-notch"></div>
-                <div className="phone-screen">
-                  <video autoPlay loop muted playsInline width={270} height={585} aria-label="QuoteMate app demo showing quote creation">
-                    <source src="/assets/demo.webm" type="video/webm" />
-                    <source src="/assets/demo.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
+              <WalkthroughVideo />
             </div>
           </div>
         </section>
