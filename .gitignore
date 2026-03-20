@@ -28,3 +28,6 @@ yarn-error.log*
 .vscode/*
 *.tsbuildinfo
 next-env.d.ts
+
+# large video files
+public/assets/videos/QuoteMateWalkThrough.mp4
