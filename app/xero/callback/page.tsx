@@ -96,8 +96,25 @@ function XeroCallbackContent() {
             <p style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.5, marginBottom: 20 }}>
               Your Xero organisation <strong style={{ color: '#E2E8F0' }}>{orgName}</strong> is now linked to QuoteMate.
             </p>
-            <p style={{ fontSize: 13, color: '#64748B', marginTop: 16 }}>
-              You can close this window and return to the app.
+            <button
+              onClick={() => window.close()}
+              style={{
+                marginTop: 12,
+                padding: '12px 32px',
+                backgroundColor: '#009868',
+                color: 'white',
+                border: 'none',
+                borderRadius: 8,
+                fontSize: 15,
+                fontWeight: 600,
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              Return to App
+            </button>
+            <p style={{ fontSize: 13, color: '#64748B', marginTop: 12 }}>
+              If the button doesn&apos;t work, just close this tab.
             </p>
           </>
         )}
@@ -109,9 +126,23 @@ function XeroCallbackContent() {
             <p style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.5, marginBottom: 20 }}>
               {errorMessage}
             </p>
-            <p style={{ fontSize: 13, color: '#64748B', marginTop: 16 }}>
-              You can close this window and try again.
-            </p>
+            <button
+              onClick={() => window.close()}
+              style={{
+                marginTop: 12,
+                padding: '12px 32px',
+                backgroundColor: '#334155',
+                color: '#E2E8F0',
+                border: '1px solid #475569',
+                borderRadius: 8,
+                fontSize: 15,
+                fontWeight: 600,
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              Close and Try Again
+            </button>
           </>
         )}
       </div>
