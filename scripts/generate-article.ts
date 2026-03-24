@@ -143,9 +143,34 @@ Requirements:
   const text = response.text?.trim() || '';
 
   // Strip markdown code fences if present
-  const jsonStr = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
+  let jsonStr = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
 
-  const article = JSON.parse(jsonStr);
+  // Extract the JSON object even if there's trailing text after it
+  const startIdx = jsonStr.indexOf('{');
+  if (startIdx !== -1) {
+    let depth = 0;
+    let endIdx = startIdx;
+    for (let i = startIdx; i < jsonStr.length; i++) {
+      if (jsonStr[i] === '{') depth++;
+      else if (jsonStr[i] === '}') depth--;
+      if (depth === 0) {
+        endIdx = i;
+        break;
+      }
+    }
+    jsonStr = jsonStr.slice(startIdx, endIdx + 1);
+  }
+
+  // Fix common LLM JSON issues: trailing commas before ] or }
+  jsonStr = jsonStr.replace(/,\s*([}\]])/g, '$1');
+
+  let article: Record<string, unknown>;
+  try {
+    article = JSON.parse(jsonStr);
+  } catch (err) {
+    console.error('Failed to parse JSON response. Raw text:', text.slice(0, 500));
+    throw err;
+  }
 
   return {
     slug,

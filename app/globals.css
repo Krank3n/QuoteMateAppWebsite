@@ -1970,6 +1970,17 @@ ul {
     max-width: 640px;
 }
 
+/* --- Trade Promo Video Section --- */
+.trade-promo-video-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+.trade-promo-video-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
 /* --- Pain Point Section --- */
 .seo-pain-point {
     padding: 0 0 64px;

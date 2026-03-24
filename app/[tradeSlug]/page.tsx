@@ -7,6 +7,9 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
 import { trades, cities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs } from '@/lib/data';
+import TradePromoVideo from '../components/TradePromoVideo';
+
+const TRADES_WITH_VIDEOS = new Set(['electricians', 'plumbers', 'carpenters']);
 
 interface Props {
   params: Promise<{ tradeSlug: string }>;
@@ -64,6 +67,18 @@ export default async function TradePage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {TRADES_WITH_VIDEOS.has(trade.slug) && (
+          <section className="trade-promo-video-section">
+            <div className="container">
+              <h2 className="section-title">Yeah Nah, Not Like That</h2>
+              <p className="section-subtitle">Sloppy quotes? There&apos;s a better way, mate.</p>
+              <div className="trade-promo-video-wrap">
+                <TradePromoVideo tradeSlug={trade.slug} tradeName={trade.name} />
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="seo-pain-point">
           <div className="container">

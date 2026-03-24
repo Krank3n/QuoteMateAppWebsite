@@ -29,5 +29,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large video files
+# large video files (originals)
 public/assets/videos/QuoteMateWalkThrough.mp4
+public/assets/videos/trades/QuoteMatePromo*.mp4
