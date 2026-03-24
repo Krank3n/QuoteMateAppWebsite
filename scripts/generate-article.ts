@@ -174,13 +174,13 @@ Requirements:
 
   return {
     slug,
-    title: article.title,
+    title: article.title as string,
     trade,
-    keyword: article.keyword,
-    description: article.description,
+    keyword: article.keyword as string,
+    description: article.description as string,
     relatedTemplate: '',
-    sections: article.sections,
-    tips: article.tips,
+    sections: article.sections as Array<{ heading: string; body: string }>,
+    tips: article.tips as string[],
   };
 }
 
