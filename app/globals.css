@@ -1631,6 +1631,128 @@ ul {
     font-size: 0.875rem;
 }
 
+/* --- Install Sheet --- */
+.install-sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.install-sheet-backdrop.visible {
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+.install-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10001;
+    background: var(--color-bg-dark);
+    border-top-left-radius: var(--radius-xl);
+    border-top-right-radius: var(--radius-xl);
+    padding: 12px 24px 32px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.install-sheet.visible {
+    transform: translateY(0);
+}
+
+.install-sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+    margin: 0 auto 20px;
+}
+
+.install-sheet-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 4px;
+}
+
+.install-sheet-close:hover {
+    color: var(--color-text-primary);
+}
+
+.install-sheet-icon {
+    margin-bottom: 12px;
+}
+
+.install-sheet-icon img {
+    border-radius: var(--radius-md);
+}
+
+.install-sheet-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+}
+
+.install-sheet-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.install-sheet-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+}
+
+.install-sheet-btn span {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.install-sheet-btn span small {
+    font-size: 0.65rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.install-sheet-dismiss {
+    display: block;
+    margin: 16px auto 0;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.install-sheet-dismiss:hover {
+    color: var(--color-text-primary);
+}
+
 /* --- Cookie Banner --- */
 .cookie-banner {
     position: fixed;
