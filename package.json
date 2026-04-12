@@ -13,8 +13,12 @@
     "@google/genai": "^1.45.0",
     "@google/generative-ai": "^0.24.1",
     "dotenv": "^17.3.1",
+    "firebase": "^12.12.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
     "next": "^15.3.0",
     "nodemailer": "^8.0.2",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
