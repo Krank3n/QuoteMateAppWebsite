@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { PosterClient } from './PosterClient';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
+const PosterClient = dynamic(() => import('./PosterClient').then(m => ({ default: m.PosterClient })), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Your Poster',
 };
 
 export default function PosterPage() {
-  return (
-    <Suspense>
-      <PosterClient />
-    </Suspense>
-  );
+  return <PosterClient />;
 }

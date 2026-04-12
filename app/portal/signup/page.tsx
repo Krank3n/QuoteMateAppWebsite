@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { SignUpClient } from './SignUpClient';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
+const SignUpClient = dynamic(() => import('./SignUpClient').then(m => ({ default: m.SignUpClient })), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Create Account',
 };
 
 export default function SignUpPage() {
-  return (
-    <Suspense>
-      <SignUpClient />
-    </Suspense>
-  );
+  return <SignUpClient />;
 }

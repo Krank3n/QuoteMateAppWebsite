@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { UploadClient } from './UploadClient';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
+const UploadClient = dynamic(() => import('./UploadClient').then(m => ({ default: m.UploadClient })), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Upload Price List',
 };
 
 export default function PortalPage() {
-  return (
-    <Suspense>
-      <UploadClient />
-    </Suspense>
-  );
+  return <UploadClient />;
 }

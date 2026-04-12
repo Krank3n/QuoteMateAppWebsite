@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { ReviewClient } from './ReviewClient';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
+const ReviewClient = dynamic(() => import('./ReviewClient').then(m => ({ default: m.ReviewClient })), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Review Extracted Items',
 };
 
 export default function ReviewPage() {
-  return (
-    <Suspense>
-      <ReviewClient />
-    </Suspense>
-  );
+  return <ReviewClient />;
 }

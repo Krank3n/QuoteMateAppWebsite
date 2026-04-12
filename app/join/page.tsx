@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
-import { JoinClient } from './JoinClient';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic';
+const JoinClient = dynamic(() => import('./JoinClient').then(m => ({ default: m.JoinClient })), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Get Live Supplier Prices',
@@ -10,9 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function JoinPage() {
-  return (
-    <Suspense>
-      <JoinClient />
-    </Suspense>
-  );
+  return <JoinClient />;
 }
