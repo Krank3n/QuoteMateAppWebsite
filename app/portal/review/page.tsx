@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-
-const ReviewClient = dynamic(() => import('./ReviewClient').then(m => ({ default: m.ReviewClient })), { ssr: false });
+import ReviewLoader from './ReviewLoader';
 
 export const metadata: Metadata = {
   title: 'Review Extracted Items',
 };
 
 export default function ReviewPage() {
-  return <ReviewClient />;
+  return <ReviewLoader />;
 }
