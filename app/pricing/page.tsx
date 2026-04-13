@@ -22,7 +22,7 @@ const CrossIcon = () => (
 const features = [
   { name: 'Create quotes', free: true, pro: true },
   { name: 'Professional PDF template', free: true, pro: true },
-  { name: 'Bunnings & Mitre 10 pricing', free: true, pro: true },
+  { name: 'Live supplier pricing', free: true, pro: true },
   { name: 'Cloud sync', free: true, pro: true },
   { name: 'Unlimited quotes & invoices', free: false, pro: true },
   { name: 'AI material & title generation', free: false, pro: true },
@@ -66,7 +66,7 @@ export default function PricingPage() {
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Create quotes (7-day trial)</li>
                   <li><CheckIcon /> Professional PDF template</li>
-                  <li><CheckIcon /> Bunnings &amp; Mitre 10 pricing</li>
+                  <li><CheckIcon /> Live supplier pricing</li>
                   <li><CheckIcon /> Cloud sync</li>
                 </ul>
                 <a href="/app" className="btn btn-secondary pricing-btn">Get Started Free</a>

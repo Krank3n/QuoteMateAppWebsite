@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!trade || !city) return {};
   return {
     title: `${trade.name} Quoting App in ${city.name} ${city.state}`,
-    description: `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time Bunnings & Mitre 10 pricing.`,
+    description: `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time supplier pricing.`,
     alternates: { canonical: `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}` },
   };
 }
@@ -76,7 +76,7 @@ export default async function TradeCityPage({ params }: Props) {
             <div className="local-card">
               <h2>{trade.name} in {city.name}, {city.state}</h2>
               <p>{city.name} ({city.description}) is home to {city.population} residents. {city.localNote}, {trade.name.toLowerCase()} rely on QuoteMate to create professional quotes quickly and accurately.</p>
-              <p>Whether you&rsquo;re quoting a small repair or a major {trade.keyword} project, QuoteMate&rsquo;s AI-powered quoting engine helps you price jobs accurately with real-time material costs from Bunnings and Mitre 10.</p>
+              <p>Whether you&rsquo;re quoting a small repair or a major {trade.keyword} project, QuoteMate&rsquo;s AI-powered quoting engine helps you price jobs accurately with real-time material costs from major Australian suppliers.</p>
             </div>
           </div>
         </section>

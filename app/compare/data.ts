@@ -17,7 +17,7 @@ export const competitors: Competitor[] = [
     pricing: 'Tradify starts at $35/user/month with per-user pricing that scales up for teams.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: false },
-      { name: 'Real-time Bunnings & Mitre 10 pricing', quotemate: true, competitor: false },
+      { name: 'Real-time supplier pricing', quotemate: true, competitor: false },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
       { name: 'Invoicing', quotemate: true, competitor: true },
       { name: 'Job scheduling', quotemate: false, competitor: true },
@@ -37,7 +37,7 @@ export const competitors: Competitor[] = [
     pricing: 'ServiceM8 plans range from $0 to $379/month depending on job volume and features.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: false },
-      { name: 'Real-time Bunnings & Mitre 10 pricing', quotemate: true, competitor: false },
+      { name: 'Real-time supplier pricing', quotemate: true, competitor: false },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
       { name: 'Invoicing', quotemate: true, competitor: true },
       { name: 'Job scheduling & dispatch', quotemate: false, competitor: true },
@@ -45,7 +45,7 @@ export const competitors: Competitor[] = [
       { name: 'Offline mode', quotemate: true, competitor: true },
       { name: 'Voice-to-text quoting', quotemate: true, competitor: false },
       { name: 'Simple flat pricing', quotemate: '$29/month', competitor: '$0–$379/month' },
-      { name: 'Australian supplier integration', quotemate: 'Bunnings & Mitre 10', competitor: false },
+      { name: 'Australian supplier integration', quotemate: 'Major suppliers', competitor: false },
     ],
     summary: 'ServiceM8 is a comprehensive field service platform ideal for businesses managing crews and complex scheduling. QuoteMate is purpose-built for fast, accurate quoting — describe any job and get an AI-generated materials list with live supplier pricing, all for a simple flat rate.',
   },
@@ -57,7 +57,7 @@ export const competitors: Competitor[] = [
     pricing: 'Fergus pricing starts at $55/month for basic features, scaling up for larger teams.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: false },
-      { name: 'Real-time Bunnings & Mitre 10 pricing', quotemate: true, competitor: false },
+      { name: 'Real-time supplier pricing', quotemate: true, competitor: false },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
       { name: 'Invoicing', quotemate: true, competitor: true },
       { name: 'Job scheduling', quotemate: false, competitor: true },
@@ -77,7 +77,7 @@ export const competitors: Competitor[] = [
     pricing: 'Invoice2go starts at $5.99/month for basic invoicing, up to $39.99/month for the premium plan.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: false },
-      { name: 'Real-time Bunnings & Mitre 10 pricing', quotemate: true, competitor: false },
+      { name: 'Real-time supplier pricing', quotemate: true, competitor: false },
       { name: 'Trade-specific templates', quotemate: true, competitor: false },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
       { name: 'Invoicing', quotemate: true, competitor: true },

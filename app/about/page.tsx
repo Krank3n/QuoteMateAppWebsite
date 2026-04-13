@@ -34,7 +34,7 @@ export default function AboutPage() {
               <div className="guide-section">
                 <h2>Our Story</h2>
                 <p>QuoteMate was born out of a simple observation: Australian tradies spend too long on quotes. After talking to carpenters, electricians, plumbers, and builders across the country, one thing was clear &mdash; the existing tools were either too complicated, too expensive, or not built with tradies in mind.</p>
-                <p style={{ marginTop: '16px' }}>So we built QuoteMate. A fast, simple quoting app that uses AI to suggest materials and pulls real-time pricing from Bunnings and Mitre 10. No spreadsheets, no complicated software &mdash; just professional quotes in under 2 minutes.</p>
+                <p style={{ marginTop: '16px' }}>So we built QuoteMate. A fast, simple quoting app that uses AI to suggest materials and pulls real-time pricing from major Australian suppliers. No spreadsheets, no complicated software &mdash; just professional quotes in under 2 minutes.</p>
               </div>
 
               <div className="guide-section">
@@ -52,7 +52,7 @@ export default function AboutPage() {
                 <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
                   {[
                     'AI-powered material suggestions — describe any job and get an instant materials list',
-                    'Real-time Bunnings & Mitre 10 pricing — no more guessing or using outdated price lists',
+                    'Real-time supplier pricing — no more guessing or using outdated price lists',
                     'Built for mobile — create quotes on-site, even offline',
                     'Simple pricing — no per-user fees, no hidden costs',
                     'Works across iOS, Android, and Web with one subscription',

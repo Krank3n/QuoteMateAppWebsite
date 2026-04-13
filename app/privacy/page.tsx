@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             <ul>
               <li><strong>Google Firebase</strong> — for authentication, data storage, cloud sync, and analytics</li>
               <li><strong>Apple App Store / Google Play Store</strong> — for subscription management and payment processing</li>
-              <li><strong>Bunnings and Mitre 10</strong> — for retrieving current material pricing information (no personal data is shared)</li>
+              <li><strong>Third-party suppliers</strong> — for retrieving current material pricing information (no personal data is shared)</li>
               <li><strong>OpenAI / AI services</strong> — for AI-powered job analysis and material suggestions (job descriptions may be processed; no personally identifiable information is shared)</li>
             </ul>
             <p>These third-party services have their own privacy policies, and we encourage you to review them.</p>

@@ -100,7 +100,7 @@ export default async function ArticlePage({ params }: Props) {
 
               <div className="guide-cta-card">
                 <h2>Quote This Job in Under 2 Minutes</h2>
-                <p>Skip the spreadsheet. QuoteMate&rsquo;s AI pulls real-time Bunnings &amp; Mitre 10 prices and generates a professional PDF quote you can send on the spot.</p>
+                <p>Skip the spreadsheet. QuoteMate&rsquo;s AI pulls real-time supplier prices and generates a professional PDF quote you can send on the spot.</p>
                 <CTAButtons showWebLink />
               </div>
             </div>

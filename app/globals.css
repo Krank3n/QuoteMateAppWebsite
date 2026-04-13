@@ -279,6 +279,12 @@ ul {
     color: var(--color-text-primary);
 }
 
+.nav-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .nav-cta {
     padding: 10px 20px;
     font-size: 0.875rem;
@@ -330,6 +336,12 @@ ul {
     align-items: center;
 }
 
+.mobile-menu-overlay nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .mobile-menu-overlay ul {
     display: flex;
     flex-direction: column;
@@ -345,6 +357,19 @@ ul {
 
 .mobile-menu-overlay a:hover {
     color: var(--color-accent);
+}
+
+.mobile-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.mobile-cta-group .btn {
+    width: 200px;
+    text-align: center;
 }
 
 /* --- Hero Section --- */
@@ -513,6 +538,111 @@ ul {
     color: var(--color-text-secondary);
     font-size: 0.9375rem;
     line-height: 1.6;
+}
+
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* --- Feature Showcase Sections --- */
+.feature-showcase {
+    padding: 80px 0;
+}
+
+.feature-showcase:nth-child(even) {
+    background: var(--color-bg-dark);
+}
+
+.feature-showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.feature-showcase-reversed .feature-showcase-grid {
+    direction: rtl;
+}
+
+.feature-showcase-reversed .feature-showcase-grid > * {
+    direction: ltr;
+}
+
+.feature-showcase-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(249, 115, 22, 0.1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.feature-showcase-content .section-title {
+    text-align: left;
+}
+
+.feature-showcase-subtitle {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 480px;
+}
+
+.feature-showcase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feature-showcase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 20px;
+    background: var(--color-bg-darkest);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+    color: var(--color-text-tertiary);
+    line-height: 1.5;
+    transition: border-color var(--transition);
+}
+
+.feature-showcase-item:hover {
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.feature-showcase-item svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .feature-showcase {
+        padding: 64px 0;
+    }
+
+    .feature-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .feature-showcase-reversed .feature-showcase-grid {
+        direction: ltr;
+    }
+
+    .feature-showcase-content .section-title {
+        text-align: center;
+    }
+
+    .feature-showcase-subtitle {
+        text-align: center;
+        margin: 0 auto;
+    }
 }
 
 /* --- Video Controls --- */
@@ -1898,7 +2028,7 @@ ul {
 
 @media (max-width: 768px) {
     .nav-links,
-    .nav-cta {
+    .nav-cta-group {
         display: none;
     }
 
@@ -1982,7 +2112,8 @@ ul {
     .aussie-section,
     .platforms,
     .faq,
-    .final-cta {
+    .final-cta,
+    .feature-showcase {
         padding: 64px 0;
     }
 

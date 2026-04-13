@@ -33,7 +33,7 @@ export default function TermsPage() {
             <p>QuoteMate is a quoting and invoicing application designed for Australian tradespeople (&ldquo;tradies&rdquo;). The Service provides:</p>
             <ul>
               <li>AI-powered job analysis and material suggestions</li>
-              <li>Real-time material pricing from third-party suppliers (including Bunnings and Mitre 10)</li>
+              <li>Real-time material pricing from third-party suppliers</li>
               <li>Professional quote and invoice generation (PDF)</li>
               <li>Cloud sync across multiple devices</li>
               <li>Invoice and payment tracking</li>

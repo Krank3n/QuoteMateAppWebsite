@@ -8,6 +8,7 @@ import EmailSignup from './components/EmailSignup';
 import ContactForm from './components/ContactForm';
 import WalkthroughVideo from './components/WalkthroughVideo';
 import InstallSheet from './components/InstallSheet';
+import FeatureShowcase from './components/FeatureShowcase';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -15,11 +16,13 @@ export const metadata: Metadata = {
 
 const faqItems = [
   { question: 'What trades does QuoteMate support?', answer: 'QuoteMate is built for all trades including carpentry, plumbing, electrical, building, cleaning, and general contracting. Our smart templates cover common jobs like decks, fences, pergolas, bathroom renovations, and more.' },
-  { question: 'How does the AI quoting work?', answer: "Simply describe the job in plain English \u2014 like 'Build a 4x3 metre hardwood deck with stairs' \u2014 and QuoteMate\u2019s AI will suggest all the materials and quantities you need, with real-time pricing from Bunnings and Mitre 10." },
+  { question: 'How does the AI quoting work?', answer: "Simply describe the job in plain English \u2014 like 'Build a 4x3 metre hardwood deck with stairs' \u2014 and QuoteMate\u2019s AI will suggest all the materials and quantities you need, with real-time pricing from major Australian suppliers." },
+  { question: 'How does live supplier pricing work?', answer: 'QuoteMate pulls real-time prices directly from leading Australian hardware and trade suppliers. You can also import your own supplier price lists from a photo or PDF, save personal trade rates, and search the web for pricing on specialty items.' },
+  { question: 'Does QuoteMate integrate with Xero?', answer: 'Yes! Push invoices to Xero in one tap, auto-create contacts, record payments, and bulk sync multiple invoices. You can also export Xero-compatible CSVs if you prefer manual import.' },
   { question: 'Is my data secure?', answer: 'Absolutely. QuoteMate uses Firebase with enterprise-grade encryption. Your data is securely stored in the cloud and synced across your devices. We never share your business data with third parties.' },
   { question: 'Can I use it offline?', answer: 'Yes! Create and edit quotes without an internet connection. Everything syncs automatically when you\u2019re back online \u2014 perfect for remote job sites.' },
-  { question: 'How does the free trial work?', answer: 'Sign up and start creating quotes immediately \u2014 no credit card required. Free users can create quotes for 7 days. To unlock unlimited quotes, invoicing, AI material generation, all PDF templates, and more, upgrade to Pro anytime.' },
-  { question: 'Can I cancel anytime?', answer: 'Yes, you can cancel your Pro subscription anytime. You\u2019ll keep access until the end of your billing period, then you\u2019ll revert to the Free plan.' },
+  { question: 'How does the free trial work?', answer: 'Sign up and start creating quotes immediately \u2014 no credit card required. Your free trial starts when you create your first quote, not when you sign up. To unlock unlimited quotes, invoicing, AI material generation, all PDF templates, and more, upgrade to Pro anytime.' },
+  { question: 'Can I track invoices and payments?', answer: 'Yes. Track invoice status (draft, sent, paid, partial, overdue), record partial payments and deposits, and get automatic overdue detection. Support for bank transfer, PayID, BPAY, PayPal, card, cash, and cheque.' },
   { question: 'Does it calculate GST?', answer: 'Yes. QuoteMate automatically calculates and displays GST on all quotes and invoices, keeping you compliant with Australian tax requirements.' },
   { question: 'Can I add my business logo?', answer: 'Yes! Upload your logo and add your business name, ABN, and payment details. Every quote and invoice you send will look professional and on-brand.' },
 ];
@@ -81,7 +84,7 @@ export default function HomePage() {
           <div className="container hero-grid">
             <div className="hero-content" data-reveal="">
               <h1 className="hero-title">Professional Quotes in Under <span className="text-gradient">2 Minutes</span></h1>
-              <p className="hero-subtitle">The AI-powered quoting &amp; invoicing app built for Australian tradies. Describe any job, get real-time Bunnings &amp; Mitre 10 prices, and send branded quotes &mdash; all from your phone.</p>
+              <p className="hero-subtitle">The AI-powered quoting &amp; invoicing app built for Australian tradies. Describe any job, get real-time supplier prices, and send branded quotes &mdash; all from your phone.</p>
               <CTAButtons showWebLink />
             </div>
             <div className="hero-phone" data-reveal="">
@@ -99,26 +102,119 @@ export default function HomePage() {
             </div>
             <div className="features-grid">
               {[
-                { title: 'AI-Powered Quoting', desc: 'Describe any job in plain English and the AI suggests materials and quantities automatically. No more guesswork.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.4V11h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-5 0V14H9v1.5a2.5 2.5 0 0 1-5 0V14a3 3 0 0 1 3-3h3V9.4A4 4 0 0 1 12 2z"/><circle cx="12" cy="6" r="1.5"/></svg> },
-                { title: 'Real-Time Pricing', desc: 'Auto-fetch current material prices from Bunnings and Mitre 10. Always quote with today\u2019s prices.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
-                { title: 'Professional PDF Quotes & Invoices', desc: 'Generate branded PDFs with your logo, GST calculations, and payment terms. Share via email, SMS, or WhatsApp.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> },
-                { title: 'Invoice & Payment Tracking', desc: 'Convert quotes to invoices, set payment terms (Net 7/14/30), record payments, and track overdue invoices.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
-                { title: 'Smart Job Templates', desc: 'Pre-built templates for common jobs: decks, fences, pergolas, stairs, bathroom renos, and more.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> },
-                { title: 'Voice-to-Text', desc: 'Describe the job by speaking \u2014 perfect for on-site quoting when your hands are dirty.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg> },
-                { title: 'Cloud Sync Across Devices', desc: 'Start a quote on your phone at the job site, finish it on your iPad or computer at home.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> },
-                { title: 'Works Offline', desc: 'Create quotes anywhere, even without reception. Syncs automatically when you\u2019re back online.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> },
-                { title: 'Business Branding', desc: 'Add your logo, business name, ABN, and payment details (bank transfer, PayID, BPAY, PayPal) to every document.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> },
-                { title: 'Trade-Specific', desc: 'Built for carpenters, plumbers, electricians, builders, cleaners, and general contractors.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
+                { title: 'Fastest Quoting in the Game', desc: 'AI-powered materials lists, reusable templates, voice-to-text, and quote-to-invoice in one tap.', href: '#quoting', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> },
+                { title: 'Live Supplier Pricing', desc: 'Real-time prices from major Australian suppliers, web search, and your own imported price lists.', href: '#supplier-pricing', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
+                { title: 'Professional Documents', desc: 'Branded PDF quotes and invoices with multiple templates, email delivery, and online acceptance.', href: '#quotes-invoices', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> },
+                { title: 'Xero Integration', desc: 'One-tap invoice sync, auto-create contacts, record payments, and bulk export to Xero.', href: '#xero', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> },
+                { title: 'Built for Tradies', desc: 'Aussie GST, independent markup, travel calculator, offline mode, and trade-specific setup.', href: '#tradie-features', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
+                { title: 'Grow Your Business', desc: 'Revenue dashboard, quote pipeline, referral program, and push notifications to stay on top.', href: '#grow', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
               ].map((f, i) => (
-                <div key={i} className="feature-card" data-reveal="">
+                <a key={i} href={f.href} className="feature-card feature-card-link" data-reveal="">
                   <div className="feature-icon">{f.icon}</div>
                   <h3>{f.title}</h3>
                   <p>{f.desc}</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Feature Showcase Sections */}
+        <FeatureShowcase
+          id="quoting"
+          title="Fastest Quoting"
+          titleAccent="in the Game"
+          subtitle="Stop spending hours on quotes. Describe the job, get a materials list, add your rates, and send a professional quote &mdash; all in minutes."
+          features={[
+            'Describe your job, get a materials list \u2014 AI suggests materials with quantities automatically',
+            'Section-based quoting \u2014 quote the way you work (e.g. "8 fence bays, 2 gates") with per-section labor and materials',
+            'Reusable job templates \u2014 save common jobs and create quotes in minutes, not hours',
+            'Voice-to-text job descriptions \u2014 talk into your phone on-site, QuoteMate writes the description',
+            'Quote to invoice in one tap \u2014 accepted quote becomes an invoice instantly, no re-entering anything',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="supplier-pricing"
+          title="Live Supplier Pricing"
+          titleAccent="No Other App Has"
+          subtitle="Always quote with today&rsquo;s prices. QuoteMate connects to major Australian suppliers and lets you import your own trade rates."
+          reversed
+          features={[
+            'Real-time pricing from major Australian hardware and trade suppliers',
+            'Web search pricing \u2014 finds prices from any supplier across the web when your usual suppliers don\u2019t stock it',
+            'Supplier list importer \u2014 snap a photo of a supplier price list or PDF and it extracts every line item automatically',
+            'Personal supplier rates \u2014 save your trade pricing so your quotes always use your actual costs, not retail',
+            'Favourites system \u2014 save your go-to products with your prices, coverage rates, and notes',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="quotes-invoices"
+          title="Professional Quotes &amp; Invoices"
+          titleAccent="That Win Jobs"
+          subtitle="Look like a serious business with clean, branded documents. Get paid faster with full invoice tracking and multiple payment options."
+          features={[
+            'Professional PDF templates with your logo, brand colour, and business details',
+            'Customisable display \u2014 show or hide labor hours, markup, and material breakdown',
+            'Email quotes directly with a pre-written professional email and your quote attached',
+            'Quote acceptance via email \u2014 customers accept or decline straight from their inbox',
+            'Invoice status tracking \u2014 draft, sent, paid, partial, overdue \u2014 know where every dollar is',
+            'Partial payment support \u2014 record deposits and progress payments',
+            'Multiple payment methods \u2014 bank transfer, PayID, BPAY, PayPal, card, cash, cheque',
+            'Payment terms \u2014 due on receipt, Net 7/14/30, or custom',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="xero"
+          title="Xero Integration"
+          titleAccent="That Actually Works"
+          subtitle="Push invoices to Xero without re-entering a single field. Keep your books in sync without the headache."
+          reversed
+          features={[
+            'One-tap Xero sync \u2014 push invoices to Xero without re-entering a single field',
+            'Auto-create contacts \u2014 new customers in QuoteMate automatically appear in Xero',
+            'Payment recording \u2014 record payments in QuoteMate and they sync to Xero',
+            'Bulk sync \u2014 sync multiple invoices at once',
+            'CSV export \u2014 Xero-compatible CSV if you prefer manual import',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="tradie-features"
+          title="Built for How"
+          titleAccent="Tradies Actually Work"
+          subtitle="Every feature is designed around how tradies really work \u2014 on-site, on the tools, and on the go."
+          features={[
+            'Aussie GST built in \u2014 10% GST calculated automatically, no accounting degree needed',
+            'Independent material &amp; labor markup \u2014 set different margins on materials vs labor',
+            'Travel cost calculator \u2014 enter the job address, QuoteMate calculates distance and suggests a travel markup',
+            'Trade-specific setup \u2014 select your trade and get relevant suppliers, materials, and templates',
+            'Works offline \u2014 create quotes on-site with no signal, syncs when you\u2019re back online',
+            'Attach photos to quotes \u2014 show the customer exactly what you\u2019re quoting on, with annotation',
+            'Customer management \u2014 save contacts, pull from your phone, sync from Xero, with smart search',
+            'Dark mode \u2014 easy on the eyes at 5am or on a bright site',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="grow"
+          title="Know Your Numbers &amp;"
+          titleAccent="Grow Your Business"
+          subtitle="Track your revenue, see your quote pipeline, and grow through referrals. QuoteMate helps you build a bigger, better business."
+          reversed
+          features={[
+            'Revenue dashboard \u2014 see your monthly revenue at a glance',
+            'Quote pipeline \u2014 how many quotes are sent, accepted, pending \u2014 see your conversion rate',
+            'Cost breakdown \u2014 materials vs labor split so you know where your money goes',
+            'Monthly comparisons \u2014 track whether you\u2019re growing month to month',
+            'Referral program \u2014 give your mates a free trial, earn when they subscribe',
+            'Affiliate dashboard \u2014 track your referral earnings, commissions, and payouts',
+            'QR code sharing \u2014 show your referral code on-site or at trade nights',
+            'Push notifications \u2014 quote accepted, invoice paid, overdue reminders \u2014 stay on top of everything',
+          ]}
+        />
 
         {/* How It Works */}
         <section className="how-it-works" id="how-it-works">
@@ -130,7 +226,7 @@ export default function HomePage() {
             <div className="steps-grid">
               {[
                 { num: 1, title: 'Choose or describe your job', desc: 'Pick a template or describe it in your own words', icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>, showConnector: true },
-                { num: 2, title: 'AI suggests materials & pricing', desc: 'Materials auto-populated with real-time Bunnings/Mitre 10 prices', icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.4V11h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-5 0V14H9v1.5a2.5 2.5 0 0 1-5 0V14a3 3 0 0 1 3-3h3V9.4A4 4 0 0 1 12 2z"/><circle cx="12" cy="6" r="1.5"/></svg>, showConnector: true },
+                { num: 2, title: 'AI suggests materials & pricing', desc: 'Materials auto-populated with real-time supplier prices', icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.4V11h3a3 3 0 0 1 3 3v1.5a2.5 2.5 0 0 1-5 0V14H9v1.5a2.5 2.5 0 0 1-5 0V14a3 3 0 0 1 3-3h3V9.4A4 4 0 0 1 12 2z"/><circle cx="12" cy="6" r="1.5"/></svg>, showConnector: true },
                 { num: 3, title: 'Set labour & markup', desc: 'Add your hourly rate and margin', icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>, showConnector: true },
                 { num: 4, title: 'Send a professional quote', desc: 'Generate a branded PDF and share it instantly', icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>, showConnector: false },
               ].map((s) => (
@@ -159,7 +255,7 @@ export default function HomePage() {
                   name: 'Dave R.',
                   initials: 'DR',
                   trade: 'Carpenter, Sydney',
-                  text: 'I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest — materials, Bunnings prices, the lot. Clients love the professional PDFs too.',
+                  text: 'I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest \u2014 materials, live supplier prices, the lot. Clients love the professional PDFs too.',
                 },
                 {
                   name: 'Mick T.',
@@ -171,7 +267,7 @@ export default function HomePage() {
                   name: 'Sarah K.',
                   initials: 'SK',
                   trade: 'Painter, Brisbane',
-                  text: "Finally an app that actually understands what tradies need. No bloat, no complicated setup — just fast, accurate quotes I can send straight from my phone. The offline mode is a lifesaver on rural jobs.",
+                  text: "Finally an app that actually understands what tradies need. No bloat, no complicated setup \u2014 just fast, accurate quotes I can send straight from my phone. The offline mode is a lifesaver on rural jobs.",
                 },
               ].map((t, i) => (
                 <div key={i} className="testimonial-card" data-reveal="">
@@ -221,7 +317,7 @@ export default function HomePage() {
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Create quotes (7-day trial)</li>
                   <li><CheckIcon /> Professional PDF template</li>
-                  <li><CheckIcon /> Bunnings &amp; Mitre 10 pricing</li>
+                  <li><CheckIcon /> Live supplier pricing</li>
                   <li><CheckIcon /> Cloud sync</li>
                 </ul>
                 <a href="/app" className="btn btn-secondary pricing-btn">Get Started Free</a>
@@ -279,7 +375,7 @@ export default function HomePage() {
               <h2 className="section-title">Built for <span className="text-gradient">Aussie Tradies</span></h2>
               <p className="section-subtitle">Australian-made for Australian tradies. Every feature is designed with the Australian market in mind.</p>
               <div className="aussie-features">
-                {['GST calculations built in', 'ABN support on every document', 'AUD pricing throughout', 'Bunnings & Mitre 10 integration'].map((text, i) => (
+                {['GST calculations built in', 'ABN support on every document', 'AUD pricing throughout', 'Major supplier integration'].map((text, i) => (
                   <div key={i} className="aussie-feature-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                     <span>{text}</span>
@@ -407,7 +503,7 @@ export default function HomePage() {
         "name": "QuoteMate",
         "operatingSystem": "iOS, Android, Web",
         "applicationCategory": "BusinessApplication",
-        "description": "AI-powered quoting and invoicing app for Australian tradies. Create professional quotes in under 2 minutes with real-time Bunnings & Mitre 10 pricing.",
+        "description": "AI-powered quoting and invoicing app for Australian tradies. Create professional quotes in under 2 minutes with real-time supplier pricing.",
         "offers": [
           { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free" },
           { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro", "billingIncrement": "month" }

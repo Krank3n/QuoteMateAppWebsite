@@ -116,7 +116,7 @@ export default async function TradePage({ params }: Props) {
               </div>
               <div className="example-result">
                 <span className="example-label">QuoteMate generates</span>
-                <p>A complete, itemised quote with materials, quantities, real-time Bunnings &amp; Mitre 10 pricing, labour costs, GST, and a professional PDF — ready to send to your client. Typical {trade.keyword} quotes range from {trade.avgQuoteRange}.</p>
+                <p>A complete, itemised quote with materials, quantities, real-time supplier pricing, labour costs, GST, and a professional PDF — ready to send to your client. Typical {trade.keyword} quotes range from {trade.avgQuoteRange}.</p>
               </div>
             </div>
           </div>

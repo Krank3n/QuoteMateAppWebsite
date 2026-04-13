@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: 'QuoteMate — Professional Quotes & Invoices for Australian Tradies',
     template: '%s — QuoteMate',
   },
-  description: 'Create professional quotes and invoices in under 2 minutes. AI-powered quoting app with real-time Bunnings & Mitre 10 pricing, built for Australian tradies.',
+  description: 'Create professional quotes and invoices in under 2 minutes. AI-powered quoting app with real-time supplier pricing, built for Australian tradies.',
   icons: { icon: '/assets/favicon.png' },
   openGraph: {
     type: 'website',

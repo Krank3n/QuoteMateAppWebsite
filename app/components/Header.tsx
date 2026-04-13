@@ -51,7 +51,10 @@ export default function Header({ homeLinks = false }: HeaderProps) {
             <li role="none"><Link href="/articles" role="menuitem">Articles</Link></li>
           </ul>
 
-          <Link href={`${prefix}#download`} className="btn btn-primary nav-cta">Download App</Link>
+          <div className="nav-cta-group">
+            <Link href="/portal" className="btn btn-secondary nav-cta">Supplier Portal</Link>
+            <Link href={`${prefix}#download`} className="btn btn-primary nav-cta">Download App</Link>
+          </div>
 
           <button
             className={`mobile-menu-toggle${mobileOpen ? ' active' : ''}`}
@@ -78,6 +81,10 @@ export default function Header({ homeLinks = false }: HeaderProps) {
               <li role="none"><Link href={`${prefix}#faq`} role="menuitem" onClick={closeMenu}>FAQ</Link></li>
               <li role="none"><Link href="/articles" role="menuitem" onClick={closeMenu}>Articles</Link></li>
             </ul>
+            <div className="mobile-cta-group">
+              <Link href="/portal" className="btn btn-secondary" onClick={closeMenu}>Supplier Portal</Link>
+              <Link href={`${prefix}#download`} className="btn btn-primary" onClick={closeMenu}>Download App</Link>
+            </div>
           </nav>
         </div>
       )}

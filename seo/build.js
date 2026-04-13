@@ -262,7 +262,7 @@ function generateTradePage(trade) {
     const faqItems = [
         {
             q: `How does QuoteMate help ${trade.name.toLowerCase()}?`,
-            a: `QuoteMate is an AI-powered quoting app that helps ${trade.name.toLowerCase()} create professional quotes in under 2 minutes. Describe any ${trade.keyword.toLowerCase()} job, and the AI suggests materials with real-time pricing from Bunnings and Mitre 10. Send branded PDF quotes via email, SMS, or WhatsApp.`
+            a: `QuoteMate is an AI-powered quoting app that helps ${trade.name.toLowerCase()} create professional quotes in under 2 minutes. Describe any ${trade.keyword.toLowerCase()} job, and the AI suggests materials with real-time pricing from major Australian suppliers. Send branded PDF quotes via email, SMS, or WhatsApp.`
         },
         {
             q: `What ${trade.keyword.toLowerCase()} jobs can I quote with QuoteMate?`,
@@ -335,7 +335,7 @@ ${header()}
                     </div>`).join('')}
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span>Real-time Bunnings &amp; Mitre 10 pricing</span>
+                        <span>Real-time supplier pricing</span>
                     </div>
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -366,7 +366,7 @@ ${header()}
                     </div>
                     <div class="example-result">
                         <span class="example-label">QuoteMate generates:</span>
-                        <p>A complete material list with quantities, real-time Bunnings pricing, your labour rate, GST, and a professional branded PDF — ready to send.</p>
+                        <p>A complete material list with quantities, real-time supplier pricing, your labour rate, GST, and a professional branded PDF — ready to send.</p>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@ function generateTradeCityPage(trade, city) {
     const slug = `quotes-for-${trade.slug}-${city.slug}`;
     const canonical = `${site.url}/pages/${slug}/`;
     const title = `${trade.singular} Quoting App ${city.name} — Quotes for ${trade.name} in ${city.name} ${city.state} | QuoteMate`;
-    const description = `${trade.name} in ${city.name}: create professional ${trade.keyword.toLowerCase()} quotes in under 2 minutes. AI-powered with real-time Bunnings & Mitre 10 pricing. Built for Australian tradies.`;
+    const description = `${trade.name} in ${city.name}: create professional ${trade.keyword.toLowerCase()} quotes in under 2 minutes. AI-powered with real-time supplier pricing. Built for Australian tradies.`;
 
     const html = `${htmlHead({ title, description, canonical })}
 ${header()}
@@ -476,7 +476,7 @@ ${header()}
                     </div>`).join('')}
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span>Real-time Bunnings &amp; Mitre 10 pricing</span>
+                        <span>Real-time supplier pricing</span>
                     </div>
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -607,7 +607,7 @@ ${header()}
                     </div>
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span>Real-time Bunnings &amp; Mitre 10 pricing</span>
+                        <span>Real-time supplier pricing</span>
                     </div>
                     <div class="seo-feature-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -653,7 +653,7 @@ ${header()}
                 ${breadcrumbs([{ label: 'All Trades' }])}
                 <div class="seo-hero-content">
                     <h1 class="seo-hero-title">Quoting Apps for <span class="text-gradient">Every Trade</span></h1>
-                    <p class="seo-hero-subtitle">QuoteMate helps Australian tradies across 24+ trades create professional quotes in under 2 minutes with AI-powered material pricing from Bunnings and Mitre 10.</p>
+                    <p class="seo-hero-subtitle">QuoteMate helps Australian tradies across 24+ trades create professional quotes in under 2 minutes with AI-powered material pricing from major Australian suppliers.</p>
                 </div>
             </div>
         </section>
@@ -798,7 +798,7 @@ ${header()}
                     <section class="guide-section guide-cta-inline">
                         <div class="guide-cta-card">
                             <h2>Skip the Manual Quoting</h2>
-                            <p>QuoteMate does all of this in under 2 minutes. Describe any job, get AI-powered material lists with real-time Bunnings &amp; Mitre 10 pricing, and send a professional PDF quote — all from your phone.</p>
+                            <p>QuoteMate does all of this in under 2 minutes. Describe any job, get AI-powered material lists with real-time supplier pricing, and send a professional PDF quote — all from your phone.</p>
                             <div class="hero-ctas">
                                 <a href="${site.appStoreUrl}" class="btn btn-store">
                                     <svg width="20" height="24" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true"><path d="M16.52 12.46c-.03-3.13 2.55-4.63 2.67-4.71-1.45-2.12-3.72-2.41-4.53-2.45-1.93-.2-3.77 1.14-4.74 1.14-.98 0-2.49-1.11-4.1-1.08-2.11.03-4.06 1.23-5.15 3.12-2.2 3.81-.56 9.45 1.58 12.54 1.05 1.52 2.3 3.22 3.94 3.16 1.58-.06 2.18-1.02 4.09-1.02 1.91 0 2.46 1.02 4.13.99 1.7-.03 2.78-1.55 3.82-3.08 1.2-1.76 1.7-3.47 1.73-3.56-.04-.02-3.31-1.27-3.34-5.05zM13.39 3.51C14.26 2.44 14.85.99 14.7-.5c-1.33.05-2.94.89-3.89 2.01-.86.99-1.6 2.56-1.4 4.07 1.48.12 2.99-.76 3.98-2.07z"/></svg>

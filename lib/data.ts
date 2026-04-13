@@ -80,7 +80,7 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
   return [
     {
       question: `How does QuoteMate help ${trade.name.toLowerCase()}?`,
-      answer: `QuoteMate is an AI-powered quoting app that helps ${trade.name.toLowerCase()} create professional quotes in under 2 minutes. Describe any ${trade.keyword.toLowerCase()} job, and the AI suggests materials with real-time pricing from Bunnings and Mitre 10. Send branded PDF quotes via email, SMS, or WhatsApp.`,
+      answer: `QuoteMate is an AI-powered quoting app that helps ${trade.name.toLowerCase()} create professional quotes in under 2 minutes. Describe any ${trade.keyword.toLowerCase()} job, and the AI suggests materials with real-time pricing from major Australian suppliers. Send branded PDF quotes via email, SMS, or WhatsApp.`,
     },
     {
       question: `What ${trade.keyword.toLowerCase()} jobs can I quote with QuoteMate?`,

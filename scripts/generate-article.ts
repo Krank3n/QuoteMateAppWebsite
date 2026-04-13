@@ -132,7 +132,7 @@ Requirements:
 - Exactly 5 sections covering: what to include in the quote, typical costs, materials pricing, labour tips, common mistakes
 - Exactly 6 practical tips
 - All prices in AUD
-- Mention Bunnings and Mitre 10 where relevant
+- Mention major Australian suppliers where relevant
 - Professional but approachable tone`;
 
   const response = await ai.models.generateContent({
