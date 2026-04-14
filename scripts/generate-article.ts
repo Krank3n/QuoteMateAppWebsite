@@ -18,7 +18,7 @@ import { GoogleGenAI } from '@google/genai';
 const DATA_PATH = path.join(__dirname, '..', 'seo', 'data.json');
 const IMAGES_DIR = path.join(__dirname, '..', 'public', 'assets', 'articles');
 const GEMINI_MODEL = 'gemini-2.5-flash';
-const IMAGE_MODEL = 'gemini-2.0-flash-preview-image-generation';
+const IMAGE_MODEL = 'gemini-3.1-flash-image-preview';
 
 // ─── Topic Pool ─────────────────────────────────────────────────────────────
 // Each topic maps to a trade slug and optionally a related template slug

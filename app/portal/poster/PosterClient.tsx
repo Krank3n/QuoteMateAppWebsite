@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../lib/firebase';
 import { getSupplier, type SupplierProfile } from '../../../lib/supplierService';
 import styles from './poster.module.css';
+import { PortalLoader } from '../PortalLoader';
 
 export function PosterClient() {
   const [supplier, setSupplier] = useState<SupplierProfile | null>(null);
@@ -71,7 +72,7 @@ export function PosterClient() {
   }, [router]);
 
   if (loading) {
-    return <div className={styles.loadingState}>Loading poster...</div>;
+    return <PortalLoader message="Loading poster..." />;
   }
 
   if (error || !supplier) {

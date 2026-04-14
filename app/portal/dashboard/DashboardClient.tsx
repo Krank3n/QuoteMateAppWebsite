@@ -11,12 +11,19 @@ import {
   createOrUpdateSupplier,
   savePriceItems,
   deletePriceItem,
+  bulkUpdatePriceItems,
   extractPriceList,
   uploadSupplierLogo,
+  startXeroConnect,
+  getXeroStatus,
+  disconnectXero,
+  importXeroItems,
   type SupplierProfile,
   type ExtractedItem,
+  type XeroConnectionStatus,
 } from '../../../lib/supplierService';
 import styles from '../portal.module.css';
+import { PortalLoader } from '../PortalLoader';
 
 export function DashboardClient() {
   const [supplier, setSupplier] = useState<SupplierProfile | null>(null);
@@ -34,6 +41,18 @@ export function DashboardClient() {
   const [uploadError, setUploadError] = useState('');
   const [logoUploading, setLogoUploading] = useState(false);
   const [logoError, setLogoError] = useState('');
+
+  // Bulk edit state
+  const [bulkEditing, setBulkEditing] = useState(false);
+  const [bulkDrafts, setBulkDrafts] = useState<Record<string, Partial<ExtractedItem>>>({});
+  const [bulkSaving, setBulkSaving] = useState(false);
+  const [bulkError, setBulkError] = useState('');
+
+  // Xero state
+  const [xeroStatus, setXeroStatus] = useState<XeroConnectionStatus>({ connected: false });
+  const [xeroBusy, setXeroBusy] = useState(false);
+  const [xeroError, setXeroError] = useState('');
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -59,12 +78,14 @@ export function DashboardClient() {
     if (!supplierId) return;
     setLoading(true);
     try {
-      const [sup, priceItems] = await Promise.all([
+      const [sup, priceItems, xero] = await Promise.all([
         getSupplier(supplierId),
         getPriceItems(supplierId),
+        getXeroStatus(supplierId).catch(() => ({ connected: false } as XeroConnectionStatus)),
       ]);
       setSupplier(sup);
       setItems(priceItems);
+      setXeroStatus(xero);
       if (sup) {
         setEditName(sup.name);
         setEditPhone(sup.phone || '');
@@ -78,6 +99,114 @@ export function DashboardClient() {
       setLoading(false);
     }
   };
+
+  // --- Bulk edit handlers ---
+  const startBulkEdit = () => {
+    setBulkEditing(true);
+    setBulkDrafts({});
+    setBulkError('');
+  };
+
+  const cancelBulkEdit = () => {
+    setBulkEditing(false);
+    setBulkDrafts({});
+    setBulkError('');
+  };
+
+  const updateDraft = (id: string, field: keyof ExtractedItem, value: unknown) => {
+    setBulkDrafts((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], [field]: value },
+    }));
+  };
+
+  const getDraftValue = <K extends keyof ExtractedItem>(
+    item: ExtractedItem & { id: string },
+    field: K
+  ): ExtractedItem[K] => {
+    const draft = bulkDrafts[item.id];
+    if (draft && field in draft) return draft[field] as ExtractedItem[K];
+    return item[field];
+  };
+
+  const saveBulkEdits = async () => {
+    const changeEntries = Object.entries(bulkDrafts).filter(
+      ([, changes]) => Object.keys(changes).length > 0
+    );
+    if (changeEntries.length === 0) {
+      setBulkEditing(false);
+      return;
+    }
+    setBulkSaving(true);
+    setBulkError('');
+    try {
+      await bulkUpdatePriceItems(
+        supplierId,
+        changeEntries.map(([id, changes]) => ({ id, changes }))
+      );
+      // Reflect changes locally without a full reload.
+      setItems((prev) =>
+        prev.map((item) => {
+          const draft = bulkDrafts[item.id];
+          if (!draft) return item;
+          return { ...item, ...draft };
+        })
+      );
+      setBulkDrafts({});
+      setBulkEditing(false);
+    } catch (err: unknown) {
+      setBulkError(err instanceof Error ? err.message : 'Failed to save changes');
+    } finally {
+      setBulkSaving(false);
+    }
+  };
+
+  // --- Xero handlers ---
+  const handleConnectXero = async () => {
+    setXeroBusy(true);
+    setXeroError('');
+    try {
+      const authUrl = await startXeroConnect(supplierId);
+      window.location.href = authUrl;
+    } catch (err: unknown) {
+      setXeroError(err instanceof Error ? err.message : 'Failed to connect to Xero');
+      setXeroBusy(false);
+    }
+  };
+
+  const handleDisconnectXero = async () => {
+    if (!confirm('Disconnect your Xero account? Your imported items will remain, but future syncs will stop.')) return;
+    setXeroBusy(true);
+    setXeroError('');
+    try {
+      await disconnectXero(supplierId);
+      setXeroStatus({ connected: false });
+    } catch (err: unknown) {
+      setXeroError(err instanceof Error ? err.message : 'Failed to disconnect');
+    } finally {
+      setXeroBusy(false);
+    }
+  };
+
+  const handleImportFromXero = async () => {
+    setXeroBusy(true);
+    setXeroError('');
+    try {
+      const result = await importXeroItems(supplierId);
+      sessionStorage.setItem('extractionData', JSON.stringify({
+        ...result,
+        supplierName: supplier?.name || result.supplierName,
+      }));
+      router.push('/portal/review');
+    } catch (err: unknown) {
+      setXeroError(err instanceof Error ? err.message : 'Failed to import items from Xero');
+      setXeroBusy(false);
+    }
+  };
+
+  const pendingBulkChanges = Object.values(bulkDrafts).filter(
+    (d) => Object.keys(d).length > 0
+  ).length;
 
   const handleSaveProfile = async () => {
     await createOrUpdateSupplier(supplierId, {
@@ -160,7 +289,7 @@ export function DashboardClient() {
   };
 
   if (checkingAuth || loading) {
-    return <div className={styles.loading}>Loading dashboard...</div>;
+    return <PortalLoader message="Loading dashboard..." />;
   }
 
   return (
@@ -339,50 +468,181 @@ export function DashboardClient() {
         </button>
       </div>
 
+      {/* Xero Integration */}
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <h2 className={styles.cardTitle}>Xero Integration</h2>
+          {xeroStatus.connected && (
+            <span style={{ fontSize: 12, color: '#22c55e', fontWeight: 600 }}>● Connected</span>
+          )}
+        </div>
+
+        {xeroStatus.connected ? (
+          <>
+            <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', marginBottom: 16, lineHeight: 1.5 }}>
+              Synced with <strong style={{ color: 'var(--color-text-primary)' }}>{xeroStatus.tenantName || 'your Xero organisation'}</strong>.
+              Import your inventory items as priced items — they&apos;ll flow through the review page so you can tidy them up before saving.
+            </p>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <button
+                onClick={handleImportFromXero}
+                disabled={xeroBusy}
+                className={styles.button}
+                style={{ width: 'auto' }}
+              >
+                {xeroBusy ? 'Importing...' : 'Import Items from Xero'}
+              </button>
+              <button
+                onClick={handleDisconnectXero}
+                disabled={xeroBusy}
+                className={styles.buttonSecondary}
+                style={{ width: 'auto' }}
+              >
+                Disconnect
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', marginBottom: 16, lineHeight: 1.5 }}>
+              Connect your Xero account to sync your inventory items automatically. No more manual data entry.
+            </p>
+            <button
+              onClick={handleConnectXero}
+              disabled={xeroBusy}
+              className={styles.button}
+              style={{ width: 'auto', background: '#13B5EA' }}
+            >
+              {xeroBusy ? 'Connecting...' : 'Connect to Xero'}
+            </button>
+          </>
+        )}
+
+        {xeroError && <div className={styles.error} style={{ marginTop: 12 }}>{xeroError}</div>}
+      </div>
+
       {/* Price List Section */}
       <div className={styles.card}>
         <div className={styles.cardHeader}>
           <h2 className={styles.cardTitle}>Price List ({items.length} items)</h2>
-          <div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*,.pdf"
-              multiple
-              onChange={handleUploadMore}
-              style={{ display: 'none' }}
-            />
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploading}
-              className={styles.uploadBtn}
-            >
-              {uploading ? 'Uploading...' : '+ Upload More'}
-            </button>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {!bulkEditing && items.length > 0 && (
+              <button onClick={startBulkEdit} className={styles.editBtn}>
+                Bulk Edit
+              </button>
+            )}
+            {!bulkEditing && (
+              <>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*,.pdf"
+                  multiple
+                  onChange={handleUploadMore}
+                  style={{ display: 'none' }}
+                />
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  className={styles.uploadBtn}
+                >
+                  {uploading ? 'Uploading...' : '+ Upload More'}
+                </button>
+              </>
+            )}
           </div>
         </div>
 
         {uploadError && <div className={styles.error}>{uploadError}</div>}
+        {bulkError && <div className={styles.error}>{bulkError}</div>}
 
-        <div>
-          {items.map((item) => (
-            <div key={item.id} className={styles.itemRow}>
-              <div className={styles.itemName}>{item.name}</div>
-              <div className={styles.itemPrice}>
-                {item.price != null ? `$${item.price.toFixed(2)}` : '—'}
-                <span className={styles.itemUnit}>/{item.unit}</span>
+        {bulkEditing ? (
+          <>
+            <div className={styles.bulkGrid}>
+              <div className={styles.bulkHeaderRow}>
+                <div className={styles.bulkColName}>Product Name</div>
+                <div className={styles.bulkColPrice}>Price ($)</div>
+                <div className={styles.bulkColUnit}>Unit</div>
+                <div className={styles.bulkColActions} />
               </div>
-              <button onClick={() => handleDeleteItem(item.id)} className={styles.deleteBtn}>
-                &times;
-              </button>
+              {items.map((item) => (
+                <div key={item.id} className={styles.bulkRow}>
+                  <input
+                    type="text"
+                    value={getDraftValue(item, 'name') as string}
+                    onChange={(e) => updateDraft(item.id, 'name', e.target.value)}
+                    className={styles.bulkInput}
+                  />
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={(getDraftValue(item, 'price') as number | null) ?? ''}
+                    onChange={(e) =>
+                      updateDraft(item.id, 'price', e.target.value ? parseFloat(e.target.value) : null)
+                    }
+                    className={styles.bulkInput}
+                  />
+                  <select
+                    value={getDraftValue(item, 'unit') as string}
+                    onChange={(e) => updateDraft(item.id, 'unit', e.target.value)}
+                    className={styles.bulkInput}
+                  >
+                    {['each', 'm', 'm²', 'm³', 'L', 'kg', 'box', 'pack'].map((u) => (
+                      <option key={u} value={u}>{u}</option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={() => handleDeleteItem(item.id)}
+                    className={styles.deleteBtn}
+                    title="Delete item"
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
-          {items.length === 0 && (
-            <div className={styles.emptyItems}>
-              No items yet. Upload a price list to get started.
+            <div className={styles.bulkActionBar}>
+              <span style={{ fontSize: 13, color: 'var(--color-text-tertiary)' }}>
+                {pendingBulkChanges > 0
+                  ? `${pendingBulkChanges} item${pendingBulkChanges === 1 ? '' : 's'} changed`
+                  : 'No changes yet'}
+              </span>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button onClick={cancelBulkEdit} className={styles.buttonSecondary} style={{ width: 'auto' }}>
+                  Cancel
+                </button>
+                <button
+                  onClick={saveBulkEdits}
+                  disabled={bulkSaving || pendingBulkChanges === 0}
+                  className={styles.button}
+                  style={{ width: 'auto' }}
+                >
+                  {bulkSaving ? 'Saving...' : `Save Changes`}
+                </button>
+              </div>
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <div>
+            {items.map((item) => (
+              <div key={item.id} className={styles.itemRow}>
+                <div className={styles.itemName}>{item.name}</div>
+                <div className={styles.itemPrice}>
+                  {item.price != null ? `$${item.price.toFixed(2)}` : '—'}
+                  <span className={styles.itemUnit}>/{item.unit}</span>
+                </div>
+                <button onClick={() => handleDeleteItem(item.id)} className={styles.deleteBtn}>
+                  &times;
+                </button>
+              </div>
+            ))}
+            {items.length === 0 && (
+              <div className={styles.emptyItems}>
+                No items yet. Upload a price list to get started.
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

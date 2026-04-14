@@ -20,6 +20,7 @@ import {
   type ExtractionResult,
 } from '../../../lib/supplierService';
 import styles from '../portal.module.css';
+import { PortalLoader } from '../PortalLoader';
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -58,7 +59,7 @@ export function SignUpClient() {
   }, [router]);
 
   if (checkingAuth) {
-    return <div className={styles.loading}>Loading...</div>;
+    return <PortalLoader />;
   }
 
   /** Save extraction data as a supplier profile after auth */

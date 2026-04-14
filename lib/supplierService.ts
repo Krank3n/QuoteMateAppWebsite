@@ -165,6 +165,92 @@ export async function deletePriceItem(supplierId: string, itemId: string): Promi
   await deleteDoc(doc(db, `suppliers/${supplierId}/priceItems`, itemId));
 }
 
+/**
+ * Update a single existing price item in-place (keeps the same doc id).
+ */
+export async function updatePriceItem(
+  supplierId: string,
+  itemId: string,
+  updates: Partial<ExtractedItem>
+): Promise<void> {
+  const ref = doc(db, `suppliers/${supplierId}/priceItems`, itemId);
+  await setDoc(
+    ref,
+    { ...stripUndefined(updates as Record<string, unknown>), updatedAt: serverTimestamp() },
+    { merge: true }
+  );
+}
+
+/**
+ * Batch-update multiple price items. Used by the dashboard bulk edit mode.
+ */
+export async function bulkUpdatePriceItems(
+  supplierId: string,
+  updates: { id: string; changes: Partial<ExtractedItem> }[]
+): Promise<void> {
+  await Promise.all(
+    updates.map(({ id, changes }) => updatePriceItem(supplierId, id, changes))
+  );
+}
+
+// --- Xero integration ---
+
+export interface XeroConnectionStatus {
+  connected: boolean;
+  tenantName?: string;
+  connectedAt?: string;
+}
+
+/**
+ * Get the Xero OAuth URL to begin the portal connection flow.
+ * Backend: returns { authUrl } after generating a state tied to the supplier.
+ */
+export async function startXeroConnect(supplierId: string): Promise<string> {
+  const res = await fetch(`${FUNCTIONS_BASE}/startXeroConnectPortal`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ supplierId, redirectUri: `${window.location.origin}/portal/xero/callback` }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Failed to start Xero connect' }));
+    throw new Error(err.error || `HTTP ${res.status}`);
+  }
+  const data = await res.json();
+  return data.authUrl as string;
+}
+
+export async function getXeroStatus(supplierId: string): Promise<XeroConnectionStatus> {
+  const res = await fetch(`${FUNCTIONS_BASE}/getXeroStatus?supplierId=${encodeURIComponent(supplierId)}`);
+  if (!res.ok) return { connected: false };
+  return res.json();
+}
+
+export async function disconnectXero(supplierId: string): Promise<void> {
+  await fetch(`${FUNCTIONS_BASE}/disconnectXero`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ supplierId }),
+  });
+}
+
+/**
+ * Pull inventory items from the supplier's connected Xero tenant and return
+ * them in the same shape as AI-extracted items, so they can flow through the
+ * existing review page.
+ */
+export async function importXeroItems(supplierId: string): Promise<ExtractionResult> {
+  const res = await fetch(`${FUNCTIONS_BASE}/importXeroItems`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ supplierId }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Failed to import from Xero' }));
+    throw new Error(err.error || `HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
 export async function setSupplierClaim(supplierId: string): Promise<void> {
   const callable = httpsCallable(functions, 'setSupplierClaim');
   await callable({ supplierId });
