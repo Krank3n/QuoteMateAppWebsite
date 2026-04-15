@@ -9,6 +9,7 @@ import ContactForm from './components/ContactForm';
 import WalkthroughVideo from './components/WalkthroughVideo';
 import InstallSheet from './components/InstallSheet';
 import FeatureShowcase from './components/FeatureShowcase';
+import IntegrationsBanner from './components/IntegrationsBanner';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -92,6 +93,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <IntegrationsBanner />
 
         {/* Features Section */}
         <section className="features" id="features">
