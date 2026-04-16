@@ -163,9 +163,24 @@ export default function HomePage() {
             'Email quotes directly with a pre-written professional email and your quote attached',
             'Quote acceptance via email \u2014 customers accept or decline straight from their inbox',
             'Invoice status tracking \u2014 draft, sent, paid, partial, overdue \u2014 know where every dollar is',
-            'Partial payment support \u2014 record deposits and progress payments',
-            'Multiple payment methods \u2014 bank transfer, PayID, BPAY, PayPal, card, cash, cheque',
-            'Payment terms \u2014 due on receipt, Net 7/14/30, or custom',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="get-paid"
+          title="Get Paid On-Site"
+          titleAccent="or Online"
+          subtitle="Take payment however your customer wants to pay &mdash; tap their card on-site, send a payment link, or add your bank details to the invoice."
+          image="/assets/get-paid-onsite-online.svg"
+          imageAlt="Get paid on-site with tap-to-pay or online with payment links"
+          reversed
+          features={[
+            'Square tap-to-pay \u2014 take card payments on-site with just your phone, no extra hardware',
+            'Online payment links \u2014 customers pay from the invoice with one tap',
+            'Bank transfer, PayID, BPAY \u2014 add your details and let customers pay their way',
+            'PayPal, cash, cheque \u2014 every payment method Australian tradies actually use',
+            'Deposit collection \u2014 request upfront payment before starting the job',
+            'Payment tracking \u2014 see what\u2019s paid, partial, and overdue at a glance',
           ]}
         />
 

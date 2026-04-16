@@ -582,6 +582,18 @@ ul {
     background: var(--color-bg-dark);
 }
 
+.feature-showcase-image {
+    margin-bottom: 48px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.feature-showcase-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .feature-showcase-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
