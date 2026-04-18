@@ -34,16 +34,14 @@ export function usePageMeta(): PageMeta {
 }
 
 /**
- * Pages call this to populate the persistent topbar. Updates on every render so
- * dynamic values (search value, per-state actions) stay in sync without
- * forcing pages to memoize their props.
+ * Pages call this to populate the persistent topbar. Effect runs after every
+ * render (no deps) so dynamic props (search value, stateful actions) propagate.
+ * No cleanup — the next page's render will overwrite; a blank trailing state
+ * between pages caused noticeable flicker/navigation weirdness.
  */
 export function useSetPageMeta(meta: PageMeta): void {
   const ctx = useContext(PageMetaContext);
   useEffect(() => {
     ctx?.setMeta(meta);
-    return () => ctx?.setMeta({});
-    // Intentionally re-run on every prop change — search.value typing must propagate.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [meta.title, meta.breadcrumb, meta.search?.value, meta.search?.placeholder, meta.search?.onChange, meta.actions]);
+  });
 }

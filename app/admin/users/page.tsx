@@ -551,6 +551,16 @@ function UserDetail({
               Every send is logged, tracked for opens/clicks, and appears in this user's timeline.
             </div>
           </div>
+          <UserStatusCard
+            uid={uid}
+            email={profile?.email || business?.email || null}
+            isPro={!!subscription?.isPro}
+            platform={subscription?.platform || null}
+            currentPeriodEnd={subscription?.currentPeriodEnd || null}
+            disabled={!!profile?.disabled}
+            onChanged={onChanged}
+            showToast={showToast}
+          />
         </aside>
       </div>
     </>
@@ -809,6 +819,175 @@ function CallLogger({ uid, onLogged, showToast }: any) {
             <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={() => setOpen(false)}>Cancel</button>
           </div>
         </>
+      )}
+    </div>
+  );
+}
+
+function UserStatusCard({
+  uid, email, isPro, platform, currentPeriodEnd, disabled, onChanged, showToast,
+}: {
+  uid: string;
+  email: string | null;
+  isPro: boolean;
+  platform: string | null;
+  currentPeriodEnd: number | null;
+  disabled: boolean;
+  onChanged: () => void;
+  showToast: (msg: string, error?: boolean) => void;
+}) {
+  const router = useRouter();
+  const [working, setWorking] = useState<string | null>(null);
+  const [grantMonths, setGrantMonths] = useState(1);
+  const [deleteMode, setDeleteMode] = useState(false);
+  const [deleteEmail, setDeleteEmail] = useState('');
+  const [wipeData, setWipeData] = useState(true);
+
+  const run = async (label: string, fn: () => Promise<any>, successMsg: string) => {
+    setWorking(label);
+    try {
+      await fn();
+      showToast(successMsg);
+      onChanged();
+    } catch (e: any) {
+      showToast(e?.message || 'Failed', true);
+    } finally {
+      setWorking(null);
+    }
+  };
+
+  return (
+    <div className={styles.railCard}>
+      <div className={styles.railTitle}>Subscription control</div>
+      <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginBottom: 10 }}>
+        {isPro
+          ? `Pro · ${platform || 'unknown'}${currentPeriodEnd ? ` · until ${fmtDate(currentPeriodEnd)}` : ''}`
+          : 'Not Pro'}
+      </div>
+
+      {!isPro && (
+        <>
+          <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
+            {[1, 3, 6, 12].map((n) => (
+              <button
+                key={n}
+                className={styles.chip}
+                onClick={() => setGrantMonths(n)}
+                style={grantMonths === n ? {
+                  background: 'rgba(249, 115, 22, 0.15)',
+                  color: 'var(--color-accent-light)',
+                  borderColor: 'rgba(249, 115, 22, 0.3)',
+                } : undefined}
+              >
+                {n}mo
+              </button>
+            ))}
+          </div>
+          <button
+            className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}
+            onClick={() => {
+              if (!confirm(`Grant Pro for ${grantMonths} month${grantMonths === 1 ? '' : 's'}?`)) return;
+              run('grant', () => api.grantPro({ uid, months: grantMonths }), `Pro granted for ${grantMonths}mo`);
+            }}
+            disabled={!!working}
+            style={{ width: '100%' }}
+          >
+            {working === 'grant' ? 'Granting…' : 'Grant Pro'}
+          </button>
+        </>
+      )}
+
+      {isPro && (
+        <button
+          className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`}
+          onClick={() => {
+            if (!confirm('Revoke Pro immediately? Their app will fall back to trial/free quotas.')) return;
+            run('revoke', () => api.revokePro({ uid }), 'Pro revoked');
+          }}
+          disabled={!!working}
+          style={{ width: '100%' }}
+        >
+          {working === 'revoke' ? 'Revoking…' : 'Revoke Pro'}
+        </button>
+      )}
+
+      <div style={{ margin: '14px 0', borderTop: '1px solid rgba(255,255,255,0.06)' }} />
+
+      <div className={styles.railTitle} style={{ marginBottom: 8 }}>Account</div>
+      <button
+        className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}
+        onClick={() => {
+          const next = !disabled;
+          if (!confirm(`${next ? 'Disable' : 'Enable'} sign-in for this account?`)) return;
+          run(next ? 'disable' : 'enable', () => api.setUserDisabled({ uid, disabled: next }), next ? 'Account disabled' : 'Account enabled');
+        }}
+        disabled={!!working}
+        style={{ width: '100%', marginBottom: 8 }}
+      >
+        {disabled ? (working === 'enable' ? 'Enabling…' : 'Enable sign-in') : (working === 'disable' ? 'Disabling…' : 'Disable sign-in')}
+      </button>
+
+      {!deleteMode ? (
+        <button
+          className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`}
+          onClick={() => setDeleteMode(true)}
+          disabled={!!working}
+          style={{ width: '100%' }}
+        >
+          Delete account…
+        </button>
+      ) : (
+        <div style={{
+          padding: 10,
+          background: 'rgba(239, 68, 68, 0.08)',
+          border: '1px solid rgba(239, 68, 68, 0.25)',
+          borderRadius: 10,
+        }}>
+          <div style={{ fontSize: 12, color: '#fca5a5', marginBottom: 8, fontWeight: 600 }}>
+            Hard delete. This cannot be undone.
+          </div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--color-text-secondary)', marginBottom: 8 }}>
+            <input type="checkbox" checked={wipeData} onChange={(e) => setWipeData(e.target.checked)} />
+            Also wipe Firestore data (quotes, invoices, settings)
+          </label>
+          <input
+            className={styles.input}
+            placeholder={`Type ${email || 'email'} to confirm`}
+            value={deleteEmail}
+            onChange={(e) => setDeleteEmail(e.target.value)}
+            style={{ marginBottom: 8 }}
+          />
+          <div style={{ display: 'flex', gap: 6 }}>
+            <button
+              className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`}
+              onClick={async () => {
+                if (!email) { showToast('No email to confirm against', true); return; }
+                if (deleteEmail.trim().toLowerCase() !== email.toLowerCase()) { showToast('Email does not match', true); return; }
+                setWorking('delete');
+                try {
+                  await api.deleteUser({ uid, wipeData, confirmEmail: deleteEmail.trim() });
+                  showToast('User deleted');
+                  router.replace('/admin/users');
+                } catch (e: any) {
+                  showToast(e?.message || 'Delete failed', true);
+                } finally {
+                  setWorking(null);
+                }
+              }}
+              disabled={!!working || deleteEmail.trim().toLowerCase() !== (email || '').toLowerCase()}
+              style={{ flex: 1 }}
+            >
+              {working === 'delete' ? 'Deleting…' : 'Delete permanently'}
+            </button>
+            <button
+              className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+              onClick={() => { setDeleteMode(false); setDeleteEmail(''); }}
+              disabled={!!working}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

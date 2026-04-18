@@ -43,6 +43,10 @@ export const api = {
   metricsSeries: call<{ days?: number }>('adminMetricsSeries'),
   listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
   emailHealth: call('adminEmailHealth'),
+  grantPro: call<{ uid: string; months?: number }>('adminGrantPro'),
+  revokePro: call<{ uid: string }>('adminRevokePro'),
+  setUserDisabled: call<{ uid: string; disabled: boolean }>('adminSetUserDisabled'),
+  deleteUser: call<{ uid: string; wipeData?: boolean; confirmEmail: string }>('adminDeleteUser'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {
