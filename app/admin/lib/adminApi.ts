@@ -35,7 +35,25 @@ export const api = {
   replyToFeedback: call<{ feedbackId: string; body: string; subject?: string }>('adminReplyToFeedback'),
   listSubscriptions: call('adminListSubscriptions'),
   listAffiliates: call('adminListAffiliates'),
+  exportCsv: call<{ entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates' }>('adminExportCsv'),
+  listSegments: call('adminListSegments'),
+  saveSegment: call<{ id?: string; name: string; segment: string; segmentParams?: Record<string, unknown>; subject: string; body: string }>('adminSaveSegment'),
+  deleteSegment: call<{ id: string }>('adminDeleteSegment'),
 };
+
+export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {
+  const res: any = await api.exportCsv({ entity });
+  if (!res?.csv) throw new Error('Empty CSV response');
+  const blob = new Blob([res.csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = res.filename || `${entity}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
 
 export function fmtRelative(ms: number | null | undefined): string {
   if (!ms) return '—';

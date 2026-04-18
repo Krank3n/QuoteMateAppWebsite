@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
-import { api, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
+import { api, downloadCsv, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
 import {
   IconEmail,
   IconPhone,
@@ -149,11 +149,24 @@ function UsersPageInner() {
     setTimeout(() => setToast(null), 3000);
   };
 
+  const [exporting, setExporting] = useState(false);
+  const doExport = async () => {
+    setExporting(true);
+    try { await downloadCsv('users'); showToast('Exported CSV'); }
+    catch (e: any) { showToast(e?.message || 'Export failed', true); }
+    finally { setExporting(false); }
+  };
+
   return (
     <AdminShell
       title="Users"
       breadcrumb={`${total.toLocaleString()} tradies in your base`}
       search={{ value: search, onChange: setSearch, placeholder: 'Search by name, email, business, phone…' }}
+      actions={
+        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+          {exporting ? 'Exporting…' : 'Export CSV'}
+        </button>
+      }
     >
       <div className={styles.splitView}>
         <div className={styles.splitList}>
@@ -440,7 +453,13 @@ function Timeline({ quotes, invoices, emails, notes, calls, feedback }: any) {
   }
   for (const e of emails) {
     const t = ts(e.sentAt);
-    if (t) items.push({ at: t, kind: 'email', title: `Email: ${e.subject}`, sub: e.category });
+    if (!t) continue;
+    const opened = ts(e.openedAt);
+    const openCount = e.openCount || 0;
+    const sub = opened
+      ? `${e.category} · opened ${fmtRelative(opened)}${openCount > 1 ? ` (${openCount}×)` : ''}`
+      : e.category;
+    items.push({ at: t, kind: 'email', title: `Email: ${e.subject}`, sub });
   }
   for (const n of notes) {
     const t = ts(n.createdAt);

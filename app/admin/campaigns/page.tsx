@@ -1,10 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
-import { api } from '../lib/adminApi';
+import { api, fmtRelative } from '../lib/adminApi';
 import { IconSend, IconCampaign } from '../components/icons';
+
+interface SavedSegment {
+  id: string;
+  name: string;
+  segment: string;
+  segmentParams?: Record<string, unknown>;
+  subject: string;
+  body: string;
+  updatedAt: number | null;
+}
 
 const SEGMENTS: Array<{ id: string; label: string; hint: string; needsSupplier?: boolean }> = [
   { id: 'all', label: 'All users', hint: 'Every account in the system' },
@@ -25,6 +35,63 @@ export default function CampaignsPage() {
   const [working, setWorking] = useState(false);
   const [result, setResult] = useState<{ sent: number; failed: number; total: number } | null>(null);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
+  const [saved, setSaved] = useState<SavedSegment[]>([]);
+  const [loadedId, setLoadedId] = useState<string | null>(null);
+  const [segmentName, setSegmentName] = useState('');
+
+  useEffect(() => {
+    api.listSegments({}).then((r: any) => setSaved(r?.segments || [])).catch(() => {});
+  }, []);
+
+  const loadSaved = (s: SavedSegment) => {
+    setSegment(s.segment);
+    setSupplierId(s.segmentParams?.supplierId ? String(s.segmentParams.supplierId) : '');
+    setSubject(s.subject);
+    setBody(s.body);
+    setSegmentName(s.name);
+    setLoadedId(s.id);
+    setDryRunCount(null);
+    setResult(null);
+    showToast(`Loaded "${s.name}"`);
+  };
+
+  const showToast = (msg: string, error = false) => {
+    setToast({ msg, error });
+    setTimeout(() => setToast(null), 2500);
+  };
+
+  const saveSegment = async () => {
+    const name = segmentName.trim();
+    if (!name) { showToast('Give this segment a name', true); return; }
+    try {
+      const r: any = await api.saveSegment({
+        id: loadedId || undefined,
+        name,
+        segment,
+        segmentParams: { supplierId: supplierId.trim() },
+        subject: subject.trim(),
+        body,
+      });
+      setLoadedId(r.id);
+      const list: any = await api.listSegments({});
+      setSaved(list?.segments || []);
+      showToast(`Saved "${name}"`);
+    } catch (e: any) {
+      showToast(e?.message || 'Save failed', true);
+    }
+  };
+
+  const deleteSaved = async (s: SavedSegment) => {
+    if (!confirm(`Delete saved segment "${s.name}"?`)) return;
+    try {
+      await api.deleteSegment({ id: s.id });
+      setSaved((prev) => prev.filter((x) => x.id !== s.id));
+      if (loadedId === s.id) setLoadedId(null);
+      showToast(`Deleted "${s.name}"`);
+    } catch (e: any) {
+      showToast(e?.message || 'Delete failed', true);
+    }
+  };
 
   const chosen = SEGMENTS.find((s) => s.id === segment)!;
   const canSend = subject.trim() && body.trim() && (!chosen.needsSupplier || supplierId.trim());
@@ -125,7 +192,17 @@ export default function CampaignsPage() {
               onChange={(e) => setBody(e.target.value)}
               style={{ minHeight: 260 }}
             />
-            <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+            <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
+              <input
+                className={styles.input}
+                placeholder={loadedId ? 'Segment name (overwrites)' : 'Name to save…'}
+                value={segmentName}
+                onChange={(e) => setSegmentName(e.target.value)}
+                style={{ maxWidth: 220 }}
+              />
+              <button className={`${styles.btn} ${styles.btnSecondary}`} onClick={saveSegment} disabled={!segmentName.trim()}>
+                {loadedId ? 'Update saved' : 'Save segment'}
+              </button>
               <button className={`${styles.btn} ${styles.btnSecondary}`} onClick={dryRun} disabled={working}>
                 Count recipients
               </button>
@@ -173,11 +250,67 @@ export default function CampaignsPage() {
             </div>
           </div>
           <div className={styles.card} style={{ marginTop: 16 }}>
+            <div className={styles.railTitle}>Saved segments</div>
+            {saved.length === 0 ? (
+              <div style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>
+                Save the current segment + draft for one-click reuse.
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {saved.map((s) => {
+                  const on = loadedId === s.id;
+                  return (
+                    <div
+                      key={s.id}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        padding: 8,
+                        borderRadius: 8,
+                        background: on ? 'rgba(249, 115, 22, 0.08)' : 'rgba(0, 0, 0, 0.15)',
+                        border: on ? '1px solid rgba(249, 115, 22, 0.25)' : '1px solid rgba(255, 255, 255, 0.04)',
+                      }}
+                    >
+                      <button
+                        onClick={() => loadSaved(s)}
+                        style={{
+                          flex: 1,
+                          background: 'none',
+                          border: 'none',
+                          color: 'inherit',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          padding: 0,
+                          fontFamily: 'inherit',
+                        }}
+                      >
+                        <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--color-text-primary)' }}>{s.name}</div>
+                        <div style={{ fontSize: 11, color: 'var(--color-text-secondary)' }}>
+                          {s.segment} · {fmtRelative(s.updatedAt)}
+                        </div>
+                      </button>
+                      <button
+                        className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+                        onClick={() => deleteSaved(s)}
+                        title="Delete"
+                        style={{ padding: '3px 6px' }}
+                      >
+                        ×
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className={styles.card} style={{ marginTop: 16 }}>
             <div className={styles.railTitle}>Tips</div>
             <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
               <li>Always count recipients before sending.</li>
               <li>Keep subject under 60 chars for better preview.</li>
               <li>Respects per-user marketing opt-out.</li>
+              <li>Tracking pixel logs opens to the user's email history.</li>
               <li>Every send is logged to adminAuditLog.</li>
             </ul>
           </div>

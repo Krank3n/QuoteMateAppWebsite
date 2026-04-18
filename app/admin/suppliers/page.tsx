@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
-import { api, fmtDate, fmtRelative, initials } from '../lib/adminApi';
+import { api, downloadCsv, fmtDate, fmtRelative, initials } from '../lib/adminApi';
 import { IconEmail, IconUsers, IconTag, IconSend, IconSupplier, IconExternal } from '../components/icons';
 
 interface SupplierRow {
@@ -96,11 +96,24 @@ function SuppliersPageInner() {
     setTimeout(() => setToast(null), 3000);
   };
 
+  const [exporting, setExporting] = useState(false);
+  const doExport = async () => {
+    setExporting(true);
+    try { await downloadCsv('suppliers'); showToast('Exported CSV'); }
+    catch (e: any) { showToast(e?.message || 'Export failed', true); }
+    finally { setExporting(false); }
+  };
+
   return (
     <AdminShell
       title="Suppliers"
       breadcrumb={`${suppliers.length} supplier profiles on QuoteMate`}
       search={{ value: search, onChange: setSearch, placeholder: 'Search suppliers…' }}
+      actions={
+        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+          {exporting ? 'Exporting…' : 'Export CSV'}
+        </button>
+      }
     >
       <div className={styles.splitView}>
         <div className={styles.splitList}>

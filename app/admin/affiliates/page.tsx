@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
-import { api, fmtDate, initials } from '../lib/adminApi';
+import { api, downloadCsv, fmtDate, initials } from '../lib/adminApi';
 import { IconAffiliate, IconExternal } from '../components/icons';
 
 interface Affiliate {
@@ -58,11 +58,24 @@ export default function AffiliatesPage() {
 
   const totals = data?.totals || { affiliates: 0, referrals: 0, converted: 0, totalEarnings: 0, pending: 0, paid: 0 };
 
+  const [exporting, setExporting] = useState(false);
+  const doExport = async () => {
+    setExporting(true);
+    try { await downloadCsv('affiliates'); }
+    catch (e) { console.error(e); }
+    finally { setExporting(false); }
+  };
+
   return (
     <AdminShell
       title="Affiliates"
       breadcrumb={`${totals.affiliates} affiliates earning commission`}
       search={{ value: search, onChange: setSearch, placeholder: 'Search by business, email, code…' }}
+      actions={
+        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+          {exporting ? 'Exporting…' : 'Export CSV'}
+        </button>
+      }
     >
       {loading ? (
         <div className={styles.centerLoader} style={{ minHeight: 200 }}>

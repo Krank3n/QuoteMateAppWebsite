@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../../lib/firebase';
 import styles from '../admin.module.css';
+import CommandPalette from './CommandPalette';
 import {
   IconDashboard,
   IconUsers,
@@ -178,6 +179,7 @@ export default function AdminShell({
         </header>
         <main className={styles.main}>{children}</main>
       </div>
+      <CommandPalette />
     </div>
   );
 }
