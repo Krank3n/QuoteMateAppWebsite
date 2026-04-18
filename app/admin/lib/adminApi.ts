@@ -39,6 +39,8 @@ export const api = {
   listSegments: call('adminListSegments'),
   saveSegment: call<{ id?: string; name: string; segment: string; segmentParams?: Record<string, unknown>; subject: string; body: string }>('adminSaveSegment'),
   deleteSegment: call<{ id: string }>('adminDeleteSegment'),
+  impersonate: call<{ uid: string }>('adminImpersonate'),
+  metricsSeries: call<{ days?: number }>('adminMetricsSeries'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {

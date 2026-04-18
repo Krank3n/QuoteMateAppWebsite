@@ -31,6 +31,7 @@ interface UserRow {
   supplierBookCount: number;
   tags: string[];
   marketingOptIn: boolean;
+  healthScore: number;
 }
 
 const AVAILABLE_TAGS = ['hot-lead', 'at-risk', 'vip', 'support-needed', 'champion', 'do-not-contact'];
@@ -46,6 +47,8 @@ type QuickFilterId =
   | 'free'
   | 'active-7d'
   | 'inactive-30d'
+  | 'healthy'
+  | 'at-risk'
   | 'new-week'
   | 'no-quotes'
   | 'no-suppliers';
@@ -54,11 +57,13 @@ const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow
   { id: 'all', label: 'All', test: () => true },
   { id: 'has-phone', label: 'Has phone', test: (u) => !!u.phone },
   { id: 'no-phone', label: 'No phone', test: (u) => !u.phone },
-  { id: 'pro', label: 'Pro', test: (u) => u.planTier === 'pro' },
-  { id: 'trial', label: 'On trial', test: (u) => u.planTier === 'trialing' },
+  { id: 'pro', label: 'Pro', test: (u) => u.planTier === 'pro' || u.planTier === 'pro_canceling' },
+  { id: 'trial', label: 'Canceling', test: (u) => u.planTier === 'pro_canceling' },
   { id: 'free', label: 'Free', test: (u) => u.planTier === 'free' },
   { id: 'active-7d', label: 'Active 7d', test: (u) => !!u.lastActivityAt && Date.now() - u.lastActivityAt < 7 * DAY },
   { id: 'inactive-30d', label: 'Inactive 30d+', test: (u) => !u.lastActivityAt || Date.now() - u.lastActivityAt > 30 * DAY },
+  { id: 'healthy', label: 'Healthy (70+)', test: (u) => (u.healthScore || 0) >= 70 },
+  { id: 'at-risk', label: 'At risk (<30)', test: (u) => (u.healthScore || 0) < 30 },
   { id: 'new-week', label: 'New this week', test: (u) => !!u.signupAt && Date.now() - u.signupAt < 7 * DAY },
   { id: 'no-quotes', label: 'No quotes yet', test: (u) => (u.quoteCount || 0) === 0 },
   { id: 'no-suppliers', label: 'No suppliers', test: (u) => (u.supplierBookCount || 0) === 0 },
@@ -218,7 +223,7 @@ function UsersPageInner() {
                   <div className={styles.listBody}>
                     <div className={styles.listTitle}>{u.businessName || u.displayName || u.email || u.uid}</div>
                     <div className={styles.listSubtitle}>
-                      {u.email || 'no email'} · {u.quoteCount}q
+                      {u.email || 'no email'} · {u.quoteCount}q · <HealthDot score={u.healthScore || 0} />
                     </div>
                   </div>
                   <div className={styles.listMeta}>
@@ -260,15 +265,50 @@ function UsersPageInner() {
   );
 }
 
+function HealthMeter({ score }: { score: number }) {
+  const color = score >= 70 ? '#10b981' : score >= 40 ? '#fcd34d' : '#ef4444';
+  const label = score >= 70 ? 'Healthy' : score >= 40 ? 'Watch' : 'At risk';
+  return (
+    <span style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 8,
+      padding: '4px 10px',
+      borderRadius: 999,
+      background: `rgba(${score >= 70 ? '16, 185, 129' : score >= 40 ? '252, 211, 77' : '239, 68, 68'}, 0.12)`,
+      border: `1px solid rgba(${score >= 70 ? '16, 185, 129' : score >= 40 ? '252, 211, 77' : '239, 68, 68'}, 0.3)`,
+      fontSize: 12,
+      fontWeight: 600,
+      color,
+    }}>
+      <span style={{ display: 'inline-block', width: 52, height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
+        <span style={{ display: 'block', height: '100%', width: `${score}%`, background: color, borderRadius: 3 }} />
+      </span>
+      {label} · {score}
+    </span>
+  );
+}
+
+function HealthDot({ score }: { score: number }) {
+  const color = score >= 70 ? '#10b981' : score >= 40 ? '#fcd34d' : '#ef4444';
+  const label = score >= 70 ? 'healthy' : score >= 40 ? 'watch' : 'at risk';
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--color-text-secondary)' }} title={`${label} — health ${score}`}>
+      <span style={{ width: 6, height: 6, borderRadius: 3, background: color, display: 'inline-block' }} />
+      {score}
+    </span>
+  );
+}
+
 function PlanTag({ tier }: { tier: string }) {
   const map: Record<string, string> = {
     pro: styles.tagPro,
-    trialing: styles.tagTrial,
+    pro_canceling: styles.tagAtRisk,
     free: styles.tagFree,
     canceled: styles.tagCanceled,
   };
   const cls = map[tier] || styles.tag;
-  const label = tier === 'trialing' ? 'trial' : tier;
+  const label = tier === 'pro_canceling' ? 'pro · canceling' : tier;
   return <span className={`${styles.tag} ${cls}`}>{label}</span>;
 }
 
@@ -299,14 +339,9 @@ function UserDetail({
 }) {
   const { uid, profile, business, emailState, emailPreferences, subscription, quotes, invoices, notes, calls, emailLog, feedback, supplierBook } = detail;
   const name = business?.businessName || profile?.displayName || profile?.email || uid;
-  const tier = subscription?.status === 'active'
-    ? (subscription.tier || 'pro')
-    : subscription?.status === 'trialing'
-    ? 'trialing'
-    : subscription?.status === 'canceled' || subscription?.status === 'cancelled'
-    ? 'canceled'
-    : 'free';
+  const tier = subscription?.tier || 'free';
   const tags: string[] = detail?.userDoc?.crmTags || [];
+  const healthScore: number = typeof detail?.userDoc?.healthScore === 'number' ? detail.userDoc.healthScore : 0;
 
   return (
     <>
@@ -329,6 +364,7 @@ function UserDetail({
             )}
           </div>
           <div className={styles.detailTags}>
+            <HealthMeter score={healthScore} />
             {tags.length === 0 ? (
               <span style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>No tags</span>
             ) : (
@@ -351,6 +387,7 @@ function UserDetail({
           >
             <IconPhone style={{ width: 14, height: 14 }} /> Call
           </a>
+          <ImpersonateButton uid={uid} email={profile?.email || null} />
         </div>
       </div>
 
@@ -413,6 +450,31 @@ function UserDetail({
         </aside>
       </div>
     </>
+  );
+}
+
+function ImpersonateButton({ uid, email }: { uid: string; email: string | null }) {
+  const [loading, setLoading] = useState(false);
+
+  const go = async () => {
+    if (!confirm(`Sign in as ${email || uid} in a new tab?\nYour admin session stays intact.`)) return;
+    setLoading(true);
+    try {
+      const res: any = await api.impersonate({ uid });
+      if (!res?.token) throw new Error('No token returned');
+      const p = new URLSearchParams({ token: res.token, uid, email: res.email || '' });
+      window.open(`/admin/impersonate/?${p.toString()}`, '_blank', 'noopener');
+    } catch (e: any) {
+      alert(e?.message || 'Impersonation failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <button className={`${styles.btn} ${styles.btnSecondary}`} onClick={go} disabled={loading}>
+      {loading ? 'Opening…' : 'Impersonate'}
+    </button>
   );
 }
 

@@ -6,35 +6,55 @@ import AdminShell from './components/AdminShell';
 import styles from './admin.module.css';
 import { api, fmtRelative } from './lib/adminApi';
 import { IconUsers, IconSupplier, IconSubscription, IconFeedback, IconTrendUp, IconExternal } from './components/icons';
+import { Sparkline, pctChange } from './components/Sparkline';
 
 interface Stats {
   users: { total: number; signupsToday: number; signupsThisWeek: number; activeSevenDay: number };
-  subscriptions: { active: number; trialing: number; canceled: number; pastDue: number };
+  subscriptions: { active: number; canceling: number; canceled: number };
   suppliers: { total: number; top: Array<{ id: string; name: string; subscriberCount: number }> };
   feedback: Array<{ id: string; message?: string; rating?: number; email?: string; createdAt?: any; replied?: boolean }>;
   generatedAt: string;
 }
 
+interface Snapshot {
+  date: string;
+  usersTotal?: number;
+  signupsToday?: number;
+  active7d?: number;
+  subscriptionsActive?: number;
+  subscriptionsPro?: number;
+  subscriptionsCanceled?: number;
+  suppliersTotal?: number;
+}
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
+  const [series, setSeries] = useState<Snapshot[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-    api.dashboardStats({}).then((s) => {
-      if (!cancelled) {
+    Promise.all([api.dashboardStats({}), api.metricsSeries({ days: 30 })])
+      .then(([s, series]: any) => {
+        if (cancelled) return;
         setStats(s as Stats);
+        setSeries((series?.series as Snapshot[]) || []);
         setLoading(false);
-      }
-    }).catch((e) => {
-      if (!cancelled) {
-        setError(e?.message || 'Failed to load stats');
-        setLoading(false);
-      }
-    });
+      })
+      .catch((e) => {
+        if (!cancelled) {
+          setError(e?.message || 'Failed to load stats');
+          setLoading(false);
+        }
+      });
     return () => { cancelled = true; };
   }, []);
+
+  const usersTrend = series.map((s) => s.usersTotal || 0);
+  const signupsTrend = series.map((s) => s.signupsToday || 0);
+  const active7dTrend = series.map((s) => s.active7d || 0);
+  const proTrend = series.map((s) => s.subscriptionsPro || 0);
 
   return (
     <AdminShell title="Dashboard" breadcrumb="Overview">
@@ -64,19 +84,22 @@ export default function AdminDashboard() {
               value={stats.users.total}
               sub={`${stats.users.signupsToday} new today · ${stats.users.signupsThisWeek} this week`}
               icon={<IconUsers />}
+              series={usersTrend}
             />
             <StatCard
               label="Active (7d)"
               value={stats.users.activeSevenDay}
               sub={`${percent(stats.users.activeSevenDay, stats.users.total)} of base`}
               icon={<IconTrendUp />}
+              series={active7dTrend}
             />
             <StatCard
               label="Pro subscriptions"
-              value={stats.subscriptions.active + stats.subscriptions.trialing}
-              sub={`${stats.subscriptions.active} paying · ${stats.subscriptions.trialing} trial`}
+              value={stats.subscriptions.active + stats.subscriptions.canceling}
+              sub={`${stats.subscriptions.active} active${stats.subscriptions.canceling ? ` · ${stats.subscriptions.canceling} canceling` : ''}`}
               icon={<IconSubscription />}
               accent
+              series={proTrend}
             />
             <StatCard
               label="Suppliers"
@@ -85,6 +108,23 @@ export default function AdminDashboard() {
               icon={<IconSupplier />}
             />
           </div>
+
+          {series.length >= 2 && (
+            <div className={styles.card} style={{ marginBottom: 20 }}>
+              <div className={styles.cardHeader}>
+                <div>
+                  <div className={styles.cardTitle}>Last {series.length} days</div>
+                  <div className={styles.cardSubtitle}>Trend snapshots</div>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+                <TrendTile label="Signups / day" series={signupsTrend} stroke="#60a5fa" fill="rgba(96, 165, 250, 0.15)" />
+                <TrendTile label="Active 7d" series={active7dTrend} stroke="#10b981" fill="rgba(16, 185, 129, 0.15)" />
+                <TrendTile label="Pro subscribers" series={proTrend} stroke="#f97316" fill="rgba(249, 115, 22, 0.15)" />
+                <TrendTile label="Total users" series={usersTrend} stroke="#a78bfa" fill="rgba(168, 139, 250, 0.15)" />
+              </div>
+            </div>
+          )}
 
           <div className={styles.dashGrid}>
             <div className={styles.card}>
@@ -187,12 +227,14 @@ function StatCard({
   sub,
   icon,
   accent,
+  series,
 }: {
   label: string;
   value: number;
   sub?: string;
   icon?: React.ReactNode;
   accent?: boolean;
+  series?: number[];
 }) {
   return (
     <div className={styles.statCard} style={accent ? { borderColor: 'rgba(249, 115, 22, 0.25)' } : undefined}>
@@ -208,6 +250,28 @@ function StatCard({
       </div>
       <div className={styles.statValue}>{value.toLocaleString()}</div>
       {sub && <div className={styles.statSub}>{sub}</div>}
+      {series && series.length >= 2 && (
+        <div style={{ marginTop: 8 }}>
+          <Sparkline values={series} height={32} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TrendTile({ label, series, stroke, fill }: { label: string; series: number[]; stroke: string; fill: string }) {
+  const change = pctChange(series);
+  const last = series[series.length - 1] || 0;
+  return (
+    <div style={{ padding: 14, borderRadius: 12, background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.04)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--color-text-secondary)' }}>{label}</div>
+        {change && (
+          <div style={{ fontSize: 11, fontWeight: 700, color: change.delta >= 0 ? '#6ee7b7' : '#fca5a5' }}>{change.label}</div>
+        )}
+      </div>
+      <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 6 }}>{last.toLocaleString()}</div>
+      <Sparkline values={series} height={36} stroke={stroke} fill={fill} />
     </div>
   );
 }

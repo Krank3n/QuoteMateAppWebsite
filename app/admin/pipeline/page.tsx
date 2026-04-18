@@ -30,10 +30,9 @@ interface Stage {
 
 const STAGES: Stage[] = [
   { id: 'lead', label: 'Lead', hint: 'Signed up, no spend yet', accent: '#94a3b8' },
-  { id: 'trial', label: 'Trial', hint: 'Trialing a paid plan', accent: '#60a5fa' },
   { id: 'active', label: 'Active', hint: 'Paying Pro customer', accent: '#f97316' },
   { id: 'champion', label: 'Champion', hint: 'Power user / advocate', accent: '#a78bfa' },
-  { id: 'at-risk', label: 'At risk', hint: 'Activity has dropped', accent: '#fcd34d' },
+  { id: 'at-risk', label: 'At risk', hint: 'Activity dropped or canceling', accent: '#fcd34d' },
   { id: 'churned', label: 'Churned', hint: 'Canceled or ghosted', accent: '#ef4444' },
 ];
 
@@ -48,7 +47,7 @@ function classify(u: UserRow): string {
   if (u.planTier === 'canceled') return 'churned';
   if (u.tags?.includes('at-risk')) return 'at-risk';
   if (u.tags?.includes('champion') || u.tags?.includes('vip')) return 'champion';
-  if (u.planTier === 'trialing') return 'trial';
+  if (u.planTier === 'pro_canceling') return 'at-risk';
   if (u.planTier === 'pro') {
     const days = u.lastActivityAt ? (Date.now() - u.lastActivityAt) / DAY : Infinity;
     if (days > 21) return 'at-risk';

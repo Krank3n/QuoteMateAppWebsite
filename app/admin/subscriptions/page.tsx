@@ -12,23 +12,22 @@ interface Sub {
   email: string | null;
   businessName: string | null;
   status: string;
-  tier: string | null;
+  tier: string;
   platform: string | null;
+  isPro: boolean;
+  canceling: boolean;
+  productId: string | null;
+  currentPeriodStart: number | null;
   currentPeriodEnd: number | null;
   cancelAt: number | null;
-  canceledAt: number | null;
-  trialEnd: number | null;
-  createdAt: number | null;
-  lastPaymentAt: number | null;
-  amount: number | null;
-  currency: string;
+  validatedAt: number | null;
+  quotesThisMonth: number;
 }
 
 const STATUS_FILTERS: Array<{ id: string; label: string }> = [
   { id: 'all', label: 'All' },
   { id: 'active', label: 'Active' },
-  { id: 'trialing', label: 'Trialing' },
-  { id: 'past_due', label: 'Past due' },
+  { id: 'canceling', label: 'Canceling' },
   { id: 'canceled', label: 'Canceled' },
 ];
 
@@ -54,18 +53,10 @@ export default function SubscriptionsPage() {
   const filtered = useMemo(() => {
     if (!data) return [];
     let list = data.subscriptions;
-    if (filter !== 'all') {
-      list = list.filter((s) =>
-        filter === 'canceled'
-          ? s.status === 'canceled' || s.status === 'cancelled'
-          : filter === 'past_due'
-          ? s.status === 'past_due' || s.status === 'unpaid'
-          : s.status === filter
-      );
-    }
+    if (filter !== 'all') list = list.filter((s) => s.status === filter);
     const sortedList = [...list];
     if (sortBy === 'business') sortedList.sort((a, b) => (a.businessName || a.email || '').localeCompare(b.businessName || b.email || ''));
-    else if (sortBy === 'created') sortedList.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    else if (sortBy === 'created') sortedList.sort((a, b) => (b.validatedAt || 0) - (a.validatedAt || 0));
     else if (sortBy === 'renewal') sortedList.sort((a, b) => (a.currentPeriodEnd || Infinity) - (b.currentPeriodEnd || Infinity));
     else if (sortBy === 'status') sortedList.sort((a, b) => a.status.localeCompare(b.status));
     return sortedList;
@@ -73,13 +64,13 @@ export default function SubscriptionsPage() {
 
   const mrr = useMemo(() => {
     if (!data) return 0;
-    return data.subscriptions.filter((s) => s.status === 'active').length * PRO_MONTHLY_AUD;
+    return data.subscriptions.filter((s) => s.isPro).length * PRO_MONTHLY_AUD;
   }, [data]);
 
   const arr = mrr * 12;
-  const totals = data?.totals || { active: 0, trialing: 0, canceled: 0, pastDue: 0, all: 0 };
-  const conversionRate = totals.trialing + totals.active
-    ? Math.round((totals.active / (totals.active + totals.canceled + totals.trialing)) * 100)
+  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, all: 0 };
+  const retentionRate = totals.active + totals.canceled
+    ? Math.round((totals.active / (totals.active + totals.canceled)) * 100)
     : 0;
 
   const [exporting, setExporting] = useState(false);
@@ -108,9 +99,9 @@ export default function SubscriptionsPage() {
         <>
           <div className={styles.statGrid}>
             <StatTile label="MRR (est.)" value={`$${mrr.toLocaleString()}`} sub={`ARR ≈ $${arr.toLocaleString()} · @$${PRO_MONTHLY_AUD}/mo`} accent />
-            <StatTile label="Active" value={totals.active} sub={`${conversionRate}% retention vs total`} />
-            <StatTile label="Trialing" value={totals.trialing} sub="Converting soon" />
-            <StatTile label="Needs attention" value={totals.pastDue} sub="Past due / unpaid" warn={totals.pastDue > 0} />
+            <StatTile label="Active" value={totals.active} sub={`${retentionRate}% retention vs churn`} />
+            <StatTile label="Canceling" value={totals.canceling} sub="Still active until period end" warn={totals.canceling > 0} />
+            <StatTile label="Canceled" value={totals.canceled} sub="No longer Pro" />
           </div>
 
           <div className={styles.card}>
@@ -131,10 +122,7 @@ export default function SubscriptionsPage() {
             <div className={styles.chipRow} style={{ marginBottom: 14 }}>
               {STATUS_FILTERS.map((f) => {
                 const on = filter === f.id;
-                const count = f.id === 'all' ? totals.all
-                  : f.id === 'canceled' ? totals.canceled
-                  : f.id === 'past_due' ? totals.pastDue
-                  : (totals as any)[f.id] ?? 0;
+                const count = f.id === 'all' ? totals.all : (totals as any)[f.id] ?? 0;
                 return (
                   <button
                     key={f.id}
@@ -155,9 +143,9 @@ export default function SubscriptionsPage() {
                     <th>Subscriber</th>
                     <th>Status</th>
                     <th>Platform</th>
-                    <th>Created</th>
+                    <th>Validated</th>
                     <th>Next renewal</th>
-                    <th>Last payment</th>
+                    <th>Last validated</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -179,17 +167,15 @@ export default function SubscriptionsPage() {
                         </td>
                         <td><StatusTag status={s.status} /></td>
                         <td>{s.platform || '—'}</td>
-                        <td>{fmtDate(s.createdAt)}</td>
+                        <td>{fmtDate(s.validatedAt)}</td>
                         <td>
                           {s.cancelAt
                             ? <span style={{ color: '#fca5a5' }}>cancels {fmtDate(s.cancelAt)}</span>
                             : s.currentPeriodEnd
                             ? fmtDate(s.currentPeriodEnd)
-                            : s.trialEnd
-                            ? <span style={{ color: '#60a5fa' }}>trial ends {fmtDate(s.trialEnd)}</span>
                             : '—'}
                         </td>
-                        <td>{fmtRelative(s.lastPaymentAt)}</td>
+                        <td>{fmtRelative(s.validatedAt)}</td>
                         <td style={{ textAlign: 'right' }}>
                           <Link href={`/admin/users?uid=${encodeURIComponent(s.uid)}`} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>
                             <IconExternal style={{ width: 12, height: 12 }} />
@@ -223,7 +209,7 @@ function StatTile({ label, value, sub, accent, warn }: { label: string; value: s
 function StatusTag({ status }: { status: string }) {
   const map: Record<string, string> = {
     active: styles.tagPro,
-    trialing: styles.tagTrial,
+    canceling: styles.tagAtRisk,
     canceled: styles.tagCanceled,
     cancelled: styles.tagCanceled,
     past_due: styles.tagAtRisk,
