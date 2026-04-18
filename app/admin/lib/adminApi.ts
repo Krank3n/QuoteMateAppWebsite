@@ -41,6 +41,8 @@ export const api = {
   deleteSegment: call<{ id: string }>('adminDeleteSegment'),
   impersonate: call<{ uid: string }>('adminImpersonate'),
   metricsSeries: call<{ days?: number }>('adminMetricsSeries'),
+  listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
+  emailHealth: call('adminEmailHealth'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {

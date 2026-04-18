@@ -10,7 +10,7 @@ import { Sparkline, pctChange } from './components/Sparkline';
 
 interface Stats {
   users: { total: number; signupsToday: number; signupsThisWeek: number; activeSevenDay: number };
-  subscriptions: { active: number; canceling: number; canceled: number };
+  subscriptions: { active: number; canceling: number; canceled: number; trialing: number; trialExpired: number };
   suppliers: { total: number; top: Array<{ id: string; name: string; subscriberCount: number }> };
   feedback: Array<{ id: string; message?: string; rating?: number; email?: string; createdAt?: any; replied?: boolean }>;
   generatedAt: string;
@@ -94,9 +94,9 @@ export default function AdminDashboard() {
               series={active7dTrend}
             />
             <StatCard
-              label="Pro subscriptions"
-              value={stats.subscriptions.active + stats.subscriptions.canceling}
-              sub={`${stats.subscriptions.active} active${stats.subscriptions.canceling ? ` · ${stats.subscriptions.canceling} canceling` : ''}`}
+              label="Pro + trials"
+              value={stats.subscriptions.active + stats.subscriptions.canceling + stats.subscriptions.trialing}
+              sub={`${stats.subscriptions.active} pro · ${stats.subscriptions.trialing} trial · ${stats.subscriptions.canceling} canceling`}
               icon={<IconSubscription />}
               accent
               series={proTrend}

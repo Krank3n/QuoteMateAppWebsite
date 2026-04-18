@@ -44,6 +44,7 @@ type QuickFilterId =
   | 'no-phone'
   | 'pro'
   | 'trial'
+  | 'trial-expired'
   | 'free'
   | 'active-7d'
   | 'inactive-30d'
@@ -58,7 +59,8 @@ const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow
   { id: 'has-phone', label: 'Has phone', test: (u) => !!u.phone },
   { id: 'no-phone', label: 'No phone', test: (u) => !u.phone },
   { id: 'pro', label: 'Pro', test: (u) => u.planTier === 'pro' || u.planTier === 'pro_canceling' },
-  { id: 'trial', label: 'Canceling', test: (u) => u.planTier === 'pro_canceling' },
+  { id: 'trial', label: 'Trialing', test: (u) => u.planTier === 'trialing' },
+  { id: 'trial-expired', label: 'Trial expired', test: (u) => u.planTier === 'trial_expired' },
   { id: 'free', label: 'Free', test: (u) => u.planTier === 'free' },
   { id: 'active-7d', label: 'Active 7d', test: (u) => !!u.lastActivityAt && Date.now() - u.lastActivityAt < 7 * DAY },
   { id: 'inactive-30d', label: 'Inactive 30d+', test: (u) => !u.lastActivityAt || Date.now() - u.lastActivityAt > 30 * DAY },
@@ -304,11 +306,17 @@ function PlanTag({ tier }: { tier: string }) {
   const map: Record<string, string> = {
     pro: styles.tagPro,
     pro_canceling: styles.tagAtRisk,
+    trialing: styles.tagTrial,
+    trial_expired: styles.tagCanceled,
     free: styles.tagFree,
     canceled: styles.tagCanceled,
   };
   const cls = map[tier] || styles.tag;
-  const label = tier === 'pro_canceling' ? 'pro · canceling' : tier;
+  const label =
+    tier === 'pro_canceling' ? 'pro · canceling'
+    : tier === 'trial_expired' ? 'trial ended'
+    : tier === 'trialing' ? 'trial'
+    : tier;
   return <span className={`${styles.tag} ${cls}`}>{label}</span>;
 }
 
@@ -514,14 +522,20 @@ function Timeline({ quotes, invoices, emails, notes, calls, feedback }: any) {
     if (t) items.push({ at: t, kind: 'invoice', title: `Invoice: ${i.customerName || i.id}`, sub: i.status ? `status: ${i.status}` : undefined });
   }
   for (const e of emails) {
-    const t = ts(e.sentAt);
+    const t = ts(e.sentAt) || ts(e.queuedAt);
     if (!t) continue;
+    const bits: string[] = [e.category];
+    if (e.bouncedAt) bits.push(`⚠ ${e.bounceType || 'bounced'}${e.bounceReason ? ` (${e.bounceReason})` : ''}`);
+    else if (e.spamReportedAt) bits.push('⚠ marked spam');
+    else if (e.blockedAt) bits.push(`⚠ blocked${e.blockedReason ? ` (${e.blockedReason})` : ''}`);
+    else if (e.status === 'send_failed' || e.status === 'error') bits.push(`✗ send failed${e.deliveryError ? ` (${e.deliveryError})` : ''}`);
+    else if (e.deliveredAt) bits.push(`delivered ${fmtRelative(ts(e.deliveredAt))}`);
     const opened = ts(e.openedAt);
-    const openCount = e.openCount || 0;
-    const sub = opened
-      ? `${e.category} · opened ${fmtRelative(opened)}${openCount > 1 ? ` (${openCount}×)` : ''}`
-      : e.category;
-    items.push({ at: t, kind: 'email', title: `Email: ${e.subject}`, sub });
+    if (opened) bits.push(`opened ${fmtRelative(opened)}${e.openCount > 1 ? ` (${e.openCount}×)` : ''}`);
+    const clicked = ts(e.firstClickedAt);
+    if (clicked) bits.push(`clicked ${fmtRelative(clicked)}${e.clickCount > 1 ? ` (${e.clickCount}×)` : ''}`);
+    if (e.unsubscribedAt) bits.push('unsubscribed');
+    items.push({ at: t, kind: 'email', title: `Email: ${e.subject}`, sub: bits.filter(Boolean).join(' · ') });
   }
   for (const n of notes) {
     const t = ts(n.createdAt);

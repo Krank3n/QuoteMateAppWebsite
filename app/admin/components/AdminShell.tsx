@@ -18,6 +18,7 @@ import {
   IconSearch,
   IconLogout,
   IconSubscription,
+  IconEmail,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
@@ -45,6 +46,7 @@ const NAV = [
   { href: '/admin/suppliers', label: 'Suppliers', Icon: IconSupplier },
   { href: '/admin/pipeline', label: 'Pipeline', Icon: IconPipeline },
   { href: '/admin/campaigns', label: 'Campaigns', Icon: IconCampaign },
+  { href: '/admin/emails', label: 'Email log', Icon: IconEmail },
   { href: '/admin/feedback', label: 'Feedback', Icon: IconFeedback },
   { href: '/admin/subscriptions', label: 'Subscriptions', Icon: IconSubscription },
   { href: '/admin/affiliates', label: 'Affiliates', Icon: IconAffiliate },

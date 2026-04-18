@@ -29,6 +29,9 @@ const STATUS_FILTERS: Array<{ id: string; label: string }> = [
   { id: 'active', label: 'Active' },
   { id: 'canceling', label: 'Canceling' },
   { id: 'canceled', label: 'Canceled' },
+  { id: 'trialing', label: 'Trialing' },
+  { id: 'trial_expired', label: 'Trial expired' },
+  { id: 'free', label: 'Free' },
 ];
 
 const PRO_MONTHLY_AUD = 29;
@@ -68,9 +71,12 @@ export default function SubscriptionsPage() {
   }, [data]);
 
   const arr = mrr * 12;
-  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, all: 0 };
+  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, trialing: 0, trial_expired: 0, free: 0, all: 0 };
   const retentionRate = totals.active + totals.canceled
     ? Math.round((totals.active / (totals.active + totals.canceled)) * 100)
+    : 0;
+  const trialConvRate = totals.trialing + totals.trial_expired + totals.active
+    ? Math.round((totals.active / (totals.trialing + totals.trial_expired + totals.active)) * 100)
     : 0;
 
   const [exporting, setExporting] = useState(false);
@@ -99,9 +105,9 @@ export default function SubscriptionsPage() {
         <>
           <div className={styles.statGrid}>
             <StatTile label="MRR (est.)" value={`$${mrr.toLocaleString()}`} sub={`ARR ≈ $${arr.toLocaleString()} · @$${PRO_MONTHLY_AUD}/mo`} accent />
-            <StatTile label="Active" value={totals.active} sub={`${retentionRate}% retention vs churn`} />
-            <StatTile label="Canceling" value={totals.canceling} sub="Still active until period end" warn={totals.canceling > 0} />
-            <StatTile label="Canceled" value={totals.canceled} sub="No longer Pro" />
+            <StatTile label="Active" value={totals.active} sub={`${retentionRate}% retained · ${trialConvRate}% trial→paid`} />
+            <StatTile label="Trialing" value={totals.trialing} sub={`${totals.trial_expired} expired`} />
+            <StatTile label="Canceling" value={totals.canceling} sub="Active until period end" warn={totals.canceling > 0} />
           </div>
 
           <div className={styles.card}>
@@ -210,6 +216,9 @@ function StatusTag({ status }: { status: string }) {
   const map: Record<string, string> = {
     active: styles.tagPro,
     canceling: styles.tagAtRisk,
+    trialing: styles.tagTrial,
+    trial_expired: styles.tagCanceled,
+    free: styles.tagFree,
     canceled: styles.tagCanceled,
     cancelled: styles.tagCanceled,
     past_due: styles.tagAtRisk,
