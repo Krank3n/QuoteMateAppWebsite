@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AdminShell from '../components/AdminShell';
+import EmailModal from '../components/EmailModal';
 import styles from '../admin.module.css';
 import { api, downloadCsv, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
 import {
@@ -91,6 +92,8 @@ function UsersPageInner() {
   const [quickFilter, setQuickFilter] = useState<QuickFilterId>('all');
   const [detail, setDetail] = useState<any>(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
+  const [selectedUids, setSelectedUids] = useState<Set<string>>(new Set());
+  const [bulkModalOpen, setBulkModalOpen] = useState(false);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
 
@@ -170,16 +173,50 @@ function UsersPageInner() {
       breadcrumb={`${total.toLocaleString()} tradies in your base`}
       search={{ value: search, onChange: setSearch, placeholder: 'Search by name, email, business, phone…' }}
       actions={
-        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
-          {exporting ? 'Exporting…' : 'Export CSV'}
-        </button>
+        <>
+          {selectedUids.size > 0 && (
+            <>
+              <button
+                className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}
+                onClick={() => setBulkModalOpen(true)}
+              >
+                Email {selectedUids.size} selected
+              </button>
+              <button
+                className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+                onClick={() => setSelectedUids(new Set())}
+              >
+                Clear
+              </button>
+            </>
+          )}
+          <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+            {exporting ? 'Exporting…' : 'Export CSV'}
+          </button>
+        </>
       }
     >
       <div className={styles.splitView}>
         <div className={styles.splitList}>
           <div className={styles.splitListHeader} style={{ flexDirection: 'column', alignItems: 'stretch', gap: 10, padding: '12px 12px 10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span>{loadingList ? 'Loading…' : `${filteredUsers.length} of ${users.length} shown`}</span>
+              <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={filteredUsers.length > 0 && filteredUsers.every((u) => selectedUids.has(u.uid))}
+                  ref={(el) => {
+                    if (el) el.indeterminate = filteredUsers.some((u) => selectedUids.has(u.uid)) && !filteredUsers.every((u) => selectedUids.has(u.uid));
+                  }}
+                  onChange={(e) => {
+                    const next = new Set(selectedUids);
+                    if (e.target.checked) filteredUsers.forEach((u) => next.add(u.uid));
+                    else filteredUsers.forEach((u) => next.delete(u.uid));
+                    setSelectedUids(next);
+                  }}
+                  style={{ cursor: 'pointer', accentColor: '#f97316' }}
+                />
+                <span>{loadingList ? 'Loading…' : selectedUids.size > 0 ? `${selectedUids.size} selected` : `${filteredUsers.length} of ${users.length}`}</span>
+              </label>
               <span style={{ fontSize: 11, color: 'var(--color-text-secondary)' }}>by last active</span>
             </div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
@@ -215,12 +252,24 @@ function UsersPageInner() {
               </div>
             ) : (
               filteredUsers.map((u) => (
-                <button
+                <div
                   key={u.uid}
                   className={`${styles.listRow} ${selectedUid === u.uid ? styles.listRowActive : ''}`}
                   onClick={() => selectUser(u.uid)}
-                  style={{ background: 'transparent', border: 'none', textAlign: 'left', width: '100%', cursor: 'pointer' }}
+                  style={{ cursor: 'pointer' }}
                 >
+                  <input
+                    type="checkbox"
+                    checked={selectedUids.has(u.uid)}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => {
+                      const next = new Set(selectedUids);
+                      if (e.target.checked) next.add(u.uid);
+                      else next.delete(u.uid);
+                      setSelectedUids(next);
+                    }}
+                    style={{ cursor: 'pointer', accentColor: '#f97316' }}
+                  />
                   <div className={styles.listAvatar}>{initials(u.businessName || u.displayName || u.email)}</div>
                   <div className={styles.listBody}>
                     <div className={styles.listTitle}>{u.businessName || u.displayName || u.email || u.uid}</div>
@@ -232,7 +281,7 @@ function UsersPageInner() {
                     <PlanTag tier={u.planTier} />
                     <div style={{ marginTop: 4 }}>{fmtRelative(u.lastActivityAt)}</div>
                   </div>
-                </button>
+                </div>
               ))
             )}
           </div>
@@ -262,6 +311,24 @@ function UsersPageInner() {
 
       {toast && (
         <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>
+      )}
+
+      {bulkModalOpen && (
+        <EmailModal
+          recipients={Array.from(selectedUids).map((uid) => {
+            const u = users.find((x) => x.uid === uid);
+            return {
+              uid,
+              email: u?.email || null,
+              name: u?.businessName || u?.displayName || null,
+            };
+          })}
+          onClose={() => setBulkModalOpen(false)}
+          onSent={(r) => {
+            showToast(`Sent ${r.sent} of ${r.total}${r.failed ? ` · ${r.failed} failed` : ''}`);
+            setSelectedUids(new Set());
+          }}
+        />
       )}
     </AdminShell>
   );
@@ -345,6 +412,7 @@ function UserDetail({
   onChanged: () => void;
   showToast: (msg: string, error?: boolean) => void;
 }) {
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
   const { uid, profile, business, emailState, emailPreferences, subscription, quotes, invoices, notes, calls, emailLog, feedback, supplierBook } = detail;
   const name = business?.businessName || profile?.displayName || profile?.email || uid;
   const tier = subscription?.tier || 'free';
@@ -381,13 +449,14 @@ function UserDetail({
           </div>
         </div>
         <div className={styles.detailActions}>
-          <a
-            href={`mailto:${profile?.email || ''}`}
+          <button
             className={`${styles.btn} ${styles.btnSecondary}`}
-            style={!profile?.email ? { pointerEvents: 'none', opacity: 0.4 } : undefined}
+            disabled={!profile?.email}
+            onClick={() => setEmailModalOpen(true)}
+            title={profile?.email ? `Email ${profile.email}` : 'No email on file'}
           >
             <IconEmail style={{ width: 14, height: 14 }} /> Email
-          </a>
+          </button>
           <a
             href={`tel:${profile?.phoneNumber || business?.phone || ''}`}
             className={`${styles.btn} ${styles.btnSecondary}`}
@@ -398,6 +467,17 @@ function UserDetail({
           <ImpersonateButton uid={uid} email={profile?.email || null} />
         </div>
       </div>
+
+      {emailModalOpen && (
+        <EmailModal
+          recipients={[{ uid, email: profile?.email || business?.email || null, name: business?.businessName || profile?.displayName || null }]}
+          onClose={() => setEmailModalOpen(false)}
+          onSent={(r) => {
+            showToast(r.sent > 0 ? `Email sent to ${name}` : 'Email not sent');
+            onChanged();
+          }}
+        />
+      )}
 
       <div className={styles.detailBody}>
         <div>
@@ -454,7 +534,21 @@ function UserDetail({
           <TagsCard uid={uid} tags={tags} onChanged={onChanged} showToast={showToast} />
           <NoteComposer uid={uid} onAdded={onChanged} showToast={showToast} />
           <CallLogger uid={uid} onLogged={onChanged} showToast={showToast} />
-          <EmailComposer uid={uid} email={profile?.email} onSent={onChanged} showToast={showToast} />
+          <div className={styles.railCard}>
+            <div className={styles.railTitle}>Email</div>
+            <button
+              className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}
+              onClick={() => setEmailModalOpen(true)}
+              disabled={!profile?.email}
+              style={{ width: '100%' }}
+            >
+              <IconSend style={{ width: 13, height: 13 }} />
+              {profile?.email ? 'Compose email' : 'No email on file'}
+            </button>
+            <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', marginTop: 8 }}>
+              Every send is logged, tracked for opens/clicks, and appears in this user's timeline.
+            </div>
+          </div>
         </aside>
       </div>
     </>
