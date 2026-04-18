@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AdminShell from '../components/AdminShell';
@@ -35,6 +35,35 @@ interface UserRow {
 
 const AVAILABLE_TAGS = ['hot-lead', 'at-risk', 'vip', 'support-needed', 'champion', 'do-not-contact'];
 
+const DAY = 24 * 60 * 60 * 1000;
+
+type QuickFilterId =
+  | 'all'
+  | 'has-phone'
+  | 'no-phone'
+  | 'pro'
+  | 'trial'
+  | 'free'
+  | 'active-7d'
+  | 'inactive-30d'
+  | 'new-week'
+  | 'no-quotes'
+  | 'no-suppliers';
+
+const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow) => boolean }> = [
+  { id: 'all', label: 'All', test: () => true },
+  { id: 'has-phone', label: 'Has phone', test: (u) => !!u.phone },
+  { id: 'no-phone', label: 'No phone', test: (u) => !u.phone },
+  { id: 'pro', label: 'Pro', test: (u) => u.planTier === 'pro' },
+  { id: 'trial', label: 'On trial', test: (u) => u.planTier === 'trialing' },
+  { id: 'free', label: 'Free', test: (u) => u.planTier === 'free' },
+  { id: 'active-7d', label: 'Active 7d', test: (u) => !!u.lastActivityAt && Date.now() - u.lastActivityAt < 7 * DAY },
+  { id: 'inactive-30d', label: 'Inactive 30d+', test: (u) => !u.lastActivityAt || Date.now() - u.lastActivityAt > 30 * DAY },
+  { id: 'new-week', label: 'New this week', test: (u) => !!u.signupAt && Date.now() - u.signupAt < 7 * DAY },
+  { id: 'no-quotes', label: 'No quotes yet', test: (u) => (u.quoteCount || 0) === 0 },
+  { id: 'no-suppliers', label: 'No suppliers', test: (u) => (u.supplierBookCount || 0) === 0 },
+];
+
 export default function UsersPage() {
   return (
     <Suspense fallback={<div className={styles.centerLoader}><div className={styles.spinner} /></div>}>
@@ -52,16 +81,17 @@ function UsersPageInner() {
   const [total, setTotal] = useState(0);
   const [loadingList, setLoadingList] = useState(true);
   const [search, setSearch] = useState('');
+  const [quickFilter, setQuickFilter] = useState<QuickFilterId>('all');
   const [detail, setDetail] = useState<any>(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
 
-  // Load list
+  // Load list (pull big batch, filter client-side for responsiveness)
   useEffect(() => {
     let cancelled = false;
     setLoadingList(true);
-    api.listUsers({ search, limit: 200 }).then((r: any) => {
+    api.listUsers({ limit: 500 }).then((r: any) => {
       if (cancelled) return;
       setUsers(r.users || []);
       setTotal(r.total || 0);
@@ -70,7 +100,24 @@ function UsersPageInner() {
       if (!cancelled) setLoadingList(false);
     });
     return () => { cancelled = true; };
-  }, [search]);
+  }, []);
+
+  const filteredUsers = useMemo(() => {
+    const q = search.toLowerCase().trim();
+    const filterFn = QUICK_FILTERS.find((f) => f.id === quickFilter)!.test;
+    return users.filter((u) => {
+      if (!filterFn(u)) return false;
+      if (!q) return true;
+      const hay = [u.email, u.displayName, u.businessName, u.phone, u.uid].filter(Boolean).join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+  }, [users, search, quickFilter]);
+
+  const filterCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const f of QUICK_FILTERS) counts[f.id] = users.filter(f.test).length;
+    return counts;
+  }, [users]);
 
   // Load detail
   useEffect(() => {
@@ -110,20 +157,44 @@ function UsersPageInner() {
     >
       <div className={styles.splitView}>
         <div className={styles.splitList}>
-          <div className={styles.splitListHeader}>
-            <span>{loadingList ? 'Loading…' : `${users.length} shown`}</span>
-            <span style={{ fontSize: 11, color: 'var(--color-text-secondary)' }}>Sorted by last active</span>
+          <div className={styles.splitListHeader} style={{ flexDirection: 'column', alignItems: 'stretch', gap: 10, padding: '12px 12px 10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span>{loadingList ? 'Loading…' : `${filteredUsers.length} of ${users.length} shown`}</span>
+              <span style={{ fontSize: 11, color: 'var(--color-text-secondary)' }}>by last active</span>
+            </div>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              {QUICK_FILTERS.map((f) => {
+                const on = quickFilter === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    className={styles.chip}
+                    onClick={() => setQuickFilter(f.id)}
+                    style={on ? {
+                      background: 'rgba(249, 115, 22, 0.15)',
+                      color: 'var(--color-accent-light)',
+                      borderColor: 'rgba(249, 115, 22, 0.3)',
+                      padding: '4px 10px',
+                      fontSize: 11,
+                    } : { padding: '4px 10px', fontSize: 11 }}
+                  >
+                    {f.label}
+                    <span style={{ opacity: 0.6, marginLeft: 4 }}>{filterCounts[f.id]}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
           <div className={styles.splitListScroll}>
             {loadingList ? (
               <UserListSkeleton />
-            ) : users.length === 0 ? (
+            ) : filteredUsers.length === 0 ? (
               <div className={styles.empty}>
                 <div className={styles.emptyTitle}>No matches</div>
-                <div className={styles.emptyText}>Try a different search.</div>
+                <div className={styles.emptyText}>Try a different filter or search.</div>
               </div>
             ) : (
-              users.map((u) => (
+              filteredUsers.map((u) => (
                 <button
                   key={u.uid}
                   className={`${styles.listRow} ${selectedUid === u.uid ? styles.listRowActive : ''}`}

@@ -33,6 +33,8 @@ export const api = {
     dryRun?: boolean;
   }>('adminBroadcast'),
   replyToFeedback: call<{ feedbackId: string; body: string; subject?: string }>('adminReplyToFeedback'),
+  listSubscriptions: call('adminListSubscriptions'),
+  listAffiliates: call('adminListAffiliates'),
 };
 
 export function fmtRelative(ms: number | null | undefined): string {

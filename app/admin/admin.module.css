@@ -461,6 +461,8 @@
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   transition: background 0.1s;
+  color: var(--color-text-primary);
+  font-family: inherit;
 }
 
 .listRow:hover {
@@ -495,6 +497,7 @@
 .listTitle {
   font-size: 14px;
   font-weight: 600;
+  color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
