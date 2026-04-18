@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, downloadCsv, fmtDate, fmtRelative, initials } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconSubscription, IconExternal } from '../components/icons';
 
 interface Sub {
@@ -87,16 +87,18 @@ export default function SubscriptionsPage() {
     finally { setExporting(false); }
   };
 
+  useSetPageMeta({
+    title: 'Subscriptions',
+    breadcrumb: 'Revenue + subscriber health',
+    actions: (
+      <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+        {exporting ? 'Exporting…' : 'Export CSV'}
+      </button>
+    ),
+  });
+
   return (
-    <AdminShell
-      title="Subscriptions"
-      breadcrumb="Revenue + subscriber health"
-      actions={
-        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
-          {exporting ? 'Exporting…' : 'Export CSV'}
-        </button>
-      }
-    >
+    <>
       {loading ? (
         <div className={styles.centerLoader} style={{ minHeight: 200 }}>
           <div className={styles.spinner} />
@@ -196,7 +198,7 @@ export default function SubscriptionsPage() {
           </div>
         </>
       )}
-    </AdminShell>
+    </>
   );
 }
 

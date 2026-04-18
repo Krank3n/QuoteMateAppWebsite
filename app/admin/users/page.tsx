@@ -3,10 +3,10 @@
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import AdminShell from '../components/AdminShell';
 import EmailModal from '../components/EmailModal';
 import styles from '../admin.module.css';
 import { api, downloadCsv, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import {
   IconEmail,
   IconPhone,
@@ -167,35 +167,37 @@ function UsersPageInner() {
     finally { setExporting(false); }
   };
 
+  useSetPageMeta({
+    title: 'Users',
+    breadcrumb: `${total.toLocaleString()} tradies in your base`,
+    search: { value: search, onChange: setSearch, placeholder: 'Search by name, email, business, phone…' },
+    actions: (
+      <>
+        {selectedUids.size > 0 && (
+          <>
+            <button
+              className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}
+              onClick={() => setBulkModalOpen(true)}
+            >
+              Email {selectedUids.size} selected
+            </button>
+            <button
+              className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+              onClick={() => setSelectedUids(new Set())}
+            >
+              Clear
+            </button>
+          </>
+        )}
+        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+          {exporting ? 'Exporting…' : 'Export CSV'}
+        </button>
+      </>
+    ),
+  });
+
   return (
-    <AdminShell
-      title="Users"
-      breadcrumb={`${total.toLocaleString()} tradies in your base`}
-      search={{ value: search, onChange: setSearch, placeholder: 'Search by name, email, business, phone…' }}
-      actions={
-        <>
-          {selectedUids.size > 0 && (
-            <>
-              <button
-                className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}
-                onClick={() => setBulkModalOpen(true)}
-              >
-                Email {selectedUids.size} selected
-              </button>
-              <button
-                className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
-                onClick={() => setSelectedUids(new Set())}
-              >
-                Clear
-              </button>
-            </>
-          )}
-          <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
-            {exporting ? 'Exporting…' : 'Export CSV'}
-          </button>
-        </>
-      }
-    >
+    <>
       <div className={styles.splitView}>
         <div className={styles.splitList}>
           <div className={styles.splitListHeader} style={{ flexDirection: 'column', alignItems: 'stretch', gap: 10, padding: '12px 12px 10px' }}>
@@ -330,7 +332,7 @@ function UsersPageInner() {
           }}
         />
       )}
-    </AdminShell>
+    </>
   );
 }
 

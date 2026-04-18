@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import AdminFrame from './components/AdminFrame';
 
 export const metadata: Metadata = {
   title: {
@@ -10,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <AdminFrame>{children}</AdminFrame>;
 }

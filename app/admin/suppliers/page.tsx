@@ -3,9 +3,9 @@
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, downloadCsv, fmtDate, fmtRelative, initials } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconEmail, IconUsers, IconTag, IconSend, IconSupplier, IconExternal } from '../components/icons';
 
 interface SupplierRow {
@@ -104,17 +104,19 @@ function SuppliersPageInner() {
     finally { setExporting(false); }
   };
 
+  useSetPageMeta({
+    title: 'Suppliers',
+    breadcrumb: `${suppliers.length} supplier profiles on QuoteMate`,
+    search: { value: search, onChange: setSearch, placeholder: 'Search suppliers…' },
+    actions: (
+      <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
+        {exporting ? 'Exporting…' : 'Export CSV'}
+      </button>
+    ),
+  });
+
   return (
-    <AdminShell
-      title="Suppliers"
-      breadcrumb={`${suppliers.length} supplier profiles on QuoteMate`}
-      search={{ value: search, onChange: setSearch, placeholder: 'Search suppliers…' }}
-      actions={
-        <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={doExport} disabled={exporting}>
-          {exporting ? 'Exporting…' : 'Export CSV'}
-        </button>
-      }
-    >
+    <>
       <div className={styles.splitView}>
         <div className={styles.splitList}>
           <div className={styles.splitListHeader}>
@@ -179,7 +181,7 @@ function SuppliersPageInner() {
       </div>
 
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
-    </AdminShell>
+    </>
   );
 }
 

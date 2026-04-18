@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, fmtRelative, initials } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconUsers, IconEmail, IconPhone } from '../components/icons';
 
 interface UserRow {
@@ -123,12 +123,14 @@ export default function PipelinePage() {
     }
   };
 
+  useSetPageMeta({
+    title: 'Pipeline',
+    breadcrumb: 'Drag users between stages to retag them',
+    search: { value: search, onChange: setSearch, placeholder: 'Filter users…' },
+  });
+
   return (
-    <AdminShell
-      title="Pipeline"
-      breadcrumb="Drag users between stages to retag them"
-      search={{ value: search, onChange: setSearch, placeholder: 'Filter users…' }}
-    >
+    <>
       {loading ? (
         <div className={styles.centerLoader} style={{ minHeight: 200 }}>
           <div className={styles.spinner} />
@@ -185,7 +187,7 @@ export default function PipelinePage() {
         </div>
       )}
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
-    </AdminShell>
+    </>
   );
 }
 

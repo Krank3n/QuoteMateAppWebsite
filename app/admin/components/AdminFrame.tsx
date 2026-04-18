@@ -7,6 +7,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../../lib/firebase';
 import styles from '../admin.module.css';
 import CommandPalette from './CommandPalette';
+import { PageMetaProvider, usePageMeta } from '../lib/pageMeta';
 import {
   IconDashboard,
   IconUsers,
@@ -22,24 +23,6 @@ import {
 } from './icons';
 import { initials } from '../lib/adminApi';
 
-interface AdminUser {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-}
-
-interface AdminShellProps {
-  children: ReactNode;
-  title?: string;
-  breadcrumb?: string;
-  search?: {
-    value: string;
-    onChange: (v: string) => void;
-    placeholder?: string;
-  };
-  actions?: ReactNode;
-}
-
 const NAV = [
   { href: '/admin', label: 'Dashboard', Icon: IconDashboard },
   { href: '/admin/users', label: 'Users', Icon: IconUsers },
@@ -52,13 +35,33 @@ const NAV = [
   { href: '/admin/affiliates', label: 'Affiliates', Icon: IconAffiliate },
 ];
 
-export default function AdminShell({
-  children,
-  title,
-  breadcrumb,
-  search,
-  actions,
-}: AdminShellProps) {
+interface AdminUser {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+}
+
+// Paths that should NOT be wrapped in the shell (login screen, impersonation view).
+function shouldBypassShell(pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (pathname === '/admin/login' || pathname.startsWith('/admin/login/')) return true;
+  if (pathname === '/admin/impersonate' || pathname.startsWith('/admin/impersonate/')) return true;
+  return false;
+}
+
+export default function AdminFrame({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  if (shouldBypassShell(pathname)) {
+    return <>{children}</>;
+  }
+  return (
+    <PageMetaProvider>
+      <AuthGatedShell>{children}</AuthGatedShell>
+    </PageMetaProvider>
+  );
+}
+
+function AuthGatedShell({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState<AdminUser | null>(null);
@@ -92,17 +95,14 @@ export default function AdminShell({
     );
   }
 
-  if (!user) {
-    // router.replace already fired — render nothing while navigating
-    return null;
-  }
+  if (!user) return null;
 
   if (!isAdmin) {
     return (
       <div className={styles.denied}>
         <div className={styles.deniedTitle}>Access denied</div>
         <p className={styles.deniedSub}>
-          Your account <code>{user.email}</code> isn't an admin. Sign out and sign in with an admin account.
+          Your account <code>{user.email}</code> isn't an admin.
         </p>
         <button
           className={`${styles.btn} ${styles.btnPrimary}`}
@@ -129,7 +129,7 @@ export default function AdminShell({
         {NAV.map(({ href, label, Icon }) => {
           const active = href === '/admin' ? pathname === '/admin' : pathname?.startsWith(href);
           return (
-            <Link key={href} href={href} className={`${styles.navItem} ${active ? styles.navItemActive : ''}`}>
+            <Link key={href} href={href} prefetch className={`${styles.navItem} ${active ? styles.navItemActive : ''}`}>
               <Icon className={styles.navIcon} />
               <span>{label}</span>
             </Link>
@@ -137,9 +137,7 @@ export default function AdminShell({
         })}
         <div className={styles.sidebarFoot}>
           <div>Signed in as</div>
-          <div style={{ color: 'var(--color-text-tertiary)', fontWeight: 500 }}>
-            {user.email}
-          </div>
+          <div style={{ color: 'var(--color-text-tertiary)', fontWeight: 500 }}>{user.email}</div>
           <button
             className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
             style={{ marginTop: 6, justifyContent: 'flex-start' }}
@@ -155,33 +153,40 @@ export default function AdminShell({
       </aside>
 
       <div className={styles.content}>
-        <header className={styles.topbar}>
-          <div>
-            {breadcrumb && <div className={styles.topbarCrumb}>{breadcrumb}</div>}
-            <div className={styles.topbarTitle}>{title || 'Admin'}</div>
-          </div>
-          {search && (
-            <div className={styles.search}>
-              <IconSearch className={styles.searchIcon} />
-              <input
-                type="text"
-                className={styles.searchInput}
-                placeholder={search.placeholder || 'Search…'}
-                value={search.value}
-                onChange={(e) => search.onChange(e.target.value)}
-              />
-              <span className={styles.kbdHint}>⌘K</span>
-            </div>
-          )}
-          {actions}
-          <div className={styles.avatarPill}>
-            <div className={styles.avatar}>{initials(user.displayName || user.email)}</div>
-            <span>{user.displayName || user.email?.split('@')[0]}</span>
-          </div>
-        </header>
+        <PersistentTopbar user={user} />
         <main className={styles.main}>{children}</main>
       </div>
       <CommandPalette />
     </div>
+  );
+}
+
+function PersistentTopbar({ user }: { user: AdminUser }) {
+  const meta = usePageMeta();
+  return (
+    <header className={styles.topbar}>
+      <div>
+        {meta.breadcrumb && <div className={styles.topbarCrumb}>{meta.breadcrumb}</div>}
+        <div className={styles.topbarTitle}>{meta.title || 'Admin'}</div>
+      </div>
+      {meta.search && (
+        <div className={styles.search}>
+          <IconSearch className={styles.searchIcon} />
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder={meta.search.placeholder || 'Search…'}
+            value={meta.search.value}
+            onChange={(e) => meta.search!.onChange(e.target.value)}
+          />
+          <span className={styles.kbdHint}>⌘K</span>
+        </div>
+      )}
+      {meta.actions}
+      <div className={styles.avatarPill}>
+        <div className={styles.avatar}>{initials(user.displayName || user.email)}</div>
+        <span>{user.displayName || user.email?.split('@')[0]}</span>
+      </div>
+    </header>
   );
 }

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import AdminShell from './components/AdminShell';
 import styles from './admin.module.css';
 import { api, fmtRelative } from './lib/adminApi';
+import { useSetPageMeta } from './lib/pageMeta';
 import { IconUsers, IconSupplier, IconSubscription, IconFeedback, IconTrendUp, IconExternal } from './components/icons';
 import { Sparkline, pctChange } from './components/Sparkline';
 
@@ -56,8 +56,10 @@ export default function AdminDashboard() {
   const active7dTrend = series.map((s) => s.active7d || 0);
   const proTrend = series.map((s) => s.subscriptionsPro || 0);
 
+  useSetPageMeta({ title: 'Dashboard', breadcrumb: 'Overview' });
+
   return (
-    <AdminShell title="Dashboard" breadcrumb="Overview">
+    <>
       {loading && (
         <div className={styles.statGrid}>
           {[0, 1, 2, 3].map((i) => (
@@ -217,7 +219,7 @@ export default function AdminDashboard() {
           </div>
         </>
       )}
-    </AdminShell>
+    </>
   );
 }
 

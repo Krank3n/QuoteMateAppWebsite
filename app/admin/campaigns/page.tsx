@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, fmtRelative } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconSend, IconCampaign } from '../components/icons';
 
 interface SavedSegment {
@@ -136,8 +136,10 @@ export default function CampaignsPage() {
     }
   };
 
+  useSetPageMeta({ title: 'Campaigns', breadcrumb: 'Broadcast email to a segment' });
+
   return (
-    <AdminShell title="Campaigns" breadcrumb="Broadcast email to a segment">
+    <>
       <div className={styles.composerGrid}>
         <div>
           <div className={styles.card} style={{ marginBottom: 16 }}>
@@ -318,6 +320,6 @@ export default function CampaignsPage() {
       </div>
 
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
-    </AdminShell>
+    </>
   );
 }

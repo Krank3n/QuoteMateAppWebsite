@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconEmail, IconExternal } from '../components/icons';
 
 interface Event {
@@ -75,12 +75,14 @@ export default function EmailsPage() {
     );
   }, [events, search]);
 
+  useSetPageMeta({
+    title: 'Email log',
+    breadcrumb: 'Every send + delivery, bounce, open, click',
+    search: { value: search, onChange: setSearch, placeholder: 'Search recipient, subject, tag…' },
+  });
+
   return (
-    <AdminShell
-      title="Email log"
-      breadcrumb="Every send + delivery, bounce, open, click"
-      search={{ value: search, onChange: setSearch, placeholder: 'Search recipient, subject, tag…' }}
-    >
+    <>
       {health && (
         <div className={styles.statGrid}>
           <StatTile label="Sent (24h)" value={health.last24h.sent} sub={`${health.last7d.sent} in 7d`} />
@@ -197,7 +199,7 @@ export default function EmailsPage() {
           </table>
         </div>
       </div>
-    </AdminShell>
+    </>
   );
 }
 

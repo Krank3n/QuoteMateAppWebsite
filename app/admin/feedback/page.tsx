@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdminShell from '../components/AdminShell';
 import styles from '../admin.module.css';
 import { api, fmtRelative } from '../lib/adminApi';
+import { useSetPageMeta } from '../lib/pageMeta';
 import { IconFeedback, IconSend } from '../components/icons';
 
 interface FeedbackItem {
@@ -61,8 +61,10 @@ export default function FeedbackPage() {
     }
   };
 
+  useSetPageMeta({ title: 'Feedback', breadcrumb: `${feedback.length} recent` });
+
   return (
-    <AdminShell title="Feedback" breadcrumb={`${feedback.length} recent`}>
+    <>
       {loading ? (
         <div className={styles.centerLoader} style={{ minHeight: 200 }}><div className={styles.spinner} /></div>
       ) : feedback.length === 0 ? (
@@ -122,6 +124,6 @@ export default function FeedbackPage() {
         </div>
       )}
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
-    </AdminShell>
+    </>
   );
 }
