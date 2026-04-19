@@ -378,9 +378,7 @@ function QuoteModal({
 
               <div className={styles.detailSection}>
                 <h3>Job</h3>
-                <div style={{ fontSize: 13, color: 'var(--color-text-tertiary)', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
-                  {full.job || '—'}
-                </div>
+                {renderJob(full.job)}
               </div>
 
               <div className={styles.detailSection}>
@@ -399,12 +397,24 @@ function QuoteModal({
                 <div className={styles.detailSection}>
                   <h3>Sections ({sections.length})</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    {sections.map((s: any, i: number) => (
-                      <div key={i} style={{ padding: 10, background: 'rgba(0,0,0,0.2)', borderRadius: 8, fontSize: 13 }}>
-                        <strong>{s.name || s.title || `Section ${i + 1}`}</strong>
-                        {typeof s.total === 'number' && <span style={{ float: 'right' }}>${s.total.toFixed(2)}</span>}
-                      </div>
-                    ))}
+                    {sections.map((s: any, i: number) => {
+                      const sectionTotal = Number(s.total ?? s.laborTotal) || 0;
+                      const label = typeof s.name === 'string' ? s.name : typeof s.title === 'string' ? s.title : `Section ${i + 1}`;
+                      const hoursLabel = typeof s.laborHours === 'number'
+                        ? `${s.laborHours}${typeof s.laborUnit === 'string' ? ` ${s.laborUnit}` : 'h'}`
+                        : '';
+                      return (
+                        <div key={s.id || i} style={{ padding: 10, background: 'rgba(0,0,0,0.2)', borderRadius: 8, fontSize: 13 }}>
+                          <strong>{label}</strong>
+                          {hoursLabel && (
+                            <span style={{ marginLeft: 8, fontSize: 11, color: 'var(--color-text-secondary)' }}>
+                              {hoursLabel}
+                            </span>
+                          )}
+                          {sectionTotal > 0 && <span style={{ float: 'right' }}>${sectionTotal.toFixed(2)}</span>}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -426,9 +436,9 @@ function QuoteModal({
                       <tbody>
                         {materials.slice(0, 50).map((m: any, i: number) => (
                           <tr key={i} style={{ cursor: 'default' }}>
-                            <td>{m.name || m.title || '—'}</td>
+                            <td>{asText(m.name) || asText(m.title) || '—'}</td>
                             <td>{m.quantity ?? m.qty ?? '—'}</td>
-                            <td>{m.unit || 'each'}</td>
+                            <td>{asText(m.unit) || 'each'}</td>
                             <td style={{ textAlign: 'right' }}>${Number(m.price || 0).toFixed(2)}</td>
                             <td style={{ textAlign: 'right' }}>${Number(m.totalPrice || (Number(m.price || 0) * Number(m.quantity || m.qty || 0))).toFixed(2)}</td>
                           </tr>
@@ -451,8 +461,8 @@ function QuoteModal({
                   <Fact label="Created" value={fmtDateTime(quote.createdAt)} />
                   <Fact label="Updated" value={fmtDateTime(quote.updatedAt)} />
                   <Fact label="Acceptance token" value={quote.hasAcceptanceToken ? 'Generated' : '—'} />
-                  {full.notes && <Fact label="Internal notes" value={full.notes} />}
-                  {full.clientNotes && <Fact label="Client notes" value={full.clientNotes} />}
+                  {full.notes && <Fact label="Internal notes" value={asText(full.notes)} />}
+                  {full.clientNotes && <Fact label="Client notes" value={asText(full.clientNotes)} />}
                 </div>
               </div>
             </>
@@ -468,6 +478,55 @@ function Fact({ label, value }: { label: string; value: React.ReactNode }) {
     <div className={styles.detailFact}>
       <div className={styles.detailFactLabel}>{label}</div>
       <div className={styles.detailFactValue}>{value}</div>
+    </div>
+  );
+}
+
+// Coerce a quote field that might be a string, number, or object into something
+// React can render. Object shapes vary (job, clientNotes, notes can all be either).
+function asText(v: any): string {
+  if (v === null || v === undefined) return '';
+  if (typeof v === 'string') return v;
+  if (typeof v === 'number' || typeof v === 'boolean') return String(v);
+  if (typeof v === 'object') {
+    if (typeof v.text === 'string') return v.text;
+    if (typeof v.value === 'string') return v.value;
+    if (typeof v.description === 'string') return v.description;
+    if (typeof v.name === 'string') return v.name;
+    try { return JSON.stringify(v); } catch { return ''; }
+  }
+  return '';
+}
+
+function renderJob(job: any): React.ReactNode {
+  if (!job) return <span style={{ color: 'var(--color-text-secondary)' }}>—</span>;
+  if (typeof job === 'string') {
+    return (
+      <div style={{ fontSize: 13, color: 'var(--color-text-tertiary)', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+        {job}
+      </div>
+    );
+  }
+  // Object shape: { name, description, template, estimatedHours, customParams, ... }
+  const name = typeof job.name === 'string' ? job.name : null;
+  const description = typeof job.description === 'string' ? job.description : null;
+  const template = typeof job.template === 'string' ? job.template : null;
+  const estimatedHours = typeof job.estimatedHours === 'number' ? job.estimatedHours : null;
+  return (
+    <div>
+      {name && <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 6 }}>{name}</div>}
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', fontSize: 11, color: 'var(--color-text-secondary)', marginBottom: 10 }}>
+        {template && <span>template: {template}</span>}
+        {estimatedHours !== null && <span>est. {estimatedHours}h</span>}
+      </div>
+      {description && (
+        <div style={{ fontSize: 13, color: 'var(--color-text-tertiary)', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+          {description}
+        </div>
+      )}
+      {!name && !description && (
+        <div style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>No job description.</div>
+      )}
     </div>
   );
 }
