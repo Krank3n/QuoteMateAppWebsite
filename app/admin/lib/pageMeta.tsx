@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { ReactNode, useEffect, useSyncExternalStore } from 'react';
 
 export interface PageSearch {
   value: string;
@@ -15,33 +15,37 @@ export interface PageMeta {
   actions?: ReactNode;
 }
 
-interface Ctx {
-  meta: PageMeta;
-  setMeta: (m: PageMeta) => void;
+// Module-level store. The topbar subscribes; pages publish. Keeping state OUT
+// of React Context on purpose — when the previous version used context+useState,
+// every page render triggered setState which re-rendered the provider and thus
+// every child INCLUDING the page, which then re-published, creating an infinite
+// useEffect loop. That loop locked up the UI and broke nav + profile clicks.
+let currentMeta: PageMeta = {};
+const listeners = new Set<() => void>();
+
+function subscribe(cb: () => void): () => void {
+  listeners.add(cb);
+  return () => {
+    listeners.delete(cb);
+  };
 }
 
-const PageMetaContext = createContext<Ctx | null>(null);
-
-export function PageMetaProvider({ children }: { children: ReactNode }) {
-  const [meta, setMetaState] = useState<PageMeta>({});
-  const setMeta = useCallback((m: PageMeta) => setMetaState(m), []);
-  return <PageMetaContext.Provider value={{ meta, setMeta }}>{children}</PageMetaContext.Provider>;
+function getSnapshot(): PageMeta {
+  return currentMeta;
 }
 
 export function usePageMeta(): PageMeta {
-  const ctx = useContext(PageMetaContext);
-  return ctx?.meta || {};
+  return useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
 }
 
-/**
- * Pages call this to populate the persistent topbar. Effect runs after every
- * render (no deps) so dynamic props (search value, stateful actions) propagate.
- * No cleanup — the next page's render will overwrite; a blank trailing state
- * between pages caused noticeable flicker/navigation weirdness.
- */
 export function useSetPageMeta(meta: PageMeta): void {
-  const ctx = useContext(PageMetaContext);
   useEffect(() => {
-    ctx?.setMeta(meta);
+    currentMeta = meta;
+    listeners.forEach((fn) => fn());
   });
+}
+
+// Kept only so existing imports don't crash during build; no-op now.
+export function PageMetaProvider({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }
