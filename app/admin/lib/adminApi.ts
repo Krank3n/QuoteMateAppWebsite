@@ -49,6 +49,7 @@ export const api = {
   deleteUser: call<{ uid: string; wipeData?: boolean; confirmEmail: string }>('adminDeleteUser'),
   listQuotes: call<{ limit?: number; status?: string; userId?: string }>('adminListQuotes'),
   getQuote: call<{ uid: string; id: string }>('adminGetQuote'),
+  listPayments: call<{ limit?: number }>('adminListPayments'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {

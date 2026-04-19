@@ -30,7 +30,15 @@ interface Quote {
   updatedAt: number | null;
   respondedAt: number | null;
   respondedBy: string | null;
+  firstViewedAt: number | null;
+  lastViewedAt: number | null;
+  viewCount: number;
   hasAcceptanceToken: boolean;
+  depositPaid: number;
+  paidTotal: number;
+  balanceDue: number;
+  depositPaidAt: number | null;
+  squarePaymentId: string | null;
 }
 
 const STATUS_FILTERS: Array<{ id: string; label: string }> = [
@@ -109,7 +117,11 @@ export default function QuotesPage() {
           sub={`${totals.accepted || 0} quotes · ${conversionRate(totals)}% of sent`}
           accent
         />
-        <StatTile label="Declined / lost" value={totals.declined || 0} sub="Reach out to find out why" warn={(totals.declined || 0) > 0} />
+        <StatTile
+          label="Paid via Square"
+          value={`$${Math.round(totals.valuePaid || 0).toLocaleString()}`}
+          sub={`${totals.paidCount || 0} quotes with Square payments`}
+        />
       </div>
 
       <div className={styles.card}>
@@ -188,10 +200,31 @@ export default function QuotesPage() {
                       </div>
                     </Link>
                   </td>
-                  <td><QuoteStatusTag status={q.status} /></td>
+                  <td>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                      <QuoteStatusTag status={q.status} />
+                      {q.firstViewedAt && !q.respondedAt && (
+                        <span
+                          style={{ fontSize: 10, color: '#6ee7b7', display: 'inline-flex', alignItems: 'center', gap: 3 }}
+                          title={`Viewed ${q.viewCount}× · last ${fmtRelative(q.lastViewedAt)}`}
+                        >
+                          👁 viewed{q.viewCount > 1 ? ` ${q.viewCount}×` : ''}
+                        </span>
+                      )}
+                      {(q.paidTotal > 0 || q.depositPaid > 0) && (
+                        <span
+                          style={{ fontSize: 10, color: '#6ee7b7', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 3 }}
+                          title={q.balanceDue > 0 ? `$${(q.paidTotal || q.depositPaid).toFixed(2)} of $${q.total.toFixed(2)}` : 'Paid in full'}
+                        >
+                          💳 ${(Math.max(q.paidTotal, q.depositPaid)).toFixed(2)}
+                          {q.balanceDue > 0 ? ` (-$${q.balanceDue.toFixed(2)})` : ' paid'}
+                        </span>
+                      )}
+                    </div>
+                  </td>
                   <td style={{ textAlign: 'right', fontWeight: 600 }}>${q.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                   <td>{fmtRelative(q.createdAt)}</td>
-                  <td>{q.respondedAt ? fmtRelative(q.respondedAt) : <span style={{ opacity: 0.4 }}>—</span>}</td>
+                  <td>{q.respondedAt ? fmtRelative(q.respondedAt) : q.firstViewedAt ? <span style={{ color: '#6ee7b7', fontSize: 12 }}>viewed {fmtRelative(q.lastViewedAt)}</span> : <span style={{ opacity: 0.4 }}>—</span>}</td>
                   <td style={{ textAlign: 'right' }}>
                     <IconExternal style={{ width: 12, height: 12, color: 'var(--color-text-secondary)' }} />
                   </td>
@@ -295,7 +328,18 @@ function QuoteModal({
               <QuoteStatusTag status={quote.status} />
               <span>${quote.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
               <span>Created {fmtDate(quote.createdAt)}</span>
+              {quote.firstViewedAt && (
+                <span style={{ color: '#6ee7b7' }}>
+                  👁 Viewed {quote.viewCount}× · first {fmtRelative(quote.firstViewedAt)} · last {fmtRelative(quote.lastViewedAt)}
+                </span>
+              )}
               {quote.respondedAt && <span>Responded {fmtRelative(quote.respondedAt)}</span>}
+              {(quote.paidTotal > 0 || quote.depositPaid > 0) && (
+                <span style={{ color: '#6ee7b7', fontWeight: 600 }}>
+                  💳 ${(Math.max(quote.paidTotal, quote.depositPaid)).toFixed(2)} paid{quote.balanceDue > 0 ? ` · $${quote.balanceDue.toFixed(2)} owing` : ' in full'}
+                  {quote.depositPaidAt && ` · ${fmtRelative(quote.depositPaidAt)}`}
+                </span>
+              )}
             </div>
           </div>
           <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={onClose}>Close</button>
