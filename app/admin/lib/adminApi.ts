@@ -47,6 +47,8 @@ export const api = {
   revokePro: call<{ uid: string }>('adminRevokePro'),
   setUserDisabled: call<{ uid: string; disabled: boolean }>('adminSetUserDisabled'),
   deleteUser: call<{ uid: string; wipeData?: boolean; confirmEmail: string }>('adminDeleteUser'),
+  listQuotes: call<{ limit?: number; status?: string; userId?: string }>('adminListQuotes'),
+  getQuote: call<{ uid: string; id: string }>('adminGetQuote'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {
