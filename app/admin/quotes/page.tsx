@@ -386,8 +386,21 @@ function QuoteModal({
                 <div className={styles.detailFactGrid}>
                   <Fact label="Materials subtotal" value={`$${Number(full.materialsSubtotal || 0).toFixed(2)}`} />
                   <Fact label="Labor total" value={`$${Number(full.laborTotal || 0).toFixed(2)}`} />
-                  <Fact label="Markup" value={`${Number(full.markup || 0)}%`} />
-                  <Fact label="Subtotal" value={`$${Number(full.subtotal || 0).toFixed(2)}`} />
+                  <Fact label="Subtotal (pre-markup)" value={`$${Number(full.subtotal || 0).toFixed(2)}`} />
+                  <Fact
+                    label={`Markup (${Number(full.markup || 0)}%${full.laborMarkup ? ` / labor ${Number(full.laborMarkup)}%` : ''})`}
+                    value={`+$${Number(full.markupAmount || 0).toFixed(2)}`}
+                  />
+                  {Number(full.travelAdjustmentAmount || 0) > 0 && (
+                    <Fact
+                      label={`Travel (${Number(full.travelAdjustment || 0)}%)`}
+                      value={`+$${Number(full.travelAdjustmentAmount || 0).toFixed(2)}`}
+                    />
+                  )}
+                  <Fact
+                    label="Subtotal with markup"
+                    value={`$${(Number(full.subtotal || 0) + Number(full.markupAmount || 0) + Number(full.travelAdjustmentAmount || 0)).toFixed(2)}`}
+                  />
                   <Fact label="GST" value={`$${Number(full.gst || 0).toFixed(2)}`} />
                   <Fact label="Total" value={<strong>${Number(full.total || 0).toFixed(2)}</strong>} />
                 </div>

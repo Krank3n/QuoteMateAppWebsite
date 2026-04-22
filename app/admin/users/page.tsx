@@ -33,6 +33,9 @@ interface UserRow {
   tags: string[];
   marketingOptIn: boolean;
   healthScore: number;
+  squareStatus: 'connected' | 'broken' | 'none';
+  squareMerchantName: string | null;
+  squareEnv: string | null;
 }
 
 const AVAILABLE_TAGS = ['hot-lead', 'at-risk', 'vip', 'support-needed', 'champion', 'do-not-contact'];
@@ -53,7 +56,9 @@ type QuickFilterId =
   | 'at-risk'
   | 'new-week'
   | 'no-quotes'
-  | 'no-suppliers';
+  | 'no-suppliers'
+  | 'square-connected'
+  | 'square-broken';
 
 const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow) => boolean }> = [
   { id: 'all', label: 'All', test: () => true },
@@ -70,6 +75,8 @@ const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow
   { id: 'new-week', label: 'New this week', test: (u) => !!u.signupAt && Date.now() - u.signupAt < 7 * DAY },
   { id: 'no-quotes', label: 'No quotes yet', test: (u) => (u.quoteCount || 0) === 0 },
   { id: 'no-suppliers', label: 'No suppliers', test: (u) => (u.supplierBookCount || 0) === 0 },
+  { id: 'square-connected', label: 'Square: connected', test: (u) => u.squareStatus === 'connected' },
+  { id: 'square-broken', label: 'Square: broken', test: (u) => u.squareStatus === 'broken' },
 ];
 
 export default function UsersPage() {
@@ -277,6 +284,9 @@ function UsersPageInner() {
                     <div className={styles.listTitle}>{u.businessName || u.displayName || u.email || u.uid}</div>
                     <div className={styles.listSubtitle}>
                       {u.email || 'no email'} · {u.quoteCount}q · <HealthDot score={u.healthScore || 0} />
+                      {u.squareStatus !== 'none' && (
+                        <> · <SquareDot status={u.squareStatus} /></>
+                      )}
                     </div>
                   </div>
                   <div className={styles.listMeta}>
@@ -371,6 +381,19 @@ function HealthDot({ score }: { score: number }) {
   );
 }
 
+function SquareDot({ status }: { status: 'connected' | 'broken' | 'none' }) {
+  if (status === 'none') return null;
+  const color = status === 'connected' ? '#10b981' : '#ef4444';
+  const text = status === 'connected' ? 'Square' : 'Square ⚠';
+  const title = status === 'connected' ? 'Square connected' : 'Square token refresh failed';
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--color-text-secondary)' }} title={title}>
+      <span style={{ width: 6, height: 6, borderRadius: 3, background: color, display: 'inline-block' }} />
+      {text}
+    </span>
+  );
+}
+
 function PlanTag({ tier }: { tier: string }) {
   const map: Record<string, string> = {
     pro: styles.tagPro,
@@ -415,7 +438,7 @@ function UserDetail({
   showToast: (msg: string, error?: boolean) => void;
 }) {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
-  const { uid, profile, business, emailState, emailPreferences, subscription, quotes, invoices, notes, calls, emailLog, feedback, supplierBook } = detail;
+  const { uid, profile, business, emailState, emailPreferences, subscription, square, quotes, invoices, notes, calls, emailLog, feedback, supplierBook } = detail;
   const name = business?.businessName || profile?.displayName || profile?.email || uid;
   const tier = subscription?.tier || 'free';
   const tags: string[] = detail?.userDoc?.crmTags || [];
@@ -495,6 +518,11 @@ function UserDetail({
               <Fact label="Marketing opt-in" value={emailPreferences?.marketing !== false ? 'Yes' : 'No'} />
               <Fact label="Last signed in" value={fmtRelative(profile?.lastSignInTime ? new Date(profile.lastSignInTime).getTime() : null)} />
             </div>
+          </div>
+
+          <div className={styles.detailSection}>
+            <h3>Payments — Square</h3>
+            <SquareSection square={square} />
           </div>
 
           <div className={styles.detailSection}>
@@ -605,6 +633,50 @@ function Fact({ label, value }: { label: string; value: React.ReactNode }) {
       <div className={styles.detailFactLabel}>{label}</div>
       <div className={styles.detailFactValue}>{value}</div>
     </div>
+  );
+}
+
+function SquareSection({ square }: { square: any }) {
+  if (!square) {
+    return (
+      <div style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>
+        Not connected. This user hasn't attempted the Square OAuth flow (or disconnected).
+      </div>
+    );
+  }
+  const connected = !!square.connected;
+  const statusColor = connected ? '#10b981' : '#ef4444';
+  const statusLabel = connected ? 'Connected' : 'Broken';
+  const connectedAt = square.connectedAt ? new Date(square.connectedAt).getTime() : null;
+  return (
+    <>
+      <div style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 8,
+        padding: '4px 10px',
+        borderRadius: 999,
+        background: `rgba(${connected ? '16, 185, 129' : '239, 68, 68'}, 0.12)`,
+        border: `1px solid rgba(${connected ? '16, 185, 129' : '239, 68, 68'}, 0.3)`,
+        fontSize: 12,
+        fontWeight: 600,
+        color: statusColor,
+        marginBottom: 10,
+      }}>
+        <span style={{ width: 6, height: 6, borderRadius: 3, background: statusColor, display: 'inline-block' }} />
+        Square · {statusLabel}
+        {square.env && <span style={{ opacity: 0.7, fontWeight: 400 }}>· {square.env}</span>}
+      </div>
+      <div className={styles.detailFactGrid}>
+        <Fact label="Merchant" value={square.merchantName || '—'} />
+        <Fact label="Merchant ID" value={square.merchantId ? <code style={{ fontSize: 11 }}>{square.merchantId}</code> : '—'} />
+        <Fact label="Location" value={square.locationName || '—'} />
+        <Fact label="Connected" value={fmtDate(connectedAt)} />
+        {square.disconnectedReason && (
+          <Fact label="Issue" value={<span style={{ color: '#ef4444' }}>{square.disconnectedReason}</span>} />
+        )}
+      </div>
+    </>
   );
 }
 
