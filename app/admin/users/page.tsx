@@ -36,6 +36,9 @@ interface UserRow {
   squareStatus: 'connected' | 'broken' | 'none';
   squareMerchantName: string | null;
   squareEnv: string | null;
+  appVersion: string | null;
+  appPlatform: string | null;
+  appVersionSeenAt: number | null;
 }
 
 const AVAILABLE_TAGS = ['hot-lead', 'at-risk', 'vip', 'support-needed', 'champion', 'do-not-contact'];
@@ -292,6 +295,11 @@ function UsersPageInner() {
                   <div className={styles.listMeta}>
                     <PlanTag tier={u.planTier} />
                     <div style={{ marginTop: 4 }}>{fmtRelative(u.lastActivityAt)}</div>
+                    {u.appVersion && (
+                      <div style={{ marginTop: 2, fontSize: 10, color: 'var(--color-text-secondary)' }}>
+                        v{u.appVersion}{u.appPlatform ? ` · ${u.appPlatform}` : ''}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))
@@ -517,6 +525,12 @@ function UserDetail({
               <Fact label="Invoices" value={`${invoices?.length || 0}+ (shown)`} />
               <Fact label="Marketing opt-in" value={emailPreferences?.marketing !== false ? 'Yes' : 'No'} />
               <Fact label="Last signed in" value={fmtRelative(profile?.lastSignInTime ? new Date(profile.lastSignInTime).getTime() : null)} />
+              <Fact
+                label="App version"
+                value={emailState?.appVersion
+                  ? `v${emailState.appVersion}${emailState.appPlatform ? ` · ${emailState.appPlatform}` : ''}${emailState.appVersionSeenAt ? ` (seen ${fmtRelative(emailState.appVersionSeenAt)})` : ''}`
+                  : 'unknown'}
+              />
             </div>
           </div>
 
