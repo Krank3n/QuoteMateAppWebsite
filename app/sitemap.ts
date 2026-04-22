@@ -27,12 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const TIER_1_CITIES = new Set(['sydney', 'melbourne', 'brisbane']);
+  const TIER_2_CITIES = new Set(['perth', 'adelaide']);
+  const cityPriority = (slug: string): number => {
+    if (TIER_1_CITIES.has(slug)) return 0.8;
+    if (TIER_2_CITIES.has(slug)) return 0.75;
+    return 0.7;
+  };
+
   const tradeCityPages: MetadataRoute.Sitemap = trades.flatMap((trade) =>
     cities.map((city) => ({
       url: `${baseUrl}/quotes-for-${trade.slug}/${city.slug}`,
       lastModified,
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: cityPriority(city.slug),
     }))
   );
 

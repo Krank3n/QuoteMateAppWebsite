@@ -2799,7 +2799,8 @@ ul {
     max-width: 760px;
 }
 
-.guide-section {
+.guide-section,
+.guide-tips {
     margin-bottom: 40px;
 }
 

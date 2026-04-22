@@ -33,10 +33,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   const city = getCityBySlug(citySlug);
   if (!trade || !city) return {};
+  const title = `${trade.name} Quoting App in ${city.name} ${city.state}`;
+  const description = `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time supplier pricing.`;
+  const url = `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}`;
   return {
-    title: `${trade.name} Quoting App in ${city.name} ${city.state}`,
-    description: `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time supplier pricing.`,
-    alternates: { canonical: `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    keywords: [
+      `${trade.keyword} ${city.name}`,
+      `quoting app ${city.name}`,
+      `${trade.name.toLowerCase()} ${city.name}`,
+      `${trade.keyword} quotes`,
+      `${city.name} tradies`,
+      city.name,
+      city.state,
+    ],
+    openGraph: {
+      type: 'website',
+      url,
+      title,
+      description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 
@@ -49,6 +72,9 @@ export default async function TradeCityPage({ params }: Props) {
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   const city = getCityBySlug(citySlug);
   if (!trade || !city) notFound();
+
+  const faqItems = getTradeFAQs(trade);
+  const pageUrl = `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}`;
 
   return (
     <>
@@ -125,7 +151,7 @@ export default async function TradeCityPage({ params }: Props) {
         <section className="seo-faq">
           <div className="container">
             <h2 className="section-title">Frequently Asked Questions</h2>
-            <FAQ items={getTradeFAQs(trade)} />
+            <FAQ items={faqItems} />
           </div>
         </section>
 
@@ -172,6 +198,41 @@ export default async function TradeCityPage({ params }: Props) {
         </section>
       </main>
       <Footer />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+        }))
+      })}} />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": `QuoteMate for ${trade.name} in ${city.name}`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS, Android, Web",
+        "description": `${trade.description} Serving ${trade.name.toLowerCase()} in ${city.name}, ${city.state}.`,
+        "url": pageUrl,
+        "offers": [
+          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free" },
+          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro", "billingIncrement": "month" }
+        ],
+        "provider": {
+          "@type": "Organization",
+          "name": "QuoteMate",
+          "url": "https://quotemateapp.au",
+          "areaServed": {
+            "@type": "City",
+            "name": city.name,
+            "containedInPlace": { "@type": "AdministrativeArea", "name": city.state }
+          }
+        }
+      })}} />
+
     </>
   );
 }

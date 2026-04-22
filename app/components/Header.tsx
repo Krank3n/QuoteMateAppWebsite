@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -12,6 +12,8 @@ export default function Header({ homeLinks = false }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const prefix = homeLinks ? '/' : '';
+  const toggleBtnRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleScroll() {
@@ -21,6 +23,42 @@ export default function Header({ homeLinks = false }: HeaderProps) {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    const focusables = Array.from(
+      overlay.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    );
+    focusables[0]?.focus();
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMobileOpen(false);
+        document.body.style.overflow = '';
+        return;
+      }
+      if (e.key !== 'Tab' || focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      toggleBtnRef.current?.focus();
+    };
+  }, [mobileOpen]);
 
   function closeMenu() {
     setMobileOpen(false);
@@ -57,10 +95,12 @@ export default function Header({ homeLinks = false }: HeaderProps) {
           </div>
 
           <button
+            ref={toggleBtnRef}
             className={`mobile-menu-toggle${mobileOpen ? ' active' : ''}`}
             id="mobile-menu-toggle"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu-overlay"
             onClick={toggleMenu}
           >
             <span className="hamburger-line"></span>
@@ -71,7 +111,12 @@ export default function Header({ homeLinks = false }: HeaderProps) {
       </header>
 
       {mobileOpen && (
-        <div className="mobile-menu-overlay" onClick={closeMenu}>
+        <div
+          ref={overlayRef}
+          id="mobile-menu-overlay"
+          className="mobile-menu-overlay"
+          onClick={closeMenu}
+        >
           <nav aria-label="Mobile navigation" onClick={(e) => e.stopPropagation()}>
             <ul role="menubar">
               <li role="none"><Link href={`${prefix}#features`} role="menuitem" onClick={closeMenu}>Features</Link></li>

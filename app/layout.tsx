@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   },
   description: 'Create professional quotes and invoices in under 2 minutes. AI-powered quoting app with real-time supplier pricing, built for Australian tradies.',
   icons: { icon: '/assets/favicon.png' },
+  itunes: { appId: '6754000046' },
   openGraph: {
     type: 'website',
     siteName: 'QuoteMate',

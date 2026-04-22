@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     template: '%s — QuoteMate Supplier Portal',
   },
   description: 'Upload your price list and let tradies subscribe to your latest prices through QuoteMate.',
+  robots: { index: false, follow: false },
 };
 
 export default function PortalLayout({ children }: { children: React.ReactNode }) {

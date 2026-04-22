@@ -48,6 +48,8 @@ export interface Guide {
   relatedTemplate: string;
   sections: GuideSection[];
   tips: string[];
+  datePublished?: string;
+  dateModified?: string;
 }
 
 export interface SiteData {

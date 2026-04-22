@@ -1,17 +1,38 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import fs from 'fs';
+import path from 'path';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CTAButtons from '../../components/CTAButtons';
-import { guides, trades, getGuideBySlug, getTradeBySlug, getTemplateBySlug } from '@/lib/data';
+import { guides, trades, getGuideBySlug, getTradeBySlug, getTemplateBySlug, type Guide } from '@/lib/data';
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
+
+const DEFAULT_PUBLISHED = '2026-03-01';
+const DEFAULT_MODIFIED = '2026-03-13';
+const FALLBACK_OG_IMAGE = '/assets/og-image.jpg';
+
+function articleImage(slug: string): string {
+  const imagePath = path.join(process.cwd(), 'public', 'assets', 'articles', `${slug}.jpg`);
+  return fs.existsSync(imagePath) ? `/assets/articles/${slug}.jpg` : FALLBACK_OG_IMAGE;
+}
+
+function guideDates(guide: Guide): { published: string; modified: string } {
+  const published = guide.datePublished || DEFAULT_PUBLISHED;
+  const modified = guide.dateModified || guide.datePublished || DEFAULT_MODIFIED;
+  return { published, modified };
+}
+
+function formatMonthYear(iso: string): string {
+  return new Intl.DateTimeFormat('en-AU', { month: 'long', year: 'numeric' }).format(new Date(iso));
+}
 
 export async function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -21,12 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuideBySlug(slug);
   if (!guide) return {};
+  const image = articleImage(guide.slug);
   return {
     title: guide.title,
     description: guide.description,
     alternates: { canonical: `https://quotemateapp.au/articles/${guide.slug}` },
     openGraph: {
-      images: [{ url: `/assets/articles/${guide.slug}.jpg`, width: 800, height: 450, alt: guide.title }],
+      images: [{ url: image, width: 1200, height: 630, alt: guide.title }],
     },
   };
 }
@@ -38,8 +60,9 @@ export default async function ArticlePage({ params }: Props) {
 
   const trade = getTradeBySlug(guide.trade);
   const relatedTemplate = guide.relatedTemplate ? getTemplateBySlug(guide.relatedTemplate) : undefined;
+  const { published, modified } = guideDates(guide);
+  const heroImage = articleImage(guide.slug);
 
-  // Calculate reading time from all text content
   const wordCount = [guide.description, ...guide.sections.map(s => s.heading + ' ' + s.body), ...guide.tips].join(' ').split(/\s+/).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 230));
 
@@ -57,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
             <div className="seo-hero-content">
               <div className="blog-meta">
                 {trade && <span className="seo-badge">{trade.name}</span>}
-                <span className="blog-meta-text">Updated March 2026 &middot; {readingTime} min read</span>
+                <span className="blog-meta-text">Updated {formatMonthYear(modified)} &middot; {readingTime} min read</span>
               </div>
               <h1 className="seo-hero-title">{guide.title}</h1>
               <p className="seo-hero-subtitle">{guide.description}</p>
@@ -71,7 +94,7 @@ export default async function ArticlePage({ params }: Props) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="article-hero-image"
-                src={`/assets/articles/${guide.slug}.jpg`}
+                src={heroImage}
                 alt={guide.title}
                 width={800}
                 height={450}
@@ -157,9 +180,9 @@ export default async function ArticlePage({ params }: Props) {
         "@type": "Article",
         "headline": guide.title,
         "description": guide.description,
-        "image": `https://quotemateapp.au/assets/articles/${guide.slug}.jpg`,
-        "datePublished": "2026-03-01",
-        "dateModified": "2026-03-13",
+        "image": `https://quotemateapp.au${heroImage}`,
+        "datePublished": published,
+        "dateModified": modified,
         "author": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au" },
         "publisher": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au", "logo": { "@type": "ImageObject", "url": "https://quotemateapp.au/assets/logo.png" } },
       })}} />

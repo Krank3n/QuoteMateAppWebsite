@@ -29,10 +29,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tradeSlug } = await params;
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   if (!trade) return {};
+  const title = `${trade.heroTitle} — Quoting App for ${trade.name}`;
+  const description = trade.description;
+  const url = `https://quotemateapp.au/quotes-for-${trade.slug}`;
   return {
-    title: `${trade.heroTitle} — Quoting App for ${trade.name}`,
-    description: trade.description,
-    alternates: { canonical: `https://quotemateapp.au/quotes-for-${trade.slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    keywords: [
+      `${trade.keyword} quoting app`,
+      `quoting app for ${trade.name.toLowerCase()}`,
+      `${trade.keyword} quotes Australia`,
+      `${trade.name.toLowerCase()} invoice app`,
+    ],
+    openGraph: {
+      type: 'website',
+      url,
+      title,
+      description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 
@@ -224,6 +244,7 @@ export default async function TradePage({ params }: Props) {
           "areaServed": { "@type": "Country", "name": "Australia" }
         }
       })}} />
+
     </>
   );
 }
