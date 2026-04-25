@@ -66,12 +66,18 @@ export default function QuotesPage() {
     if (status !== 'all') params.status = status;
     api.listQuotes(params)
       .then((r: any) => {
+        console.log('[admin/quotes] listQuotes resolved', {
+          count: r?.quotes?.length,
+          totals: r?.totals,
+          cancelled,
+        });
         if (cancelled) return;
         setQuotes(r?.quotes || []);
         setTotals(r?.totals || {});
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('[admin/quotes] listQuotes failed', err);
         if (!cancelled) setLoading(false);
       });
     return () => { cancelled = true; };
