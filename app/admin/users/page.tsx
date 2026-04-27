@@ -39,6 +39,8 @@ interface UserRow {
   appVersion: string | null;
   appPlatform: string | null;
   appVersionSeenAt: number | null;
+  noteCount: number;
+  lastNoteAt: number | null;
 }
 
 const AVAILABLE_TAGS = ['hot-lead', 'at-risk', 'vip', 'support-needed', 'champion', 'do-not-contact'];
@@ -61,7 +63,12 @@ type QuickFilterId =
   | 'no-quotes'
   | 'no-suppliers'
   | 'square-connected'
-  | 'square-broken';
+  | 'square-broken'
+  | 'contacted'
+  | 'not-contacted'
+  | 'contacted-7d'
+  | 'contacted-30d'
+  | 'stale-contact';
 
 const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow) => boolean }> = [
   { id: 'all', label: 'All', test: () => true },
@@ -80,6 +87,11 @@ const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow
   { id: 'no-suppliers', label: 'No suppliers', test: (u) => (u.supplierBookCount || 0) === 0 },
   { id: 'square-connected', label: 'Square: connected', test: (u) => u.squareStatus === 'connected' },
   { id: 'square-broken', label: 'Square: broken', test: (u) => u.squareStatus === 'broken' },
+  { id: 'contacted', label: 'Contacted', test: (u) => (u.noteCount || 0) > 0 },
+  { id: 'not-contacted', label: 'Not contacted', test: (u) => (u.noteCount || 0) === 0 },
+  { id: 'contacted-7d', label: 'Contacted 7d', test: (u) => !!u.lastNoteAt && Date.now() - u.lastNoteAt < 7 * DAY },
+  { id: 'contacted-30d', label: 'Contacted 30d', test: (u) => !!u.lastNoteAt && Date.now() - u.lastNoteAt < 30 * DAY },
+  { id: 'stale-contact', label: 'Contact stale 30d+', test: (u) => !!u.lastNoteAt && Date.now() - u.lastNoteAt > 30 * DAY },
 ];
 
 export default function UsersPage() {
@@ -295,6 +307,21 @@ function UsersPageInner() {
                   <div className={styles.listMeta}>
                     <PlanTag tier={u.planTier} />
                     <div style={{ marginTop: 4 }}>{fmtRelative(u.lastActivityAt)}</div>
+                    {u.lastNoteAt && (
+                      <div
+                        title={`${u.noteCount} note${u.noteCount === 1 ? '' : 's'} · last ${fmtRelative(u.lastNoteAt)}`}
+                        style={{
+                          marginTop: 2,
+                          fontSize: 10,
+                          color: Date.now() - u.lastNoteAt < 7 * DAY ? '#10b981' : 'var(--color-text-secondary)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 3,
+                        }}
+                      >
+                        <IconNote /> {fmtRelative(u.lastNoteAt)}
+                      </div>
+                    )}
                     {u.appVersion && (
                       <div style={{ marginTop: 2, fontSize: 10, color: 'var(--color-text-secondary)' }}>
                         v{u.appVersion}{u.appPlatform ? ` · ${u.appPlatform}` : ''}
