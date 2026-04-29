@@ -419,8 +419,13 @@ function QuoteModal({
                     {sections.map((s: any, i: number) => {
                       const sectionTotal = Number(s.total ?? s.laborTotal) || 0;
                       const label = typeof s.name === 'string' ? s.name : typeof s.title === 'string' ? s.title : `Section ${i + 1}`;
-                      const hoursLabel = typeof s.laborHours === 'number'
-                        ? `${s.laborHours}${typeof s.laborUnit === 'string' ? ` ${s.laborUnit}` : 'h'}`
+                      const totalHours = typeof s.laborHoursTotal === 'number'
+                        ? s.laborHoursTotal
+                        : typeof s.laborHours === 'number'
+                          ? Math.round(s.laborHours * (Number(s.multiplier) || 1) * 100) / 100
+                          : null;
+                      const hoursLabel = totalHours !== null
+                        ? `${totalHours}${typeof s.laborUnit === 'string' ? ` ${s.laborUnit}` : 'h'}`
                         : '';
                       return (
                         <div key={s.id || i} style={{ padding: 10, background: 'rgba(0,0,0,0.2)', borderRadius: 8, fontSize: 13 }}>
