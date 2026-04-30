@@ -144,6 +144,47 @@ export default async function ComparisonPage({ params }: Props) {
         </section>
       </main>
       <Footer />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": `QuoteMate vs ${comp.name} — Comparison for Australian Tradies`,
+        "description": `Side-by-side comparison of QuoteMate and ${comp.name} on pricing, features, AI quoting, supplier pricing, payments, and Xero integration. ${comp.summary}`,
+        "url": `https://quotemateapp.au/compare/${comp.slug}/`,
+        "author": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "QuoteMate",
+          "url": "https://quotemateapp.au",
+          "logo": { "@type": "ImageObject", "url": "https://quotemateapp.au/assets/logo.png" },
+        },
+        "about": [
+          { "@type": "SoftwareApplication", "name": "QuoteMate", "url": "https://quotemateapp.au" },
+          { "@type": "SoftwareApplication", "name": comp.name },
+        ],
+      })}} />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Is QuoteMate or ${comp.name} better for Australian tradies?`,
+            "acceptedAnswer": { "@type": "Answer", "text": comp.summary },
+          },
+          {
+            "@type": "Question",
+            "name": `How does QuoteMate's pricing compare to ${comp.name}?`,
+            "acceptedAnswer": { "@type": "Answer", "text": `QuoteMate has a free plan, plus Pro at $29/month or $199/year (flat pricing, no per-user fees). ${comp.name}: ${comp.pricing}` },
+          },
+          {
+            "@type": "Question",
+            "name": `What does QuoteMate offer that ${comp.name} does not?`,
+            "acceptedAnswer": { "@type": "Answer", "text": `QuoteMate is purpose-built for fast tradie quoting with AI material generation, live Australian supplier pricing, branded PDF quotes, one-tap quote-to-invoice, Square tap-to-pay, Xero sync, automatic GST/ABN handling, and offline mode.` },
+          },
+        ],
+      })}} />
     </>
   );
 }

@@ -43,6 +43,20 @@ export default function ComparePage() {
         </section>
       </main>
       <Footer />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "QuoteMate vs Other Quoting Apps",
+        "description": "Side-by-side comparisons of QuoteMate against other quoting and job-management tools for Australian tradies.",
+        "url": "https://quotemateapp.au/compare/",
+        "hasPart": competitors.map((c) => ({
+          "@type": "Article",
+          "headline": `QuoteMate vs ${c.name}`,
+          "url": `https://quotemateapp.au/compare/${c.slug}/`,
+          "description": c.tagline,
+        })),
+      })}} />
     </>
   );
 }

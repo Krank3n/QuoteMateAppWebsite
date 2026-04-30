@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "tsx scripts/generate-llms.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-article": "tsx scripts/generate-article.ts"
+    "generate-article": "tsx scripts/generate-article.ts",
+    "generate-llms": "tsx scripts/generate-llms.ts"
   },
   "dependencies": {
     "@google/genai": "^1.45.0",

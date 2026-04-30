@@ -519,25 +519,64 @@ export default function HomePage() {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "QuoteMate",
+        "alternateName": ["QuoteMate App", "QuoteMate Australia"],
         "operatingSystem": "iOS, Android, Web",
         "applicationCategory": "BusinessApplication",
-        "description": "AI-powered quoting and invoicing app for Australian tradies. Create professional quotes in under 2 minutes with real-time supplier pricing.",
+        "applicationSubCategory": "Quoting & Invoicing",
+        "url": "https://quotemateapp.au",
+        "downloadUrl": [
+          "https://apps.apple.com/au/app/quotemate/id6754000046",
+          "https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU",
+        ],
+        "description": "AI-powered quoting and invoicing app for Australian tradies. Describe any trade job, get a materials list with live supplier pricing, and send a branded PDF quote in under 2 minutes. Includes Xero sync, Square tap-to-pay, GST, and offline mode.",
+        "featureList": [
+          "AI material list generation from a plain-English job description",
+          "Live supplier pricing from major Australian hardware suppliers",
+          "Branded PDF quotes and invoices",
+          "Quote-to-invoice in one tap",
+          "Xero integration",
+          "Square tap-to-pay (iPhone & NFC-capable Android)",
+          "Australian GST and ABN handling",
+          "Offline mode",
+        ],
         "offers": [
-          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free" },
-          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro", "billingIncrement": "month" }
+          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "category": "free" },
+          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "P1M" },
+          { "@type": "Offer", "price": "199", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "P1Y" },
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
           "reviewCount": "3",
-          "bestRating": "5"
+          "bestRating": "5",
+          "worstRating": "1",
         },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Dave R.", "jobTitle": "Carpenter" },
+            "reviewBody": "I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest — materials, live supplier prices, the lot. Clients love the professional PDFs too.",
+          },
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Mick T.", "jobTitle": "Electrician" },
+            "reviewBody": "The AI material suggestions are spot on. Described a switchboard upgrade and it pulled every item I needed with current pricing. Saved me at least an hour per quote. Worth every cent of the Pro plan.",
+          },
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Sarah K.", "jobTitle": "Painter" },
+            "reviewBody": "Finally an app that actually understands what tradies need. No bloat, no complicated setup — just fast, accurate quotes I can send straight from my phone. The offline mode is a lifesaver on rural jobs.",
+          },
+        ],
         "author": {
           "@type": "Organization",
           "name": "QuoteMate",
           "url": "https://quotemateapp.au",
-          "email": "hello@quotemateapp.au"
-        }
+          "email": "hello@quotemateapp.au",
+        },
       })}} />
 
       {/* Structured Data - Organization */}
@@ -568,6 +607,76 @@ export default function HomePage() {
             "text": item.answer
           }
         }))
+      })}} />
+
+      {/* Structured Data - WebSite */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "QuoteMate",
+        "url": "https://quotemateapp.au",
+        "inLanguage": "en-AU",
+        "publisher": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au" },
+      })}} />
+
+      {/* Structured Data - HowTo (How it works) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to create a professional tradie quote with QuoteMate",
+        "description": "Create a branded, GST-compliant trade quote in under 2 minutes — from job description to a sent PDF.",
+        "totalTime": "PT2M",
+        "tool": [{ "@type": "HowToTool", "name": "QuoteMate app (iOS, Android, or web)" }],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Choose or describe your job",
+            "text": "Pick a quote template for the type of work, or describe the job in plain English (you can use voice-to-text on-site).",
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "AI suggests materials and pricing",
+            "text": "QuoteMate's AI populates a materials list with quantities and live supplier pricing from major Australian suppliers, your imported price list, or a web price search.",
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Set labour and markup",
+            "text": "Add your hourly rate, set independent markup on materials and labour, and add travel cost from the customer's address.",
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Send a professional quote",
+            "text": "Generate a branded PDF with your logo, ABN, and payment terms, and email or message it to the customer for one-tap acceptance.",
+          },
+        ],
+      })}} />
+
+      {/* Structured Data - Product (for shopping/answer-engine extraction) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "QuoteMate — Quoting & Invoicing for Australian Tradies",
+        "description": "AI-powered quoting and invoicing app for Australian tradies with live supplier pricing, Xero sync, and Square tap-to-pay.",
+        "brand": { "@type": "Brand", "name": "QuoteMate" },
+        "image": "https://quotemateapp.au/assets/og-image.jpg",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "AUD",
+          "lowPrice": "0",
+          "highPrice": "199",
+          "offerCount": "3",
+          "url": "https://quotemateapp.au/pricing/",
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "3",
+          "bestRating": "5",
+        },
       })}} />
     </>
   );
