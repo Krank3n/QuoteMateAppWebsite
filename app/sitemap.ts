@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { trades, cities, quoteTemplates, guides } from '@/lib/data';
+import { trades, cities, quoteTemplates, guides, paymentHub } from '@/lib/data';
 import { competitors } from './compare/data';
 
 export const dynamic = 'force-static';
@@ -18,7 +18,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/pricing/`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/about/`, lastModified, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/compare/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/shower-quoting-tool/`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/get-paid/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
   ];
+
+  const paymentSpokePages: MetadataRoute.Sitemap = (paymentHub?.spokes ?? []).map((spoke) => ({
+    url: `${baseUrl}/get-paid/${spoke.slug}/`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
 
   const tradePages: MetadataRoute.Sitemap = trades.map((trade) => ({
     url: `${baseUrl}/quotes-for-${trade.slug}/`,
@@ -65,5 +74,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages];
+  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...paymentSpokePages];
 }

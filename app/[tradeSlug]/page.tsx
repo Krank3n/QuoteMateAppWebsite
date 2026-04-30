@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tradeSlug } = await params;
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   if (!trade) return {};
-  const title = `${trade.heroTitle} — Quoting App for ${trade.name}`;
-  const description = trade.description;
+  const title = trade.metaTitle ?? `Free Quoting App for ${trade.name} (2026) | QuoteMate`;
+  const description = trade.metaDescription ?? trade.description;
   const url = `https://quotemateapp.au/quotes-for-${trade.slug}`;
   return {
     title,
@@ -39,8 +39,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: [
       `${trade.keyword} quoting app`,
       `quoting app for ${trade.name.toLowerCase()}`,
+      `free ${trade.keyword} quote template`,
       `${trade.keyword} quotes Australia`,
       `${trade.name.toLowerCase()} invoice app`,
+      `${trade.keyword} quote app 2026`,
     ],
     openGraph: {
       type: 'website',
@@ -141,6 +143,22 @@ export default async function TradePage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {trade.richContent && (
+          <section className="seo-rich-content">
+            <div className="container">
+              <div className="rich-content-block">
+                <p className="rich-content-intro">{trade.richContent.intro}</p>
+                {trade.richContent.sections.map((sec, i) => (
+                  <div key={i} className="rich-content-section">
+                    <h2>{sec.heading}</h2>
+                    <p>{sec.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="seo-common-jobs">
           <div className="container">

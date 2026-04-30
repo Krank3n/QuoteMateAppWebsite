@@ -22,10 +22,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { templateSlug } = await params;
   const template = getTemplateBySlug(templateSlug);
   if (!template) return {};
+  const url = `https://quotemateapp.au/templates/${template.slug}`;
+  const title = template.metaTitle ?? `Free ${template.name} (PDF & Excel) | QuoteMate`;
+  const description = template.metaDescription ?? `Free ${template.name.toLowerCase()} for Australian tradies. Itemised materials, GST, and pro PDF formatting — send quotes in minutes with QuoteMate.`;
   return {
-    title: template.name,
-    description: template.description,
-    alternates: { canonical: `https://quotemateapp.au/templates/${template.slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    keywords: [
+      template.name.toLowerCase(),
+      `free ${template.keyword} quote template`,
+      `${template.keyword} quote template Australia`,
+      `${template.keyword} quote PDF`,
+      `${template.keyword} quote example`,
+    ],
+    openGraph: {
+      type: 'website',
+      url,
+      title,
+      description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 

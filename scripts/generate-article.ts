@@ -12,7 +12,7 @@
 import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, Type } from '@google/genai';
 
 // ─── Config ─────────────────────────────────────────────────────────────────
 const DATA_PATH = path.join(__dirname, '..', 'seo', 'data.json');
@@ -138,37 +138,43 @@ Requirements:
   const response = await ai.models.generateContent({
     model: GEMINI_MODEL,
     contents: prompt,
+    config: {
+      responseMimeType: 'application/json',
+      responseSchema: {
+        type: Type.OBJECT,
+        properties: {
+          title: { type: Type.STRING },
+          keyword: { type: Type.STRING },
+          description: { type: Type.STRING },
+          sections: {
+            type: Type.ARRAY,
+            items: {
+              type: Type.OBJECT,
+              properties: {
+                heading: { type: Type.STRING },
+                body: { type: Type.STRING },
+              },
+              required: ['heading', 'body'],
+            },
+          },
+          tips: {
+            type: Type.ARRAY,
+            items: { type: Type.STRING },
+          },
+        },
+        required: ['title', 'keyword', 'description', 'sections', 'tips'],
+      },
+    },
   });
 
   const text = response.text?.trim() || '';
 
-  // Strip markdown code fences if present
-  let jsonStr = text.replace(/^```(?:json)?\s*/, '').replace(/\s*```$/, '');
-
-  // Extract the JSON object even if there's trailing text after it
-  const startIdx = jsonStr.indexOf('{');
-  if (startIdx !== -1) {
-    let depth = 0;
-    let endIdx = startIdx;
-    for (let i = startIdx; i < jsonStr.length; i++) {
-      if (jsonStr[i] === '{') depth++;
-      else if (jsonStr[i] === '}') depth--;
-      if (depth === 0) {
-        endIdx = i;
-        break;
-      }
-    }
-    jsonStr = jsonStr.slice(startIdx, endIdx + 1);
-  }
-
-  // Fix common LLM JSON issues: trailing commas before ] or }
-  jsonStr = jsonStr.replace(/,\s*([}\]])/g, '$1');
-
   let article: Record<string, unknown>;
   try {
-    article = JSON.parse(jsonStr);
+    article = JSON.parse(text);
   } catch (err) {
-    console.error('Failed to parse JSON response. Raw text:', text.slice(0, 500));
+    console.error('Failed to parse JSON response. Full text:');
+    console.error(text);
     throw err;
   }
 

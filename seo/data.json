@@ -50,7 +50,20 @@
         }
       ],
       "avgQuoteRange": "$300 – $15,000",
-      "templateSnippet": "Install 10x LED downlights in open-plan living area with dimmer switch"
+      "templateSnippet": "Install 10x LED downlights in open-plan living area with dimmer switch",
+      "richContent": {
+        "intro": "Electrical quoting in Australia carries more compliance weight than any other trade. Every job — from a single power point to a full switchboard upgrade — has to meet AS/NZS 3000 wiring rules, requires a Certificate of Electrical Safety, and depends on the licensing tier of the contractor. Underquote the cable run, miss a safety switch, or forget the permit fee and the margin disappears. QuoteMate is built for licensed Australian electricians who want to quote faster without skipping the line items that protect both the customer and the trade.",
+        "sections": [
+          {
+            "heading": "What goes into a complete electrical quote",
+            "body": "A complete electrical quote covers more than the visible work. Cable type and length (TPS, neutral screen, conduit), termination boxes, GPOs, RCDs, MCBs, isolators, escutcheons, lugs, and the labour to comply with separation requirements all need pricing. For larger jobs — switchboard upgrades, mains upgrades, EV chargers — you also need to capture the network supply authority application, an electrical contractor license number on the quote, and the Certificate of Electrical Safety lodgement. QuoteMate prompts you for each of these so nothing gets missed before the PDF goes out."
+          },
+          {
+            "heading": "Common pricing pitfalls electricians miss",
+            "body": "The three line items most often forgotten on Australian electrical quotes are: hole cutting and patching for downlights and GPOs in plaster, isolators required between switchboards and high-load appliances like ovens and split systems, and the surcharge for after-hours or live-board work that requires power isolation across multiple circuits. QuoteMate's AI flags these automatically based on the job description. For commercial work, the tool also captures access fees, scaffold hire, and the testing and tagging certificate that's billable but rarely quoted."
+          }
+        ]
+      }
     },
     {
       "slug": "plumbers",
@@ -226,7 +239,9 @@
         }
       ],
       "avgQuoteRange": "$1,000 – $60,000",
-      "templateSnippet": "Lay 80sqm of Sir Walter turf with soil preparation, fertiliser, and edging"
+      "templateSnippet": "Lay 80sqm of Sir Walter turf with soil preparation, fertiliser, and edging",
+      "metaTitle": "Landscaping Quoting App — Free Templates & Calculators (2026)",
+      "metaDescription": "Quote landscaping jobs in minutes — soil, turf, pavers & retaining walls. Free templates with cubic-metre, tonne and turf calculators. Built for Aussie landscapers."
     },
     {
       "slug": "builders",
@@ -930,7 +945,20 @@
         }
       ],
       "avgQuoteRange": "$1,000 – $50,000",
-      "templateSnippet": "Full bathroom demolition including tiles, fixtures, waterproofing, and waste removal to skip bin"
+      "templateSnippet": "Full bathroom demolition including tiles, fixtures, waterproofing, and waste removal to skip bin",
+      "richContent": {
+        "intro": "Demolition pricing in Australia is full of variables that don't show up until the job starts. Asbestos materials — common in any pre-1990 build — need WorkCover-licensed removal and dedicated disposal facilities. Waste classification (clean fill, mixed C&D, contaminated) changes the per-tonne tip fee dramatically. Council demolition permits, neighbour notifications, and dilapidation reports are line items that don't fit on a tape measure. QuoteMate helps Australian demolition contractors capture every cost before sending a number, so the margin survives the actual job.",
+        "sections": [
+          {
+            "heading": "What every demolition quote should cover",
+            "body": "A solid demolition quote includes site setup (hoarding, dust suppression, traffic management), the demo work itself, segregated waste removal, asbestos inspection (if pre-2003), council and asset protection bonds, dilapidation reports for adjoining properties, and the final site clean. For full-house knockdowns add disconnection of services — water, sewer, gas and electrical — and capping. Strip-outs need fixture salvage decisions and recyclable material separation. QuoteMate's AI prompts you to confirm each of these and prices the line items based on standard Australian rates."
+          },
+          {
+            "heading": "Asbestos and waste pitfalls that sink quotes",
+            "body": "Two pricing mistakes will sink a demolition margin: quoting a pre-1990 strip-out without an asbestos inspection allowance, and bundling all waste into one mixed-fee tipping cost. Class B and Class C contaminated soil tip fees are often three to five times the rate for clean fill. Skip bin pricing also varies wildly between suburbs and waste types. QuoteMate splits waste streams by classification (timber, brick and concrete, asbestos, mixed) and applies the correct local rate, giving the homeowner a quote that holds when the truck rolls in."
+          }
+        ]
+      }
     },
     {
       "slug": "garage-door-installers",
@@ -1384,6 +1412,8 @@
       "trade": "landscapers",
       "keyword": "retaining wall quote template",
       "description": "Free retaining wall quote template for timber, concrete sleeper, and block retaining walls. Includes materials, drainage, and engineering requirements.",
+      "metaTitle": "Retaining Wall Quote Template (Free PDF + Excel, 2026)",
+      "metaDescription": "Free retaining wall quote template — timber, sleeper & block walls. Covers posts, drainage, and engineering above 600mm. Send pro Aussie quotes in 2 minutes.",
       "materials": [
         "Retaining wall blocks or sleepers",
         "Steel posts (galvanised H-beams)",
@@ -1706,6 +1736,8 @@
       "trade": "arborists",
       "keyword": "tree removal quote template",
       "description": "Free tree removal quote template for residential and commercial tree services. Covers tree felling, stump grinding, chipping, and green waste disposal.",
+      "metaTitle": "Tree Removal Quote Template (Free PDF & Excel) — Arborists 2026",
+      "metaDescription": "Free arborist quote template — tree felling, stump grinding, chipping, green waste & council permits. Used by Australian tree services to send pro quotes from a phone.",
       "materials": [
         "Tree felling and sectional dismantling",
         "Stump grinding (below ground)",
@@ -3173,5 +3205,190 @@
         "Clarify who is responsible for waste disposal and include this cost in your quote to avoid last-minute disputes."
       ]
     }
-  ]
+  ],
+  "paymentHub": {
+    "hub": {
+      "metaTitle": "Get Paid Faster as a Tradie (Australia 2026) | QuoteMate",
+      "metaDescription": "The complete guide to getting paid as an Australian tradie. Tap to Pay on iPhone, deposits, chasing unpaid invoices and automated reminders — and the app that handles all of it.",
+      "heroTitle": "Get Paid Faster — Without Chasing",
+      "heroSubtitle": "The complete guide to getting paid as an Australian tradie. Tap to Pay on iPhone, deposits, chasing unpaid invoices, and automated reminders — and the app that handles all of it on your phone.",
+      "painPoint": "Every Australian tradie loses thousands of dollars a year to slow-paying clients, forgotten invoices, and the awkward phone call no one wants to make. Most quoting and invoicing tools were built for bookkeepers, not the person on the tools at 4pm trying to send a payment link from a ute.",
+      "intro": "QuoteMate handles the full payment cycle for sole traders and small trade businesses in Australia. Quote on the spot, take a deposit before you start, send the invoice when the job's done, accept the payment via Square (Tap to Pay on iPhone or NFC-capable Android, or a hosted online payment link), and let automated reminders chase the slow ones. The total cost of acceptance is around 3.1% in-person and 2.9% online — or zero if you turn on the surcharge passthrough and let the customer pay the fee. This hub covers each stage and how to set it up properly.",
+      "spokeIntro": "Pick the topic that's costing you money right now."
+    },
+    "spokes": [
+      {
+        "slug": "tap-to-pay-iphone-tradies",
+        "title": "Tap to Pay on iPhone for Tradies",
+        "shortLabel": "Tap to Pay on iPhone",
+        "summary": "Take card, Apple Pay and Google Pay on your phone — no terminal, no extra hardware. The setup that's killing portable EFTPOS for Aussie trade businesses.",
+        "metaTitle": "Tap to Pay on iPhone for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Take card payments on your iPhone (or NFC-capable Android) with no extra hardware. How Tap to Pay works for Australian tradies — supported phones, real fees, and the easiest way to get set up through Square.",
+        "intro": "Tap to Pay on iPhone lets you accept Visa, Mastercard, Amex and Apple Pay payments by tapping a customer's card or phone on the back of your iPhone — no reader, no terminal, no Bluetooth pairing. QuoteMate uses Square's Mobile Payments SDK so the feature also works on NFC-capable Android phones, plus Google Pay. For Australian tradies who still rely on portable EFTPOS terminals, paper invoices, or 'I'll bank-transfer you tonight' (which becomes Saturday, then never), it's the biggest payments shift since contactless launched.",
+        "sections": [
+          {
+            "heading": "What you need to use Tap to Pay in QuoteMate",
+            "body": "Three things: a supported phone (iPhone XS or later on iOS 16.4+, or any NFC-capable Android), a connected Square account against your ABN, and the QuoteMate app. There's no reader to buy and no monthly hardware fee. Square verifies the seller (one-time KYC), the feature lights up inside QuoteMate's payment sheet, and you can take a card or contactless payment within about 30 seconds of finishing a job. Manual key-in is also supported on every device for the rare card that won't tap."
+          },
+          {
+            "heading": "Why tradies are switching from portable EFTPOS",
+            "body": "Standalone EFTPOS terminals cost $20–$50 a month in rental, need their own SIM or Wi-Fi, run flat at the worst possible time, and add another piece of gear to the ute. Tap to Pay removes the hardware entirely. Square's published rate for in-person Tap to Pay in Australia is 1.6% per transaction — lower than the rates typically charged for keyed-in or online payments. Funds usually clear into your linked bank account the next business day. For a tradie doing 5 jobs a week at $800 average, that's the difference between getting paid this week and chasing payment for the next fortnight."
+          },
+          {
+            "heading": "What it actually costs through QuoteMate",
+            "body": "Two costs apply on every Tap to Pay transaction: Square's processing fee (1.6% in-person in Australia) and QuoteMate's platform fee (1.5% in-person), for a total cost of acceptance of around 3.1%. If you'd rather not eat the fee, you can switch on the surcharge passthrough — QuoteMate adds 2.9% to the customer's total at the payment step (clearly labelled), so you net the full quoted amount. The 2.9% cap keeps the surcharge under ACCC's excessive-surcharge threshold for any realistic card type, so you stay compliant without doing the maths yourself."
+          },
+          {
+            "heading": "How to take a payment in QuoteMate",
+            "body": "Open the invoice on your phone, tap 'Take Payment', tap 'Card on this device', and have the customer hold their card or phone against the back of yours. The transaction completes in a couple of seconds, the invoice is automatically marked as paid, the customer receives an emailed receipt, and the GST is logged for your BAS. You don't have to remember to update anything manually — Square's webhook reconciles the payment status in the background."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Is Tap to Pay on iPhone available in Australia?",
+            "answer": "Yes — Tap to Pay on iPhone launched in Australia in 2023 and is supported by Square, Tyro, CommBank Smart, and others. QuoteMate uses Square's Mobile Payments SDK, which works for any Australian ABN on iPhone XS or later (iOS 16.4+) and NFC-capable Android."
+          },
+          {
+            "question": "Does it work on Android too?",
+            "answer": "Yes. QuoteMate's Tap to Pay support runs through Square's Mobile Payments SDK on both iOS and Android, so any NFC-capable Android phone can accept contactless payments and Google Pay."
+          },
+          {
+            "question": "What are the fees?",
+            "answer": "Square's standard Australian rate for in-person Tap to Pay is 1.6%. QuoteMate adds a 1.5% platform fee, for a total cost of acceptance of about 3.1% per transaction. Or enable the surcharge passthrough — QuoteMate adds 2.9% to the customer's total so you net the full quoted amount. There are no monthly hardware or rental fees either way."
+          },
+          {
+            "question": "Can I pass the card fee on to my customer?",
+            "answer": "Yes. Turn on 'Surcharge payment fees' in QuoteMate's Square settings — a 2.9% surcharge is added to the customer's total at the payment step and clearly disclosed. The cap keeps you under ACCC excessive-surcharge rules for any realistic card type."
+          },
+          {
+            "question": "How fast does the money hit my bank?",
+            "answer": "Square typically deposits funds into your linked bank account the next business day. Square also offers same-day deposits for an extra fee if you need cash flow faster."
+          }
+        ]
+      },
+      {
+        "slug": "chasing-unpaid-invoices",
+        "title": "How to Chase Unpaid Invoices in Australia",
+        "shortLabel": "Chasing Unpaid Invoices",
+        "summary": "What to actually do when an invoice goes 7, 14, 30, and 60 days overdue — including the legal options most Australian tradies don't know exist.",
+        "metaTitle": "How to Chase Unpaid Invoices for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "What to do when a client doesn't pay. The exact escalation path Australian tradies should follow at 7, 14, 30 and 60 days overdue, plus the legal options most don't know.",
+        "intro": "An unpaid invoice is one of the most expensive problems in trade. Time spent chasing is time not earning, and the longer an invoice sits past due, the lower the chance you'll ever collect it. The good news is there's a clear escalation path that resolves most cases inside 30 days without lawyers and without burning the relationship.",
+        "sections": [
+          {
+            "heading": "Day 1–7: Friendly reminder",
+            "body": "Most overdue invoices aren't deliberate — clients forget, lose the email, or are waiting on their own customer to pay. A polite SMS or email on day 1 past due, then a follow-up at day 7, resolves the majority of cases. Keep the tone neutral and assume good faith. QuoteMate sends these automatically with templates that mention the invoice number, amount, due date, and a one-click payment link, so the client can pay without digging up the original invoice."
+          },
+          {
+            "heading": "Day 14–30: Formal demand",
+            "body": "If two reminders haven't worked, escalate to a formal letter of demand. State the original invoice details, total amount owing, any late-payment interest if specified in your terms, and a final pay-by date (usually 7 days). Reference your right to apply interest under the Late Payment of Commercial Debts standard (typically 8%–10% p.a. for B2B work) if you included it in your original quote. Most disputes get resolved at this stage because the client now sees you're documenting the trail."
+          },
+          {
+            "heading": "Day 30+: Tribunals and debt collection",
+            "body": "For amounts under $25,000 (NSW NCAT, VIC VCAT) or $20,000 (QLD QCAT), small claims tribunals are cheap, fast, and don't require a lawyer. Filing fees are around $50–$200 and you can usually get a hearing inside 8 weeks. For larger debts or commercial work, a debt collection agency (typically 10%–25% commission) is faster than court. The key is to have your trail documented: original quote, signed acceptance, invoice, reminders, demand letter. QuoteMate keeps all of this in one place per client."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Can I charge interest on overdue invoices in Australia?",
+            "answer": "Yes, if it was specified in your original quote or contract terms. Standard rates are 8%–10% per annum for B2B debts. For consumer (residential) work, you'll need this clearly stated upfront."
+          },
+          {
+            "question": "What's the cheapest way to recover an unpaid invoice?",
+            "answer": "Send a formal letter of demand first. If that doesn't work, your state's small claims tribunal (NCAT, VCAT, QCAT, etc.) is cheaper and faster than court for amounts under $20,000–$25,000."
+          },
+          {
+            "question": "Should I use a debt collector?",
+            "answer": "For larger debts ($5,000+) or commercial clients, yes — debt collectors usually charge 10%–25% commission but are faster than court. For smaller residential debts, a tribunal is usually better value."
+          },
+          {
+            "question": "How does QuoteMate help with unpaid invoices?",
+            "answer": "QuoteMate sends automated reminders at customisable intervals (e.g., 1 day, 7 days, 14 days past due), each with a one-click Square-hosted payment link. It also keeps the full audit trail (quote, acceptance, invoice, reminders) in one place if you ever need to escalate."
+          }
+        ]
+      },
+      {
+        "slug": "taking-deposits-australia",
+        "title": "Taking Deposits Legally in Australia",
+        "shortLabel": "Deposits & the Law",
+        "summary": "Maximum deposit amounts are capped by law in most Australian states. The actual numbers, by state, plus how to take a deposit without getting sideways with consumer protection.",
+        "metaTitle": "Taking Deposits Legally for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "How much deposit can you legally ask for as an Australian tradie? The exact caps in NSW, VIC, QLD, WA, SA, ACT and Tasmania, plus the safest way to take a deposit.",
+        "intro": "Asking for a deposit before starting a job is completely legal in Australia — but the maximum amount is capped by state-based home building laws. Get this wrong and you can be hit with fines, forced refunds, or have your contractor licence reviewed. The good news: the rules are simple once you know them.",
+        "sections": [
+          {
+            "heading": "Maximum deposits by state",
+            "body": "For domestic building work, the typical legal maximums are: NSW (Home Building Act) — 10% for jobs over $20,000, no cap for smaller jobs but reasonableness applies; VIC (Domestic Building Contracts Act) — 10% for contracts under $20,000, 5% for contracts $20,000+; QLD (QBCC) — 10% for jobs over $3,300, 20% for off-site (prefab) components; SA (Building Work Contractors Act) — generally 10%; WA (Home Building Contracts Act) — 6.5% for contracts $7,500+; ACT — 10% for residential building work over $12,000; TAS — no statutory cap but consumer law fairness rules apply. Always check your state regulator's current rules before the contract is signed."
+          },
+          {
+            "heading": "Deposits vs. progress payments",
+            "body": "A deposit is the up-front payment that secures the job, locks in your schedule, and covers initial material orders. Progress payments are the staged payments you receive as the job hits milestones (e.g., demo complete, frame up, lock-up, completion). For trade work over $20,000, structuring progress payments correctly is more important than the deposit size — it's how you stay cash-flow-positive on long jobs without being out-of-pocket on materials."
+          },
+          {
+            "heading": "How to take a deposit safely",
+            "body": "Three rules. First, never take a deposit before the customer has accepted the quote in writing — a signed quote, an emailed acceptance, or a digital signature inside an app like QuoteMate is fine. Second, issue a deposit invoice that itemises what the deposit covers (materials, scheduling, etc.) and clearly references the parent quote. Third, pay the deposit straight into your business account, not personal. QuoteMate handles all three automatically: when a customer accepts a quote, it generates the deposit invoice and takes the payment via Square — Tap to Pay on the spot, or a hosted online link the customer pays from their phone — and logs everything against the job. If you'd rather not absorb the card fee, the optional 2.9% surcharge passthrough adds it to the customer's total."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Can I ask for a 50% deposit?",
+            "answer": "Generally no, not for domestic building work. Most Australian states cap deposits at 5%–10% of the contract value. Always check your state's current home building regulator (NSW Fair Trading, VBA in Victoria, QBCC in Queensland, etc.)."
+          },
+          {
+            "question": "What if the deposit cap is too low to cover materials?",
+            "answer": "Use progress payments. For a $30,000 job, take a 5%–10% deposit on signing, then schedule progress payments at milestones (e.g., materials delivered, work commenced, halfway, completion). This keeps you cash-flow-positive without breaking deposit law."
+          },
+          {
+            "question": "Do deposit caps apply to commercial work?",
+            "answer": "Most state laws apply specifically to 'domestic building work' for residential customers. Commercial contracts have more flexibility but should still be governed by clear written terms."
+          },
+          {
+            "question": "Can I take a deposit on the spot via card?",
+            "answer": "Yes — using Tap to Pay through Square on iPhone or NFC-capable Android, you can take a deposit by card the moment the customer accepts the quote. The deposit invoice is auto-generated and the payment is logged automatically. If you'd rather not absorb the card fee, the optional 2.9% surcharge passthrough adds it to the customer's total."
+          }
+        ]
+      },
+      {
+        "slug": "automated-payment-reminders",
+        "title": "Automated Payment Reminders for Tradies",
+        "shortLabel": "Automated Reminders",
+        "summary": "The exact reminder cadence that gets invoices paid without nagging clients — and why doing it manually is the most expensive habit in trade.",
+        "metaTitle": "Automated Payment Reminders for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "The reminder cadence that actually gets tradies paid. Templates, timing, and how QuoteMate auto-sends SMS and email reminders so you never have to chase an invoice.",
+        "intro": "Manually chasing invoices is one of the most expensive habits in trade. A 30-minute reminder phone call at $90/hour effective rate is $45 of unpaid time per chase, and most clients need 2–3 nudges. Automated reminders sent via email and SMS resolve the same invoices without using a minute of your day, and the data shows they get paid faster than manual follow-ups.",
+        "sections": [
+          {
+            "heading": "The reminder cadence that works",
+            "body": "Four touchpoints handle 90% of overdue invoices: a polite reminder one day before the due date ('just a heads up — your invoice is due tomorrow'), a friendly nudge the day after the due date ('quick reminder — your invoice is now overdue'), a firmer follow-up at 7 days past due, and a final notice at 14 days past due that mentions next steps. Each one should include the invoice number, amount, original due date, and a one-click payment link. QuoteMate runs this cadence automatically — you set it once and never think about it again."
+          },
+          {
+            "heading": "Email vs. SMS reminders",
+            "body": "Use both. SMS reminders have an average open rate of around 95% within minutes; email is closer to 25% within a day. The combination roughly doubles the chance of getting paid on the first reminder. The catch is that SMS costs money to send (typically a few cents per message) and you should never send more than 2–3 SMS per overdue invoice — anything more crosses the line into nuisance and can damage the relationship. QuoteMate's default cadence uses email for early reminders and switches to SMS for the firmer notices."
+          },
+          {
+            "heading": "Templates that actually get a response",
+            "body": "Three things make a reminder convert: a clear subject line that mentions the invoice number, a polite but specific tone (no passive-aggression, but no vague 'just checking in' either), and a payment link that takes the customer one tap away from settling. Avoid attaching a PDF of the invoice — most people don't open them on phones. Instead, summarise in plain text: 'Hi {first name}, this is a reminder that invoice #{number} for ${amount} was due {date}. You can pay here: {link}.' QuoteMate uses templates like this and personalises them automatically."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How often should I send payment reminders?",
+            "answer": "A 4-touch cadence works for most jobs: 1 day before due, 1 day after due, 7 days after due, 14 days after due. After that, escalate to a formal letter of demand."
+          },
+          {
+            "question": "Will automated reminders annoy my customers?",
+            "answer": "Not if the cadence is sensible. Reminders that include a one-click payment link are usually appreciated — most clients want to pay, they just forget. Avoid sending more than 2 SMS per overdue invoice."
+          },
+          {
+            "question": "Can I customise the reminder schedule per client?",
+            "answer": "Yes — in QuoteMate you can override the default cadence for specific clients (e.g., a long-standing commercial client on net-30 terms) or for individual invoices."
+          },
+          {
+            "question": "Does QuoteMate send reminders by SMS?",
+            "answer": "Yes. SMS reminders are included in the Pro plan and use your business name as the sender. Email reminders are included in all plans, including the free trial."
+          }
+        ]
+      }
+    ]
+  }
 }

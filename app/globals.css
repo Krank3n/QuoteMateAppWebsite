@@ -2526,6 +2526,62 @@ ul {
     line-height: 1.6;
 }
 
+/* --- Rich Content (per-trade long-form SEO copy) --- */
+.seo-rich-content {
+    padding: 0 0 64px;
+}
+
+.rich-content-block {
+    max-width: 760px;
+}
+
+.rich-content-intro {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.rich-content-section {
+    margin-bottom: 28px;
+}
+
+.rich-content-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.rich-content-section p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+/* --- Payment Hub spoke cards --- */
+.payment-spoke-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+.payment-spoke-card:hover {
+    border-color: rgba(249, 115, 22, 0.4);
+    transform: translateY(-2px);
+}
+
+.payment-spoke-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
 /* --- Common Jobs Grid --- */
 .seo-common-jobs {
     padding: 64px 0;

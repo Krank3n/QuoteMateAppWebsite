@@ -13,6 +13,12 @@ export interface Trade {
   commonJobs: (string | { name: string; desc: string })[];
   avgQuoteRange: string;
   templateSnippet: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  richContent?: {
+    intro: string;
+    sections: { heading: string; body: string }[];
+  };
 }
 
 export interface City {
@@ -32,6 +38,8 @@ export interface QuoteTemplate {
   description: string;
   materials: string[];
   steps: string[];
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export interface GuideSection {
@@ -66,6 +74,31 @@ export interface FAQ {
   answer: string;
 }
 
+export interface PaymentHubSpoke {
+  slug: string;
+  title: string;
+  shortLabel: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+  faqs: FAQ[];
+}
+
+export interface PaymentHub {
+  hub: {
+    metaTitle: string;
+    metaDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    painPoint: string;
+    intro: string;
+    spokeIntro: string;
+  };
+  spokes: PaymentHubSpoke[];
+}
+
 const data = rawData as unknown as {
   site: SiteData;
   trades: Trade[];
@@ -73,10 +106,16 @@ const data = rawData as unknown as {
   quoteTemplates: QuoteTemplate[];
   guides: Guide[];
   faqData?: FAQ[];
+  paymentHub?: PaymentHub;
 };
 
 export const { site, trades, cities, quoteTemplates, guides } = data;
 export const faqData: FAQ[] = data.faqData || [];
+export const paymentHub: PaymentHub | undefined = data.paymentHub;
+
+export function getPaymentSpokeBySlug(slug: string): PaymentHubSpoke | undefined {
+  return paymentHub?.spokes.find(s => s.slug === slug);
+}
 
 export function getTradeFAQs(trade: Trade): FAQ[] {
   return [
