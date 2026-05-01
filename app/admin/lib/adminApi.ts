@@ -50,6 +50,16 @@ export const api = {
   listDocuments: call<{ limit?: number; stage?: string; type?: 'quote' | 'invoice' | ''; userId?: string }>('adminListDocuments'),
   getDocument: call<{ uid: string; id: string }>('adminGetDocument'),
   listPayments: call<{ limit?: number }>('adminListPayments'),
+  // Lead outreach pipeline
+  leadDiscovery: call<{ trade: 'fencer' | 'landscaper' | 'deck-builder'; suburbs: string[]; maxResults?: number; dryRun?: boolean }>('adminLeadDiscovery'),
+  enrichLeads: call<{ leadIds: string[] }>('adminEnrichLeads'),
+  generateLeadMessages: call<{ leadIds: string[] }>('adminGenerateLeadMessages'),
+  listLeads: call<{ status?: string; trade?: string; suburb?: string; campaignId?: string; limit?: number }>('adminListLeads'),
+  getLead: call<{ id: string }>('adminGetLead'),
+  updateLeadMessage: call<{ id: string; subject: string; body: string }>('adminUpdateLeadMessage'),
+  approveLeads: call<{ leadIds: string[] }>('adminApproveLeads'),
+  rejectLeads: call<{ leadIds: string[]; reason?: string; dnc?: boolean }>('adminRejectLeads'),
+  addLeadNote: call<{ id: string; text: string }>('adminAddLeadNote'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {

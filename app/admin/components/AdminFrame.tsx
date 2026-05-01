@@ -22,12 +22,14 @@ import {
   IconEmail,
   IconQuote,
   IconRevenue,
+  IconSend,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', Icon: IconDashboard },
   { href: '/admin/users', label: 'Users', Icon: IconUsers },
+  { href: '/admin/leads', label: 'Leads', Icon: IconSend },
   { href: '/admin/suppliers', label: 'Suppliers', Icon: IconSupplier },
   { href: '/admin/documents', label: 'Documents', Icon: IconQuote },
   { href: '/admin/revenue', label: 'Revenue', Icon: IconRevenue },
