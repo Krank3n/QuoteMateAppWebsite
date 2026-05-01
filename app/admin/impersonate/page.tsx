@@ -51,19 +51,19 @@ function ImpersonateInner() {
         setSignedIn(true);
 
         const firestore = getFirestore(app);
-        const [biz, sub, quotes, invoices] = await Promise.all([
+        const [biz, sub, documentsSnap] = await Promise.all([
           getDoc(doc(firestore, `users/${uid}/settings/business`)),
           getDoc(doc(firestore, `users/${uid}/profile/subscription`)),
-          getDocs(query(collection(firestore, `users/${uid}/quotes`), orderBy('createdAt', 'desc'), limit(10))).catch(() => null),
-          getDocs(query(collection(firestore, `users/${uid}/invoices`), orderBy('createdAt', 'desc'), limit(10))).catch(() => null),
+          getDocs(query(collection(firestore, `users/${uid}/documents`), orderBy('createdAt', 'desc'), limit(20))).catch(() => null),
         ]);
 
         if (cancelled) return;
+        const allDocs = documentsSnap?.docs.map((d) => ({ id: d.id, ...(d.data() as any) })) || [];
         setSnapshot({
           business: biz.data() || {},
           subscription: sub.data() || {},
-          quotes: quotes?.docs.map((d) => ({ id: d.id, ...d.data() })) || [],
-          invoices: invoices?.docs.map((d) => ({ id: d.id, ...d.data() })) || [],
+          quotes: allDocs.filter((d) => (d.type || 'quote') === 'quote').slice(0, 10),
+          invoices: allDocs.filter((d) => d.type === 'invoice').slice(0, 10),
         });
       } catch (err: any) {
         if (!cancelled) setError(err?.message || 'Impersonation failed');
@@ -144,14 +144,14 @@ function ImpersonateInner() {
                 <div className={styles.tableWrap}>
                   <table className={styles.table}>
                     <thead>
-                      <tr><th>Customer</th><th>Title</th><th>Status</th><th style={{ textAlign: 'right' }}>Total</th></tr>
+                      <tr><th>Customer</th><th>Number</th><th>Stage</th><th style={{ textAlign: 'right' }}>Total</th></tr>
                     </thead>
                     <tbody>
                       {snapshot.quotes.map((q: any) => (
                         <tr key={q.id} style={{ cursor: 'default' }}>
                           <td>{q.customerName || '—'}</td>
-                          <td>{q.title || q.id}</td>
-                          <td>{q.status || '—'}</td>
+                          <td>{q.number || q.id}</td>
+                          <td>{(q.stage || 'draft').replace(/_/g, ' ')}</td>
                           <td style={{ textAlign: 'right' }}>${(q.total || 0).toFixed(2)}</td>
                         </tr>
                       ))}
@@ -168,13 +168,13 @@ function ImpersonateInner() {
                 <div className={styles.tableWrap}>
                   <table className={styles.table}>
                     <thead>
-                      <tr><th>Customer</th><th>Status</th><th style={{ textAlign: 'right' }}>Total</th></tr>
+                      <tr><th>Customer</th><th>Stage</th><th style={{ textAlign: 'right' }}>Total</th></tr>
                     </thead>
                     <tbody>
                       {snapshot.invoices.map((i: any) => (
                         <tr key={i.id} style={{ cursor: 'default' }}>
                           <td>{i.customerName || '—'}</td>
-                          <td>{i.status || '—'}</td>
+                          <td>{(i.stage || 'draft').replace(/_/g, ' ')}</td>
                           <td style={{ textAlign: 'right' }}>${(i.total || 0).toFixed(2)}</td>
                         </tr>
                       ))}

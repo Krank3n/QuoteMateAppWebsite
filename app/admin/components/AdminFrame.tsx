@@ -29,7 +29,7 @@ const NAV = [
   { href: '/admin', label: 'Dashboard', Icon: IconDashboard },
   { href: '/admin/users', label: 'Users', Icon: IconUsers },
   { href: '/admin/suppliers', label: 'Suppliers', Icon: IconSupplier },
-  { href: '/admin/quotes', label: 'Quotes', Icon: IconQuote },
+  { href: '/admin/documents', label: 'Documents', Icon: IconQuote },
   { href: '/admin/revenue', label: 'Revenue', Icon: IconRevenue },
   { href: '/admin/pipeline', label: 'Pipeline', Icon: IconPipeline },
   { href: '/admin/campaigns', label: 'Campaigns', Icon: IconCampaign },

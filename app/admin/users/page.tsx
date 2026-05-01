@@ -173,7 +173,10 @@ function UsersPageInner() {
   const selectUser = (uid: string) => {
     const p = new URLSearchParams(searchParams?.toString());
     p.set('uid', uid);
-    router.replace(`/admin/users?${p.toString()}`);
+    // scroll:false — Next.js otherwise scrolls the page to top on navigation,
+    // dumping the admin out of whichever row they just clicked. The internal
+    // splitListScroll keeps its position because React doesn't unmount it.
+    router.replace(`/admin/users?${p.toString()}`, { scroll: false });
   };
 
   const showToast = (msg: string, error = false) => {
@@ -473,7 +476,10 @@ function UserDetail({
   showToast: (msg: string, error?: boolean) => void;
 }) {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
-  const { uid, profile, business, emailState, emailPreferences, subscription, square, quotes, invoices, notes, calls, emailLog, feedback, supplierBook } = detail;
+  const { uid, profile, business, emailState, emailPreferences, subscription, square, documents, notes, calls, emailLog, feedback, supplierBook } = detail;
+  const docs: any[] = documents || [];
+  const quoteDocs = docs.filter((d) => (d.type || 'quote') === 'quote');
+  const invoiceDocs = docs.filter((d) => d.type === 'invoice');
   const name = business?.businessName || profile?.displayName || profile?.email || uid;
   const tier = subscription?.tier || 'free';
   const tags: string[] = detail?.userDoc?.crmTags || [];
@@ -548,8 +554,28 @@ function UserDetail({
               <Fact label="Business" value={business?.businessName || '—'} />
               <Fact label="ABN" value={business?.abn || '—'} />
               <Fact label="Last active" value={fmtRelative(emailState?.lastActivityAt)} />
-              <Fact label="Quotes" value={`${quotes?.length || 0}+ (shown)`} />
-              <Fact label="Invoices" value={`${invoices?.length || 0}+ (shown)`} />
+              <Fact
+                label="Quotes"
+                value={
+                  <Link
+                    href={`/admin/documents?uid=${encodeURIComponent(uid)}&type=quote`}
+                    style={{ color: 'var(--color-accent-light)' }}
+                  >
+                    {quoteDocs.length}{quoteDocs.length === 50 ? '+' : ''} →
+                  </Link>
+                }
+              />
+              <Fact
+                label="Invoices"
+                value={
+                  <Link
+                    href={`/admin/documents?uid=${encodeURIComponent(uid)}&type=invoice`}
+                    style={{ color: 'var(--color-accent-light)' }}
+                  >
+                    {invoiceDocs.length}{invoiceDocs.length === 50 ? '+' : ''} →
+                  </Link>
+                }
+              />
               <Fact label="Marketing opt-in" value={emailPreferences?.marketing !== false ? 'Yes' : 'No'} />
               <Fact label="Last signed in" value={fmtRelative(profile?.lastSignInTime ? new Date(profile.lastSignInTime).getTime() : null)} />
               <Fact
@@ -559,6 +585,21 @@ function UserDetail({
                   : 'unknown'}
               />
             </div>
+          </div>
+
+          <div className={styles.detailSection}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <h3 style={{ margin: 0 }}>Recent documents ({docs.length}{docs.length === 50 ? '+' : ''})</h3>
+              {docs.length > 0 && (
+                <Link
+                  href={`/admin/documents?uid=${encodeURIComponent(uid)}`}
+                  style={{ fontSize: 12, color: 'var(--color-accent-light)' }}
+                >
+                  Open in Documents →
+                </Link>
+              )}
+            </div>
+            <UserDocumentsTable uid={uid} docs={docs.slice(0, 8)} />
           </div>
 
           <div className={styles.detailSection}>
@@ -591,8 +632,7 @@ function UserDetail({
           <div className={styles.detailSection}>
             <h3>Activity timeline</h3>
             <Timeline
-              quotes={quotes || []}
-              invoices={invoices || []}
+              documents={docs}
               emails={emailLog || []}
               notes={notes || []}
               calls={calls || []}
@@ -721,7 +761,77 @@ function SquareSection({ square }: { square: any }) {
   );
 }
 
-function Timeline({ quotes, invoices, emails, notes, calls, feedback }: any) {
+// Compact documents table for the user profile. Shows the 8 most recent docs
+// with stage + total + last activity. Clicking a row deep-links into the
+// /admin/documents page filtered to this tradie + opens the modal.
+function UserDocumentsTable({ uid, docs }: { uid: string; docs: any[] }) {
+  if (!docs.length) {
+    return <div style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>No documents yet.</div>;
+  }
+  const ts = (v: any): number | null => {
+    if (!v) return null;
+    if (typeof v === 'number') return v;
+    if (v._seconds) return v._seconds * 1000;
+    if (v.toMillis) return v.toMillis();
+    return null;
+  };
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      {docs.map((d: any) => {
+        const stage: string = d.stage || 'draft';
+        const isInvoice = d.type === 'invoice';
+        const total = Number(d.total) || 0;
+        const updatedMs = ts(d.updatedAt) || ts(d.createdAt);
+        const stageColor = (() => {
+          if (stage === 'paid') return '#6ee7b7';
+          if (stage === 'quote_accepted') return 'var(--color-accent-light)';
+          if (stage === 'quote_rejected' || stage === 'cancelled') return '#fca5a5';
+          if (stage === 'partially_paid') return '#d8b4fe';
+          if (stage === 'invoice_sent') return '#fcd34d';
+          if (stage === 'quote_sent') return '#60a5fa';
+          return '#94a3b8';
+        })();
+        return (
+          <Link
+            key={d.id}
+            href={`/admin/documents?uid=${encodeURIComponent(uid)}`}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr auto auto',
+              alignItems: 'center',
+              gap: 12,
+              padding: '8px 10px',
+              background: 'rgba(0,0,0,0.18)',
+              border: '1px solid rgba(255,255,255,0.04)',
+              borderRadius: 8,
+              fontSize: 12,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {d.customerName || '(no customer)'}
+                {d.number && <span style={{ opacity: 0.5, fontWeight: 400, marginLeft: 6 }}>· {d.number}</span>}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {(typeof d.job === 'string' ? d.job : d.job?.name) || d.jobAddress || '—'}
+                {' · '}
+                <span style={{ color: stageColor }}>{isInvoice ? 'invoice' : 'quote'} · {stage.replace(/_/g, ' ')}</span>
+              </div>
+            </div>
+            <div style={{ fontWeight: 600, fontSize: 13 }}>${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+            <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', minWidth: 60, textAlign: 'right' }}>
+              {fmtRelative(updatedMs)}
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+function Timeline({ documents, emails, notes, calls, feedback }: any) {
   const items: Array<{ at: number; kind: string; title: string; sub?: string }> = [];
 
   const ts = (v: any): number | null => {
@@ -732,13 +842,22 @@ function Timeline({ quotes, invoices, emails, notes, calls, feedback }: any) {
     return null;
   };
 
-  for (const q of quotes) {
-    const t = ts(q.createdAt) || ts(q.updatedAt);
-    if (t) items.push({ at: t, kind: 'quote', title: `Quote: ${q.customerName || q.title || q.id}`, sub: q.status ? `status: ${q.status}` : undefined });
-  }
-  for (const i of invoices) {
-    const t = ts(i.createdAt);
-    if (t) items.push({ at: t, kind: 'invoice', title: `Invoice: ${i.customerName || i.id}`, sub: i.status ? `status: ${i.status}` : undefined });
+  // Unified docs: emit one item per stage transition we have a timestamp for,
+  // not just createdAt — gives a real lifecycle view rather than "made a quote".
+  for (const d of (documents || []) as any[]) {
+    const isInvoice = d.type === 'invoice';
+    const label = isInvoice ? 'Invoice' : 'Quote';
+    const ref = `${d.customerName || d.number || d.id}`;
+    const created = ts(d.createdAt);
+    if (created) items.push({ at: created, kind: isInvoice ? 'invoice' : 'quote', title: `${label} created: ${ref}`, sub: d.stage ? `stage: ${d.stage}` : undefined });
+    const sentAt = ts(d.sentAt);
+    if (sentAt && sentAt !== created) items.push({ at: sentAt, kind: isInvoice ? 'invoice' : 'quote', title: `${label} sent: ${ref}` });
+    const accepted = ts(d.acceptedAt);
+    if (accepted) items.push({ at: accepted, kind: 'quote', title: `Quote accepted: ${ref}` });
+    const invoiced = ts(d.invoicedAt);
+    if (invoiced) items.push({ at: invoiced, kind: 'invoice', title: `Invoiced: ${ref}` });
+    const paid = ts(d.paidInFullAt);
+    if (paid) items.push({ at: paid, kind: 'invoice', title: `Paid in full: ${ref}` });
   }
   for (const e of emails) {
     const t = ts(e.sentAt) || ts(e.queuedAt);

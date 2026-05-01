@@ -47,8 +47,8 @@ export const api = {
   revokePro: call<{ uid: string }>('adminRevokePro'),
   setUserDisabled: call<{ uid: string; disabled: boolean }>('adminSetUserDisabled'),
   deleteUser: call<{ uid: string; wipeData?: boolean; confirmEmail: string }>('adminDeleteUser'),
-  listQuotes: call<{ limit?: number; status?: string; userId?: string }>('adminListQuotes'),
-  getQuote: call<{ uid: string; id: string }>('adminGetQuote'),
+  listDocuments: call<{ limit?: number; stage?: string; type?: 'quote' | 'invoice' | ''; userId?: string }>('adminListDocuments'),
+  getDocument: call<{ uid: string; id: string }>('adminGetDocument'),
   listPayments: call<{ limit?: number }>('adminListPayments'),
 };
 
