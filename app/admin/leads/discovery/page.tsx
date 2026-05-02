@@ -24,7 +24,6 @@ export default function DiscoveryPage() {
   const [suburbs, setSuburbs] = useState<string[]>([]);
   const [customSuburb, setCustomSuburb] = useState('');
   const [maxResults, setMaxResults] = useState(20);
-  const [dryRun, setDryRun] = useState(true);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
@@ -51,11 +50,9 @@ export default function DiscoveryPage() {
     setBusy(true);
     setResult(null);
     try {
-      const r: any = await api.leadDiscovery({ trade, suburbs, maxResults, dryRun });
+      const r: any = await api.leadDiscovery({ trade, suburbs, maxResults });
       setResult(r);
-      if (!dryRun) {
-        setToast({ msg: `Created ${r.created} new lead(s)` });
-      }
+      setToast({ msg: `Created ${r.created} new lead(s)` });
     } catch (e: any) {
       setToast({ msg: e?.message || 'Discovery failed', error: true });
     } finally {
@@ -142,20 +139,13 @@ export default function DiscoveryPage() {
           </div>
         </div>
 
-        <div style={{ marginBottom: 18 }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
-            <input type="checkbox" checked={dryRun} onChange={(e) => setDryRun(e.target.checked)} />
-            <span>Dry run (preview, no DB writes)</span>
-          </label>
-        </div>
-
         <button
           type="button"
           className={`${styles.btn} ${styles.btnPrimary}`}
           disabled={busy || !suburbs.length}
           onClick={run}
         >
-          {busy ? 'Running…' : (dryRun ? 'Preview discovery' : 'Run discovery')}
+          {busy ? 'Running…' : 'Run discovery'}
         </button>
       </div>
 
@@ -172,32 +162,16 @@ export default function DiscoveryPage() {
               </div>
             )}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, fontSize: 13 }}>
-              <Stat label={dryRun ? 'Would create' : 'Created'} value={result.created || 0} />
+              <Stat label="Created" value={result.created || 0} />
               <Stat label="Existing" value={result.dedupedExisting} />
               <Stat label="Suppressed" value={result.dedupedSuppressed} />
               <Stat label="Existing user" value={result.dedupedExistingUser} />
               <Stat label="Place fetch fails" value={result.placeFetchFailures} />
             </div>
-            {!dryRun && result.campaignId && (
+            {result.campaignId && (
               <Link href={`/admin/leads`} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} style={{ marginTop: 12 }}>
                 View leads
               </Link>
-            )}
-            {dryRun && result.sample?.length > 0 && (
-              <>
-                <div style={{ marginTop: 14, color: 'var(--color-text-tertiary)', fontSize: 12, textTransform: 'uppercase', letterSpacing: 0.5 }}>Preview ({Math.min(10, result.sample.length)})</div>
-                <div style={{ marginTop: 6 }}>
-                  {result.sample.map((s: any, i: number) => (
-                    <div key={i} style={{ padding: '8px 0', borderBottom: '1px solid var(--color-border)', fontSize: 13 }}>
-                      <div style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{s.businessName}</div>
-                      <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12 }}>
-                        {s.suburb}{s.googleRating ? ` · ★ ${s.googleRating} (${s.googleReviewCount || 0})` : ''}
-                        {s.email ? ` · ${s.email}` : ''}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </>
             )}
           </div>
         )}

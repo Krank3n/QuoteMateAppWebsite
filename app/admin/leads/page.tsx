@@ -8,6 +8,10 @@ import { api, fmtRelative } from '../lib/adminApi';
 import { useSetPageMeta } from '../lib/pageMeta';
 import { IconUsers, IconSend, IconEmail, IconPhone, IconExternal, IconNote } from '../components/icons';
 
+// ============================================================
+// TYPES + CONSTANTS
+// ============================================================
+
 interface LeadRow {
   id: string;
   businessName: string | null;
@@ -34,7 +38,7 @@ interface LeadRow {
   repliedAt: number | null;
 }
 
-const STATUSES: Array<{ id: string; label: string }> = [
+const STATUS_FILTERS: Array<{ id: string; label: string }> = [
   { id: 'all', label: 'All' },
   { id: 'new', label: 'New' },
   { id: 'researched', label: 'Researched' },
@@ -62,6 +66,32 @@ const STATUS_COLORS: Record<string, string> = {
   bounced: '#fca5a5',
 };
 
+function StatusBadge({ status, size = 'md' }: { status: string; size?: 'sm' | 'md' }) {
+  const c = STATUS_COLORS[status] || '#94a3b8';
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        padding: size === 'sm' ? '2px 8px' : '4px 12px',
+        borderRadius: 12,
+        background: `${c}22`,
+        color: c,
+        fontSize: size === 'sm' ? 10 : 11,
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        letterSpacing: 0.5,
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {status}
+    </span>
+  );
+}
+
+// ============================================================
+// PAGE SHELL — split view
+// ============================================================
+
 export default function LeadsPage() {
   return (
     <Suspense fallback={<div className={styles.centerLoader}><div className={styles.spinner} /></div>}>
@@ -72,18 +102,9 @@ export default function LeadsPage() {
 
 function LeadsPageInner() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const detailId = searchParams?.get('id') || null;
-  if (detailId) {
-    return <LeadDetail leadId={detailId} />;
-  }
-  return <LeadsList />;
-}
 
-// ============================================================
-// LIST VIEW
-// ============================================================
-
-function LeadsList() {
   const [leads, setLeads] = useState<LeadRow[]>([]);
   const [summary, setSummary] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
@@ -145,242 +166,321 @@ function LeadsList() {
   };
   const selectAll = () => setSelected(new Set(filtered.map((l) => l.id)));
   const clearSelection = () => setSelected(new Set());
+  const refresh = () => setRefreshTick((n) => n + 1);
 
   const ids = Array.from(selected);
 
-  const runResearch = async () => {
+  const runBulk = async (kind: 'research' | 'generate' | 'approve' | 'reject') => {
     if (!ids.length) return;
-    setBusy('research');
-    try {
-      const r: any = await api.enrichLeads({ leadIds: ids });
-      setToast({ msg: `Enriched ${r.enriched}, failed ${r.failed}, skipped ${r.skipped}` });
-      clearSelection();
-      setRefreshTick((n) => n + 1);
-    } catch (e: any) {
-      setToast({ msg: e?.message || 'Research failed', error: true });
-    } finally {
-      setBusy(null);
-      setTimeout(() => setToast(null), 4000);
+    if (kind === 'approve') {
+      const sample = filtered
+        .filter((l) => ids.includes(l.id))
+        .slice(0, 3)
+        .map((l) => `• ${l.businessName} → ${l.generatedSubject || '(no subject)'}`).join('\n');
+      const ok = window.confirm(`Send ${ids.length} cold email(s)?\n\nFirst few:\n${sample}\n\nThis can't be undone.`);
+      if (!ok) return;
     }
-  };
-
-  const runGenerate = async () => {
-    if (!ids.length) return;
-    setBusy('generate');
-    try {
-      const r: any = await api.generateLeadMessages({ leadIds: ids });
-      setToast({ msg: `Generated ${r.generated}, failed ${r.failed}, skipped ${r.skipped}` });
-      clearSelection();
-      setRefreshTick((n) => n + 1);
-    } catch (e: any) {
-      setToast({ msg: e?.message || 'Generation failed', error: true });
-    } finally {
-      setBusy(null);
-      setTimeout(() => setToast(null), 4000);
+    if (kind === 'reject') {
+      const reason = window.prompt('Rejection reason?', 'manual');
+      if (!reason) return;
+      const dnc = window.confirm('Add to DNC list?');
+      setBusy(kind);
+      try {
+        const r: any = await api.rejectLeads({ leadIds: ids, reason, dnc });
+        setToast({ msg: `Rejected ${r.rejected}` });
+        clearSelection();
+        refresh();
+      } catch (e: any) {
+        setToast({ msg: e?.message || 'Reject failed', error: true });
+      } finally {
+        setBusy(null);
+        setTimeout(() => setToast(null), 4000);
+      }
+      return;
     }
-  };
-
-  const runApprove = async () => {
-    if (!ids.length) return;
-    const sample = filtered
-      .filter((l) => ids.includes(l.id))
-      .slice(0, 3)
-      .map((l) => `• ${l.businessName} → ${l.generatedSubject || '(no subject)'}`).join('\n');
-    const ok = window.confirm(`Send ${ids.length} cold email(s)?\n\nFirst few:\n${sample}\n\nThis can't be undone.`);
-    if (!ok) return;
-    setBusy('approve');
+    setBusy(kind);
     try {
-      const r: any = await api.approveLeads({ leadIds: ids });
-      setToast({ msg: `Sent ${r.sent}, skipped ${r.skipped}, failed ${r.failed}`, error: r.failed > 0 });
+      let r: any;
+      if (kind === 'research') r = await api.enrichLeads({ leadIds: ids });
+      else if (kind === 'generate') r = await api.generateLeadMessages({ leadIds: ids });
+      else r = await api.approveLeads({ leadIds: ids });
+      const labels: Record<string, string> = { research: 'Enriched', generate: 'Generated', approve: 'Sent' };
+      const successKey = kind === 'research' ? 'enriched' : kind === 'generate' ? 'generated' : 'sent';
+      setToast({
+        msg: `${labels[kind]} ${r[successKey] ?? 0} · skipped ${r.skipped ?? 0}${r.failed ? ` · failed ${r.failed}` : ''}`,
+        error: r.failed > 0,
+      });
       clearSelection();
-      setRefreshTick((n) => n + 1);
+      refresh();
     } catch (e: any) {
-      setToast({ msg: e?.message || 'Send failed', error: true });
+      setToast({ msg: e?.message || `${kind} failed`, error: true });
     } finally {
       setBusy(null);
       setTimeout(() => setToast(null), 5000);
     }
   };
 
-  const runReject = async () => {
-    if (!ids.length) return;
-    const reason = window.prompt('Rejection reason?', 'manual');
-    if (!reason) return;
-    const dnc = window.confirm('Add to DNC list (suppress this address forever)?');
-    setBusy('reject');
-    try {
-      const r: any = await api.rejectLeads({ leadIds: ids, reason, dnc });
-      setToast({ msg: `Rejected ${r.rejected}` });
-      clearSelection();
-      setRefreshTick((n) => n + 1);
-    } catch (e: any) {
-      setToast({ msg: e?.message || 'Reject failed', error: true });
-    } finally {
-      setBusy(null);
-      setTimeout(() => setToast(null), 4000);
-    }
+  const closeDetail = () => {
+    router.replace('/admin/leads');
   };
 
+  // Layout: when a detail pane is open, list collapses to a narrow column.
+  const splitView = !!detailId;
+
   return (
-    <>
-      <div className={styles.statGrid} style={{ marginBottom: 20 }}>
-        {['new', 'researched', 'queued', 'sent', 'engaged', 'replied', 'converted'].map((s) => (
-          <div key={s} className={styles.statCard}>
-            <div className={styles.statLabel}>{s}</div>
-            <div className={styles.statValue}>{summary[s] || 0}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.card} style={{ marginBottom: 16 }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Search business / suburb / owner / email"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{ flex: '1 1 280px', maxWidth: 360 }}
-          />
-          <select
-            className={styles.select}
-            value={statusFilter}
-            onChange={(e) => { setStatusFilter(e.target.value); clearSelection(); }}
-          >
-            {STATUSES.map((s) => (
-              <option key={s.id} value={s.id}>{s.label}</option>
-            ))}
-          </select>
-          <select
-            className={styles.select}
-            value={tradeFilter}
-            onChange={(e) => { setTradeFilter(e.target.value); clearSelection(); }}
-          >
-            <option value="all">All trades</option>
-            <option value="fencer">Fencer</option>
-            <option value="landscaper">Landscaper</option>
-            <option value="deck-builder">Deck builder</option>
-          </select>
-          <div style={{ flex: 1 }} />
-          {selected.size > 0 ? (
-            <>
-              <span style={{ color: 'var(--color-text-secondary)', fontSize: 13 }}>{selected.size} selected</span>
-              <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={clearSelection}>Clear</button>
-              <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={runResearch}>Research</button>
-              <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={runGenerate}>Generate</button>
-              <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy} onClick={runApprove}>
-                <IconSend style={{ width: 12, height: 12 }} /> Approve & send
-              </button>
-              <button className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`} disabled={!!busy} onClick={runReject}>Reject</button>
-            </>
-          ) : (
-            <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={selectAll} disabled={!filtered.length}>Select all</button>
-          )}
-        </div>
-      </div>
-
-      {loading ? (
-        <div className={styles.centerLoader} style={{ minHeight: 200 }}><div className={styles.spinner} /></div>
-      ) : filtered.length === 0 ? (
-        <div className={styles.card}>
-          <div className={styles.empty}>
-            <IconUsers className={styles.emptyIcon} />
-            <div className={styles.emptyTitle}>No leads</div>
-            <div className={styles.emptyText}>Run a discovery to find tradies in a suburb.</div>
-            <Link href="/admin/leads/discovery" className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} style={{ marginTop: 12 }}>
-              Discover leads
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <div className={styles.tableWrap}>
-          {filtered.map((l) => {
-            const isSel = selected.has(l.id);
-            const lastTouchMs = l.engagedAt || l.sentAt || l.queuedAt || l.enrichedAt || l.scrapedAt;
-            return (
-              <div
-                key={l.id}
+    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+      <div style={{ flex: splitView ? '0 0 380px' : 1, minWidth: 0 }}>
+        {!splitView && (
+          <div className={styles.statGrid} style={{ marginBottom: 16 }}>
+            {['new', 'researched', 'queued', 'sent', 'engaged', 'replied', 'converted'].map((s) => (
+              <button
+                key={s}
+                onClick={() => setStatusFilter(s === statusFilter ? 'all' : s)}
                 style={{
-                  display: 'grid',
-                  gridTemplateColumns: '24px 1fr 120px 120px 110px 1fr 100px',
-                  gap: 12,
-                  alignItems: 'center',
-                  padding: '12px 14px',
-                  borderBottom: '1px solid var(--color-border)',
-                  background: isSel ? 'rgba(249, 115, 22, 0.06)' : 'transparent',
+                  textAlign: 'left',
+                  background: statusFilter === s ? `${STATUS_COLORS[s]}22` : 'var(--color-surface, #1e293b)',
+                  border: `1px solid ${statusFilter === s ? STATUS_COLORS[s] : 'var(--color-border, #334155)'}`,
+                  borderRadius: 12,
+                  padding: 14,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s',
                 }}
               >
-                <input
-                  type="checkbox"
-                  checked={isSel}
-                  onChange={() => toggle(l.id)}
-                  aria-label="select"
-                />
-                <div>
-                  <Link href={`/admin/leads?id=${l.id}`} style={{ color: 'var(--color-text-primary)', fontWeight: 600, textDecoration: 'none' }}>
-                    {l.businessName || '(unnamed)'}
-                  </Link>
-                  <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12, marginTop: 2 }}>
-                    {l.ownerName ? `${l.ownerName} · ` : ''}
-                    {l.suburb || '—'} {l.state ? `, ${l.state}` : ''}
-                    {l.googleRating ? ` · ★ ${l.googleRating} (${l.googleReviewCount || 0})` : ''}
-                  </div>
+                <div className={styles.statLabel} style={{ color: STATUS_COLORS[s] }}>{s}</div>
+                <div className={styles.statValue}>{summary[s] || 0}</div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className={styles.card} style={{ marginBottom: 12, padding: splitView ? 12 : undefined }}>
+          {!splitView ? (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Search business / suburb / owner / email"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{ flex: '1 1 280px', maxWidth: 360 }}
+              />
+              <select
+                className={styles.select}
+                value={statusFilter}
+                onChange={(e) => { setStatusFilter(e.target.value); clearSelection(); }}
+              >
+                {STATUS_FILTERS.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
+              </select>
+              <select
+                className={styles.select}
+                value={tradeFilter}
+                onChange={(e) => { setTradeFilter(e.target.value); clearSelection(); }}
+              >
+                <option value="all">All trades</option>
+                <option value="fencer">Fencer</option>
+                <option value="landscaper">Landscaper</option>
+                <option value="deck-builder">Deck builder</option>
+              </select>
+              <div style={{ flex: 1 }} />
+              {selected.size > 0 ? <BulkActions selected={selected.size} busy={busy} onClear={clearSelection} onAction={runBulk} /> : (
+                <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={selectAll} disabled={!filtered.length}>Select all</button>
+              )}
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Search…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <select
+                className={styles.select}
+                value={statusFilter}
+                onChange={(e) => { setStatusFilter(e.target.value); clearSelection(); }}
+              >
+                {STATUS_FILTERS.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
+              </select>
+              {selected.size > 0 && (
+                <div style={{ paddingTop: 4 }}>
+                  <BulkActions selected={selected.size} busy={busy} onClear={clearSelection} onAction={runBulk} compact />
                 </div>
-                <div style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>{l.trade || '—'}</div>
-                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                  {l.email && <span title={l.email} style={{ display: 'inline-flex' }}><IconEmail style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
-                  {(l.mobile || l.phone) && <span title={l.mobile || l.phone || ''} style={{ display: 'inline-flex' }}><IconPhone style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
-                  {l.websiteUrl && <span title={l.websiteUrl} style={{ display: 'inline-flex' }}><IconExternal style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
-                </div>
-                <div>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '2px 10px',
-                      borderRadius: 12,
-                      background: `${STATUS_COLORS[l.status] || '#94a3b8'}22`,
-                      color: STATUS_COLORS[l.status] || '#94a3b8',
-                      fontSize: 11,
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: 0.5,
-                    }}
-                  >
-                    {l.status}
-                  </span>
-                </div>
-                <div
-                  style={{
-                    color: 'var(--color-text-secondary)',
-                    fontSize: 13,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                  title={l.generatedSubject || l.enrichmentSummary || ''}
-                >
-                  {l.generatedSubject || (
-                    <span style={{ color: 'var(--color-text-tertiary)', fontStyle: 'italic' }}>
-                      {l.enrichmentSummary ? l.enrichmentSummary.slice(0, 80) : '—'}
-                    </span>
-                  )}
-                </div>
-                <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12, textAlign: 'right' }}>
-                  {fmtRelative(lastTouchMs)}
-                </div>
-              </div>
-            );
-          })}
+              )}
+            </div>
+          )}
+        </div>
+
+        {loading ? (
+          <div className={styles.centerLoader} style={{ minHeight: 200 }}><div className={styles.spinner} /></div>
+        ) : filtered.length === 0 ? (
+          <div className={styles.card}>
+            <div className={styles.empty}>
+              <IconUsers className={styles.emptyIcon} />
+              <div className={styles.emptyTitle}>No leads</div>
+              <div className={styles.emptyText}>Run a discovery to find tradies in a suburb.</div>
+              <Link href="/admin/leads/discovery" className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} style={{ marginTop: 12 }}>
+                Discover leads
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.card} style={{ padding: 0, overflow: 'hidden' }}>
+            {filtered.map((l) => (
+              <LeadListRow
+                key={l.id}
+                lead={l}
+                isSelected={selected.has(l.id)}
+                isOpen={detailId === l.id}
+                compact={splitView}
+                onToggle={() => toggle(l.id)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {detailId && (
+        <div style={{ flex: 1, minWidth: 0, position: 'sticky', top: 16 }}>
+          <LeadDetail leadId={detailId} onClose={closeDetail} onChange={refresh} />
         </div>
       )}
 
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
-    </>
+    </div>
   );
 }
 
 // ============================================================
-// DETAIL VIEW
+// LIST ROW
+// ============================================================
+
+function LeadListRow({ lead, isSelected, isOpen, compact, onToggle }: {
+  lead: LeadRow;
+  isSelected: boolean;
+  isOpen: boolean;
+  compact: boolean;
+  onToggle: () => void;
+}) {
+  const lastTouchMs = lead.engagedAt || lead.sentAt || lead.queuedAt || lead.enrichedAt || lead.scrapedAt;
+  const bg = isOpen ? 'rgba(249, 115, 22, 0.08)' : isSelected ? 'rgba(249, 115, 22, 0.04)' : 'transparent';
+
+  if (compact) {
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '20px 1fr auto',
+          gap: 10,
+          alignItems: 'center',
+          padding: '10px 12px',
+          borderBottom: '1px solid var(--color-border, #334155)',
+          background: bg,
+          cursor: 'pointer',
+        }}
+      >
+        <input
+          type="checkbox"
+          checked={isSelected}
+          onChange={(e) => { e.stopPropagation(); onToggle(); }}
+          onClick={(e) => e.stopPropagation()}
+          aria-label="select"
+        />
+        <Link href={`/admin/leads?id=${lead.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', minWidth: 0 }}>
+          <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, fontSize: 13, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {lead.businessName || '(unnamed)'}
+          </div>
+          <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 2 }}>
+            {lead.suburb || '—'}
+          </div>
+        </Link>
+        <StatusBadge status={lead.status} size="sm" />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '24px minmax(220px, 1.6fr) 110px 90px 100px minmax(180px, 1.4fr) 90px',
+        gap: 12,
+        alignItems: 'center',
+        padding: '12px 14px',
+        borderBottom: '1px solid var(--color-border, #334155)',
+        background: bg,
+      }}
+    >
+      <input
+        type="checkbox"
+        checked={isSelected}
+        onChange={onToggle}
+        onClick={(e) => e.stopPropagation()}
+        aria-label="select"
+      />
+      <Link href={`/admin/leads?id=${lead.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', minWidth: 0 }}>
+        <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {lead.businessName || '(unnamed)'}
+        </div>
+        <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12, marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {lead.ownerName ? `${lead.ownerName} · ` : ''}
+          {lead.suburb || '—'}{lead.state ? `, ${lead.state}` : ''}
+          {lead.googleRating ? ` · ★ ${lead.googleRating} (${lead.googleReviewCount || 0})` : ''}
+        </div>
+      </Link>
+      <div style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>{lead.trade || '—'}</div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        {lead.email && <span title={lead.email} style={{ display: 'inline-flex' }}><IconEmail style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
+        {(lead.mobile || lead.phone) && <span title={lead.mobile || lead.phone || ''} style={{ display: 'inline-flex' }}><IconPhone style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
+        {lead.websiteUrl && <span title={lead.websiteUrl} style={{ display: 'inline-flex' }}><IconExternal style={{ width: 14, height: 14, opacity: 0.6 }} /></span>}
+      </div>
+      <div><StatusBadge status={lead.status} size="sm" /></div>
+      <div
+        style={{ color: 'var(--color-text-secondary)', fontSize: 13, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+        title={lead.generatedSubject || lead.enrichmentSummary || ''}
+      >
+        {lead.generatedSubject || (
+          <span style={{ color: 'var(--color-text-tertiary)', fontStyle: 'italic' }}>
+            {lead.enrichmentSummary ? lead.enrichmentSummary.slice(0, 80) : '—'}
+          </span>
+        )}
+      </div>
+      <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12, textAlign: 'right' }}>{fmtRelative(lastTouchMs)}</div>
+    </div>
+  );
+}
+
+// ============================================================
+// BULK ACTIONS
+// ============================================================
+
+function BulkActions({ selected, busy, onClear, onAction, compact }: {
+  selected: number;
+  busy: string | null;
+  onClear: () => void;
+  onAction: (kind: 'research' | 'generate' | 'approve' | 'reject') => void;
+  compact?: boolean;
+}) {
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+      <span style={{ color: 'var(--color-text-secondary)', fontSize: 12 }}>{selected} selected</span>
+      <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={onClear}>Clear</button>
+      <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={() => onAction('research')}>
+        {busy === 'research' ? '…' : 'Research'}
+      </button>
+      <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={() => onAction('generate')}>
+        {busy === 'generate' ? '…' : 'Generate'}
+      </button>
+      <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy} onClick={() => onAction('approve')}>
+        <IconSend style={{ width: 12, height: 12 }} /> {compact ? 'Send' : 'Approve & send'}
+      </button>
+      <button className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`} disabled={!!busy} onClick={() => onAction('reject')}>Reject</button>
+    </div>
+  );
+}
+
+// ============================================================
+// DETAIL PANE
 // ============================================================
 
 interface Hook {
@@ -388,8 +488,7 @@ interface Hook {
   source?: string;
 }
 
-function LeadDetail({ leadId }: { leadId: string }) {
-  const router = useRouter();
+function LeadDetail({ leadId, onClose, onChange }: { leadId: string; onClose: () => void; onChange: () => void }) {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [subject, setSubject] = useState('');
@@ -399,6 +498,7 @@ function LeadDetail({ leadId }: { leadId: string }) {
   const [noteText, setNoteText] = useState('');
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
+  const [showPreview, setShowPreview] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -418,23 +518,17 @@ function LeadDetail({ leadId }: { leadId: string }) {
     return () => { cancelled = true; };
   }, [leadId, refreshTick]);
 
-  useSetPageMeta({
-    title: data?.lead?.businessName || 'Lead',
-    breadcrumb: data?.lead?.suburb ? `${data.lead.trade} · ${data.lead.suburb}` : '',
-    actions: (
-      <Link href="/admin/leads" className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>← All leads</Link>
-    ),
-  });
+  const refresh = () => { setRefreshTick((n) => n + 1); onChange(); };
 
   if (loading) {
-    return <div className={styles.centerLoader}><div className={styles.spinner} /></div>;
+    return <div className={styles.card} style={{ minHeight: 400 }}><div className={styles.centerLoader}><div className={styles.spinner} /></div></div>;
   }
   if (!data) {
     return (
       <div className={styles.card}>
         <div className={styles.empty}>
           <div className={styles.emptyTitle}>Lead not found</div>
-          <Link href="/admin/leads" className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} style={{ marginTop: 12 }}>← Back</Link>
+          <button onClick={onClose} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} style={{ marginTop: 12 }}>← Back to list</button>
         </div>
       </div>
     );
@@ -443,33 +537,29 @@ function LeadDetail({ leadId }: { leadId: string }) {
   const lead = data.lead;
   const hooks: Hook[] = lead.personalizationHooks || [];
 
-  const enrich = async () => {
-    setBusy('research');
+  const oneShot = (key: string, run: () => Promise<any>, label: string) => async () => {
+    setBusy(key);
     try {
-      const r: any = await api.enrichLeads({ leadIds: [leadId] });
-      setToast({ msg: `Enriched: ${r.enriched}, failed: ${r.failed}` });
-      setRefreshTick((n) => n + 1);
+      const r: any = await run();
+      setToast({ msg: typeof r === 'string' ? r : label, error: r?.error === true });
+      refresh();
     } catch (e: any) {
-      setToast({ msg: e?.message || 'Enrich failed', error: true });
+      setToast({ msg: e?.message || `${label} failed`, error: true });
     } finally {
       setBusy(null);
       setTimeout(() => setToast(null), 4000);
     }
   };
 
-  const generate = async () => {
-    setBusy('generate');
-    try {
-      const r: any = await api.generateLeadMessages({ leadIds: [leadId] });
-      setToast({ msg: r.generated ? 'Generated' : 'Failed', error: !r.generated });
-      setRefreshTick((n) => n + 1);
-    } catch (e: any) {
-      setToast({ msg: e?.message || 'Generate failed', error: true });
-    } finally {
-      setBusy(null);
-      setTimeout(() => setToast(null), 4000);
-    }
-  };
+  const enrich = oneShot('research', async () => {
+    const r: any = await api.enrichLeads({ leadIds: [leadId] });
+    return `Enriched: ${r.enriched}, failed: ${r.failed}`;
+  }, 'Research');
+
+  const generate = oneShot('generate', async () => {
+    const r: any = await api.generateLeadMessages({ leadIds: [leadId] });
+    return r.generated ? 'Message generated' : { error: true, message: 'Generation failed' };
+  }, 'Generate');
 
   const saveMessage = async () => {
     if (!subject.trim() || !body.trim()) return;
@@ -478,7 +568,7 @@ function LeadDetail({ leadId }: { leadId: string }) {
       await api.updateLeadMessage({ id: leadId, subject: subject.trim(), body: body.trim() });
       setToast({ msg: 'Saved' });
       setDirty(false);
-      setRefreshTick((n) => n + 1);
+      refresh();
     } catch (e: any) {
       setToast({ msg: e?.message || 'Save failed', error: true });
     } finally {
@@ -497,9 +587,9 @@ function LeadDetail({ leadId }: { leadId: string }) {
     setBusy('send');
     try {
       const r: any = await api.approveLeads({ leadIds: [leadId] });
-      if (r.sent) setToast({ msg: 'Sent' });
+      if (r.sent) setToast({ msg: 'Sent ✓' });
       else setToast({ msg: r.issues?.[0]?.reason || 'Not sent', error: true });
-      setRefreshTick((n) => n + 1);
+      refresh();
     } catch (e: any) {
       setToast({ msg: e?.message || 'Send failed', error: true });
     } finally {
@@ -516,7 +606,7 @@ function LeadDetail({ leadId }: { leadId: string }) {
     try {
       await api.rejectLeads({ leadIds: [leadId], reason, dnc });
       setToast({ msg: 'Rejected' });
-      setRefreshTick((n) => n + 1);
+      refresh();
     } catch (e: any) {
       setToast({ msg: e?.message || 'Reject failed', error: true });
     } finally {
@@ -532,7 +622,7 @@ function LeadDetail({ leadId }: { leadId: string }) {
       await api.addLeadNote({ id: leadId, text: noteText.trim() });
       setNoteText('');
       setToast({ msg: 'Note added' });
-      setRefreshTick((n) => n + 1);
+      refresh();
     } catch (e: any) {
       setToast({ msg: e?.message || 'Note failed', error: true });
     } finally {
@@ -550,161 +640,225 @@ function LeadDetail({ leadId }: { leadId: string }) {
     }
   }
 
+  const stage = (() => {
+    if (['converted'].includes(lead.status)) return 6;
+    if (['replied'].includes(lead.status)) return 5;
+    if (['engaged'].includes(lead.status)) return 4;
+    if (['sent'].includes(lead.status)) return 3;
+    if (['queued'].includes(lead.status)) return 2;
+    if (['researched'].includes(lead.status)) return 1;
+    return 0;
+  })();
+
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: 20 }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <div>
-              <div className={styles.cardTitle}>{lead.businessName}</div>
-              <div className={styles.cardSubtitle}>
-                {lead.trade} · {lead.suburb}{lead.state ? `, ${lead.state}` : ''}
-                {lead.googleRating ? ` · ★ ${lead.googleRating} (${lead.googleReviewCount || 0})` : ''}
-              </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {/* HEADER */}
+      <div className={styles.card} style={{ padding: 18 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 14 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {lead.businessName}
+              </h2>
+              <StatusBadge status={lead.status} />
             </div>
-            <div>
-              <span style={{
-                display: 'inline-block',
-                padding: '4px 12px',
-                borderRadius: 12,
-                background: 'rgba(249, 115, 22, 0.15)',
-                color: 'var(--color-accent-light)',
-                fontSize: 12,
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: 0.5,
-              }}>{lead.status}</span>
-            </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, fontSize: 13 }}>
-            <Fact label="Owner" value={lead.ownerName || '—'} />
-            <Fact label="Email" value={lead.email || '—'} />
-            <Fact label="Mobile" value={lead.mobile || lead.phone || '—'} />
-            <Fact label="Website" value={lead.websiteUrl ? (
-              <a href={lead.websiteUrl} target="_blank" rel="noopener" style={{ color: 'var(--color-accent-light)' }}>{websiteHost}</a>
-            ) : '—'} />
-            <Fact label="Source" value={lead.source} />
-            <Fact label="Confidence" value={lead.enrichmentConfidence || '—'} />
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <div className={styles.cardTitle}>Research</div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={enrich}>
-                {lead.enrichmentSummary ? 'Re-research' : 'Research'}
-              </button>
-            </div>
-          </div>
-          {lead.enrichmentSummary ? (
-            <>
-              <div style={{ color: 'var(--color-text-secondary)', fontSize: 14, marginBottom: 14 }}>{lead.enrichmentSummary}</div>
-              <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 }}>Hooks</div>
-              <ul style={{ margin: 0, paddingLeft: 18, color: 'var(--color-text-secondary)', fontSize: 13, lineHeight: 1.7 }}>
-                {hooks.map((h, i) => (
-                  <li key={i}>
-                    {h.text}
-                    {h.source && <span style={{ color: 'var(--color-text-tertiary)', marginLeft: 6, fontSize: 11 }}>({h.source})</span>}
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : (
             <div style={{ color: 'var(--color-text-tertiary)', fontSize: 13 }}>
-              No research yet. Click Research to scrape the website and extract hooks.
-              {lead.enrichmentFailureReason && <div style={{ color: '#fcd34d', marginTop: 6 }}>Last attempt: {lead.enrichmentFailureReason}</div>}
-            </div>
-          )}
-        </div>
-
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <div className={styles.cardTitle}>Message</div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy || !lead.enrichmentSummary} onClick={generate}>
-                {lead.generatedSubject ? 'Re-generate' : 'Generate'}
-              </button>
-              <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} disabled={!dirty || !!busy} onClick={saveMessage}>Save</button>
-              <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy || !lead.email || !subject || !body} onClick={send}>
-                <IconSend style={{ width: 12, height: 12 }} /> Send
-              </button>
-              <button className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`} disabled={!!busy} onClick={reject}>Reject</button>
+              {lead.trade} · {lead.suburb}{lead.state ? `, ${lead.state}` : ''}
+              {lead.googleRating ? ` · ★ ${lead.googleRating} (${lead.googleReviewCount || 0} reviews)` : ''}
             </div>
           </div>
-          <input
-            className={styles.input}
-            placeholder="Subject"
-            value={subject}
-            onChange={(e) => { setSubject(e.target.value); setDirty(true); }}
-            style={{ marginBottom: 10, fontWeight: 600 }}
-          />
-          <textarea
-            className={styles.textarea}
-            placeholder="Body (HTML — paragraphs separated by <br><br>)"
-            value={body}
-            onChange={(e) => { setBody(e.target.value); setDirty(true); }}
-            style={{ minHeight: 220, fontFamily: 'monospace', fontSize: 13 }}
-          />
-          {body && (
-            <div style={{ marginTop: 12, padding: 16, background: 'var(--color-surface-2, #0f172a)', borderRadius: 8, color: 'var(--color-text-secondary)', fontSize: 14, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: body }} />
-          )}
+          <button onClick={onClose} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} aria-label="Close">✕</button>
         </div>
 
+        {/* PIPELINE PROGRESS */}
+        <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
+          {['New', 'Researched', 'Queued', 'Sent', 'Engaged', 'Replied', 'Converted'].map((label, i) => (
+            <div
+              key={label}
+              style={{
+                flex: 1,
+                height: 6,
+                borderRadius: 3,
+                background: i <= stage ? STATUS_COLORS[['new', 'researched', 'queued', 'sent', 'engaged', 'replied', 'converted'][i]] || '#94a3b8' : 'var(--color-border, #334155)',
+              }}
+              title={label}
+            />
+          ))}
+        </div>
+
+        {/* CONTACT GRID */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 10, fontSize: 13 }}>
+          <Fact label="Owner" value={lead.ownerName || '—'} mono={false} />
+          <Fact label="Email" value={lead.email || <span style={{ color: 'var(--color-text-tertiary)' }}>not yet researched</span>} mono />
+          <Fact label="Mobile" value={lead.mobile || lead.phone || <span style={{ color: 'var(--color-text-tertiary)' }}>—</span>} mono />
+          <Fact label="Website" value={lead.websiteUrl ? (
+            <a href={lead.websiteUrl} target="_blank" rel="noopener" style={{ color: 'var(--color-accent-light)' }}>{websiteHost}</a>
+          ) : '—'} mono />
+        </div>
+      </div>
+
+      {/* RESEARCH */}
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <div>
+            <div className={styles.cardTitle}>Research</div>
+            {lead.enrichmentConfidence && (
+              <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 2 }}>
+                Confidence: <span style={{ color: lead.enrichmentConfidence === 'high' ? '#10b981' : lead.enrichmentConfidence === 'medium' ? '#fcd34d' : '#fca5a5' }}>{lead.enrichmentConfidence}</span>
+              </div>
+            )}
+          </div>
+          <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy} onClick={enrich}>
+            {busy === 'research' ? 'Researching…' : (lead.enrichmentSummary ? 'Re-research' : 'Research now')}
+          </button>
+        </div>
+        {lead.enrichmentSummary ? (
+          <>
+            <div style={{ color: 'var(--color-text-secondary)', fontSize: 14, lineHeight: 1.6, marginBottom: 14 }}>
+              {lead.enrichmentSummary}
+            </div>
+            {hooks.length > 0 && (
+              <>
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600 }}>
+                  Personalization hooks ({hooks.length})
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {hooks.map((h, i) => (
+                    <div key={i} style={{ padding: '10px 12px', background: 'rgba(96, 165, 250, 0.06)', borderLeft: '3px solid #60a5fa', borderRadius: 6, fontSize: 13, color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
+                      {h.text}
+                      {h.source && <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 4 }}>{h.source}</div>}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        ) : (
+          <div style={{ color: 'var(--color-text-tertiary)', fontSize: 13, padding: '8px 0' }}>
+            No research yet. Click <strong>Research now</strong> to scrape the website + extract owner name and personalisation hooks.
+            {lead.enrichmentFailureReason && <div style={{ color: '#fcd34d', marginTop: 8, fontSize: 12 }}>Last attempt: {lead.enrichmentFailureReason}</div>}
+          </div>
+        )}
+      </div>
+
+      {/* MESSAGE EDITOR */}
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <div className={styles.cardTitle}>Email message</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy || !lead.enrichmentSummary} onClick={generate}>
+              {busy === 'generate' ? 'Generating…' : (lead.generatedSubject ? 'Re-generate' : 'Generate')}
+            </button>
+            <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} disabled={!dirty || !!busy} onClick={saveMessage}>
+              {busy === 'save' ? '…' : 'Save'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy || !lead.email || !subject || !body} onClick={send}>
+              <IconSend style={{ width: 12, height: 12 }} /> {busy === 'send' ? 'Sending…' : 'Send'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnDanger} ${styles.btnSmall}`} disabled={!!busy} onClick={reject}>Reject</button>
+          </div>
+        </div>
+        {!lead.enrichmentSummary && !lead.generatedSubject ? (
+          <div style={{ color: 'var(--color-text-tertiary)', fontSize: 13, padding: '8px 0' }}>
+            Research first, then generate a personalised message.
+          </div>
+        ) : (
+          <>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
+              <input
+                className={styles.input}
+                placeholder="Subject"
+                value={subject}
+                onChange={(e) => { setSubject(e.target.value); setDirty(true); }}
+                style={{ fontWeight: 600, flex: 1 }}
+              />
+              <span style={{ color: 'var(--color-text-tertiary)', fontSize: 11 }}>{subject.length}c</span>
+            </div>
+            <textarea
+              className={styles.textarea}
+              placeholder="Body — paragraphs separated by <br><br>"
+              value={body}
+              onChange={(e) => { setBody(e.target.value); setDirty(true); }}
+              style={{ minHeight: 180, fontFamily: 'monospace', fontSize: 12 }}
+            />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
+              <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11 }}>
+                {body.replace(/<[^>]+>/g, '').split(/\s+/).filter(Boolean).length} words
+                {dirty && <span style={{ color: '#fcd34d', marginLeft: 8 }}>● unsaved</span>}
+              </div>
+              <button onClick={() => setShowPreview((v) => !v)} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>
+                {showPreview ? 'Hide preview' : 'Show preview'}
+              </button>
+            </div>
+            {showPreview && body && (
+              <div
+                style={{
+                  marginTop: 12,
+                  padding: 16,
+                  background: '#ffffff',
+                  borderRadius: 8,
+                  color: '#0f172a',
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  border: '1px solid var(--color-border, #334155)',
+                }}
+                dangerouslySetInnerHTML={{ __html: `<div><strong style="font-size:13px;color:#475569;">Subject:</strong> ${subject || '(no subject)'}</div><hr style="border:none;border-top:1px solid #e2e8f0;margin:8px 0 12px;"/>${body}` }}
+              />
+            )}
+          </>
+        )}
+      </div>
+
+      {/* OUTREACH HISTORY */}
+      {data.outreach.length > 0 && (
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <div className={styles.cardTitle}>Outreach history</div>
           </div>
-          {data.outreach.length === 0 ? (
-            <div style={{ color: 'var(--color-text-tertiary)', fontSize: 13 }}>Nothing sent yet.</div>
-          ) : (
-            data.outreach.map((o: any) => (
-              <div key={o.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--color-border)' }}>
-                <div style={{ fontSize: 13, color: 'var(--color-text-primary)', fontWeight: 600 }}>{o.subject}</div>
-                <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginTop: 4 }}>
-                  Sent {fmtRelative(o.sentAt)}
-                  {o.openCount > 0 && ` · ${o.openCount} open(s)`}
-                  {o.clickCount > 0 && ` · ${o.clickCount} click(s)`}
-                </div>
+          {data.outreach.map((o: any) => (
+            <div key={o.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--color-border, #334155)' }}>
+              <div style={{ fontSize: 13, color: 'var(--color-text-primary)', fontWeight: 600 }}>{o.subject}</div>
+              <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginTop: 4 }}>
+                Sent {fmtRelative(o.sentAt)}
+                {o.openCount > 0 && <span style={{ color: '#10b981', marginLeft: 8 }}>· {o.openCount} open(s)</span>}
+                {o.clickCount > 0 && <span style={{ color: '#22d3ee', marginLeft: 8 }}>· {o.clickCount} click(s)</span>}
               </div>
-            ))
-          )}
+            </div>
+          ))}
         </div>
-      </div>
+      )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <div className={styles.card}>
-          <div className={styles.cardHeader}>
-            <div className={styles.cardTitle}>Notes</div>
-          </div>
-          <textarea
-            className={styles.textarea}
-            placeholder="Add a note…"
-            value={noteText}
-            onChange={(e) => setNoteText(e.target.value)}
-            style={{ minHeight: 80 }}
-          />
+      {/* NOTES */}
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <div className={styles.cardTitle}>Notes</div>
+        </div>
+        <textarea
+          className={styles.textarea}
+          placeholder="Add a note about this lead…"
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+          style={{ minHeight: 60 }}
+        />
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 6 }}>
           <button
             className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}
             disabled={!noteText.trim() || !!busy}
             onClick={addNote}
-            style={{ marginTop: 8 }}
           >
             <IconNote style={{ width: 12, height: 12 }} /> Add note
           </button>
-          <div style={{ marginTop: 16 }}>
-            {data.notes.length === 0 ? (
-              <div style={{ color: 'var(--color-text-tertiary)', fontSize: 13 }}>No notes yet.</div>
-            ) : (
-              data.notes.map((n: any) => (
-                <div key={n.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--color-border)' }}>
-                  <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', whiteSpace: 'pre-wrap' }}>{n.text}</div>
-                  <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 4 }}>{fmtRelative(n.createdAt)}</div>
-                </div>
-              ))
-            )}
-          </div>
         </div>
+        {data.notes.length > 0 && (
+          <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--color-border, #334155)' }}>
+            {data.notes.map((n: any) => (
+              <div key={n.id} style={{ padding: '8px 0', borderBottom: '1px solid var(--color-border, #334155)' }}>
+                <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', whiteSpace: 'pre-wrap' }}>{n.text}</div>
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 4 }}>{fmtRelative(n.createdAt)}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
@@ -712,11 +866,13 @@ function LeadDetail({ leadId }: { leadId: string }) {
   );
 }
 
-function Fact({ label, value }: { label: string; value: any }) {
+function Fact({ label, value, mono }: { label: string; value: any; mono?: boolean }) {
   return (
     <div>
-      <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 }}>{label}</div>
-      <div style={{ color: 'var(--color-text-primary)', fontSize: 14 }}>{value}</div>
+      <div style={{ color: 'var(--color-text-tertiary)', fontSize: 10, textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 4, fontWeight: 600 }}>{label}</div>
+      <div style={{ color: 'var(--color-text-primary)', fontSize: 13, fontFamily: mono ? 'ui-monospace, SFMono-Regular, monospace' : undefined, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        {value}
+      </div>
     </div>
   );
 }
