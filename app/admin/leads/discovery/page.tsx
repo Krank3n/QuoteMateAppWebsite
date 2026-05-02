@@ -172,7 +172,7 @@ export default function DiscoveryPage() {
               </div>
             )}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, fontSize: 13 }}>
-              <Stat label={dryRun ? 'Would create' : 'Created'} value={dryRun ? (result.sample?.length || 0) : result.created} />
+              <Stat label={dryRun ? 'Would create' : 'Created'} value={result.created || 0} />
               <Stat label="Existing" value={result.dedupedExisting} />
               <Stat label="Suppressed" value={result.dedupedSuppressed} />
               <Stat label="Existing user" value={result.dedupedExistingUser} />
