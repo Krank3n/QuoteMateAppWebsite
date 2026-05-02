@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '../admin.module.css';
@@ -65,6 +65,33 @@ const STATUS_COLORS: Record<string, string> = {
   dnc: '#fca5a5',
   bounced: '#fca5a5',
 };
+
+// Tri-state master checkbox: empty → indeterminate (some selected) → checked (all).
+// Click cycles through select-all / clear.
+function MasterCheckbox({ totalCount, selectedCount, onToggle }: {
+  totalCount: number;
+  selectedCount: number;
+  onToggle: () => void;
+}) {
+  const ref = useRef<HTMLInputElement>(null);
+  const allSelected = totalCount > 0 && selectedCount === totalCount;
+  const indeterminate = selectedCount > 0 && selectedCount < totalCount;
+  useEffect(() => {
+    if (ref.current) ref.current.indeterminate = indeterminate;
+  }, [indeterminate]);
+  return (
+    <input
+      ref={ref}
+      type="checkbox"
+      checked={allSelected}
+      disabled={totalCount === 0}
+      onChange={onToggle}
+      aria-label={allSelected ? 'Deselect all' : 'Select all'}
+      title={allSelected ? 'Deselect all' : `Select all ${totalCount} visible`}
+      style={{ cursor: totalCount === 0 ? 'default' : 'pointer' }}
+    />
+  );
+}
 
 function StatusBadge({ status, size = 'md' }: { status: string; size?: 'sm' | 'md' }) {
   const c = STATUS_COLORS[status] || '#94a3b8';
@@ -168,6 +195,28 @@ function LeadsPageInner() {
   const clearSelection = () => setSelected(new Set());
   const refresh = () => setRefreshTick((n) => n + 1);
 
+  // Master checkbox toggle: select all visible filtered, or clear.
+  const toggleAllVisible = () => {
+    const visibleIds = filtered.map((l) => l.id);
+    const allSelected = visibleIds.length > 0 && visibleIds.every((id) => selected.has(id));
+    if (allSelected) {
+      // Clear only the visible ones (preserve any selections that got hidden by filter changes).
+      setSelected((s) => {
+        const next = new Set(s);
+        for (const id of visibleIds) next.delete(id);
+        return next;
+      });
+    } else {
+      setSelected((s) => {
+        const next = new Set(s);
+        for (const id of visibleIds) next.add(id);
+        return next;
+      });
+    }
+  };
+  // Count of selected leads that are currently visible after filtering.
+  const visibleSelectedCount = filtered.reduce((n, l) => n + (selected.has(l.id) ? 1 : 0), 0);
+
   const ids = Array.from(selected);
 
   const runBulk = async (kind: 'research' | 'generate' | 'approve' | 'reject') => {
@@ -256,13 +305,19 @@ function LeadsPageInner() {
         <div className={styles.card} style={{ marginBottom: 12, padding: splitView ? 12 : undefined }}>
           {!splitView ? (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0 8px' }}>
+                <MasterCheckbox totalCount={filtered.length} selectedCount={visibleSelectedCount} onToggle={toggleAllVisible} />
+                <span style={{ color: 'var(--color-text-tertiary)', fontSize: 11, fontWeight: 600, minWidth: 64 }}>
+                  {selected.size > 0 ? `${selected.size}/${filtered.length}` : `${filtered.length} leads`}
+                </span>
+              </div>
               <input
                 type="text"
                 className={styles.input}
                 placeholder="Search business / suburb / owner / email"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                style={{ flex: '1 1 280px', maxWidth: 360 }}
+                style={{ flex: '1 1 240px', maxWidth: 320 }}
               />
               <select
                 className={styles.select}
@@ -282,19 +337,21 @@ function LeadsPageInner() {
                 <option value="deck-builder">Deck builder</option>
               </select>
               <div style={{ flex: 1 }} />
-              {selected.size > 0 ? <BulkActions selected={selected.size} busy={busy} onClear={clearSelection} onAction={runBulk} /> : (
-                <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={selectAll} disabled={!filtered.length}>Select all</button>
-              )}
+              {selected.size > 0 && <BulkActions selected={selected.size} busy={busy} onClear={clearSelection} onAction={runBulk} />}
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <input
-                type="text"
-                className={styles.input}
-                placeholder="Search…"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <MasterCheckbox totalCount={filtered.length} selectedCount={visibleSelectedCount} onToggle={toggleAllVisible} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  placeholder="Search…"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  style={{ flex: 1 }}
+                />
+              </div>
               <select
                 className={styles.select}
                 value={statusFilter}
