@@ -421,6 +421,7 @@ function LeadsPageInner() {
       {configOpen && (
         <ConfigModal
           initial={configState?.config}
+          schedule={configState?.schedule || []}
           onClose={() => setConfigOpen(false)}
           onSaved={(msg) => {
             setConfigOpen(false);
@@ -449,53 +450,126 @@ function ConfigStrip({ configState, onEdit }: { configState: any; onEdit: () => 
     );
   }
   const cfg = configState.config || {};
+  const eff = configState.effective || {};
   const enabled = cfg.enabled === true;
-  const dailyMax = cfg.dailyMaxSends ?? 0;
+  const dailyMax = eff.dailyMaxSends ?? cfg.dailyMaxSends ?? 0;
   const sentToday = configState.sentLast24h ?? 0;
   const remaining = configState.remainingToday ?? 0;
   const pct = dailyMax > 0 ? Math.min(100, (sentToday / dailyMax) * 100) : 0;
   const danger = !enabled;
+  const isAuto = eff.source === 'auto';
+  const history: Array<{ date: string; count: number }> = configState.history || [];
+  const maxInHistory = Math.max(1, ...history.map((h) => h.count));
+
   return (
     <div
       className={styles.card}
       style={{
         marginBottom: 12,
         padding: 14,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 14,
         borderLeft: `4px solid ${danger ? '#fca5a5' : '#10b981'}`,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <div style={{ width: 10, height: 10, borderRadius: '50%', background: danger ? '#fca5a5' : '#10b981' }} />
-        <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text-primary)' }}>
-          {enabled ? 'Outreach enabled' : 'Outreach disabled'}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 10, height: 10, borderRadius: '50%', background: danger ? '#fca5a5' : '#10b981' }} />
+          <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text-primary)' }}>
+            {enabled ? 'Outreach enabled' : 'Outreach disabled'}
+          </div>
+          {isAuto && eff.currentStage && (
+            <span style={{
+              padding: '2px 8px',
+              background: 'rgba(96, 165, 250, 0.15)',
+              color: '#60a5fa',
+              borderRadius: 10,
+              fontSize: 10,
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5,
+            }}>
+              Auto-ramp · day {eff.currentDay}
+            </span>
+          )}
         </div>
-      </div>
-      <div style={{ flex: 1, minWidth: 180 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 4 }}>
-          <span>Today: {sentToday} / {dailyMax}</span>
-          <span>{remaining} remaining</span>
+        <div style={{ flex: 1, minWidth: 180 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 4 }}>
+            <span>Today: <strong style={{ color: 'var(--color-text-primary)' }}>{sentToday}</strong> / {dailyMax}</span>
+            <span>{remaining} remaining</span>
+          </div>
+          <div style={{ height: 6, background: 'var(--color-border, #334155)', borderRadius: 3, overflow: 'hidden' }}>
+            <div style={{ width: `${pct}%`, height: '100%', background: pct > 90 ? '#fcd34d' : '#10b981', transition: 'width 0.3s' }} />
+          </div>
         </div>
-        <div style={{ height: 6, background: 'var(--color-border, #334155)', borderRadius: 3, overflow: 'hidden' }}>
-          <div style={{ width: `${pct}%`, height: '100%', background: pct > 90 ? '#fcd34d' : '#10b981', transition: 'width 0.3s' }} />
+        <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', textAlign: 'right' }}>
+          <div>Hourly cap: {eff.hourlyMaxSends ?? cfg.hourlyMaxSends ?? '—'}</div>
+          <div>{configState.sentLastHour ?? 0} sent in last hour</div>
         </div>
+        <button onClick={onEdit} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}>Edit caps</button>
       </div>
-      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>
-        Hourly cap: {cfg.hourlyMaxSends ?? '—'} · {configState.sentLastHour ?? 0} sent in last hour
-      </div>
-      <button onClick={onEdit} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}>Edit caps</button>
+
+      {isAuto && eff.currentStage && (
+        <div style={{ marginTop: 12, padding: 10, background: 'rgba(96, 165, 250, 0.06)', borderRadius: 6, fontSize: 12, color: 'var(--color-text-secondary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+          <span><strong style={{ color: 'var(--color-text-primary)' }}>{eff.currentStage.label}</strong> — {eff.currentStage.daily}/day, {eff.currentStage.hourly}/hour</span>
+          {eff.nextStage && eff.daysUntilNext != null && (
+            <span style={{ color: 'var(--color-text-tertiary)' }}>
+              Next: {eff.nextStage.label} ({eff.nextStage.daily}/day) in {eff.daysUntilNext} day{eff.daysUntilNext === 1 ? '' : 's'}
+            </span>
+          )}
+        </div>
+      )}
+
+      {history.length > 0 && (
+        <div style={{ marginTop: 12 }}>
+          <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6, fontWeight: 600 }}>
+            Last 14 days · sends per day
+          </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 50 }}>
+            {history.map((h) => {
+              const heightPct = (h.count / maxInHistory) * 100;
+              return (
+                <div
+                  key={h.date}
+                  title={`${h.date}: ${h.count} sent`}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}
+                >
+                  <div style={{ flex: 1, width: '100%', display: 'flex', alignItems: 'flex-end' }}>
+                    <div
+                      style={{
+                        width: '100%',
+                        height: `${heightPct}%`,
+                        minHeight: h.count > 0 ? 2 : 0,
+                        background: h.count > 0 ? '#10b981' : 'var(--color-border, #334155)',
+                        borderRadius: '2px 2px 0 0',
+                        transition: 'height 0.3s',
+                      }}
+                    />
+                  </div>
+                  <div style={{ fontSize: 9, color: 'var(--color-text-tertiary)' }}>
+                    {h.count > 0 ? h.count : ''}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 2 }}>
+            <span>{history[0]?.date.slice(5)}</span>
+            <span>today</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function ConfigModal({ initial, onClose, onSaved }: {
+function ConfigModal({ initial, schedule, onClose, onSaved }: {
   initial: any;
+  schedule: Array<{ dayFrom: number; dayTo: number; label: string; daily: number; hourly: number }>;
   onClose: () => void;
   onSaved: (msg: string) => void;
 }) {
   const [enabled, setEnabled] = useState<boolean>(initial?.enabled === true);
+  const [warmupAuto, setWarmupAuto] = useState<boolean>(initial?.warmupAuto === true);
+  const [warmupStartedAt, setWarmupStartedAt] = useState<number | null>(initial?.warmupStartedAt ?? null);
   const [dailyMaxSends, setDailyMaxSends] = useState<number>(initial?.dailyMaxSends ?? 5);
   const [hourlyMaxSends, setHourlyMaxSends] = useState<number>(initial?.hourlyMaxSends ?? 3);
   const [perDomainMax, setPerDomainMax] = useState<number>(initial?.perDomainMax ?? 1);
@@ -506,7 +580,14 @@ function ConfigModal({ initial, onClose, onSaved }: {
     setSaving(true);
     setError(null);
     try {
-      await api.updateLeadConfig({ enabled, dailyMaxSends, hourlyMaxSends, perDomainMax });
+      await api.updateLeadConfig({
+        enabled,
+        warmupAuto,
+        warmupStartedAt,
+        dailyMaxSends,
+        hourlyMaxSends,
+        perDomainMax,
+      });
       onSaved('Outreach config saved');
     } catch (e: any) {
       setError(e?.message || 'Save failed');
@@ -515,13 +596,7 @@ function ConfigModal({ initial, onClose, onSaved }: {
     }
   };
 
-  const presets = [
-    { label: 'Day 1-3 (warmup)', daily: 5, hourly: 3 },
-    { label: 'Day 4-7', daily: 20, hourly: 6 },
-    { label: 'Week 2', daily: 50, hourly: 12 },
-    { label: 'Week 3+', daily: 100, hourly: 25 },
-    { label: 'High volume', daily: 300, hourly: 50 },
-  ];
+  const startedDateStr = warmupStartedAt ? new Date(warmupStartedAt).toISOString().slice(0, 10) : '';
 
   return (
     <div
@@ -529,13 +604,13 @@ function ConfigModal({ initial, onClose, onSaved }: {
       style={{
         position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.7)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        zIndex: 100, padding: 20,
+        zIndex: 100, padding: 20, overflowY: 'auto',
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         className={styles.card}
-        style={{ maxWidth: 460, width: '100%', padding: 24 }}
+        style={{ maxWidth: 540, width: '100%', padding: 24, maxHeight: '90vh', overflowY: 'auto' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
           <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: 'var(--color-text-primary)' }}>Outreach send caps</h3>
@@ -550,26 +625,70 @@ function ConfigModal({ initial, onClose, onSaved }: {
           </div>
         </label>
 
-        <NumberField label="Daily max sends" value={dailyMaxSends} onChange={setDailyMaxSends} hint="Hard cap per rolling 24h. Start at 5 on a fresh domain." />
-        <NumberField label="Hourly max sends" value={hourlyMaxSends} onChange={setHourlyMaxSends} hint="Throttle within the day. Spreads sends naturally." />
-        <NumberField label="Per-domain max" value={perDomainMax} onChange={setPerDomainMax} hint="Max sends to any one email domain per batch. Keep at 1." />
+        {/* AUTO RAMP */}
+        <div style={{ padding: 12, background: warmupAuto ? 'rgba(96, 165, 250, 0.06)' : 'var(--color-surface-2, #0f172a)', border: warmupAuto ? '1px solid rgba(96, 165, 250, 0.4)' : '1px solid var(--color-border, #334155)', borderRadius: 8, marginBottom: 14 }}>
+          <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={warmupAuto}
+              onChange={(e) => {
+                setWarmupAuto(e.target.checked);
+                if (e.target.checked && !warmupStartedAt) setWarmupStartedAt(Date.now());
+              }}
+              style={{ marginTop: 2 }}
+            />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--color-text-primary)' }}>Auto-ramp warmup schedule</div>
+              <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginTop: 2 }}>
+                Caps follow a deliverability-safe ramp. Override the manual caps below.
+              </div>
+            </div>
+          </label>
 
-        <div style={{ marginTop: 14, marginBottom: 6, fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600 }}>
-          Quick presets
+          {warmupAuto && (
+            <div style={{ marginTop: 12, marginLeft: 24 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--color-text-secondary)', marginBottom: 4 }}>
+                Warmup start date
+              </label>
+              <input
+                type="date"
+                className={styles.input}
+                value={startedDateStr}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setWarmupStartedAt(v ? new Date(v + 'T00:00:00').getTime() : null);
+                }}
+                style={{ width: 200 }}
+              />
+              <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 4 }}>
+                Day count starts here. Set to today for a fresh subdomain. Set earlier if you've already been sending from this domain (lying about the start date burns reputation, not us).
+              </div>
+
+              <div style={{ marginTop: 14, marginBottom: 6, fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600 }}>
+                Schedule
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
+                {schedule.map((s) => (
+                  <div key={s.label} style={{ display: 'grid', gridTemplateColumns: '1fr 80px 70px', gap: 8, padding: '6px 10px', background: 'var(--color-surface-2, #0f172a)', borderRadius: 4, color: 'var(--color-text-secondary)' }}>
+                    <span>{s.label}</span>
+                    <span style={{ textAlign: 'right' }}>{s.daily}/day</span>
+                    <span style={{ textAlign: 'right', color: 'var(--color-text-tertiary)' }}>{s.hourly}/hr</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-          {presets.map((p) => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => { setDailyMaxSends(p.daily); setHourlyMaxSends(p.hourly); }}
-              className={styles.chip}
-              title={`Daily ${p.daily} · Hourly ${p.hourly}`}
-            >
-              {p.label}
-            </button>
-          ))}
+
+        {/* MANUAL CAPS */}
+        <div style={{ marginBottom: 6, fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600 }}>
+          Manual caps {warmupAuto && <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>(ignored while auto-ramp is on)</span>}
         </div>
+        <div style={{ opacity: warmupAuto ? 0.5 : 1, pointerEvents: warmupAuto ? 'none' : 'auto' }}>
+          <NumberField label="Daily max sends" value={dailyMaxSends} onChange={setDailyMaxSends} hint="Hard cap per rolling 24h." />
+          <NumberField label="Hourly max sends" value={hourlyMaxSends} onChange={setHourlyMaxSends} hint="Throttle within the day. Spreads sends naturally." />
+        </div>
+        <NumberField label="Per-domain max" value={perDomainMax} onChange={setPerDomainMax} hint="Max sends to any one email domain per batch. Keep at 1 — applies regardless of auto-ramp." />
 
         {error && <div style={{ marginTop: 14, padding: 10, background: 'rgba(239, 68, 68, 0.1)', color: '#fca5a5', borderRadius: 6, fontSize: 13 }}>{error}</div>}
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import fs from 'fs';
@@ -32,6 +33,28 @@ function guideDates(guide: Guide): { published: string; modified: string } {
 
 function formatMonthYear(iso: string): string {
   return new Intl.DateTimeFormat('en-AU', { month: 'long', year: 'numeric' }).format(new Date(iso));
+}
+
+const URL_REGEX = /\bhttps?:\/\/[^\s<>()"']+/g;
+
+function renderBody(text: string): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  const re = new RegExp(URL_REGEX);
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    const url = match[0].replace(/[.,;:!?)]+$/, '');
+    const trailing = match[0].slice(url.length);
+    const display = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    nodes.push(
+      <a key={match.index} href={url} target="_blank" rel="noopener noreferrer">{display}</a>
+    );
+    if (trailing) nodes.push(trailing);
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
 }
 
 export async function generateStaticParams() {
@@ -103,7 +126,7 @@ export default async function ArticlePage({ params }: Props) {
               {guide.sections.map((section, i) => (
                 <div key={i} className="guide-section">
                   <h2>{section.heading}</h2>
-                  <p>{section.body}</p>
+                  <p>{renderBody(section.body)}</p>
                 </div>
               ))}
 

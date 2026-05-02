@@ -61,7 +61,7 @@ export const api = {
   rejectLeads: call<{ leadIds: string[]; reason?: string; dnc?: boolean }>('adminRejectLeads'),
   addLeadNote: call<{ id: string; text: string }>('adminAddLeadNote'),
   getLeadConfig: call('adminGetLeadConfig'),
-  updateLeadConfig: call<{ enabled?: boolean; dailyMaxSends?: number; hourlyMaxSends?: number; perDomainMax?: number }>('adminUpdateLeadConfig'),
+  updateLeadConfig: call<{ enabled?: boolean; dailyMaxSends?: number; hourlyMaxSends?: number; perDomainMax?: number; warmupAuto?: boolean; warmupStartedAt?: number | null }>('adminUpdateLeadConfig'),
   testSendLead: call<{ leadId: string; to: string }>('adminTestSendLead'),
 };
 
