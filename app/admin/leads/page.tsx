@@ -741,6 +741,30 @@ function LeadDetail({ leadId, onClose, onChange }: { leadId: string; onClose: ()
         )}
       </div>
 
+      {/* GOOGLE REVIEWS — the gold mine for personalisation */}
+      {Array.isArray(lead.googleReviews) && lead.googleReviews.length > 0 && (
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Google reviews ({lead.googleReviews.length})</div>
+              <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11, marginTop: 2 }}>
+                Real customer language — Claude pulls hooks from here when the website's thin.
+              </div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {lead.googleReviews.slice(0, 5).map((r: any, i: number) => (
+              <div key={i} style={{ padding: '10px 12px', background: 'rgba(252, 211, 77, 0.06)', borderLeft: '3px solid #fcd34d', borderRadius: 6, fontSize: 13, color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginBottom: 4 }}>
+                  {'★'.repeat(r.rating || 0)} · {r.author || 'anon'} · {r.when || ''}
+                </div>
+                {r.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* MESSAGE EDITOR */}
       <div className={styles.card}>
         <div className={styles.cardHeader}>
