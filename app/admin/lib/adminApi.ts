@@ -60,6 +60,9 @@ export const api = {
   approveLeads: call<{ leadIds: string[] }>('adminApproveLeads'),
   rejectLeads: call<{ leadIds: string[]; reason?: string; dnc?: boolean }>('adminRejectLeads'),
   addLeadNote: call<{ id: string; text: string }>('adminAddLeadNote'),
+  getLeadConfig: call('adminGetLeadConfig'),
+  updateLeadConfig: call<{ enabled?: boolean; dailyMaxSends?: number; hourlyMaxSends?: number; perDomainMax?: number }>('adminUpdateLeadConfig'),
+  testSendLead: call<{ leadId: string; to: string }>('adminTestSendLead'),
 };
 
 export async function downloadCsv(entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates'): Promise<void> {

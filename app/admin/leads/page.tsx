@@ -142,6 +142,8 @@ function LeadsPageInner() {
   const [busy, setBusy] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
+  const [configState, setConfigState] = useState<any>(null);
+  const [configOpen, setConfigOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -161,6 +163,15 @@ function LeadsPageInner() {
     });
     return () => { cancelled = true; };
   }, [statusFilter, tradeFilter, refreshTick]);
+
+  // Load outreach config (kill switch + caps + today's count)
+  useEffect(() => {
+    let cancelled = false;
+    api.getLeadConfig({}).then((r: any) => {
+      if (!cancelled) setConfigState(r);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [refreshTick]);
 
   const filtered = useMemo(() => {
     if (!search.trim()) return leads;
@@ -280,26 +291,30 @@ function LeadsPageInner() {
     <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
       <div style={{ flex: splitView ? '0 0 380px' : 1, minWidth: 0 }}>
         {!splitView && (
-          <div className={styles.statGrid} style={{ marginBottom: 16 }}>
-            {['new', 'researched', 'queued', 'sent', 'engaged', 'replied', 'converted'].map((s) => (
-              <button
-                key={s}
-                onClick={() => setStatusFilter(s === statusFilter ? 'all' : s)}
-                style={{
-                  textAlign: 'left',
-                  background: statusFilter === s ? `${STATUS_COLORS[s]}22` : 'var(--color-surface, #1e293b)',
-                  border: `1px solid ${statusFilter === s ? STATUS_COLORS[s] : 'var(--color-border, #334155)'}`,
-                  borderRadius: 12,
-                  padding: 14,
-                  cursor: 'pointer',
-                  transition: 'all 0.15s',
-                }}
-              >
-                <div className={styles.statLabel} style={{ color: STATUS_COLORS[s] }}>{s}</div>
-                <div className={styles.statValue}>{summary[s] || 0}</div>
-              </button>
-            ))}
-          </div>
+          <>
+            {/* CONFIG STATUS STRIP */}
+            <ConfigStrip configState={configState} onEdit={() => setConfigOpen(true)} />
+            <div className={styles.statGrid} style={{ marginBottom: 16 }}>
+              {['new', 'researched', 'queued', 'sent', 'engaged', 'replied', 'converted'].map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setStatusFilter(s === statusFilter ? 'all' : s)}
+                  style={{
+                    textAlign: 'left',
+                    background: statusFilter === s ? `${STATUS_COLORS[s]}22` : 'var(--color-surface, #1e293b)',
+                    border: `1px solid ${statusFilter === s ? STATUS_COLORS[s] : 'var(--color-border, #334155)'}`,
+                    borderRadius: 12,
+                    padding: 14,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  <div className={styles.statLabel} style={{ color: STATUS_COLORS[s] }}>{s}</div>
+                  <div className={styles.statValue}>{summary[s] || 0}</div>
+                </button>
+              ))}
+            </div>
+          </>
         )}
 
         <div className={styles.card} style={{ marginBottom: 12, padding: splitView ? 12 : undefined }}>
@@ -403,7 +418,186 @@ function LeadsPageInner() {
         </div>
       )}
 
+      {configOpen && (
+        <ConfigModal
+          initial={configState?.config}
+          onClose={() => setConfigOpen(false)}
+          onSaved={(msg) => {
+            setConfigOpen(false);
+            setToast({ msg });
+            refresh();
+            setTimeout(() => setToast(null), 3000);
+          }}
+        />
+      )}
+
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
+    </div>
+  );
+}
+
+// ============================================================
+// CONFIG STRIP + MODAL
+// ============================================================
+
+function ConfigStrip({ configState, onEdit }: { configState: any; onEdit: () => void }) {
+  if (!configState) {
+    return (
+      <div className={styles.card} style={{ marginBottom: 12, padding: 12, color: 'var(--color-text-tertiary)', fontSize: 12 }}>
+        Loading outreach config…
+      </div>
+    );
+  }
+  const cfg = configState.config || {};
+  const enabled = cfg.enabled === true;
+  const dailyMax = cfg.dailyMaxSends ?? 0;
+  const sentToday = configState.sentLast24h ?? 0;
+  const remaining = configState.remainingToday ?? 0;
+  const pct = dailyMax > 0 ? Math.min(100, (sentToday / dailyMax) * 100) : 0;
+  const danger = !enabled;
+  return (
+    <div
+      className={styles.card}
+      style={{
+        marginBottom: 12,
+        padding: 14,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 14,
+        borderLeft: `4px solid ${danger ? '#fca5a5' : '#10b981'}`,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ width: 10, height: 10, borderRadius: '50%', background: danger ? '#fca5a5' : '#10b981' }} />
+        <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--color-text-primary)' }}>
+          {enabled ? 'Outreach enabled' : 'Outreach disabled'}
+        </div>
+      </div>
+      <div style={{ flex: 1, minWidth: 180 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 4 }}>
+          <span>Today: {sentToday} / {dailyMax}</span>
+          <span>{remaining} remaining</span>
+        </div>
+        <div style={{ height: 6, background: 'var(--color-border, #334155)', borderRadius: 3, overflow: 'hidden' }}>
+          <div style={{ width: `${pct}%`, height: '100%', background: pct > 90 ? '#fcd34d' : '#10b981', transition: 'width 0.3s' }} />
+        </div>
+      </div>
+      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>
+        Hourly cap: {cfg.hourlyMaxSends ?? '—'} · {configState.sentLastHour ?? 0} sent in last hour
+      </div>
+      <button onClick={onEdit} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}>Edit caps</button>
+    </div>
+  );
+}
+
+function ConfigModal({ initial, onClose, onSaved }: {
+  initial: any;
+  onClose: () => void;
+  onSaved: (msg: string) => void;
+}) {
+  const [enabled, setEnabled] = useState<boolean>(initial?.enabled === true);
+  const [dailyMaxSends, setDailyMaxSends] = useState<number>(initial?.dailyMaxSends ?? 5);
+  const [hourlyMaxSends, setHourlyMaxSends] = useState<number>(initial?.hourlyMaxSends ?? 3);
+  const [perDomainMax, setPerDomainMax] = useState<number>(initial?.perDomainMax ?? 1);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const save = async () => {
+    setSaving(true);
+    setError(null);
+    try {
+      await api.updateLeadConfig({ enabled, dailyMaxSends, hourlyMaxSends, perDomainMax });
+      onSaved('Outreach config saved');
+    } catch (e: any) {
+      setError(e?.message || 'Save failed');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const presets = [
+    { label: 'Day 1-3 (warmup)', daily: 5, hourly: 3 },
+    { label: 'Day 4-7', daily: 20, hourly: 6 },
+    { label: 'Week 2', daily: 50, hourly: 12 },
+    { label: 'Week 3+', daily: 100, hourly: 25 },
+    { label: 'High volume', daily: 300, hourly: 50 },
+  ];
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.7)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        zIndex: 100, padding: 20,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={styles.card}
+        style={{ maxWidth: 460, width: '100%', padding: 24 }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+          <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: 'var(--color-text-primary)' }}>Outreach send caps</h3>
+          <button onClick={onClose} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>✕</button>
+        </div>
+
+        <label style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 10, background: 'var(--color-surface-2, #0f172a)', borderRadius: 8, marginBottom: 14, cursor: 'pointer' }}>
+          <input type="checkbox" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--color-text-primary)' }}>Enable outreach sending</div>
+            <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>Master kill switch. Off = nothing sends.</div>
+          </div>
+        </label>
+
+        <NumberField label="Daily max sends" value={dailyMaxSends} onChange={setDailyMaxSends} hint="Hard cap per rolling 24h. Start at 5 on a fresh domain." />
+        <NumberField label="Hourly max sends" value={hourlyMaxSends} onChange={setHourlyMaxSends} hint="Throttle within the day. Spreads sends naturally." />
+        <NumberField label="Per-domain max" value={perDomainMax} onChange={setPerDomainMax} hint="Max sends to any one email domain per batch. Keep at 1." />
+
+        <div style={{ marginTop: 14, marginBottom: 6, fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600 }}>
+          Quick presets
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {presets.map((p) => (
+            <button
+              key={p.label}
+              type="button"
+              onClick={() => { setDailyMaxSends(p.daily); setHourlyMaxSends(p.hourly); }}
+              className={styles.chip}
+              title={`Daily ${p.daily} · Hourly ${p.hourly}`}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+
+        {error && <div style={{ marginTop: 14, padding: 10, background: 'rgba(239, 68, 68, 0.1)', color: '#fca5a5', borderRadius: 6, fontSize: 13 }}>{error}</div>}
+
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 18 }}>
+          <button onClick={onClose} className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} disabled={saving}>Cancel</button>
+          <button onClick={save} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={saving}>
+            {saving ? 'Saving…' : 'Save'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NumberField({ label, value, onChange, hint }: { label: string; value: number; onChange: (n: number) => void; hint?: string }) {
+  return (
+    <div style={{ marginBottom: 12 }}>
+      <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--color-text-secondary)', marginBottom: 4 }}>{label}</label>
+      <input
+        type="number"
+        className={styles.input}
+        value={value}
+        min={0}
+        max={10000}
+        onChange={(e) => onChange(Math.max(0, Number(e.target.value) || 0))}
+        style={{ width: 140 }}
+      />
+      {hint && <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 4 }}>{hint}</div>}
     </div>
   );
 }
@@ -832,6 +1026,28 @@ function LeadDetail({ leadId, onClose, onChange }: { leadId: string; onClose: ()
             </button>
             <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} disabled={!dirty || !!busy} onClick={saveMessage}>
               {busy === 'save' ? '…' : 'Save'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy || !subject || !body} onClick={async () => {
+              const defaultTo = (window as any).__lastTestEmail || '';
+              const to = window.prompt('Test send the message to:', defaultTo);
+              if (!to) return;
+              if (dirty) {
+                const willSave = window.confirm('You have unsaved changes — save first?');
+                if (willSave) await saveMessage();
+              }
+              (window as any).__lastTestEmail = to;
+              setBusy('test-send');
+              try {
+                await api.testSendLead({ leadId, to });
+                setToast({ msg: `Test sent to ${to} (subject prefixed [TEST])` });
+              } catch (e: any) {
+                setToast({ msg: e?.message || 'Test send failed', error: true });
+              } finally {
+                setBusy(null);
+                setTimeout(() => setToast(null), 5000);
+              }
+            }}>
+              {busy === 'test-send' ? 'Sending…' : 'Test send'}
             </button>
             <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy || !lead.email || !subject || !body} onClick={send}>
               <IconSend style={{ width: 12, height: 12 }} /> {busy === 'send' ? 'Sending…' : 'Send'}
