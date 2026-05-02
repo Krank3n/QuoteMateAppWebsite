@@ -11,8 +11,8 @@ type Partner = {
 const partners: Partner[] = [
   { name: 'Xero', src: '/assets/partners/xero.png', width: 120, height: 120 },
   { name: 'Square', src: '/assets/partners/square.png', width: 180, height: 60 },
-  { name: 'CallKatie AI Receptionist', tag: 'Coming soon', src: '/assets/partners/callkatie.svg', width: 140, height: 140 },
-  { name: 'Google Calendar', tag: 'Coming soon', src: '/assets/partners/google-calendar.svg', width: 100, height: 100 },
+  { name: 'CallKatie AI Receptionist', src: '/assets/partners/callkatie.svg', width: 140, height: 140 },
+  { name: 'Google Calendar', src: '/assets/partners/google-calendar.svg', width: 100, height: 100 },
   { name: 'Reece Plumbing', tag: 'Coming soon', src: '/assets/partners/reece.png', width: 140, height: 90 },
 ];
 
