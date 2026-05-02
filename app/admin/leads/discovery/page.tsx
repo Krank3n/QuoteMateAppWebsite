@@ -163,6 +163,14 @@ export default function DiscoveryPage() {
         {result && (
           <div className={styles.card}>
             <div className={styles.cardHeader}><div className={styles.cardTitle}>Result</div></div>
+            {result.searchErrors?.length > 0 && (
+              <div style={{ marginBottom: 12, padding: 12, background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: 8, color: '#fca5a5', fontSize: 12, lineHeight: 1.5 }}>
+                <div style={{ fontWeight: 700, marginBottom: 6 }}>Places API error</div>
+                {result.searchErrors.map((err: string, i: number) => (
+                  <div key={i} style={{ marginTop: 4, fontFamily: 'monospace', wordBreak: 'break-word' }}>{err}</div>
+                ))}
+              </div>
+            )}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, fontSize: 13 }}>
               <Stat label={dryRun ? 'Would create' : 'Created'} value={dryRun ? (result.sample?.length || 0) : result.created} />
               <Stat label="Existing" value={result.dedupedExisting} />
