@@ -518,6 +518,13 @@ function ConfigStrip({ configState, onEdit }: { configState: any; onEdit: () => 
         </div>
       )}
 
+      {enabled && (
+        <div style={{ marginTop: 8, padding: '8px 10px', background: 'rgba(16, 185, 129, 0.06)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 6, fontSize: 11, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#10b981' }} />
+          <span><strong style={{ color: 'var(--color-text-primary)' }}>Auto-send active</strong> — runs every 30 min, Mon-Fri 9am-5pm AEST. Close your browser; queued leads still go out at the cap.</span>
+        </div>
+      )}
+
       {history.length > 0 && (
         <div style={{ marginTop: 12 }}>
           <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6, fontWeight: 600 }}>
@@ -1224,6 +1231,60 @@ function LeadDetail({ leadId, onClose, onChange }: { leadId: string; onClose: ()
           </>
         )}
       </div>
+
+      {/* REPLY TRACKING — show only after the lead's been sent */}
+      {['sent', 'engaged', 'replied'].includes(lead.status) && (
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Reply tracking</div>
+              {lead.repliedAt ? (
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2 }}>
+                  Marked replied {fmtRelative(lead.repliedAt)} · intent: <strong style={{ color: lead.replyIntent === 'positive' ? '#10b981' : lead.replyIntent === 'stop' ? '#ef4444' : 'var(--color-text-secondary)' }}>{lead.replyIntent || 'neutral'}</strong>
+                </div>
+              ) : (
+                <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 2 }}>
+                  Replies hit your Gmail (forwarded by ImprovMX). Mark them here so the weekly report counts them.
+                </div>
+              )}
+            </div>
+            {!lead.repliedAt && (
+              <button
+                className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}
+                disabled={!!busy}
+                onClick={async () => {
+                  const intentRaw = window.prompt(
+                    'Reply intent? Type:\n  p = positive (interested)\n  n = neutral (asking questions)\n  x = negative (not interested)\n  s = stop (unsubscribe me)\n',
+                    'p'
+                  );
+                  if (!intentRaw) return;
+                  const map: Record<string, 'positive' | 'neutral' | 'negative' | 'stop'> = { p: 'positive', n: 'neutral', x: 'negative', s: 'stop' };
+                  const intent = map[intentRaw.trim().toLowerCase()[0]] || 'neutral';
+                  const replyText = window.prompt('Paste a snippet of their reply (optional, helps with audit):', '') || '';
+                  setBusy('mark-reply');
+                  try {
+                    await api.markLeadReplied({ id: leadId, intent, replyText });
+                    setToast({ msg: intent === 'stop' ? 'Marked as DNC + suppressed' : `Marked as replied (${intent})` });
+                    refresh();
+                  } catch (e: any) {
+                    setToast({ msg: e?.message || 'Failed', error: true });
+                  } finally {
+                    setBusy(null);
+                    setTimeout(() => setToast(null), 3000);
+                  }
+                }}
+              >
+                {busy === 'mark-reply' ? 'Saving…' : 'Mark replied'}
+              </button>
+            )}
+          </div>
+          {lead.replyText && (
+            <div style={{ padding: '10px 12px', background: 'rgba(34, 211, 238, 0.06)', borderLeft: '3px solid #22d3ee', borderRadius: 6, fontSize: 13, color: 'var(--color-text-secondary)', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
+              {lead.replyText}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* OUTREACH HISTORY */}
       {data.outreach.length > 0 && (

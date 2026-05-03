@@ -60,6 +60,7 @@ export const api = {
   approveLeads: call<{ leadIds: string[] }>('adminApproveLeads'),
   rejectLeads: call<{ leadIds: string[]; reason?: string; dnc?: boolean }>('adminRejectLeads'),
   addLeadNote: call<{ id: string; text: string }>('adminAddLeadNote'),
+  markLeadReplied: call<{ id: string; replyText?: string; intent?: 'positive' | 'neutral' | 'negative' | 'stop' }>('adminMarkLeadReplied'),
   getLeadConfig: call('adminGetLeadConfig'),
   updateLeadConfig: call<{ enabled?: boolean; dailyMaxSends?: number; hourlyMaxSends?: number; perDomainMax?: number; warmupAuto?: boolean; warmupStartedAt?: number | null }>('adminUpdateLeadConfig'),
   testSendLead: call<{ leadId: string; to: string }>('adminTestSendLead'),
