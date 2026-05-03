@@ -3366,6 +3366,44 @@
         "Bundle CallKatie (https://callkatie.ai) with QuoteMate to compress the call → quote → sent cycle to under a day.",
         "Charge an after-hours premium on emergency call-outs — the urgency justifies it and the AI can quote it on the call."
       ]
+    },
+    {
+      "slug": "how-to-quote-a-staircase-build",
+      "title": "How to Quote a Staircase Build in Australia",
+      "trade": "carpenters",
+      "keyword": "Staircase Quoting Guide Australia",
+      "description": "Master quoting staircase builds in Australia. Learn about costs, materials, labour, and common pitfalls for tradies to succeed.",
+      "relatedTemplate": "staircase-quote-template",
+      "sections": [
+        {
+          "heading": "Essential Components of Your Staircase Quote",
+          "body": "A comprehensive staircase quote must detail every component, including treads, risers, stringers, newel posts, handrails, and balustrades. Clearly define the scope of work, including any demolition, site preparation, and waste removal, ensuring compliance with Australian Standards like AS 1428.1 for accessibility if applicable, or general NCC requirements for residential. Always specify the chosen materials, finishes, and hardware. Don't forget to outline your payment terms, project timeline, and any warranties provided for a transparent client experience."
+        },
+        {
+          "heading": "Typical Staircase Build Costs in Australia",
+          "body": "Staircase build costs in Australia vary significantly based on design complexity, materials, and customisation. A basic straight timber staircase might range from $3,000 to $8,000, while L-shaped or U-shaped designs typically cost between $8,000 and $15,000. Custom designs featuring premium hardwoods, steel, or glass balustrades can easily push costs beyond $15,000, reaching upwards of $25,000 for intricate or architecturally designed pieces. Always factor in potential challenges like difficult site access which can add to the overall expense."
+        },
+        {
+          "heading": "Navigating Staircase Material Costs and Sourcing",
+          "body": "Material costs are a major component of any staircase quote, with timber being a popular choice due to its versatility and aesthetic appeal. Hardwood treads like spotted gum or merbau can cost $30-$80 each, while structural timber for stringers might be $80-$150 per lineal metre. For balustrades, timber balusters typically range from $10-$50 each, whereas glass panels (compliant with AS 1288) can be $100-$300 per panel depending on size and thickness. Source materials from reputable Australian suppliers like Bunnings, Mitre 10, or specialist timber yards such as Big River Group and Australian Sustainable Timbers to ensure quality and compliance."
+        },
+        {
+          "heading": "Optimising Labour for Staircase Builds",
+          "body": "Accurately estimating labour hours is crucial for profitability. A basic straight timber staircase installation might require 20-40 hours for a skilled carpenter, while more complex designs or those involving custom fabrication could easily demand 60-100+ hours. Typical tradie rates in Australia range from $70-$120 per hour, depending on the trade, location, and level of expertise. Maximise efficiency by ensuring all materials are on-site and prepped, and by utilising prefabrication methods where possible. Always account for set-up, clean-up, and any necessary travel time in your labour calculations."
+        },
+        {
+          "heading": "Steering Clear of Common Quoting Pitfalls",
+          "body": "Avoid common quoting mistakes by conducting a thorough site visit to identify any hidden challenges like uneven floors, wall imperfections, or restricted access. Underestimating these can lead to costly delays and rework. Neglecting to account for waste disposal, transport fees, or the cost of specialised tools will erode your profit margins. Always ensure clear communication with the client about design choices and finishes, obtaining written sign-off to prevent 'scope creep' and misunderstandings. A detailed quote leaves less room for error and strengthens client trust."
+        }
+      ],
+      "tips": [
+        "Always conduct a thorough on-site inspection before quoting to identify potential challenges and accurate measurements.",
+        "Use clear 3D drawings or sketches to help clients visualise the staircase and avoid misunderstandings about the final design.",
+        "Factor in a contingency of 10-15% for unforeseen issues, especially on renovation projects where hidden problems can arise.",
+        "Specify exact timber species, finishes (e.g., stain, varnish), and hardware in your quote to prevent 'scope creep' and clarify expectations.",
+        "Always check local council requirements and the National Construction Code (NCC) for balustrade heights (AS 1170.1) and tread/riser dimensions for compliance.",
+        "Leverage QuoteMate's templating features to streamline your quoting process, saving time and ensuring consistency for similar staircase jobs."
+      ]
     }
   ],
   "paymentHub": {
