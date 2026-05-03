@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../../admin.module.css';
@@ -27,6 +27,28 @@ export default function DiscoveryPage() {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
+
+  // Auto-discovery config state
+  const [autoCfg, setAutoCfg] = useState<any>(null);
+  const [autoSaving, setAutoSaving] = useState(false);
+
+  useEffect(() => {
+    api.getDiscoveryConfig({}).then((r: any) => setAutoCfg(r.config)).catch(() => {});
+  }, []);
+
+  const saveAutoCfg = async (next: any) => {
+    setAutoSaving(true);
+    try {
+      await api.updateDiscoveryConfig(next);
+      setAutoCfg({ ...autoCfg, ...next });
+      setToast({ msg: 'Auto-discovery saved' });
+    } catch (e: any) {
+      setToast({ msg: e?.message || 'Save failed', error: true });
+    } finally {
+      setAutoSaving(false);
+      setTimeout(() => setToast(null), 3000);
+    }
+  };
 
   useSetPageMeta({ title: 'Discover leads', breadcrumb: 'Lead outreach' });
 
@@ -175,6 +197,100 @@ export default function DiscoveryPage() {
             )}
           </div>
         )}
+
+        {/* AUTO-DISCOVERY */}
+        <div className={styles.card} style={{ borderLeft: `4px solid ${autoCfg?.enabled ? '#10b981' : '#94a3b8'}` }}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Auto-discovery</div>
+              <div style={{ color: 'var(--color-text-tertiary)', fontSize: 12, marginTop: 2 }}>
+                Runs Mon 8am AEST · refills queue, optionally auto-researches + generates
+              </div>
+            </div>
+          </div>
+          {autoCfg && (
+            <>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8, background: 'var(--color-surface-2, #0f172a)', borderRadius: 6, marginBottom: 12, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={autoCfg.enabled === true}
+                  onChange={(e) => saveAutoCfg({ enabled: e.target.checked })}
+                  disabled={autoSaving}
+                />
+                <span style={{ fontSize: 13, fontWeight: 600 }}>Enable weekly auto-discovery</span>
+              </label>
+
+              <div style={{ marginBottom: 10 }}>
+                <label style={{ display: 'block', fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600, marginBottom: 4 }}>Trades</label>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {(['fencer', 'landscaper', 'deck-builder'] as const).map((t) => {
+                    const active = (autoCfg.trades || []).includes(t);
+                    return (
+                      <button
+                        key={t}
+                        type="button"
+                        className={styles.chip}
+                        onClick={() => {
+                          const next = active ? autoCfg.trades.filter((x: string) => x !== t) : [...(autoCfg.trades || []), t];
+                          saveAutoCfg({ trades: next });
+                        }}
+                        style={{ background: active ? 'rgba(16, 185, 129, 0.18)' : undefined, color: active ? '#10b981' : undefined, borderColor: active ? 'rgba(16, 185, 129, 0.4)' : undefined }}
+                      >
+                        {t}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 10 }}>
+                <label style={{ display: 'block', fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600, marginBottom: 4 }}>Suburbs</label>
+                <textarea
+                  className={styles.textarea}
+                  value={(autoCfg.suburbs || []).join(', ')}
+                  onChange={(e) => setAutoCfg({ ...autoCfg, suburbs: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean) })}
+                  onBlur={() => saveAutoCfg({ suburbs: autoCfg.suburbs })}
+                  style={{ minHeight: 50, fontSize: 12 }}
+                  placeholder="Sydney, Newcastle, Wollongong, …"
+                />
+              </div>
+
+              <div style={{ marginBottom: 10 }}>
+                <label style={{ display: 'block', fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600, marginBottom: 4 }}>Target per week</label>
+                <input
+                  type="number"
+                  className={styles.input}
+                  value={autoCfg.targetPerWeek ?? 50}
+                  min={1}
+                  max={500}
+                  onChange={(e) => setAutoCfg({ ...autoCfg, targetPerWeek: Number(e.target.value) || 0 })}
+                  onBlur={() => saveAutoCfg({ targetPerWeek: autoCfg.targetPerWeek })}
+                  style={{ width: 100 }}
+                />
+                <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginLeft: 8 }}>
+                  ~7× your daily auto-ramp cap is a sensible target
+                </span>
+              </div>
+
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 6, fontSize: 13, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={autoCfg.autoResearch === true}
+                  onChange={(e) => saveAutoCfg({ autoResearch: e.target.checked })}
+                />
+                <span>Also auto-research (scrape + Claude extract hooks)</span>
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 6, fontSize: 13, cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={autoCfg.autoGenerate === true}
+                  onChange={(e) => saveAutoCfg({ autoGenerate: e.target.checked })}
+                />
+                <span>Also auto-generate messages (only for medium/high confidence)</span>
+              </label>
+            </>
+          )}
+        </div>
 
         <div className={styles.card}>
           <div className={styles.cardHeader}><div className={styles.cardTitle}>Workflow</div></div>
