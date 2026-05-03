@@ -32,6 +32,7 @@ export const api = {
     body: string;
     dryRun?: boolean;
   }>('adminBroadcast'),
+  listFeedback: call<{ limit?: number; category?: string; rating?: string; replied?: boolean }>('adminListFeedback'),
   replyToFeedback: call<{ feedbackId: string; body: string; subject?: string }>('adminReplyToFeedback'),
   listSubscriptions: call('adminListSubscriptions'),
   listAffiliates: call('adminListAffiliates'),
