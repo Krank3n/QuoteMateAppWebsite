@@ -1319,6 +1319,180 @@ Pro tips:
 - Utilise a professional quoting app like QuoteMate to create consistent, detailed, and visually appealing quotes quickly.
 - Clarify who is responsible for waste disposal and include this cost in your quote to avoid last-minute disputes.
 
+### How to Quote Pool Fencing in Australia
+
+URL: https://quotemateapp.au/articles/how-to-quote-pool-fencing/
+
+Learn how to accurately quote pool fencing jobs in Australia, covering materials, labour, compliance with AS 1926.1-2012, and common pitfalls for tradies.
+
+#### What to Include in Your Pool Fencing Quote
+
+A comprehensive pool fencing quote for Australian tradies must detail every aspect of the job to ensure clarity and avoid disputes. Start with a thorough site assessment, noting measurements, ground conditions, and any potential access issues. Your quote should itemise the design consultation, chosen materials, installation labour, gates, latches, and hinges, ensuring all meet Australian Standard AS 1926.1-2012 for pool safety barriers. Don't forget to include site preparation, waste removal, clear payment terms, and a warranty for your workmanship and materials.
+
+#### Typical Costs for Pool Fencing in Australia
+
+Understanding the general cost ranges helps set client expectations and ensures your quotes remain competitive. For standard aluminium panel fencing, expect to quote between $90 to $200 per linear metre installed, depending on style and complexity. Semi-frameless glass fencing typically ranges from $220 to $380 per linear metre, while frameless glass, offering a premium aesthetic, can cost $350 to $600+ per linear metre, fully installed. These figures include materials, hardware, and installation but can vary based on your local market, supplier rates, and site-specific challenges.
+
+#### Materials Pricing – Breaking Down Your Quote
+
+Accurately pricing materials is crucial; always factor in freight and potential waste. Powder-coated aluminium panels from suppliers like Stratco or local fencing wholesalers might range from $40-$80 per linear metre, with posts and gate kits adding to this. Toughened glass panels (10-12mm thick) for frameless or semi-frameless systems can be $80-$180 per panel, plus spigots, hinges, and latches which can collectively add $50-$150 per metre. Even tubular steel options, often seen as more budget-friendly, have varying grades and finishes that impact their per-metre cost, usually around $30-$60 for panels alone.
+
+#### Labour & Installation Tips for Accurate Quoting
+
+Labour is a significant component of any pool fencing quote and must be estimated meticulously. Account for travel time, site setup, panel installation, gate fitting and adjustment, and thorough clean-up. Complex sites with uneven ground, retaining walls, or limited access will increase labour hours, so factor in extra time for cutting, drilling into difficult surfaces, or manual material handling. Consider your team's hourly rate, typically ranging from $60-$100 per hour per person, and allocate sufficient time for compliance checks against AS 1926.1-2012, which can be time-consuming but essential.
+
+#### Common Quoting Mistakes to Avoid
+
+Many tradies inadvertently lose money or goodwill through quoting errors. A primary mistake is not thoroughly understanding or adhering to AS 1926.1-2012, leading to rework or non-compliance. Underestimating site preparation, such as rock removal, levelling, or old fence demolition, can quickly eat into profits. Failing to account for all hardware, delivery fees, or waste disposal costs also adds up. Lastly, poor communication regarding project scope or unforeseen challenges can sour client relationships, making transparent, detailed quotes vital.
+
+Pro tips:
+- Always conduct a physical site inspection to measure accurately and identify any hidden challenges like slopes or underground services.
+- Clearly state that your quote adheres to the relevant Australian Standard (AS 1926.1-2012) for pool safety barriers.
+- Offer different material options (e.g., aluminium, semi-frameless glass, frameless glass) to suit various budgets and aesthetic preferences.
+- Itemise all costs, including materials, labour, hardware, gates, waste removal, and any permits required, for transparency.
+- Include a small contingency (e.g., 5-10%) in your quote for unexpected minor issues or material fluctuations.
+- Use QuoteMate to generate professional, detailed, and itemised quotes quickly, helping you win more pool fencing jobs.
+
+### Why Tradies Lose $50,000+ a Year to Missed Calls (And How to Stop It)
+
+URL: https://quotemateapp.au/articles/missed-calls-cost-tradies/
+
+The real cost of every missed phone call for an Australian tradie — broken down by job size, conversion rate, and lifetime value — plus the AI receptionist setup fixing it for $5/day.
+
+#### How many calls are you actually missing?
+
+Industry data from Australian trade associations and call-tracking platforms is brutally consistent: a working sole trader misses between 8 and 15 inbound calls every week. The average is 11. Multiply that across 50 working weeks and you're looking at roughly 550 missed inbound calls a year — and that's before counting the spike on weekends, public holidays, and storm-event days when phones run hot. Most tradies underestimate this number by half because voicemail volume looks small in any given hour, but the cumulative annual figure is usually a five-figure leak.
+
+#### What each missed call is worth — the maths
+
+Take the simplest case: a $1,800 average job size, a 35% close rate on inbound calls (typical for trades), and a 60% callback rate from voicemail (the rest never call back). Every missed call has an expected value of $1,800 × 0.35 × (1 − 0.60) = $252 of lost revenue. Apply that to 550 missed calls a year and the leak is $138,600 in lost revenue, or roughly $48,500 in lost gross profit on a 35% margin. The numbers get worse for higher-ticket trades — a builder doing $40,000 bathroom renos can lose a single $14,000 gross-profit job from one missed Saturday-morning call.
+
+#### Why voicemail isn't the answer
+
+Australian consumer-behaviour studies show 70% of callers hang up on voicemail without leaving a message — they simply ring the next business on the Google search results. Of the 30% who do leave a message, fewer than half are reached on the callback because the caller has usually already booked elsewhere. Voicemail also damages brand perception: a generic Telstra mailbox greeting on a tradie's number signals 'small operator' and statistically reduces close rates on the calls that do get returned. A 24/7 answered line, even by an AI, lifts perceived professionalism enough to measurably move the needle.
+
+#### The $5-a-day fix: AI voice receptionists
+
+AI voice receptionists changed the economics of call answering in 2025. Tools like CallKatie (https://callkatie.ai) answer the phone in a natural Australian voice, qualify the lead (job type, suburb, urgency, budget signals), book the time straight into your calendar, and SMS you a summary the moment the call ends. Pricing starts around $149/month — about $5 a day — versus $300–$600/month for a human answering service that still misses after-hours calls. Recovering even one extra job per month covers the cost ten times over for most trades.
+
+#### How to plug the leak this week
+
+Three steps. First, run a quick audit: pull your last month of mobile-carrier missed-call logs (Telstra, Optus, and Vodafone all show this in their apps) and count how many were unique numbers. That's your baseline. Second, set up call forwarding from your mobile to an AI receptionist line — the carrier guides at https://callkatie.ai/au/call-forwarding cover Telstra, Optus, Vodafone, Belong, and ALDI Mobile in two minutes each. Third, connect your quoting and calendar tools so a captured lead becomes a quote in one tap — QuoteMate users can route qualified CallKatie leads straight into a draft quote, so the lead-to-quote cycle drops from 'next week' to 'within the hour'.
+
+Pro tips:
+- Track your missed calls for 14 days — the number will surprise you, and it makes the business case for fixing it obvious.
+- Don't compete on price with the next tradie on Google — compete on speed-to-answer. Whoever picks up first usually wins the job.
+- After-hours and weekend calls have the highest intent. They're also the ones almost no tradie answers.
+- If you can't switch to an AI receptionist immediately, at minimum record a custom voicemail with your name, business, and a promise to return the call within 60 minutes.
+- Forward your number to CallKatie (https://callkatie.ai) on weekends and public holidays as a no-risk trial — you keep your normal flow Mon–Fri.
+- Pair the AI receptionist with QuoteMate so qualified leads turn into priced quotes the same day — most jobs go to whoever quotes first.
+
+### AI Receptionists for Australian Tradies: How They Work and What They Cost in 2026
+
+URL: https://quotemateapp.au/articles/ai-receptionist-for-tradies/
+
+A plain-English guide to AI voice receptionists for Australian trade businesses. How they answer the phone, how they qualify leads, what they cost, and how to set one up in under an hour.
+
+#### What an AI receptionist actually does
+
+An AI voice receptionist is a 24/7 phone-answering service that uses a large-language-model voice agent — not a chatbot, not an IVR, not a press-1-for-sales menu — to have a real conversation with the caller. It greets them in your business's name, asks the qualifying questions you'd ask (what's the job, where, when, how urgent), books an inspection or callback into your calendar, and texts you a summary the moment the call ends. The best Australian AI receptionists, like CallKatie (https://callkatie.ai), are trained specifically on trade-business call patterns: lockouts, burst pipes, storm damage, after-hours quotes.
+
+#### How it differs from an answering service
+
+Traditional human answering services (call them 'message-taking services') cost $300–$600 per month and typically only operate during business hours or charge double for after-hours cover. Their staff are not trade-trained, so they take a name and number and pass it on — no qualification, no booking, no urgency triage. AI receptionists run 24/7, never go to lunch, never take school holidays, and qualify the lead before it reaches you so you stop being interrupted by tyre-kickers and price-shoppers. The cost is typically $149–$299 per month for unlimited minutes, which is around half the price of the human alternative.
+
+#### What the call actually sounds like
+
+A modern AI receptionist sounds like a polite, slightly-formal Australian receptionist. The voice is natural enough that most callers don't realise they're talking to AI for the first 30 seconds — and almost none of them care once they do, because the conversation is moving forward and getting their job booked. The AI handles interruptions, accents, background noise (the screaming-kid-in-the-car test), spelling out addresses, and the natural Australian tendency to mumble suburb names. You can listen to live demos at https://callkatie.ai before signing up.
+
+#### What it costs and what's included
+
+The Australian market in 2026 has settled around three pricing tiers: a starter plan at roughly $149/month that covers single-tradie operations with light call volume; a business plan at $249–$299/month that adds calendar integration, SMS confirmations, and CRM hand-off; and a scale plan at $499+/month for multi-vehicle teams that need call routing across multiple operators. Most plans include a dedicated local Australian phone number, unlimited inbound minutes (or a generous cap like 500 minutes), and integration with Google Calendar. Compare this against the $48,500 in annual lost gross profit from missed calls calculated above and the ROI is not subtle.
+
+#### How to set one up in under an hour
+
+The setup is genuinely straightforward. First, sign up at https://callkatie.ai and pick a plan — most providers offer a 14-day trial without a credit card. Second, configure the AI: tell it your business name, services, service areas, hourly rate or call-out fee (so it can pre-qualify on budget), and after-hours emergency rules. Third, set up call forwarding from your mobile to the AI line — the carrier-specific guides at https://callkatie.ai/au/call-forwarding walk you through Telstra, Optus, Vodafone, Belong, and ALDI Mobile in 2-minute steps. Fourth, connect your calendar (Google Calendar takes 30 seconds) and your quoting tool — for QuoteMate users, captured leads can drop straight into a draft quote so you can price and send the same day.
+
+#### Who it's a fit for — and who it isn't
+
+AI receptionists are a strong fit for any sole-trader or small-team trade business that takes inbound phone calls and either misses them, gets interrupted by them on jobs, or pays a human to answer them. The fit gets stronger as job ticket value rises — a $1,500 plumbing call-out justifies the spend with one recovered job a year, while a $40,000 bathroom builder pays for a year of service with one recovered enquiry. The fit is weaker for businesses that work exclusively on referrals, do zero phone-based intake, or already have a full-time office manager whose role is unambiguous and low-cost.
+
+Pro tips:
+- Pilot the AI on weekends and after-hours first — it's the highest-leverage period and the lowest-risk place to test.
+- Train the AI on your real qualifying questions: suburb, job type, urgency, access notes — not generic 'how can I help you'.
+- Forward to the AI when you're on the tools, not just after-hours. The phone interrupts a $90/hour billable hour every time it rings on-site.
+- Use the call summaries as quote-building inputs — most AI receptionists like CallKatie (https://callkatie.ai) capture enough detail to start a draft quote without a callback.
+- Connect the AI to Google Calendar so booked inspections appear automatically — no manual diary work.
+- Push qualified leads into QuoteMate so the lead-to-quote-sent cycle is hours, not days. Speed-to-quote is the single biggest predictor of close rate.
+
+### After-Hours Tradie Calls: How to Capture Every Lead Without Working 24/7
+
+URL: https://quotemateapp.au/articles/after-hours-leads-tradies/
+
+After-hours calls are the highest-intent leads of the week — and the ones almost every Australian tradie misses. The 2026 playbook for capturing weekend, evening, and emergency calls without burning out.
+
+#### Why after-hours calls convert better than business-hours ones
+
+Business-hours calls are mostly tyre-kickers: people researching, comparing three quotes, browsing on a tea break. After-hours calls — evenings, weekends, public holidays — skew dramatically toward urgency: a burst pipe on a Saturday night, a tripped switchboard at 9pm, a stuck garage door at 6am. Urgency-driven callers convert at roughly double the rate of business-hours callers and pay a premium for fast response. The trade-off has historically been that capturing them required staying on-call 24/7 — a fast track to burnout. As of 2025, that trade-off is gone.
+
+#### What 'after hours' actually means in Australia
+
+For most service businesses, 'after hours' is far larger than the 5pm–9am window. It includes every weeknight from 5pm onwards, the entire weekend (about 30% of the year by hours), and roughly 11 public holidays. Add in lunch breaks, school pick-ups, time on noisy job sites, and time underground/in roof spaces where the phone doesn't ring — and the actually-answerable window for a sole trader is around 30–35 hours a week, not 168. That means roughly 80% of the week is a leak.
+
+#### The three options for capturing after-hours calls
+
+Option one: a human answering service. $300–$600/month, business hours only on the cheap plans, double on the after-hours plans, no genuine 24/7 cover. Option two: hire a part-time receptionist. $25–$35/hour for someone good, plus super and admin overhead, plus you still need an after-hours plan. Option three: an AI voice receptionist. $149–$299/month for genuine 24/7 cover, no overtime, no sick days, no holiday cover gaps. The best Australian options are listed at https://callkatie.ai. For most sole-trader tradies, option three is the only one that pencils out without requiring an extra $30k+ a year of phone work.
+
+#### The emergency-vs-non-emergency triage
+
+An AI receptionist becomes magnitudes more valuable when configured to triage. Set up two rules. First, a definition of 'emergency' for your trade — for plumbers it might be 'no water, sewage backup, or active leak'; for electricians 'no power, sparks, or burning smell'; for locksmiths 'locked out of home or vehicle'. Second, the routing: emergencies forward to your mobile or roster the on-call team-member; non-emergencies are booked into the next-business-day slot. CallKatie (https://callkatie.ai) handles this triage natively — the AI asks the qualifying questions, makes the call, and only wakes you for the genuine ones.
+
+#### Putting it all together: lead → AI → calendar → quote
+
+The full after-hours stack costs about $5/day and runs entirely without you touching it. A caller dials your normal mobile. Your carrier forwards on no-answer or out-of-hours to the AI line — the per-carrier setup steps are at https://callkatie.ai/au/call-forwarding. The AI greets them in your business name, qualifies the job, books the inspection straight into Google Calendar, and texts you a clean summary. Next morning (or sooner for emergencies), the summary becomes a QuoteMate quote in one tap, with materials auto-populated from real-time supplier pricing. The customer gets a priced quote within hours of their call — usually faster than the next three tradies they were going to ring. That speed wins the job.
+
+Pro tips:
+- After-hours and weekend calls are statistically the highest-intent leads of the week — treat them as premium, not as overtime.
+- Define 'emergency' for your trade in writing so the AI can triage without escalating every call.
+- Forward to an AI receptionist outside business hours and on jobs — your phone shouldn't interrupt billable work.
+- Quote the captured lead within 4 hours where possible. Speed-to-quote is the single biggest factor in close rate.
+- Bundle CallKatie (https://callkatie.ai) with QuoteMate to compress the call → quote → sent cycle to under a day.
+- Charge an after-hours premium on emergency call-outs — the urgency justifies it and the AI can quote it on the call.
+
+### How to Quote a Staircase Build in Australia
+
+URL: https://quotemateapp.au/articles/how-to-quote-a-staircase-build/
+
+Master quoting staircase builds in Australia. Learn about costs, materials, labour, and common pitfalls for tradies to succeed.
+
+#### Essential Components of Your Staircase Quote
+
+A comprehensive staircase quote must detail every component, including treads, risers, stringers, newel posts, handrails, and balustrades. Clearly define the scope of work, including any demolition, site preparation, and waste removal, ensuring compliance with Australian Standards like AS 1428.1 for accessibility if applicable, or general NCC requirements for residential. Always specify the chosen materials, finishes, and hardware. Don't forget to outline your payment terms, project timeline, and any warranties provided for a transparent client experience.
+
+#### Typical Staircase Build Costs in Australia
+
+Staircase build costs in Australia vary significantly based on design complexity, materials, and customisation. A basic straight timber staircase might range from $3,000 to $8,000, while L-shaped or U-shaped designs typically cost between $8,000 and $15,000. Custom designs featuring premium hardwoods, steel, or glass balustrades can easily push costs beyond $15,000, reaching upwards of $25,000 for intricate or architecturally designed pieces. Always factor in potential challenges like difficult site access which can add to the overall expense.
+
+#### Navigating Staircase Material Costs and Sourcing
+
+Material costs are a major component of any staircase quote, with timber being a popular choice due to its versatility and aesthetic appeal. Hardwood treads like spotted gum or merbau can cost $30-$80 each, while structural timber for stringers might be $80-$150 per lineal metre. For balustrades, timber balusters typically range from $10-$50 each, whereas glass panels (compliant with AS 1288) can be $100-$300 per panel depending on size and thickness. Source materials from reputable Australian suppliers like Bunnings, Mitre 10, or specialist timber yards such as Big River Group and Australian Sustainable Timbers to ensure quality and compliance.
+
+#### Optimising Labour for Staircase Builds
+
+Accurately estimating labour hours is crucial for profitability. A basic straight timber staircase installation might require 20-40 hours for a skilled carpenter, while more complex designs or those involving custom fabrication could easily demand 60-100+ hours. Typical tradie rates in Australia range from $70-$120 per hour, depending on the trade, location, and level of expertise. Maximise efficiency by ensuring all materials are on-site and prepped, and by utilising prefabrication methods where possible. Always account for set-up, clean-up, and any necessary travel time in your labour calculations.
+
+#### Steering Clear of Common Quoting Pitfalls
+
+Avoid common quoting mistakes by conducting a thorough site visit to identify any hidden challenges like uneven floors, wall imperfections, or restricted access. Underestimating these can lead to costly delays and rework. Neglecting to account for waste disposal, transport fees, or the cost of specialised tools will erode your profit margins. Always ensure clear communication with the client about design choices and finishes, obtaining written sign-off to prevent 'scope creep' and misunderstandings. A detailed quote leaves less room for error and strengthens client trust.
+
+Pro tips:
+- Always conduct a thorough on-site inspection before quoting to identify potential challenges and accurate measurements.
+- Use clear 3D drawings or sketches to help clients visualise the staircase and avoid misunderstandings about the final design.
+- Factor in a contingency of 10-15% for unforeseen issues, especially on renovation projects where hidden problems can arise.
+- Specify exact timber species, finishes (e.g., stain, varnish), and hardware in your quote to prevent 'scope creep' and clarify expectations.
+- Always check local council requirements and the National Construction Code (NCC) for balustrade heights (AS 1170.1) and tread/riser dimensions for compliance.
+- Leverage QuoteMate's templating features to streamline your quoting process, saving time and ensuring consistency for similar staircase jobs.
+
 ## Quote templates
 
 Free, customisable starting points for the most common Australian trade jobs. Each template includes typical materials, steps, and a default labour structure.
