@@ -16,7 +16,22 @@ const NSW_SUBURBS = [
   'Byron Bay', 'Coffs Harbour', 'Port Macquarie', 'Tamworth', 'Orange', 'Wagga Wagga',
 ];
 
-type Trade = 'fencer' | 'landscaper' | 'deck-builder';
+const TRADES = [
+  { id: 'fencer', label: 'Fencer' },
+  { id: 'landscaper', label: 'Landscaper' },
+  { id: 'deck-builder', label: 'Deck builder' },
+  { id: 'plumber', label: 'Plumber' },
+  { id: 'electrician', label: 'Electrician' },
+  { id: 'hvac', label: 'HVAC / air-con' },
+  { id: 'carpenter', label: 'Carpenter' },
+  { id: 'painter', label: 'Painter' },
+  { id: 'roofer', label: 'Roofer' },
+  { id: 'flooring', label: 'Flooring' },
+  { id: 'cleaner', label: 'Cleaner' },
+  { id: 'pest-control', label: 'Pest control' },
+  { id: 'handyman', label: 'Handyman' },
+] as const;
+type Trade = typeof TRADES[number]['id'];
 
 export default function DiscoveryPage() {
   const router = useRouter();
@@ -97,9 +112,9 @@ export default function DiscoveryPage() {
         <div style={{ marginBottom: 18 }}>
           <label style={labelStyle}>Trade</label>
           <select className={styles.select} value={trade} onChange={(e) => setTrade(e.target.value as Trade)} style={{ width: '100%' }}>
-            <option value="fencer">Fencer</option>
-            <option value="landscaper">Landscaper</option>
-            <option value="deck-builder">Deck builder</option>
+            {TRADES.map((t) => (
+              <option key={t.id} value={t.id}>{t.label}</option>
+            ))}
           </select>
         </div>
 
@@ -223,20 +238,20 @@ export default function DiscoveryPage() {
               <div style={{ marginBottom: 10 }}>
                 <label style={{ display: 'block', fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.5, fontWeight: 600, marginBottom: 4 }}>Trades</label>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {(['fencer', 'landscaper', 'deck-builder'] as const).map((t) => {
-                    const active = (autoCfg.trades || []).includes(t);
+                  {TRADES.map((t) => {
+                    const active = (autoCfg.trades || []).includes(t.id);
                     return (
                       <button
-                        key={t}
+                        key={t.id}
                         type="button"
                         className={styles.chip}
                         onClick={() => {
-                          const next = active ? autoCfg.trades.filter((x: string) => x !== t) : [...(autoCfg.trades || []), t];
+                          const next = active ? autoCfg.trades.filter((x: string) => x !== t.id) : [...(autoCfg.trades || []), t.id];
                           saveAutoCfg({ trades: next });
                         }}
                         style={{ background: active ? 'rgba(16, 185, 129, 0.18)' : undefined, color: active ? '#10b981' : undefined, borderColor: active ? 'rgba(16, 185, 129, 0.4)' : undefined }}
                       >
-                        {t}
+                        {t.label}
                       </button>
                     );
                   })}

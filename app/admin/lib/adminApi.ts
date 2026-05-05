@@ -52,7 +52,7 @@ export const api = {
   getDocument: call<{ uid: string; id: string }>('adminGetDocument'),
   listPayments: call<{ limit?: number }>('adminListPayments'),
   // Lead outreach pipeline
-  leadDiscovery: call<{ trade: 'fencer' | 'landscaper' | 'deck-builder'; suburbs: string[]; maxResults?: number; dryRun?: boolean }>('adminLeadDiscovery'),
+  leadDiscovery: call<{ trade: string; suburbs: string[]; maxResults?: number; dryRun?: boolean }>('adminLeadDiscovery'),
   enrichLeads: call<{ leadIds: string[] }>('adminEnrichLeads'),
   generateLeadMessages: call<{ leadIds: string[] }>('adminGenerateLeadMessages'),
   listLeads: call<{ status?: string; trade?: string; suburb?: string; campaignId?: string; limit?: number }>('adminListLeads'),
