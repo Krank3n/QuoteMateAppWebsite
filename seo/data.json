@@ -121,7 +121,10 @@
           {
             "heading": "Real Reece trade prices, every quote",
             "body": "Connect your Reece maX account once via OAuth — takes about a minute. From then on, every plumbing line item prices against your real Reece trade-discounted rate, not RRP. Pipework, fittings, hot water units, fixtures, gas gear, drainage — all the SKUs your jobs actually need, priced at your rate. No more flipping between maX and a quote builder before every job to look up trade pricing.",
-            "link": { "href": "/integrations/reece", "label": "See the Reece × QuoteMate integration →" }
+            "link": {
+              "href": "/integrations/reece",
+              "label": "See the Reece × QuoteMate integration →"
+            }
           },
           {
             "heading": "Order materials without leaving the quote",
@@ -3477,6 +3480,48 @@
         "Utilise a professional quoting app like QuoteMate to streamline your estimation process and create polished proposals.",
         "Ensure your quote includes clear payment terms, a validity period, and a process for handling variations to avoid disputes."
       ]
+    },
+    {
+      "slug": "how-to-quote-a-shower-screen-installation",
+      "title": "How to Quote a Shower Screen Installation in Australia",
+      "trade": "glaziers",
+      "keyword": "shower screen installation quote Australia",
+      "description": "Craft accurate shower screen installation quotes with this guide for Australian tradies. Learn about costs, materials, labour, and common mistakes.",
+      "relatedTemplate": "shower-screen-quote-template",
+      "sections": [
+        {
+          "heading": "What to Include in Your Shower Screen Quote",
+          "body": "A comprehensive shower screen quote goes beyond just the glass. Ensure you detail the type of screen (framed, semi-frameless, frameless), glass thickness (e.g., 6mm, 10mm toughened glass to AS/NZS 2208), hardware finishes (chrome, matte black), and any custom cuts or configurations. Clearly itemise the cost for materials, labour, site preparation (like ensuring surfaces are clean and level), waste removal, and a warranty for both materials and workmanship. Transparency helps manage client expectations and prevents disputes later on."
+        },
+        {
+          "heading": "Typical Shower Screen Installation Costs (AUD)",
+          "body": "The cost of a shower screen installation in Australia can vary significantly based on style and complexity. A standard framed screen might range from $300-$800, while a semi-frameless option typically sits between $700-$1500. For premium frameless screens, especially custom designs, expect costs anywhere from $1000 to $3000 or more. These figures generally include materials and installation for a standard bathroom, but complex installations or difficult site access can add to the total."
+        },
+        {
+          "heading": "Understanding Materials and Their Pricing",
+          "body": "Glass is the primary cost driver, with 6mm toughened glass being standard for framed and semi-frameless, and 10mm or 12mm toughened glass for frameless screens, crucial for structural integrity as per AS1288-2006. Hardware, including hinges, channels, brackets, and handles, can vary greatly in price and quality; look at reputable suppliers like Pivotech, Architectural Choice, or Carinya for durable components. Consider the cost difference between standard clear glass, low-iron glass, or frosted options, and always factor in freight costs for custom-sized panels from your glass supplier."
+        },
+        {
+          "heading": "Labour Pricing and Efficiency Tips",
+          "body": "Accurate labour pricing is crucial for profitability. Estimate installation time by considering factors such as the type of screen (frameless installations often take longer due to precision requirements), site access, wall conditions (are they plumb and square?), and whether a second person is required for heavy glass panels. Factor in travel time to and from the job site, as well as any time needed for final adjustments or cleanup. An average hourly rate for a skilled tradie might range from $80-$120 per hour, depending on your business overheads and local market rates."
+        },
+        {
+          "heading": "Avoiding Common Quoting Mistakes",
+          "body": "One of the biggest mistakes is inaccurate measurements; always double-check, especially for frameless screens where tolerances are minimal. Failing to account for uneven walls or floors, which might require additional packing or custom cuts, is another pitfall. Don't forget to include costs for consumables like silicone, fixings, and blades. Clearly outline what is and isn't included in the quote to prevent scope creep, such as tile repair or painting, which should be separate items or explicitly excluded."
+        },
+        {
+          "heading": "Practical Tips",
+          "body": "Measure three times, cut once – or better yet, verify measurements with the client. Always take detailed photos of the site before and after, especially regarding existing damage. Clearly specify your warranty terms for both materials and workmanship. Use a digital quoting app like QuoteMate to streamline your quoting process and present professional-looking quotes. Factor in potential call-back costs for minor adjustments, which are common in precise installations. Confirm wall integrity and that studs are located for secure fixing points, especially for heavy frameless glass."
+        }
+      ],
+      "tips": [
+        "Always perform a thorough site visit to accurately assess conditions and take precise measurements, verifying wall plumbness.",
+        "Clearly define the scope of work, including preparation, installation, cleanup, and disposal, in your written quote.",
+        "Specify the type and thickness of glass, hardware finishes, and any custom features to avoid misunderstandings.",
+        "Factor in all variable costs such as travel time, parking, consumables (silicone, screws), and waste disposal.",
+        "Offer a good-better-best option for shower screens (e.g., framed, semi-frameless, frameless) to give clients choice.",
+        "Communicate expected timelines for ordering custom glass and installation completion to set realistic expectations."
+      ]
     }
   ],
   "paymentHub": {
@@ -3777,14 +3822,38 @@
           "intro": "Hot water system replacements are the highest-margin job most Aussie plumbers run, and the unit itself is usually 60–70% of the materials cost. Getting the unit price right — at your real Reece trade rate, not RRP — is the difference between a fair quote and leaving money on the bench. QuoteMate's Reece integration pulls your trade-discounted pricing on every Rheem, Rinnai, Vulcan, Bosch and Sanden unit in your maX account, plus all the install hardware, the second you describe the job.",
           "whyReeceMatters": "Quote with the wrong price and you either lose the job or eat the margin. A 250L Rheem gas storage unit retails around $1,800; a working plumber's Reece trade discount on that unit might be 12%, which is $216 of margin per job that disappears if you quote against RRP. Run two HWS replacements a week and that's $22,000 a year of pricing accuracy. The compliance gear adds up too — tempering valves, tundish, expansion control valves, flexis, isolators — each individually small, collectively $150–$250 per install, and all priced at your real trade rate when the quote is built against your live Reece catalogue.",
           "materials": [
-            { "name": "Hot water unit (gas / electric / heat pump / solar)", "note": "Rheem, Rinnai, Vulcan, Bosch, Sanden — priced at your maX rate." },
-            { "name": "Tempering valve (50°C, AS 3498)", "note": "Mandatory on new installs in most states." },
-            { "name": "Tundish + cold expansion valve", "note": "Required on storage hot water systems." },
-            { "name": "Flexible connectors (DN20)", "note": "Hot and cold side, rated for the unit." },
-            { "name": "Isolation valves (CW + HW)", "note": "Quarter-turn ball valves for service isolation." },
-            { "name": "Copper / PEX tube and fittings", "note": "Sized to the install — sweated or press-fit." },
-            { "name": "Pressure relief valve and drain line", "note": "AS-compliant relief sized to unit kW rating." },
-            { "name": "Removal and disposal of old unit", "note": "Often forgotten on the quote — Reece can take returns at branch." }
+            {
+              "name": "Hot water unit (gas / electric / heat pump / solar)",
+              "note": "Rheem, Rinnai, Vulcan, Bosch, Sanden — priced at your maX rate."
+            },
+            {
+              "name": "Tempering valve (50°C, AS 3498)",
+              "note": "Mandatory on new installs in most states."
+            },
+            {
+              "name": "Tundish + cold expansion valve",
+              "note": "Required on storage hot water systems."
+            },
+            {
+              "name": "Flexible connectors (DN20)",
+              "note": "Hot and cold side, rated for the unit."
+            },
+            {
+              "name": "Isolation valves (CW + HW)",
+              "note": "Quarter-turn ball valves for service isolation."
+            },
+            {
+              "name": "Copper / PEX tube and fittings",
+              "note": "Sized to the install — sweated or press-fit."
+            },
+            {
+              "name": "Pressure relief valve and drain line",
+              "note": "AS-compliant relief sized to unit kW rating."
+            },
+            {
+              "name": "Removal and disposal of old unit",
+              "note": "Often forgotten on the quote — Reece can take returns at branch."
+            }
           ],
           "sections": [
             {
@@ -3829,14 +3898,38 @@
           "intro": "Blocked drains start as a clearing job and turn into a repair more often than tradies quote for. The customer wants a price for unblocking; you arrive, run the camera, find a tree-root intrusion or a collapsed PVC junction, and now you're quoting a dig-up. QuoteMate handles both halves on one quote — the diagnostic and clearing rate up front, plus a real-trade-priced contingency line for the repair work the camera reveals — using your Reece maX catalogue for any DWV materials you'd order if it goes that way.",
           "whyReeceMatters": "A drain clearing quote looks small on paper, but the consumables compound. A typical jet head replacement is $80–$200 at trade rate; a root-cutter blade is $40–$80; a CCTV reel skid runs $250+. Run twenty drain jobs a year and you're spending $3,000–$5,000 on consumables alone — a 10–15% Reece trade discount on that is $400–$750 in your pocket annually that wouldn't show up if you were quoting RRP. The bigger win is the repair fork. When the camera finds a collapsed PVC junction, QuoteMate prices the dig-up — DWV pipe, junctions, couplings, bedding sand, geotextile — against your real Reece rate so the upgrade quote is ready before you've packed the camera away.",
           "materials": [
-            { "name": "Jetting nozzles (penetrator, root-cutter, flusher)", "note": "Consumables — Reece carries common imperial and metric sizes at trade rate." },
-            { "name": "Mechanical root-cutter blades", "note": "For electric eel and rotating cutter heads." },
-            { "name": "CCTV camera skids and centring brushes", "note": "Replaceable wear parts — often forgotten on the quote." },
-            { "name": "DWV PVC pipe (100mm / 150mm)", "note": "If clearing reveals a collapsed line that needs replacing." },
-            { "name": "DWV junctions, bends, couplings", "note": "Y-junctions, 45/88 bends, repair couplings." },
-            { "name": "Inspection openings and risers", "note": "Often added during repair to make future cleanouts easier." },
-            { "name": "Bedding sand and geotextile", "note": "For backfill on excavated repairs." },
-            { "name": "Trap re-seating gear", "note": "Wax seals, silicone, brass fittings if replacing a fixture trap." }
+            {
+              "name": "Jetting nozzles (penetrator, root-cutter, flusher)",
+              "note": "Consumables — Reece carries common imperial and metric sizes at trade rate."
+            },
+            {
+              "name": "Mechanical root-cutter blades",
+              "note": "For electric eel and rotating cutter heads."
+            },
+            {
+              "name": "CCTV camera skids and centring brushes",
+              "note": "Replaceable wear parts — often forgotten on the quote."
+            },
+            {
+              "name": "DWV PVC pipe (100mm / 150mm)",
+              "note": "If clearing reveals a collapsed line that needs replacing."
+            },
+            {
+              "name": "DWV junctions, bends, couplings",
+              "note": "Y-junctions, 45/88 bends, repair couplings."
+            },
+            {
+              "name": "Inspection openings and risers",
+              "note": "Often added during repair to make future cleanouts easier."
+            },
+            {
+              "name": "Bedding sand and geotextile",
+              "note": "For backfill on excavated repairs."
+            },
+            {
+              "name": "Trap re-seating gear",
+              "note": "Wax seals, silicone, brass fittings if replacing a fixture trap."
+            }
           ],
           "sections": [
             {
@@ -3881,14 +3974,38 @@
           "intro": "Bathroom rough-ins are death by a thousand fittings. A typical residential bathroom rough-in carries 80–150 individual line items — copper offcuts, PEX runs, brass fittings, mixer bodies, in-wall cisterns, tundish, traps, waste arms — and most quoting tools either lump them into a 'sundries' line or price them at RRP. QuoteMate's Reece integration prices every single fitting at your real maX trade rate, so the materials line at the bottom of the quote actually reflects what you'll pay at the trade counter.",
           "whyReeceMatters": "Bathroom rough-in materials are individually small and collectively large. A 4-fixture bathroom rough-in (vanity, shower, bath, toilet) typically runs $1,400–$2,200 in materials at trade rate; the same kit at RRP is $1,800–$2,800 — a $400–$600 swing on a single bathroom. Quote the wrong number and you either price yourself out or eat the difference on every job. With Reece pricing pulled live, the AI knows your actual trade rate on a Caroma in-wall cistern ($380–$420 trade vs $520+ RRP), a Methven mixer body, a 15mm copper tee — every line. Run a half-dozen bathrooms a year and the trade-rate accuracy compounds into thousands of dollars of margin you'd otherwise be quoting away.",
           "materials": [
-            { "name": "Copper tube (15mm and 22mm)", "note": "Type B for hot/cold rough-in — Reece carries all three classes." },
-            { "name": "PEX tube and brass press fittings", "note": "If you're running PEX rough-in — Reece stocks Buteline and Vinidex." },
-            { "name": "Tapware mixer bodies (in-wall and basin)", "note": "Caroma, Methven, Phoenix, Dorf — your maX rate." },
-            { "name": "In-wall cistern and frame", "note": "Caroma Invisi, Geberit, R&T — at trade rate." },
-            { "name": "Tundish, traps, waste arms", "note": "Bath, basin, shower waste arms and bottle traps." },
-            { "name": "Brass fittings (elbows, tees, reducers)", "note": "By the bag at trade rate — usually 30–60 fittings per bathroom." },
-            { "name": "Waterproof penetrations", "note": "Tile flange, escutcheons, wall flanges." },
-            { "name": "Acoustic / lagging insulation", "note": "Required by NCC on most rough-ins now." }
+            {
+              "name": "Copper tube (15mm and 22mm)",
+              "note": "Type B for hot/cold rough-in — Reece carries all three classes."
+            },
+            {
+              "name": "PEX tube and brass press fittings",
+              "note": "If you're running PEX rough-in — Reece stocks Buteline and Vinidex."
+            },
+            {
+              "name": "Tapware mixer bodies (in-wall and basin)",
+              "note": "Caroma, Methven, Phoenix, Dorf — your maX rate."
+            },
+            {
+              "name": "In-wall cistern and frame",
+              "note": "Caroma Invisi, Geberit, R&T — at trade rate."
+            },
+            {
+              "name": "Tundish, traps, waste arms",
+              "note": "Bath, basin, shower waste arms and bottle traps."
+            },
+            {
+              "name": "Brass fittings (elbows, tees, reducers)",
+              "note": "By the bag at trade rate — usually 30–60 fittings per bathroom."
+            },
+            {
+              "name": "Waterproof penetrations",
+              "note": "Tile flange, escutcheons, wall flanges."
+            },
+            {
+              "name": "Acoustic / lagging insulation",
+              "note": "Required by NCC on most rough-ins now."
+            }
           ],
           "sections": [
             {
@@ -3933,14 +4050,38 @@
           "intro": "Gas fitting is the highest-stakes plumbing work. A wrong reading on a manometer, the wrong regulator, an isolator in the wrong spot, and you're either failing audit or risking a coronial inquest. QuoteMate's Reece integration pulls trade-rate pricing on every piece of gas gear in your maX catalogue — regulators, test gauges, gas-rated isolators, copper or stainless gas line, multilayer gas pipe — so the quote you put in front of the customer reflects exactly what the job needs and exactly what it costs at your trade rate.",
           "whyReeceMatters": "Gas gear isn't cheap. A typical residential gas appliance install — say a new gas cooktop on a new gas point — needs a regulator (~$60), a test gauge calibration (~$40 amortised), 2m of 15mm coated copper or multilayer ($45–$80), a couple of gas-rated isolators ($35 each), AS-compliant fittings, and the consumables for a Stage A and Stage B test. That's $250–$400 in materials at trade rate; at RRP it's $350–$550, and the difference comes off your margin. With your Reece maX catalogue feeding QuoteMate, every gas line item — including the AGL/AS 5601 compliance gear most plumbers under-spec — is priced at your real trade rate the second the AI reads 'gas cooktop install' in the job description.",
           "materials": [
-            { "name": "Gas regulators (LPG and natural gas)", "note": "First-stage and second-stage — Reece stocks Cavagna, Rego, Maxitrol." },
-            { "name": "Test gauges and manometers", "note": "Amortise the calibration cost across the job — QuoteMate prefills." },
-            { "name": "Gas line (copper / multilayer / black steel)", "note": "Sized to load — Reece carries all classes at trade rate." },
-            { "name": "Gas-rated isolation valves and AGA-stamped ball valves", "note": "Required at every appliance and at the meter." },
-            { "name": "Compression and brass fittings (gas-rated)", "note": "Yellow-PTFE, Loctite 567 — gas-rated only." },
-            { "name": "Appliance flexible (AGA-stamped)", "note": "AS 4631 stainless braid for the final connection." },
-            { "name": "Soap test and leak-detection consumables", "note": "Per-job cost rolled into the quote." },
-            { "name": "Certificate of Compliance forms / AGL labels", "note": "State-specific — Reece carries the books." }
+            {
+              "name": "Gas regulators (LPG and natural gas)",
+              "note": "First-stage and second-stage — Reece stocks Cavagna, Rego, Maxitrol."
+            },
+            {
+              "name": "Test gauges and manometers",
+              "note": "Amortise the calibration cost across the job — QuoteMate prefills."
+            },
+            {
+              "name": "Gas line (copper / multilayer / black steel)",
+              "note": "Sized to load — Reece carries all classes at trade rate."
+            },
+            {
+              "name": "Gas-rated isolation valves and AGA-stamped ball valves",
+              "note": "Required at every appliance and at the meter."
+            },
+            {
+              "name": "Compression and brass fittings (gas-rated)",
+              "note": "Yellow-PTFE, Loctite 567 — gas-rated only."
+            },
+            {
+              "name": "Appliance flexible (AGA-stamped)",
+              "note": "AS 4631 stainless braid for the final connection."
+            },
+            {
+              "name": "Soap test and leak-detection consumables",
+              "note": "Per-job cost rolled into the quote."
+            },
+            {
+              "name": "Certificate of Compliance forms / AGL labels",
+              "note": "State-specific — Reece carries the books."
+            }
           ],
           "sections": [
             {
@@ -3985,14 +4126,38 @@
           "intro": "Tap and mixer fit-offs are the job most likely to produce a callback for the wrong reason — wrong cartridge, wrong finish, wrong O-ring kit. The brand-match problem is real: a Caroma Liano cartridge isn't a Methven Maku cartridge, and the wrong one in the bag means a second trip and a margin write-off. QuoteMate's Reece integration reads the brand from the job description and pulls the matching cartridge, trim kit, and consumables from your maX catalogue at your real trade rate, so the right gear is on the quote and on the truck.",
           "whyReeceMatters": "Tap and mixer installs feel small ($200–$600 in materials per job) but the brand-match risk burns hours. A wrong-cartridge callback costs 1.5–2 hours of unbilled labour plus an awkward customer conversation; a Reece counter-return on the wrong cartridge isn't always free. With your Reece maX catalogue feeding QuoteMate, the AI knows your trade-rate price on a Caroma G-Series cartridge ($45–$60 trade), a Methven Maku ceramic disc cartridge, a Phoenix Vivid Slimline body — and it prefills the matching trim kit and flexis. Run thirty fit-offs a year and the brand-match accuracy alone is worth more than the trade-rate margin (probably $1,500+ in saved callback labour).",
           "materials": [
-            { "name": "Mixer body and cartridge (brand-matched)", "note": "Caroma, Methven, Phoenix, Dorf — Reece pricing per your maX rate." },
-            { "name": "Trim kit and finish handles", "note": "Chrome, brushed nickel, matte black — finish-matched per job." },
-            { "name": "Flexible connectors (15mm × 600/900mm)", "note": "Stainless braid, AS-compliant, hot/cold pair." },
-            { "name": "Isolation valves (under-bench / wall stop)", "note": "Quarter-turn, brass body, gas-rated for some installs." },
-            { "name": "Basin / sink trap and waste", "note": "32mm or 40mm — chrome, plastic, or universal bottle." },
-            { "name": "Sealants and silicone", "note": "Mould-resistant for wet area; food-grade for kitchen." },
-            { "name": "Mounting hardware and washers", "note": "Stud / nut / O-ring kit specific to the mixer brand." },
-            { "name": "Aerator and flow restrictor", "note": "WELS-rated for water-efficiency compliance." }
+            {
+              "name": "Mixer body and cartridge (brand-matched)",
+              "note": "Caroma, Methven, Phoenix, Dorf — Reece pricing per your maX rate."
+            },
+            {
+              "name": "Trim kit and finish handles",
+              "note": "Chrome, brushed nickel, matte black — finish-matched per job."
+            },
+            {
+              "name": "Flexible connectors (15mm × 600/900mm)",
+              "note": "Stainless braid, AS-compliant, hot/cold pair."
+            },
+            {
+              "name": "Isolation valves (under-bench / wall stop)",
+              "note": "Quarter-turn, brass body, gas-rated for some installs."
+            },
+            {
+              "name": "Basin / sink trap and waste",
+              "note": "32mm or 40mm — chrome, plastic, or universal bottle."
+            },
+            {
+              "name": "Sealants and silicone",
+              "note": "Mould-resistant for wet area; food-grade for kitchen."
+            },
+            {
+              "name": "Mounting hardware and washers",
+              "note": "Stud / nut / O-ring kit specific to the mixer brand."
+            },
+            {
+              "name": "Aerator and flow restrictor",
+              "note": "WELS-rated for water-efficiency compliance."
+            }
           ],
           "sections": [
             {
@@ -4037,14 +4202,38 @@
           "intro": "Toilet replacements look simple — pull the old, drop in the new — until the set-out is wrong, the pan collar offset is non-standard, or the cistern doesn't sit flush against the wall plumb. QuoteMate's Reece integration prices the pan, cistern, connector, pan collar offset, isolation stop-tap, and the new seat at your real maX trade rate, then prefills the removal-and-disposal line that gets forgotten on most quotes. The result: a quote the customer accepts, a kit on the truck that fits the existing set-out, and a swap that doesn't turn into a tile-cut.",
           "whyReeceMatters": "Toilet swaps are usually quoted as a single 'all-in-one' price, which masks the materials maths. A typical replacement runs $350–$700 in materials at trade rate — pan ($180–$350), cistern ($120–$250 if separate), connector and stop-tap ($30–$50), pan collar offset if needed ($25–$45), seat upgrade ($40–$120), silicone and consumables. At RRP it's 25–35% more. Where the trade-rate accuracy matters most is in the brand and finish choice — a Caroma Urbane II close-coupled is priced differently to a Fienza Koko wall-faced, and the customer's choice (visual style, height, water rating) needs to be reflected in the quote, not glossed over.",
           "materials": [
-            { "name": "Toilet pan (S-trap / P-trap, set-out specified)", "note": "Caroma, Fienza, Geberit — match existing set-out distance." },
-            { "name": "Cistern (close-coupled / in-wall / link)", "note": "Match the pan and the wall finish — Reece trade rate." },
-            { "name": "Pan connector (90/180mm offset if needed)", "note": "Most swaps need a pan collar offset to align with old set-out." },
-            { "name": "Cistern stop-tap and supply hose", "note": "Quarter-turn brass stop-tap with WELS-rated supply hose." },
-            { "name": "Seat (soft-close, brand-matched)", "note": "Replacement seats often outlast pans — upsell line." },
-            { "name": "Silicone and finish-matched grout", "note": "For sealing pan to floor and cistern to wall." },
-            { "name": "Removal and disposal of old suite", "note": "Often forgotten — Reece can take returns at branch for old porcelain." },
-            { "name": "Wall flange / cover plate", "note": "Hides imperfections in the previous fixing pattern." }
+            {
+              "name": "Toilet pan (S-trap / P-trap, set-out specified)",
+              "note": "Caroma, Fienza, Geberit — match existing set-out distance."
+            },
+            {
+              "name": "Cistern (close-coupled / in-wall / link)",
+              "note": "Match the pan and the wall finish — Reece trade rate."
+            },
+            {
+              "name": "Pan connector (90/180mm offset if needed)",
+              "note": "Most swaps need a pan collar offset to align with old set-out."
+            },
+            {
+              "name": "Cistern stop-tap and supply hose",
+              "note": "Quarter-turn brass stop-tap with WELS-rated supply hose."
+            },
+            {
+              "name": "Seat (soft-close, brand-matched)",
+              "note": "Replacement seats often outlast pans — upsell line."
+            },
+            {
+              "name": "Silicone and finish-matched grout",
+              "note": "For sealing pan to floor and cistern to wall."
+            },
+            {
+              "name": "Removal and disposal of old suite",
+              "note": "Often forgotten — Reece can take returns at branch for old porcelain."
+            },
+            {
+              "name": "Wall flange / cover plate",
+              "note": "Hides imperfections in the previous fixing pattern."
+            }
           ],
           "sections": [
             {
