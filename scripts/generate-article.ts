@@ -55,6 +55,7 @@ const TOPIC_POOL: { topic: string; trade: string; relatedTemplate: string }[] = 
   { topic: 'How to Quote Smoke Alarm Installation', trade: 'electricians', relatedTemplate: 'smoke-alarm-installation-quote-template' },
   { topic: 'How to Quote Commercial Cleaning', trade: 'cleaners', relatedTemplate: 'commercial-cleaning-quote-template' },
   { topic: 'How to Quote a Hot Water System Replacement', trade: 'plumbers', relatedTemplate: 'hot-water-system-replacement-quote-template' },
+  { topic: 'How to Quote Plumbing Jobs with Reece Trade Prices', trade: 'plumbers', relatedTemplate: 'hot-water-system-replacement-quote-template' },
   { topic: 'How to Quote Bathroom Tiling', trade: 'tilers', relatedTemplate: 'bathroom-tiling-quote-template' },
   { topic: 'How to Quote a Welding Job', trade: 'welders', relatedTemplate: '' },
   { topic: 'How to Quote Lock Replacement', trade: 'locksmiths', relatedTemplate: '' },

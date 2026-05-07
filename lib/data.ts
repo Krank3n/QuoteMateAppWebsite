@@ -17,8 +17,10 @@ export interface Trade {
   metaDescription?: string;
   richContent?: {
     intro: string;
-    sections: { heading: string; body: string }[];
+    sections: { heading: string; body: string; link?: { href: string; label: string } }[];
   };
+  extraFaqs?: FAQ[];
+  partnerBadge?: { label: string; href: string; logo: string; logoWidth?: number; logoHeight?: number };
 }
 
 export interface City {
@@ -74,6 +76,68 @@ export interface FAQ {
   answer: string;
 }
 
+export interface ReeceFeature {
+  title: string;
+  body: string;
+}
+
+export interface ReeceStep {
+  step: number;
+  title: string;
+  body: string;
+}
+
+export interface ReeceScreenshot {
+  src: string;
+  alt: string;
+  caption: string;
+  width?: number;
+  height?: number;
+}
+
+export interface ReeceMaterial {
+  name: string;
+  note: string;
+}
+
+export interface ReeceSpoke {
+  slug: string;
+  jobName: string;
+  keyword: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  intro: string;
+  whyReeceMatters: string;
+  materials: ReeceMaterial[];
+  sections: { heading: string; body: string }[];
+  faqs: FAQ[];
+}
+
+export interface ReeceHub {
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroBadge: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroImage: string;
+  heroImageAlt: string;
+  painPoint: string;
+  intro: string;
+  features: ReeceFeature[];
+  howItWorks: ReeceStep[];
+  screenshots: ReeceScreenshot[];
+  faqs: FAQ[];
+  ctaTitle: string;
+  ctaSubtitle: string;
+}
+
+export interface ReeceIntegration {
+  hub: ReeceHub;
+  spokes: ReeceSpoke[];
+}
+
 export interface PaymentHubSpoke {
   slug: string;
   title: string;
@@ -107,14 +171,28 @@ const data = rawData as unknown as {
   guides: Guide[];
   faqData?: FAQ[];
   paymentHub?: PaymentHub;
+  integrations?: { reece?: ReeceIntegration };
 };
 
 export const { site, trades, cities, quoteTemplates, guides } = data;
 export const faqData: FAQ[] = data.faqData || [];
 export const paymentHub: PaymentHub | undefined = data.paymentHub;
+export const reeceIntegration: ReeceIntegration | undefined = data.integrations?.reece;
 
 export function getPaymentSpokeBySlug(slug: string): PaymentHubSpoke | undefined {
   return paymentHub?.spokes.find(s => s.slug === slug);
+}
+
+export function getReeceHub(): ReeceHub | undefined {
+  return reeceIntegration?.hub;
+}
+
+export function getReeceSpokes(): ReeceSpoke[] {
+  return reeceIntegration?.spokes ?? [];
+}
+
+export function getReeceSpoke(slug: string): ReeceSpoke | undefined {
+  return reeceIntegration?.spokes.find(s => s.slug === slug);
 }
 
 export function getTradeFAQs(trade: Trade): FAQ[] {
@@ -135,6 +213,7 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
       question: `Is QuoteMate free for ${trade.name.toLowerCase()}?`,
       answer: `QuoteMate offers a free 7-day trial so you can create quotes immediately — no credit card required. Pro plans start at $29/month or $199/year (save 43%) for unlimited quotes, invoicing, and all premium features.`,
     },
+    ...(trade.extraFaqs ?? []),
   ];
 }
 

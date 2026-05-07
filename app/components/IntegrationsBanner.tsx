@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Partner = {
   name: string;
@@ -6,6 +7,7 @@ type Partner = {
   width: number;
   height: number;
   tag?: 'Coming soon';
+  href?: string;
 };
 
 const partners: Partner[] = [
@@ -13,26 +15,43 @@ const partners: Partner[] = [
   { name: 'Square', src: '/assets/partners/square.png', width: 180, height: 60 },
   { name: 'CallKatie AI Receptionist', src: '/assets/partners/callkatie.svg', width: 140, height: 140 },
   { name: 'Google Calendar', src: '/assets/partners/google-calendar.svg', width: 100, height: 100 },
-  { name: 'Reece Plumbing', tag: 'Coming soon', src: '/assets/partners/reece.png', width: 140, height: 90 },
+  { name: 'Reece maX', src: '/assets/partners/reece.png', width: 140, height: 90, href: '/integrations/reece' },
 ];
+
+function PartnerCardContent({ partner, decorative }: { partner: Partner; decorative: boolean }) {
+  return (
+    <>
+      <Image
+        src={partner.src}
+        alt={decorative ? '' : `${partner.name} logo`}
+        width={partner.width}
+        height={partner.height}
+        className="integration-logo"
+      />
+      {partner.tag && (
+        <span className="integration-status integration-status-soon">{partner.tag}</span>
+      )}
+    </>
+  );
+}
 
 function Group({ ariaHidden = false }: { ariaHidden?: boolean }) {
   return (
     <ul className="integrations-group" aria-hidden={ariaHidden || undefined}>
-      {partners.map((p) => (
-        <li key={p.name} className="integration-card">
-          <Image
-            src={p.src}
-            alt={ariaHidden ? '' : `${p.name} logo`}
-            width={p.width}
-            height={p.height}
-            className="integration-logo"
-          />
-          {p.tag && (
-            <span className="integration-status integration-status-soon">{p.tag}</span>
-          )}
-        </li>
-      ))}
+      {partners.map((p) => {
+        const inner = <PartnerCardContent partner={p} decorative={ariaHidden} />;
+        return (
+          <li key={p.name} className="integration-card">
+            {p.href && !ariaHidden ? (
+              <Link href={p.href} aria-label={`${p.name} integration`} className="integration-card-link">
+                {inner}
+              </Link>
+            ) : (
+              inner
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }

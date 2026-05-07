@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '../components/Header';
@@ -83,6 +84,18 @@ export default async function TradePage({ params }: Props) {
             ]} />
             <div className="seo-hero-content">
               <span className="seo-badge">Quoting App for {trade.name}</span>
+              {trade.partnerBadge && (
+                <Link href={trade.partnerBadge.href} className="seo-partner-badge">
+                  <Image
+                    src={trade.partnerBadge.logo}
+                    alt=""
+                    width={trade.partnerBadge.logoWidth ?? 48}
+                    height={trade.partnerBadge.logoHeight ?? 32}
+                    aria-hidden="true"
+                  />
+                  <span>{trade.partnerBadge.label}</span>
+                </Link>
+              )}
               <h1 className="seo-hero-title">{trade.heroTitle}</h1>
               <p className="seo-hero-subtitle">{trade.description}</p>
               <CTAButtons showWebLink />
@@ -153,6 +166,11 @@ export default async function TradePage({ params }: Props) {
                   <div key={i} className="rich-content-section">
                     <h2>{sec.heading}</h2>
                     <p>{sec.body}</p>
+                    {sec.link && (
+                      <p className="rich-content-link">
+                        <Link href={sec.link.href}>{sec.link.label}</Link>
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>

@@ -107,7 +107,42 @@
         }
       ],
       "avgQuoteRange": "$200 – $20,000",
-      "templateSnippet": "Replace electric hot water system with 250L Rheem gas unit including all plumbing connections"
+      "templateSnippet": "Replace electric hot water system with 250L Rheem gas unit including all plumbing connections",
+      "partnerBadge": {
+        "label": "Reece maX integration · Live",
+        "href": "/integrations/reece",
+        "logo": "/assets/partners/reece.png",
+        "logoWidth": 56,
+        "logoHeight": 36
+      },
+      "richContent": {
+        "intro": "QuoteMate is the only Aussie quoting app with a live Reece maX integration. If you're a plumber or gasfitter, your real Reece trade-discounted prices flow into every line item, your full purchasable catalogue refreshes nightly, and you can place orders to Reece without leaving the quote.",
+        "sections": [
+          {
+            "heading": "Real Reece trade prices, every quote",
+            "body": "Connect your Reece maX account once via OAuth — takes about a minute. From then on, every plumbing line item prices against your real Reece trade-discounted rate, not RRP. Pipework, fittings, hot water units, fixtures, gas gear, drainage — all the SKUs your jobs actually need, priced at your rate. No more flipping between maX and a quote builder before every job to look up trade pricing.",
+            "link": { "href": "/integrations/reece", "label": "See the Reece × QuoteMate integration →" }
+          },
+          {
+            "heading": "Order materials without leaving the quote",
+            "body": "Once a customer accepts a quote, place the order to Reece in two taps — pick a branch, choose pickup or delivery, set the required-by date. The order lands on your Reece account with the materials list straight from the quote. Defaulted on for plumbers and gasfitters, no setup hunt."
+          }
+        ]
+      },
+      "extraFaqs": [
+        {
+          "question": "Does QuoteMate integrate with Reece?",
+          "answer": "Yes — QuoteMate is the only Aussie quoting app with a live Reece maX integration. Connect your Reece maX account once and your real trade-discounted prices flow into every plumbing quote. The full purchasable catalogue refreshes nightly so quotes price against the right SKUs at your rate."
+        },
+        {
+          "question": "Can I order materials from Reece inside QuoteMate?",
+          "answer": "Yes. Once a quote is accepted, place an order to Reece directly from the quote — pick a Reece branch, choose pickup or delivery, set a required-by date, and confirm. The order lands on your Reece trade account with the materials list pulled from the quote."
+        },
+        {
+          "question": "Do I need a Reece maX account?",
+          "answer": "Yes. The integration uses Reece maX OAuth, so you'll need an active Reece trade account. Setup takes about a minute — you log into maX, approve QuoteMate, and you're back in the app with your trade pricing flowing through."
+        }
+      ]
     },
     {
       "slug": "carpenters",
@@ -3628,5 +3663,423 @@
         ]
       }
     ]
+  },
+  "integrations": {
+    "reece": {
+      "hub": {
+        "slug": "reece",
+        "metaTitle": "Reece × QuoteMate — Real Trade Prices in Every Plumbing Quote (2026)",
+        "metaDescription": "Connect your Reece maX account to QuoteMate. Pull real trade-discounted prices into every line item, sync the full catalogue nightly, and place orders to Reece without leaving the quote. Live now.",
+        "heroBadge": "Reece maX integration · Live",
+        "heroTitle": "Pull your real Reece trade prices into every quote",
+        "heroSubtitle": "Connect your Reece maX account to QuoteMate and your trade-discounted pricing flows into every plumbing line item. Catalogue refreshes nightly. Order to Reece without leaving the quote. Setup takes about a minute.",
+        "heroImage": "/assets/partners/reece/ReeceMaterials.png",
+        "heroImageAlt": "Reece materials priced at trade rates inside a QuoteMate plumbing quote",
+        "painPoint": "Plumbing margins live and die on materials. Generic supplier pricing is never your trade rate, and the cheapest quote loses if you over-quote by 20%. Manually looking up prices in maX before every job is half a day a week you're not earning.",
+        "intro": "QuoteMate is the only Aussie quoting app with a live Reece maX integration. Connect once via OAuth, and every line item in every plumbing quote prices against your real Reece trade-discounted rates. We pull your full purchasable catalogue from Reece on the first sync, then refresh it every night, so quotes match the right SKUs and price faster than tabbing between maX and a quote builder. When the customer accepts the quote, you can place the order to Reece directly from inside QuoteMate — pick a branch, pickup or delivery, required-by date, done.",
+        "features": [
+          {
+            "title": "Real trade prices, every line",
+            "body": "Connect your Reece maX account once. From then on, every material added to a quote prices at your real Reece trade-discounted rate — not RRP, not generic supplier averages, not estimates."
+          },
+          {
+            "title": "Full catalogue, refreshed nightly",
+            "body": "Reece dumps your full purchasable catalogue — every product you can buy at your trade rate. We refresh it nightly so quotes price faster and the AI matches the right items the first time."
+          },
+          {
+            "title": "Order direct from a quote",
+            "body": "When the quote's accepted, place the order to Reece in two taps — pick a branch, choose pickup or delivery, set the required-by date, send. The order goes against your Reece account and the materials list flows through from the quote."
+          },
+          {
+            "title": "Defaulted for plumbers and gasfitters",
+            "body": "If your QuoteMate trade type is plumber or gasfitter, Reece is on by default. No setup hunt, no toggle to find. Other trades can connect Reece manually under Settings → Integrations."
+          },
+          {
+            "title": "Stays in sync",
+            "body": "Catalogue changes, branch availability, and pricing updates flow through automatically. You don't maintain a spreadsheet. Your quotes always reflect what Reece is charging you today."
+          },
+          {
+            "title": "Built for Aussie plumbing",
+            "body": "Pipework, fittings, hot water, gas, drainage, fixtures, brassware — the SKUs your jobs actually need, priced at your rate, with the brand-match the AI gets right because it's reading your real catalogue."
+          }
+        ],
+        "howItWorks": [
+          {
+            "step": 1,
+            "title": "Connect Reece maX",
+            "body": "Tap Connect Reece in QuoteMate Settings. You're sent to Reece's OAuth screen, log in with your maX credentials, approve QuoteMate, and you're back in the app. Takes about a minute."
+          },
+          {
+            "step": 2,
+            "title": "Catalogue syncs overnight",
+            "body": "QuoteMate pulls your full purchasable catalogue from Reece on the first sync, then refreshes nightly. Materials show up in the AI-suggested line items at your real trade rate from the next quote."
+          },
+          {
+            "step": 3,
+            "title": "Quote with real prices",
+            "body": "Describe the job; QuoteMate's AI suggests Reece SKUs with your trade pricing already applied. Edit, swap, or add anything — pricing stays live and matches what you'd see in maX."
+          },
+          {
+            "step": 4,
+            "title": "Order from the quote",
+            "body": "Once the quote's accepted, tap Order Materials. Pick a Reece branch, pickup or delivery, required-by date, confirm. The order lands against your Reece account."
+          }
+        ],
+        "screenshots": [
+          {
+            "src": "/assets/partners/reece/ReeceMaterials.png",
+            "alt": "Reece materials with real trade-discounted pricing inside a QuoteMate quote",
+            "caption": "Every line priced at your real Reece trade rate, not RRP."
+          },
+          {
+            "src": "/assets/partners/reece/OrderFromReece.png",
+            "alt": "Place an order to Reece directly from a QuoteMate quote",
+            "caption": "Place the order without leaving the quote — branch, fulfilment, required-by date, done."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Do I need a Reece maX account?",
+            "answer": "Yes. The integration uses Reece maX OAuth — your existing trade account and trade-discounted pricing flow through automatically. If you don't have a maX account yet, sign up at reece.com.au/max first."
+          },
+          {
+            "question": "Is the integration live now?",
+            "answer": "Yes. The Reece × QuoteMate integration is live in the QuoteMate mobile app today and defaulted on for plumbers and gasfitters. No waitlist, no beta — connect and go."
+          },
+          {
+            "question": "How often does pricing refresh?",
+            "answer": "Your purchasable catalogue and pricing refresh from Reece every night. You can also trigger a manual refresh in Settings → Integrations → Reece if you want pricing pulled right now."
+          },
+          {
+            "question": "Can I order materials from inside QuoteMate?",
+            "answer": "Yes. Once a quote is accepted, you can place an order to Reece from inside QuoteMate — pick a branch, choose pickup or delivery, set a required-by date, confirm. The order lands on your Reece trade account."
+          },
+          {
+            "question": "Does the Reece integration cost extra?",
+            "answer": "No. The Reece integration is included on every paid QuoteMate plan and the 7-day free trial. No add-on fee, no per-order surcharge."
+          },
+          {
+            "question": "What if I'm not a plumber?",
+            "answer": "Reece is on by default for plumbers and gasfitters. Other trades can still connect Reece manually under Settings → Integrations. You'll get the same trade-rate pricing on any line items the AI matches to a Reece SKU."
+          }
+        ],
+        "ctaTitle": "Quote with your real Reece trade prices",
+        "ctaSubtitle": "Live now in QuoteMate. Connect in about a minute."
+      },
+      "spokes": [
+        {
+          "slug": "hot-water-system",
+          "jobName": "Hot water system replacement",
+          "keyword": "hot water system quote",
+          "metaTitle": "Quote a Hot Water System Replacement with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote hot water system replacements with your real Reece maX trade prices. Rheem, Rinnai, Vulcan, Bosch and Sanden units priced at your rate, plus tempering valves, tundish, flexis and pipework.",
+          "summary": "Pull real trade pricing on the unit, tempering valve, tundish, flexis and pipework — straight from your Reece maX account.",
+          "intro": "Hot water system replacements are the highest-margin job most Aussie plumbers run, and the unit itself is usually 60–70% of the materials cost. Getting the unit price right — at your real Reece trade rate, not RRP — is the difference between a fair quote and leaving money on the bench. QuoteMate's Reece integration pulls your trade-discounted pricing on every Rheem, Rinnai, Vulcan, Bosch and Sanden unit in your maX account, plus all the install hardware, the second you describe the job.",
+          "whyReeceMatters": "Quote with the wrong price and you either lose the job or eat the margin. A 250L Rheem gas storage unit retails around $1,800; a working plumber's Reece trade discount on that unit might be 12%, which is $216 of margin per job that disappears if you quote against RRP. Run two HWS replacements a week and that's $22,000 a year of pricing accuracy. The compliance gear adds up too — tempering valves, tundish, expansion control valves, flexis, isolators — each individually small, collectively $150–$250 per install, and all priced at your real trade rate when the quote is built against your live Reece catalogue.",
+          "materials": [
+            { "name": "Hot water unit (gas / electric / heat pump / solar)", "note": "Rheem, Rinnai, Vulcan, Bosch, Sanden — priced at your maX rate." },
+            { "name": "Tempering valve (50°C, AS 3498)", "note": "Mandatory on new installs in most states." },
+            { "name": "Tundish + cold expansion valve", "note": "Required on storage hot water systems." },
+            { "name": "Flexible connectors (DN20)", "note": "Hot and cold side, rated for the unit." },
+            { "name": "Isolation valves (CW + HW)", "note": "Quarter-turn ball valves for service isolation." },
+            { "name": "Copper / PEX tube and fittings", "note": "Sized to the install — sweated or press-fit." },
+            { "name": "Pressure relief valve and drain line", "note": "AS-compliant relief sized to unit kW rating." },
+            { "name": "Removal and disposal of old unit", "note": "Often forgotten on the quote — Reece can take returns at branch." }
+          ],
+          "sections": [
+            {
+              "heading": "Sizing the unit and quoting the right SKU",
+              "body": "QuoteMate's AI reads household size and existing fuel type from the job description and matches the right Reece SKU at your trade rate. A 4-person household on gas typically needs a 170L–250L storage unit or a continuous-flow 26L/min instantaneous; an electric replacement going to heat pump might be a Sanden 315L or a Reclaim 270L. Because the catalogue is live, you don't have to remember which model Reece has in stock at your local branch — the integration prices what's actually purchasable today."
+            },
+            {
+              "heading": "AS 3498 compliance items most quotes miss",
+              "body": "The unit is the obvious line. The line items new plumbers forget: a 50°C tempering valve at the bathroom group (mandatory in most states for new installs), a tundish and cold expansion valve on storage units, an AS-compliant pressure relief drain line to a safe location, isolation valves on both hot and cold for service, and a 600mm × 600mm tray on internal installs. Reece carries all of these at trade rate; the QuoteMate AI prefills them based on the unit type, so they don't get skipped on the customer's quote."
+            },
+            {
+              "heading": "Energy-efficiency rebates and trade-up upsells",
+              "body": "VEU, NSW PDRS, and federal STCs can cut $600–$1,200 off a heat-pump or solar HWS install for the customer. Quoting the rebate-eligible unit (Sanden, Reclaim, Apricus, certain Rinnai heat pumps) at your real Reece trade price, with the rebate clearly applied as a deduction line, lifts conversion and lets you pitch the upgrade at near-storage-unit total cost. QuoteMate keeps the rebate maths in the quote so the customer sees the after-rebate number."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Can QuoteMate price a Sanden or Reclaim heat pump at my Reece trade rate?",
+              "answer": "Yes. Heat pumps in your Reece purchasable catalogue (Sanden GAU, Reclaim CO2, Apricus, Rinnai heat-pump models) flow into quotes at your maX trade rate, same as gas and electric storage units."
+            },
+            {
+              "question": "Does the integration handle the rebate maths?",
+              "answer": "QuoteMate adds VEU/NSW PDRS/federal STC rebate lines as deductions in the quote so the customer sees the net price after rebates. The unit and install gear are still priced at your real Reece trade rate."
+            },
+            {
+              "question": "What if I need to swap the suggested unit for a different model?",
+              "answer": "Override anywhere. The AI's first suggestion is sized to the job description, but you can swap to any other unit in your Reece catalogue and the trade price flows through automatically."
+            },
+            {
+              "question": "Can I order the unit and install gear to Reece from the quote?",
+              "answer": "Yes. Once the customer accepts, place the order to your nominated Reece branch — pickup the morning of the install, or delivered to site the day before. The order lands on your Reece account with everything from the quote."
+            }
+          ]
+        },
+        {
+          "slug": "blocked-drain",
+          "jobName": "Blocked drain clearing",
+          "keyword": "blocked drain quote",
+          "metaTitle": "Quote a Blocked Drain Clearing with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote blocked drain jobs accurately. Real Reece trade pricing on jet nozzles, CCTV camera consumables, root cutters, and any DWV pipe replacement that comes out of the inspection.",
+          "summary": "CCTV consumables, jetting nozzles, root cutters, and replacement DWV — priced at your real Reece trade rate when a clear-out becomes a repair.",
+          "intro": "Blocked drains start as a clearing job and turn into a repair more often than tradies quote for. The customer wants a price for unblocking; you arrive, run the camera, find a tree-root intrusion or a collapsed PVC junction, and now you're quoting a dig-up. QuoteMate handles both halves on one quote — the diagnostic and clearing rate up front, plus a real-trade-priced contingency line for the repair work the camera reveals — using your Reece maX catalogue for any DWV materials you'd order if it goes that way.",
+          "whyReeceMatters": "A drain clearing quote looks small on paper, but the consumables compound. A typical jet head replacement is $80–$200 at trade rate; a root-cutter blade is $40–$80; a CCTV reel skid runs $250+. Run twenty drain jobs a year and you're spending $3,000–$5,000 on consumables alone — a 10–15% Reece trade discount on that is $400–$750 in your pocket annually that wouldn't show up if you were quoting RRP. The bigger win is the repair fork. When the camera finds a collapsed PVC junction, QuoteMate prices the dig-up — DWV pipe, junctions, couplings, bedding sand, geotextile — against your real Reece rate so the upgrade quote is ready before you've packed the camera away.",
+          "materials": [
+            { "name": "Jetting nozzles (penetrator, root-cutter, flusher)", "note": "Consumables — Reece carries common imperial and metric sizes at trade rate." },
+            { "name": "Mechanical root-cutter blades", "note": "For electric eel and rotating cutter heads." },
+            { "name": "CCTV camera skids and centring brushes", "note": "Replaceable wear parts — often forgotten on the quote." },
+            { "name": "DWV PVC pipe (100mm / 150mm)", "note": "If clearing reveals a collapsed line that needs replacing." },
+            { "name": "DWV junctions, bends, couplings", "note": "Y-junctions, 45/88 bends, repair couplings." },
+            { "name": "Inspection openings and risers", "note": "Often added during repair to make future cleanouts easier." },
+            { "name": "Bedding sand and geotextile", "note": "For backfill on excavated repairs." },
+            { "name": "Trap re-seating gear", "note": "Wax seals, silicone, brass fittings if replacing a fixture trap." }
+          ],
+          "sections": [
+            {
+              "heading": "Diagnostic vs clearing pricing",
+              "body": "Two different rates apply on a blocked drain — the call-out and CCTV diagnostic, and the actual clearing or repair. Quote them as separate lines so the customer sees what the inspection cost is even if no further work is done. QuoteMate prefills both lines and lets you set the diagnostic as 'absorbed if work proceeds' so the customer sees the saving when they accept the bigger job. Materials for the inspection (camera consumables, locator chalk) come through at your Reece trade rate."
+            },
+            {
+              "heading": "When to recommend repair vs continued clearing",
+              "body": "If the camera finds a tree-root intrusion at a single junction, repeat clearing every 12–18 months may be cheaper for the customer than a dig-up. If the camera finds a collapsed PVC line, displaced earthenware, or repeated belly issues, the repair quote needs to land that day. QuoteMate generates the repair quote against your live Reece DWV catalogue — pipe, junctions, fittings, bedding sand — at your real trade rate, so the customer sees the upgrade cost while they're still on-site and motivated."
+            },
+            {
+              "heading": "Equipment day-rate and consumable maths",
+              "body": "Most plumbers under-quote consumables on drain work because each line is small. The reality: a typical clear-and-camera job burns $50–$120 of jet nozzles, cutter blades, and camera wear, and that doesn't show up unless you build it into the quote. QuoteMate prefills the consumable line at your Reece trade rate so the price you give the customer covers the actual cost of the job, not just labour."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Does QuoteMate handle the diagnostic + clearing + repair on one quote?",
+              "answer": "Yes — three separate lines on the same quote. Diagnostic and CCTV inspection up front, clearing as the next step, and a contingency repair line priced against your Reece DWV catalogue if the camera finds a collapsed section."
+            },
+            {
+              "question": "Are CCTV consumables priced too?",
+              "answer": "Yes. Replaceable camera skids, centring brushes, and locator chalk in your Reece purchasable catalogue come through at your trade rate. Most plumbers forget these — QuoteMate prefills them so they're not absorbed silently."
+            },
+            {
+              "question": "Can I order DWV pipe to Reece if the repair goes ahead?",
+              "answer": "Yes. The repair quote materials list — DWV PVC, junctions, couplings, bedding sand — pushes through to a Reece order against your nominated branch as soon as the customer accepts."
+            },
+            {
+              "question": "What about emergency overnight call-outs?",
+              "answer": "QuoteMate lets you set an after-hours rate multiplier on labour while keeping materials at your Reece trade rate, so emergency quotes are produced in seconds without surprises."
+            }
+          ]
+        },
+        {
+          "slug": "bathroom-rough-in",
+          "jobName": "Bathroom rough-in",
+          "keyword": "bathroom rough-in quote",
+          "metaTitle": "Quote a Bathroom Rough-In with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote bathroom rough-ins with real Reece maX trade prices on copper, PEX, mixer bodies, in-wall cisterns, brassware and waste. The right SKU at your rate, every line.",
+          "summary": "Copper, PEX, mixer bodies, in-wall cisterns, brassware and waste — every fitting in the bathroom priced at your real Reece trade rate.",
+          "intro": "Bathroom rough-ins are death by a thousand fittings. A typical residential bathroom rough-in carries 80–150 individual line items — copper offcuts, PEX runs, brass fittings, mixer bodies, in-wall cisterns, tundish, traps, waste arms — and most quoting tools either lump them into a 'sundries' line or price them at RRP. QuoteMate's Reece integration prices every single fitting at your real maX trade rate, so the materials line at the bottom of the quote actually reflects what you'll pay at the trade counter.",
+          "whyReeceMatters": "Bathroom rough-in materials are individually small and collectively large. A 4-fixture bathroom rough-in (vanity, shower, bath, toilet) typically runs $1,400–$2,200 in materials at trade rate; the same kit at RRP is $1,800–$2,800 — a $400–$600 swing on a single bathroom. Quote the wrong number and you either price yourself out or eat the difference on every job. With Reece pricing pulled live, the AI knows your actual trade rate on a Caroma in-wall cistern ($380–$420 trade vs $520+ RRP), a Methven mixer body, a 15mm copper tee — every line. Run a half-dozen bathrooms a year and the trade-rate accuracy compounds into thousands of dollars of margin you'd otherwise be quoting away.",
+          "materials": [
+            { "name": "Copper tube (15mm and 22mm)", "note": "Type B for hot/cold rough-in — Reece carries all three classes." },
+            { "name": "PEX tube and brass press fittings", "note": "If you're running PEX rough-in — Reece stocks Buteline and Vinidex." },
+            { "name": "Tapware mixer bodies (in-wall and basin)", "note": "Caroma, Methven, Phoenix, Dorf — your maX rate." },
+            { "name": "In-wall cistern and frame", "note": "Caroma Invisi, Geberit, R&T — at trade rate." },
+            { "name": "Tundish, traps, waste arms", "note": "Bath, basin, shower waste arms and bottle traps." },
+            { "name": "Brass fittings (elbows, tees, reducers)", "note": "By the bag at trade rate — usually 30–60 fittings per bathroom." },
+            { "name": "Waterproof penetrations", "note": "Tile flange, escutcheons, wall flanges." },
+            { "name": "Acoustic / lagging insulation", "note": "Required by NCC on most rough-ins now." }
+          ],
+          "sections": [
+            {
+              "heading": "Rough-in vs fit-off pricing on the same quote",
+              "body": "Bathroom plumbing usually splits into two trade visits — rough-in before tiling, fit-off after. Pricing both stages at acceptance time avoids the awkward 'second invoice' conversation later. QuoteMate's plumbing quote template prefills the rough-in materials at Reece trade rate, then a fit-off section with mixer trims, basin tap heads, shower roses, and toilet pan/seat at your real maX prices. Customer sees one total, paid in two stages."
+            },
+            {
+              "heading": "Branch availability matters on multi-tap orders",
+              "body": "Some Reece branches stock the full Caroma Invisi range, others don't. Quote a brand the customer's local branch can't supply quickly and you blow the schedule. QuoteMate's Reece integration reads your home branch on the quote, so the AI suggests SKUs your branch actually carries — and when you place the order, you can pick a different branch if a specific item is sitting elsewhere across town."
+            },
+            {
+              "heading": "Hidden complexity items most quotes skip",
+              "body": "The fittings new plumbers under-quote: in-wall cistern frame and noggings, acoustic lagging on copper through stud walls (NCC 2022 requirement), wall-flange escutcheons that match the tapware finish, second-fix isolation valves at every fixture, and the pan collar offset for non-standard set-out distances. Every one of these is in your Reece catalogue at trade rate; QuoteMate prefills them so they're not absorbed into 'sundries'."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Does the AI know which mixer brand the customer wants?",
+              "answer": "If you specify the brand in the job description ('Caroma Liano fit-off' or 'Methven Maku rough-in'), the AI matches the right Reece SKU at your trade rate. You can also override any line and the trade price flows through to the new selection."
+            },
+            {
+              "question": "Can I quote rough-in and fit-off on one document?",
+              "answer": "Yes. The plumbing quote template splits into two stages — rough-in materials and fit-off materials — each priced at your Reece trade rate, with separate progress payment lines."
+            },
+            {
+              "question": "What about acoustic lagging and NCC requirements?",
+              "answer": "QuoteMate prefills NCC-required acoustic lagging on copper through stud walls when a residential bathroom rough-in is described. Reece carries the right wall-thickness lagging at trade rate."
+            },
+            {
+              "question": "Can I order the full bathroom kit to Reece in one go?",
+              "answer": "Yes. Once accepted, place the order to your home branch (or pick a different branch with better stock) and Reece holds it for collection on the rough-in day. The materials list pulls straight from the quote."
+            }
+          ]
+        },
+        {
+          "slug": "gas-fitting",
+          "jobName": "Gas fitting",
+          "keyword": "gas fitting quote",
+          "metaTitle": "Quote a Gas Fitting Job with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote gas fitting jobs with real Reece maX trade prices on regulators, test gauges, gas pipe, isolators and AS 5601 compliance gear. CoC-aware quotes in under two minutes.",
+          "summary": "Regulators, test gauges, gas pipe, isolation valves, AS 5601 compliance items — priced at your real Reece trade rate.",
+          "intro": "Gas fitting is the highest-stakes plumbing work. A wrong reading on a manometer, the wrong regulator, an isolator in the wrong spot, and you're either failing audit or risking a coronial inquest. QuoteMate's Reece integration pulls trade-rate pricing on every piece of gas gear in your maX catalogue — regulators, test gauges, gas-rated isolators, copper or stainless gas line, multilayer gas pipe — so the quote you put in front of the customer reflects exactly what the job needs and exactly what it costs at your trade rate.",
+          "whyReeceMatters": "Gas gear isn't cheap. A typical residential gas appliance install — say a new gas cooktop on a new gas point — needs a regulator (~$60), a test gauge calibration (~$40 amortised), 2m of 15mm coated copper or multilayer ($45–$80), a couple of gas-rated isolators ($35 each), AS-compliant fittings, and the consumables for a Stage A and Stage B test. That's $250–$400 in materials at trade rate; at RRP it's $350–$550, and the difference comes off your margin. With your Reece maX catalogue feeding QuoteMate, every gas line item — including the AGL/AS 5601 compliance gear most plumbers under-spec — is priced at your real trade rate the second the AI reads 'gas cooktop install' in the job description.",
+          "materials": [
+            { "name": "Gas regulators (LPG and natural gas)", "note": "First-stage and second-stage — Reece stocks Cavagna, Rego, Maxitrol." },
+            { "name": "Test gauges and manometers", "note": "Amortise the calibration cost across the job — QuoteMate prefills." },
+            { "name": "Gas line (copper / multilayer / black steel)", "note": "Sized to load — Reece carries all classes at trade rate." },
+            { "name": "Gas-rated isolation valves and AGA-stamped ball valves", "note": "Required at every appliance and at the meter." },
+            { "name": "Compression and brass fittings (gas-rated)", "note": "Yellow-PTFE, Loctite 567 — gas-rated only." },
+            { "name": "Appliance flexible (AGA-stamped)", "note": "AS 4631 stainless braid for the final connection." },
+            { "name": "Soap test and leak-detection consumables", "note": "Per-job cost rolled into the quote." },
+            { "name": "Certificate of Compliance forms / AGL labels", "note": "State-specific — Reece carries the books." }
+          ],
+          "sections": [
+            {
+              "heading": "AS 5601 compliance items most quotes under-spec",
+              "body": "The compliance gear that gets missed: a regulator on every LPG appliance install (not optional), an AGA-stamped flexible at the appliance connection (not a generic copper-tail), a gas-rated isolator within easy reach of the appliance, a Stage A pressure test and Stage B leak test as line items (the consumables matter), and the Certificate of Compliance fee. QuoteMate prefills all of these at your Reece trade rate and adds the CoC fee as a separate line so the customer sees what they're paying for."
+            },
+            {
+              "heading": "Branch stock for emergency gas call-outs",
+              "body": "Gas leak call-outs don't wait for next-day delivery. Knowing your home Reece branch carries a Cavagna regulator, a calibrated test gauge, and 6m of 15mm coated copper at 4pm on a Friday is the difference between fixing the leak and tagging the appliance off. QuoteMate's Reece integration reads your home branch on every quote, so the AI suggests SKUs your branch actually has now. When the order goes through, the branch sets it aside for collection."
+            },
+            {
+              "heading": "Certificate of Compliance flow",
+              "body": "Every gas job ends with a CoC. The maths: CoC fee is regulated state-by-state ($30–$120), the form has to physically sit with the customer or the energy retailer, and the audit risk if it's not submitted is real. QuoteMate adds the CoC fee as a separate quote line, prefills the AS 5601 reference, and pulls the form pricing from your Reece catalogue if you buy CoC books from them."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Is the Reece integration available for gasfitters as well as plumbers?",
+              "answer": "Yes. Gasfitter is treated the same as plumber for default-on Reece pricing. All gas line items in your Reece purchasable catalogue come through at your maX trade rate."
+            },
+            {
+              "question": "Does QuoteMate prefill AS 5601 compliance items?",
+              "answer": "Yes. Regulators, AGA-stamped flexibles, gas-rated isolators, and Stage A/Stage B test consumables prefill on any gas appliance install or new gas-point job. You can override any line."
+            },
+            {
+              "question": "How does the Certificate of Compliance fit into the quote?",
+              "answer": "QuoteMate adds the CoC fee as a separate line on the quote, with state-specific pricing. If you buy CoC books from Reece, the form cost is pulled from your maX catalogue at trade rate."
+            },
+            {
+              "question": "Can I order emergency gas gear from Reece on the same job?",
+              "answer": "Yes. Once the customer accepts the call-out quote, place the order to your nearest Reece branch — usually pickup in under an hour during trading."
+            }
+          ]
+        },
+        {
+          "slug": "tap-mixer-installation",
+          "jobName": "Tap and mixer installation",
+          "keyword": "tap and mixer quote",
+          "metaTitle": "Quote a Tap and Mixer Installation with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote tap and mixer fit-offs with real Reece maX trade prices. Brand-match Caroma, Methven, Phoenix, Dorf cartridges and trim kits at your rate, every time.",
+          "summary": "Brand-match tapware cartridges, trim kits, flexis and isolators — priced at your real Reece trade rate so the right cartridge is in the bag.",
+          "intro": "Tap and mixer fit-offs are the job most likely to produce a callback for the wrong reason — wrong cartridge, wrong finish, wrong O-ring kit. The brand-match problem is real: a Caroma Liano cartridge isn't a Methven Maku cartridge, and the wrong one in the bag means a second trip and a margin write-off. QuoteMate's Reece integration reads the brand from the job description and pulls the matching cartridge, trim kit, and consumables from your maX catalogue at your real trade rate, so the right gear is on the quote and on the truck.",
+          "whyReeceMatters": "Tap and mixer installs feel small ($200–$600 in materials per job) but the brand-match risk burns hours. A wrong-cartridge callback costs 1.5–2 hours of unbilled labour plus an awkward customer conversation; a Reece counter-return on the wrong cartridge isn't always free. With your Reece maX catalogue feeding QuoteMate, the AI knows your trade-rate price on a Caroma G-Series cartridge ($45–$60 trade), a Methven Maku ceramic disc cartridge, a Phoenix Vivid Slimline body — and it prefills the matching trim kit and flexis. Run thirty fit-offs a year and the brand-match accuracy alone is worth more than the trade-rate margin (probably $1,500+ in saved callback labour).",
+          "materials": [
+            { "name": "Mixer body and cartridge (brand-matched)", "note": "Caroma, Methven, Phoenix, Dorf — Reece pricing per your maX rate." },
+            { "name": "Trim kit and finish handles", "note": "Chrome, brushed nickel, matte black — finish-matched per job." },
+            { "name": "Flexible connectors (15mm × 600/900mm)", "note": "Stainless braid, AS-compliant, hot/cold pair." },
+            { "name": "Isolation valves (under-bench / wall stop)", "note": "Quarter-turn, brass body, gas-rated for some installs." },
+            { "name": "Basin / sink trap and waste", "note": "32mm or 40mm — chrome, plastic, or universal bottle." },
+            { "name": "Sealants and silicone", "note": "Mould-resistant for wet area; food-grade for kitchen." },
+            { "name": "Mounting hardware and washers", "note": "Stud / nut / O-ring kit specific to the mixer brand." },
+            { "name": "Aerator and flow restrictor", "note": "WELS-rated for water-efficiency compliance." }
+          ],
+          "sections": [
+            {
+              "heading": "Brand-match pricing — get it right the first time",
+              "body": "Reece's catalogue has 15+ tapware brands and dozens of cartridge variants per brand. The wrong cartridge in the bag is a callback. QuoteMate reads brand and model from the job description and pulls the exact matching cartridge from your Reece catalogue at your trade rate. If the customer hasn't specified a brand yet, the AI asks before generating the materials list rather than guessing — keeps the quote honest and the truck stocked right."
+            },
+            {
+              "heading": "Cartridge lookup and warranty registration",
+              "body": "Most tapware brands now want the cartridge model and serial registered for warranty. Reece holds the lookup table, and QuoteMate pulls the right cartridge code into the quote so it's documented for the customer's records. If the cartridge fails inside warranty (Caroma's ceramic discs are 25-year warranty; Methven's 12-year), the documentation is in the quote rather than scribbled on a clipboard."
+            },
+            {
+              "heading": "WELS rating and water-efficiency compliance",
+              "body": "Every new mixer sold in Australia carries a WELS rating, and the customer is entitled to know it. Quoting a 6-star WELS mixer instead of a 4-star can be the deciding factor for cost-conscious customers (a 6-star saves the average household ~$80/year in water bills). QuoteMate prefills the WELS rating from the Reece SKU data so the customer sees what they're paying for in long-term running cost, not just the upfront price."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Does QuoteMate know the difference between a Caroma and a Methven cartridge?",
+              "answer": "Yes. The AI reads brand and model from the job description (or asks if it's not specified) and pulls the exact matching cartridge SKU from your Reece purchasable catalogue at your trade rate. No more wrong-cartridge callbacks."
+            },
+            {
+              "question": "Can I quote multiple finishes on the same job?",
+              "answer": "Yes — common on full bathrooms where the customer wants chrome on the basin and matte black in the shower. QuoteMate prices each at your real Reece trade rate; the order to Reece picks the right finish per fixture."
+            },
+            {
+              "question": "Are warranty cartridge swaps tracked?",
+              "answer": "QuoteMate keeps the original cartridge model and Reece SKU on the original quote, so a 6-year-later warranty swap quote can reference it directly. No sifting through old paperwork."
+            },
+            {
+              "question": "What about WELS rating disclosure?",
+              "answer": "The WELS rating is pulled from the Reece SKU data and shown next to each tapware line on the quote, so the customer sees the water-efficiency rating before they accept."
+            }
+          ]
+        },
+        {
+          "slug": "toilet-replacement",
+          "jobName": "Toilet replacement",
+          "keyword": "toilet replacement quote",
+          "metaTitle": "Quote a Toilet Replacement with Reece Trade Prices | QuoteMate",
+          "metaDescription": "Quote toilet swaps with real Reece maX trade prices on pans, cisterns, connectors, pan collars and seats. Caroma, Fienza, Geberit at your trade rate, with disposal handled.",
+          "summary": "Pans, cisterns, connectors, pan collars, seats, and removal — priced at your real Reece trade rate, including the disposal line most quotes miss.",
+          "intro": "Toilet replacements look simple — pull the old, drop in the new — until the set-out is wrong, the pan collar offset is non-standard, or the cistern doesn't sit flush against the wall plumb. QuoteMate's Reece integration prices the pan, cistern, connector, pan collar offset, isolation stop-tap, and the new seat at your real maX trade rate, then prefills the removal-and-disposal line that gets forgotten on most quotes. The result: a quote the customer accepts, a kit on the truck that fits the existing set-out, and a swap that doesn't turn into a tile-cut.",
+          "whyReeceMatters": "Toilet swaps are usually quoted as a single 'all-in-one' price, which masks the materials maths. A typical replacement runs $350–$700 in materials at trade rate — pan ($180–$350), cistern ($120–$250 if separate), connector and stop-tap ($30–$50), pan collar offset if needed ($25–$45), seat upgrade ($40–$120), silicone and consumables. At RRP it's 25–35% more. Where the trade-rate accuracy matters most is in the brand and finish choice — a Caroma Urbane II close-coupled is priced differently to a Fienza Koko wall-faced, and the customer's choice (visual style, height, water rating) needs to be reflected in the quote, not glossed over.",
+          "materials": [
+            { "name": "Toilet pan (S-trap / P-trap, set-out specified)", "note": "Caroma, Fienza, Geberit — match existing set-out distance." },
+            { "name": "Cistern (close-coupled / in-wall / link)", "note": "Match the pan and the wall finish — Reece trade rate." },
+            { "name": "Pan connector (90/180mm offset if needed)", "note": "Most swaps need a pan collar offset to align with old set-out." },
+            { "name": "Cistern stop-tap and supply hose", "note": "Quarter-turn brass stop-tap with WELS-rated supply hose." },
+            { "name": "Seat (soft-close, brand-matched)", "note": "Replacement seats often outlast pans — upsell line." },
+            { "name": "Silicone and finish-matched grout", "note": "For sealing pan to floor and cistern to wall." },
+            { "name": "Removal and disposal of old suite", "note": "Often forgotten — Reece can take returns at branch for old porcelain." },
+            { "name": "Wall flange / cover plate", "note": "Hides imperfections in the previous fixing pattern." }
+          ],
+          "sections": [
+            {
+              "heading": "Pan size and set-out offsets",
+              "body": "Old Aussie pans are typically 165mm S-trap or 100mm P-trap with set-outs that don't always match the modern ISO standard. A swap that looks like five minutes turns into 90 minutes if the set-out is 30mm out and you didn't bring a pan-collar offset. QuoteMate reads the existing pan style from the job description and prefills the correct connector — straight, 90mm offset, or 180mm offset — at your Reece trade rate, so the kit on the truck fits the set-out you'll find."
+            },
+            {
+              "heading": "Cistern compatibility — close-coupled vs wall-faced",
+              "body": "A close-coupled pan needs a matching cistern; a wall-faced pan needs the cistern fed from in-wall plumbing. Mixing the two is the most common quote-time mistake on toilet swaps. QuoteMate prefills the cistern type that matches the pan style automatically, with finish-matched supply hose and stop-tap from your Reece purchasable catalogue at trade rate. The customer sees one suite, not three line items that don't fit each other."
+            },
+            {
+              "heading": "Removal, disposal, and the line that gets forgotten",
+              "body": "Old porcelain weighs 25–40kg and council waste won't take it as general garbage. Reece branches accept old suites as trade-in returns for waste-to-energy or landfill diversion. QuoteMate prefills a 'removal and disposal of old suite' line at $40–$80, defensible to the customer and budgeted for the time it actually takes (usually 15–25 minutes including the drive to the Reece branch on the return run)."
+            }
+          ],
+          "faqs": [
+            {
+              "question": "Does QuoteMate match the set-out for older pans?",
+              "answer": "Yes. The AI reads the existing pan style (S-trap / P-trap, set-out distance) from the job description and prefills the correct connector — straight, 90mm offset, or 180mm offset — from your Reece catalogue at trade rate."
+            },
+            {
+              "question": "Can I quote a soft-close seat as an upsell line?",
+              "answer": "Yes. The seat is a separate line on the quote, prefilled at your Reece trade rate. Most customers say yes to a soft-close seat upgrade if it's $40–$80 over the standard, and it's a win-win on customer satisfaction."
+            },
+            {
+              "question": "How is removal and disposal handled?",
+              "answer": "QuoteMate prefills a removal-and-disposal line on every toilet replacement quote. Reece branches accept old porcelain as trade-in returns, so the disposal cost is mostly your labour time, not a tip fee."
+            },
+            {
+              "question": "Can I order the suite from Reece on the same quote?",
+              "answer": "Yes. Once the customer accepts, place the order to your home branch — pickup the morning of the swap, or delivered to site. The pan, cistern, connector, stop-tap, and seat all come through on one Reece order."
+            }
+          ]
+        }
+      ]
+    }
   }
 }
