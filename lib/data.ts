@@ -54,6 +54,7 @@ export interface Guide {
   title: string;
   trade: string;
   keyword: string;
+  secondaryKeywords?: string[];
   description: string;
   relatedTemplate: string;
   sections: GuideSection[];
