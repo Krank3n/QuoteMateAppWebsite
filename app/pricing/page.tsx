@@ -7,7 +7,7 @@ import CTAButtons from '../components/CTAButtons';
 
 export const metadata: Metadata = {
   title: 'Pricing — Quoting App for Australian Tradies',
-  description: 'QuoteMate pricing plans: Free trial with no credit card, Pro Monthly at $29/month, or Pro Annual at $199/year (save 43%). Unlimited quotes, invoices, AI materials, and more.',
+  description: 'QuoteMate pricing plans: Free forever with no credit card (Square payments), Pro Monthly at $29/month, or Pro Annual at $199/year (save 43%). 14-day Pro trial included. Unlimited quotes, invoices, AI materials, and more.',
   alternates: { canonical: 'https://quotemateapp.au/pricing' },
 };
 
@@ -20,15 +20,16 @@ const CrossIcon = () => (
 );
 
 const features = [
-  { name: 'Create quotes', free: true, pro: true },
+  { name: 'Unlimited quotes & invoices', free: true, pro: true },
   { name: 'Professional PDF template', free: true, pro: true },
   { name: 'Live supplier pricing', free: true, pro: true },
   { name: 'Cloud sync', free: true, pro: true },
-  { name: 'Unlimited quotes & invoices', free: false, pro: true },
+  { name: 'Online card payments via Square', free: true, pro: true },
+  { name: 'Bank Transfer, PayID, BPAY, PayPal', free: false, pro: true },
+  { name: 'Lower Square fee (1% vs 1.7%)', free: false, pro: true },
   { name: 'AI material & title generation', free: false, pro: true },
   { name: 'All PDF templates', free: false, pro: true },
   { name: 'Business logo on documents', free: false, pro: true },
-  { name: 'Online quote acceptance', free: false, pro: true },
   { name: 'Invoice & payment tracking', free: false, pro: true },
   { name: 'Priority support', free: false, pro: true },
 ];
@@ -61,10 +62,11 @@ export default function PricingPage() {
                     <span className="price">$0</span>
                     <span className="period">forever</span>
                   </div>
-                  <p className="pricing-desc">Get started &mdash; no credit card required</p>
+                  <p className="pricing-desc">No credit card. Customers pay online via Square (1.7% platform fee added to their bill).</p>
                 </div>
                 <ul className="pricing-features" role="list">
-                  <li><CheckIcon /> Create quotes (7-day trial)</li>
+                  <li><CheckIcon /> Unlimited quotes &amp; invoices</li>
+                  <li><CheckIcon /> Online card payments via Square</li>
                   <li><CheckIcon /> Professional PDF template</li>
                   <li><CheckIcon /> Live supplier pricing</li>
                   <li><CheckIcon /> Cloud sync</li>
@@ -79,17 +81,18 @@ export default function PricingPage() {
                     <span className="price">$29</span>
                     <span className="period">/month</span>
                   </div>
-                  <p className="pricing-desc">Cancel anytime</p>
+                  <p className="pricing-desc">14-day free trial. Cancel anytime.</p>
                 </div>
                 <ul className="pricing-features" role="list">
-                  <li><CheckIcon /> Unlimited quotes &amp; invoices</li>
+                  <li><CheckIcon /> Everything in Free</li>
+                  <li><CheckIcon /> Bank Transfer, PayID, BPAY, PayPal</li>
+                  <li><CheckIcon /> Lower Square fee (1% vs 1.7%)</li>
                   <li><CheckIcon /> AI material &amp; title generation</li>
                   <li><CheckIcon /> All PDF templates</li>
                   <li><CheckIcon /> Business logo on documents</li>
-                  <li><CheckIcon /> Online quote acceptance</li>
                   <li><CheckIcon /> Priority support</li>
                 </ul>
-                <a href="/app" className="btn btn-primary pricing-btn">Subscribe to Pro</a>
+                <a href="/app" className="btn btn-primary pricing-btn">Start 14-Day Free Trial</a>
               </div>
               <div className="pricing-card pricing-card-annual">
                 <div className="pricing-badge pricing-badge-save">BEST VALUE</div>
@@ -99,7 +102,7 @@ export default function PricingPage() {
                     <span className="price">$199</span>
                     <span className="period">/year</span>
                   </div>
-                  <p className="pricing-desc">That&rsquo;s just $16.58/month &mdash; save 43%</p>
+                  <p className="pricing-desc">14-day free trial. Just $16.58/month &mdash; save 43%.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Pro Monthly</li>
@@ -140,7 +143,7 @@ export default function PricingPage() {
             <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '32px' }}>Pricing FAQ</h2>
             <div className="guide-content" style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
-                { q: 'Is there really a free plan?', a: 'Yes! Sign up and start creating quotes immediately with no credit card. Free users get a 7-day trial to create quotes with real-time material pricing.' },
+                { q: 'Is there really a free plan?', a: 'Yes — fully free forever. Send unlimited quotes and invoices and let customers pay online via Square (a small 1.7% platform fee is added to the customer’s bill). New users also get a 14-day Pro trial so you can try every feature before deciding.' },
                 { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel your Pro subscription anytime from the app. You\'ll keep Pro access until the end of your billing period, then revert to Free.' },
                 { q: 'Do I need to pay separately for each device?', a: 'No. One subscription works across iOS, Android, and Web. Buy on any platform, use on all of them.' },
                 { q: 'Is GST included in the pricing?', a: 'The prices shown are in AUD. GST is included where applicable.' },
@@ -174,7 +177,7 @@ export default function PricingPage() {
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "iOS, Android, Web",
         "offers": [
-          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "description": "7-day trial, no credit card required" },
+          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "description": "Free forever. Customers pay online via Square (1.7% platform fee added to their bill). No credit card required." },
           { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "month" },
           { "@type": "Offer", "price": "199", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "year" }
         ]

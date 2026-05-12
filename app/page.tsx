@@ -22,7 +22,7 @@ const faqItems = [
   { question: 'Does QuoteMate integrate with Xero?', answer: 'Yes! Push invoices to Xero in one tap, auto-create contacts, record payments, and bulk sync multiple invoices. You can also export Xero-compatible CSVs if you prefer manual import.' },
   { question: 'Is my data secure?', answer: 'Absolutely. QuoteMate uses Firebase with enterprise-grade encryption. Your data is securely stored in the cloud and synced across your devices. We never share your business data with third parties.' },
   { question: 'Can I use it offline?', answer: 'Yes! Create and edit quotes without an internet connection. Everything syncs automatically when you\u2019re back online \u2014 perfect for remote job sites.' },
-  { question: 'How does the free trial work?', answer: 'Sign up and start creating quotes immediately \u2014 no credit card required. Your free trial starts when you create your first quote, not when you sign up. To unlock unlimited quotes, invoicing, AI material generation, all PDF templates, and more, upgrade to Pro anytime.' },
+  { question: 'How does the free plan and trial work?', answer: 'Sign up with no credit card. You\u2019re on the Free plan forever \u2014 send unlimited quotes and invoices, with customers paying online via Square (a small 1.7% platform fee is added to their bill). New users also get a 14-day Pro trial automatically when they create their first quote, so you can try every feature (bank/PayID/BPAY/PayPal options, AI material generation, all PDF templates, lower Square rate) before deciding whether to upgrade.' },
   { question: 'Can I track invoices and payments?', answer: 'Yes. Track invoice status (draft, sent, paid, partial, overdue), record partial payments and deposits, and get automatic overdue detection. Support for bank transfer, PayID, BPAY, PayPal, card, cash, and cheque.' },
   { question: 'Does it calculate GST?', answer: 'Yes. QuoteMate automatically calculates and displays GST on all quotes and invoices, keeping you compliant with Australian tax requirements.' },
   { question: 'Can I add my business logo?', answer: 'Yes! Upload your logo and add your business name, ABN, and payment details. Every quote and invoice you send will look professional and on-brand.' },
@@ -330,10 +330,11 @@ export default function HomePage() {
                     <span className="price">$0</span>
                     <span className="period">forever</span>
                   </div>
-                  <p className="pricing-desc">Get started &mdash; no credit card required</p>
+                  <p className="pricing-desc">No credit card. Customers pay online via Square (1.7% platform fee added to their bill).</p>
                 </div>
                 <ul className="pricing-features" role="list">
-                  <li><CheckIcon /> Create quotes (7-day trial)</li>
+                  <li><CheckIcon /> Unlimited quotes &amp; invoices</li>
+                  <li><CheckIcon /> Online card payments via Square</li>
                   <li><CheckIcon /> Professional PDF template</li>
                   <li><CheckIcon /> Live supplier pricing</li>
                   <li><CheckIcon /> Cloud sync</li>
@@ -349,17 +350,18 @@ export default function HomePage() {
                     <span className="price">$29</span>
                     <span className="period">/month</span>
                   </div>
-                  <p className="pricing-desc">Cancel anytime</p>
+                  <p className="pricing-desc">14-day free trial. Cancel anytime.</p>
                 </div>
                 <ul className="pricing-features" role="list">
-                  <li><CheckIcon /> Unlimited quotes &amp; invoices</li>
+                  <li><CheckIcon /> Everything in Free</li>
+                  <li><CheckIcon /> Bank Transfer, PayID, BPAY, PayPal</li>
+                  <li><CheckIcon /> Lower Square fee (1% vs 1.7%)</li>
                   <li><CheckIcon /> AI material &amp; title generation</li>
                   <li><CheckIcon /> All PDF templates</li>
                   <li><CheckIcon /> Business logo on documents</li>
-                  <li><CheckIcon /> Online quote acceptance</li>
                   <li><CheckIcon /> Priority support</li>
                 </ul>
-                <a href="/app" className="btn btn-primary pricing-btn">Subscribe to Pro</a>
+                <a href="/app" className="btn btn-primary pricing-btn">Start 14-Day Free Trial</a>
               </div>
               {/* Pro Annual */}
               <div className="pricing-card pricing-card-annual" data-reveal="">
@@ -370,7 +372,7 @@ export default function HomePage() {
                     <span className="price">$199</span>
                     <span className="period">/year</span>
                   </div>
-                  <p className="pricing-desc">That&rsquo;s just $16.58/month &mdash; save 43%</p>
+                  <p className="pricing-desc">14-day free trial. Just $16.58/month &mdash; save 43%.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Pro Monthly</li>
