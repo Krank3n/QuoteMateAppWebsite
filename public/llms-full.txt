@@ -1527,6 +1527,78 @@ Pro tips:
 - Utilise a professional quoting app like QuoteMate to streamline your estimation process and create polished proposals.
 - Ensure your quote includes clear payment terms, a validity period, and a process for handling variations to avoid disputes.
 
+### How to Quote a Shower Screen Installation in Australia
+
+URL: https://quotemateapp.au/articles/how-to-quote-a-shower-screen-installation/
+
+Craft accurate shower screen installation quotes with this guide for Australian tradies. Learn about costs, materials, labour, and common mistakes.
+
+#### What to Include in Your Shower Screen Quote
+
+A comprehensive shower screen quote goes beyond just the glass. Ensure you detail the type of screen (framed, semi-frameless, frameless), glass thickness (e.g., 6mm, 10mm toughened glass to AS/NZS 2208), hardware finishes (chrome, matte black), and any custom cuts or configurations. Clearly itemise the cost for materials, labour, site preparation (like ensuring surfaces are clean and level), waste removal, and a warranty for both materials and workmanship. Transparency helps manage client expectations and prevents disputes later on.
+
+#### Typical Shower Screen Installation Costs (AUD)
+
+The cost of a shower screen installation in Australia can vary significantly based on style and complexity. A standard framed screen might range from $300-$800, while a semi-frameless option typically sits between $700-$1500. For premium frameless screens, especially custom designs, expect costs anywhere from $1000 to $3000 or more. These figures generally include materials and installation for a standard bathroom, but complex installations or difficult site access can add to the total.
+
+#### Understanding Materials and Their Pricing
+
+Glass is the primary cost driver, with 6mm toughened glass being standard for framed and semi-frameless, and 10mm or 12mm toughened glass for frameless screens, crucial for structural integrity as per AS1288-2006. Hardware, including hinges, channels, brackets, and handles, can vary greatly in price and quality; look at reputable suppliers like Pivotech, Architectural Choice, or Carinya for durable components. Consider the cost difference between standard clear glass, low-iron glass, or frosted options, and always factor in freight costs for custom-sized panels from your glass supplier.
+
+#### Labour Pricing and Efficiency Tips
+
+Accurate labour pricing is crucial for profitability. Estimate installation time by considering factors such as the type of screen (frameless installations often take longer due to precision requirements), site access, wall conditions (are they plumb and square?), and whether a second person is required for heavy glass panels. Factor in travel time to and from the job site, as well as any time needed for final adjustments or cleanup. An average hourly rate for a skilled tradie might range from $80-$120 per hour, depending on your business overheads and local market rates.
+
+#### Avoiding Common Quoting Mistakes
+
+One of the biggest mistakes is inaccurate measurements; always double-check, especially for frameless screens where tolerances are minimal. Failing to account for uneven walls or floors, which might require additional packing or custom cuts, is another pitfall. Don't forget to include costs for consumables like silicone, fixings, and blades. Clearly outline what is and isn't included in the quote to prevent scope creep, such as tile repair or painting, which should be separate items or explicitly excluded.
+
+#### Practical Tips
+
+Measure three times, cut once – or better yet, verify measurements with the client. Always take detailed photos of the site before and after, especially regarding existing damage. Clearly specify your warranty terms for both materials and workmanship. Use a digital quoting app like QuoteMate to streamline your quoting process and present professional-looking quotes. Factor in potential call-back costs for minor adjustments, which are common in precise installations. Confirm wall integrity and that studs are located for secure fixing points, especially for heavy frameless glass.
+
+Pro tips:
+- Always perform a thorough site visit to accurately assess conditions and take precise measurements, verifying wall plumbness.
+- Clearly define the scope of work, including preparation, installation, cleanup, and disposal, in your written quote.
+- Specify the type and thickness of glass, hardware finishes, and any custom features to avoid misunderstandings.
+- Factor in all variable costs such as travel time, parking, consumables (silicone, screws), and waste disposal.
+- Offer a good-better-best option for shower screens (e.g., framed, semi-frameless, frameless) to give clients choice.
+- Communicate expected timelines for ordering custom glass and installation completion to set realistic expectations.
+
+### How to Quote LED Downlight Installation in Australia
+
+URL: https://quotemateapp.au/articles/how-to-quote-led-downlight-installation/
+
+Master LED downlight quoting in Australia. Learn about costs, materials, labour, and common mistakes to win more jobs with QuoteMate.
+
+#### Crafting a Comprehensive LED Downlight Quote
+
+When preparing your quote, clearly detail the scope of work, specifying whether it's a new installation or a retrofit. Include the exact number and type of lights (e.g., dimmable, colour temperature), noting any specific client requests. Transparency is key, so break down costs for materials, labour, and any required electrical upgrades or certifications, ensuring compliance with AS/NZS 3000. Don't forget to specify warranties for both products and your workmanship.
+
+#### Understanding Typical Installation Costs
+
+Typical installation costs for 10-15 standard LED downlights in Australia can range from $800 to $1,800, varying based on job complexity and location. New builds generally incur lower per-light costs due to easier access compared to retrofits. Factors such as ceiling material (plaster versus concrete), existing wiring conditions, and integration with smart home systems significantly influence the final price, so assess these during your site visit.
+
+#### Essential Materials and Their Pricing
+
+LED downlights themselves typically range from $15-$50+ per unit for quality brands found at major suppliers like Clipsal, Gerard Lighting, or SAL National. Account for necessary wiring (e.g., TPS cable at $1-$2 per metre), connectors, and potential dimmers which can add $40-$100+. Crucially, include safety items like fire-rated covers or insulation guards, priced around $5-$15 per unit, to meet Australian building codes. Remember that bulk purchasing can lead to cost efficiencies on larger projects.
+
+#### Optimising Your Labour Costs and Efficiency
+
+Labour is a significant component, with qualified electricians charging $70-$120 per hour in Australia. Estimate around 15-30 minutes per downlight for a new installation, extending to 30-60 minutes for retrofits requiring removal of old fittings or complex wiring modifications. Ensure your quote accounts for travel time, site setup, and thorough cleanup. Consider offering tiered pricing for larger quantities of lights to enhance your competitiveness and appeal to clients.
+
+#### Common Pitfalls to Avoid in Downlight Quoting
+
+A frequent mistake is underestimating material costs or overlooking hidden charges like waste disposal fees for old fittings. Crucially, failing to clearly define the scope of work upfront can lead to disputes and delays later on. Always conduct a detailed site inspection to preempt access issues, wiring complications, or potential asbestos concerns, which can significantly impact both time and cost. Furthermore, neglecting to account for compliance with Australian Standards like AS/NZS 3000 (Wiring Rules) is a serious error.
+
+Pro tips:
+- Always conduct a thorough site inspection to identify potential issues like access, existing wiring, or ceiling type before quoting.
+- Clearly itemise materials and labour in your QuoteMate quote to ensure transparency and build client trust.
+- Educate clients on energy savings and longevity benefits of LEDs to justify the initial investment.
+- Factor in a contingency of 10-15% for unexpected issues, especially on retrofit jobs.
+- Specify the brand and model of LED downlights in your quote to avoid last-minute changes and manage client expectations.
+- Keep up-to-date with AS/NZS 3000 (Wiring Rules) and other relevant Australian Standards to ensure all installations are compliant and safe.
+
 ## Quote templates
 
 Free, customisable starting points for the most common Australian trade jobs. Each template includes typical materials, steps, and a default labour structure.
@@ -2039,14 +2111,14 @@ Feature comparison:
 - Real-time supplier pricing — QuoteMate: Yes | Tradify: No
 - Professional PDF quotes — QuoteMate: Yes | Tradify: Yes
 - Invoicing — QuoteMate: Yes | Tradify: Yes
-- Job scheduling — QuoteMate: No | Tradify: Yes
+- Job scheduling — QuoteMate: Yes | Tradify: Yes
 - Timesheets — QuoteMate: No | Tradify: Yes
 - Offline mode — QuoteMate: Yes | Tradify: No
 - Voice-to-text quoting — QuoteMate: Yes | Tradify: No
 - Flat pricing (no per-user fees) — QuoteMate: $29/month | Tradify: $35/user/month
 - Free plan available — QuoteMate: Yes | Tradify: No
 
-Bottom line: Tradify is a solid job management platform for larger teams that need scheduling and timesheets. QuoteMate is the better choice if your priority is fast, accurate quoting with AI-powered material suggestions and real-time supplier pricing — at a fraction of the cost.
+Bottom line: Tradify is a solid job management platform for larger teams that need timesheets and crew management. QuoteMate covers the day-to-day basics — quoting, invoicing, and job scheduling with Google Calendar sync — and pulls ahead on speed with AI-powered material suggestions and real-time supplier pricing, at a fraction of the cost.
 
 ### QuoteMate vs ServiceM8
 
@@ -2061,14 +2133,14 @@ Feature comparison:
 - Real-time supplier pricing — QuoteMate: Yes | ServiceM8: No
 - Professional PDF quotes — QuoteMate: Yes | ServiceM8: Yes
 - Invoicing — QuoteMate: Yes | ServiceM8: Yes
-- Job scheduling & dispatch — QuoteMate: No | ServiceM8: Yes
+- Job scheduling — QuoteMate: With Google Calendar sync | ServiceM8: Scheduling & dispatch
 - Client communication (SMS/email) — QuoteMate: Share via SMS/email/WhatsApp | ServiceM8: Yes
 - Offline mode — QuoteMate: Yes | ServiceM8: Yes
 - Voice-to-text quoting — QuoteMate: Yes | ServiceM8: No
 - Simple flat pricing — QuoteMate: $29/month | ServiceM8: $0–$379/month
 - Australian supplier integration — QuoteMate: Major suppliers | ServiceM8: No
 
-Bottom line: ServiceM8 is a comprehensive field service platform ideal for businesses managing crews and complex scheduling. QuoteMate is purpose-built for fast, accurate quoting — describe any job and get an AI-generated materials list with live supplier pricing, all for a simple flat rate.
+Bottom line: ServiceM8 is a comprehensive field service platform ideal for businesses managing crews and complex dispatch. QuoteMate is purpose-built for fast, accurate quoting — describe any job, get an AI-generated materials list with live supplier pricing, schedule it to Google Calendar, and send the quote — all for a simple flat rate.
 
 ### QuoteMate vs Fergus
 
@@ -2083,14 +2155,14 @@ Feature comparison:
 - Real-time supplier pricing — QuoteMate: Yes | Fergus: No
 - Professional PDF quotes — QuoteMate: Yes | Fergus: Yes
 - Invoicing — QuoteMate: Yes | Fergus: Yes
-- Job scheduling — QuoteMate: No | Fergus: Yes
-- Purchase orders — QuoteMate: No | Fergus: Yes
+- Job scheduling — QuoteMate: Yes | Fergus: Yes
+- Purchase orders — QuoteMate: Reece integration | Fergus: Yes
 - Offline mode — QuoteMate: Yes | Fergus: No
 - Voice-to-text quoting — QuoteMate: Yes | Fergus: No
 - Flat pricing — QuoteMate: $29/month | Fergus: From $55/month
 - Free plan available — QuoteMate: Yes | Fergus: No
 
-Bottom line: Fergus offers deep job management features including purchase orders and detailed job costing. QuoteMate wins on speed and simplicity — create accurate quotes with AI material suggestions and real-time pricing in under 2 minutes, at about half the monthly cost.
+Bottom line: Fergus offers deep job management with detailed job costing across many suppliers. QuoteMate wins on speed and simplicity — AI material suggestions, real-time pricing, job scheduling, and purchase orders straight to Reece — in under 2 minutes per quote, at about half the monthly cost.
 
 ### QuoteMate vs ChatGPT (and other AI chatbots)
 
