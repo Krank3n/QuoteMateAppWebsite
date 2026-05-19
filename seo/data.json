@@ -3906,6 +3906,293 @@
       }
     ]
   },
+  "manageJobsHub": {
+    "hub": {
+      "metaTitle": "Job Management for Australian Tradies (2026) | QuoteMate",
+      "metaDescription": "Track every job from inquiry to paid on your phone. Schedule, photograph, checklist and chase — the job management built for Aussie sole traders and small crews.",
+      "heroTitle": "Run Every Job From Your Phone — Inquiry to Paid",
+      "heroSubtitle": "Quoting is only half the work. QuoteMate tracks every job through nine clear stages, with scheduling, on-site photos, checklists and follow-ups built for tradies who hate paperwork.",
+      "painPoint": "Most tradie tools handle quotes or invoices, then hand you back to a spreadsheet, a whiteboard, or your memory for the bit in the middle — the part where the work actually happens. Jobs slip, photos sit lost in your camera roll, follow-ups get forgotten, and the next quote goes out with a hopeful guess instead of last job's real numbers.",
+      "intro": "QuoteMate is the only Australian quoting app with job management baked in for sole traders and small crews. Every quote becomes a job. Every job moves through nine stages — inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed, or cancelled — with the timestamps stamped automatically so you can see how long jobs really take. Schedule the start date and the calendar syncs to Google. Snap and annotate site photos against the job, not lost in your camera roll. Keep an on-site checklist of materials and to-dos so nothing gets missed mid-job. Chase quotes automatically if a customer hasn't replied. The pipeline view on the dashboard shows you exactly where every dollar is, and where the bottleneck is. This hub covers each piece and how to set it up.",
+      "spokeIntro": "Pick the part of the job that's eating your evenings."
+    },
+    "spokes": [
+      {
+        "slug": "job-scheduling",
+        "title": "Job Scheduling for Tradies",
+        "shortLabel": "Job Scheduling",
+        "summary": "Schedule every accepted quote on your phone, see the week ahead, and stop double-booking jobs you accepted three weeks ago and forgot.",
+        "metaTitle": "Job Scheduling App for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Schedule every accepted quote into a real start date, see your week ahead, and never double-book. The scheduling tool built for Australian tradies who hate spreadsheets.",
+        "intro": "Most tradies schedule jobs on a whiteboard, a paper diary, or 'I'll fit you in next week'. None of these survive contact with a busy fortnight. QuoteMate turns every accepted quote into a scheduled job in two taps. Pick a start date, optionally an end date, and the job lands on your calendar with the customer, scope, materials, and deposit status all attached.",
+        "sections": [
+          {
+            "heading": "Why whiteboard scheduling falls over",
+            "body": "Whiteboard jobs disappear the moment they get rubbed off, paper diaries get lost in the ute, and 'I'll fit you in next week' is the line every tradie regrets by Tuesday. The cost isn't just embarrassment when a customer rings to ask where you are. It's the second job booked over the top of the first, the materials ordered for a day you can't actually do, and the deposit you've already taken on a job you've forgotten. A scheduled job that lives with the quote — same record, same phone, same place — fixes all three problems."
+          },
+          {
+            "heading": "How scheduling works in QuoteMate",
+            "body": "When a customer accepts a quote, QuoteMate prompts you to schedule it. Pick a start date and (optionally) an end date — the duration is read straight from the labour hours you priced on the quote, so for a one-day fence install the end date defaults to the start. Add the address (already filled from the quote) and any notes for the day. The job moves to the 'Scheduled' stage automatically, lands on your in-app calendar, and (if you've connected Google Calendar) syncs to your phone calendar within seconds. The customer also gets an emailed confirmation of the start date if you want."
+          },
+          {
+            "heading": "Avoiding the double-booking trap",
+            "body": "QuoteMate's week view shows every scheduled job laid out by day, with the job duration in hours pulled from the quote's labour figure. Before accepting a new quote you can see whether the day is already taken — including jobs scheduled across two days that overlap your gap. For multi-day jobs (a kitchen reno, a long fence run) the schedule sheet lets you pick a date range, so the calendar shows the job blocking the right number of days instead of just the start. If you ever need to reschedule, the customer details, materials list, and deposit history all move with the job — no copy-pasting between apps."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Does QuoteMate sync to Google Calendar?",
+            "answer": "Yes. Connect your Google account in Settings → Integrations and every scheduled job lands in Google Calendar within seconds, with the customer name, address, and a link back to the job in QuoteMate."
+          },
+          {
+            "question": "Can I schedule multi-day jobs?",
+            "answer": "Yes. The schedule sheet lets you pick a start date and an end date so the calendar blocks the full range. The default duration is read from the labour hours on the quote, so a one-day fence install fills one day automatically."
+          },
+          {
+            "question": "What if I need to reschedule a job?",
+            "answer": "Open the job, tap the schedule sheet, and pick a new date. The Google Calendar event updates, the job timestamps update, and the customer can be notified by email if you want."
+          },
+          {
+            "question": "Does scheduling work offline?",
+            "answer": "Yes. You can schedule a job with no signal — the schedule writes locally and syncs when you're back online, including to Google Calendar."
+          },
+          {
+            "question": "Can I see my week before accepting a new quote?",
+            "answer": "Yes. The Jobs screen has a week view showing every scheduled job by day, with duration pulled from the quote's labour figure, so you can see whether you're already booked before you commit."
+          }
+        ]
+      },
+      {
+        "slug": "job-stages-pipeline",
+        "title": "The 9-Stage Job Pipeline for Tradies",
+        "shortLabel": "Job Stages Pipeline",
+        "summary": "Inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed. The job lifecycle every tradie runs in their head — made visible on your phone.",
+        "metaTitle": "Tradie Job Pipeline & Stages App (Australia 2026) | QuoteMate",
+        "metaDescription": "Track every tradie job through nine stages from inquiry to paid. The pipeline view built for Australian sole traders who want to see where every dollar is sitting.",
+        "intro": "Every tradie already runs a job pipeline in their head: someone called, you quoted, they accepted, you scheduled it, you did the work, you sent the invoice, they paid you. The trouble is keeping all that in your head across 30 active jobs. QuoteMate makes the pipeline a real thing on your phone — nine stages, automatic timestamps, a single dashboard view of where every job sits.",
+        "sections": [
+          {
+            "heading": "The nine stages, and why each one matters",
+            "body": "Inquiry is a job created with no quote yet — the phone-call-from-the-fence-bay you'd otherwise lose. Quoted is a quote sent. Accepted is the customer's signature back, with or without a deposit. Scheduled is a start date locked in. In Progress is the actual start date stamped on the day you turn up. Completed is the work done, invoice ready. Paid is the invoice settled in full. Closed is the terminal archived state. Cancelled is the job that died — recorded with a reason so you can spot patterns over time. Every stage transition writes a timestamp, so you can see exactly how long jobs sit waiting on each one."
+          },
+          {
+            "heading": "Why timestamps beat 'I think it was a few weeks ago'",
+            "body": "If you can't see how long a quote sits in 'sent' before it converts, you can't see your real follow-up window. If you can't see how long jobs sit in 'completed' before they get paid, you can't see your real cash-flow lag. QuoteMate stamps every stage transition automatically, so the dashboard can show you the median quote-to-accept time, the median complete-to-paid time, and the jobs sitting longer than usual at each stage. That's how you find the slow-paying customers, the quotes worth chasing, and the bottlenecks costing you days."
+          },
+          {
+            "heading": "Cancelled jobs are data too",
+            "body": "When a job dies, QuoteMate prompts you for a cancellation reason — price, scope changed, customer ghosted, lost to a competitor, not the right fit. After 50 cancelled jobs, you'll see whether you're losing on price (raise your offer's perceived value) or scope (tighten your quoting questions). That's harder data than asking 'why are people saying no' and trying to remember. The cancelled stage is terminal — it doesn't sit in your live pipeline — but the record stays for analysis and for re-quoting the customer 12 months later when they come back."
+          },
+          {
+            "heading": "Pipeline view on the dashboard",
+            "body": "The dashboard's pipeline section shows live counts at each stage with the dollar value sitting in each. You can see at a glance: $14,200 quoted but not accepted (chase candidates), $8,400 accepted but not scheduled (book these in this week), $11,900 completed but not paid (send the reminder). It's the same pipeline a sales manager would build for a B2B sales team, scaled down for one ute. The Insights screen layers monthly comparisons on top so you can see whether the pipeline is growing or shrinking month over month."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How do jobs move between stages?",
+            "answer": "Most stages move automatically — sending a quote stamps the Quoted stage, the customer accepting stamps Accepted, scheduling a date stamps Scheduled. You can also move stages manually from the job actions sheet if you need to."
+          },
+          {
+            "question": "Can I see how long each stage takes?",
+            "answer": "Yes. Every stage transition writes a timestamp, so the dashboard can show you medians like 'quote-to-accept: 4.2 days' and flag jobs sitting longer than usual."
+          },
+          {
+            "question": "What happens to cancelled jobs?",
+            "answer": "Cancelled jobs are recorded with a reason and archived. They stay in the database for analysis (so you can spot patterns) and for re-quoting later, but they don't clog your live pipeline view."
+          },
+          {
+            "question": "Do I need to use all nine stages?",
+            "answer": "No. Most tradies live in five — Quoted, Accepted, Scheduled, In Progress, Paid. Closed is just an archive for jobs you've stopped tracking. Inquiry is optional if you don't want to log phone-call leads before quoting."
+          },
+          {
+            "question": "Can I get notified when a stage changes?",
+            "answer": "Yes. Push notifications fire when a customer accepts a quote, when an invoice is paid, and when an invoice goes overdue. Notification preferences are in Settings."
+          }
+        ]
+      },
+      {
+        "slug": "job-photos-on-site",
+        "title": "On-Site Job Photos and Annotation for Tradies",
+        "shortLabel": "On-Site Photos & Annotation",
+        "summary": "Snap site photos against the job, not buried in your camera roll. Draw arrows, mark damage, note dimensions — straight from the phone.",
+        "metaTitle": "On-Site Job Photos App for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Take and annotate site photos against each job, not lost in your camera roll. The job photo tool for Aussie tradies who need to show damage, dimensions and before-and-after.",
+        "intro": "Site photos win disputes. They protect you when a customer changes their story about what was there before, they prove you did what you quoted, and they fast-track the quote on every similar job after this one. The problem is that a photo on your camera roll, with no caption and no job attached, is roughly as useful as no photo at all. QuoteMate attaches photos to the job, with annotation built in, so they're actually findable a year later.",
+        "sections": [
+          {
+            "heading": "Photos attached to the job, not the camera roll",
+            "body": "When you open a job in QuoteMate, the photos tab is where every site shot lives. Take a new photo from the app and it lands against the job automatically — customer, address, date, and the stage the job was in when you took it. Existing photos can be imported from your camera roll if you took them before opening the app. The thumbnail strip on the job header shows the most recent shots at a glance, so the moment you turn up to a job you can scroll back through the photos you took during quoting without digging through 4,000 unrelated shots."
+          },
+          {
+            "heading": "Annotation for damage, dimensions, and notes",
+            "body": "Tap a photo to open the annotation editor. Draw arrows pointing at the cracked tile, circle the section of fence that needs replacing, write the dimension on the photo itself instead of scribbling it on a notepad you'll lose. Annotations save as a new image so the original stays untouched. For damage assessments and insurance work this is the difference between a clear paper trail and a follow-up phone call asking 'where was that crack again?' The annotation tools cover arrows, circles, freehand, and text — nothing fancier than that, because anything more is a distraction on a tradie's day."
+          },
+          {
+            "heading": "Before-and-after photos that sell the next job",
+            "body": "Every completed job in QuoteMate keeps its photos in one place. When you're quoting the next similar job, you can pull up the before-and-after photos from the last one and show the customer exactly what they'll get. That's the single most effective close in residential trade work. Some tradies post them publicly (with the customer's consent) on a portfolio gallery — QuoteMate can export photo bundles per job for that purpose. Either way, the photos earn their keep long after the job is done."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Where are photos stored?",
+            "answer": "Photos are stored in your QuoteMate cloud storage against the job, with thumbnails for fast loading and the full-resolution image preserved. You can also save copies to your camera roll if you want a local backup."
+          },
+          {
+            "question": "Can I annotate after taking the photo?",
+            "answer": "Yes. Tap any photo on a job to open the annotation editor — arrows, circles, freehand, text. The annotated version is saved as a new image so the original is preserved."
+          },
+          {
+            "question": "Do photos sync across my devices?",
+            "answer": "Yes. Photos sync to the same cloud account, so a photo you took on-site on your phone is visible on the web app or iPad when you're back at the office."
+          },
+          {
+            "question": "Can I attach photos to a quote PDF?",
+            "answer": "Yes. Photos taken against a quote can be embedded into the PDF — useful for damage assessments, insurance work, and showing the customer exactly what's being priced."
+          },
+          {
+            "question": "Is there a limit on photos per job?",
+            "answer": "No hard limit. Storage is generous on every plan, and you can archive or delete older photos any time."
+          }
+        ]
+      },
+      {
+        "slug": "job-checklists",
+        "title": "On-Site Job Checklists for Tradies",
+        "shortLabel": "Job Checklists",
+        "summary": "Brain-dump materials and to-dos on the day, tick them off as you go. The checklist that stops you driving back to Bunnings at 4pm.",
+        "metaTitle": "Job Checklists App for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Brain-dump materials and to-dos against every job and tick them off on-site. The checklist tool for Australian tradies who lose hours to forgotten parts and missed steps.",
+        "intro": "Every tradie has driven back to Bunnings at 4pm for the one tube of silicone they forgot. The materials list on the quote is part of the answer, but it's never the whole answer — there's always something you only think of on the day. QuoteMate's job checklist is a place to brain-dump those items against the job, tick them off as you do them, and stop the same thing happening on the next similar job.",
+        "sections": [
+          {
+            "heading": "Why the quote's materials list isn't enough",
+            "body": "The quote covers what the customer is paying for. The checklist covers what you actually need to do. Those overlap, but they're not the same list. A bathroom reno quote might say 'tile floor and walls, install vanity'. The checklist for the day says: 'pick up extra bag of grout in case, drop sheets, take the multi-tool not the recip saw, ring Reece by 7am to confirm vanity is at the branch'. None of that goes on the quote, but forgetting any of it costs you an hour."
+          },
+          {
+            "heading": "How the checklist works in QuoteMate",
+            "body": "Open the job, scroll to the checklist section, and add items as a free-text brain dump — one per line. Tap to tick them off as you go. The checklist lives with the job, so the items you wrote when quoting are still there on the day you do the work, three weeks later. Multi-day jobs can have items added each day as new things come up. When the job's complete, the checklist stays attached to the record, so the next similar job you can copy the checklist forward and start with the same list, ticked clean."
+          },
+          {
+            "heading": "Reusing checklists across similar jobs",
+            "body": "After running ten similar jobs, you'll find your checklist for that job type is mostly the same every time. QuoteMate lets you save a job as a template, including the checklist, so the next time you quote a hot water swap or a colorbond fence the checklist is already populated with the items you usually need. Edit the few that change, and start the day with everything pre-loaded. That's the difference between every job feeling fresh-and-stressful versus every job feeling like the eleventh time you've done it (because it is)."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Is the checklist the same as the materials list?",
+            "answer": "No. The materials list on the quote is what the customer is paying for. The checklist is for you — extra parts, tools, phone calls, prep steps. They overlap but they're not the same."
+          },
+          {
+            "question": "Can I tick items off offline?",
+            "answer": "Yes. The checklist works fully offline — tap to tick items on-site with no signal, and the state syncs when you're back online."
+          },
+          {
+            "question": "Can I copy a checklist from a previous job?",
+            "answer": "Yes. Save any job as a template (including its checklist) and the next quote for that job type starts with the same checklist pre-loaded."
+          },
+          {
+            "question": "Does the checklist appear on the customer's quote?",
+            "answer": "No. The checklist is internal-only — it's for your day on-site. The customer sees the materials list, the labour line, and the price, not your reminder to bring the dropsheets."
+          },
+          {
+            "question": "How many items can I add?",
+            "answer": "There's no practical limit. The brain-dump style is the point — write down anything you'd otherwise forget."
+          }
+        ]
+      },
+      {
+        "slug": "quote-follow-ups",
+        "title": "Automated Quote Follow-Ups for Tradies",
+        "shortLabel": "Quote Follow-Ups",
+        "summary": "Send a quote, then forget about it. QuoteMate chases the customer for you so the ones that ghosted you actually come back.",
+        "metaTitle": "Automated Quote Follow-Ups for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Stop chasing quotes manually. QuoteMate sends polite follow-ups on a schedule so the customers who went quiet actually come back. Built for Australian tradies.",
+        "intro": "The single biggest reason tradies lose work isn't price — it's silence. A customer who liked the quote but didn't reply on Monday is busy on Tuesday, distracted on Wednesday, and quoting two competitors by Friday. A polite follow-up at the right time, with the same payment link they had the first time, recovers a quote that would otherwise be dead. QuoteMate runs the follow-up cadence automatically so you never have to remember.",
+        "sections": [
+          {
+            "heading": "Why most quotes that lose actually just go cold",
+            "body": "Industry data on residential trade quotes is consistent: the customer's first 'yes' usually happens within 72 hours, but a meaningful share of accepted quotes are accepted in week two or three after a single follow-up nudge. The customer wasn't ignoring you. They were waiting on their partner, weighing a competing quote, or just busy. The tradie who sends one well-timed reminder converts a chunk of those quotes that would otherwise stay 'pending' forever. The tradie who manually remembers to chase converts none of them, because the chase always slips."
+          },
+          {
+            "heading": "The follow-up cadence QuoteMate uses",
+            "body": "By default, QuoteMate sends a polite follow-up email at day 3 if the quote hasn't been accepted, then a firmer (but still friendly) one at day 7, and a final one at day 14. Each one references the quote number, the price, and the same one-tap accept-and-pay link the customer had originally. You can edit the cadence, the templates, or turn it off for specific quotes (e.g., for a regular commercial customer where you don't want to nudge). The Pro plan also supports SMS follow-ups using your business name as the sender."
+          },
+          {
+            "heading": "When to turn follow-ups off",
+            "body": "Two cases. First, repeat customers who'd find it weird to get an automated chase — pin the quote to manual mode in the actions sheet. Second, quotes where the customer specifically asked for time (a builder waiting on engineering, a renovation customer waiting on council approval) — push the first follow-up date out to the date the customer flagged. QuoteMate also auto-suppresses follow-ups the moment the customer opens the quote and replies, so a polite 'we're thinking about it' email kills the rest of the sequence automatically."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Will customers be annoyed by the follow-ups?",
+            "answer": "Not at the default cadence (day 3, 7, 14). The templates are written in plain tradie English with the actual price and a payment link — most customers find them helpful because they'd forgotten. If a customer replies, the sequence stops automatically."
+          },
+          {
+            "question": "Can I customise the follow-up templates?",
+            "answer": "Yes. Templates are editable in Settings → Notifications, and you can keep your own tone — short and direct, or longer and more conversational."
+          },
+          {
+            "question": "Does QuoteMate send follow-ups by SMS?",
+            "answer": "On the Pro plan, yes. SMS follow-ups send from your business name and have a much higher open rate than email — most tradies use email for the day-3 nudge and switch to SMS at day 7."
+          },
+          {
+            "question": "What if I want to stop follow-ups on a specific quote?",
+            "answer": "Open the quote, tap the actions sheet, and toggle follow-ups off. You can also push the first follow-up date out to a custom date if the customer asked for time."
+          },
+          {
+            "question": "Do follow-ups affect quoted-to-accepted conversion?",
+            "answer": "Yes. Tradies using the default cadence typically see meaningful uplift in quote conversion rate, especially on residential work — the same quotes still convert, they just convert sooner and more of them stop sitting in 'pending' forever."
+          }
+        ]
+      },
+      {
+        "slug": "google-calendar-sync",
+        "title": "Google Calendar Sync for Tradie Jobs",
+        "shortLabel": "Google Calendar Sync",
+        "summary": "Every scheduled job lands in Google Calendar so your phone, ute dashboard and partner's calendar all know what's on this week.",
+        "metaTitle": "Google Calendar Sync for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Sync every scheduled QuoteMate job to Google Calendar. Customer name, address, scope, and a link back to the job — visible on your phone, ute, and shared with your partner.",
+        "intro": "Your business calendar shouldn't live in two places. QuoteMate's Google Calendar integration writes every scheduled job to your Google account so it shows up on your phone calendar, your ute's Android Auto or CarPlay screen, and (if you share the calendar) your partner's phone. One source of truth, no double-entry, no 'I thought you were home Tuesday'.",
+        "sections": [
+          {
+            "heading": "What gets synced",
+            "body": "Each scheduled QuoteMate job becomes a Google Calendar event with the customer name in the title, the job address as the location, the scope and quote total in the description, and a direct link back to the job inside QuoteMate. The event uses the start date and end date you scheduled on the job — single-day jobs become a one-day event, multi-day jobs (a kitchen reno, a long fence run) become a multi-day event. If you reschedule the job, the Google event updates automatically within seconds."
+          },
+          {
+            "heading": "Why it matters for utes and partners",
+            "body": "Most tradies already have Google Calendar running on their phone for personal stuff. Putting jobs in the same calendar means your ute's Android Auto or CarPlay screen reads out your next job (and the address) when you start the car, your phone's lock screen shows the next one, and any calendar you share — with a partner, a bookkeeper, or a sub-contractor — automatically shows your work week. None of this needs you to remember to copy-paste anything. The sync runs in the background."
+          },
+          {
+            "heading": "Setup takes under a minute",
+            "body": "Go to Settings → Integrations → Google Calendar, sign in with the Google account you want jobs to land in, pick the calendar (most tradies use a dedicated 'Work' calendar so personal events stay separate), and you're done. Past scheduled jobs back-fill on the first sync. Future jobs sync the moment you schedule them. You can disconnect any time without losing any data on the QuoteMate side — the events stay in Google until you delete them."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Which Google account does the sync use?",
+            "answer": "Whichever Google account you sign in with during setup. Most tradies use a dedicated work account so personal calendar entries stay separate from job events."
+          },
+          {
+            "question": "Can I sync to a specific calendar, not the default one?",
+            "answer": "Yes. After signing in, pick the target calendar — most tradies create a 'Work' calendar so jobs are visually distinct from personal events."
+          },
+          {
+            "question": "Does the customer see anything?",
+            "answer": "No. The Google Calendar sync is for your side only. The customer gets their own confirmation email if you enabled it, but they're not invited to the calendar event."
+          },
+          {
+            "question": "What happens if I reschedule a job?",
+            "answer": "The Google Calendar event updates automatically within seconds — new date, new times, new notes, no manual editing."
+          },
+          {
+            "question": "Can I share my calendar with a partner or bookkeeper?",
+            "answer": "Yes — that's the point. Once the jobs are in Google Calendar, share that calendar from inside Google with whoever needs visibility. They'll see your work week without ever having to log into QuoteMate."
+          }
+        ]
+      }
+    ]
+  },
   "integrations": {
     "reece": {
       "hub": {

@@ -24,6 +24,7 @@ const faqItems = [
   { question: 'Can I use it offline?', answer: 'Yes! Create and edit quotes without an internet connection. Everything syncs automatically when you\u2019re back online \u2014 perfect for remote job sites.' },
   { question: 'How does the free plan and trial work?', answer: 'Sign up with no credit card. You\u2019re on the Free plan forever \u2014 send unlimited quotes and invoices, with customers paying online via Square (a small 1.7% platform fee is added to their bill). New users also get a 14-day Pro trial automatically when they create their first quote, so you can try every feature (bank/PayID/BPAY/PayPal options, AI material generation, all PDF templates, lower Square rate) before deciding whether to upgrade.' },
   { question: 'Can I track invoices and payments?', answer: 'Yes. Track invoice status (draft, sent, paid, partial, overdue), record partial payments and deposits, and get automatic overdue detection. Support for bank transfer, PayID, BPAY, PayPal, card, cash, and cheque.' },
+  { question: 'Can I manage jobs after the quote is sent?', answer: 'Yes. QuoteMate tracks every job through a 9-stage pipeline (inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed, cancelled) with scheduling, on-site photos with annotation, job checklists, and automated quote follow-ups. Scheduled jobs sync to Google Calendar so they show up on your phone, ute, and any shared calendars.' },
   { question: 'Does it calculate GST?', answer: 'Yes. QuoteMate automatically calculates and displays GST on all quotes and invoices, keeping you compliant with Australian tax requirements.' },
   { question: 'Can I add my business logo?', answer: 'Yes! Upload your logo and add your business name, ABN, and payment details. Every quote and invoice you send will look professional and on-brand.' },
 ];
@@ -108,6 +109,7 @@ export default function HomePage() {
                 { title: 'Fastest Quoting in the Game', desc: 'AI-powered materials lists, reusable templates, voice-to-text, and quote-to-invoice in one tap.', href: '#quoting', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> },
                 { title: 'Live Supplier Pricing', desc: 'Real-time prices from major Australian suppliers, web search, and your own imported price lists.', href: '#supplier-pricing', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> },
                 { title: 'Professional Documents', desc: 'Branded PDF quotes and invoices with multiple templates, email delivery, and online acceptance.', href: '#quotes-invoices', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> },
+                { title: 'Manage Every Job', desc: '9-stage pipeline, scheduling, on-site photos, checklists, and automated follow-ups — every job from inquiry to paid.', href: '#manage-jobs', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg> },
                 { title: 'Xero Integration', desc: 'One-tap invoice sync, auto-create contacts, record payments, and bulk export to Xero.', href: '#xero', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> },
                 { title: 'Built for Tradies', desc: 'Aussie GST, independent markup, travel calculator, offline mode, and trade-specific setup.', href: '#tradie-features', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
                 { title: 'Grow Your Business', desc: 'Revenue dashboard, quote pipeline, referral program, and push notifications to stay on top.', href: '#grow', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
@@ -163,6 +165,22 @@ export default function HomePage() {
             'Email quotes directly with a pre-written professional email and your quote attached',
             'Quote acceptance via email \u2014 customers accept or decline straight from their inbox',
             'Invoice status tracking \u2014 draft, sent, paid, partial, overdue \u2014 know where every dollar is',
+          ]}
+        />
+
+        <FeatureShowcase
+          id="manage-jobs"
+          title="Manage Every Job"
+          titleAccent="From Inquiry to Paid"
+          subtitle="Quoting is only half the work. QuoteMate tracks every job through a 9-stage pipeline so you can see exactly where every dollar is and where the bottleneck is."
+          features={[
+            '9-stage pipeline — inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed, cancelled — with auto-stamped timestamps',
+            'Schedule jobs in two taps — pick a start date (and end date for multi-day jobs), and it lands on your calendar',
+            'Google Calendar sync — every scheduled job appears on your phone, ute dashboard, and shared calendars within seconds',
+            'On-site job photos with annotation — arrows, circles, dimensions, before-and-after — all attached to the job, not lost in your camera roll',
+            'On-site checklists — brain-dump materials and to-dos so you stop driving back to Bunnings at 4pm',
+            'Automated quote follow-ups — day 3, day 7, day 14 — chase the customers who went quiet, without lifting a finger',
+            'Pipeline dashboard — see $ value sitting in each stage so you know what to chase, schedule, or invoice this week',
           ]}
         />
 
@@ -536,6 +554,11 @@ export default function HomePage() {
           "Live supplier pricing from major Australian hardware suppliers",
           "Branded PDF quotes and invoices",
           "Quote-to-invoice in one tap",
+          "9-stage job pipeline (inquiry to paid)",
+          "Job scheduling with Google Calendar sync",
+          "On-site job photos with annotation",
+          "On-site job checklists",
+          "Automated quote follow-ups",
           "Xero integration",
           "Square tap-to-pay (iPhone & NFC-capable Android)",
           "Australian GST and ABN handling",

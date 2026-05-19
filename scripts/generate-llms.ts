@@ -37,6 +37,7 @@ interface Guide { slug: string; title: string; description: string; sections?: {
 interface City { slug: string; name: string; state: string }
 interface Spoke { slug: string; title: string; summary: string; intro?: string; sections?: { heading: string; body: string }[]; faqs?: { question: string; answer: string }[] }
 interface PaymentHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
+interface ManageJobsHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
 
 interface ReeceMaterial { name: string; note?: string }
 interface ReeceSpoke {
@@ -66,6 +67,7 @@ interface SeoData {
   quoteTemplates: Template[];
   guides: Guide[];
   paymentHub?: PaymentHub;
+  manageJobsHub?: ManageJobsHub;
   integrations?: { reece?: ReeceIntegration };
 }
 
@@ -108,6 +110,7 @@ async function main() {
   indexLines.push(`- [Templates](${BASE_URL}/templates/): ${data.quoteTemplates.length}+ free quote templates by job type.`);
   indexLines.push(`- [Trades](${BASE_URL}/trades/): Trade-specific quoting hubs for ${data.trades.length} trades.`);
   indexLines.push(`- [Get Paid](${BASE_URL}/get-paid/): Hub of payment guides (tap-to-pay, deposits, chasing invoices, reminders).`);
+  indexLines.push(`- [Manage Jobs](${BASE_URL}/manage-jobs/): Hub for the full job lifecycle (9-stage pipeline, scheduling, photos, checklists, follow-ups, Google Calendar sync).`);
   indexLines.push(`- [Compare](${BASE_URL}/compare/): Side-by-side feature/price comparisons against ${competitors.length} competitor apps.`);
   indexLines.push(`- [Shower Quoting Tool](${BASE_URL}/shower-quoting-tool/): Free interactive tool that prices a shower-screen install in seconds.`);
   indexLines.push('');
@@ -138,6 +141,15 @@ async function main() {
     indexLines.push('');
     for (const s of data.paymentHub.spokes) {
       indexLines.push(`- [${s.title}](${BASE_URL}/get-paid/${s.slug}/): ${s.summary}`);
+    }
+    indexLines.push('');
+  }
+
+  if (data.manageJobsHub) {
+    indexLines.push('## Manage jobs (job management hub)');
+    indexLines.push('');
+    for (const s of data.manageJobsHub.spokes) {
+      indexLines.push(`- [${s.title}](${BASE_URL}/manage-jobs/${s.slug}/): ${s.summary}`);
     }
     indexLines.push('');
   }
@@ -353,6 +365,38 @@ async function main() {
       full.push(`### ${s.title}`);
       full.push('');
       full.push(`URL: ${BASE_URL}/get-paid/${s.slug}/`);
+      full.push('');
+      if (s.intro) full.push(s.intro);
+      if (s.sections && s.sections.length) {
+        full.push('');
+        for (const sec of s.sections) {
+          full.push(`#### ${sec.heading}`);
+          full.push('');
+          full.push(sec.body);
+          full.push('');
+        }
+      }
+      if (s.faqs && s.faqs.length) {
+        full.push('FAQ:');
+        full.push('');
+        for (const f of s.faqs) {
+          full.push(`Q: ${f.question}`);
+          full.push(`A: ${f.answer}`);
+          full.push('');
+        }
+      }
+    }
+  }
+
+  if (data.manageJobsHub) {
+    full.push('## Managing jobs');
+    full.push('');
+    full.push(data.manageJobsHub.hub.intro);
+    full.push('');
+    for (const s of data.manageJobsHub.spokes) {
+      full.push(`### ${s.title}`);
+      full.push('');
+      full.push(`URL: ${BASE_URL}/manage-jobs/${s.slug}/`);
       full.push('');
       if (s.intro) full.push(s.intro);
       if (s.sections && s.sections.length) {

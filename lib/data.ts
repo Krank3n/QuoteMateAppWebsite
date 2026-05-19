@@ -164,6 +164,31 @@ export interface PaymentHub {
   spokes: PaymentHubSpoke[];
 }
 
+export interface ManageJobsSpoke {
+  slug: string;
+  title: string;
+  shortLabel: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+  faqs: FAQ[];
+}
+
+export interface ManageJobsHub {
+  hub: {
+    metaTitle: string;
+    metaDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    painPoint: string;
+    intro: string;
+    spokeIntro: string;
+  };
+  spokes: ManageJobsSpoke[];
+}
+
 const data = rawData as unknown as {
   site: SiteData;
   trades: Trade[];
@@ -172,16 +197,22 @@ const data = rawData as unknown as {
   guides: Guide[];
   faqData?: FAQ[];
   paymentHub?: PaymentHub;
+  manageJobsHub?: ManageJobsHub;
   integrations?: { reece?: ReeceIntegration };
 };
 
 export const { site, trades, cities, quoteTemplates, guides } = data;
 export const faqData: FAQ[] = data.faqData || [];
 export const paymentHub: PaymentHub | undefined = data.paymentHub;
+export const manageJobsHub: ManageJobsHub | undefined = data.manageJobsHub;
 export const reeceIntegration: ReeceIntegration | undefined = data.integrations?.reece;
 
 export function getPaymentSpokeBySlug(slug: string): PaymentHubSpoke | undefined {
   return paymentHub?.spokes.find(s => s.slug === slug);
+}
+
+export function getManageJobsSpokeBySlug(slug: string): ManageJobsSpoke | undefined {
+  return manageJobsHub?.spokes.find(s => s.slug === slug);
 }
 
 export function getReeceHub(): ReeceHub | undefined {

@@ -178,6 +178,22 @@ export default async function TradePage({ params }: Props) {
           </section>
         )}
 
+        <section className="seo-rich-content">
+          <div className="container">
+            <div className="rich-content-block">
+              <div className="rich-content-section">
+                <h2>Manage Every {trade.singular} Job From Inquiry to Paid</h2>
+                <p>
+                  Quoting is only half the work. QuoteMate tracks every {trade.keyword.toLowerCase()} job through a 9-stage pipeline — inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed, or cancelled — with timestamps stamped automatically so you can see where every dollar is sitting and where the bottleneck is. Schedule jobs in two taps with Google Calendar sync, snap and annotate on-site photos against the job (not lost in your camera roll), keep a brain-dump checklist of materials and to-dos for the day, and chase quotes automatically if a customer goes quiet.
+                </p>
+                <p className="rich-content-link">
+                  <Link href="/manage-jobs">See how {trade.name.toLowerCase()} run jobs in QuoteMate →</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="seo-common-jobs">
           <div className="container">
             <h2 className="section-title">Common {trade.keyword.charAt(0).toUpperCase() + trade.keyword.slice(1)} Jobs</h2>

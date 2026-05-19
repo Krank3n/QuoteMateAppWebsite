@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { trades, cities, quoteTemplates, guides, paymentHub, reeceIntegration } from '@/lib/data';
+import { trades, cities, quoteTemplates, guides, paymentHub, manageJobsHub, reeceIntegration } from '@/lib/data';
 import { competitors } from './compare/data';
 
 export const dynamic = 'force-static';
@@ -20,11 +20,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/compare/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/shower-quoting-tool/`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/get-paid/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/manage-jobs/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/integrations/reece/`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
   ];
 
   const paymentSpokePages: MetadataRoute.Sitemap = (paymentHub?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/get-paid/${spoke.slug}/`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  const manageJobsSpokePages: MetadataRoute.Sitemap = (manageJobsHub?.spokes ?? []).map((spoke) => ({
+    url: `${baseUrl}/manage-jobs/${spoke.slug}/`,
     lastModified,
     changeFrequency: 'monthly',
     priority: 0.8,
@@ -82,5 +90,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...paymentSpokePages, ...reeceSpokePages];
+  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...paymentSpokePages, ...manageJobsSpokePages, ...reeceSpokePages];
 }
