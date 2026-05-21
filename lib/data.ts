@@ -189,6 +189,31 @@ export interface ManageJobsHub {
   spokes: ManageJobsSpoke[];
 }
 
+export interface QuotingSpoke {
+  slug: string;
+  title: string;
+  shortLabel: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+  faqs: FAQ[];
+}
+
+export interface QuotingHub {
+  hub: {
+    metaTitle: string;
+    metaDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    painPoint: string;
+    intro: string;
+    spokeIntro: string;
+  };
+  spokes: QuotingSpoke[];
+}
+
 const data = rawData as unknown as {
   site: SiteData;
   trades: Trade[];
@@ -198,6 +223,7 @@ const data = rawData as unknown as {
   faqData?: FAQ[];
   paymentHub?: PaymentHub;
   manageJobsHub?: ManageJobsHub;
+  quotingHub?: QuotingHub;
   integrations?: { reece?: ReeceIntegration };
 };
 
@@ -205,6 +231,7 @@ export const { site, trades, cities, quoteTemplates, guides } = data;
 export const faqData: FAQ[] = data.faqData || [];
 export const paymentHub: PaymentHub | undefined = data.paymentHub;
 export const manageJobsHub: ManageJobsHub | undefined = data.manageJobsHub;
+export const quotingHub: QuotingHub | undefined = data.quotingHub;
 export const reeceIntegration: ReeceIntegration | undefined = data.integrations?.reece;
 
 export function getPaymentSpokeBySlug(slug: string): PaymentHubSpoke | undefined {
@@ -213,6 +240,10 @@ export function getPaymentSpokeBySlug(slug: string): PaymentHubSpoke | undefined
 
 export function getManageJobsSpokeBySlug(slug: string): ManageJobsSpoke | undefined {
   return manageJobsHub?.spokes.find(s => s.slug === slug);
+}
+
+export function getQuotingSpokeBySlug(slug: string): QuotingSpoke | undefined {
+  return quotingHub?.spokes.find(s => s.slug === slug);
 }
 
 export function getReeceHub(): ReeceHub | undefined {

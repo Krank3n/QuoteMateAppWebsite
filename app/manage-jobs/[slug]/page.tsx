@@ -106,6 +106,7 @@ export default async function ManageJobsSpokePage({ params }: Props) {
               <div className="links-column">
                 <h3>QuoteMate</h3>
                 <ul>
+                  <li><Link href="/quoting">Quoting Tools Hub</Link></li>
                   <li><Link href="/get-paid">Payments Hub</Link></li>
                   <li><Link href="/pricing">Pricing</Link></li>
                   <li><Link href="/templates">Quote Templates</Link></li>

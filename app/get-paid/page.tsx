@@ -106,6 +106,8 @@ export default function GetPaidHubPage() {
               <div className="links-column">
                 <h3>QuoteMate</h3>
                 <ul>
+                  <li><Link href="/quoting">Quoting Tools Hub</Link></li>
+                  <li><Link href="/manage-jobs">Manage Jobs Hub</Link></li>
                   <li><Link href="/pricing">Pricing</Link></li>
                   <li><Link href="/about">About</Link></li>
                   <li><Link href="/articles">Articles</Link></li>

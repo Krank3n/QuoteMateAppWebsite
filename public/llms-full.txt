@@ -1725,6 +1725,50 @@ Pro tips:
 - Use quoting software like QuoteMate for professional, error-free documentation.
 - Clearly separate GST from your base price in all quotes.
 
+### How to Quote Tile and Slate Work Accurately for Australian Tradies
+
+URL: https://quotemateapp.au/articles/how-to-quote-tile-and-slate-work/
+
+Learn how to quote tile and slate work without leaving money on the table. Get precise material, labour, and waterproofing costs to secure your margin.
+
+#### Getting Your Tile & Slate Quoting Right from the Start
+
+Quoting tile and slate work is often where tradies lose money, not because the job is complex, but because the quote misses hidden costs. Whether it's a bathroom reno, a kitchen splashback, or a full slate roof, getting your pricing tight from the start is crucial. This guide shows you how to quote tile and slate work accurately, covering everything from materials and labour to site prep and essential waterproofing. We’ll cut through the guesswork so you can deliver precise, profitable quotes every time, making sure you cover all your costs and secure a fair margin.
+
+#### Choosing Your Pricing Method: Per Square Metre or Hourly Rates?
+
+Most tiling jobs are quoted per square metre (m2) for laying, but some specialist work or complex prep can warrant an hourly rate. For standard floor tiling, a cost per m2 approach is common and makes it easy to compare. However, if the job involves intricate patterns, difficult access, or significant subfloor levelling, switching to an hourly rate or adding specific line items for these tasks is smarter. Always factor in project size; smaller jobs usually have a higher floor tiling cost per m2 to cover setup time. For larger projects over 50m2, you might offer a slightly lower m2 rate, while small repairs under 5m2 might incur a minimum charge of around $350 plus materials.
+
+#### Calculating Materials: Tiles, Adhesive, Grout, and Waste
+
+Never guess your material quantities. Start with the exact area to be tiled and add a tile waste factor. For standard square or rectangular tiles, allow 10% for cuts and breakages. For intricate patterns, large format tiles, or unusual room shapes, bump this up to 15-20%. Tile adhesive pricing varies significantly based on type (e.g., standard cement-based vs. flexible, fast-setting, or specific large-format adhesives). Always check current prices with suppliers like Bunnings or Reece. Grout quantity depends on tile size and joint width. A 20kg bag of standard grout might cover 15-20m2 for 300x300mm tiles with a 3mm joint, but always refer to the manufacturer's coverage rates. Don't forget trims, sealants, and levelling compounds.
+
+#### Estimating Labour Costs for a Solid Margin on Every Job
+
+Labour is usually the biggest cost, so get this right. Break down each stage: demolition, subfloor preparation (levelling, grinding), waterproofing, tile laying, grouting, and cleanup. For a bathroom, demolition might take 4-8 hours. Prep work like levelling or grinding an existing slab can add 2-6 hours per room, depending on condition. Laying standard ceramic tiles can range from 1.5 to 3 hours per square metre, depending on tile size, layout complexity, and site access. Grouting typically takes 0.5 to 1 hour per 10 square metres. Always factor in travel time, loading/unloading materials, and site setup. Your hourly rate should cover wages, super, insurance, vehicle costs, and a profit margin; aim for $80-$120 per hour for an experienced tiler, or more for specialist work.
+
+#### Don't Forget the Extras: Prep, Waterproofing, and Trims
+
+Often, jobs blow out because tradies forget the essential extras. Always include detailed line items for site preparation, such as demolition and removal of existing tiles (factor in skip bin hire, roughly $300-$600 for a small skip). Waterproofing is non-negotiable for wet areas and must comply with Australian Standard AS 3740-2021. Quote this as a separate item; a typical bathroom waterproofing job might cost $400-$800 in materials and labour. Check specific product requirements at https://www.standards.org.au/standards-catalogue/sa-snz/b/as-nzs-3740. Add costs for floor levelling compounds (e.g., Ardex K 15, around $70 per 20kg bag), movement joints, silicones, and aluminium or PVC trims, which can range from $15-$30 per lineal metre. These small items add up quickly on how to quote tile and slate work.
+
+#### Special Considerations for Slate Work: Material & Installation
+
+Slate work, whether for floors, walls, or roofing, brings its own set of challenges and costs. Natural slate is heavier and more brittle than ceramic or porcelain, requiring more careful handling and cutting. The material cost for natural slate can be significantly higher, often ranging from $60-$150 per square metre for the slate itself, depending on quality and origin. Installation often takes longer due to the irregular nature of the material, requiring more precise cuts and fitting. Labour rates for slate can be 20-30% higher than for standard tiling. If you’re working with slate roofing, you'll need specialised fixing systems and highly skilled labour. Always specify the type of slate (e.g., Brazilian, Indian, Australian) and its thickness in your quote, and confirm supplier availability and lead times.
+
+#### Avoiding Common Quoting Mistakes in Tiling Projects
+
+The fastest way to lose money is to underquote. A common mistake is not accounting for access challenges; carrying heavy tile boxes up three flights of stairs adds labour time. Another error is forgetting to specify who supplies what; clearly state if the customer is supplying tiles or if you’re sourcing everything. Always include a contingency for unforeseen issues, especially in older homes – a 5-10% buffer is reasonable for unexpected subfloor repairs or discovery of asbestos (which requires specialist removal). Using an app like QuoteMate helps you build detailed line items quickly, ensuring you capture every cost. Don't assume all sealants or grouts are the same; specify premium products for high-traffic or wet areas. A good quote template ensures you don't miss these critical details, turning a potential loss into a guaranteed profit.
+
+Pro tips:
+- Always measure the area twice, then add a 10-15% tile waste factor for cuts and breakages.
+- Get current adhesive and grout prices directly from suppliers like Reece or Tradelink before quoting.
+- Charge a minimum call-out or small job fee, typically $350-$500, for projects under 5m2.
+- Clearly itemise demolition, waterproofing, and rubbish removal – don't bundle them into 'labour'.
+- Specify the exact tile type and size in your quote to avoid disputes later on.
+- Include a 5-10% contingency for unforeseen site issues, especially in older properties.
+- Use Australian Standards (e.g., AS 3740) as a reference point for all wet area work.
+- For slate, account for extra time in cutting and handling due to its weight and brittleness.
+
 ## Quote templates
 
 Free, customisable starting points for the most common Australian trade jobs. Each template includes typical materials, steps, and a default labour structure.
@@ -2440,6 +2484,162 @@ A: The Google Calendar event updates automatically within seconds — new date, 
 Q: Can I share my calendar with a partner or bookkeeper?
 A: Yes — that's the point. Once the jobs are in Google Calendar, share that calendar from inside Google with whoever needs visibility. They'll see your work week without ever having to log into QuoteMate.
 
+## Quoting power tools
+
+QuoteMate is built around how tradies actually quote — in chunks, by voice, with memory of what you charged last time. Section-based quoting splits a job into named sections, each with its own materials, labour and margin, so the PDF reads the way the customer thinks about the work. Section templates save sections you use over and over (a metre of colorbond fence, a gate hang, a downlight rough-in) so the next quote drops them in with one tap. Voice-to-text lets you describe a job into your phone on-site without typing. And trade-specific pricing memory keeps your rates consistent across jobs so you stop quoting the same item at three different prices in one month. This hub covers each tool.
+
+### Section-Based Quoting for Tradies
+
+URL: https://quotemateapp.au/quoting/section-based-quoting/
+
+Most quoting apps give you one big flat list of line items. Real trade jobs aren't flat — a fence is 8 bays plus 2 gates plus a hardstand. A bathroom reno is demo plus waterproofing plus tiling plus fit-off. A kitchen is base cabinets plus wall cabinets plus benchtop plus splashback. Section-based quoting splits the job into named sections so the quote reads the way the customer thinks about the work, and so you can price each section properly without burying the labour in a single line.
+
+#### What a section actually is
+
+A section is a named slice of the job with its own materials and its own labour. For a fencer it's 'Section 1: 12m colorbond run — 8 bays' and 'Section 2: 2 × gate hang'. For a builder doing a bathroom reno it's 'Section 1: demo and strip', 'Section 2: waterproofing to AS 3740', 'Section 3: wall tiling', 'Section 4: fit-off'. Each section has its own line items, its own labour hours, and rolls up to a section subtotal. The PDF shows the customer the breakdown by section, which is far more legible than a 40-line flat list.
+
+#### Why this wins on multi-room and multi-zone jobs
+
+If you quote a two-bathroom renovation as one flat list, the customer can't see what they'd save by dropping the second bathroom. If you quote it as two sections, they can — and the conversation about scope becomes easier instead of harder. The same applies to a fence with three different fence types in three different runs, a paint job covering interior + exterior, or a deck plus pergola. Section-based quoting turns 'too dear, can we trim it?' into a 10-second conversation: 'drop Section 3 and we're back inside budget'.
+
+#### How sections work in QuoteMate
+
+When building a quote, tap 'Add Section' instead of stacking line items into one list. Name the section, add materials (with AI suggestions and live supplier pricing), enter labour hours, and (if you want) set a markup that's different to the rest of the quote. Repeat for each section. The PDF renders each section as its own block with a subtotal, then the totals at the bottom — GST, materials total, labour total, grand total. The customer reads a structured quote; you keep a structured record that's easy to copy forward.
+
+#### Where the section breakdown lives in the data
+
+Every section is stored on the quote with its own ID, name, line items, labour hours, and labour unit. When the customer accepts the quote, the section structure is preserved on the resulting invoice — partial payments can be applied per section if you stage the work that way. When you save the quote as a job template later, the sections come along, so the next similar job starts already structured. Section management lives inside the materials list (where the work is), not buried in the labour and markup screen — that's the way tradies think about a quote.
+
+FAQ:
+
+Q: Do all my quotes have to use sections?
+A: No. For a simple one-and-done job (replace a tap, install a downlight) one flat list is fine. Sections matter for multi-zone, multi-room, or staged jobs where the breakdown helps the customer decide and helps you price properly.
+
+Q: Can each section have a different markup?
+A: Yes. Materials and labour markup can be set globally for the quote and overridden per section — useful when one section uses premium materials you don't want hidden inside a blended margin.
+
+Q: Does the customer see the sections on the PDF?
+A: Yes. The PDF renders each section as its own block with subtotal. You can also choose to hide internal labour and material breakdowns per the PDF template settings if you only want section totals on the customer copy.
+
+Q: Can I copy a section from one quote to another?
+A: Yes — that's what section templates are for. Save the section as a template once, then drop it into any future quote in one tap.
+
+Q: What happens if the customer accepts only part of the quote?
+A: Sections make partial acceptance and partial invoicing much cleaner. You can stage invoices per section as the job progresses, with payments applied per section.
+
+### Section Templates for Repeating Quote Blocks
+
+URL: https://quotemateapp.au/quoting/section-templates/
+
+Most trade jobs aren't unique. A fencer quotes 'a metre of colorbond fence' a hundred times a year. An electrician quotes a downlight rough-in five times a week. A plumber quotes a hot water swap twice a month. Section templates let you save those repeating chunks once, with the materials, labour hours, and markup baked in, then drop the whole block into any future quote in one tap.
+
+#### Section template vs job template
+
+A job template is a whole quote — every section, every line item, every labour figure — saved together. A section template is one block of a quote. Job templates are right when you do the same kind of job over and over (a single-bathroom reno, a colorbond pool fence). Section templates are right when you build different kinds of jobs out of the same recurring chunks. Most tradies use both: job templates for the common 80% jobs, section templates for the chunks that show up across many different job types.
+
+#### What a good section template looks like
+
+The best section templates are normalised to a single unit — one metre of fence, one gate, one downlight, one square metre of waterproofing. That way you can drop the section in, change the quantity to match the actual job, and the materials and labour scale together. A fencer's library might be: '1 m colorbond fence (no posts)', '1 m colorbond fence (with post)', '1 × standard gate hang 900 mm', '1 × double gate hang 1800 mm'. From those four sections, you can quote 95% of fence jobs.
+
+#### How to build a library
+
+Open Settings → Section Templates and tap 'Add Template'. Name it (be specific — '1 m colorbond fence with post' is better than 'fence'), add materials at your trade rates, set labour hours per unit, set markup if you want a different margin to your default, and save. New quotes show your library on the 'Add Section' menu — tap to drop the section in, adjust the quantity to match the job, done. After about 20 templates most tradies have everything they need for the common jobs; after 50 it covers nearly every scope they'd ever quote.
+
+#### Where section management lives
+
+Section templates are managed in Settings, but using them happens in the materials list of a quote — that's where you'd naturally reach for a section. They are deliberately not buried in the labour and markup screen, because a section is a chunk of work, not a margin setting. The workflow stays in the place you're already in.
+
+FAQ:
+
+Q: How are section templates different from job templates?
+A: A job template is a whole quote. A section template is one block (a metre of fence, a gate, a downlight) that can be dropped into many different quotes. Most tradies use both.
+
+Q: Can a section template include labour as well as materials?
+A: Yes. Each template has materials and labour hours per unit, plus optional per-section markup. Drop the section in, change quantity, the labour scales with it.
+
+Q: Where do I manage my section templates?
+A: Settings → Section Templates. You can also save a section from an existing quote into the library straight from the actions menu inside the quote.
+
+Q: Do section templates pull live supplier pricing?
+A: Yes. Materials inside a section template re-price against live supplier pricing every time the section is dropped into a new quote, so prices don't go stale in your library.
+
+Q: Can I share section templates with my crew?
+A: Section templates live on the business account, so any team member signed into the same account uses the same library. Updates to a template propagate to everyone the next time they open a quote.
+
+### Voice-to-Text Quoting On-Site
+
+URL: https://quotemateapp.au/quoting/voice-to-text-quoting/
+
+Typing a job description on a phone with dirty hands, at the back of a ute, in 38°C heat is the slowest part of quoting. Most tradies put it off, get home tired, type it up later, and the quote goes out a day late. Voice-to-text lets you describe the job out loud on-site — '4 metre hardwood deck off the back of a single-storey weatherboard, two steps down to the lawn, stainless balustrade, customer wants Spotted Gum' — and QuoteMate turns the words into a structured job description plus a materials list with quantities, on the spot.
+
+#### Why voice beats typing on-site
+
+Spoken description is faster and more complete than typed. A tradie talking through a job out loud naturally walks the site and includes the dimensions, the access, the substrate, the customer's preferences — the bits that get skipped when typing because of the friction. The generated materials list reflects all of that. The customer sees a quote that captures the full scope, you spend less time on-site, and the quote goes out before you leave the driveway.
+
+#### How it works in QuoteMate
+
+Tap the microphone on the job description field, talk for as long as you want (no 30-second cut-off), and tap stop. The transcription happens on-device for short clips and in the cloud for longer ones, so the text appears within seconds. QuoteMate cleans it into a professional job description (no 'um's, no fillers) and feeds it into the materials list generator, which proposes materials with quantities you can confirm or adjust. The voice transcript is also saved to the job so you have an audit trail of exactly what the customer asked for.
+
+#### When voice is the right tool
+
+Voice wins for first-visit site quotes (you're walking the site, you don't want to type), for repeat customers (you know the job already, you just need to bash out the brief), and for complex scopes with lots of dimensions to capture. Voice is wrong for very short jobs (a one-tap-to-pay-an-invoice job doesn't need a transcript) and for fiddly numerical inputs (specific brand codes are easier typed than spoken). Most tradies who switch to voice for quoting find they shave 5–10 minutes off every site visit, mostly because they stop putting off the typing.
+
+FAQ:
+
+Q: Do I need an internet connection for voice?
+A: Short clips transcribe on-device with no signal. Longer clips queue and transcribe when you're back online. The materials list generator does need a signal to fetch live supplier prices.
+
+Q: How accurate is the transcription?
+A: On a quiet site, transcription is around 95% accurate, including trade-specific terms (colorbond, treated pine, R2.5 batts, AS 3000). Noisy sites drop accuracy but the cleaned-up description usually fixes minor errors.
+
+Q: Does the transcript get sent to the customer?
+A: No. The raw transcript stays internal. The customer sees the cleaned-up job description on the quote PDF — professional tradie English, no 'um's or fillers.
+
+Q: Can I edit the description after voice?
+A: Yes. Voice gives you a first draft. You can tap into the description and edit anything before generating the materials list or sending the quote.
+
+Q: Is voice transcription private?
+A: Yes. Audio is processed under QuoteMate's privacy policy, not retained beyond the transcription, and never used for training third-party models.
+
+### Trade-Specific Pricing Memory for Tradies
+
+URL: https://quotemateapp.au/quoting/trade-specific-pricing/
+
+Most tradies don't have one price for a 90 mm bend. They have a price they charged on the last job, a price they think they charged the job before that, and a guess about what they'd charge today. The result is the same item going out at $42 on Monday's quote and $58 on Tuesday's, the customer noticing, and a conversation no one wants to have. Trade-specific pricing memory fixes this: every time you set a price on an item, QuoteMate remembers it as your trade rate for that item and uses it as the default next time.
+
+#### Why supplier pricing isn't enough on its own
+
+Live supplier pricing tells you what Bunnings or Reece charge today. That's not the same as what you charge. Your price builds in your trade discount (if you have one), your handling time, your bin/disposal margin on the item, and a margin that reflects how much of a hassle that item is to fit. A retail Bunnings price for a hot water unit is $1,189, your trade rate at Reece might be $940, but your price on the quote is $1,150 because that includes the hour you spend organising freight. Pricing memory captures that final number, per item, so it stays consistent.
+
+#### How memory builds over time
+
+Every time you set or override a price on a line item, QuoteMate writes that price against the item as your trade rate. The next quote that includes the same item prefills with your trade rate, not the retail rate. After 30 quotes most tradies have a personal price book covering their top 200 items — fasteners, fittings, sheets, fixtures, fixings — that's built passively while you work, not by sitting down on a Saturday morning to make a spreadsheet. The personal price book lives in your favourites with notes, coverage rates, and stock notes.
+
+#### Per-customer vs across-the-board pricing
+
+Pricing memory operates per item, not per customer — your trade rate for a 90 mm bend is your trade rate. For per-customer adjustments (a repeat commercial customer who gets a 10% mate's rate, a strata client on net-30 with no margin to cut), use the customer record. The combination — a clean personal price book plus per-customer rules — keeps quotes consistent without removing the flexibility tradies need to win or hold specific clients.
+
+#### What happens when the supplier's price changes
+
+Live supplier pricing keeps moving in the background. Your trade rate doesn't move with it automatically — that's deliberate, because your price isn't a markup on retail, it's a number you've set. When supplier pricing changes meaningfully (more than 8% in either direction since you last set your rate), the materials list flags it so you can choose to update your rate or hold it. That's the difference between a price book that drifts on its own and a price book you control.
+
+FAQ:
+
+Q: Does pricing memory overwrite live supplier pricing?
+A: No. Live supplier pricing is still shown for reference. Your trade rate is the default on new quotes, but you can switch to live pricing per item if you want to.
+
+Q: What if I want to reset my rate for an item?
+A: Open the item in your favourites and tap 'Reset to supplier price'. Your trade rate is removed and live supplier pricing takes over until you set a new rate.
+
+Q: Does pricing memory work for jobs across different trades?
+A: Yes. The price book is per business account. Multi-trade businesses (a builder who also does landscaping) build up one personal price book covering both.
+
+Q: Will my trade rates push to Xero?
+A: Yes. When an invoice syncs to Xero, the line items go across at the prices on the invoice (your trade rates), not retail.
+
+Q: How is this different from importing a supplier price list?
+A: A supplier price list is wholesale. Your trade rate is what you actually charge the customer for that item, including your margins. Pricing memory captures your rate, supplier import captures the supplier's. Most tradies use both — supplier rates for costing, trade rates for the customer-facing quote line.
+
 ## Comparisons vs other Australian / NZ tradie apps
 
 ### QuoteMate vs Tradify
@@ -2456,13 +2656,18 @@ Feature comparison:
 - Professional PDF quotes — QuoteMate: Yes | Tradify: Yes
 - Invoicing — QuoteMate: Yes | Tradify: Yes
 - Job scheduling — QuoteMate: Yes | Tradify: Yes
+- 9-stage job pipeline (inquiry to paid) — QuoteMate: Yes | Tradify: Yes
+- Google Calendar sync — QuoteMate: Yes | Tradify: Internal calendar only
+- On-site job photos with annotation — QuoteMate: Yes | Tradify: Yes
+- On-site job checklists — QuoteMate: Yes | Tradify: Yes
+- Automated quote follow-ups (day 3 / 7 / 14) — QuoteMate: Yes | Tradify: Manual reminders
 - Timesheets — QuoteMate: No | Tradify: Yes
 - Offline mode — QuoteMate: Yes | Tradify: No
 - Voice-to-text quoting — QuoteMate: Yes | Tradify: No
 - Flat pricing (no per-user fees) — QuoteMate: $29/month | Tradify: $35/user/month
 - Free plan available — QuoteMate: Yes | Tradify: No
 
-Bottom line: Tradify is a solid job management platform for larger teams that need timesheets and crew management. QuoteMate covers the day-to-day basics — quoting, invoicing, and job scheduling with Google Calendar sync — and pulls ahead on speed with AI-powered material suggestions and real-time supplier pricing, at a fraction of the cost.
+Bottom line: QuoteMate covers the same job management Tradify is known for — 9-stage pipeline, scheduling, on-site photos, checklists — and pulls ahead on quoting speed with AI-generated materials lists and live Australian supplier pricing. Tradify still wins for teams that need timesheets and crew management, but for sole traders and small crews QuoteMate gets you everything you need on a flat $29/month with no per-user pricing.
 
 ### QuoteMate vs ServiceM8
 
@@ -2478,13 +2683,17 @@ Feature comparison:
 - Professional PDF quotes — QuoteMate: Yes | ServiceM8: Yes
 - Invoicing — QuoteMate: Yes | ServiceM8: Yes
 - Job scheduling — QuoteMate: With Google Calendar sync | ServiceM8: Scheduling & dispatch
+- 9-stage job pipeline (inquiry to paid) — QuoteMate: Yes | ServiceM8: Yes
+- On-site job photos with annotation — QuoteMate: Yes | ServiceM8: Yes
+- On-site job checklists — QuoteMate: Yes | ServiceM8: Yes
+- Automated quote follow-ups (day 3 / 7 / 14) — QuoteMate: Yes | ServiceM8: Workflow add-on
 - Client communication (SMS/email) — QuoteMate: Share via SMS/email/WhatsApp | ServiceM8: Yes
 - Offline mode — QuoteMate: Yes | ServiceM8: Yes
 - Voice-to-text quoting — QuoteMate: Yes | ServiceM8: No
 - Simple flat pricing — QuoteMate: $29/month | ServiceM8: $0–$379/month
 - Australian supplier integration — QuoteMate: Major suppliers | ServiceM8: No
 
-Bottom line: ServiceM8 is a comprehensive field service platform ideal for businesses managing crews and complex dispatch. QuoteMate is purpose-built for fast, accurate quoting — describe any job, get an AI-generated materials list with live supplier pricing, schedule it to Google Calendar, and send the quote — all for a simple flat rate.
+Bottom line: ServiceM8 is built for field service businesses with complex dispatch and large crews. QuoteMate covers the same core job management — pipeline, scheduling, on-site photos, checklists — but is purpose-built for quoting: describe any job, get an AI-generated materials list with live supplier pricing, schedule it to Google Calendar, send the quote, and chase it automatically — all for a simple flat rate.
 
 ### QuoteMate vs Fergus
 
@@ -2500,13 +2709,18 @@ Feature comparison:
 - Professional PDF quotes — QuoteMate: Yes | Fergus: Yes
 - Invoicing — QuoteMate: Yes | Fergus: Yes
 - Job scheduling — QuoteMate: Yes | Fergus: Yes
+- 9-stage job pipeline (inquiry to paid) — QuoteMate: Yes | Fergus: Yes
+- Google Calendar sync — QuoteMate: Yes | Fergus: Internal calendar only
+- On-site job photos with annotation — QuoteMate: Yes | Fergus: Yes
+- On-site job checklists — QuoteMate: Yes | Fergus: Yes
+- Automated quote follow-ups — QuoteMate: Built in (day 3 / 7 / 14) | Fergus: Manual
 - Purchase orders — QuoteMate: Reece integration | Fergus: Yes
 - Offline mode — QuoteMate: Yes | Fergus: No
 - Voice-to-text quoting — QuoteMate: Yes | Fergus: No
 - Flat pricing — QuoteMate: $29/month | Fergus: From $55/month
 - Free plan available — QuoteMate: Yes | Fergus: No
 
-Bottom line: Fergus offers deep job management with detailed job costing across many suppliers. QuoteMate wins on speed and simplicity — AI material suggestions, real-time pricing, job scheduling, and purchase orders straight to Reece — in under 2 minutes per quote, at about half the monthly cost.
+Bottom line: Fergus offers deep job management with detailed job costing across many suppliers. QuoteMate matches it on pipeline, scheduling, on-site photos and checklists, then pulls ahead on speed — AI material suggestions, real-time pricing, and purchase orders straight to Reece — in under 2 minutes per quote, at about half the monthly cost.
 
 ### QuoteMate vs ChatGPT (and other AI chatbots)
 
@@ -2547,6 +2761,10 @@ Feature comparison:
 - Live supplier pricing (auto-updates) — QuoteMate: Yes | Excel & Google Sheets: No
 - Reusable templates — QuoteMate: Built in | Excel & Google Sheets: Copy/paste a file
 - Quote-to-invoice conversion — QuoteMate: One tap | Excel & Google Sheets: Manual rewrite
+- Job pipeline (inquiry to paid) — QuoteMate: 9 stages, auto-timestamped | Excel & Google Sheets: No
+- Job scheduling with calendar sync — QuoteMate: Yes | Excel & Google Sheets: No
+- On-site job photos with annotation — QuoteMate: Yes | Excel & Google Sheets: No
+- Automated quote follow-ups — QuoteMate: Yes | Excel & Google Sheets: No
 - Track sent / accepted / paid — QuoteMate: Yes | Excel & Google Sheets: No
 - GST & ABN handling — QuoteMate: Automatic | Excel & Google Sheets: Manual formulas
 - Online quote acceptance — QuoteMate: Yes | Excel & Google Sheets: No
@@ -2571,12 +2789,17 @@ Feature comparison:
 - Professional PDF quotes — QuoteMate: Yes | Invoice2go: Yes
 - Invoicing — QuoteMate: Yes | Invoice2go: Yes
 - Payment tracking — QuoteMate: Yes | Invoice2go: Yes
+- Job management (9-stage pipeline) — QuoteMate: Yes | Invoice2go: No
+- Job scheduling with Google Calendar sync — QuoteMate: Yes | Invoice2go: No
+- On-site job photos with annotation — QuoteMate: Yes | Invoice2go: No
+- On-site job checklists — QuoteMate: Yes | Invoice2go: No
+- Automated quote follow-ups — QuoteMate: Yes | Invoice2go: No
 - Offline mode — QuoteMate: Yes | Invoice2go: No
 - Built for Australian tradies — QuoteMate: Yes | Invoice2go: No
 - GST calculations — QuoteMate: Automatic | Invoice2go: Manual setup
 - Voice-to-text quoting — QuoteMate: Yes | Invoice2go: No
 
-Bottom line: Invoice2go is a capable general invoicing tool, but it's not built for tradies. QuoteMate understands trade jobs, suggests materials automatically, and integrates with Australian suppliers — making it faster and more accurate for quoting construction and trade work.
+Bottom line: Invoice2go handles invoicing well across many industries but stops at the invoice. QuoteMate covers the full job lifecycle — quoting with AI material suggestions and live supplier pricing, scheduling, on-site photos and checklists, automated quote follow-ups, and invoicing — all built around how Australian tradies actually work.
 
 ## Cities served (local pages)
 

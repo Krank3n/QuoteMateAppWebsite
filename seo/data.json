@@ -4248,6 +4248,211 @@
       }
     ]
   },
+  "quotingHub": {
+    "hub": {
+      "metaTitle": "Quoting Tools for Australian Tradies (2026) | QuoteMate",
+      "metaDescription": "The quoting power tools built for Aussie tradies — section-based quoting, reusable section templates, voice-to-text on-site, and trade-specific pricing memory.",
+      "heroTitle": "Quote the Way You Actually Work",
+      "heroSubtitle": "Section-based quoting, voice-to-text on-site, reusable section templates, and trade-specific pricing memory. The quoting power tools no other Aussie app gives you.",
+      "painPoint": "Most quoting apps treat every quote as one flat list of line items. Real trade work isn't one list — it's '8 fence bays, 2 gates, 1 hardstand for the bin', each with its own labour, materials, and margin. Force-fitting that into a single line means losing the breakdown, the customer's confidence, and the speed of pricing the next similar job.",
+      "intro": "QuoteMate is built around how tradies actually quote — in chunks, by voice, with memory of what you charged last time. Section-based quoting splits a job into named sections, each with its own materials, labour and margin, so the PDF reads the way the customer thinks about the work. Section templates save sections you use over and over (a metre of colorbond fence, a gate hang, a downlight rough-in) so the next quote drops them in with one tap. Voice-to-text lets you describe a job into your phone on-site without typing. And trade-specific pricing memory keeps your rates consistent across jobs so you stop quoting the same item at three different prices in one month. This hub covers each tool.",
+      "spokeIntro": "Pick the quoting tool that fits how you work."
+    },
+    "spokes": [
+      {
+        "slug": "section-based-quoting",
+        "title": "Section-Based Quoting for Tradies",
+        "shortLabel": "Section-Based Quoting",
+        "summary": "Quote the way you actually work — '8 fence bays + 2 gates' — with per-section labour and materials, not one giant flat list.",
+        "metaTitle": "Section-Based Quoting App for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Quote jobs in sections — fence bays, gates, rooms, zones — each with its own labour and materials. The structured quoting tool built for Australian tradies.",
+        "intro": "Most quoting apps give you one big flat list of line items. Real trade jobs aren't flat — a fence is 8 bays plus 2 gates plus a hardstand. A bathroom reno is demo plus waterproofing plus tiling plus fit-off. A kitchen is base cabinets plus wall cabinets plus benchtop plus splashback. Section-based quoting splits the job into named sections so the quote reads the way the customer thinks about the work, and so you can price each section properly without burying the labour in a single line.",
+        "sections": [
+          {
+            "heading": "What a section actually is",
+            "body": "A section is a named slice of the job with its own materials and its own labour. For a fencer it's 'Section 1: 12m colorbond run — 8 bays' and 'Section 2: 2 × gate hang'. For a builder doing a bathroom reno it's 'Section 1: demo and strip', 'Section 2: waterproofing to AS 3740', 'Section 3: wall tiling', 'Section 4: fit-off'. Each section has its own line items, its own labour hours, and rolls up to a section subtotal. The PDF shows the customer the breakdown by section, which is far more legible than a 40-line flat list."
+          },
+          {
+            "heading": "Why this wins on multi-room and multi-zone jobs",
+            "body": "If you quote a two-bathroom renovation as one flat list, the customer can't see what they'd save by dropping the second bathroom. If you quote it as two sections, they can — and the conversation about scope becomes easier instead of harder. The same applies to a fence with three different fence types in three different runs, a paint job covering interior + exterior, or a deck plus pergola. Section-based quoting turns 'too dear, can we trim it?' into a 10-second conversation: 'drop Section 3 and we're back inside budget'."
+          },
+          {
+            "heading": "How sections work in QuoteMate",
+            "body": "When building a quote, tap 'Add Section' instead of stacking line items into one list. Name the section, add materials (with AI suggestions and live supplier pricing), enter labour hours, and (if you want) set a markup that's different to the rest of the quote. Repeat for each section. The PDF renders each section as its own block with a subtotal, then the totals at the bottom — GST, materials total, labour total, grand total. The customer reads a structured quote; you keep a structured record that's easy to copy forward."
+          },
+          {
+            "heading": "Where the section breakdown lives in the data",
+            "body": "Every section is stored on the quote with its own ID, name, line items, labour hours, and labour unit. When the customer accepts the quote, the section structure is preserved on the resulting invoice — partial payments can be applied per section if you stage the work that way. When you save the quote as a job template later, the sections come along, so the next similar job starts already structured. Section management lives inside the materials list (where the work is), not buried in the labour and markup screen — that's the way tradies think about a quote."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Do all my quotes have to use sections?",
+            "answer": "No. For a simple one-and-done job (replace a tap, install a downlight) one flat list is fine. Sections matter for multi-zone, multi-room, or staged jobs where the breakdown helps the customer decide and helps you price properly."
+          },
+          {
+            "question": "Can each section have a different markup?",
+            "answer": "Yes. Materials and labour markup can be set globally for the quote and overridden per section — useful when one section uses premium materials you don't want hidden inside a blended margin."
+          },
+          {
+            "question": "Does the customer see the sections on the PDF?",
+            "answer": "Yes. The PDF renders each section as its own block with subtotal. You can also choose to hide internal labour and material breakdowns per the PDF template settings if you only want section totals on the customer copy."
+          },
+          {
+            "question": "Can I copy a section from one quote to another?",
+            "answer": "Yes — that's what section templates are for. Save the section as a template once, then drop it into any future quote in one tap."
+          },
+          {
+            "question": "What happens if the customer accepts only part of the quote?",
+            "answer": "Sections make partial acceptance and partial invoicing much cleaner. You can stage invoices per section as the job progresses, with payments applied per section."
+          }
+        ]
+      },
+      {
+        "slug": "section-templates",
+        "title": "Section Templates for Repeating Quote Blocks",
+        "shortLabel": "Section Templates",
+        "summary": "Save the sections you use on every job — a metre of fence, a gate hang, a downlight rough-in — and drop them into new quotes in one tap.",
+        "metaTitle": "Section Templates for Tradie Quotes (Australia 2026) | QuoteMate",
+        "metaDescription": "Save reusable quote sections — fence metre, gate hang, downlight rough-in — and drop them into any new quote. The shortcut Aussie tradies use to halve quoting time.",
+        "intro": "Most trade jobs aren't unique. A fencer quotes 'a metre of colorbond fence' a hundred times a year. An electrician quotes a downlight rough-in five times a week. A plumber quotes a hot water swap twice a month. Section templates let you save those repeating chunks once, with the materials, labour hours, and markup baked in, then drop the whole block into any future quote in one tap.",
+        "sections": [
+          {
+            "heading": "Section template vs job template",
+            "body": "A job template is a whole quote — every section, every line item, every labour figure — saved together. A section template is one block of a quote. Job templates are right when you do the same kind of job over and over (a single-bathroom reno, a colorbond pool fence). Section templates are right when you build different kinds of jobs out of the same recurring chunks. Most tradies use both: job templates for the common 80% jobs, section templates for the chunks that show up across many different job types."
+          },
+          {
+            "heading": "What a good section template looks like",
+            "body": "The best section templates are normalised to a single unit — one metre of fence, one gate, one downlight, one square metre of waterproofing. That way you can drop the section in, change the quantity to match the actual job, and the materials and labour scale together. A fencer's library might be: '1 m colorbond fence (no posts)', '1 m colorbond fence (with post)', '1 × standard gate hang 900 mm', '1 × double gate hang 1800 mm'. From those four sections, you can quote 95% of fence jobs."
+          },
+          {
+            "heading": "How to build a library",
+            "body": "Open Settings → Section Templates and tap 'Add Template'. Name it (be specific — '1 m colorbond fence with post' is better than 'fence'), add materials at your trade rates, set labour hours per unit, set markup if you want a different margin to your default, and save. New quotes show your library on the 'Add Section' menu — tap to drop the section in, adjust the quantity to match the job, done. After about 20 templates most tradies have everything they need for the common jobs; after 50 it covers nearly every scope they'd ever quote."
+          },
+          {
+            "heading": "Where section management lives",
+            "body": "Section templates are managed in Settings, but using them happens in the materials list of a quote — that's where you'd naturally reach for a section. They are deliberately not buried in the labour and markup screen, because a section is a chunk of work, not a margin setting. The workflow stays in the place you're already in."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "How are section templates different from job templates?",
+            "answer": "A job template is a whole quote. A section template is one block (a metre of fence, a gate, a downlight) that can be dropped into many different quotes. Most tradies use both."
+          },
+          {
+            "question": "Can a section template include labour as well as materials?",
+            "answer": "Yes. Each template has materials and labour hours per unit, plus optional per-section markup. Drop the section in, change quantity, the labour scales with it."
+          },
+          {
+            "question": "Where do I manage my section templates?",
+            "answer": "Settings → Section Templates. You can also save a section from an existing quote into the library straight from the actions menu inside the quote."
+          },
+          {
+            "question": "Do section templates pull live supplier pricing?",
+            "answer": "Yes. Materials inside a section template re-price against live supplier pricing every time the section is dropped into a new quote, so prices don't go stale in your library."
+          },
+          {
+            "question": "Can I share section templates with my crew?",
+            "answer": "Section templates live on the business account, so any team member signed into the same account uses the same library. Updates to a template propagate to everyone the next time they open a quote."
+          }
+        ]
+      },
+      {
+        "slug": "voice-to-text-quoting",
+        "title": "Voice-to-Text Quoting On-Site",
+        "shortLabel": "Voice-to-Text Quoting",
+        "summary": "Describe a job into your phone on-site, and QuoteMate writes the description and generates the materials list — no typing needed.",
+        "metaTitle": "Voice-to-Text Quoting for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Talk into your phone on-site and QuoteMate writes the job description, generates the materials list, and prices it against live Australian supplier pricing.",
+        "intro": "Typing a job description on a phone with dirty hands, at the back of a ute, in 38°C heat is the slowest part of quoting. Most tradies put it off, get home tired, type it up later, and the quote goes out a day late. Voice-to-text lets you describe the job out loud on-site — '4 metre hardwood deck off the back of a single-storey weatherboard, two steps down to the lawn, stainless balustrade, customer wants Spotted Gum' — and QuoteMate turns the words into a structured job description plus a materials list with quantities, on the spot.",
+        "sections": [
+          {
+            "heading": "Why voice beats typing on-site",
+            "body": "Spoken description is faster and more complete than typed. A tradie talking through a job out loud naturally walks the site and includes the dimensions, the access, the substrate, the customer's preferences — the bits that get skipped when typing because of the friction. The generated materials list reflects all of that. The customer sees a quote that captures the full scope, you spend less time on-site, and the quote goes out before you leave the driveway."
+          },
+          {
+            "heading": "How it works in QuoteMate",
+            "body": "Tap the microphone on the job description field, talk for as long as you want (no 30-second cut-off), and tap stop. The transcription happens on-device for short clips and in the cloud for longer ones, so the text appears within seconds. QuoteMate cleans it into a professional job description (no 'um's, no fillers) and feeds it into the materials list generator, which proposes materials with quantities you can confirm or adjust. The voice transcript is also saved to the job so you have an audit trail of exactly what the customer asked for."
+          },
+          {
+            "heading": "When voice is the right tool",
+            "body": "Voice wins for first-visit site quotes (you're walking the site, you don't want to type), for repeat customers (you know the job already, you just need to bash out the brief), and for complex scopes with lots of dimensions to capture. Voice is wrong for very short jobs (a one-tap-to-pay-an-invoice job doesn't need a transcript) and for fiddly numerical inputs (specific brand codes are easier typed than spoken). Most tradies who switch to voice for quoting find they shave 5–10 minutes off every site visit, mostly because they stop putting off the typing."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Do I need an internet connection for voice?",
+            "answer": "Short clips transcribe on-device with no signal. Longer clips queue and transcribe when you're back online. The materials list generator does need a signal to fetch live supplier prices."
+          },
+          {
+            "question": "How accurate is the transcription?",
+            "answer": "On a quiet site, transcription is around 95% accurate, including trade-specific terms (colorbond, treated pine, R2.5 batts, AS 3000). Noisy sites drop accuracy but the cleaned-up description usually fixes minor errors."
+          },
+          {
+            "question": "Does the transcript get sent to the customer?",
+            "answer": "No. The raw transcript stays internal. The customer sees the cleaned-up job description on the quote PDF — professional tradie English, no 'um's or fillers."
+          },
+          {
+            "question": "Can I edit the description after voice?",
+            "answer": "Yes. Voice gives you a first draft. You can tap into the description and edit anything before generating the materials list or sending the quote."
+          },
+          {
+            "question": "Is voice transcription private?",
+            "answer": "Yes. Audio is processed under QuoteMate's privacy policy, not retained beyond the transcription, and never used for training third-party models."
+          }
+        ]
+      },
+      {
+        "slug": "trade-specific-pricing",
+        "title": "Trade-Specific Pricing Memory for Tradies",
+        "shortLabel": "Trade-Specific Pricing",
+        "summary": "QuoteMate remembers what you charged for an item last time, so your prices stay consistent across jobs without you having to look them up.",
+        "metaTitle": "Trade Pricing Memory App for Tradies (Australia 2026) | QuoteMate",
+        "metaDescription": "Stop quoting the same item at three different prices in one month. QuoteMate remembers your trade pricing per item so quotes stay consistent — built for Australian tradies.",
+        "intro": "Most tradies don't have one price for a 90 mm bend. They have a price they charged on the last job, a price they think they charged the job before that, and a guess about what they'd charge today. The result is the same item going out at $42 on Monday's quote and $58 on Tuesday's, the customer noticing, and a conversation no one wants to have. Trade-specific pricing memory fixes this: every time you set a price on an item, QuoteMate remembers it as your trade rate for that item and uses it as the default next time.",
+        "sections": [
+          {
+            "heading": "Why supplier pricing isn't enough on its own",
+            "body": "Live supplier pricing tells you what Bunnings or Reece charge today. That's not the same as what you charge. Your price builds in your trade discount (if you have one), your handling time, your bin/disposal margin on the item, and a margin that reflects how much of a hassle that item is to fit. A retail Bunnings price for a hot water unit is $1,189, your trade rate at Reece might be $940, but your price on the quote is $1,150 because that includes the hour you spend organising freight. Pricing memory captures that final number, per item, so it stays consistent."
+          },
+          {
+            "heading": "How memory builds over time",
+            "body": "Every time you set or override a price on a line item, QuoteMate writes that price against the item as your trade rate. The next quote that includes the same item prefills with your trade rate, not the retail rate. After 30 quotes most tradies have a personal price book covering their top 200 items — fasteners, fittings, sheets, fixtures, fixings — that's built passively while you work, not by sitting down on a Saturday morning to make a spreadsheet. The personal price book lives in your favourites with notes, coverage rates, and stock notes."
+          },
+          {
+            "heading": "Per-customer vs across-the-board pricing",
+            "body": "Pricing memory operates per item, not per customer — your trade rate for a 90 mm bend is your trade rate. For per-customer adjustments (a repeat commercial customer who gets a 10% mate's rate, a strata client on net-30 with no margin to cut), use the customer record. The combination — a clean personal price book plus per-customer rules — keeps quotes consistent without removing the flexibility tradies need to win or hold specific clients."
+          },
+          {
+            "heading": "What happens when the supplier's price changes",
+            "body": "Live supplier pricing keeps moving in the background. Your trade rate doesn't move with it automatically — that's deliberate, because your price isn't a markup on retail, it's a number you've set. When supplier pricing changes meaningfully (more than 8% in either direction since you last set your rate), the materials list flags it so you can choose to update your rate or hold it. That's the difference between a price book that drifts on its own and a price book you control."
+          }
+        ],
+        "faqs": [
+          {
+            "question": "Does pricing memory overwrite live supplier pricing?",
+            "answer": "No. Live supplier pricing is still shown for reference. Your trade rate is the default on new quotes, but you can switch to live pricing per item if you want to."
+          },
+          {
+            "question": "What if I want to reset my rate for an item?",
+            "answer": "Open the item in your favourites and tap 'Reset to supplier price'. Your trade rate is removed and live supplier pricing takes over until you set a new rate."
+          },
+          {
+            "question": "Does pricing memory work for jobs across different trades?",
+            "answer": "Yes. The price book is per business account. Multi-trade businesses (a builder who also does landscaping) build up one personal price book covering both."
+          },
+          {
+            "question": "Will my trade rates push to Xero?",
+            "answer": "Yes. When an invoice syncs to Xero, the line items go across at the prices on the invoice (your trade rates), not retail."
+          },
+          {
+            "question": "How is this different from importing a supplier price list?",
+            "answer": "A supplier price list is wholesale. Your trade rate is what you actually charge the customer for that item, including your margins. Pricing memory captures your rate, supplier import captures the supplier's. Most tradies use both — supplier rates for costing, trade rates for the customer-facing quote line."
+          }
+        ]
+      }
+    ]
+  },
   "integrations": {
     "reece": {
       "hub": {

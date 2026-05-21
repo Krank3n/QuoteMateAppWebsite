@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
-import { paymentHub, getPaymentSpokeBySlug } from '@/lib/data';
+import { quotingHub, getQuotingSpokeBySlug } from '@/lib/data';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,14 +15,14 @@ interface Props {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return (paymentHub?.spokes ?? []).map((s) => ({ slug: s.slug }));
+  return (quotingHub?.spokes ?? []).map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const spoke = getPaymentSpokeBySlug(slug);
+  const spoke = getQuotingSpokeBySlug(slug);
   if (!spoke) return {};
-  const url = `https://quotemateapp.au/get-paid/${spoke.slug}`;
+  const url = `https://quotemateapp.au/quoting/${spoke.slug}`;
   return {
     title: spoke.metaTitle,
     description: spoke.metaDescription,
@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PaymentSpokePage({ params }: Props) {
+export default async function QuotingSpokePage({ params }: Props) {
   const { slug } = await params;
-  const spoke = getPaymentSpokeBySlug(slug);
-  if (!spoke || !paymentHub) notFound();
+  const spoke = getQuotingSpokeBySlug(slug);
+  if (!spoke || !quotingHub) notFound();
 
-  const otherSpokes = paymentHub.spokes.filter((s) => s.slug !== spoke.slug);
+  const otherSpokes = quotingHub.spokes.filter((s) => s.slug !== spoke.slug);
 
   return (
     <>
@@ -56,11 +56,11 @@ export default async function PaymentSpokePage({ params }: Props) {
           <div className="container">
             <Breadcrumbs items={[
               { label: 'Home', href: '/' },
-              { label: 'Get Paid', href: '/get-paid' },
+              { label: 'Quoting', href: '/quoting' },
               { label: spoke.shortLabel },
             ]} />
             <div className="seo-hero-content">
-              <span className="seo-badge">Get Paid Guide</span>
+              <span className="seo-badge">Quoting Guide</span>
               <h1 className="seo-hero-title">{spoke.title}</h1>
               <p className="seo-hero-subtitle">{spoke.summary}</p>
               <CTAButtons showWebLink />
@@ -93,25 +93,23 @@ export default async function PaymentSpokePage({ params }: Props) {
           <div className="container">
             <div className="links-grid">
               <div className="links-column">
-                <h3>More from the Payments Hub</h3>
+                <h3>More from the Quoting Hub</h3>
                 <ul>
                   {otherSpokes.map((s) => (
                     <li key={s.slug}>
-                      <Link href={`/get-paid/${s.slug}`}>{s.shortLabel}</Link>
+                      <Link href={`/quoting/${s.slug}`}>{s.shortLabel}</Link>
                     </li>
                   ))}
-                  <li><Link href="/get-paid">Back to Payments Hub</Link></li>
+                  <li><Link href="/quoting">Back to Quoting Hub</Link></li>
                 </ul>
               </div>
               <div className="links-column">
                 <h3>QuoteMate</h3>
                 <ul>
-                  <li><Link href="/quoting">Quoting Tools Hub</Link></li>
-                  <li><Link href="/manage-jobs">Manage Jobs Hub</Link></li>
+                  <li><Link href="/manage-jobs">Manage Jobs</Link></li>
+                  <li><Link href="/get-paid">Get Paid</Link></li>
                   <li><Link href="/pricing">Pricing</Link></li>
                   <li><Link href="/templates">Quote Templates</Link></li>
-                  <li><Link href="/trades">Quoting Apps by Trade</Link></li>
-                  <li><Link href="/shower-quoting-tool">Shower Quoting Tool</Link></li>
                 </ul>
               </div>
             </div>
@@ -138,7 +136,7 @@ export default async function PaymentSpokePage({ params }: Props) {
         '@type': 'Article',
         headline: spoke.title,
         description: spoke.summary,
-        url: `https://quotemateapp.au/get-paid/${spoke.slug}`,
+        url: `https://quotemateapp.au/quoting/${spoke.slug}`,
         publisher: {
           '@type': 'Organization',
           name: 'QuoteMate',
