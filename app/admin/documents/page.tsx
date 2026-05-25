@@ -435,6 +435,27 @@ function StuckBadge() {
   );
 }
 
+function WarningPill({ label, title }: { label: string; title?: string }) {
+  return (
+    <span
+      style={{
+        fontSize: 10,
+        color: '#fcd34d',
+        background: 'rgba(245, 158, 11, 0.12)',
+        border: '1px solid rgba(245, 158, 11, 0.3)',
+        borderRadius: 999,
+        padding: '1px 6px',
+        fontWeight: 600,
+        marginLeft: 6,
+        whiteSpace: 'nowrap',
+      }}
+      title={title}
+    >
+      {label}
+    </span>
+  );
+}
+
 function stageStyle(stage: DocStage): { rgb: string; color: string } {
   switch (stage) {
     case 'draft': return { rgb: '100, 116, 139', color: '#94a3b8' };
@@ -624,6 +645,12 @@ function DocModal({
                 <div className={styles.detailFactGrid}>
                   <Fact label="Materials subtotal" value={`$${Number(full.materialsSubtotal || 0).toFixed(2)}`} />
                   <Fact label="Labor total" value={`$${Number(full.laborTotal || 0).toFixed(2)}`} />
+                  {Number(full.laborExtraHours || 0) !== 0 && (
+                    <Fact
+                      label="Extra labour"
+                      value={`${full.laborExtraHours} ${full.laborUnit || 'h'} (+$${(Number(full.laborExtraHours) * Number(full.laborRate || 0)).toFixed(2)})`}
+                    />
+                  )}
                   <Fact label="Subtotal (pre-markup)" value={`$${Number(full.subtotal || 0).toFixed(2)}`} />
                   <Fact
                     label={`Markup (${Number(full.markup || 0)}%${full.laborMarkup ? ` / labor ${Number(full.laborMarkup)}%` : ''})`}
@@ -679,6 +706,7 @@ function DocModal({
                       const hoursLabel = totalHours !== null
                         ? `${totalHours}${typeof s.laborUnit === 'string' ? ` ${s.laborUnit}` : 'h'}`
                         : '';
+                      const noLabour = sectionTotal === 0 && (totalHours ?? 0) === 0;
                       return (
                         <div key={s.id || i} style={{ padding: 10, background: 'rgba(0,0,0,0.2)', borderRadius: 8, fontSize: 13 }}>
                           <strong>{label}</strong>
@@ -687,7 +715,8 @@ function DocModal({
                               {hoursLabel}
                             </span>
                           )}
-                          {sectionTotal > 0 && <span style={{ float: 'right' }}>${sectionTotal.toFixed(2)}</span>}
+                          {noLabour && <WarningPill label="no labour" title="Section stored with zero hours and $0 — likely missing data" />}
+                          <span style={{ float: 'right' }}>${sectionTotal.toFixed(2)}</span>
                         </div>
                       );
                     })}
@@ -710,15 +739,27 @@ function DocModal({
                         </tr>
                       </thead>
                       <tbody>
-                        {materials.slice(0, 50).map((m: any, i: number) => (
-                          <tr key={i} style={{ cursor: 'default' }}>
-                            <td>{asText(m.name) || asText(m.title) || '—'}</td>
-                            <td>{m.quantity ?? m.qty ?? '—'}</td>
-                            <td>{asText(m.unit) || 'each'}</td>
-                            <td style={{ textAlign: 'right' }}>${Number(m.price || 0).toFixed(2)}</td>
-                            <td style={{ textAlign: 'right' }}>${Number(m.totalPrice || (Number(m.price || 0) * Number(m.quantity || m.qty || 0))).toFixed(2)}</td>
-                          </tr>
-                        ))}
+                        {materials.slice(0, 50).map((m: any, i: number) => {
+                          const price = Number(m.price || 0);
+                          const qty = Number(m.quantity ?? m.qty ?? 0);
+                          const unpriced = price === 0 && qty > 0;
+                          const invalidUnit = m.pricingSource === 'invalid_unit';
+                          return (
+                            <tr key={i} style={{ cursor: 'default' }}>
+                              <td>{asText(m.name) || asText(m.title) || '—'}</td>
+                              <td>{m.quantity ?? m.qty ?? '—'}</td>
+                              <td>
+                                {asText(m.unit) || 'each'}
+                                {invalidUnit && <WarningPill label="bad unit" title="Unit doesn't match the material (e.g. m² for pavers)" />}
+                              </td>
+                              <td style={{ textAlign: 'right' }}>
+                                ${price.toFixed(2)}
+                                {unpriced && <WarningPill label="no price" title="Stored at $0 with non-zero quantity — pricing pass missed this row" />}
+                              </td>
+                              <td style={{ textAlign: 'right' }}>${Number(m.totalPrice || (price * qty)).toFixed(2)}</td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                     {materials.length > 50 && (
