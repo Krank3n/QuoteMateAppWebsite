@@ -14,6 +14,7 @@ import {
   IconAffiliate,
   IconSubscription,
   IconSearch,
+  IconChat,
 } from './icons';
 
 interface Item {
@@ -33,6 +34,7 @@ const PAGES: Item[] = [
   { id: 'p-pipeline', kind: 'page', title: 'Pipeline', href: '/admin/pipeline', Icon: IconPipeline, keywords: 'kanban stages' },
   { id: 'p-campaigns', kind: 'page', title: 'Campaigns', href: '/admin/campaigns', Icon: IconCampaign, keywords: 'email broadcast' },
   { id: 'p-feedback', kind: 'page', title: 'Feedback', href: '/admin/feedback', Icon: IconFeedback, keywords: 'reviews inbox' },
+  { id: 'p-conversations', kind: 'page', title: 'Conversations', href: '/admin/conversations', Icon: IconChat, keywords: 'mate assistant chat transcripts voice proposals' },
   { id: 'p-subscriptions', kind: 'page', title: 'Subscriptions', href: '/admin/subscriptions', Icon: IconSubscription, keywords: 'revenue mrr billing pro' },
   { id: 'p-affiliates', kind: 'page', title: 'Affiliates', href: '/admin/affiliates', Icon: IconAffiliate, keywords: 'referrals earnings' },
 ];

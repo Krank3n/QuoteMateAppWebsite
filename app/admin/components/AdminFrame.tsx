@@ -23,6 +23,8 @@ import {
   IconQuote,
   IconRevenue,
   IconSend,
+  IconChat,
+  IconPhone,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
@@ -30,8 +32,10 @@ const NAV = [
   { href: '/admin', label: 'Dashboard', Icon: IconDashboard },
   { href: '/admin/users', label: 'Users', Icon: IconUsers },
   { href: '/admin/leads', label: 'Leads', Icon: IconSend },
+  { href: '/admin/interests', label: 'Katie leads', Icon: IconPhone },
   { href: '/admin/suppliers', label: 'Suppliers', Icon: IconSupplier },
   { href: '/admin/documents', label: 'Documents', Icon: IconQuote },
+  { href: '/admin/conversations', label: 'Conversations', Icon: IconChat },
   { href: '/admin/revenue', label: 'Revenue', Icon: IconRevenue },
   { href: '/admin/pipeline', label: 'Pipeline', Icon: IconPipeline },
   { href: '/admin/campaigns', label: 'Campaigns', Icon: IconCampaign },

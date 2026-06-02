@@ -34,6 +34,8 @@ export const api = {
   }>('adminBroadcast'),
   listFeedback: call<{ limit?: number; category?: string; rating?: string; replied?: boolean }>('adminListFeedback'),
   replyToFeedback: call<{ feedbackId: string; body: string; subject?: string }>('adminReplyToFeedback'),
+  listLeadInterests: call<{ limit?: number; status?: string }>('adminListLeadInterests'),
+  markLeadInterestHandled: call<{ id: string; handled: boolean }>('adminMarkLeadInterestHandled'),
   listSubscriptions: call('adminListSubscriptions'),
   listAffiliates: call('adminListAffiliates'),
   exportCsv: call<{ entity: 'users' | 'suppliers' | 'subscriptions' | 'affiliates' }>('adminExportCsv'),
@@ -50,6 +52,8 @@ export const api = {
   deleteUser: call<{ uid: string; wipeData?: boolean; confirmEmail: string }>('adminDeleteUser'),
   listDocuments: call<{ limit?: number; stage?: string; type?: 'quote' | 'invoice' | ''; userId?: string }>('adminListDocuments'),
   getDocument: call<{ uid: string; id: string }>('adminGetDocument'),
+  listAssistantConversations: call<{ limit?: number; userId?: string }>('adminListAssistantConversations'),
+  getAssistantConversation: call<{ uid: string; id: string }>('adminGetAssistantConversation'),
   listPayments: call<{ limit?: number }>('adminListPayments'),
   // Lead outreach pipeline
   leadDiscovery: call<{ trade: string; suburbs: string[]; maxResults?: number; dryRun?: boolean }>('adminLeadDiscovery'),
