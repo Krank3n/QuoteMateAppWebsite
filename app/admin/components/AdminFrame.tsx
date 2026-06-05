@@ -25,6 +25,7 @@ import {
   IconSend,
   IconChat,
   IconPhone,
+  IconAiCost,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
@@ -36,6 +37,7 @@ const NAV = [
   { href: '/admin/suppliers', label: 'Suppliers', Icon: IconSupplier },
   { href: '/admin/documents', label: 'Documents', Icon: IconQuote },
   { href: '/admin/conversations', label: 'Conversations', Icon: IconChat },
+  { href: '/admin/ai-costs', label: 'AI costs', Icon: IconAiCost },
   { href: '/admin/revenue', label: 'Revenue', Icon: IconRevenue },
   { href: '/admin/pipeline', label: 'Pipeline', Icon: IconPipeline },
   { href: '/admin/campaigns', label: 'Campaigns', Icon: IconCampaign },

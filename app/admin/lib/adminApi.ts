@@ -44,6 +44,7 @@ export const api = {
   deleteSegment: call<{ id: string }>('adminDeleteSegment'),
   impersonate: call<{ uid: string }>('adminImpersonate'),
   metricsSeries: call<{ days?: number }>('adminMetricsSeries'),
+  assistantCosts: call<{ days?: number; topLimit?: number }>('adminAssistantCosts'),
   listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
   emailHealth: call('adminEmailHealth'),
   grantPro: call<{ uid: string; months?: number }>('adminGrantPro'),
