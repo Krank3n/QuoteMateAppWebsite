@@ -7,7 +7,7 @@ import CTAButtons from '../components/CTAButtons';
 
 export const metadata: Metadata = {
   title: 'Pricing — Quoting App for Australian Tradies',
-  description: 'QuoteMate pricing plans: Free forever with no credit card (Square payments), Pro Monthly at $29/month, or Pro Annual at $199/year (save 43%). 14-day Pro trial included. Unlimited quotes, invoices, AI materials, and more.',
+  description: 'QuoteMate pricing plans: Free forever with no credit card (Square payments), Pro Monthly at $49/month, or Pro Annual at $328/year (save 44%). 14-day Pro trial included. Unlimited quotes, invoices, AI materials, and more.',
   alternates: { canonical: 'https://quotemateapp.au/pricing' },
 };
 
@@ -78,7 +78,7 @@ export default function PricingPage() {
                 <div className="pricing-card-header">
                   <h2>Pro Monthly</h2>
                   <div className="pricing-amount">
-                    <span className="price">$29</span>
+                    <span className="price">$49</span>
                     <span className="period">/month</span>
                   </div>
                   <p className="pricing-desc">14-day free trial. Cancel anytime.</p>
@@ -99,14 +99,14 @@ export default function PricingPage() {
                 <div className="pricing-card-header">
                   <h2>Pro Annual</h2>
                   <div className="pricing-amount">
-                    <span className="price">$199</span>
+                    <span className="price">$328</span>
                     <span className="period">/year</span>
                   </div>
-                  <p className="pricing-desc">14-day free trial. Just $16.58/month &mdash; save 43%.</p>
+                  <p className="pricing-desc">14-day free trial. Just $27.33/month &mdash; save 44%.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Pro Monthly</li>
-                  <li><CheckIcon /> Save $149 per year</li>
+                  <li><CheckIcon /> Save $260 per year</li>
                   <li><CheckIcon /> Cancel anytime</li>
                 </ul>
                 <a href="/app" className="btn btn-primary pricing-btn">Subscribe Annually</a>
@@ -178,8 +178,8 @@ export default function PricingPage() {
         "operatingSystem": "iOS, Android, Web",
         "offers": [
           { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "description": "Free forever. Customers pay online via Square (1.7% platform fee added to their bill). No credit card required." },
-          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "month" },
-          { "@type": "Offer", "price": "199", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "year" }
+          { "@type": "Offer", "price": "49", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "month" },
+          { "@type": "Offer", "price": "328", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "year" }
         ]
       })}} />
     </>

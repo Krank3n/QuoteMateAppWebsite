@@ -75,7 +75,7 @@ export default async function ComparisonPage({ params }: Props) {
 
               <div className="guide-section">
                 <h2>Pricing Comparison</h2>
-                <p><strong>QuoteMate:</strong> Free plan available. Pro at $29/month or $199/year (save 43%). Flat pricing — no per-user fees.</p>
+                <p><strong>QuoteMate:</strong> Free plan available. Pro at $49/month or $328/year (save 44%). Flat pricing — no per-user fees.</p>
                 <p style={{ marginTop: '8px' }}><strong>{comp.name}:</strong> {comp.pricing}</p>
               </div>
 
@@ -176,7 +176,7 @@ export default async function ComparisonPage({ params }: Props) {
           {
             "@type": "Question",
             "name": `How does QuoteMate's pricing compare to ${comp.name}?`,
-            "acceptedAnswer": { "@type": "Answer", "text": `QuoteMate has a free plan, plus Pro at $29/month or $199/year (flat pricing, no per-user fees). ${comp.name}: ${comp.pricing}` },
+            "acceptedAnswer": { "@type": "Answer", "text": `QuoteMate has a free plan, plus Pro at $49/month or $328/year (flat pricing, no per-user fees). ${comp.name}: ${comp.pricing}` },
           },
           {
             "@type": "Question",

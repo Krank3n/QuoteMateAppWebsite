@@ -106,7 +106,7 @@ async function main() {
   indexLines.push('## Core pages');
   indexLines.push('');
   indexLines.push(`- [Home](${BASE_URL}/): Product overview, feature breakdown, pricing, FAQ.`);
-  indexLines.push(`- [Pricing](${BASE_URL}/pricing/): Free trial, $29/month Pro, $199/year Pro Annual.`);
+  indexLines.push(`- [Pricing](${BASE_URL}/pricing/): Free trial, $49/month Pro, $328/year Pro Annual.`);
   indexLines.push(`- [About](${BASE_URL}/about/): Why QuoteMate exists; built by a tradie for tradies.`);
   indexLines.push(`- [Articles](${BASE_URL}/articles/): How-to-quote guides for ${data.guides.length}+ common trade jobs.`);
   indexLines.push(`- [Templates](${BASE_URL}/templates/): ${data.quoteTemplates.length}+ free quote templates by job type.`);
@@ -225,8 +225,8 @@ async function main() {
   full.push('## Pricing');
   full.push('');
   full.push('- Free: $0 forever. 7-day quote trial, professional PDF template, live supplier pricing, cloud sync.');
-  full.push('- Pro Monthly: $29 AUD / month. Unlimited quotes and invoices, AI material generation, all PDF templates, business logo on documents, online quote acceptance, priority support.');
-  full.push('- Pro Annual: $199 AUD / year (≈ $16.58/month, save 43%). Everything in Pro Monthly.');
+  full.push('- Pro Monthly: $49 AUD / month. Unlimited quotes and invoices, AI material generation, all PDF templates, business logo on documents, online quote acceptance, priority support.');
+  full.push('- Pro Annual: $328 AUD / year (≈ $27.33/month, save 44%). Everything in Pro Monthly.');
   full.push('- Flat pricing — no per-user fees. One subscription works across iOS, Android, and web.');
   full.push('');
   full.push('## Real cost of taking payment in QuoteMate');

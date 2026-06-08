@@ -274,7 +274,7 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
     },
     {
       question: `Is QuoteMate free for ${trade.name.toLowerCase()}?`,
-      answer: `QuoteMate offers a free 7-day trial so you can create quotes immediately — no credit card required. Pro plans start at $29/month or $199/year (save 43%) for unlimited quotes, invoicing, and all premium features.`,
+      answer: `QuoteMate offers a free 7-day trial so you can create quotes immediately — no credit card required. Pro plans start at $49/month or $328/year (save 44%) for unlimited quotes, invoicing, and all premium features.`,
     },
     ...(trade.extraFaqs ?? []),
   ];

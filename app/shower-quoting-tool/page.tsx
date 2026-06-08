@@ -60,7 +60,7 @@ const audiences = [
 const faqItems = [
   {
     question: 'Is the shower quoting tool actually free?',
-    answer: 'Yes — QuoteMate has a free plan forever (customers pay online via Square, small platform fee added to their bill) plus a 14-day Pro trial with full access. No credit card required. Pro starts at $29/month and unlocks bank/PayID/BPAY/PayPal options plus a lower Square rate.',
+    answer: 'Yes — QuoteMate has a free plan forever (customers pay online via Square, small platform fee added to their bill) plus a 14-day Pro trial with full access. No credit card required. Pro starts at $49/month and unlocks bank/PayID/BPAY/PayPal options plus a lower Square rate.',
   },
   {
     question: 'Does it cover frameless shower screens?',

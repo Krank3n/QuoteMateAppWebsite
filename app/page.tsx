@@ -365,7 +365,7 @@ export default function HomePage() {
                 <div className="pricing-card-header">
                   <h3>Pro Monthly</h3>
                   <div className="pricing-amount">
-                    <span className="price">$29</span>
+                    <span className="price">$49</span>
                     <span className="period">/month</span>
                   </div>
                   <p className="pricing-desc">14-day free trial. Cancel anytime.</p>
@@ -387,14 +387,14 @@ export default function HomePage() {
                 <div className="pricing-card-header">
                   <h3>Pro Annual</h3>
                   <div className="pricing-amount">
-                    <span className="price">$199</span>
+                    <span className="price">$328</span>
                     <span className="period">/year</span>
                   </div>
-                  <p className="pricing-desc">14-day free trial. Just $16.58/month &mdash; save 43%.</p>
+                  <p className="pricing-desc">14-day free trial. Just $27.33/month &mdash; save 44%.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Pro Monthly</li>
-                  <li><CheckIcon /> Save $149 per year</li>
+                  <li><CheckIcon /> Save $260 per year</li>
                   <li><CheckIcon /> Cancel anytime</li>
                 </ul>
                 <a href="/app" className="btn btn-primary pricing-btn">Subscribe Annually</a>
@@ -566,8 +566,8 @@ export default function HomePage() {
         ],
         "offers": [
           { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "category": "free" },
-          { "@type": "Offer", "price": "29", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "P1M" },
-          { "@type": "Offer", "price": "199", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "P1Y" },
+          { "@type": "Offer", "price": "49", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "P1M" },
+          { "@type": "Offer", "price": "328", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "P1Y" },
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -692,7 +692,7 @@ export default function HomePage() {
           "@type": "AggregateOffer",
           "priceCurrency": "AUD",
           "lowPrice": "0",
-          "highPrice": "199",
+          "highPrice": "328",
           "offerCount": "3",
           "url": "https://quotemateapp.au/pricing/",
         },
