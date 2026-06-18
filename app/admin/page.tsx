@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './admin.module.css';
 import { api, fmtRelative } from './lib/adminApi';
+import { getCached, setCached } from './lib/cache';
 import { useSetPageMeta } from './lib/pageMeta';
 import { IconUsers, IconSupplier, IconSubscription, IconFeedback, IconTrendUp, IconExternal } from './components/icons';
 import { Sparkline, pctChange } from './components/Sparkline';
@@ -35,12 +36,26 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     let cancelled = false;
+
+    // Instant paint from cache, then revalidate in the background.
+    const cachedStats = getCached<Stats>('dashboard-stats');
+    const cachedSeries = getCached<Snapshot[]>('dashboard-series');
+    if (cachedStats && cachedSeries) {
+      setStats(cachedStats);
+      setSeries(cachedSeries);
+      setLoading(false);
+    }
+
     Promise.all([api.dashboardStats({}), api.metricsSeries({ days: 30 })])
       .then(([s, series]: any) => {
         if (cancelled) return;
-        setStats(s as Stats);
-        setSeries((series?.series as Snapshot[]) || []);
+        const freshStats = s as Stats;
+        const freshSeries = (series?.series as Snapshot[]) || [];
+        setStats(freshStats);
+        setSeries(freshSeries);
         setLoading(false);
+        setCached('dashboard-stats', freshStats);
+        setCached('dashboard-series', freshSeries);
       })
       .catch((e) => {
         if (!cancelled) {

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import EmailModal from '../components/EmailModal';
 import styles from '../admin.module.css';
 import { api, downloadCsv, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
+import { getCached, setCached } from '../lib/cache';
 import { useSetPageMeta } from '../lib/pageMeta';
 import {
   IconEmail,
@@ -119,19 +120,39 @@ function UsersPageInner() {
   const [toast, setToast] = useState<{ msg: string; error?: boolean } | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
 
-  // Load list (pull big batch, filter client-side for responsiveness)
+  // Load list (pull big batch, filter client-side for responsiveness).
+  // Search/filtering is entirely client-side, so this initial load is always
+  // the unfiltered default — safe to cache-then-revalidate. We only paint from
+  // cache when there's no active search term, and only ever cache this default
+  // list (never search results).
   useEffect(() => {
     let cancelled = false;
     setLoadingList(true);
+
+    if (!search.trim()) {
+      const cached = getCached<{ users: UserRow[]; total: number }>('users-list-default');
+      if (cached) {
+        setUsers(cached.users || []);
+        setTotal(cached.total || 0);
+        setLoadingList(false);
+      }
+    }
+
     api.listUsers({ limit: 500 }).then((r: any) => {
       if (cancelled) return;
-      setUsers(r.users || []);
-      setTotal(r.total || 0);
+      const freshUsers: UserRow[] = r.users || [];
+      const freshTotal: number = r.total || 0;
+      setUsers(freshUsers);
+      setTotal(freshTotal);
       setLoadingList(false);
+      setCached('users-list-default', { users: freshUsers, total: freshTotal });
     }).catch(() => {
       if (!cancelled) setLoadingList(false);
     });
     return () => { cancelled = true; };
+    // Runs once on mount; `search` is read only to gate the initial cache paint
+    // (it is always empty at mount), so it intentionally stays out of the deps.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filteredUsers = useMemo(() => {

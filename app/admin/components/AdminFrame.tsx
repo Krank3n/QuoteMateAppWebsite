@@ -89,7 +89,7 @@ function AuthGatedShell({ children }: { children: ReactNode }) {
         router.replace('/admin/login');
         return;
       }
-      const token = await u.getIdTokenResult(true);
+      const token = await u.getIdTokenResult();
       const admin = token.claims.admin === true;
       setUser({ uid: u.uid, email: u.email, displayName: u.displayName });
       setIsAdmin(admin);
