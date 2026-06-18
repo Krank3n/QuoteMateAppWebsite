@@ -38,6 +38,10 @@ export const IconPipeline = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} {...p}><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="5" height="13" rx="1"/></svg>
 );
 
+export const IconBoard = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="9" rx="1.5"/><path d="M14 17h7"/></svg>
+);
+
 export const IconAffiliate = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} {...p}><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
 );

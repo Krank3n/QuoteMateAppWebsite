@@ -67,6 +67,13 @@ export const api = {
   rejectLeads: call<{ leadIds: string[]; reason?: string; dnc?: boolean }>('adminRejectLeads'),
   addLeadNote: call<{ id: string; text: string }>('adminAddLeadNote'),
   markLeadReplied: call<{ id: string; replyText?: string; intent?: 'positive' | 'neutral' | 'negative' | 'stop' }>('adminMarkLeadReplied'),
+  // AI ticket board ("Tasks")
+  listTickets: call<{ status?: string; type?: string; limit?: number }>('adminListTickets'),
+  createTicket: call<{ title: string; spec: string; type: 'ops' | 'code'; priority: string; autoRun?: boolean; status?: string; source?: string; linkedJobId?: string }>('adminCreateTicket'),
+  updateTicket: call<{ id: string; patch: Record<string, unknown> }>('adminUpdateTicket'),
+  deleteTicket: call<{ id: string }>('adminDeleteTicket'),
+  draftTickets: call<{ goal: string; count?: number; type?: 'ops' | 'code' }>('adminDraftTickets'),
+  runTicket: call<{ id: string }>('adminRunTicket'),
   getDiscoveryConfig: call('adminGetDiscoveryConfig'),
   updateDiscoveryConfig: call<{ enabled?: boolean; trades?: string[]; suburbs?: string[]; targetPerWeek?: number; autoResearch?: boolean; autoGenerate?: boolean }>('adminUpdateDiscoveryConfig'),
   getLeadConfig: call('adminGetLeadConfig'),
