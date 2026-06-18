@@ -34,8 +34,6 @@ const STATUS_FILTERS: Array<{ id: string; label: string }> = [
   { id: 'free', label: 'Free' },
 ];
 
-const PRO_MONTHLY_AUD = 29;
-
 export default function SubscriptionsPage() {
   const [data, setData] = useState<{ subscriptions: Sub[]; totals: any } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -65,18 +63,13 @@ export default function SubscriptionsPage() {
     return sortedList;
   }, [data, filter, sortBy]);
 
-  const mrr = useMemo(() => {
-    if (!data) return 0;
-    return data.subscriptions.filter((s) => s.isPro).length * PRO_MONTHLY_AUD;
-  }, [data]);
-
+  // MRR + paying count come from the backend, which prices each sub by its real
+  // billing interval ($49/mo, $328/yr) and excludes comps / bare isPro flags.
+  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, trialing: 0, trial_expired: 0, free: 0, all: 0, mrr: 0, paying: 0, comped: 0 };
+  const mrr = totals.mrr || 0;
   const arr = mrr * 12;
-  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, trialing: 0, trial_expired: 0, free: 0, all: 0 };
   const retentionRate = totals.active + totals.canceled
     ? Math.round((totals.active / (totals.active + totals.canceled)) * 100)
-    : 0;
-  const trialConvRate = totals.trialing + totals.trial_expired + totals.active
-    ? Math.round((totals.active / (totals.trialing + totals.trial_expired + totals.active)) * 100)
     : 0;
 
   const [exporting, setExporting] = useState(false);
@@ -106,8 +99,8 @@ export default function SubscriptionsPage() {
       ) : (
         <>
           <div className={styles.statGrid}>
-            <StatTile label="MRR (est.)" value={`$${mrr.toLocaleString()}`} sub={`ARR ≈ $${arr.toLocaleString()} · @$${PRO_MONTHLY_AUD}/mo`} accent />
-            <StatTile label="Active" value={totals.active} sub={`${retentionRate}% retained · ${trialConvRate}% trial→paid`} />
+            <StatTile label="MRR (est.)" value={`$${mrr.toLocaleString()}`} sub={`ARR ≈ $${arr.toLocaleString()} · ${totals.paying} paying`} accent />
+            <StatTile label="Active" value={totals.active} sub={`${totals.paying} paying · ${totals.comped} comp/internal · ${retentionRate}% retained`} />
             <StatTile label="Trialing" value={totals.trialing} sub={`${totals.trial_expired} expired`} />
             <StatTile label="Canceling" value={totals.canceling} sub="Active until period end" warn={totals.canceling > 0} />
           </div>
