@@ -47,6 +47,7 @@ const STATUS_FILTERS: Array<{ id: string; label: string }> = [
   { id: 'engaged', label: 'Engaged' },
   { id: 'replied', label: 'Replied' },
   { id: 'converted', label: 'Converted' },
+  { id: 'no_email', label: 'No email' },
   { id: 'rejected', label: 'Rejected' },
   { id: 'dnc', label: 'DNC' },
   { id: 'bounced', label: 'Bounced' },
@@ -64,6 +65,7 @@ const STATUS_COLORS: Record<string, string> = {
   rejected: '#fca5a5',
   dnc: '#fca5a5',
   bounced: '#fca5a5',
+  no_email: '#fb923c',
 };
 
 // Tri-state master checkbox: empty → indeterminate (some selected) → checked (all).
