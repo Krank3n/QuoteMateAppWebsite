@@ -19,6 +19,10 @@ type DocStage =
   | 'cancelled';
 type DocType = 'quote' | 'invoice';
 
+// Mirror of the app's STANDARD_DAY_HOURS — used to convert day-stored labour
+// back to hours so day-unit sections reconcile with the job's hour estimate.
+const HOURS_PER_DAY = 8;
+
 interface DocumentRow {
   id: string;
   uid: string;
@@ -698,15 +702,21 @@ function DocModal({
                     {sections.map((s: any, i: number) => {
                       const sectionTotal = Number(s.total ?? s.laborTotal) || 0;
                       const label = typeof s.name === 'string' ? s.name : typeof s.title === 'string' ? s.title : `Section ${i + 1}`;
-                      const totalHours = typeof s.laborHoursTotal === 'number'
+                      const totalUnits = typeof s.laborHoursTotal === 'number'
                         ? s.laborHoursTotal
                         : typeof s.laborHours === 'number'
                           ? Math.round(s.laborHours * (Number(s.multiplier) || 1) * 100) / 100
                           : null;
-                      const hoursLabel = totalHours !== null
-                        ? `${totalHours}${typeof s.laborUnit === 'string' ? ` ${s.laborUnit}` : 'h'}`
+                      const unit = typeof s.laborUnit === 'string' ? s.laborUnit : 'hours';
+                      // Normalise to hours so day-stored sections (e.g. "0.4 days")
+                      // reconcile with the job's hour estimate at a glance.
+                      const hoursEquiv = totalUnits !== null
+                        ? Math.round((unit === 'days' ? totalUnits * HOURS_PER_DAY : totalUnits) * 100) / 100
+                        : null;
+                      const hoursLabel = totalUnits !== null
+                        ? (unit === 'days' ? `${totalUnits} days · ${hoursEquiv}h` : `${hoursEquiv}h`)
                         : '';
-                      const noLabour = sectionTotal === 0 && (totalHours ?? 0) === 0;
+                      const noLabour = sectionTotal === 0 && (totalUnits ?? 0) === 0;
                       return (
                         <div key={s.id || i} style={{ padding: 10, background: 'rgba(0,0,0,0.2)', borderRadius: 8, fontSize: 13 }}>
                           <strong>{label}</strong>
