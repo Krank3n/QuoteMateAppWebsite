@@ -17,6 +17,7 @@ interface Ticket {
   type: 'ops' | 'code';
   status: 'backlog' | 'todo' | 'in_progress' | 'done';
   priority: 'low' | 'medium' | 'high';
+  role: string | null;
   autoRun: boolean;
   agentStatus: 'idle' | 'queued' | 'running' | 'succeeded' | 'failed';
   output: string;
@@ -38,6 +39,13 @@ interface Draft {
   spec: string;
   type: 'ops' | 'code';
   priority: string;
+  role?: string | null;
+}
+
+interface Role {
+  id: string;
+  label: string;
+  blurb: string;
 }
 
 const COLUMNS: { id: Ticket['status']; label: string }[] = [
@@ -67,6 +75,7 @@ export default function TicketsPage() {
   const [detailId, setDetailId] = useState<string | null>(null);
   const [dragId, setDragId] = useState<string | null>(null);
   const [dropCol, setDropCol] = useState<string | null>(null);
+  const [roles, setRoles] = useState<Role[]>([]);
 
   const showToast = useCallback((msg: string, error?: boolean) => {
     setToast({ msg, error });
@@ -86,6 +95,11 @@ export default function TicketsPage() {
   }, [showToast]);
 
   useEffect(() => { load(); }, [load]);
+
+  // Team roster (drives the role pickers + card badges). Loaded once.
+  useEffect(() => {
+    api.listTicketRoles({}).then((r: any) => setRoles(r.roles || [])).catch(() => {});
+  }, []);
 
   // Poll so worker progress (in_progress → done) shows live. Pause while a modal
   // is open to avoid disrupting editing.
@@ -107,6 +121,12 @@ export default function TicketsPage() {
     for (const t of filtered) (m[t.status] ||= []).push(t);
     return m;
   }, [filtered]);
+
+  const roleLabel = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const r of roles) map[r.id] = r.label;
+    return (id: string | null | undefined) => (id ? map[id] || id : null);
+  }, [roles]);
 
   useSetPageMeta({
     title: 'Tasks',
@@ -169,6 +189,7 @@ export default function TicketsPage() {
                   <TicketCard
                     key={t.id}
                     ticket={t}
+                    roleLabel={roleLabel(t.role)}
                     onClick={() => setDetailId(t.id)}
                     onDragStart={() => setDragId(t.id)}
                     onDragEnd={() => { setDragId(null); setDropCol(null); }}
@@ -182,13 +203,13 @@ export default function TicketsPage() {
       )}
 
       {createOpen && (
-        <CreateModal onClose={() => setCreateOpen(false)} onCreated={(msg) => { setCreateOpen(false); showToast(msg); load(true); }} />
+        <CreateModal roles={roles} onClose={() => setCreateOpen(false)} onCreated={(msg) => { setCreateOpen(false); showToast(msg); load(true); }} />
       )}
       {draftOpen && (
-        <DraftModal onClose={() => setDraftOpen(false)} onAdded={(msg) => { setDraftOpen(false); showToast(msg); load(true); }} />
+        <DraftModal roles={roles} onClose={() => setDraftOpen(false)} onAdded={(msg) => { setDraftOpen(false); showToast(msg); load(true); }} />
       )}
       {detailTicket && (
-        <DetailModal ticket={detailTicket} onClose={() => setDetailId(null)} onChange={() => load(true)} onToast={showToast} />
+        <DetailModal ticket={detailTicket} roles={roles} onClose={() => setDetailId(null)} onChange={() => load(true)} onToast={showToast} />
       )}
 
       {toast && <div className={`${styles.toast} ${toast.error ? styles.toastError : ''}`}>{toast.msg}</div>}
@@ -213,8 +234,9 @@ function PriorityTag({ priority }: { priority: string }) {
   );
 }
 
-function TicketCard({ ticket, onClick, onDragStart, onDragEnd }: {
+function TicketCard({ ticket, roleLabel, onClick, onDragStart, onDragEnd }: {
   ticket: Ticket;
+  roleLabel: string | null;
   onClick: () => void;
   onDragStart: () => void;
   onDragEnd: () => void;
@@ -231,6 +253,7 @@ function TicketCard({ ticket, onClick, onDragStart, onDragEnd }: {
       <div className={styles.ticketCardTitle}>{t.title}</div>
       <div className={styles.ticketBadgeRow}>
         <MiniBadge label={t.type} color={TYPE_COLOR[t.type] || '#94a3b8'} />
+        {roleLabel && <MiniBadge label={roleLabel} color="#38bdf8" />}
         <PriorityTag priority={t.priority} />
         {t.agentStatus && t.agentStatus !== 'idle' && <MiniBadge label={t.agentStatus} color={AGENT_COLOR[t.agentStatus] || '#94a3b8'} />}
         {t.autoRun && t.type === 'ops' && <MiniBadge label="auto" color="#10b981" />}
@@ -285,11 +308,12 @@ function ErrBox({ msg }: { msg: string }) {
 // CREATE MODAL
 // ============================================================
 
-function CreateModal({ onClose, onCreated }: { onClose: () => void; onCreated: (msg: string) => void }) {
+function CreateModal({ roles, onClose, onCreated }: { roles: Role[]; onClose: () => void; onCreated: (msg: string) => void }) {
   const [title, setTitle] = useState('');
   const [spec, setSpec] = useState('');
   const [type, setType] = useState<'ops' | 'code'>('ops');
   const [priority, setPriority] = useState('medium');
+  const [role, setRole] = useState('');
   const [autoRun, setAutoRun] = useState(false);
   const [status, setStatus] = useState<Ticket['status']>('backlog');
   const [saving, setSaving] = useState(false);
@@ -300,7 +324,7 @@ function CreateModal({ onClose, onCreated }: { onClose: () => void; onCreated: (
     setSaving(true);
     setError(null);
     try {
-      await api.createTicket({ title: title.trim(), spec: spec.trim(), type, priority, autoRun: autoRun && type === 'ops', status });
+      await api.createTicket({ title: title.trim(), spec: spec.trim(), type, priority, role: role || undefined, autoRun: autoRun && type === 'ops', status });
       onCreated('Ticket created');
     } catch (e: any) {
       setError(e?.message || 'Create failed');
@@ -331,6 +355,12 @@ function CreateModal({ onClose, onCreated }: { onClose: () => void; onCreated: (
           </select>
         </Field>
       </div>
+      <Field label="Assign to" hint="Which specialist persona runs this ticket.">
+        <select className={styles.select} value={role} onChange={(e) => setRole(e.target.value)}>
+          <option value="">Unassigned (generic operator)</option>
+          {roles.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+        </select>
+      </Field>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, alignItems: 'start' }}>
         <Field label="Start in column">
           <select className={styles.select} value={status} onChange={(e) => setStatus(e.target.value as Ticket['status'])}>
@@ -355,7 +385,7 @@ function CreateModal({ onClose, onCreated }: { onClose: () => void; onCreated: (
 // AI DRAFT MODAL
 // ============================================================
 
-function DraftModal({ onClose, onAdded }: { onClose: () => void; onAdded: (msg: string) => void }) {
+function DraftModal({ roles, onClose, onAdded }: { roles: Role[]; onClose: () => void; onAdded: (msg: string) => void }) {
   const [goal, setGoal] = useState('');
   const [count, setCount] = useState(4);
   const [type, setType] = useState<'ops' | 'code'>('ops');
@@ -391,7 +421,7 @@ function DraftModal({ onClose, onAdded }: { onClose: () => void; onAdded: (msg: 
     setError(null);
     try {
       for (const d of chosen) {
-        await api.createTicket({ title: d.title, spec: d.spec, type: d.type, priority: d.priority, source: 'ai-draft', status: 'backlog' });
+        await api.createTicket({ title: d.title, spec: d.spec, type: d.type, priority: d.priority, role: d.role || undefined, source: 'ai-draft', status: 'backlog' });
       }
       onAdded(`Added ${chosen.length} ticket${chosen.length === 1 ? '' : 's'} to Backlog`);
     } catch (e: any) {
@@ -443,6 +473,7 @@ function DraftModal({ onClose, onAdded }: { onClose: () => void; onAdded: (msg: 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--color-text-primary)' }}>{d.title}</span>
                   <MiniBadge label={d.type} color={TYPE_COLOR[d.type] || '#94a3b8'} />
+                  {d.role && <MiniBadge label={roles.find((r) => r.id === d.role)?.label || d.role} color="#38bdf8" />}
                   <PriorityTag priority={d.priority} />
                 </div>
                 <div style={{ fontSize: 12.5, color: 'var(--color-text-secondary)', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{d.spec}</div>
@@ -468,8 +499,9 @@ function DraftModal({ onClose, onAdded }: { onClose: () => void; onAdded: (msg: 
 // DETAIL / EDIT MODAL
 // ============================================================
 
-function DetailModal({ ticket, onClose, onChange, onToast }: {
+function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
   ticket: Ticket;
+  roles: Role[];
   onClose: () => void;
   onChange: () => void;
   onToast: (msg: string, error?: boolean) => void;
@@ -479,6 +511,7 @@ function DetailModal({ ticket, onClose, onChange, onToast }: {
   const [type, setType] = useState<'ops' | 'code'>(ticket.type);
   const [priority, setPriority] = useState(ticket.priority);
   const [autoRun, setAutoRun] = useState(ticket.autoRun);
+  const [role, setRole] = useState(ticket.role || '');
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState<string | null>(null);
 
@@ -491,6 +524,7 @@ function DetailModal({ ticket, onClose, onChange, onToast }: {
     setType(ticket.type);
     setPriority(ticket.priority);
     setAutoRun(ticket.autoRun);
+    setRole(ticket.role || '');
   }, [ticket, dirty]);
 
   const running = ticket.agentStatus === 'running';
@@ -498,7 +532,7 @@ function DetailModal({ ticket, onClose, onChange, onToast }: {
   const save = async () => {
     setBusy('save');
     try {
-      await api.updateTicket({ id: ticket.id, patch: { title, spec, type, priority, autoRun: autoRun && type === 'ops' } });
+      await api.updateTicket({ id: ticket.id, patch: { title, spec, type, priority, role: role || null, autoRun: autoRun && type === 'ops' } });
       setDirty(false);
       onToast('Saved');
       onChange();
@@ -594,6 +628,12 @@ function DetailModal({ ticket, onClose, onChange, onToast }: {
           </select>
         </Field>
       </div>
+      <Field label="Assign to">
+        <select className={styles.select} value={role} onChange={(e) => { setRole(e.target.value); setDirty(true); }}>
+          <option value="">Unassigned (generic operator)</option>
+          {roles.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+        </select>
+      </Field>
       <label style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 12px', background: 'var(--color-surface-2, #0f172a)', borderRadius: 10, cursor: type === 'ops' ? 'pointer' : 'not-allowed', opacity: type === 'ops' ? 1 : 0.5, marginBottom: 16 }}>
         <input type="checkbox" checked={autoRun} disabled={type !== 'ops'} onChange={(e) => { setAutoRun(e.target.checked); setDirty(true); }} />
         <span style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>Auto-run by the worker when this ticket is in To Do</span>

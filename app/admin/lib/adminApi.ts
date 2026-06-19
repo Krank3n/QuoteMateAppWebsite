@@ -69,7 +69,8 @@ export const api = {
   markLeadReplied: call<{ id: string; replyText?: string; intent?: 'positive' | 'neutral' | 'negative' | 'stop' }>('adminMarkLeadReplied'),
   // AI ticket board ("Tasks")
   listTickets: call<{ status?: string; type?: string; limit?: number }>('adminListTickets'),
-  createTicket: call<{ title: string; spec: string; type: 'ops' | 'code'; priority: string; autoRun?: boolean; status?: string; source?: string; linkedJobId?: string }>('adminCreateTicket'),
+  listTicketRoles: call('adminListTicketRoles'),
+  createTicket: call<{ title: string; spec: string; type: 'ops' | 'code'; priority: string; role?: string; autoRun?: boolean; status?: string; source?: string; linkedJobId?: string }>('adminCreateTicket'),
   updateTicket: call<{ id: string; patch: Record<string, unknown> }>('adminUpdateTicket'),
   deleteTicket: call<{ id: string }>('adminDeleteTicket'),
   draftTickets: call<{ goal: string; count?: number; type?: 'ops' | 'code' }>('adminDraftTickets'),
