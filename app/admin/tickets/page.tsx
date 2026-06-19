@@ -561,7 +561,7 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
     setBusy('run');
     try {
       const r: any = await api.runTicket({ id: ticket.id });
-      if (ticket.type === 'code') onToast('Queued for the code agent');
+      if (ticket.type === 'code') onToast(r?.started ? 'Agent started ✓ — moving to In Progress' : 'Queued (agent not started — check the GitHub token)', !r?.started);
       else if (r?.ok) onToast('Ran ✓');
       else onToast(r?.error || 'Run failed', true);
       onChange();
@@ -586,7 +586,7 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
     }
   };
 
-  const runLabel = ticket.type === 'code' ? 'Queue for agent' : 'Run now';
+  const runLabel = ticket.type === 'code' ? 'Run agent now ▸' : 'Run now';
 
   // Ship-console actions (PR lane): confirm, call the backend, refresh the card.
   const shipAction = async (key: string, confirmMsg: string, fn: () => Promise<any>, okMsg: string) => {
