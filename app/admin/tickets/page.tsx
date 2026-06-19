@@ -15,7 +15,7 @@ interface Ticket {
   title: string;
   spec: string;
   type: 'ops' | 'code';
-  status: 'backlog' | 'todo' | 'in_progress' | 'done';
+  status: 'backlog' | 'todo' | 'in_progress' | 'pr' | 'done';
   priority: 'low' | 'medium' | 'high';
   role: string | null;
   autoRun: boolean;
@@ -32,6 +32,10 @@ interface Ticket {
   startedAt?: number;
   finishedAt?: number;
   claimedBy?: string;
+  prMerged?: boolean;
+  shipStatus?: string;
+  buildRunUrl?: string;
+  releaseNotes?: string;
 }
 
 interface Draft {
@@ -52,6 +56,7 @@ const COLUMNS: { id: Ticket['status']; label: string }[] = [
   { id: 'backlog', label: 'Backlog' },
   { id: 'todo', label: 'To Do' },
   { id: 'in_progress', label: 'In Progress' },
+  { id: 'pr', label: 'PR / Review' },
   { id: 'done', label: 'Done' },
 ];
 
@@ -117,7 +122,7 @@ export default function TicketsPage() {
   }, [tickets, search]);
 
   const byCol = useMemo(() => {
-    const m: Record<string, Ticket[]> = { backlog: [], todo: [], in_progress: [], done: [] };
+    const m: Record<string, Ticket[]> = { backlog: [], todo: [], in_progress: [], pr: [], done: [] };
     for (const t of filtered) (m[t.status] ||= []).push(t);
     return m;
   }, [filtered]);
@@ -583,6 +588,21 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
 
   const runLabel = ticket.type === 'code' ? 'Queue for agent' : 'Run now';
 
+  // Ship-console actions (PR lane): confirm, call the backend, refresh the card.
+  const shipAction = async (key: string, confirmMsg: string, fn: () => Promise<any>, okMsg: string) => {
+    if (confirmMsg && !window.confirm(confirmMsg)) return;
+    setBusy(key);
+    try {
+      const r: any = await fn();
+      onToast(r?.runsUrl ? `${okMsg} — see Actions ↗` : okMsg);
+      onChange();
+    } catch (e: any) {
+      onToast(e?.message || `${key} failed`, true);
+    } finally {
+      setBusy(null);
+    }
+  };
+
   return (
     <ModalShell title="Ticket" onClose={onClose} maxWidth={680}>
       {/* Title + badges */}
@@ -660,10 +680,49 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
         </div>
       )}
 
-      {/* PR link */}
+      {/* Ship console (PR / review lane) */}
       {ticket.prUrl && (
-        <div style={{ marginBottom: 14 }}>
-          <a href={ticket.prUrl} target="_blank" rel="noopener" className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}>View pull request ↗</a>
+        <div style={{ marginBottom: 16, padding: 14, background: 'var(--color-surface-2, #0f172a)', border: '1px solid var(--color-border, #334155)', borderRadius: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--color-text-secondary)' }}>Ship</span>
+            {ticket.shipStatus && <MiniBadge label={ticket.shipStatus} color="#38bdf8" />}
+            {ticket.prMerged && <MiniBadge label="merged" color="#10b981" />}
+            <span style={{ flex: 1 }} />
+            <a href={ticket.prUrl} target="_blank" rel="noopener" className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>View PR ↗</a>
+            {ticket.buildRunUrl && <a href={ticket.buildRunUrl} target="_blank" rel="noopener" className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}>Actions ↗</a>}
+          </div>
+
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+            <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} disabled={!!busy || ticket.prMerged}
+              onClick={() => shipAction('merge', 'Merge this PR into main (squash)?', () => api.mergeTicketPR({ id: ticket.id }), 'Merged ✓')}>
+              {busy === 'merge' ? 'Merging…' : ticket.prMerged ? 'Merged ✓' : 'Merge PR'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy}
+              onClick={() => shipAction('build', 'Start a full EAS build for Android + iOS? This uses build credits.', () => api.dispatchEas({ id: ticket.id, action: 'build', platform: 'all' }), 'Build dispatched')}>
+              {busy === 'build' ? 'Dispatching…' : 'Rebuild (native)'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy}
+              onClick={() => shipAction('submit', 'Submit the latest build to the App Store + Play Store? iOS goes to Apple review.', () => api.dispatchEas({ id: ticket.id, action: 'submit', platform: 'all' }), 'Submit dispatched')}>
+              {busy === 'submit' ? 'Dispatching…' : 'Redeploy (submit)'}
+            </button>
+            <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={!!busy}
+              onClick={() => shipAction('update', 'Push an OTA update now? JS-only changes ship instantly; native changes need a full rebuild.', () => api.dispatchEas({ id: ticket.id, action: 'update', message: ticket.releaseNotes || ticket.title }), 'OTA update dispatched')}>
+              {busy === 'update' ? 'Dispatching…' : 'Push OTA'}
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+            <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--color-text-secondary)' }}>What&apos;s new (for users)</span>
+            <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} disabled={!!busy}
+              onClick={() => shipAction('notes', '', () => api.generateReleaseNotes({ id: ticket.id }), 'Release notes written')}>
+              {busy === 'notes' ? 'Writing…' : '✨ Generate'}
+            </button>
+          </div>
+          {ticket.releaseNotes ? (
+            <div style={{ fontSize: 13, color: 'var(--color-text-primary)', whiteSpace: 'pre-wrap', lineHeight: 1.5, background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: 10 }}>{ticket.releaseNotes}</div>
+          ) : (
+            <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', fontStyle: 'italic' }}>No release notes yet — Generate, then they auto-fill the OTA message.</div>
+          )}
         </div>
       )}
 
