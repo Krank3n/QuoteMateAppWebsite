@@ -4634,6 +4634,61 @@
       ],
       "datePublished": "2026-06-19",
       "dateModified": "2026-06-19"
+    },
+    {
+      "slug": "how-to-quote-a-concrete-slab",
+      "title": "How to Quote a Concrete Slab Accurately: Protect Your Margin",
+      "trade": "concreters",
+      "keyword": "how to quote a concrete slab",
+      "secondaryKeywords": [
+        "concrete slab cost per m2",
+        "house slab quote",
+        "shed slab pricing"
+      ],
+      "description": "Learn how to quote a concrete slab for house, shed, and commercial jobs. Cover materials, labour, and hidden costs to protect your margin.",
+      "relatedTemplate": "concrete-slab-quote-template",
+      "sections": [
+        {
+          "heading": "Getting Your Head Around Concrete Slab Costs",
+          "body": "Knowing how to quote a concrete slab accurately is vital for any concreter. Underquoting materials or underestimating site prep are the fastest ways to lose money on a job. It's not just about the concrete mix; it's about excavation, formwork, reinforcement, and the finish. Every site is unique, so a blanket \"concrete slab cost per m2\" often misses critical details specific to the job. For instance, a basic shed slab pricing will differ vastly from a complex house slab quote due to variations in engineering, ground conditions, and council requirements. Getting this right from the start means a healthy profit and a happy client, rather than an unexpected loss. Always factor in the specific site conditions and engineered plans, as per AS 2870 for residential slabs, right from the first inspection."
+        },
+        {
+          "heading": "Key Factors that Drive Your Slab Pricing",
+          "body": "The biggest factors influencing your concrete slab quote are size, site access, and ground conditions. A large slab on a flat, easily accessible site will naturally cost less per square metre than a smaller slab on a sloping block with limited access that requires extensive excavation. Reactive clay soils, common in many parts of Australia, often demand more robust foundations like waffle pods or bored piers, significantly increasing both material and labour costs. Consider the travel time to site and the logistics of getting heavy machinery and concrete trucks in. A remote site might need a concrete pump, adding upwards of $1500 to the job. Always inspect the site thoroughly and check any available soil reports to understand these variables early in the quoting process. Challenging access can add 15-25% to your overall labour costs alone."
+        },
+        {
+          "heading": "Materials: Concrete, Reinforcement, and Formwork Explained",
+          "body": "The core of your concrete slab cost comes from the materials. This includes the concrete mix itself, steel reinforcement, and formwork. Concrete strength varies, with 20MPa often used for shed slabs and 25MPa or 32MPa for house slabs, depending on engineering specs. Reinforcement, typically SL82 or SL92 mesh from suppliers like Nepean Building & Infrastructure, prevents cracking and adds structural integrity. Formwork, usually made from timber (readily available at Bunnings), defines the slab's shape and height. Don't forget vapour barriers like plastic sheeting (200um minimum) to prevent moisture issues, and expansion joints. Current pricing for 25MPa concrete often sits around $200-$250 per cubic metre, but always get a fresh quote from your local supplier for each job."
+        },
+        {
+          "heading": "Labour and Equipment: The Hours and the Iron",
+          "body": "Labour is more than just pouring; it's the prep, the finish, and the cleanup that eats up hours. Your quote needs to cover site excavation (if required), base preparation, setting out, formwork installation, reo tying, concrete pouring, screeding, trowelling, and curing. Factor in the cost of hiring equipment like excavators, skid steers for earthworks, concrete pumps, and power floats for a smooth finish. Even smaller tools like concrete vibrators and laser levels contribute to the job's overheads. A skilled concreter might charge $80-$100 per hour, while general labourers will be around $50-$65 per hour. For a typical 60m2 house slab, expect labour to consume 60-80 hours, depending on site complexity and finish requirements."
+        },
+        {
+          "heading": "Calculating Volume and Area for Your Quotes",
+          "body": "Accurate measurements are non-negotiable when preparing a concrete slab quote. For rectangular slabs, it's simple: length × width × depth for your cubic metre volume. For complex shapes, break it down into smaller, manageable sections. Always add 5-10% to your calculated concrete volume to account for minor discrepancies, uneven subgrades, and spillage – it's cheaper to have a little extra than to wait for a short load. For a house slab quote, pay close attention to the engineer's drawings for precise dimensions and footing details. When doing shed slab pricing, remember that slight variations in base compaction can impact your required depth. Double-check your measurements against plans before ordering, as per the guidelines from Master Builders Australia: https://www.mbansw.asn.au/."
+        },
+        {
+          "heading": "Different Slab Types and Finishes: Pricing for Complexity",
+          "body": "The type of slab and chosen finish dramatically impact the overall cost. Common slab types include conventional reinforced slabs, waffle pod slabs (excellent for reactive soils), and suspended slabs (for upper levels). Each type has distinct material and labour demands. Finishes also vary widely, from a basic broom finish for non-slip outdoor areas to a smooth trowel finish, exposed aggregate, or even a highly polished concrete for interior floors. An exposed aggregate finish, for example, can add $30-$60 per square metre over a standard finish due to the extra labour and specific materials involved. Ensure your how to quote a concrete slab includes precise line items for these choices; QuoteMate can help you itemise these options clearly for your client in the quote."
+        },
+        {
+          "heading": "Avoiding Common Mistakes and Protecting Your Margin",
+          "body": "To ensure your concrete slab quotes are profitable, avoid common mistakes. Never guess site conditions – always get a soil report or undertake a thorough site inspection. Don't rely on old supplier price lists; material costs fluctuate daily. Confirm access for trucks and machinery. Clearly define the scope of work, including who's responsible for site clearing, spoil removal, and backfilling. For a house slab quote, ensure you factor in council fees and inspections. Always build in a contingency of at least 10% for unforeseen issues like rock excavation or weather delays. Getting these details right means you can confidently stand by your shed slab pricing or any other concrete job, aiming for a healthy 20-25% gross margin."
+        }
+      ],
+      "tips": [
+        "Always add 5-10% extra concrete to your order for unforeseen needs.",
+        "Factor in a minimum 10% contingency for unexpected site conditions or weather delays.",
+        "Verify current material prices with your supplier (e.g., Boral, Hanson) for every quote.",
+        "Charge extra for difficult access; it significantly increases labour and equipment costs.",
+        "Understand soil reports (geotechnical investigations) to avoid under-specifying foundations.",
+        "Clearly itemise all finishes and extras, like exposed aggregate or drainage, in your quote.",
+        "Never start without an engineer's design for house or structurally critical slabs (AS 3600).",
+        "Account for spoil removal; it's a hidden cost that can quickly blow out a job."
+      ],
+      "datePublished": "2026-06-21",
+      "dateModified": "2026-06-21"
     }
   ],
   "paymentHub": {
