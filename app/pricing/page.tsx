@@ -26,7 +26,7 @@ const features = [
   { name: 'Cloud sync', free: true, pro: true },
   { name: 'Online card payments via Square', free: true, pro: true },
   { name: 'Bank Transfer, PayID, BPAY, PayPal', free: false, pro: true },
-  { name: 'Lower Square fee (1% vs 1.7%)', free: false, pro: true },
+  { name: 'Lower QuoteMate platform fee (1% vs 1.7%)', free: false, pro: true },
   { name: 'AI material & title generation', free: false, pro: true },
   { name: 'All PDF templates', free: false, pro: true },
   { name: 'Business logo on documents', free: false, pro: true },
@@ -86,7 +86,7 @@ export default function PricingPage() {
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Free</li>
                   <li><CheckIcon /> Bank Transfer, PayID, BPAY, PayPal</li>
-                  <li><CheckIcon /> Lower Square fee (1% vs 1.7%)</li>
+                  <li><CheckIcon /> Lower QuoteMate platform fee (1% vs 1.7%)</li>
                   <li><CheckIcon /> AI material &amp; title generation</li>
                   <li><CheckIcon /> All PDF templates</li>
                   <li><CheckIcon /> Business logo on documents</li>

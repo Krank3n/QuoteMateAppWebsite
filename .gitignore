@@ -32,3 +32,5 @@ next-env.d.ts
 # large video files (originals)
 public/assets/videos/QuoteMateWalkThrough.mp4
 public/assets/videos/trades/QuoteMatePromo*.mp4
+# Generated visual-QA screenshots (re-creatable via qa-scripts/visual-capture.mjs)
+qa-artifacts/

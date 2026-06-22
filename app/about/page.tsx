@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 
 export const metadata: Metadata = {
-  title: 'About QuoteMate — Built for Australian Tradies',
+  title: 'Built for Australian Tradies',
   description: 'QuoteMate is an Australian-made quoting and invoicing app built specifically for tradies. Learn about our mission to help tradies quote smarter and win more jobs.',
   alternates: { canonical: 'https://quotemateapp.au/about' },
 };

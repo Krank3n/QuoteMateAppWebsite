@@ -2409,6 +2409,94 @@ Pro tips:
 - Discuss gate swing direction and latch height with the client upfront.
 - Use QuoteMate to itemise materials and labour for transparent pricing.
 
+### Pricing Up Termite Treatment: A Tradie's Guide to Accurate Quotes
+
+URL: https://quotemateapp.au/articles/how-to-quote-termite-treatment/
+
+Learn how to quote termite treatment accurately, covering chemical barriers, bait systems, and warranties to protect your margins and your clients.
+
+#### Understanding Average Termite Treatment Costs in Australia
+
+Getting your head around the average termite treatment cost in Australia is the first step to knowing how to quote termite treatment jobs properly. For a standard residential property, expect quotes to range from $1,500 for basic chemical barrier treatments up to $5,000 or more for extensive infestations requiring combination treatments or baiting systems over time. These figures are a rough guide; the real cost depends heavily on the specific situation. For example, a minor infestation caught early in a small, accessible home might only cost around $800-$1,200 for a localised treatment. However, if you're dealing with widespread activity in a large, double-brick house with subfloor access challenges, you're looking at the higher end. Always factor in the initial inspection fee, which often sits around $250-$400, sometimes waived or absorbed into the treatment price if the job goes ahead. This initial outlay helps you properly assess the scope and provide a fair quote. Consider treatment prices on a per-lineal-metre basis for chemical barriers, typically $40-$80 per metre.
+
+#### Factors Driving Termite Treatment Prices
+
+The overall termite treatment cost hinges on several key factors. First, the size of the property dictates how much product is needed and how long the job will take. A larger footprint means more lineal metres for a chemical barrier or more bait stations. Second, the severity and location of the infestation are critical. Active termites in multiple areas or within difficult-to-access structural elements will increase labour and product costs. Third, site accessibility plays a huge role. Restricted subfloor access, concrete slabs that need drilling, or steep block gradients can add hours to the job. Lastly, the chosen treatment method directly impacts the quote. Different products and application techniques have varying material and labour costs. For instance, a full perimeter chemical treatment around a 100-linear-metre house will use significantly more chemical than a targeted bait station installation.
+
+#### Breaking Down Chemical Barrier Pricing
+
+When you quote termite treatment using a chemical barrier, you're primarily pricing the chemical itself, plus the labour for application. Termiticides like Termidor, Premise, or Altriset are the industry standard, and their cost varies. Expect to pay between $150 and $250 per litre for concentrated product, with dilution rates affecting the total volume needed. The typical application rate is 10 litres per lineal metre, creating a treated zone around the home. Therefore, the chemical barrier price for a 50-lineal-metre house could easily involve $2,000-$3,000 just in product. This doesn't include the labour for trenching, drilling through concrete, or injecting chemicals. Concrete drilling costs extra; charge per hole, typically $15-$30 each, or include it in a total lineal metre rate that covers all work. Ensure you meet AS 3660.2-2017 guidelines for existing buildings when installing barriers.
+
+#### Quoting Termite Bait and Monitoring Systems
+
+Termite bait and monitoring systems, like Sentricon AlwaysActive or Exterra, offer a different approach to how to quote termite treatment. These systems are often quoted as an initial installation fee followed by ongoing monitoring and baiting charges. The upfront cost for installing bait stations around a standard home (15-20 stations) typically ranges from $2,500 to $4,000. This includes the cost of the stations, initial attractants, and labour for placement. The real long-term value, and profit, comes from the ongoing service agreement. Monitoring visits, usually quarterly or biannually, are priced separately, around $150-$250 per visit, plus the cost of any active bait needed once termites are detected. This consistent revenue stream can be very attractive for your business. Clearly outline the initial setup and the ongoing service schedule in your quote.
+
+#### Including the Termite Warranty and Ongoing Protection
+
+A critical part of knowing how to quote termite treatment is detailing the warranty and ongoing protection plans. Most reputable pest controllers offer a warranty on their treatments, typically 1-5 years for chemical barriers, often conditional on annual inspections. This adds peace of mind for the client and a chance for recurring business. You need to factor the cost of providing this warranty into your initial quote. For a standard chemical barrier job, including a 12-month warranty is common, with an option for clients to extend it through annual inspection agreements. When providing a termite warranty quote, specify what the warranty covers (e.g., re-treatment for active termites, not structural damage) and its duration. Annual inspections, priced around $250-$400, are vital for maintaining the warranty and ensuring long-term protection, acting as an early warning system against new activity or barrier breaches. See https://aepma.com.au/pest-advice/termites-white-ants/ for industry guidelines.
+
+#### Spotting Common Traps When Quoting Termite Jobs
+
+Even experienced tradies can hit snags when they try to quote termite treatment. One common trap is underestimating hidden damage or infestation spread. Always conduct a thorough inspection; what you see on the surface might only be a fraction of the problem. Another pitfall is poor access. If you haven't factored in the time and effort to clear cluttered subfloors, move obstacles, or deal with restricted entry, your labour costs will blow out. Make sure your chemical barrier price accounts for these challenges. Don't forget to include travel time and any specific site preparation in your quote. Lastly, unclear communication with the client can lead to issues. Be upfront about what the treatment covers, what it doesn't, and any conditions for warranties. QuoteMate can help you clearly itemise these points for clients.
+
+#### Delivering a Solid Quote: Professionalism and Tools
+
+Presenting a clear, professional quote is just as important as the treatment itself. An itemised quote that breaks down the termite treatment cost, chemical barrier price, and any termite warranty quote elements builds trust with the client. It shows you've considered all aspects of their property and the infestation. Use software like QuoteMate to generate professional, branded PDF quotes and invoices, making it easy to detail every line item, from initial inspection to chemical application and ongoing monitoring. This approach helps avoid disputes and ensures both you and the client are on the same page. A clear quote, specifying the chemicals used, the areas treated, and the warranty conditions, reinforces your expertise and justifies your pricing. Good quoting tools save you time on admin, letting you focus on the job.
+
+Pro tips:
+- Always conduct a thorough, paid inspection before quoting; don't guess the scope.
+- Price chemical barriers on lineal metres, factoring in product cost and labour.
+- Specify concrete drilling costs per hole or include in a higher lineal metre rate.
+- Outline initial bait station installation and separate ongoing monitoring fees.
+- Clearly state what your termite warranty covers and its conditions, especially for annual inspections.
+- Charge a contingency for difficult access or unforeseen complications on site.
+- Use current supplier pricing for chemicals like Termidor or Premise to protect your margin.
+- Break down your quote into clear line items so clients understand the value.
+
+### How to Quote a Concrete Slab Accurately: Protect Your Margin
+
+URL: https://quotemateapp.au/articles/how-to-quote-a-concrete-slab/
+
+Learn how to quote a concrete slab for house, shed, and commercial jobs. Cover materials, labour, and hidden costs to protect your margin.
+
+#### Getting Your Head Around Concrete Slab Costs
+
+Knowing how to quote a concrete slab accurately is vital for any concreter. Underquoting materials or underestimating site prep are the fastest ways to lose money on a job. It's not just about the concrete mix; it's about excavation, formwork, reinforcement, and the finish. Every site is unique, so a blanket "concrete slab cost per m2" often misses critical details specific to the job. For instance, a basic shed slab pricing will differ vastly from a complex house slab quote due to variations in engineering, ground conditions, and council requirements. Getting this right from the start means a healthy profit and a happy client, rather than an unexpected loss. Always factor in the specific site conditions and engineered plans, as per AS 2870 for residential slabs, right from the first inspection.
+
+#### Key Factors that Drive Your Slab Pricing
+
+The biggest factors influencing your concrete slab quote are size, site access, and ground conditions. A large slab on a flat, easily accessible site will naturally cost less per square metre than a smaller slab on a sloping block with limited access that requires extensive excavation. Reactive clay soils, common in many parts of Australia, often demand more robust foundations like waffle pods or bored piers, significantly increasing both material and labour costs. Consider the travel time to site and the logistics of getting heavy machinery and concrete trucks in. A remote site might need a concrete pump, adding upwards of $1500 to the job. Always inspect the site thoroughly and check any available soil reports to understand these variables early in the quoting process. Challenging access can add 15-25% to your overall labour costs alone.
+
+#### Materials: Concrete, Reinforcement, and Formwork Explained
+
+The core of your concrete slab cost comes from the materials. This includes the concrete mix itself, steel reinforcement, and formwork. Concrete strength varies, with 20MPa often used for shed slabs and 25MPa or 32MPa for house slabs, depending on engineering specs. Reinforcement, typically SL82 or SL92 mesh from suppliers like Nepean Building & Infrastructure, prevents cracking and adds structural integrity. Formwork, usually made from timber (readily available at Bunnings), defines the slab's shape and height. Don't forget vapour barriers like plastic sheeting (200um minimum) to prevent moisture issues, and expansion joints. Current pricing for 25MPa concrete often sits around $200-$250 per cubic metre, but always get a fresh quote from your local supplier for each job.
+
+#### Labour and Equipment: The Hours and the Iron
+
+Labour is more than just pouring; it's the prep, the finish, and the cleanup that eats up hours. Your quote needs to cover site excavation (if required), base preparation, setting out, formwork installation, reo tying, concrete pouring, screeding, trowelling, and curing. Factor in the cost of hiring equipment like excavators, skid steers for earthworks, concrete pumps, and power floats for a smooth finish. Even smaller tools like concrete vibrators and laser levels contribute to the job's overheads. A skilled concreter might charge $80-$100 per hour, while general labourers will be around $50-$65 per hour. For a typical 60m2 house slab, expect labour to consume 60-80 hours, depending on site complexity and finish requirements.
+
+#### Calculating Volume and Area for Your Quotes
+
+Accurate measurements are non-negotiable when preparing a concrete slab quote. For rectangular slabs, it's simple: length × width × depth for your cubic metre volume. For complex shapes, break it down into smaller, manageable sections. Always add 5-10% to your calculated concrete volume to account for minor discrepancies, uneven subgrades, and spillage – it's cheaper to have a little extra than to wait for a short load. For a house slab quote, pay close attention to the engineer's drawings for precise dimensions and footing details. When doing shed slab pricing, remember that slight variations in base compaction can impact your required depth. Double-check your measurements against plans before ordering, as per the guidelines from Master Builders Australia: https://www.mbansw.asn.au/.
+
+#### Different Slab Types and Finishes: Pricing for Complexity
+
+The type of slab and chosen finish dramatically impact the overall cost. Common slab types include conventional reinforced slabs, waffle pod slabs (excellent for reactive soils), and suspended slabs (for upper levels). Each type has distinct material and labour demands. Finishes also vary widely, from a basic broom finish for non-slip outdoor areas to a smooth trowel finish, exposed aggregate, or even a highly polished concrete for interior floors. An exposed aggregate finish, for example, can add $30-$60 per square metre over a standard finish due to the extra labour and specific materials involved. Ensure your how to quote a concrete slab includes precise line items for these choices; QuoteMate can help you itemise these options clearly for your client in the quote.
+
+#### Avoiding Common Mistakes and Protecting Your Margin
+
+To ensure your concrete slab quotes are profitable, avoid common mistakes. Never guess site conditions – always get a soil report or undertake a thorough site inspection. Don't rely on old supplier price lists; material costs fluctuate daily. Confirm access for trucks and machinery. Clearly define the scope of work, including who's responsible for site clearing, spoil removal, and backfilling. For a house slab quote, ensure you factor in council fees and inspections. Always build in a contingency of at least 10% for unforeseen issues like rock excavation or weather delays. Getting these details right means you can confidently stand by your shed slab pricing or any other concrete job, aiming for a healthy 20-25% gross margin.
+
+Pro tips:
+- Always add 5-10% extra concrete to your order for unforeseen needs.
+- Factor in a minimum 10% contingency for unexpected site conditions or weather delays.
+- Verify current material prices with your supplier (e.g., Boral, Hanson) for every quote.
+- Charge extra for difficult access; it significantly increases labour and equipment costs.
+- Understand soil reports (geotechnical investigations) to avoid under-specifying foundations.
+- Clearly itemise all finishes and extras, like exposed aggregate or drainage, in your quote.
+- Never start without an engineer's design for house or structurally critical slabs (AS 3600).
+- Account for spoil removal; it's a hidden cost that can quickly blow out a job.
+
 ## Quote templates
 
 Free, customisable starting points for the most common Australian trade jobs. Each template includes typical materials, steps, and a default labour structure.

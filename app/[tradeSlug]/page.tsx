@@ -8,6 +8,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
 import { trades, cities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 import TradePromoVideo from '../components/TradePromoVideo';
 
 const TRADES_WITH_VIDEOS = new Set(['electricians', 'plumbers', 'carpenters']);
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tradeSlug } = await params;
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   if (!trade) return {};
-  const title = trade.metaTitle ?? `Free Quoting App for ${trade.name} (2026) | QuoteMate`;
+  const title = trade.metaTitle ?? `Free Quoting App for ${trade.name} (2026)`;
   const description = trade.metaDescription ?? trade.description;
   const url = `https://quotemateapp.au/quotes-for-${trade.slug}`;
   return {
@@ -50,11 +51,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title,
       description,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: OG_IMAGES,
     },
   };
 }

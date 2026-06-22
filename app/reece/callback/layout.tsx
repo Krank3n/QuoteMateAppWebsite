@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Reece Connected — QuoteMate',
+  title: 'Reece Connected',
   description: 'Completing Reece integration setup for QuoteMate.',
   robots: { index: false, follow: false },
 };

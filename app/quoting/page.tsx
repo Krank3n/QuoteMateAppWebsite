@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 import { quotingHub } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 const url = 'https://quotemateapp.au/quoting';
 
@@ -28,11 +29,13 @@ export const metadata: Metadata = quotingHub
         url,
         title: quotingHub.hub.metaTitle,
         description: quotingHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
       twitter: {
         card: 'summary_large_image',
         title: quotingHub.hub.metaTitle,
         description: quotingHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
     }
   : {};

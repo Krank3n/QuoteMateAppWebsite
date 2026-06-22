@@ -209,21 +209,30 @@ export function DashboardClient() {
   ).length;
 
   const handleSaveProfile = async () => {
-    await createOrUpdateSupplier(supplierId, {
-      name: editName,
-      phone: editPhone || undefined,
-      email: editEmail || undefined,
-      address: editAddress || undefined,
-      website: editWebsite || undefined,
-      ownerUid: supplierId,
-    });
-    setEditing(false);
-    loadData();
+    setUploadError('');
+    try {
+      await createOrUpdateSupplier(supplierId, {
+        name: editName,
+        phone: editPhone || undefined,
+        email: editEmail || undefined,
+        address: editAddress || undefined,
+        website: editWebsite || undefined,
+        ownerUid: supplierId,
+      });
+      setEditing(false);
+      loadData();
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : 'Failed to save profile');
+    }
   };
 
   const handleDeleteItem = async (itemId: string) => {
-    await deletePriceItem(supplierId, itemId);
-    setItems(items.filter((i) => i.id !== itemId));
+    try {
+      await deletePriceItem(supplierId, itemId);
+      setItems(items.filter((i) => i.id !== itemId));
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : 'Failed to delete item');
+    }
   };
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -388,6 +397,7 @@ export function DashboardClient() {
               <button onClick={handleSaveProfile} className={styles.button} style={{ width: 'auto' }}>Save</button>
               <button onClick={() => setEditing(false)} className={styles.buttonSecondary} style={{ width: 'auto' }}>Cancel</button>
             </div>
+            {uploadError && <div className={styles.error}>{uploadError}</div>}
           </div>
         ) : (
           <div className={styles.profileInfo}>

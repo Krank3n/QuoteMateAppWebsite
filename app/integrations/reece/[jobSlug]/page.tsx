@@ -7,6 +7,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs';
 import FAQ from '../../../components/FAQ';
 import CTAButtons from '../../../components/CTAButtons';
 import { getReeceSpoke, getReeceSpokes } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 const SITE_URL = 'https://quotemateapp.au';
 
@@ -41,11 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title: spoke.metaTitle,
       description: spoke.metaDescription,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title: spoke.metaTitle,
       description: spoke.metaDescription,
+      images: OG_IMAGES,
     },
   };
 }
