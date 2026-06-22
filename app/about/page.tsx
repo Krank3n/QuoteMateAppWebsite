@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 
 export const metadata: Metadata = {
-  title: 'About QuoteMate — Built for Australian Tradies',
+  title: 'Built for Australian Tradies',
   description: 'QuoteMate is an Australian-made quoting and invoicing app built specifically for tradies. Learn about our mission to help tradies quote smarter and win more jobs.',
   alternates: { canonical: 'https://quotemateapp.au/about' },
 };
@@ -67,7 +67,7 @@ export default function AboutPage() {
 
               <div className="guide-section">
                 <h2>Get in Touch</h2>
-                <p>We&rsquo;d love to hear from you. Whether it&rsquo;s a feature request, a question, or just to say g&rsquo;day &mdash; drop us a line at <a href="mailto:hello@quotemateapp.au" style={{ color: 'var(--color-accent)' }}>hello@quotemateapp.au</a>.</p>
+                <p>We&rsquo;d love to hear from you. Whether it&rsquo;s a feature request, a question, or just to say g&rsquo;day &mdash; drop us a line at <a href="mailto:tom@hansendev.com.au" style={{ color: 'var(--color-accent)' }}>tom@hansendev.com.au</a>.</p>
               </div>
 
               <div className="guide-cta-card">

@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 import { manageJobsHub } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 const url = 'https://quotemateapp.au/manage-jobs';
 
@@ -29,11 +30,13 @@ export const metadata: Metadata = manageJobsHub
         url,
         title: manageJobsHub.hub.metaTitle,
         description: manageJobsHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
       twitter: {
         card: 'summary_large_image',
         title: manageJobsHub.hub.metaTitle,
         description: manageJobsHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
     }
   : {};

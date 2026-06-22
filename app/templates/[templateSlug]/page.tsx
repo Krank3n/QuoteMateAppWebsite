@@ -7,6 +7,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
 import { quoteTemplates, trades, getTemplateBySlug, getTradeBySlug, getTradeFAQs } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ templateSlug: string }>;
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const template = getTemplateBySlug(templateSlug);
   if (!template) return {};
   const url = `https://quotemateapp.au/templates/${template.slug}`;
-  const title = template.metaTitle ?? `Free ${template.name} (PDF & Excel) | QuoteMate`;
+  const title = template.metaTitle ?? `Free ${template.name} (PDF & Excel)`;
   const description = template.metaDescription ?? `Free ${template.name.toLowerCase()} for Australian tradies. Itemised materials, GST, and pro PDF formatting — send quotes in minutes with QuoteMate.`;
   return {
     title,
@@ -41,11 +42,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title,
       description,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: OG_IMAGES,
     },
   };
 }

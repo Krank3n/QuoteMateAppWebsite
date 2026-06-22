@@ -494,7 +494,7 @@ async function main() {
 
   full.push('## Contact');
   full.push('');
-  full.push('- Email: hello@quotemateapp.au');
+  full.push('- Email: tom@hansendev.com.au');
   full.push('- Website: https://quotemateapp.au');
   full.push('- iOS: https://apps.apple.com/au/app/quotemate/id6754000046');
   full.push('- Android: https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU');

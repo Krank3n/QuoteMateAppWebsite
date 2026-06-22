@@ -233,7 +233,7 @@ export default function ReeceHubPage() {
         featureList: hub.features.map(f => f.title),
         offers: [
           { '@type': 'Offer', price: '0', priceCurrency: 'AUD', name: 'Free trial' },
-          { '@type': 'Offer', price: '29', priceCurrency: 'AUD', name: 'Pro', billingIncrement: 'month' },
+          { '@type': 'Offer', price: '49', priceCurrency: 'AUD', name: 'Pro', billingIncrement: 'month' },
         ],
         provider: {
           '@type': 'Organization',

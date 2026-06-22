@@ -7,6 +7,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
 import { manageJobsHub, getManageJobsSpokeBySlug } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -32,11 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title: spoke.metaTitle,
       description: spoke.metaDescription,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title: spoke.metaTitle,
       description: spoke.metaDescription,
+      images: OG_IMAGES,
     },
   };
 }

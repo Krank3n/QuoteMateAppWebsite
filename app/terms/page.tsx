@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { OG_IMAGES } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service — QuoteMate',
     url: 'https://quotemateapp.au/terms',
+    images: OG_IMAGES,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: OG_IMAGES,
   },
 };
 
@@ -64,19 +70,19 @@ export default function TermsPage() {
             <h3>4.1 Free Plan</h3>
             <p>QuoteMate offers a free plan with limited features, including up to 5 quotes per month. The free plan may be subject to additional limitations as described on our pricing page.</p>
 
-            <h3>4.2 Pro Subscription</h3>
-            <p>The Pro subscription provides access to additional features, including unlimited quotes and invoices. Pro subscriptions are available on a monthly or annual basis. Pricing is displayed in Australian Dollars (AUD) and includes GST where applicable.</p>
+            <h3>4.2 Starter Subscription</h3>
+            <p>The Starter subscription provides access to additional features, including unlimited quotes and invoices. Starter subscriptions are available on a monthly or annual basis. Pricing is displayed in Australian Dollars (AUD) and includes GST where applicable.</p>
 
             <h3>4.3 Free Trial</h3>
-            <p>We may offer a free trial period for the Pro subscription. At the end of the trial period, you will be charged the applicable subscription fee unless you cancel before the trial ends. You may only use one free trial per account.</p>
+            <p>We may offer a free trial period for the Starter subscription. At the end of the trial period, you will be charged the applicable subscription fee unless you cancel before the trial ends. You may only use one free trial per account.</p>
 
             <h3>4.4 Payment</h3>
             <p>Subscription payments are processed through the Apple App Store, Google Play Store, or our website payment processor, depending on your platform. By subscribing, you authorise recurring charges to your chosen payment method.</p>
 
             <h3>4.5 Cancellation</h3>
-            <p>You may cancel your Pro subscription at any time. Upon cancellation:</p>
+            <p>You may cancel your Starter subscription at any time. Upon cancellation:</p>
             <ul>
-              <li>You will retain access to Pro features until the end of your current billing period</li>
+              <li>You will retain access to Starter features until the end of your current billing period</li>
               <li>Your account will revert to the Free plan at the end of the billing period</li>
               <li>No refunds will be provided for partial billing periods</li>
               <li>Your data will be preserved and accessible under the Free plan limitations</li>
@@ -144,7 +150,7 @@ export default function TermsPage() {
             <p>Upon termination, we may delete your account and associated data in accordance with our <Link href="/privacy">Privacy Policy</Link>. We recommend exporting your data before terminating your account.</p>
 
             <h2>10. Dispute Resolution</h2>
-            <p>If a dispute arises between you and QuoteMate, we encourage you to contact us first at <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a> to seek a resolution. If the dispute cannot be resolved informally, either party may refer the matter to mediation before pursuing other legal remedies.</p>
+            <p>If a dispute arises between you and QuoteMate, we encourage you to contact us first at <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> to seek a resolution. If the dispute cannot be resolved informally, either party may refer the matter to mediation before pursuing other legal remedies.</p>
 
             <h2>11. Governing Law</h2>
             <p>These Terms are governed by and construed in accordance with the laws of the Commonwealth of Australia. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of Australia.</p>
@@ -168,7 +174,7 @@ export default function TermsPage() {
             <h2>14. Contact Us</h2>
             <p>If you have any questions about these Terms of Service, please contact us:</p>
             <ul>
-              <li>Email: <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a></li>
+              <li>Email: <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a></li>
               <li>Website: <a href="https://quotemateapp.au">quotemateapp.au</a></li>
             </ul>
           </div>

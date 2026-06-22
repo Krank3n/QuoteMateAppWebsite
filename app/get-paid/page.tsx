@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 import { paymentHub } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 const url = 'https://quotemateapp.au/get-paid';
 
@@ -27,11 +28,13 @@ export const metadata: Metadata = paymentHub
         url,
         title: paymentHub.hub.metaTitle,
         description: paymentHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
       twitter: {
         card: 'summary_large_image',
         title: paymentHub.hub.metaTitle,
         description: paymentHub.hub.metaDescription,
+        images: OG_IMAGES,
       },
     }
   : {};

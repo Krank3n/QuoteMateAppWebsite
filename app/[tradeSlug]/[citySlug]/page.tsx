@@ -7,6 +7,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
 import { trades, cities, getTradeBySlug, getCityBySlug, getTradeFAQs } from '@/lib/data';
+import { OG_IMAGES } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ tradeSlug: string; citySlug: string }>;
@@ -54,11 +55,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title,
       description,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: OG_IMAGES,
     },
   };
 }

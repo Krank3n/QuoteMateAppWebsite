@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Connecting to Square — QuoteMate',
+  title: 'Connecting to Square',
   description: 'Completing Square integration setup for QuoteMate.',
   robots: { index: false, follow: false },
 };
