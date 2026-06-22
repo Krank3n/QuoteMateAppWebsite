@@ -150,7 +150,7 @@ export default function TermsPage() {
             <p>Upon termination, we may delete your account and associated data in accordance with our <Link href="/privacy">Privacy Policy</Link>. We recommend exporting your data before terminating your account.</p>
 
             <h2>10. Dispute Resolution</h2>
-            <p>If a dispute arises between you and QuoteMate, we encourage you to contact us first at <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a> to seek a resolution. If the dispute cannot be resolved informally, either party may refer the matter to mediation before pursuing other legal remedies.</p>
+            <p>If a dispute arises between you and QuoteMate, we encourage you to contact us first at <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> to seek a resolution. If the dispute cannot be resolved informally, either party may refer the matter to mediation before pursuing other legal remedies.</p>
 
             <h2>11. Governing Law</h2>
             <p>These Terms are governed by and construed in accordance with the laws of the Commonwealth of Australia. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of Australia.</p>
@@ -174,7 +174,7 @@ export default function TermsPage() {
             <h2>14. Contact Us</h2>
             <p>If you have any questions about these Terms of Service, please contact us:</p>
             <ul>
-              <li>Email: <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a></li>
+              <li>Email: <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a></li>
               <li>Website: <a href="https://quotemateapp.au">quotemateapp.au</a></li>
             </ul>
           </div>

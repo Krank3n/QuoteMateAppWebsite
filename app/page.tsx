@@ -600,7 +600,7 @@ export default function HomePage() {
           "@type": "Organization",
           "name": "QuoteMate",
           "url": "https://quotemateapp.au",
-          "email": "hello@quotemateapp.au",
+          "email": "tom@hansendev.com.au",
         },
       })}} />
 
@@ -611,7 +611,7 @@ export default function HomePage() {
         "name": "QuoteMate",
         "url": "https://quotemateapp.au",
         "logo": "https://quotemateapp.au/assets/logo.png",
-        "email": "hello@quotemateapp.au",
+        "email": "tom@hansendev.com.au",
         "description": "AI-powered quoting and invoicing app built for Australian tradies.",
         "sameAs": [
           "https://www.facebook.com/quotemateapp",

@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="footer-links">
             <h4>Connect</h4>
             <ul>
-              <li><a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a></li>
+              <li><a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a></li>
               <li>
                 <div className="social-links">
                   <a href="https://www.facebook.com/profile.php?id=61579534155762" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
