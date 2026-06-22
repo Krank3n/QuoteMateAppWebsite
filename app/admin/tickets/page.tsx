@@ -558,10 +558,13 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
   };
 
   const run = async () => {
+    if (ticket.type === 'code' && (ticket.status === 'in_progress' || ticket.status === 'pr')) {
+      if (!window.confirm('Re-run the agent on this ticket? It dispatches a fresh run on the same GitHub issue.')) return;
+    }
     setBusy('run');
     try {
       const r: any = await api.runTicket({ id: ticket.id });
-      if (ticket.type === 'code') onToast(r?.started ? 'Agent started ✓ — moving to In Progress' : 'Queued (agent not started — check the GitHub token)', !r?.started);
+      if (ticket.type === 'code') onToast(r?.started ? 'Agent dispatched ✓' : 'Queued (agent not started — check the GitHub token)', !r?.started);
       else if (r?.ok) onToast('Ran ✓');
       else onToast(r?.error || 'Run failed', true);
       onChange();
@@ -586,7 +589,9 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
     }
   };
 
-  const runLabel = ticket.type === 'code' ? 'Run agent now ▸' : 'Run now';
+  const runLabel = ticket.type === 'code'
+    ? (['in_progress', 'pr', 'done'].includes(ticket.status) ? 'Re-run agent ▸' : 'Run agent now ▸')
+    : 'Run now';
 
   // Ship-console actions (PR lane): confirm, call the backend, refresh the card.
   const shipAction = async (key: string, confirmMsg: string, fn: () => Promise<any>, okMsg: string) => {
@@ -661,8 +666,8 @@ function DetailModal({ ticket, roles, onClose, onChange, onToast }: {
 
       {/* Action bar */}
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap', marginBottom: 16 }}>
-        <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} onClick={run} disabled={!!busy || running}>
-          {busy === 'run' ? 'Working…' : running ? 'Running…' : runLabel}
+        <button className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`} onClick={run} disabled={!!busy || (running && ticket.type !== 'code')}>
+          {busy === 'run' ? 'Working…' : (running && ticket.type !== 'code') ? 'Running…' : runLabel}
         </button>
         {dirty && (
           <button className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} onClick={save} disabled={!!busy}>
