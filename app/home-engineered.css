@@ -473,3 +473,14 @@
 @keyframes qbar { 0%,12% { opacity: .9; } 22%,100% { opacity: 0; } }
 @keyframes mscroll { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
 @keyframes tap-fade { 0%,100% { opacity: .6; } 50% { opacity: 1; } }
+
+/* --- Override globals.css class-name collisions ---------------------------
+   globals.css defines global .hero / .faq / .nav-cta etc. The engineered
+   page reuses those names; properties globals sets that the scoped rules
+   don't (notably .hero{display:flex;min-height:100vh;padding}) leak in and
+   broke the hero layout (shrink-wrapped ~50% width on wide screens).
+   These resets win by equal-specificity source order. ---------------------- */
+.eng-home .hero { display: block; min-height: 0; padding: 0; align-items: normal; }
+.eng-home .hero::before { content: none; }
+.eng-home .faq { padding: 0; }
+.eng-home .nav-cta { padding: 0; font-size: inherit; }
