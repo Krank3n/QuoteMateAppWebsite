@@ -1,4 +1,5 @@
 import rawData from '@/seo/data.json';
+import { extraTemplates } from './extraTemplates';
 
 export interface Trade {
   slug: string;
@@ -227,7 +228,9 @@ const data = rawData as unknown as {
   integrations?: { reece?: ReeceIntegration };
 };
 
-export const { site, trades, cities, quoteTemplates, guides } = data;
+export const { site, trades, cities, guides } = data;
+// Base templates from seo/data.json plus orphan pages (niche videos with no base template).
+export const quoteTemplates: QuoteTemplate[] = [...data.quoteTemplates, ...extraTemplates];
 export const faqData: FAQ[] = data.faqData || [];
 export const paymentHub: PaymentHub | undefined = data.paymentHub;
 export const manageJobsHub: ManageJobsHub | undefined = data.manageJobsHub;

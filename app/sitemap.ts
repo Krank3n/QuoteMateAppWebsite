@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { trades, cities, quoteTemplates, guides, paymentHub, manageJobsHub, quotingHub, reeceIntegration } from '@/lib/data';
 import { competitors } from './compare/data';
+import { TEMPLATES_WITH_VIDEOS } from '@/lib/videos';
 
 export const dynamic = 'force-static';
 
@@ -77,12 +78,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const templatePages: MetadataRoute.Sitemap = quoteTemplates.map((template) => ({
-    url: `${baseUrl}/templates/${template.slug}/`,
-    lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
+  const templatePages: MetadataRoute.Sitemap = quoteTemplates.map((template) => {
+    const hasVideo = TEMPLATES_WITH_VIDEOS.has(template.slug);
+    const jobName = template.name.replace(/ Quote Template$/i, '');
+    return {
+      url: `${baseUrl}/templates/${template.slug}/`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: hasVideo ? 0.8 : 0.7,
+      ...(hasVideo
+        ? {
+            videos: [
+              {
+                title: `${jobName} quote demo`,
+                thumbnail_loc: `${baseUrl}/assets/videos/templates/${template.slug}-poster.jpg`,
+                description: (template.description || `${jobName} quote demo`).slice(0, 200),
+                content_loc: `${baseUrl}/assets/videos/templates/${template.slug}.mp4`,
+              },
+            ],
+          }
+        : {}),
+    };
+  });
 
   const blogPages: MetadataRoute.Sitemap = guides.map((guide) => ({
     url: `${baseUrl}/articles/${guide.slug}/`,

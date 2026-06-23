@@ -6,7 +6,9 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
+import WalkthroughPlayer from '../../components/WalkthroughPlayer';
 import { quoteTemplates, trades, getTemplateBySlug, getTradeBySlug, getTradeFAQs } from '@/lib/data';
+import { TEMPLATES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
 
 interface Props {
   params: Promise<{ templateSlug: string }>;
@@ -56,6 +58,8 @@ export default async function TemplatePage({ params }: Props) {
   if (!template) notFound();
 
   const trade = getTradeBySlug(template.trade);
+  const hasVideo = TEMPLATES_WITH_VIDEOS.has(template.slug);
+  const jobName = template.name.replace(/ Quote Template$/i, '');
 
   return (
     <>
@@ -76,6 +80,34 @@ export default async function TemplatePage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {hasVideo && (
+          <section className="seo-template-video">
+            <div className="container">
+              <h2 className="section-title">See a real {jobName.toLowerCase()} quote built in under a minute</h2>
+              <WalkthroughPlayer basePath="templates" slug={template.slug} poster={`/assets/videos/templates/${template.slug}-poster.jpg`} label={`${jobName} quote demo`} />
+            </div>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'VideoObject',
+                name: `${jobName} quote demo — real prices in under a minute`,
+                description: template.description,
+                thumbnailUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}-poster.jpg`,
+                uploadDate: VIDEO_UPLOAD_DATE,
+                duration: 'PT1M',
+                contentUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}.mp4`,
+                embedUrl: `https://quotemateapp.au/templates/${template.slug}`,
+                publisher: {
+                  '@type': 'Organization',
+                  name: 'QuoteMate',
+                  logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' },
+                },
+              }) }}
+            />
+          </section>
+        )}
 
         <section className="seo-template-details">
           <div className="container">
