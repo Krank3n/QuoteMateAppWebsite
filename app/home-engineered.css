@@ -484,3 +484,8 @@
 .eng-home .hero::before { content: none; }
 .eng-home .faq { padding: 0; }
 .eng-home .nav-cta { padding: 0; font-size: inherit; }
+
+/* hero highlighted-word orange flash */
+.eng-home .flash { animation: word-flash 3.6s ease-in-out infinite; }
+@keyframes word-flash { 0%,72%,100% { color: var(--acc); text-shadow: none; } 84% { color: #ffb066; text-shadow: 0 0 24px rgba(249,115,22,.8); } }
+@media (prefers-reduced-motion: reduce) { .eng-home .flash { animation: none; } }
