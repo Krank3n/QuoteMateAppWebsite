@@ -104,7 +104,6 @@ export default function HomePage() {
           <span className="cross" style={{ top: '33%', left: '32%' }}></span>
           <span className="cross" style={{ top: '62%', left: '21%' }}></span>
           <span className="cross" style={{ top: '22%', left: '54%' }}></span>
-          <span className="bp" style={{ top: '26px', left: '28px' }}>QM // EST.2026 · AU</span>
           <span className="bp" style={{ bottom: '96px', right: '30px' }}>fig.01 — quote pipeline</span>
           <div className="dim" style={{ bottom: '120px', left: '34px', width: '150px' }}>
             <i></i>2400mm<i></i>
