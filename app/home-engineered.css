@@ -448,7 +448,7 @@
   .eng-home .sechead { margin-bottom: 32px; }
   .eng-home .topbar { gap: 14px; padding: 12px 18px; }
   .eng-home .hero-wrap { padding: 44px 18px 40px; gap: 34px; }
-  .eng-home h1 { font-size: clamp(2rem,8.5vw,2.5rem); }
+  .eng-home h1 { font-size: clamp(1.45rem,6.6vw,2.3rem); }
   .eng-home .win { max-width: 360px; margin: 0 auto; width: 100%; }
   .eng-home .stats div { min-width: 46%; flex: 1 0 42%; padding: 15px 16px; }
   .eng-home .feat { padding: 22px; }

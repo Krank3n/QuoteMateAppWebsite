@@ -228,15 +228,15 @@ ul {
     right: 0;
     z-index: 1002;
     height: var(--nav-height);
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid transparent;
+    background: rgba(10, 14, 22, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--color-border);
     transition: background var(--transition), border-color var(--transition);
 }
 
 .site-header.scrolled {
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(10, 14, 22, 0.95);
     border-bottom-color: var(--color-border);
 }
 
@@ -274,6 +274,17 @@ ul {
     color: var(--color-accent);
 }
 
+/* header brand mirrors the homepage topbar: compact uppercase QUOTEMATE, no accent */
+.site-header .logo-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.site-header .logo-accent {
+    color: inherit;
+}
+
 .logo:hover .logo-text {
     color: var(--color-text-primary);
 }
@@ -281,13 +292,14 @@ ul {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
 }
 
 .nav-links a {
     color: var(--color-text-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 400;
     transition: color var(--transition);
 }
 
@@ -3210,8 +3222,8 @@ ul {
 .qm-walk-player { display: flex; justify-content: center; }
 .qm-walk-player .phone { position: relative; width: 284px; background: #0d1117; border-radius: 40px; border: 3px solid #2a2f3a; box-shadow: 0 30px 70px rgba(0,0,0,.55); padding: 12px; flex-shrink: 0; }
 .qm-walk-player .notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 26px; background: #0d1117; border-radius: 0 0 16px 16px; z-index: 2; }
-.qm-walk-player .screen { position: relative; border-radius: 28px; overflow: hidden; background: #000; aspect-ratio: 540 / 960; }
-.qm-walk-player .screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.qm-walk-player .screen { position: relative; border-radius: 28px; overflow: hidden; background: #000; aspect-ratio: 9 / 16; }
+.qm-walk-player .screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .qm-walk-player .tap-for-sound { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 8px; background: rgba(0,0,0,.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.85); font-size: .65rem; font-weight: 500; letter-spacing: .02em; z-index: 5; white-space: nowrap; pointer-events: none; animation: qm-tap-fade 3s ease-in-out infinite; }
 .qm-walk-player .video-paused-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); z-index: 3; pointer-events: none; }
 .qm-walk-player .video-controls { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 5; opacity: 0; transform: translateX(8px); transition: all .3s cubic-bezier(.4,0,.2,1); pointer-events: none; }
