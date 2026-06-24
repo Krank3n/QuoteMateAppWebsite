@@ -104,7 +104,7 @@
 .eng-home .tag .stars { color: #f97316; letter-spacing: 1px; font-size: .9rem; line-height: 1; }
 .eng-home .tag b { color: var(--tx); font-weight: 700; }
 .eng-home .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
-.eng-home h1 { font: 700 clamp(2.3rem,4.4vw,2.9rem)/1.15 var(--display); letter-spacing: -.025em; margin-bottom: 24px; }
+.eng-home h1 { font: 700 clamp(2.3rem,4.4vw,2.9rem)/1.3 var(--display); letter-spacing: -.025em; margin-bottom: 24px; }
 .eng-home .caret { display: inline-block; width: .55ch; height: .95em; background: var(--acc); margin-left: 5px; transform: translateY(3px); animation: blink 1.1s steps(1) infinite; }
 .eng-home .flow { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-bottom: 26px; }
 .eng-home .flow .step { font: 400 .78rem var(--mono); color: var(--tx); border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px; background: rgba(255,255,255,.02); }
