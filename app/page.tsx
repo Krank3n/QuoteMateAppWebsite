@@ -117,21 +117,6 @@ export default function HomePage() {
               <span><b>5.0</b> on Google Reviews</span>
             </span>
             <h1>Don&apos;t quote at night.<br />Quote <span className="hl">on-site</span>.</h1>
-            <div className="flow">
-              <span className="step">job</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">materials</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">live&nbsp;price</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">labour</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">PDF</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">sent</span>
-              <span className="arr">&rarr;</span>
-              <span className="step">accept</span>
-            </div>
             <p className="sub">Describe the work in plain English. QuoteMate resolves the materials, pulls today&apos;s supplier prices, computes GST and markup, and ships a branded quote.</p>
             <div className="ctas">
               <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn btn-store-lg">
@@ -147,7 +132,7 @@ export default function HomePage() {
                 <span><small>Get it on</small>Google Play</span>
               </a>
             </div>
-            <a href="/app" className="hero-web">$ or try it on the web &rarr;</a>
+            <a href="/app" className="hero-web">Try it free on the web &rarr;</a>
           </div>
 
           {/* Quote window */}
@@ -587,6 +572,21 @@ export default function HomePage() {
           <div className="sechead">
             <span className="seclabel">// 02 — how it works</span>
             <h2 className="sectitle">From job to quote in <span className="acc">four steps</span></h2>
+          </div>
+          <div className="flow" style={{ justifyContent: 'center', margin: '0 auto 44px' }}>
+            <span className="step">job</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">materials</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">live&nbsp;price</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">labour</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">PDF</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">sent</span>
+            <span className="arr">&rarr;</span>
+            <span className="step">accept</span>
           </div>
           <div className="steps">
             <div className="step-c"><div className="n">01</div><h4>Describe the job</h4><p>Pick a template or describe it in your own words.</p></div>

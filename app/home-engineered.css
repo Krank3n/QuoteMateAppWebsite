@@ -100,7 +100,7 @@
   .eng-home .sub { max-width: none; }
   .eng-home .win { max-width: 380px; }
 }
-.eng-home .tag { display: inline-flex; align-items: center; gap: 9px; font: 400 .76rem var(--mono); color: var(--tx2); border: 1px solid var(--line); border-radius: 5px; padding: 6px 11px; margin-bottom: 26px; }
+.eng-home .tag { display: inline-flex; align-items: center; gap: 9px; font: 400 .8rem var(--mono); color: var(--tx2); margin-bottom: 26px; }
 .eng-home .tag .stars { color: #f97316; letter-spacing: 1px; font-size: .9rem; line-height: 1; }
 .eng-home .tag b { color: var(--tx); font-weight: 700; }
 .eng-home .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
@@ -109,7 +109,7 @@
 .eng-home .flow { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-bottom: 26px; }
 .eng-home .flow .step { font: 400 .78rem var(--mono); color: var(--tx); border: 1px solid var(--line); border-radius: 5px; padding: 6px 10px; background: rgba(255,255,255,.02); }
 .eng-home .flow .arr { color: var(--acc); font: 700 .85rem var(--mono); }
-.eng-home .sub { font: 400 1.04rem/1.65 var(--display); color: var(--tx2); max-width: 430px; margin-bottom: 30px; }
+.eng-home .sub { font: 500 1.05rem/1.6 var(--display); color: #c9cfda; max-width: 470px; margin-bottom: 30px; }
 .eng-home .ctas { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .eng-home .hero-rating { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
 .eng-home .hero-rating .stars { color: #f97316; letter-spacing: 1px; font-size: .95rem; line-height: 1; }
@@ -353,7 +353,7 @@
 .eng-home .btn-store-lg svg { color: var(--tx); flex-shrink: 0; }
 .eng-home .btn-store-lg span { display: flex; flex-direction: column; text-align: left; line-height: 1.15; font: 600 .92rem var(--display); }
 .eng-home .btn-store-lg span small { font: 400 .6rem var(--mono); color: var(--tx2); text-transform: uppercase; letter-spacing: .04em; }
-.eng-home .hero-web { display: inline-block; margin-top: 16px; font: 400 .82rem var(--mono); color: var(--tx2); }
+.eng-home .hero-web { display: inline-block; margin-top: 18px; font: 600 .95rem var(--display); color: var(--tx); border-bottom: 1.5px solid var(--acc); padding-bottom: 2px; transition: color .15s; }
 .eng-home .hero-web:hover { color: var(--acc); }
 
 /* walkthrough video */
