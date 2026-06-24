@@ -777,3 +777,236 @@ html[data-home-variant="b"] .eng-home .mobile-menu a { color: #6b6760; border-bo
     margin-top: 12px;
   }
 }
+
+/* ============================================================
+   PHASE 2 — VARIANT B FULL-PAGE LIGHT THEME
+   ALL rules here are scoped under html[data-home-variant="b"]
+   so variant A is pixel-identical.
+   ============================================================ */
+
+/* 1. Token override: flip neutrals to cream/white palette
+      Accent orange, greens, and app green are intentionally
+      kept identical — they work on light. */
+html[data-home-variant="b"] .eng-home {
+  --bg:    #f5f4ef;
+  --panel: #ffffff;
+  --panel2:#faf9f5;
+  --line:  rgba(0,0,0,.1);
+  --line2: rgba(0,0,0,.16);
+  --tx:    #1a1814;
+  --tx2:   #6b6760;
+  --tx3:   #9a958c;
+  /* accent/ok/app stay the same */
+}
+
+/* 2. hb-fade: the body is now light, so fade to --bg not dark */
+html[data-home-variant="b"] .eng-home .hb-fade {
+  background: linear-gradient(to bottom, transparent, var(--bg));
+}
+
+/* 3. Topbar sticky backdrop on light page */
+html[data-home-variant="b"] .eng-home .topbar {
+  background: rgba(245,244,239,.9);
+  border-bottom-color: var(--line);
+}
+
+/* Phase-1 already set topbar colours; these reinforce via token: */
+html[data-home-variant="b"] .eng-home .nav { color: var(--tx2); }
+html[data-home-variant="b"] .eng-home .nav a:hover { color: var(--tx); }
+
+/* 4. Mobile menu — dark hardcode needs to become light */
+html[data-home-variant="b"] .eng-home .mobile-menu {
+  background: rgba(245,244,239,.98);
+  border-bottom-color: var(--line);
+}
+html[data-home-variant="b"] .eng-home .mobile-menu a {
+  color: var(--tx2);
+  border-bottom-color: var(--line);
+}
+html[data-home-variant="b"] .eng-home .mobile-menu a:hover { color: var(--tx); }
+html[data-home-variant="b"] .eng-home .mobile-menu .ghost {
+  border-color: var(--line2);
+  color: var(--tx);
+}
+
+/* 5. Section top borders now use the light token (already token-driven,
+      but the first section after hb-hero is integrations whose border-top
+      reads var(--line) — that already works. No extra rule needed.) */
+
+/* 6. Marquee cards — white-tint bg becomes explicit panel */
+html[data-home-variant="b"] .eng-home .mcard {
+  background: var(--panel);
+}
+html[data-home-variant="b"] .eng-home .mcard img {
+  /* partner logos often have dark text/colour — leave opacity alone */
+  opacity: 1;
+}
+
+/* 7. Walkthrough phone frame: KEEP dark — it is a device/app mockup.
+      The phone element uses hardcoded #0d1117/#2a2f3a which are not
+      token-driven, so it stays dark automatically. We only need to
+      prevent the wrapper background leaking light. */
+html[data-home-variant="b"] .eng-home .phone {
+  background: #0d1117;
+  border-color: #2a2f3a;
+}
+html[data-home-variant="b"] .eng-home .notch {
+  background: #0d1117;
+}
+
+/* The vt-active active-timeline label was white — darken for light bg */
+html[data-home-variant="b"] .eng-home .vt-active .lab { color: var(--tx); }
+html[data-home-variant="b"] .eng-home .vt:hover {
+  background: rgba(0,0,0,.04);
+}
+
+/* 8. Feature grid cells — rgba(255,255,255,.012) is near-invisible on light;
+      switch to explicit var(--bg)/var(--panel) surfaces */
+html[data-home-variant="b"] .eng-home .feat {
+  background: var(--bg);
+}
+html[data-home-variant="b"] .eng-home .feat:hover {
+  background: var(--panel);
+}
+/* feat.cta inherits the grid bg and looks fine */
+
+/* 9. Spec-list panels in deep-dives — same near-invisible tint issue */
+html[data-home-variant="b"] .eng-home .spec-list {
+  background: var(--panel);
+}
+
+/* 10. How-it-works step grid cells */
+html[data-home-variant="b"] .eng-home .step-c {
+  background: var(--bg);
+}
+
+/* 11. Pipeline flow steps:
+       The qstep keyframe includes rgba(255,255,255,.02) as idle bg.
+       Override the idle background for light theme. */
+html[data-home-variant="b"] .eng-home .flow .step {
+  background: var(--panel2);
+}
+
+/* 12. Testimonial cards */
+html[data-home-variant="b"] .eng-home .tcard {
+  background: var(--panel);
+}
+html[data-home-variant="b"] .eng-home .tcard p { color: var(--tx2); }
+
+/* 13. Pricing cards — near-transparent bg + glass border */
+html[data-home-variant="b"] .eng-home .pcard {
+  background: var(--panel);
+}
+html[data-home-variant="b"] .eng-home .pcard.pro {
+  /* Accent border + very light orange blush bg */
+  background: #fff8f4;
+}
+/* pbadge.save (Best value, green) keeps its colours — fine on light */
+
+/* 14. Platform cards */
+html[data-home-variant="b"] .eng-home .platform-card {
+  background: var(--panel);
+}
+html[data-home-variant="b"] .eng-home .btn-platform {
+  background: var(--panel2);
+}
+
+/* 15. Trades grid cells */
+html[data-home-variant="b"] .eng-home .trades a {
+  background: var(--bg);
+}
+html[data-home-variant="b"] .eng-home .trades a:hover {
+  background: var(--panel);
+}
+
+/* 16. Aussie strip badges */
+html[data-home-variant="b"] .eng-home .aussie span {
+  background: var(--panel);
+}
+
+/* 17. Email signup input */
+html[data-home-variant="b"] .eng-home .eng-signup-input {
+  background: var(--panel);
+  color: var(--tx);
+}
+
+/* 18. Contact form inputs */
+html[data-home-variant="b"] .eng-home .eng-input {
+  background: var(--panel);
+  color: var(--tx);
+}
+
+/* 19. Store badge buttons (in topbar CTA, hero-a, footer) */
+html[data-home-variant="b"] .eng-home .btn-store-lg {
+  background: var(--panel);
+  color: var(--tx);
+}
+html[data-home-variant="b"] .eng-home .btn-store {
+  background: var(--panel);
+  color: var(--tx);
+}
+
+/* 20. CTA band (final download section):
+       Re-skin from dark to light; keep accent glow, suppress dark grid */
+html[data-home-variant="b"] .eng-home .cta-band {
+  background: var(--panel2);
+}
+html[data-home-variant="b"] .eng-home .cta-band .grid-bg {
+  /* grid on dark uses light dots — invert to near-black dots on light */
+  background-image: radial-gradient(circle at center,rgba(0,0,0,.15) 1.1px,transparent 1.7px);
+  background-size: 24px 24px;
+  opacity: .5;
+}
+html[data-home-variant="b"] .eng-home .cta-band .glow {
+  /* orange glow — fine on light, just soften slightly */
+  background: radial-gradient(circle,rgba(249,115,22,.10),transparent 64%);
+}
+html[data-home-variant="b"] .eng-home .cta-band p { color: var(--tx2); }
+
+/* btn-cmd in the CTA band: was a dark terminal button;
+   on a light page keep it as a purposefully dark "code" card */
+html[data-home-variant="b"] .eng-home .btn-cmd {
+  background: #1a1814;
+  border-color: rgba(255,255,255,.15);
+  color: #e8ecf2;
+}
+html[data-home-variant="b"] .eng-home .btn-cmd .p { color: #9a958c; }
+html[data-home-variant="b"] .eng-home .btn-cmd:hover {
+  border-color: var(--acc);
+  color: var(--acc);
+}
+
+/* 21. hero-web "Try on web" link (inside hero-a, hidden in B but defensive) */
+html[data-home-variant="b"] .eng-home .hero-web { color: var(--tx); }
+
+/* 22. h1badge (inside hero-a — hidden in B, but defensive reset) */
+/* (no change needed — it's hidden) */
+
+/* 23. Payments section svg illustration border/bg */
+html[data-home-variant="b"] .eng-home .pay-media img {
+  background: var(--panel);
+}
+
+/* 24. Footer */
+html[data-home-variant="b"] .eng-home .footer {
+  background: var(--panel2);
+  border-top-color: var(--line);
+}
+html[data-home-variant="b"] .eng-home .foot-col h4 { color: var(--tx3); }
+html[data-home-variant="b"] .eng-home .foot-col a { color: var(--tx2); }
+html[data-home-variant="b"] .eng-home .foot-col a:hover { color: var(--tx); }
+html[data-home-variant="b"] .eng-home .foot-tag { color: var(--tx2); }
+html[data-home-variant="b"] .eng-home .foot-bottom { border-top-color: var(--line); }
+html[data-home-variant="b"] .eng-home .foot-bottom .copy { color: var(--tx3); }
+html[data-home-variant="b"] .eng-home .social a { color: var(--tx2); }
+html[data-home-variant="b"] .eng-home .social a:hover { color: var(--acc); }
+
+/* 25. sub-steps / hero sub text (inside hero-a — hidden in B, defensive) */
+/* hero-a is display:none in B, so hardcoded #c9cfda colours are invisible */
+
+/* 26. Payments section method tags */
+html[data-home-variant="b"] .eng-home .pay-methods span {
+  background: var(--panel);
+}
+
+/* 27. Stat strip (inside hero-a — hidden in B, no action needed) */
