@@ -93,8 +93,8 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── HERO ── */}
-      <section className="hero" id="hero">
+      {/* ── HERO A (dark / engineered — variant A) ── */}
+      <section className="hero hero-a" id="hero">
         <div className="bg">
           <div className="grid-bg"></div>
           <div className="glow"></div>
@@ -260,6 +260,77 @@ export default function HomePage() {
           <div><b>GST</b>-ready</div>
           <div><b>live</b> supplier pricing</div>
         </div>
+      </section>
+
+      {/* ── HERO B (light / photo-led — variant B) ── */}
+      <section className="hero-b" id="hero-b" aria-label="QuoteMate hero">
+        <div className="hb-inner">
+          {/* Left column */}
+          <div className="hb-left">
+            <h1 className="hb-h1">
+              Take a photo, describe the work,
+            </h1>
+            <p className="hb-sub">
+              and QuoteMate builds the materials list, prices it up, and turns it into a professional quote.
+            </p>
+            <div className="hb-ctas">
+              <a href="/app" className="hb-btn-primary nav-cta hb-cta-primary">Get my first quote</a>
+              <a href="#how-it-works" className="hb-btn-outline nav-cta hb-cta-secondary">See how it works</a>
+            </div>
+          </div>
+
+          {/* Right column — photo + floating quote card */}
+          <div className="hb-right">
+            <div className="hb-photo-wrap">
+              <img
+                src="/assets/articles/how-to-quote-a-deck-build.jpg"
+                alt="Deck build job"
+                className="hb-photo"
+              />
+              {/* Floating quote-draft card */}
+              <div className="hb-quote-card quote-draft-card">
+                <div className="hb-qc-header">
+                  <span className="hb-qc-title">Quote draft</span>
+                  <span className="hb-qc-pill">READY</span>
+                </div>
+                <div className="hb-qc-rows">
+                  <div className="hb-qc-row">
+                    <span className="hb-qc-label">2 &times; deck boards</span>
+                    <span className="hb-qc-price">$180</span>
+                  </div>
+                  <div className="hb-qc-row">
+                    <span className="hb-qc-label">3 &times; support joists</span>
+                    <span className="hb-qc-price">$240</span>
+                  </div>
+                  <div className="hb-qc-row">
+                    <span className="hb-qc-label">Labour</span>
+                    <span className="hb-qc-price">$420</span>
+                  </div>
+                </div>
+                <div className="hb-qc-total">
+                  <span className="hb-qc-total-label">Total</span>
+                  <span className="hb-qc-total-price">$840</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile-only chat input bar */}
+            <div className="hb-chat-bar">
+              <div className="hb-chat-input">
+                <span className="hb-chat-placeholder">quote this up mate</span>
+                <button className="hb-chat-send" aria-label="Send" tabIndex={-1}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom fade — blends into dark sections below */}
+        <div className="hb-fade"></div>
       </section>
 
       {/* ── INTEGRATIONS ── */}

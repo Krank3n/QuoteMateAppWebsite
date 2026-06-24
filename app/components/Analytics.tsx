@@ -5,9 +5,16 @@ import Script from 'next/script';
 
 const GA_ID = 'G-E3JERN2D5V';
 
+function getVariant(): string {
+  if (typeof document !== 'undefined') {
+    return document.documentElement.getAttribute('data-home-variant') || 'a';
+  }
+  return 'a';
+}
+
 function track(eventName: string, params?: Record<string, any>) {
   if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-    (window as any).gtag('event', eventName, params || {});
+    (window as any).gtag('event', eventName, { variant: getVariant(), ...(params || {}) });
   }
 }
 
@@ -26,6 +33,10 @@ function getClosestSection(el: Element): string {
 
 export default function Analytics() {
   useEffect(() => {
+    // Fire experiment impression once per mount
+    const variant = getVariant();
+    track('experiment_impression', { experiment_id: 'home_hero_v1', variant });
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function(this: HTMLAnchorElement, e) {

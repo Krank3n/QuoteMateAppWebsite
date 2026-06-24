@@ -48,9 +48,15 @@ export const metadata: Metadata = {
   },
 };
 
+const AB_SCRIPT = `(function(){try{var v='a';var m=document.cookie.match(/(?:^|;\\s*)qm_home_variant=([ab])/);if(m){v=m[1];}else{var u=new URLSearchParams(window.location.search);var p=u.get('variant');if(p==='a'||p==='b'){v=p;}else{v=Math.random()<0.5?'a':'b';}document.cookie='qm_home_variant='+v+';path=/;max-age=5184000;SameSite=Lax';}var urlp=new URLSearchParams(window.location.search);var forcep=urlp.get('variant');if(forcep==='a'||forcep==='b'){v=forcep;document.cookie='qm_home_variant='+v+';path=/;max-age=5184000;SameSite=Lax';}document.documentElement.setAttribute('data-home-variant',v);}catch(e){document.documentElement.setAttribute('data-home-variant','a');}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} ${inter.className}`}>
+      <head>
+        {/* A/B variant assignment — must run sync before first paint, no FOUC */}
+        <script dangerouslySetInnerHTML={{ __html: AB_SCRIPT }} />
+      </head>
       <body>
         <Analytics />
         {children}
