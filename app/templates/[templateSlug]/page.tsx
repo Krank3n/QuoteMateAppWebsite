@@ -72,42 +72,41 @@ export default async function TemplatePage({ params }: Props) {
               { label: 'Templates', href: '/templates' },
               { label: template.name },
             ]} />
-            <div className="seo-hero-content">
-              <span className="seo-badge">Free Template</span>
-              <h1 className="seo-hero-title">{template.name}</h1>
-              <p className="seo-hero-subtitle">{template.description}</p>
-              <CTAButtons showWebLink />
+            <div className={hasVideo ? 'seo-hero-layout' : undefined}>
+              <div className="seo-hero-content">
+                <span className="seo-badge">Free Template</span>
+                <h1 className="seo-hero-title">{template.name}</h1>
+                <p className="seo-hero-subtitle">{template.description}</p>
+                <p className="seo-hero-videocue">▶ Watch a real {jobName.toLowerCase()} quote built in under a minute</p>
+                <CTAButtons showWebLink />
+              </div>
+              {hasVideo && (
+                <div className="seo-hero-media">
+                  <WalkthroughPlayer basePath="templates" slug={template.slug} poster={`/assets/videos/templates/${template.slug}-poster.jpg`} label={`${jobName} quote demo`} />
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                      '@context': 'https://schema.org',
+                      '@type': 'VideoObject',
+                      name: `${jobName} quote demo — real prices in under a minute`,
+                      description: template.description,
+                      thumbnailUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}-poster.jpg`,
+                      uploadDate: VIDEO_UPLOAD_DATE,
+                      duration: 'PT1M',
+                      contentUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}.mp4`,
+                      embedUrl: `https://quotemateapp.au/templates/${template.slug}`,
+                      publisher: {
+                        '@type': 'Organization',
+                        name: 'QuoteMate',
+                        logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' },
+                      },
+                    }) }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
-
-        {hasVideo && (
-          <section className="seo-template-video">
-            <div className="container">
-              <h2 className="section-title">See a real {jobName.toLowerCase()} quote built in under a minute</h2>
-              <WalkthroughPlayer basePath="templates" slug={template.slug} poster={`/assets/videos/templates/${template.slug}-poster.jpg`} label={`${jobName} quote demo`} />
-            </div>
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'VideoObject',
-                name: `${jobName} quote demo — real prices in under a minute`,
-                description: template.description,
-                thumbnailUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}-poster.jpg`,
-                uploadDate: VIDEO_UPLOAD_DATE,
-                duration: 'PT1M',
-                contentUrl: `https://quotemateapp.au/assets/videos/templates/${template.slug}.mp4`,
-                embedUrl: `https://quotemateapp.au/templates/${template.slug}`,
-                publisher: {
-                  '@type': 'Organization',
-                  name: 'QuoteMate',
-                  logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' },
-                },
-              }) }}
-            />
-          </section>
-        )}
 
         <section className="seo-template-details">
           <div className="container">
