@@ -4,6 +4,7 @@ import './home-engineered.css';
 import EngHomeClient from './components/EngHomeClient';
 import EngEmailSignup from './components/EngEmailSignup';
 import EngContactForm from './components/EngContactForm';
+import InstallSheet from './components/InstallSheet';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -928,6 +929,7 @@ export default function HomePage() {
 
       {/* ── CLIENT-SIDE INTERACTIVITY ── */}
       <EngHomeClient />
+      <InstallSheet />
 
       {/* ── STRUCTURED DATA (verbatim from previous page.tsx) ── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
