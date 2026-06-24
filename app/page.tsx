@@ -116,7 +116,7 @@ export default function HomePage() {
               <span className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <span><b>5.0</b> on Google Reviews</span>
             </span>
-            <h1>Don&apos;t quote at night.<br />Quote <span className="hl">on-site</span>.<span className="caret"></span></h1>
+            <h1>Don&apos;t quote at night.<br />Quote <span className="hl">on-site</span>.</h1>
             <div className="flow">
               <span className="step">job</span>
               <span className="arr">&rarr;</span>
