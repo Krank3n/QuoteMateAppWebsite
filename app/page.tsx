@@ -117,7 +117,7 @@ export default function HomePage() {
               <span><b>5.0</b> on Google Reviews</span>
             </span>
             <h1>Don&apos;t quote at night <span className="moon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg></span><br />Quote <span className="hl">On-site</span></h1>
-            <p className="sub">Describe the work in plain English. QuoteMate resolves the materials, pulls today&apos;s supplier prices, computes GST and markup, and ships a branded quote.</p>
+            <p className="sub">Describe the job. We pull live prices. You send the quote.</p>
             <div className="ctas">
               <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn btn-store-lg">
                 <svg width="18" height="22" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true">
