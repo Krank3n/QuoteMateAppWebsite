@@ -5,7 +5,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CTAButtons from '../../components/CTAButtons';
-import { competitors, getCompetitorBySlug } from '../data';
+import { competitors, getCompetitorBySlug, getCompareContent } from '../data';
+import FAQ from '../../components/FAQ';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,6 +46,7 @@ export default async function ComparisonPage({ params }: Props) {
   const { slug } = await params;
   const comp = getCompetitorBySlug(slug);
   if (!comp) notFound();
+  const content = getCompareContent(comp.slug);
 
   return (
     <>
@@ -60,7 +62,7 @@ export default async function ComparisonPage({ params }: Props) {
             <div className="seo-hero-content">
               <span className="seo-badge">Comparison</span>
               <h1 className="seo-hero-title">QuoteMate vs {comp.name}</h1>
-              <p className="seo-hero-subtitle">{comp.tagline}</p>
+              <p className="seo-hero-subtitle">{content?.intro ?? comp.tagline}</p>
             </div>
           </div>
         </section>
@@ -103,10 +105,24 @@ export default async function ComparisonPage({ params }: Props) {
                 </div>
               </div>
 
+              {content?.sections.map((sec, i) => (
+                <div key={i} className="guide-section">
+                  <h2>{sec.heading}</h2>
+                  <p>{sec.body}</p>
+                </div>
+              ))}
+
               <div className="guide-section">
                 <h2>The Bottom Line</h2>
                 <p>{comp.summary}</p>
               </div>
+
+              {content?.faqs && content.faqs.length > 0 && (
+                <div className="guide-section">
+                  <h2>Frequently Asked Questions</h2>
+                  <FAQ items={content.faqs} />
+                </div>
+              )}
 
               <div className="guide-cta-card">
                 <h2>Try QuoteMate Free</h2>
@@ -183,6 +199,11 @@ export default async function ComparisonPage({ params }: Props) {
             "name": `What does QuoteMate offer that ${comp.name} does not?`,
             "acceptedAnswer": { "@type": "Answer", "text": `QuoteMate is purpose-built for fast tradie quoting with AI material generation, live Australian supplier pricing, branded PDF quotes, one-tap quote-to-invoice, Square tap-to-pay, Xero sync, automatic GST/ABN handling, and offline mode.` },
           },
+          ...(content?.faqs ?? []).map((f) => ({
+            "@type": "Question",
+            "name": f.question,
+            "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+          })),
         ],
       })}} />
     </>

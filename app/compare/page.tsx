@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
-import { competitors } from './data';
+import { competitors, getCompareHubContent } from './data';
 
 export const metadata: Metadata = {
   title: 'QuoteMate vs Competitors — Compare Quoting Apps',
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ComparePage() {
+  const hub = getCompareHubContent();
   return (
     <>
       <Header homeLinks />
@@ -28,6 +29,22 @@ export default function ComparePage() {
             </div>
           </div>
         </section>
+
+        {hub && (
+          <section className="seo-guide-article">
+            <div className="container">
+              <div className="guide-content">
+                <p className="rich-content-intro">{hub.intro}</p>
+                {hub.sections.map((sec, i) => (
+                  <div key={i} className="guide-section">
+                    <h2>{sec.heading}</h2>
+                    <p>{sec.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="seo-template-directory">
           <div className="container">

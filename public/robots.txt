@@ -4,6 +4,11 @@
 
 User-agent: *
 Allow: /
+# Application shell (client-rendered, no indexable content).
+# /admin, /portal and OAuth callbacks are left crawlable so their
+# noindex meta tags are honoured.
+Allow: /app/.well-known/
+Disallow: /app/
 
 # OpenAI / ChatGPT
 User-agent: GPTBot

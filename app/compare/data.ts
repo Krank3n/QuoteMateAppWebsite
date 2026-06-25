@@ -161,3 +161,21 @@ export const competitors: Competitor[] = [
 export function getCompetitorBySlug(slug: string): Competitor | undefined {
   return competitors.find(c => c.slug === slug);
 }
+
+import compareContentRaw from '@/seo/compare-content.json';
+
+export interface CompareContent {
+  intro: string;
+  sections: { heading: string; body: string }[];
+  faqs?: { question: string; answer: string }[];
+}
+
+const compareContent = compareContentRaw as Record<string, CompareContent>;
+
+export function getCompareContent(slug: string): CompareContent | undefined {
+  return compareContent[slug];
+}
+
+export function getCompareHubContent(): CompareContent | undefined {
+  return compareContent['_hub'];
+}
