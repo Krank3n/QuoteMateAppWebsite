@@ -7,7 +7,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
 import WalkthroughPlayer from '../../components/WalkthroughPlayer';
-import { quoteTemplates, trades, getTemplateBySlug, getTradeBySlug, getTradeFAQs } from '@/lib/data';
+import { quoteTemplates, trades, getTemplateBySlug, getTradeBySlug, getTradeFAQs, getTemplateContent } from '@/lib/data';
 import { TEMPLATES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
 
 interface Props {
@@ -58,8 +58,13 @@ export default async function TemplatePage({ params }: Props) {
   if (!template) notFound();
 
   const trade = getTradeBySlug(template.trade);
+  const content = getTemplateContent(template.slug);
   const hasVideo = TEMPLATES_WITH_VIDEOS.has(template.slug);
   const jobName = template.name.replace(/ Quote Template$/i, '');
+  const faqItems = [
+    ...(content?.faqs ?? []),
+    ...(trade ? getTradeFAQs(trade) : []),
+  ];
 
   return (
     <>
@@ -108,6 +113,22 @@ export default async function TemplatePage({ params }: Props) {
           </div>
         </section>
 
+        {content && (
+          <section className="seo-rich-content">
+            <div className="container">
+              <div className="rich-content-block">
+                <p className="rich-content-intro">{content.intro}</p>
+                {content.sections.map((sec, i) => (
+                  <div key={i} className="rich-content-section">
+                    <h2>{sec.heading}</h2>
+                    <p>{sec.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="seo-template-details">
           <div className="container">
             <div className="template-grid">
@@ -140,9 +161,19 @@ export default async function TemplatePage({ params }: Props) {
         <section className="seo-faq">
           <div className="container">
             <h2 className="section-title">Frequently Asked Questions</h2>
-            <FAQ items={trade ? getTradeFAQs(trade) : []} />
+            <FAQ items={faqItems} />
           </div>
         </section>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqItems.map((item) => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+          }))
+        }) }} />
 
         <section className="seo-internal-links">
           <div className="container">

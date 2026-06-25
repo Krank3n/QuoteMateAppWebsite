@@ -189,7 +189,24 @@
         }
       ],
       "avgQuoteRange": "$500 – $50,000",
-      "templateSnippet": "Build a 5x4m Merbau hardwood deck with 3 stairs and stainless steel balustrade"
+      "templateSnippet": "Build a 5x4m Merbau hardwood deck with 3 stairs and stainless steel balustrade",
+      "richContent": {
+        "intro": "Timber pricing changes faster than any other material on site. A deck quoted last month could be 10% more expensive today, and this is the biggest risk in carpentry quoting. Get the timber or framing wrong, and the whole job's margin is gone before you even cut the first board. This guide is for Australian carpenters running their own jobs, covering the specific line items that get missed on decks, pergolas, and fix-outs. It's about quoting with confidence, knowing your material costs are locked in from suppliers, not based on last year's price list.",
+        "sections": [
+          {
+            "heading": "How to Price a Merbau Deck Without Losing Your Shirt",
+            "body": "Price a deck by the square metre for labour, but by the linear metre for materials, and add separate lines for all hardware. Quoting a flat per-metre rate hides the real cost. The price of 90x19mm Merbau decking changes constantly. You also need to account for the substructure like treated pine joists, bearers, stirrups, joist hangers, bugle screws, and decking oil. Forgetting even one of these can eat up your profit. QuoteMate’s deck calculator pulls live timber prices and automatically suggests all the required hardware, from the M10 bolts down to the stainless steel screws. Always add 10-15% for wastage on decking boards."
+          },
+          {
+            "heading": "Pricing Framing and Trusses with Live Material Costs",
+            "body": "The biggest mistake in framing quotes is using old prices for MGP10 pine or LVL beams. The price from CSR or your local timber yard can shift weekly. A quote that sat with a client for a month could now be unprofitable. Your quote needs to be based on today's price, not last quarter's. You also need to factor in fixings, bracing, and delivery costs, which are often missed on smaller jobs. This protects your margin on every stud wall or roof truss you build. As a rule of thumb, check the latest AS 1684 standard for tie-down requirements and bracing."
+          },
+          {
+            "heading": "Quoting Fix-Outs: Doors, Skirtings and Architraves",
+            "body": "Price fix-outs per item or per linear metre, but never forget the cost of consumables and prep work. It's easy to price the door or the length of skirting, but the profit is lost on the small stuff. This includes door hardware, packers, glue, nails, and gap filler. A client might supply the main door, but you're still on the hook for the full installation kit. A good quote lists these items separately so the client sees the full scope of work. For a standard internal door hang, budget around $25 for consumables on top of the door hardware, which can start from a $35 passage set at Bunnings."
+          }
+        ]
+      }
     },
     {
       "slug": "painters",
@@ -233,7 +250,24 @@
         }
       ],
       "avgQuoteRange": "$500 – $25,000",
-      "templateSnippet": "Full interior repaint of 3-bedroom house — walls and ceilings, 2 coats Dulux Wash & Wear"
+      "templateSnippet": "Full interior repaint of 3-bedroom house — walls and ceilings, 2 coats Dulux Wash & Wear",
+      "richContent": {
+        "intro": "Quoting a painting job right comes down to two things: accurate measurements and accounting for prep time. Aussie painters, from sole operators to small crews, often lose margin by guessing paint volumes or under-billing the hours spent sanding and masking. A good quote isn't just a price; it's a plan that covers every litre of paint, every roll of tape, and every hour of labour before you even pick up a brush. This guide is for professional painters who want to stop guesstimating and start quoting with confidence, ensuring every interior, exterior, and feature wall job is profitable.",
+        "sections": [
+          {
+            "heading": "How to price surface preparation for a repaint",
+            "body": "Surface prep is where the profit is made or lost. It's not just about slapping on a coat of paint. A proper quote includes line items for sugar soap washing, filling cracks and holes, sanding surfaces smooth, and masking off windows, floors, and fittings. For a standard 3x4 metre room, you should be allocating at least 3-4 hours just for prep. Forgetting to quote for a 4L tub of Selleys Spakfilla Rapid Filler can cost you $45, and a multi-pack of 3M masking tape adds another $25 from Bunnings before you've even opened a can of paint."
+          },
+          {
+            "heading": "Calculating paint volume and coats for different surfaces",
+            "body": "Stop guessing how much paint you need. The standard coverage is about 14 square metres per litre, but new, unsealed plasterboard will drink almost double that on the first coat. Darker colours often require a third coat over a light base, which adds 33% to your paint cost and labour time. QuoteMate’s paint calculator automatically works this out based on room dimensions and surface type, pulling live prices. A 15L drum of Taubmans Endure Interior Low Sheen is currently around $220 at Bristow's, a cost you need to get right every time."
+          },
+          {
+            "heading": "Common mistakes on exterior house painting quotes",
+            "body": "The biggest mistake on exterior quotes is forgetting the cost of access. For a two-storey home, you can't rely on a ladder. You need to factor in the weekly hire of scaffolding or a cherry picker, which can add thousands to the job cost. Another common issue is not allowing for weather delays and the extra labour for prep on weathered timber. If the phone rings while you're up a scaffold, you miss the lead. An AI receptionist like https://callkatie.ai can qualify new callers so you can keep working. Always check the daily hire rate for a 4m mobile scaffold from Kennards Hire, which is about $120."
+          }
+        ]
+      }
     },
     {
       "slug": "landscapers",
@@ -279,7 +313,24 @@
       "avgQuoteRange": "$1,000 – $60,000",
       "templateSnippet": "Lay 80sqm of Sir Walter turf with soil preparation, fertiliser, and edging",
       "metaTitle": "Landscaping Quoting App — Free Templates & Calculators (2026)",
-      "metaDescription": "Quote landscaping jobs in minutes — soil, turf, pavers & retaining walls. Free templates with cubic-metre, tonne and turf calculators. Built for Aussie landscapers."
+      "metaDescription": "Quote landscaping jobs in minutes — soil, turf, pavers & retaining walls. Free templates with cubic-metre, tonne and turf calculators. Built for Aussie landscapers.",
+      "richContent": {
+        "intro": "Quoting landscaping jobs in Australia isn't about picking plants. It's about getting the bulk materials right. Underestimate the cubic metres of soil for a garden bed or the tonnes of road base for a paver patio, and your profit is gone before the first plant goes in. This is for landscapers running their own business who are tired of manual calculations and supplier price lookups. It’s about quoting accurately for everything from a simple turf lay to a full backyard overhaul, covering materials, labour, and machine hire without guesswork. QuoteMate handles the maths so you can focus on the design.",
+        "sections": [
+          {
+            "heading": "How to Price Soil, Mulch, and Gravel Accurately",
+            "body": "Never guess your bulk materials. Use a calculator that converts area and depth into cubic metres for soil and mulch, or tonnes for gravel and sand. A common mistake is forgetting the compaction factor, which can be 10-20% for soil and road base. A 50 square metre garden bed at 150mm deep needs 7.5 cubic metres of soil, but you should order at least 8.5 to be safe. QuoteMate has built-in calculators that handle this conversion automatically. A cubic metre of premium garden mix from a supplier like Australian Native Landscapes costs around $90-$120 plus delivery, so getting it wrong adds up fast."
+          },
+          {
+            "heading": "Pricing Paver Patios and Retaining Walls",
+            "body": "Paving quotes need to account for every layer. Start with the excavation, then price the road base (e.g., 100mm compacted), the bedding sand (30mm), the pavers themselves, and finally the gap sand. Forgetting the hire cost for a plate compactor or the labour for screeding can destroy your margin. A basic 400x400mm concrete paver from Bunnings costs around $8 each, or $50 per square metre. For retaining walls under one metre, remember to quote the drainage aggregate and agricultural pipe behind the wall. It’s critical for longevity but often missed on the initial quote."
+          },
+          {
+            "heading": "Stop Losing Leads While You're on the Tools",
+            "body": "A running plate compactor or excavator means you can't answer your phone. Every missed call is a potential high-value job walking away. Relying on voicemail means you're calling back hours later, after they've already booked someone else. The best leads need a response in minutes. If your phone rings while you're laying turf, an AI receptionist like https://callkatie.ai can qualify the caller and capture their details. That way, a new lead is waiting for you in QuoteMate when you get a quiet moment. You stop losing work just because you're busy doing work."
+          }
+        ]
+      }
     },
     {
       "slug": "builders",
@@ -323,7 +374,24 @@
         }
       ],
       "avgQuoteRange": "$5,000 – $200,000+",
-      "templateSnippet": "Full bathroom renovation including demolition, waterproofing, tiling, plumbing, and fixtures"
+      "templateSnippet": "Full bathroom renovation including demolition, waterproofing, tiling, plumbing, and fixtures",
+      "richContent": {
+        "intro": "Quoting a large building project, like a full extension or a new granny flat, is a different game to pricing a small job. It's for builders managing multiple trades, complex material lists, and staged payments over months. The biggest mistake is under-quoting preliminary costs or using outdated prices for structural materials. A 5% miscalculation on a $200,000 job is a $10,000 loss before you've even started the fit-out. This guide covers the line items that protect your margin on big builds, ensuring your initial quote holds up from slab pour to final handover.",
+        "sections": [
+          {
+            "heading": "How to Price Structural Timbers and Steel Beams",
+            "body": "Always use current supplier pricing for structural members; never guess from a previous job. The cost of LVL beams, posi-struts, and universal beams can shift weekly. A quote that sits with a client for 30 days can become unprofitable if steel prices jump. For example, a 200UB22 universal beam from a supplier like OneSteel might be $60 per metre one month and $68 the next. The same applies to engineered timber. Always check the latest price list from Dahlsens or ITI Australia before finalising the quote."
+          },
+          {
+            "heading": "Structuring Progress Claims for Extensions and Renovations",
+            "body": "Break your payment schedule into key construction milestones, not arbitrary dates. This links your cash flow directly to project progress. A typical structure for a major reno is: 5% deposit, 25% at base stage completion, 30% at frame stage, 25% at lock-up, and the final 15% at practical completion. QuoteMate's staged invoicing feature lets you build this schedule into the initial quote, so both you and the client know when payments are due. This method is compliant with most state-based Domestic Building Contracts Acts, which cap deposits at 5-10%."
+          },
+          {
+            "heading": "Factoring in Preliminaries and Material Wastage",
+            "body": "List preliminary and site costs as a separate section on your quote, not buried in your margin. This includes temp fencing hire from a company like Coates, site toilet hire, skip bins, and sediment control as required by council. These are real costs, not overhead. For materials, always add a wastage factor. On a standard 2.4m ceiling job, you’ll lose timber on stud offcuts. For plasterboard, you should factor in at least 10% wastage for a complex room layout. Forgetting this on a whole-house job can easily cost you a thousand dollars in unbilled CSR Gyprock sheets."
+          }
+        ]
+      }
     },
     {
       "slug": "roofers",
@@ -367,7 +435,24 @@
         }
       ],
       "avgQuoteRange": "$1,000 – $30,000",
-      "templateSnippet": "Full Colorbond re-roof of single-storey 180sqm home including gutters and fascia"
+      "templateSnippet": "Full Colorbond re-roof of single-storey 180sqm home including gutters and fascia",
+      "richContent": {
+        "intro": "Quoting a re-roof in Australia comes down to the numbers: roof area, pitch, and the waste factor on materials like Colorbond sheets or Bristile tiles. Getting the calculation wrong by a few degrees means you're short on sheets or over on labour. This guide is for Australian roofing businesses that need to price jobs faster and more accurately. We'll cover the specific line items for metal and tile jobs that eat into your margin if you miss them. Forgetting sarking or underestimating ridge capping costs can turn a profitable roofing job into a loss leader.",
+        "sections": [
+          {
+            "heading": "How to quote a Colorbond re-roof without losing your margin",
+            "body": "The price is in the details, not just the sheeting. A standard Colorbond re-roof quote needs line items for sarking, roof screws with seals, ridge capping, barge capping, and valley flashings. Most roofers get the sheet count right but forget the extras. A complex hip roof can add 15% to your material order for offcuts and waste. QuoteMate’s roofing calculator automatically factors in roof pitch and waste percentages so you don't have to do the trigonometry on-site. Always add safety rail hire, which typically costs $25-$40 per linear metre for the first week."
+          },
+          {
+            "heading": "Pricing tile roof restorations: More than just pressure cleaning",
+            "body": "A tile roof restoration quote needs to cover three stages: cleaning, repairing, and coating. Simply quoting a 'clean and paint' misses the real work. Your quote should list replacing cracked tiles, re-bedding all ridge caps with a sand and cement mix, and then re-pointing them with a flexible acrylic compound. The coating process itself requires a primer or sealer coat followed by two top coats of roof membrane. A common mistake is underquoting the membrane; a standard three-bedroom house will use around 60 litres for two decent coats. Always check current pricing for membranes from suppliers like Globalcote or Shieldcoat."
+          },
+          {
+            "heading": "Quoting gutter, fascia, and downpipe replacements correctly",
+            "body": "Quoting a gutter replacement means pricing the system, not just the metal. A professional quote lists the gutter length, stop ends, internal and external corners, brackets, and downpipe pops. Forgetting these fittings is a classic rookie error. If the old fascia is shot, you also need to quote for new timber or a metal fascia cover from a supplier like Ace Gutters or Lysaght. QuoteMate has pre-built templates for gutter and fascia jobs so you don’t miss these items. Remember to price for correct installation, ensuring a minimum fall of 1:500 for gutters as required by the NCC."
+          }
+        ]
+      }
     },
     {
       "slug": "tilers",
@@ -411,7 +496,24 @@
         }
       ],
       "avgQuoteRange": "$500 – $15,000",
-      "templateSnippet": "Tile bathroom floor (6sqm) and walls (18sqm) with 300x600 porcelain tiles including waterproofing"
+      "templateSnippet": "Tile bathroom floor (6sqm) and walls (18sqm) with 300x600 porcelain tiles including waterproofing",
+      "richContent": {
+        "intro": "Tiling quotes are won or lost on square metres and waste. Get the cut calculation wrong on a herringbone pattern and you've lost your margin before the grout is mixed. This guide is for Aussie tilers who are tired of guesstimating tile quantities, adhesive needs, and prep work. Forgetting to price for floor levelling compound or using last month's price for a premium waterproofing membrane can wipe out the profit on a whole bathroom reno. It's about pricing the prep work and the finish work accurately, every time, for every kind of tiling job.",
+        "sections": [
+          {
+            "heading": "How to price tile waste for different patterns",
+            "body": "For a standard grid-lay job, add 10% to your tile quantity for waste. For more complex patterns like herringbone, diagonal, or basketweave, increase that to 15-20%. These larger waste factors cover the extra angle cuts, potential breakages, and leave a few spares for the client, which they always appreciate. A $90/sqm porcelain tile from Beaumont Tiles becomes $108/sqm when you factor in 20% waste for a tricky layout. Quoting this correctly separates the pros from the amateurs. QuoteMate's calculator lets you set custom waste percentages per line item."
+          },
+          {
+            "heading": "Quoting subfloor prep and waterproofing correctly",
+            "body": "Always quote floor levelling and waterproofing as separate, mandatory line items on wet-area jobs. A perfect tiling job needs a dead-flat substrate and a fully compliant waterproof membrane. Explain to the client that this isn't optional; it's required under Australian Standard AS 3740. A bag of Ardex K 15 levelling compound costs around $50 from a trade supplier and covers about 5sqm at 3mm depth. Skipping this step to save a few bucks on the quote is the fastest way to get a callback for cracked grout or failed waterproofing."
+          },
+          {
+            "heading": "Calculating adhesives, grout, and sealants",
+            "body": "A 20kg bag of standard tile adhesive covers about 6-8 square metres, depending on your notch trowel size and the substrate. For large format tiles (over 600x600mm), you'll use more adhesive for better coverage, so adjust your estimate down to 5sqm per bag. Don't forget to price grout and silicone separately. A 1.5kg bag of Mapei grout is about $15 from Bunnings and covers roughly 4-5sqm with standard tiles and 3mm joints. Epoxy grout costs significantly more but is a good upsell for kitchen splashbacks and shower floors due to its stain resistance."
+          }
+        ]
+      }
     },
     {
       "slug": "concreters",
@@ -455,7 +557,24 @@
         }
       ],
       "avgQuoteRange": "$1,500 – $25,000",
-      "templateSnippet": "Pour 60sqm exposed aggregate concrete driveway with mesh reinforcement and formwork"
+      "templateSnippet": "Pour 60sqm exposed aggregate concrete driveway with mesh reinforcement and formwork",
+      "richContent": {
+        "intro": "Quoting concreting jobs is a game of volume and variables. Get the cubic metres wrong and you’ve either got a truck with expensive leftover mix or you're short on the pour. This guide is for Australian concreters running their own jobs, from shed slabs to driveways. The most common quoting mistakes are underestimating reinforcement mesh, forgetting pump hire for tricky access sites, and not pricing finishes correctly. An exposed aggregate finish isn't just a different look; it's a different process with its own material and labour costs. Get these line items right, and your concreting quote will be solid.",
+        "sections": [
+          {
+            "heading": "Pricing a Slab Beyond the Cubic Metre Rate",
+            "body": "Don't just quote a flat rate per cubic metre. A proper slab quote breaks down materials, labour, and prep work. This includes the concrete itself, specifying the strength like 25MPa, plus the reinforcement mesh, bar chairs, and vapour barrier underneath. Forgetting to calculate the overlap on mesh sheets is a classic way to come up short on materials. QuoteMate’s calculator helps you figure out the exact cubic metres and number of mesh sheets needed, including waste. A standard 6x6 metre shed slab needs around 3.6m³ of concrete and about four sheets of SL72 mesh from a supplier like ARC."
+          },
+          {
+            "heading": "How to Quote Finishes, Pumps, and Site Access",
+            "body": "Finishes like exposed aggregate, stamped patterns, or coloured concrete are separate, high-margin line items. They are not part of the base pour price. Each requires different materials, like decorative stone or sealers from CSR, and specialised labour after the screeding is done. The other big variable is site access. If the truck can't get close, you need to factor in pump hire. If you miss that on the quote, it comes directly out of your profit. A line pump for a standard patio pour will cost at least $650 plus GST from a local hire company."
+          },
+          {
+            "heading": "Top 3 Quoting Mistakes on Concreting Jobs",
+            "body": "The three biggest errors are forgetting waste, under-pricing excavation, and not billing for saw cuts. Always add 5-10% to your concrete volume order to account for uneven ground and spillage. Price soil removal per cubic metre, not as a flat fee. If you’re busy organising a tipper truck, you can't be answering calls for the next job. An AI receptionist like https://callkatie.ai handles new leads while you're on the tools. Finally, control joints are not optional. They are required to prevent cracking and are a billable labour item. All saw cuts for crack control should follow the guidelines in AS 3727.1."
+          }
+        ]
+      }
     },
     {
       "slug": "fencers",
@@ -499,7 +618,24 @@
         }
       ],
       "avgQuoteRange": "$1,000 – $15,000",
-      "templateSnippet": "Install 25 linear metres of 1.8m Colorbond fencing with 1 single gate and concrete post footings"
+      "templateSnippet": "Install 25 linear metres of 1.8m Colorbond fencing with 1 single gate and concrete post footings",
+      "richContent": {
+        "intro": "Quoting a fencing job is more than multiplying a length by a rate. For Australian fencers, profit is lost in the details: miscalculating the number of palings for a timber job, under-quoting post hole labour in hard ground, or using last month's Colorbond prices. A good quote accounts for every post, rail, bag of concrete, and fastener. It protects your margin on everything from a simple boundary fence to a fully compliant pool enclosure. This guide covers the line items that fencers often get wrong, ensuring the price you give is the price you get paid.",
+        "sections": [
+          {
+            "heading": "How to price a Colorbond fence per metre",
+            "body": "Don't use a single flat rate. A proper Colorbond quote breaks down materials and labour separately. You need to price the panels, posts, rails, and caps based on the specific profile and height. Labour isn't just fixing panels; it's digging post holes, mixing concrete, and ensuring perfect alignment. QuoteMate can pull real-time pricing from suppliers, so you're not caught out by a steel price rise. A standard 1.8m high, 2.35m wide Lysaght panel might be $85 one week and $92 the next; quoting with current data is critical."
+          },
+          {
+            "heading": "Calculating timber palings and rails without errors",
+            "body": "The fastest way to lose money on a timber paling fence is to miscount materials. You need to know how many palings cover a linear metre based on their width and your preferred overlap. Forgetting that a 150mm treated pine paling with a 25mm overlap covers less ground than one with a 15mm overlap means another trip back to Bunnings and a hit to your profit. An automated calculator that converts the total length into the exact number of palings, rails, and posts required stops these simple, costly errors. A standard 2.4m bay typically requires three rails and 1.5 bags of quick-set concrete per post."
+          },
+          {
+            "heading": "Pricing pool fencing to meet Australian Standards",
+            "body": "A pool fence quote must include compliance costs, not just the panels and posts. Australian Standard AS 1926.1 dictates specific hardware and installation methods that all add to the price. This includes self-closing hinges, compliant gate latches, and ensuring gaps are no more than 100mm. Forgetting to price a compliant latch or the extra labour to install a non-climbable panel near a retaining wall can make the job fail inspection, costing you a callback and your time. A single MagnaLatch Top Pull from Protector Aluminium can cost over $70, a line item you can't afford to forget."
+          }
+        ]
+      }
     },
     {
       "slug": "cleaners",
@@ -543,7 +679,24 @@
         }
       ],
       "avgQuoteRange": "$150 – $5,000",
-      "templateSnippet": "End of lease clean for 3-bedroom, 2-bathroom house including oven, carpets, and windows"
+      "templateSnippet": "End of lease clean for 3-bedroom, 2-bathroom house including oven, carpets, and windows",
+      "richContent": {
+        "intro": "Quoting for a cleaning job isn't just about your hourly rate. It's about pricing the scope correctly, especially for high-stakes work like end-of-lease or builder's cleans. Underestimate the time for a greasy oven, miss the cost of specialised chemicals, or forget travel time, and your profit is gone. Handwritten quotes look unprofessional and lead to disputes. This guide is for Australian cleaners who want to send sharp, accurate quotes that win better work and protect their margins on every job.",
+        "sections": [
+          {
+            "heading": "How to Price an End-of-Lease Clean for Bond Return",
+            "body": "Quote end-of-lease cleans room by room, plus specific add-ons. A single flat fee is a gamble against a picky property manager's checklist. Your quote needs separate line items for the oven, rangehood filters, window tracks, skirting boards, and spot cleaning walls. A standard 2-bedroom unit can take 8-12 hours if it's been neglected. Using a template ensures nothing is missed and the client knows exactly what they're paying for. A fair price for a standard 2-bed, 1-bath apartment clean in Sydney, including carpets, will be between $450 and $700."
+          },
+          {
+            "heading": "The Difference Between Quoting a Builder's Clean and a Domestic Clean",
+            "body": "A builder's clean is not a standard domestic job. You're removing plaster dust, paint flecks on glass, and silicone residue, not just wiping surfaces. Price it per square metre plus specific tasks, never by the hour. You'll need heavy-duty equipment and stronger chemicals from a trade supplier like Abco or Cleaners Supermarket. QuoteMate lets you build custom templates for these jobs. For a final builder's clean on a new build, a good starting point is pricing around $5 to $8 per square metre, depending on the level of detail required by the builder."
+          },
+          {
+            "heading": "Consumables and Overheads Most Cleaners Forget",
+            "body": "The cost of your consumables eats your profit if you don't account for it. Microfibre cloths, specialised chemicals for stone benches, and even the depreciation on your Pacvac vacuum all need to be factored in. If your phone rings while you're trying to finish a job, you risk losing the next one. An AI receptionist like https://callkatie.ai can qualify new leads so you can focus on the work. Don't forget that a single 5-litre bottle of quality neutral floor cleaner from Bunnings Trade can cost over $30."
+          }
+        ]
+      }
     },
     {
       "slug": "hvac-technicians",
@@ -587,7 +740,24 @@
         }
       ],
       "avgQuoteRange": "$800 – $20,000",
-      "templateSnippet": "Supply and install 7kW Daikin split system in living room including bracket, pipes, and electrical"
+      "templateSnippet": "Supply and install 7kW Daikin split system in living room including bracket, pipes, and electrical",
+      "richContent": {
+        "intro": "Quoting HVAC jobs in Australia is more than the unit price. The margin on a split system install or a full ducted system gets lost on the small stuff: the copper pair coil, the wall brackets, the electrical isolator, and the condensate drain. Miss one of these on the quote, and you’re paying for it out of your own pocket. This guide is for Australian HVAC tradies who are tired of losing money on forgotten parts. It covers the essential line items for common jobs, ensuring your price is right for both you and the customer every time.",
+        "sections": [
+          {
+            "heading": "Pricing a Split System Install Beyond the Head Unit",
+            "body": "A full split system quote lists the head unit, condenser, wall brackets, copper pipe, drain hose, and the electrical isolator. Customers see the box price at Bunnings and think that’s the whole cost. Your quote needs to show the professional-grade materials. Forgetting to add 3-5 metres of insulated copper pair coil, the mounting feet for the condenser, or the 20A isolator switch eats directly into your profit. QuoteMate’s HVAC templates automatically add these materials based on the unit size, pulling current prices from suppliers like Actrol. A standard back-to-back install needs at least 3 metres of 1/4\" & 3/8\" pair coil, costing around $30 per metre."
+          },
+          {
+            "heading": "How to Estimate Ducting and Zone Motors Accurately",
+            "body": "Price ducted systems per outlet, not as a flat rate. Each outlet needs a specific length of insulated duct, a cushion box, a grille, and a share of the zone motor and controller cost. Quoting a single price for a '4-zone system' is a gamble. A simple single-storey install might use standard 6-metre duct lengths, but a complex roof space could double that. If a customer calls with a tricky layout while you're crawling through a ceiling, you can't quote it on the spot. An AI receptionist like https://callkatie.ai can take down the details for you. All ductwork must be installed to AS 4254.1 standards."
+          },
+          {
+            "heading": "The Hidden Costs in AC Service and Re-gas Jobs",
+            "body": "The most common costs missed on a service quote are refrigerant recovery, waste disposal fees, and pressure testing with nitrogen. A basic quote might only cover the call-out and the cost of the R32 or R410a top-up. But your time and materials for leak testing, safely recovering old gas according to ARC regulations, and the nitrogen itself all need to be priced in. These extras protect the customer's system and your business from call-backs. Remember that a D-size bottle of nitrogen from BOC costs over $400 plus rental, so every pressure test has a real material cost attached."
+          }
+        ]
+      }
     },
     {
       "slug": "renderers",
@@ -631,7 +801,24 @@
         }
       ],
       "avgQuoteRange": "$2,000 – $25,000",
-      "templateSnippet": "Acrylic render full exterior of double-storey brick house (approx 220sqm) including primer"
+      "templateSnippet": "Acrylic render full exterior of double-storey brick house (approx 220sqm) including primer",
+      "richContent": {
+        "intro": "Quoting rendering jobs correctly comes down to the square metre calculation. It's easy to get caught out. Underestimate the bags of cement render needed for a rough brick wall, or forget the specific primer for an acrylic top coat, and the job's profit shrinks before you've even mixed the first batch. This is for Aussie renderers running their own gigs, who know the tools but need to get quotes out faster. We'll cover the line items that protect your margin on everything from a small patch job to a full exterior rendering project.",
+        "sections": [
+          {
+            "heading": "How to Calculate Render Bags Per Square Metre",
+            "body": "A standard 20kg bag of cement render covers roughly 2.5m² at 10mm thickness. Quoting on that figure alone is a mistake. A rough, old brick wall can easily use 15-20% more material than a new block wall. Acrylic renders have different spreads; a 15L pail of Dulux AcraTex might only cover 8-10m² depending on the texture profile. QuoteMate's calculator lets you select the substrate and desired thickness, then automatically works out the right number of bags or pails. It pulls current prices from suppliers like CSR, so you're not quoting on last year's costs. A basic sand and cement render mix from Bunnings costs about $13 a bag."
+          },
+          {
+            "heading": "Pricing Prep Work, Primers, and Scaffolding",
+            "body": "Prep work is where renderers lose money. Quoting just the render application misses the real labour time. Pressure washing a two-storey house can take a full day. Masking windows, doors, and downpipes with quality tape and film adds up quickly. For acrylic render over painted brick, you need a specific bonding primer, not just any sealer. These should be separate line items on your quote. Forgetting them is like working for free. For any job above a single storey, add scaffold hire. A typical weekly hire rate from a local supplier is around $40 per linear metre."
+          },
+          {
+            "heading": "Quoting Texture Coats and Patch Repairs Accurately",
+            "body": "A texture coat isn't just one price. A fine, trowel-on finish requires more skill and time than a simple bagged or sponge finish, so you need to charge more per square metre. Patch repairs are the trickiest. Don't quote them per metre; quote them on estimated hours plus materials. Blending the new patch with weathered, old render is an art and takes time to get right. QuoteMate allows you to create saved templates for different finishes, from a basic cement render to a premium acrylic texture coat, ensuring your pricing reflects the actual work involved. A premium 15L pail of Rockcote texture can cost upwards of $220."
+          }
+        ]
+      }
     },
     {
       "slug": "glaziers",
@@ -675,7 +862,24 @@
         }
       ],
       "avgQuoteRange": "$300 – $10,000",
-      "templateSnippet": "Supply and install frameless glass shower screen (1200x2000mm) with chrome hinges and wall channels"
+      "templateSnippet": "Supply and install frameless glass shower screen (1200x2000mm) with chrome hinges and wall channels",
+      "richContent": {
+        "intro": "Quoting custom glazing jobs is a game of millimetres and materials. Price a splashback on the wrong glass thickness or forget the hardware on a frameless shower screen, and your profit is gone. This guide is for Australian glaziers running their own show, who need to quote fast without getting caught out by the details. It covers the common traps in pricing different glass types, hardware, and the labour involved in everything from a simple window replacement to a full balustrade install. Get the numbers right, protect your margin, and spend more time on the tools, not the paperwork.",
+        "sections": [
+          {
+            "heading": "How to Price Toughened vs. Laminated Glass",
+            "body": "The main difference is processing. Toughened glass costs more per square metre because it goes through a furnace. Laminated glass is two sheets bonded with a plastic interlayer. For a typical job, 6mm toughened safety glass might cost you $140-$160/sqm from a supplier like Viridian, while 6.38mm laminated safety glass is closer to $110-$130/sqm. Always quote toughened for frameless applications like shower screens and balustrades where it's required. The choice of glass for windows and doors must comply with the selection requirements in Australian Standard AS 1288."
+          },
+          {
+            "heading": "Line Items to Include on a Frameless Shower Screen Quote",
+            "body": "A frameless shower screen quote is more than just glass. The hardware can add hundreds to the cost. You need to price the specific hinges (e.g., Fethers glass-to-glass, around $80 a pair), wall brackets, a handle, and the clear polycarbonate water seals. Labour for measuring, drilling cutouts before toughening, and the final install is also significant. Using a quoting tool like QuoteMate lets you build a template with these items pre-loaded, so you never forget to charge for a $50 handle or the silicone needed to seal the fixed panels. A single tube of sanitary grade silicone from Bunnings can cost over $20."
+          },
+          {
+            "heading": "Factoring in Access and Cleanup for Window Replacements",
+            "body": "The easiest way to lose money on a window job is to quote only the glass. Replacing a second-storey window might require hiring a small scissor lift, which costs around $250 a day. Removing broken glass from a frame takes time and care, and disposal isn't free. You also need to factor in the cost of new glazing tape, backing rubber, or putty for timber frames. A simple single-pane replacement can take an hour, but a double-glazed unit in an aluminium frame could take three. Always add a line item for waste disposal, as a trip to the tip can cost $60 or more."
+          }
+        ]
+      }
     },
     {
       "slug": "solar-installers",
@@ -719,7 +923,24 @@
         }
       ],
       "avgQuoteRange": "$4,000 – $30,000",
-      "templateSnippet": "Supply and install 6.6kW solar system with 16x 415W panels, 5kW hybrid inverter, and 10kWh battery"
+      "templateSnippet": "Supply and install 6.6kW solar system with 16x 415W panels, 5kW hybrid inverter, and 10kWh battery",
+      "richContent": {
+        "intro": "Quoting a solar installation is more than just panels and an inverter. It's a detailed proposal customers use to compare you against three other installers. Get the STC rebate wrong, forget the extra cost of tile roof mounts, or miss the isolator pricing, and your profit is gone before you're even on the roof. This guide is for Australian solar installers who want to produce sharp, professional quotes that cover every component, from the panel clamps right through to the grid connection paperwork, ensuring the price you give is the price you get paid.",
+        "sections": [
+          {
+            "heading": "How to Price Panel, Inverter, and Mounting Packages",
+            "body": "Your quote should bundle the core hardware, but the mounting system is where margins get lost. A 6.6kW system using Jinko panels and a Fronius inverter has a clear cost from a supplier like One Stop Warehouse. What's variable is the roof. Quoting a standard Clenergy tin roof mount for a terracotta tile roof is a classic mistake. You need to add tile hooks, flashing, and extra labour. QuoteMate's templates let you build packages and add optional extras for different roof types, so you don't absorb that cost. A tile roof mounting kit can easily add $400-$600 to a standard residential job."
+          },
+          {
+            "heading": "Nailing the STC Rebate Calculation on Every Quote",
+            "body": "The STC rebate is a direct discount you give the customer, so your calculation has to be perfect. The number of STCs depends on the system's kilowatt rating and the installation postcode's zone, and the dollar value changes daily with the market. Using last month's STC price is a gamble. A small drop in price can wipe hundreds of dollars from your profit on a standard residential system. Getting this right shows the customer you're professional and protects your bottom line. Always use the current market price for STCs when building your quote. As of early 2024, the STC spot price is around $39.50."
+          },
+          {
+            "heading": "Quoting for Battery Add-ons and Compliance Costs",
+            "body": "Adding a battery like a Tesla Powerwall or Sungrow SBR isn't just the cost of the unit. The quote must include the Battery Management System (BMS), dedicated DC circuit breakers, and potentially a new sub-board to handle the system. You also need to factor in the non-negotiable compliance items. This includes the Certificate of Electrical Safety and the application fee to the local Distributor Network Service Provider like Ausgrid or Powercor. Forgetting these can cost you $200-$500 out of pocket. All battery work must meet the strict installation requirements of AS/NZS 5139:2019."
+          }
+        ]
+      }
     },
     {
       "slug": "cabinet-makers",
@@ -763,7 +984,24 @@
         }
       ],
       "avgQuoteRange": "$3,000 – $40,000",
-      "templateSnippet": "Supply and install full kitchen cabinetry with stone benchtop, soft-close drawers, and overhead cupboards"
+      "templateSnippet": "Supply and install full kitchen cabinetry with stone benchtop, soft-close drawers, and overhead cupboards",
+      "richContent": {
+        "intro": "Quoting cabinetry is a game of details. A single kitchen job can have hundreds of components, from the board and hardware down to the screws and shelf supports. Get the material takeoff wrong, forget to price the edge banding, or miscalculate the hardware, and your profit is gone before you even load the ute. This guide is for Australian cabinet makers who are tired of spending hours in front of a spreadsheet. It covers the common line items that get missed when pricing custom kitchens, vanities, and built-in wardrobes, helping you quote faster and protect your margin on every job.",
+        "sections": [
+          {
+            "heading": "How to Price Board, Benchtops, and Edge Banding",
+            "body": "Your quote starts with the board. Price per sheet, not just square metre, and always factor in a waste percentage, typically 15-20%. Specify the brand and finish, as a 2400x1200mm sheet of Polytec melamine faced particleboard is different to a Laminex compact laminate. For benchtops, quote engineered stone per slab plus fabrication and installation costs from your stonemason. Don't forget edge banding, priced per linear metre, and the different rates for 1mm vs 2mm ABS. A standard 2400x1200mm sheet of Laminex Natural Finish board costs around $135 + GST from a supplier like Lincoln Sentry."
+          },
+          {
+            "heading": "Don't Let Hardware Costs Sink Your Margin",
+            "body": "Hardware is where quotes fall apart. It's not just the hinges and drawer runners. You need to account for assembly fittings, shelf supports, soft-close mechanisms, push-to-open latches, and handle costs. QuoteMate's templates let you build packages for common setups, like a bank of Blum soft-close drawers, so you capture every component automatically. Remember to include labour for drilling handle holes or routing finger pulls. A single Blum soft-close hinge can be over $9, and a standard kitchen needs 30 or more."
+          },
+          {
+            "heading": "Factoring in Site Work and Installation Costs",
+            "body": "The job isn't finished in the workshop. Your quote must include costs for a site measure, delivery, and installation labour. On renovation jobs, this means scribing filler panels to uneven walls and cutting out for plumbing and GPOs. If you're busy on site, missed calls mean lost leads; an AI receptionist like https://callkatie.ai can qualify new customers while you focus on the tools. Always add a line item for rubbish removal and site clean-up. As a rule, add a 10-15% contingency for installation on any kitchen reno that isn't a new build."
+          }
+        ]
+      }
     },
     {
       "slug": "plasterers",
@@ -807,7 +1045,24 @@
         }
       ],
       "avgQuoteRange": "$1,000 – $20,000",
-      "templateSnippet": "Plasterboard and set entire single-storey 3-bedroom house including 90mm cornice throughout"
+      "templateSnippet": "Plasterboard and set entire single-storey 3-bedroom house including 90mm cornice throughout",
+      "richContent": {
+        "intro": "Quoting plastering jobs comes down to materials. Get the sheet count wrong, and your profit is gone before the first coat of compound is on. Underestimate the cornice length or the number of fasteners, and you're buying it out of your own pocket. This guide is for plasterers in Australia who are tired of manually measuring every wall and ceiling just to have the numbers come up short. It covers the common line items that get missed on everything from a small patch job to a full new build fitout.",
+        "sections": [
+          {
+            "heading": "How to Price Gyprock Sheets and Compound Without Guessing",
+            "body": "Stop walking the room with a tape measure. The fastest way to quote a wall or ceiling is by area. Your quote needs to specify the plasterboard type – standard 10mm, 13mm fire-rated, or wet area board – as they have different costs per sheet. The same goes for compound. A full skim coat uses far more topping compound than a standard tape-and-join job. Using a tool like QuoteMate calculates the exact number of sheets and buckets of compound needed from the square metres you enter, saving you from over-ordering or under-quoting. CSR Gyprock's Base Coat 45 covers roughly 40kg per 100 square metres of board."
+          },
+          {
+            "heading": "Pricing Cornice Runs and Decorative Features Accurately",
+            "body": "Cornice isn't just priced by the metre. The real cost is in the labour for cuts and corners. A square room with four internal corners is much faster than a hallway with six internals and two externals, even if the length is the same. Your quote should reflect this complexity. Itemise different profiles separately; a standard 75mm Cove is cheaper and faster to install than an ornate Victorian profile. Don't forget to add a separate line item for ceiling roses or other decorative mouldings. A simple 90mm Cove cornice from a supplier like CSR usually runs about $4.50 per linear metre before labour and GST."
+          },
+          {
+            "heading": "What Plasterers Forget on Repair and Patching Quotes",
+            "body": "Small patch jobs are where plasterers lose money. The biggest mistake is quoting for a single visit. Most repairs need at least two trips: one to patch and set, another to sand and finish. Both trips have travel time and setup costs. Another forgotten item is dust control. Quoting for plastic drop sheets, masking tape, and a final site clean-up shows professionalism and protects your margin. A simple water damage repair can easily require different compounds and primers to prevent stains bleeding through. A basic 300mm square ceiling patch, including two site visits, should never be quoted under $250 + GST."
+          }
+        ]
+      }
     },
     {
       "slug": "flooring-installers",
@@ -851,7 +1106,24 @@
         }
       ],
       "avgQuoteRange": "$1,500 – $20,000",
-      "templateSnippet": "Supply and install hybrid vinyl plank flooring in 3-bedroom house (approx 85sqm) including underlay and scotia"
+      "templateSnippet": "Supply and install hybrid vinyl plank flooring in 3-bedroom house (approx 85sqm) including underlay and scotia",
+      "richContent": {
+        "intro": "Flooring quotes go wrong in the details, not the big square metre rate. It's easy to price the main floor, but forgetting the 10% waste factor on hybrid planks, the cost of subfloor levelling, or the number of transition strips can wipe out your profit. This guide is for Australian flooring installers who are tired of losing money on the small stuff. We'll cover the line items that get missed most often, so every quote you send is accurate and profitable. It’s about getting paid for every part of the job, not just the boards you lay.",
+        "sections": [
+          {
+            "heading": "How to Price Waste and Underlay on Every Job",
+            "body": "Always add a waste percentage to your flooring material calculation. For straight lay jobs, use 10-12%. For complex patterns like herringbone or chevron, push it to 15-18%. This covers off-cuts, mistakes, and pattern matching. Forgetting this is like giving away a free box of boards on every job. Underlay and adhesive should be their own line items, priced per square metre. QuoteMate can automatically add these based on your main flooring area, so you never forget. A standard roll of QEP 3mm Silver Laminate Flooring Underlay costs around $55 at Bunnings and covers 10 square metres."
+          },
+          {
+            "heading": "Quoting for Subfloor Prep and Old Floor Removal",
+            "body": "Price subfloor preparation separately, never bundle it into your per-metre rate. A perfectly flat subfloor is non-negotiable for vinyl and hybrid planks, and it takes time and materials to get it right. Your quote should list charges for pulling up old carpet, grinding concrete high spots, and applying levelling compound. If you uncover a mess after quoting, you'll have to wear the cost. A quick site inspection can save you thousands. Allow at least $50 per square metre for basic floor levelling using a product like Dunlop Ardit Floor Leveller, which costs around $32 for a 20kg bag from CSR."
+          },
+          {
+            "heading": "The Finishing Trims and Scotia That Erode Profit",
+            "body": "Scotia, transition strips, and door jamb trimming are the most commonly forgotten line items. They seem small, but on a whole house job, you could be giving away hundreds of dollars in materials and labour. Price scotia per linear metre, supplied and installed. Charge a per-item fee for each metal transition strip and an hourly rate for any door trimming required. If the phone's ringing while you're on your knees measuring, an AI receptionist like https://callkatie.ai handles the new lead so you can focus. A single 2.7m length of primed pine scotia is about $12 from any major hardware supplier."
+          }
+        ]
+      }
     },
     {
       "slug": "locksmiths",
@@ -895,7 +1167,24 @@
         }
       ],
       "avgQuoteRange": "$100 – $5,000",
-      "templateSnippet": "Supply and install new Lockwood deadbolt and passage set to front and back doors"
+      "templateSnippet": "Supply and install new Lockwood deadbolt and passage set to front and back doors",
+      "richContent": {
+        "intro": "Quoting a locksmith job is about hardware, not just labour. The price difference between rekeying a Lockwood barrel and supplying and fitting a full commercial-grade electronic strike is huge. Most locksmiths lose money by underquoting the parts or forgetting the time needed for a complex master key system. They quote the lock but forget the door prep, the strike plate modification, or the different key blanks needed. This guide is for the sole operator or small locksmith crew who needs to send accurate quotes from their ute without getting stung by supplier price changes.",
+        "sections": [
+          {
+            "heading": "Pricing Residential Rekeying vs. a Full Lock Replacement",
+            "body": "The main difference is parts vs. labour. A residential rekey involves changing the pins in an existing lock cylinder, so you're mostly charging for your time and skill, plus a small cost for pins. A full replacement means you're supplying new hardware, like a Lockwood 001 deadlatch or a Gainsborough trilock. Your quote must clearly separate the hardware cost from the installation labour. Forgetting this split confuses the customer and hides your margin. A simple rekey might be a $150 service call, while a new Gainsborough G2 Trilock can cost over $400 from Bunnings before you even add your markup and fitting fee."
+          },
+          {
+            "heading": "How to Quote Master Key Systems for Commercial Sites",
+            "body": "Master key system quotes fail when they only price the locks. The real work is in the planning: creating a pinning chart that defines who can open which doors. This intellectual property has value. Your quote needs line items for system design, cylinder pinning, key cutting and stamping, and the final installation. If you're busy pinning cylinders, you can't be answering the phone for new jobs. An AI receptionist like https://callkatie.ai can qualify the lead so you don't lose that work. For high-security sites, specify restricted key systems like Abloy Protec2, which cost 3-4 times more per cylinder than standard 6-pin setups."
+          },
+          {
+            "heading": "Factoring in Emergency Call-Out Rates and Travel",
+            "body": "Set tiered rates for call-outs and state them clearly on the quote. Don't just have one 'call-out fee'. Your pricing should have at least three levels: a standard business hours rate, an after-hours rate, and a public holiday emergency rate. Each tier should include a flagfall fee just for attending, plus the cost of labour and parts. QuoteMate lets you build templates for these scenarios so you can send a quote in two minutes. This stops arguments with customers about why a 2 am lockout costs more. A standard after-hours flagfall fee should start at a minimum of $220 + GST."
+          }
+        ]
+      }
     },
     {
       "slug": "pest-controllers",
@@ -939,7 +1228,24 @@
         }
       ],
       "avgQuoteRange": "$150 – $8,000",
-      "templateSnippet": "Full internal and external general pest treatment for 4-bedroom house including roof void and subfloor"
+      "templateSnippet": "Full internal and external general pest treatment for 4-bedroom house including roof void and subfloor",
+      "richContent": {
+        "intro": "Quoting for pest control isn't just about the chemical. It's pricing the treatment area, the number of visits, and the specific pest you're tackling. Too many pesties give a flat fee for a 'general spray' and lose money when they find three different problems on site. A good quote breaks down the job, protecting your margin on everything from a simple ant treatment to a full termite barrier installation. This guide is for Australian pest controllers who need to send detailed quotes that cover every line item and comply with local standards.",
+        "sections": [
+          {
+            "heading": "How to price a general pest spray by area and chemical",
+            "body": "Price your general sprays per square metre of the property, not just 'per house'. A 400sqm block with complex gardens is a different job to a 200sqm unit. Itemise the chemical used and the target pests. For example, a treatment for spiders and cockroaches using a Bifenthrin-based product from a supplier like Garrards or Agserv has a different cost to a specialised German cockroach treatment using gel baits. QuoteMate's templates let you build packages for different property sizes, so you can price a standard 3-bedroom house spray consistently every time. A typical internal and external spray might use 15-20 litres of mixed solution, with a chemical cost of $30-$50."
+          },
+          {
+            "heading": "Quoting termite inspections vs. chemical barriers",
+            "body": "An inspection quote covers your time, tools, and the report. A barrier quote covers labour, drilling, trenching, and hundreds of litres of termiticide. Don't bundle them. An inspection must follow AS 3660.2, detailing all findings, and should be quoted as a fixed fee, typically $250-$450. A chemical barrier is quoted per linear metre of the building's perimeter. This needs to account for drilling concrete paths, trenching soil or garden beds, and the high cost of chemicals like Fipronil. A barrier for a 60 linear metre home using Termidor might cost the client $2,800-$4,500, including all labour and materials."
+          },
+          {
+            "heading": "The follow-up visits and access fees most quotes miss",
+            "body": "The most forgotten line items are for follow-up work and difficult access. Rodent treatments often need two or three visits to check and re-set bait stations. Termite baiting systems require quarterly or annual monitoring. These should be separate, billable items on the initial quote. If you're stuck in a tight roof void or a dirty subfloor, you can't answer your phone. An AI receptionist like https://callkatie.ai can capture and qualify new leads so you don't lose work while you're on the tools. Always add a line for 'Difficult Access Fee' if a job requires crawling or specialised height access, typically adding $90-$150 to the quote."
+          }
+        ]
+      }
     },
     {
       "slug": "demolishers",
@@ -1040,7 +1346,24 @@
         }
       ],
       "avgQuoteRange": "$800 – $6,000",
-      "templateSnippet": "Supply and install B&D sectional garage door (5000x2400mm) with Merlin motor and 2 remotes"
+      "templateSnippet": "Supply and install B&D sectional garage door (5000x2400mm) with Merlin motor and 2 remotes",
+      "richContent": {
+        "intro": "Quoting for garage doors in Australia isn't just about the door panel itself. The real money is lost on the details: forgetting the extra labour for a low-headroom install, under-pricing the motor for a heavy custom door, or failing to include the cost of taking the old steel door to the tip. These small misses add up, turning a profitable job into a day working for wages. This guide is for garage door installers who need to create accurate quotes that cover the door, motor, tracks, and all the site-specific variables that can sink a job's margin before you even load the ute.",
+        "sections": [
+          {
+            "heading": "Pricing a Standard Roller Door vs. a Sectional Door",
+            "body": "A roller door quote is simpler than a sectional. Sectional doors have more moving parts that need to be itemised: individual panels, hinges, vertical and horizontal tracks, and a more complex torsion spring system matched to the door's weight. Forgetting to price the extra labour for aligning multiple tracks or the specific spring can cost you hundreds. A standard 2.4m high x 4.8m wide double roller door has a different installation process to a sectional of the same size. Always check current supply prices; a basic Colorbond sectional door from a supplier like Steel-Line Garage Doors will have a different material cost to a standard roller."
+          },
+          {
+            "heading": "How to Quote Motor Replacements and Upgrades",
+            "body": "A motor quote must include more than just the unit. It needs to bundle the motor itself, two remotes, safety beams, and any necessary wiring adjustments. A common mistake is quoting a cheap motor for a heavy insulated or timber-look door, which will burn it out within a year. You must match the motor's power to the door's weight. For example, a Merlin Commander Elite is suited for single sectional doors up to 130kg. QuoteMate lets you build package templates for these jobs, so a standard motor replacement can be quoted consistently at around $750-$950 installed."
+          },
+          {
+            "heading": "Factoring in Site-Specific Costs Most Installers Forget",
+            "body": "Every site has costs you must add as separate line items. Low headroom might require a rear torsion setup, adding labour and material costs. An unlevel concrete slab needs a larger, custom bottom seal. The biggest miss is the power point. If there's no GPO within a metre of the motor, you must quote for a licensed sparkie to run one, which adds at least $200. Also, include a line for the removal and disposal of the old door. A steel sectional door costs money to dump, and AS/NZS 4505 specifies installation clearances that can affect your labour time."
+          }
+        ]
+      }
     },
     {
       "slug": "welders",
@@ -1084,7 +1407,24 @@
         }
       ],
       "avgQuoteRange": "$500 – $20,000",
-      "templateSnippet": "Fabricate and install 8 linear metres of aluminium balustrade with glass infill panels and powder coating"
+      "templateSnippet": "Fabricate and install 8 linear metres of aluminium balustrade with glass infill panels and powder coating",
+      "richContent": {
+        "intro": "Quoting custom welding jobs is a tough gig. One gate is not like the next. You're pricing steel that changes cost weekly, plus consumables, complex labour, and finishing. This guide is for fabricators running their own show, building everything from balustrades to structural beams. The easiest way to lose money is under-quoting the finishing or the grinding time between welds. Get those right, and the rest of the job stacks up. QuoteMate helps Aussie welders price every part of the build, from the raw material to the final coat of paint.",
+        "sections": [
+          {
+            "heading": "How to price steel and consumables without losing your shirt",
+            "body": "Your steel price from six months ago is wrong. Prices for RHS, flat bar, and sheet metal change constantly. Before quoting any job, get current per-metre or per-length pricing from your supplier like Metalcorp or BlueScope Distribution. The same goes for consumables. Don't just guess your costs for MIG wire, TIG rods, shielding gas, and cutting discs. These small items add up across a big job. A good quote lists the exact material specs and quantities so the customer sees what they're paying for. A 15kg spool of 0.9mm mild steel MIG wire from BOC costs around $130 + GST."
+          },
+          {
+            "heading": "Estimating labour beyond just laying a bead",
+            "body": "The time spent welding is often the smallest part of the labour bill. A proper fabrication quote includes time for measuring, cutting, drilling, bevelling edges for full penetration welds, jig setup, grinding, and cleanup. On-site installation labour is a separate line item with a higher hourly rate than workshop time. For structural jobs, you also need to factor in time for quality control and inspection checks. All structural steel welding must comply with AS/NZS 1554.1, which dictates weld procedures and quality requirements that add to your labour time."
+          },
+          {
+            "heading": "Quoting for powder coating and hot-dip galvanising",
+            "body": "Finishing is an outsourced cost that can destroy your profit if you guess it. Always get a firm quote from your powder coater or galvaniser before you send the quote to your client. Their price will depend on the size, weight, and complexity of the item, plus any required pre-treatment like sandblasting. Remember to add your own labour for transport to and from their facility. Using QuoteMate, you can add these third-party costs as a distinct line item with your margin on top. A standard driveway gate will typically cost $350-$500 for hot-dip galvanising."
+          }
+        ]
+      }
     },
     {
       "slug": "arborists",
@@ -1128,7 +1468,24 @@
         }
       ],
       "avgQuoteRange": "$300 – $15,000",
-      "templateSnippet": "Remove 12m eucalyptus tree including stump grinding, wood chipping, and green waste removal"
+      "templateSnippet": "Remove 12m eucalyptus tree including stump grinding, wood chipping, and green waste removal",
+      "richContent": {
+        "intro": "Quoting tree services isn't just about the tree, it's about the access and the cleanup. The difference between a profitable job and a loss is often in the unquoted extras: the tight-access machinery, the traffic control for a kerbside job, or the sheer volume of green waste. Forgetting to price these properly is the fastest way to work for free. This guide is for Australian arborists running their own crews who need to create quotes that cover every cost, from chainsaw fuel to tip fees. It breaks down the key variables that protect your margin on every job, from a simple prune to a complex removal.",
+        "sections": [
+          {
+            "heading": "How to Price Crane and EWP Hire for Difficult Access",
+            "body": "Price access equipment by the half-day or full-day rate, plus float costs to and from the site. A large gum tree over a house requires a crane or an Elevated Work Platform (EWP), and that cost must be passed on. A simple job can become complex if you need a spotter for power lines or a traffic management plan for a council road. These are separate line items. QuoteMate's templates let you add these common hire costs instantly. A 15-metre towable cherry picker from a supplier like Kennards Hire will cost around $500 per day plus delivery and fuel."
+          },
+          {
+            "heading": "Calculating Green Waste and Log Disposal Costs Accurately",
+            "body": "Quote your waste disposal per cubic metre of chipped material or per tonne for solid logs. Don't just guess. Filling a 10-cubic-metre truck with chipped palm fronds is fast, but a dense ironbark will take longer and weigh much more, increasing disposal costs. Chipping on-site saves on tip fees but costs more in labour and fuel for the chipper. Always check the rates at your local resource recovery centre, as they vary by council and state. Expect to pay between $90 to $160 per tonne for green waste disposal at a commercial facility."
+          },
+          {
+            "heading": "Factoring in Stump Grinding and Final Site Cleanup",
+            "body": "Price stump grinding per centimetre of diameter at ground level, adding surcharges for surface roots and restricted access. A small grinder for a backyard is cheaper than a large tracked machine that needs to be floated to site. The quote must also include removing the grindings and backfilling with topsoil, which are often forgotten. If you're running a grinder and can't answer the phone, you're losing work. An AI receptionist like https://callkatie.ai handles new leads so you can focus on the job. All work should meet AS 4373-2007 Pruning of amenity trees, and your final cleanup cost should reflect that standard."
+          }
+        ]
+      }
     }
   ],
   "cities": [
@@ -1138,7 +1495,21 @@
       "state": "NSW",
       "population": "5.3 million",
       "description": "Australia's largest city",
-      "localNote": "From the Inner West to the Northern Beaches, Western Sydney to the Sutherland Shire"
+      "localNote": "From the Inner West to the Northern Beaches, Western Sydney to the Sutherland Shire",
+      "region": "Greater Sydney Metropolitan Area",
+      "climateNote": "Sydney has a humid subtropical climate. High summer humidity affects paint and waterproofing cure times, while coastal salt spray corrodes metal fittings and roofing in eastern suburbs. Bushfire risk in fringe areas requires use of BAL-rated materials.",
+      "buildingStock": "Work ranges from Victorian terraces in the inner city to Federation homes and brick veneers in established suburbs. High-rise apartment blocks dominate areas like Chatswood and Parramatta, with new housing estates in the North West and South West Growth Areas.",
+      "keySuburbs": [
+        "Parramatta",
+        "Bondi",
+        "Chatswood",
+        "Penrith",
+        "Sutherland",
+        "Manly",
+        "Castle Hill"
+      ],
+      "stateLicensing": "NSW Fair Trading is the regulator. A contractor licence is needed for most residential work over $5,000, and your licence number must be on all quotes and contracts. Compliance with the Home Building Act 1989 is mandatory.",
+      "demandNote": "Demand is driven by high-density apartment construction and strong renovation activity in established suburbs. Knock-down rebuilds are common, and major state infrastructure projects create consistent commercial work across the city."
     },
     {
       "slug": "melbourne",
@@ -1146,7 +1517,21 @@
       "state": "VIC",
       "population": "5.1 million",
       "description": "Australia's cultural capital",
-      "localNote": "From the CBD to the Mornington Peninsula, Geelong corridor to the Yarra Ranges"
+      "localNote": "From the CBD to the Mornington Peninsula, Geelong corridor to the Yarra Ranges",
+      "region": "Greater Melbourne and Port Phillip Bay",
+      "climateNote": "Melbourne's weather is unpredictable, so jobs need to account for potential rain delays. Effective waterproofing and drainage are critical, and there's consistent demand for both heating and cooling system installations and repairs.",
+      "buildingStock": "Work ranges from heritage-listed Victorian terraces in the inner suburbs to post-war brick veneers and a huge number of new housing estates on the fringe. High-rise apartment fit-outs and maintenance are also a major source of jobs in the CBD and inner suburbs.",
+      "keySuburbs": [
+        "Richmond",
+        "Brunswick",
+        "Box Hill",
+        "Werribee",
+        "Craigieburn",
+        "Cranbourne",
+        "Frankston"
+      ],
+      "stateLicensing": "The Victorian Building Authority (VBA) is the main regulator here. Your quotes need to include costs for materials and practices that meet the National Construction Code (NCC) and relevant standards to keep your registration safe.",
+      "demandNote": "Population growth keeps driving new housing estates in the outer west, north, and south-east. At the same time, a strong renovation market for older homes in established suburbs means there's plenty of work to go around."
     },
     {
       "slug": "brisbane",
@@ -1154,7 +1539,21 @@
       "state": "QLD",
       "population": "2.6 million",
       "description": "Queensland's capital",
-      "localNote": "From the CBD to the Gold Coast corridor, Ipswich to Redcliffe and the Sunshine Coast"
+      "localNote": "From the CBD to the Gold Coast corridor, Ipswich to Redcliffe and the Sunshine Coast",
+      "region": "Greater Brisbane and Moreton Bay",
+      "climateNote": "Brisbane's subtropical climate means high humidity and a summer storm season. Materials need to handle moisture and mould, and there's steady work in storm repairs, roofing, and air-conditioning.",
+      "buildingStock": "Work ranges from classic timber Queenslanders needing restumping and deck repairs to post-war brick homes. New estates in the outer suburbs and high-rise apartment fit-outs in the inner city are also common.",
+      "keySuburbs": [
+        "New Farm",
+        "Paddington",
+        "Chermside",
+        "Carindale",
+        "North Lakes",
+        "Ipswich",
+        "Springfield Lakes"
+      ],
+      "stateLicensing": "The Queensland Building and Construction Commission (QBCC) governs most building work. Your QBCC licence number must be on every quote for work over $3,300, and all jobs must meet their standards.",
+      "demandNote": "Population growth is driving new housing estates, especially towards Ipswich and the Gold Coast. Renovating older Queenslanders is also a huge market, along with ongoing repairs from storm and flood damage."
     },
     {
       "slug": "perth",
@@ -1162,7 +1561,21 @@
       "state": "WA",
       "population": "2.2 million",
       "description": "Western Australia's capital",
-      "localNote": "From Fremantle to Joondalup, Armadale to Rockingham and Mandurah"
+      "localNote": "From Fremantle to Joondalup, Armadale to Rockingham and Mandurah",
+      "region": "Perth metropolitan area and Peel region",
+      "climateNote": "Perth's hot, dry summers and intense UV mean exterior materials like paints, decking oils, and plastics degrade quickly. Winter rains test roofing and waterproofing, driving seasonal repair work, while coastal suburbs deal with salt spray corrosion on metal fittings.",
+      "buildingStock": "Most work is on double-brick homes with tile or Colorbond roofs, from post-war builds to new estates in the outer suburbs. Inner suburbs like Subiaco and Fremantle have older character homes needing specialist renovation.",
+      "keySuburbs": [
+        "Joondalup",
+        "Wanneroo",
+        "Cottesloe",
+        "Fremantle",
+        "Rockingham",
+        "Armadale",
+        "Kalamunda"
+      ],
+      "stateLicensing": "In WA, trade licensing is handled by the Building and Energy division of DMIRS. All quotes and contracts for regulated work must show your correct licence number to be compliant.",
+      "demandNote": "Demand is high in new housing estates on the northern and southern fringes like Alkimos and Baldivis. There is also constant renovation work on older housing stock in established suburbs as the city's population grows."
     },
     {
       "slug": "adelaide",
@@ -1170,7 +1583,21 @@
       "state": "SA",
       "population": "1.4 million",
       "description": "South Australia's capital",
-      "localNote": "From the CBD to the Adelaide Hills, Gawler to Seaford and the Barossa"
+      "localNote": "From the CBD to the Adelaide Hills, Gawler to Seaford and the Barossa",
+      "region": "Greater Adelaide and the Adelaide Hills",
+      "climateNote": "Adelaide's hot, dry summers mean high bushfire risk in the Hills, driving demand for BAL-rated materials and gutter guards. The mild, wet winters create a peak season for roofing repairs and internal heating jobs.",
+      "buildingStock": "The building stock is a mix of historic bluestone and sandstone villas in the inner suburbs and post-war brick veneer homes further out. New housing estates are expanding rapidly in the northern and southern growth corridors.",
+      "keySuburbs": [
+        "Norwood",
+        "Unley",
+        "Glenelg",
+        "Mount Barker",
+        "Angle Vale",
+        "Prospect",
+        "Seaford"
+      ],
+      "stateLicensing": "All trade licensing in South Australia is handled by Consumer and Business Services (CBS). Quotes must clearly state your builder's or contractor's licence number to be compliant.",
+      "demandNote": "Demand is driven by new housing developments in areas like Mount Barker and the northern plains, plus a strong renovation market for older homes. High uptake of solar and battery systems also keeps local tradies busy."
     },
     {
       "slug": "gold-coast",
@@ -1178,7 +1605,21 @@
       "state": "QLD",
       "population": "700,000",
       "description": "Australia's holiday capital",
-      "localNote": "From Surfers Paradise to Coolangatta, Nerang to Ormeau and the Hinterland"
+      "localNote": "From Surfers Paradise to Coolangatta, Nerang to Ormeau and the Hinterland",
+      "region": "Gold Coast and surrounding hinterland",
+      "climateNote": "The humid, subtropical climate means constant battles with mould and moisture, affecting paint jobs and waterproofing. Coastal salt spray corrodes metal fittings, from air con units to roof screws, requiring marine-grade materials for any exterior work.",
+      "buildingStock": "Work ranges from high-rise apartment fit-outs in Surfers Paradise to canal-front luxury builds and major renovations on older brick-and-tile homes. Inland, new housing estates in suburbs like Coomera and Pimpama provide steady work on new builds.",
+      "keySuburbs": [
+        "Southport",
+        "Surfers Paradise",
+        "Broadbeach",
+        "Robina",
+        "Coomera",
+        "Burleigh Heads",
+        "Palm Beach"
+      ],
+      "stateLicensing": "All licensed trade work in Queensland is regulated by the Queensland Building and Construction Commission (QBCC). Quotes for jobs over $3,300 must be backed by a QBCC-compliant domestic building contract.",
+      "demandNote": "Demand is driven by the constant refurbishment of tourism high-rises and holiday lets, plus strong population growth fuelling new estates. The renovation market is huge, with older homes constantly being updated or knocked down for luxury rebuilds."
     },
     {
       "slug": "canberra",
@@ -1186,7 +1627,21 @@
       "state": "ACT",
       "population": "470,000",
       "description": "Australia's capital city",
-      "localNote": "From Belconnen to Tuggeranong, Woden to Gungahlin and Queanbeyan"
+      "localNote": "From Belconnen to Tuggeranong, Woden to Gungahlin and Queanbeyan",
+      "region": "Canberra and the Australian Capital Territory",
+      "climateNote": "Canberra's climate means very cold, frosty winters and hot, dry summers. This affects concrete curing times, exterior painting schedules, and drives high demand for insulation and HVAC system installs and repairs.",
+      "buildingStock": "Work is a mix of post-war brick homes in the inner suburbs and extensive new housing estates in Gungahlin and the Molonglo Valley. There's also a lot of medium to high-density apartment construction around the town centres.",
+      "keySuburbs": [
+        "Gungahlin",
+        "Braddon",
+        "Kingston",
+        "Tuggeranong",
+        "Belconnen",
+        "Forrest",
+        "Coombs"
+      ],
+      "stateLicensing": "All trade licensing in the ACT is handled by Access Canberra. Quotes must account for compliance with the Building Act 2004 and specific trade codes, as inspections are common.",
+      "demandNote": "Demand is driven by a stable public service economy, major new land releases in Gungahlin and Molonglo, and the ongoing Mr Fluffy knockdown-rebuild scheme. Infill development and apartment projects in town centres also provide consistent work."
     },
     {
       "slug": "hobart",
@@ -1194,7 +1649,21 @@
       "state": "TAS",
       "population": "250,000",
       "description": "Tasmania's capital",
-      "localNote": "From the CBD to Kingston, Glenorchy to Clarence and the Eastern Shore"
+      "localNote": "From the CBD to Kingston, Glenorchy to Clarence and the Eastern Shore",
+      "region": "Greater Hobart and Southern Tasmania",
+      "climateNote": "Hobart's cool, damp climate means fighting moisture is a constant. Expect four seasons in one day, so exterior work needs flexible scheduling and reliable waterproofing to AS 3740 standards is critical for all wet areas.",
+      "buildingStock": "Work ranges from heritage-listed sandstone terraces in Battery Point to weatherboard cottages and post-war brick homes. New estates are pushing out from Kingston and the Eastern Shore, mixing new builds with renovation work on older stock.",
+      "keySuburbs": [
+        "Sandy Bay",
+        "Kingston",
+        "Glenorchy",
+        "Howrah",
+        "North Hobart",
+        "Battery Point",
+        "Claremont"
+      ],
+      "stateLicensing": "All trade work is regulated by Consumer, Building and Occupational Services (CBOS). Your CBOS licence number must be on all written quotes, contracts, and advertising, so make sure your quoting software includes it.",
+      "demandNote": "Demand is strong from both renovations on older housing stock and new builds in growth corridors like the Kingborough and Clarence municipalities. A tight rental market also means steady work for maintenance tradies keeping investment properties up to scratch."
     },
     {
       "slug": "newcastle",
@@ -1202,7 +1671,21 @@
       "state": "NSW",
       "population": "500,000",
       "description": "NSW's second largest city",
-      "localNote": "From the CBD to Charlestown, Maitland to Lake Macquarie and the Hunter Valley"
+      "localNote": "From the CBD to Charlestown, Maitland to Lake Macquarie and the Hunter Valley",
+      "region": "Newcastle and the Hunter Region",
+      "climateNote": "The humid subtropical climate means high moisture levels, so mould treatment and proper ventilation are constant issues. Coastal suburbs get hit with salt spray, which corrodes metal roofing, balustrades, and external fixtures faster than inland.",
+      "buildingStock": "Work ranges from Victorian terraces in the inner city to 1960s brick veneers in the suburbs and new project homes in estates out past Wallsend. Some older areas have foundation issues from historical mine subsidence, requiring specialist assessment.",
+      "keySuburbs": [
+        "Merewether",
+        "Hamilton",
+        "Charlestown",
+        "Adamstown",
+        "Wallsend",
+        "Maitland",
+        "Cameron Park"
+      ],
+      "stateLicensing": "All quotes for work over $5,000 must include a licence number from NSW Fair Trading. They regulate most trades, and not showing your licence on quotes and contracts is a compliance breach.",
+      "demandNote": "Demand is strong due to major health and education projects expanding the city, plus ongoing urban renewal in the CBD. New housing estates in the western corridor and Maitland are driving constant work for residential trades."
     },
     {
       "slug": "wollongong",
@@ -1210,7 +1693,21 @@
       "state": "NSW",
       "population": "310,000",
       "description": "The Gong — NSW's third largest city",
-      "localNote": "From the CBD to Shellharbour, Kiama to Helensburgh and the Illawarra region"
+      "localNote": "From the CBD to Shellharbour, Kiama to Helensburgh and the Illawarra region",
+      "region": "Illawarra and South Coast",
+      "climateNote": "The coastal salt air is harsh on metals, so quoting for marine-grade stainless steel or powder-coated aluminium is standard for outdoor fittings. High humidity and heavy rainfall mean waterproofing and drainage jobs are constant, especially for older homes in the northern suburbs.",
+      "buildingStock": "Work ranges from 1960s brick veneer homes in suburbs like Figtree to new housing estates in West Dapto. The city centre and North Wollongong are full of multi-storey apartment blocks requiring strata maintenance and fit-outs.",
+      "keySuburbs": [
+        "Wollongong",
+        "Figtree",
+        "Dapto",
+        "Thirroul",
+        "Shellharbour",
+        "Corrimal",
+        "Port Kembla"
+      ],
+      "stateLicensing": "All work is regulated by NSW Fair Trading. Your quote must show your licence number, and any job over $5,000 needs a Home Building Compensation Fund certificate and a formal written contract.",
+      "demandNote": "Demand is driven by new housing developments in the West Dapto release area and constant renovation work on older homes, particularly in the northern coastal suburbs. The University of Wollongong's growth also creates steady work on student accommodation and rentals."
     }
   ],
   "quoteTemplates": [

@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
-import { trades, cities, getTradeBySlug, getCityBySlug, getTradeFAQs } from '@/lib/data';
+import { trades, cities, getTradeBySlug, getCityBySlug, getTradeFAQs, getLocalInsight } from '@/lib/data';
 
 interface Props {
   params: Promise<{ tradeSlug: string; citySlug: string }>;
@@ -73,7 +73,14 @@ export default async function TradeCityPage({ params }: Props) {
   const city = getCityBySlug(citySlug);
   if (!trade || !city) notFound();
 
-  const faqItems = getTradeFAQs(trade);
+  const localInsight = getLocalInsight(trade.slug, city.slug);
+  const faqItems = [
+    ...getTradeFAQs(trade),
+    ...(city.stateLicensing ? [{
+      question: `Do I need a licence to quote ${trade.keyword} jobs in ${city.name}?`,
+      answer: `${city.stateLicensing} QuoteMate puts your licence number, ABN, and GST details on every quote so your ${city.name} jobs stay compliant.`,
+    }] : []),
+  ];
   const pageUrl = `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}`;
 
   return (
@@ -101,11 +108,29 @@ export default async function TradeCityPage({ params }: Props) {
           <div className="container">
             <div className="local-card">
               <h2>{trade.name} in {city.name}, {city.state}</h2>
-              <p>{city.name} ({city.description}) is home to {city.population} residents. {city.localNote}, {trade.name.toLowerCase()} rely on QuoteMate to create professional quotes quickly and accurately.</p>
+              <p>{city.name} ({city.description}) is home to {city.population} residents{city.region ? ` across ${city.region}` : ''}. {city.localNote}, {trade.name.toLowerCase()} rely on QuoteMate to create professional quotes quickly and accurately.</p>
+              {city.buildingStock && <p>{city.buildingStock} {city.climateNote}</p>}
+              {city.demandNote && <p>{city.demandNote} {city.stateLicensing}</p>}
               <p>Whether you&rsquo;re quoting a small repair or a major {trade.keyword} project, QuoteMate&rsquo;s AI-powered quoting engine helps you price jobs accurately with real-time material costs from major Australian suppliers.</p>
             </div>
           </div>
         </section>
+
+        {localInsight && (
+          <section className="seo-rich-content">
+            <div className="container">
+              <div className="rich-content-block">
+                <div className="rich-content-section">
+                  <h2>{localInsight.heading}</h2>
+                  <p>{localInsight.body}</p>
+                  {city.keySuburbs && city.keySuburbs.length > 0 && (
+                    <p>QuoteMate is used by {trade.name.toLowerCase()} across {city.name} &mdash; from {city.keySuburbs.slice(0, -1).join(', ')} to {city.keySuburbs[city.keySuburbs.length - 1]}.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="seo-pain-point">
           <div className="container">

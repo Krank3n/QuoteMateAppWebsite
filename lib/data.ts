@@ -1,4 +1,6 @@
 import rawData from '@/seo/data.json';
+import localContent from '@/seo/local-content.json';
+import templateContent from '@/seo/template-content.json';
 import { extraTemplates } from './extraTemplates';
 
 export interface Trade {
@@ -31,6 +33,17 @@ export interface City {
   population: string;
   description: string;
   localNote: string;
+  region?: string;
+  climateNote?: string;
+  buildingStock?: string;
+  keySuburbs?: string[];
+  stateLicensing?: string;
+  demandNote?: string;
+}
+
+export interface LocalInsight {
+  heading: string;
+  body: string;
 }
 
 export interface QuoteTemplate {
@@ -289,6 +302,24 @@ export function getTradeBySlug(slug: string): Trade | undefined {
 
 export function getCityBySlug(slug: string): City | undefined {
   return cities.find(c => c.slug === slug);
+}
+
+const localInsights = localContent as Record<string, Record<string, LocalInsight>>;
+
+export function getLocalInsight(tradeSlug: string, citySlug: string): LocalInsight | undefined {
+  return localInsights[tradeSlug]?.[citySlug];
+}
+
+export interface TemplateContent {
+  intro: string;
+  sections: { heading: string; body: string }[];
+  faqs: FAQ[];
+}
+
+const templateContents = templateContent as Record<string, TemplateContent>;
+
+export function getTemplateContent(slug: string): TemplateContent | undefined {
+  return templateContents[slug];
 }
 
 export function getTemplateBySlug(slug: string): QuoteTemplate | undefined {

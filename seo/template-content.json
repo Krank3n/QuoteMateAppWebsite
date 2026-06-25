@@ -1,0 +1,1460 @@
+{
+  "kitchen-renovation-quote-template": {
+    "intro": "This kitchen renovation quote template is for builders quoting standard residential jobs, from simple cosmetic updates to full gut-and-replace projects. It's designed to stop you from losing money on the two most common mistakes: underquoting on demolition and waste disposal, and forgetting to factor in making good on walls and floors after the old kitchen is ripped out. Get those two line items right, and the rest of the quote will fall into place, ensuring your price is both competitive and profitable for the work involved.",
+    "sections": [
+      {
+        "heading": "How to Price the Big Three: Cabinets, Benchtops, and Labour",
+        "body": "Your biggest costs are materials and time. Price cabinets per unit, not per metre. A standard 600mm base cabinet from a supplier like Polytec or Laminex might cost $300, but a drawer unit will be double that. For benchtops, quote per linear metre (lm). A laminate top from Bunnings is around $150/lm, while an engineered stone benchtop can be $900/lm plus installation. Labour is the key. Your carpenter is likely on $70-$90/hr, your plumber $110-$130/hr, and your electrician the same. For a standard kitchen, budget at least 40 hours of carpentry, a full day for plumbing rough-in and fit-off, and another for electrical. Don't guess labour; track it."
+      },
+      {
+        "heading": "What Everyone Forgets on a Kitchen Reno Quote",
+        "body": "It's the small things that kill your profit. Always include a separate line item for demolition and rubbish removal. A 4 cubic metre skip bin costs around $450, and that's before you pay someone to fill it. Is the site on the third floor with no lift? Add a site access fee for the extra labour. Making good is another one; plastering and painting where old splashbacks and bulkheads were removed can take a full day. Forgetting these costs is a classic error. A quoting app like QuoteMate can help by suggesting these easily-missed items from past jobs. All electrical work must comply with AS/NZS 3000, so factor in a licensed electrician for the final sign-off."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much contingency do I add to a kitchen quote?",
+        "answer": "For kitchen renovations, a 10-15% contingency is standard. This covers unexpected issues like rotten sub-floors hidden by old cabinets or finding asbestos in the walls. Clearly state in your quote what the contingency covers. For a $25,000 kitchen, that's a buffer of at least $2,500."
+      },
+      {
+        "question": "Should I quote for appliances or just the installation?",
+        "answer": "Always clarify this with the client first. The safest way is to list appliances as a Provisional Sum (PS) or Prime Cost (PC) item. This allows the client to choose their own from a place like The Good Guys, and you just charge for the installation. If they want you to supply, get model numbers and exact prices before finalising the quote."
+      },
+      {
+        "question": "What's the difference in quoting for a tile vs. glass splashback?",
+        "answer": "Tiled splashbacks are quoted per square metre for supply and labour. A simple ceramic tile might be $120/sqm installed. A glass splashback is a custom-made item quoted per piece, often with extra charges for each GPO cutout. A typical glass splashback costs between $450 and $650 per square metre."
+      }
+    ]
+  },
+  "concrete-driveway-quote-template": {
+    "intro": "This concrete driveway quote template is for Australian concreters pricing standard residential jobs. It covers new builds, extensions, and rip-and-replace projects. Getting the quote right comes down to two things often missed: accurate base preparation costs and accounting for concrete pump hire. Underestimate the earthworks or forget the pump fee on a site with poor access, and your profit is gone before the pour even starts. Use this template to make sure every cost is covered, from crushed rock to the final sealer, so you price every job to win and make a margin.",
+    "sections": [
+      {
+        "heading": "How to Price Concrete, Mesh, and Labour Per Square Metre",
+        "body": "Your biggest cost is the concrete itself. A standard 25MPa mix from a supplier like Hanson or Boral runs about $250-$320 per cubic metre. For a typical 100mm thick driveway, you'll need one cubic metre for every 10 square metres. Next is the steel. SL72 reinforcing mesh is standard for residential drives and costs around $110 per sheet from Bunnings, covering roughly 14.4 square metres. Labour is the key variable. A good starting point is $60-$90 per square metre for a basic broom finish. Always add a 10% waste factor to your concrete and crushed rock calculations before finalising the price."
+      },
+      {
+        "heading": "Forgetting Site Prep and Pump Hire Will Cost You",
+        "body": "The costs that get missed are usually before the concrete truck arrives. Site preparation isn't free. If you need to hire a mini-excavator to level the ground, that's at least $500 for the day. The crushed rock for the sub-base costs about $60 per tonne, plus your time to spread and compact it. If the truck can't back right up to the job, you'll need a concrete pump. A line pump adds a minimum of $600-$900 to the job. Also, remember to include tip fees for disposing of any excavated soil or old concrete. These small costs add up fast and should be separate line items on your quote."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for an exposed aggregate finish?",
+        "answer": "Exposed aggregate costs more in materials and labour. The special concrete mix is dearer, and you have extra steps like washing off and sealing. You should add between $50 and $70 per square metre on top of your standard plain concrete price. Check current sealer prices with a supplier like Parchem or Concrete Colour Systems."
+      },
+      {
+        "question": "Do I need council approval for a new driveway crossover?",
+        "answer": "Yes, almost every council in Australia requires a permit for a new or modified vehicle crossover from the kerb. While it's the homeowner's responsibility to get the permit, you should state in your quote that work cannot start without it. This protects you from fines and rework orders from the local council."
+      },
+      {
+        "question": "What's the right concrete strength for a residential driveway?",
+        "answer": "For a standard driveway taking cars and utes, 25MPa is the industry standard and sufficient. If the driveway needs to support heavier vehicles like a small truck or the subgrade is poor, specify 32MPa. Always list the concrete strength on your quote to meet the requirements of Australian Standard AS 3600."
+      }
+    ]
+  },
+  "painting-quote-template": {
+    "intro": "This house painting quote template is for Aussie painters on residential jobs. It’s built for everything from a quick room refresh to a full interior and exterior repaint. Most quotes go wrong in two places: underestimating the hours needed for proper surface prep, especially on older homes, and miscalculating paint volumes for quality finishes. A cheap paint might save money upfront but costs you in callbacks. This template helps you price every surface, coat, and hour of labour correctly so your profit doesn't get painted over by unexpected costs.",
+    "sections": [
+      {
+        "heading": "Pricing Paint and Labour for a Standard 3-Bed House",
+        "body": "Your price comes down to materials and time. A standard 3-bedroom house has about 350-400 square metres of wall and ceiling space. Quality paint like Dulux Wash&Wear covers around 14 sqm per litre. For two coats, you'll need 50-60 litres. At roughly $220 for a 15L tin from Bunnings, that's over $880 in paint before you add primer or trim colour. Labour is your main cost. A full interior repaint with proper prep takes 80-100 hours. At a rate of $60-$80 per hour, that's $4,800 to $8,000 in labour alone. Your quote must cover both accurately."
+      },
+      {
+        "heading": "What Painters Forget to Add to the Quote",
+        "body": "Small omissions destroy your margin. Quoting a two-storey exterior without adding weekly scaffold hire can cost you $500 a week straight from your profit. Does the job involve removing old lead paint? That requires specific safety gear and disposal methods under AS/NZS 4361.2, adding significant time and material costs. Don't forget skip bin hire for waste, or the time it takes to move heavy furniture. If it's not a line item in the quote, you're doing it for free. Specify exclusions like major plaster repairs or electrical fixture removal to protect yourself."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How many coats of paint should I quote for?",
+        "answer": "Always quote for a primer or undercoat, followed by at least two top coats. A single top coat rarely provides a durable or even finish, especially when making a big colour change. Quoting for two top coats is standard professional practice and ensures the job lasts. For covering dark colours or water stains, you may even need to factor in a third coat."
+      },
+      {
+        "question": "Should I charge per room or per square metre?",
+        "answer": "Calculate your costs per square metre, but present the price per room to the client. Using a square metre rate for your internal calculations is the only way to accurately price materials and labour, especially for rooms with high ceilings or complex features. A simple per-room price is easier for the customer to understand on the final quote. Software like QuoteMate can handle the sqm calculations for you."
+      },
+      {
+        "question": "Do I need to include GST in my painting quote?",
+        "answer": "Yes, if your business is registered for GST, your quote must clearly show the total price including GST. It's best practice to show a subtotal for labour and materials, the separate 10% GST amount, and the final inclusive total. This prevents confusion with the client and keeps you compliant with the ATO. Always label the final figure as 'Total Inc. GST'."
+      }
+    ]
+  },
+  "deck-quote-template": {
+    "intro": "This deck quote template is for carpenters building residential timber or composite decks. It suits everything from a small patio extension to a multi-level outdoor area. Most quotes go wrong on two fronts: underestimating the labour for digging footings, especially on rocky or sloping ground, and forgetting to factor in a 10-15% waste allowance for decking boards. Getting these details right protects your margin. Our template ensures all the critical line items are included, so you can build a professional quote that covers the full scope of the job.",
+    "sections": [
+      {
+        "heading": "How to Price Decking Materials and Labour",
+        "body": "Your biggest material cost is the decking itself. A standard 90mm Merbau board from Bunnings Trade is around $12 per lineal metre, so a 20 square metre deck needs about 238 lineal metres, costing roughly $2,850 plus GST before your markup. Don't forget the sub-frame; H3 treated pine for joists and bearers will add another $800-$1,000. Labour is the other major cost. A good starting point is to charge between $250 and $400 per square metre, including all labour from set-out to clean-up. A complex site with stairs or difficult access will be at the higher end of that range."
+      },
+      {
+        "heading": "What Gets Left Off a Deck Building Quote",
+        "body": "It's the small things that eat your profit. Always include a line item for rubbish disposal; a 2 cubic metre skip bin costs around $300. Site access is another one. If you can't get a wheelbarrow to the deck area, you need to charge for carrying materials by hand. Also, check council requirements. Any deck over 1 metre from ground level, or of a certain size, may require a permit and engineering drawings, which is a cost you must pass on. Finally, specify the hardware. Using 316 marine grade stainless steel screws instead of galvanised can add hundreds to the job cost, so specify it clearly in the quote."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste should I allow for on decking boards?",
+        "answer": "For a standard rectangular deck using timber boards like Merbau, a 10% waste factor is usually safe. If you're using composite decking, which can be less forgiving, or laying boards in a herringbone pattern, increase that to 15%. It's cheaper to have a few boards left over than to make a special trip back to the supplier for a single length."
+      },
+      {
+        "question": "Does my deck quote need to mention Australian Standards?",
+        "answer": "While you don't need to quote the whole rulebook, it’s good practice to state that the work will comply with the National Construction Code (NCC) and AS 1684 for timber framing. This shows the client you're a professional and protects you if they ask for something non-compliant. For balustrades, referencing AS 1170.1 for structural safety is key."
+      },
+      {
+        "question": "What's a fair price for concrete footings?",
+        "answer": "Don't price footings per hole; price them based on total labour and materials. For a standard deck requiring twenty 400x400x600mm holes in stable soil, allow for a full day of labour for digging and pouring. With concrete mix and post supports, you should be quoting at least $1,200-$1,500 for the footings alone, before adding excavation machinery hire if needed."
+      }
+    ]
+  },
+  "fence-quote-template": {
+    "intro": "This fence quote template is for Australian fencers pricing typical residential jobs like Colorbond, timber paling, or aluminium slat fences. It’s set up to stop you losing money on the two things most guys get wrong: under-quoting labour for digging post holes in tough ground, and forgetting the cost of dumping the old fence. Get those right, and the rest of the job is pure profit. This guide gives you the numbers to plug into your template so you can quote accurately and move on.",
+    "sections": [
+      {
+        "heading": "How to Price Fence Installs Per Metre",
+        "body": "Most clients want a per-metre price. For a standard 1.8m Colorbond fence, this usually lands between $90 and $130 per linear metre. Labour is the biggest variable. Don't just charge a day rate. Price post hole digging separately, especially if it's rocky or clay soil, as that can double the time. A fair labour rate is around $80-$100 an hour. Factor in a 10% margin on materials from suppliers like Lysaght or Bunnings Trade. Using an app like QuoteMate helps pull real-time prices so you're not quoting off an old catalogue."
+      },
+      {
+        "heading": "Line Items That Get Left Off a Fence Quote",
+        "body": "Forgetting site prep and disposal will kill your profit. Always include a line item for removing the old fence and another for tip fees, which can be $150+ per ute load. Is access tricky? If you’re carting materials up a steep driveway or through a house, add a labour charge for it. Council approval is another one. Most fences over 2 metres high need a permit, which is a cost you should pass on to the client. Finally, specify a provisional sum for hitting rock or pipes underground. It protects you from unexpected excavation costs."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste factor should I add for timber palings?",
+        "answer": "A safe bet is 10% for waste on timber palings to cover for splits, knots, and cutting to size. For a 20-metre fence, order 22 metres worth of timber. This buffer stops you from having to make a second trip to Bunnings Trade for just a few palings, saving you time and money. Always round up your material order."
+      },
+      {
+        "question": "How should I quote post holes for different soil types?",
+        "answer": "Price per hole, not just as part of a day rate. For easy sandy soil, you might charge $25-$30 per hole. For heavy clay or rocky ground that needs a motorised auger, it should be closer to $50-$60 per hole plus any machine hire costs. This protects your margin if a 'quick job' turns into a full day of digging."
+      },
+      {
+        "question": "Does my quote need to reference an Australian Standard?",
+        "answer": "For a standard boundary fence, you must follow local council rules on height and placement. However, if the fence is part of a pool barrier, you must build and quote it to meet AS 1926.1. Getting this wrong can mean having to tear it down at your own cost, so always check the specific pool safety rules first."
+      }
+    ]
+  },
+  "bathroom-renovation-quote-template": {
+    "intro": "This bathroom renovation quote template is for builders handling standard residential jobs, from a simple cosmetic update to a full gut-and-replace. Most quotes go wrong in two places: underestimating demolition labour and not pricing waterproofing to standard. Get those right, and you protect your margin. This template has the line items you need, from strip-out and waste disposal to the final coat of paint. It helps you build a detailed quote that covers every trade, fixture, and fitting, so you don't get caught out on costs halfway through the job.",
+    "sections": [
+      {
+        "heading": "Pricing the Big Three: Demolition, Waterproofing, and Tiling",
+        "body": "The bulk of your cost is in labour for demo, waterproofing, and tiling, not fancy taps. For a standard 3m x 2m bathroom, budget a full day for one labourer on demolition at around $400, plus another $400 for a skip bin. Waterproofing must meet AS 3740. A 15L pail of Davco K10 Plus from Bunnings costs about $150 and covers the wet areas, but the real cost is the certified waterproofer's labour, easily $600-$800 including the certificate. For tiling, charge labour per square metre. Expect to pay $50-$70/m² for laying basic ceramics, and always add 15% to your tile order for cuts and waste."
+      },
+      {
+        "heading": "What Gets Left Off a Bathroom Reno Quote",
+        "body": "Forgetting small items kills your profit. Did you check for asbestos? In an older home, testing and removal by a licensed specialist can add thousands and must be quoted separately. Factor in site access; a second-floor apartment with no lift means more labour time. Your quote should also flag potential variations like rotten floor joists found after demolition. And don't forget the sparky. Moving a GPO or adding an exhaust fan requires a licensed electrician, costing $500 or more and needing to comply with AS/NZS 3000. Using software like QuoteMate helps you build a checklist so these items are never missed."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I add for contingency on a bathroom renovation?",
+        "answer": "A 15-20% contingency is standard for bathroom renovations, especially on older properties. This covers unexpected issues like hidden water damage or old plumbing that needs replacing to meet current standards. Anything major, like finding asbestos, should be treated as a formal variation, not covered by the contingency. Be clear what your 15-20% covers."
+      },
+      {
+        "question": "Do I need to include a prime cost (PC) item for the tiles and tapware?",
+        "answer": "Yes, using Prime Cost (PC) items for fixtures is best practice. It gives the client flexibility within a set budget. For example, specify a 'PC allowance of $55/m² for wall tiles' or '$400 for vanity tapware from Reece'. This protects you if the client chooses high-end fittings later. Your quote should still cover the fixed labour cost to install these items."
+      },
+      {
+        "question": "How long is a bathroom renovation quote usually valid for?",
+        "answer": "Make your bathroom renovation quotes valid for 30 days. Supplier prices, especially for imported tiles and tapware, can change quickly. A 30-day validity protects you from having to absorb a price rise from a supplier like Tradelink or Beaumont Tiles. If a client accepts after this period, you have the right to re-price based on current costs."
+      }
+    ]
+  },
+  "pergola-quote-template": {
+    "intro": "This pergola quote template is for carpenters pricing standard residential jobs, from simple lean-tos to freestanding structures. Most quotes go wrong in two areas: underestimating labour for tricky sites and forgetting the waste factor on timber cuts. A good quote accounts for every hour and every offcut, not just the big-ticket items. This guide helps you price the job right, covering the real cost drivers and common omissions so your quote is accurate and you don't lose your margin on surprises that pop up mid-build.",
+    "sections": [
+      {
+        "heading": "How to Price Your Pergola Labour and Materials",
+        "body": "The biggest variables are timber choice and labour. A treated pine pergola might cost $150 per square metre in materials, while Merbau can easily push that to $300/sqm. Always check current lengths and prices at your timber yard or Bunnings. For labour, don't just guess a day rate. Price it per task: 2 hours per footing, 4 hours for the main frame, 4 hours for roofing. Add a 10-15% waste factor on all timber lengths. A small 3x4m pergola is often a 2-day job for two carpenters, so factor in at least 32 hours of labour plus your margin and GST. Using quoting software like QuoteMate helps track these line items so nothing gets missed."
+      },
+      {
+        "heading": "Costs Carpenters Forget on a Pergola Quote",
+        "body": "It's the small things that eat your profit. Did you include rubbish removal? A skip bin can be $300. What about spoil removal from digging footings? That's extra time and tip fees. Site access is a big one; if you can't get a ute near the site, you need to price in the labour to carry materials manually. Check if council approval is needed. This can add weeks of delay and cost over $500 in fees, which should be a separate line item. Finally, always include post stirrups and high-tensile bolts; they add up fast. For timber structures, referencing AS 1684 for span tables is a good way to justify your material choices."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much more does a hardwood pergola cost than treated pine?",
+        "answer": "Hardwoods like Merbau can cost two to three times more than H3 treated pine. For example, a 90x90mm Merbau post might be $50 per linear metre, while the equivalent treated pine post from Bunnings is around $20. This price difference scales across the whole job, so confirm the client's budget and material choice before finalising the quote."
+      },
+      {
+        "question": "Should I quote for council approval fees?",
+        "answer": "Yes, but list it as a separate provisional sum. Council application fees for a pergola can range from $200 to over $800 depending on your local council and the project value. By listing it separately, the client understands it's a direct cost you are managing on their behalf, not part of your building margin."
+      },
+      {
+        "question": "What's the best way to price concrete footings?",
+        "answer": "Price footings per hole. A standard quote per footing might be $80-$120. This should cover labour to dig, one bag of Quick Set concrete from a supplier like CSR, the galvanised post stirrup, and cleanup. For hard or rocky ground that requires a jackhammer or special equipment, you need to add an extra labour charge per hour."
+      }
+    ]
+  },
+  "electrical-switchboard-upgrade-quote-template": {
+    "intro": "This switchboard upgrade quote template is for sparkies doing residential upgrades, from replacing old ceramic fuse boxes to prepping for a solar install. Most quotes go wrong in two places: underestimating the time for mandatory testing and labelling of every circuit, and forgetting to factor in the cost of asbestos panel removal and disposal. A solid template stops you from quoting on guesswork and losing your margin. It makes sure every part, from the main switch to the compliance certificate, is on the invoice so you get paid for the whole job.",
+    "sections": [
+      {
+        "heading": "How to Price the Labour and Parts for a Standard Switchboard Swap",
+        "body": "The main cost is your time. A straight swap of a small board in an accessible spot takes 3-4 hours. At $95/hour, that's $285-$380 in labour. For materials, a standard 12-pole Clipsal Resi MAX enclosure from a wholesaler like TLE is about $90. Six RCBOs (combo RCD/MCB) at $40 each adds another $240. Add a main switch ($30) and sundries ($40). Your base cost is around $685 before GST and your margin. Using a tool like QuoteMate to pull real-time supplier pricing is crucial, as a 5% price jump on components can wipe out your profit on a small job."
+      },
+      {
+        "heading": "What Sparkies Leave Off a Switchboard Quote",
+        "body": "The biggest miss is asbestos. If the board is mounted on an old fibro sheet, you must quote for specialist removal and disposal, which can be $500 or more. Don't touch it otherwise. Second is making good. If the new enclosure is smaller than the old one, you'll have wall patching and painting to do. Quote this as an optional extra or clearly exclude it. Finally, don't forget the Certificate of Electrical Safety (CES) lodgement fee, which varies by state but is your responsibility. This is a mandatory cost under the AS/NZS 3000 wiring rules and must be included."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I allow for sundries on a switchboard quote?",
+        "answer": "For a standard residential switchboard upgrade, a flat rate of $40-$60 for sundries is usually safe. This covers consumables like cable, conduit offcuts, neutral and earth bars, labels, and mounting screws. For larger or more complex commercial boards, calculating this as 5% of the total material cost is a better approach. Make sure your template lists this as a line item."
+      },
+      {
+        "question": "Do I need to quote for a new main switch?",
+        "answer": "Yes, you must quote for replacing the main switch. Even if the old one seems to work, AS/NZS 3000 requires a main switch for effective isolation on all new installations and major alterations like a board upgrade. It's a critical safety component. A new 63A main switch from Clipsal costs about $30-$40 from most electrical wholesalers."
+      },
+      {
+        "question": "What if I find dodgy wiring during the upgrade?",
+        "answer": "The quote must clearly define the scope. State that the price covers the switchboard replacement only. Include a clause that any pre-existing wiring faults discovered during mandatory testing will be documented and quoted as a separate variation. This protects you from fixing a house full of bad wiring for free. Your compliance testing is governed by AS/NZS 3000."
+      }
+    ]
+  },
+  "hot-water-system-replacement-quote-template": {
+    "intro": "This is for plumbers quoting hot water system replacements. It covers like-for-like swaps of gas, electric, or heat pump units. The biggest mistakes plumbers make are under-quoting labour for difficult access and forgetting to price the disposal of the old unit. A good hot water system quote template accounts for the whole job, from draining the old tank to signing off the compliance certificate. Getting these details right at the start protects your margin and prevents arguments with the customer later on. It ensures you get paid for every part of the work.",
+    "sections": [
+      {
+        "heading": "How to Price a Straight Swap vs. an Upgrade",
+        "body": "A straight swap is the easiest. A 250L electric Rheem from Reece costs about $1300. Labour is 2-3 hours at your standard rate, say $120/hr. An upgrade from electric to gas continuous flow is more complex. The unit, like a Rinnai B26, is about $1600. Then you must add labour for running a new gas line, maybe $60 per metre, plus any new pipework. You might also need a sparkie to install a GPO. Using a quoting app like QuoteMate helps you add these separate line items so the customer sees the value and you don't forget the costs."
+      },
+      {
+        "heading": "What Gets Left Off: Access, Disposal and Compliance Costs",
+        "body": "The unit's location changes the job completely. A system in a tight roof cavity or on a second-storey wall needs more labour than one in a garage. Add an hour or two for access. Getting rid of the old unit isn't free; most council tips charge $50-$100 for scrap metal disposal, plus your time to get it there. Every new installation requires a tempering valve to comply with AS/NZS 3500.4. This part is about $120 from Tradelink. Finally, include the cost of the compliance certificate required in your state. These small items add up."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need to quote a tempering valve on every job?",
+        "answer": "Yes, it’s mandatory under AS/NZS 3500.4 for all new storage hot water installations to prevent scalding. The valve limits water temperature at the tap to 50°C. Forgetting to quote this $120 part plus labour means you’re either non-compliant or doing the work for free. It’s a required line item."
+      },
+      {
+        "question": "How much should I charge for removing the old unit?",
+        "answer": "Charge for your labour plus the tip fee. Labour is usually 30-45 minutes to drain, disconnect, and move the unit. Then add the disposal fee from your local council, which is often between $50 and $100. If it’s a heavy unit in a tricky spot, add extra labour for a two-person lift."
+      },
+      {
+        "question": "Is a heat pump much more expensive than a standard electric unit?",
+        "answer": "Yes, the initial unit cost is higher. A standard 250L electric unit is about $1300, while a quality heat pump of a similar size from a supplier like Reece can be $3500-$4500. The plumbing is similar, but explain the long-term running cost savings to the customer. Factor in any government rebates that might apply."
+      }
+    ]
+  },
+  "solar-installation-quote-template": {
+    "intro": "This solar installation quote template is for residential jobs up to 10kW. It's built for Aussie solar installers quoting standard grid-connect systems. Most quotes go wrong in two places: under-pricing the labour on a steep or tricky roof, and miscalculating the STC rebate value on the day. Get those right, and you protect your margin. This template helps you list every component, from the panels down to the DC isolators, so you can price accurately and show the customer exactly what they're paying for before the rebate is applied.",
+    "sections": [
+      {
+        "heading": "Pricing Labour and Hardware for a Standard 6.6kW System",
+        "body": "A standard 6.6kW system has a pre-rebate base cost of around $5,500 to $8,000. This covers hardware and labour before your margin. Labour for two installers for a full day on a single-storey tin roof will be about $1,200 to $1,800. The hardware adds up: 16 x 415W panels from a supplier like One Stop Warehouse will be about $2,800. A 5kW Sungrow or Fronius string inverter adds another $1,200. Mounting gear from Clenergy might be $600. Add another $400 for cabling, conduit, and breakers from a wholesaler like TLE. The total pre-margin cost sits at a minimum of $6,200."
+      },
+      {
+        "heading": "What Gets Left Off a Solar Quote: Access, Safety, and Switchboards",
+        "body": "The items that kill your profit are scaffold hire and switchboard upgrades. A steep tile roof (over 22 degrees) or any two-storey job requires edge protection under safety rules, adding $600 to $1,500 to your costs. If the customer's house has an old ceramic fuse board, it needs a full upgrade to comply with AS/NZS 3000, which can be another $1,000 to $2,000 surprise. Using a quoting app like QuoteMate lets you create saved line items for these extras so you can add them instantly. Always check the switchboard during the site visit. All solar work must follow AS/NZS 5033."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I calculate the STC rebate for my customer?",
+        "answer": "Calculate STCs based on system size, location (zone), and the current year's deeming period. A 6.6kW system in Melbourne (Zone 4) creates fewer STCs than one in Brisbane (Zone 3). The STC price changes daily. Check a live trading site like Formbay for today's price, which usually sits between $38 and $40 per certificate."
+      },
+      {
+        "question": "Should I quote for a string inverter or microinverters?",
+        "answer": "Quote microinverters for roofs with partial shading from trees or chimneys, or for customers wanting panel-level monitoring. They add around $2,000 to a 6.6kW system compared to a string inverter. For a simple, unshaded north-facing roof, a quality string inverter from a brand like Sungrow, sourced via a wholesaler like Middy's, is the most cost-effective option."
+      },
+      {
+        "question": "How does adding a battery change the quote?",
+        "answer": "For battery storage, you must quote a hybrid inverter, not a standard solar inverter. A hybrid inverter like a Fronius Gen24 costs about $1,000 more than its solar-only equivalent. The battery itself, like a 10kWh Sungrow SBR, will add at least $7,000-$9,000 to the total quote, plus extra labour for installation and commissioning."
+      }
+    ]
+  },
+  "retaining-wall-quote-template": {
+    "intro": "This retaining wall quote template is for landscapers pricing jobs for residential or light commercial sites. It works for common timber sleeper, concrete sleeper, or block walls up to about 1.2 metres high. The biggest mistakes tradies make are under-quoting soil removal and forgetting to price proper drainage behind the wall. Get those two items right and the job stays profitable from the start. This retaining wall quote template helps you factor in every cost, so you can send the quote with confidence and protect your margin on the job.",
+    "sections": [
+      {
+        "heading": "Calculating Your Retaining Wall Costs per Metre",
+        "body": "A standard treated pine sleeper wall costs about $350-$450 per square metre. A concrete sleeper wall is closer to $500-$650 per square metre. These prices include materials and labour. Your material costs are straightforward: a 200x75mm treated pine sleeper from Bunnings is about $30 for a 2.4m length, while galvanised steel H-posts are around $100 for a similar length. The real variable is labour. Budget for two labourers, as moving posts and sleepers is not a one-person job. Factor in at least 1.5 labour hours per lineal metre for a simple wall on a flat, accessible site. Add a 10% waste factor on materials and a separate line item for tip fees."
+      },
+      {
+        "heading": "What Most Blokes Forget on a Retaining Wall Quote",
+        "body": "Site access and spoil removal are the two biggest costs left off quotes. If you can’t get a mini-digger in, you’re digging post holes by hand, which can double your labour time. Price that accordingly. Drainage is another one. Don't just quote for the ag pipe and gravel. You need to quote for the extra excavation to place it correctly, plus the geotextile fabric from a supplier like CSR to stop it from clogging. Finally, any wall over one metre high in most council areas needs engineering and a permit. This can add $1,500 to $2,500 to the job before you even break ground. All drainage should comply with AS 4678."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much concrete do I need for retaining wall posts?",
+        "answer": "A standard rule is one-third of the post length goes in the ground. For a 1.8m post holding a 1.2m wall, you'll have 600mm in the ground. A 300mm wide hole needs about two 20kg bags of concrete mix from a supplier like Bunnings per post. Always follow the engineer's specs if they are provided."
+      },
+      {
+        "question": "Do I need to charge for backfill material?",
+        "answer": "Yes, unless the excavated soil is suitable, which it rarely is. Clean, free-draining backfill like sand or gravel is a material cost you must include. You'll need to quote for its supply and delivery from a local landscape supplier. Expect to pay around $70-$90 per cubic metre plus delivery fees."
+      },
+      {
+        "question": "When does a retaining wall need council approval?",
+        "answer": "It varies by council, but a common trigger is any wall over one metre in height, or a wall built close to a property boundary. Always check the local council's development control plan online before finalising your quote. Quoting for a permit application and engineering drawings is a separate line item that can add thousands."
+      }
+    ]
+  },
+  "roof-restoration-quote-template": {
+    "intro": "This roof restoration quote template is for residential tile or metal roofs that need a full clean, repair, and repaint. It suits jobs from a 150 square metre single-storey home to a trickier two-storey place needing full edge protection. Most roofers get the price per square metre right for the membrane but lose money on the prep work. They either forget to factor in replacing more than a handful of broken tiles or underestimate the labour for a full repoint of the ridge caps. This template helps you price every step properly, from the pressure clean to the final coat.",
+    "sections": [
+      {
+        "heading": "Pricing Your Materials and Labour Per Square Metre",
+        "body": "Your base rate is square metres. A typical 3-bedroom home is 180-220m². Price your membrane per square metre. A 15L drum of Dulux AcraTex Roof Membrane from Bunnings costs around $260 and covers about 40m² for two coats. That's $6.50/m² just for the paint. Factor in sealer at around $2/m². Labour is your big variable. A straightforward single-storey tile roof might take two guys two days, so 32 hours total. At $75/hour per man, that's $2,400 in labour before materials or overheads. Always add a 10-15% waste factor on your membrane for steeply pitched roofs."
+      },
+      {
+        "heading": "What Most Roofers Forget to Add to the Quote",
+        "body": "Safety rail hire is the biggest forgotten cost. For a two-storey job, SafeWork requires edge protection, which can add $1,500-$3,000 to the price from a local hire company. Another is waste disposal. A full repoint means chipping off old mortar, creating kilograms of rubble. You'll need to price in a small skip bin or tip fees. Also, don't just quote for a few broken tiles; get on the roof and check properly. Using quoting software like QuoteMate helps you build a library of these optional line items, so you never forget to add scaffold hire or extra tile costs again. Always check the sarking condition where visible."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a terracotta roof vs a concrete tile roof?",
+        "answer": "Terracotta tiles are more brittle and often require a more specialised sealer. Add 10-15% to your labour for the extra care needed during pressure cleaning to avoid breakage. The sealer itself, like CSR Monier's Terracotta Glaze, can also be more expensive than a standard primer, so check current pricing with your supplier before finalising the quote."
+      },
+      {
+        "question": "Do I need to quote for replacing all the ridge cap pointing?",
+        "answer": "If more than a third of the pointing is cracked or loose, it's faster and gives a better result to quote for a full repoint. A partial job often fails within a few years. A full repoint on a standard roof uses about four to five 10kg bags of flexible pointing mortar, like Shieldcoat's Shieldflex, which costs around $40 per bag."
+      },
+      {
+        "question": "What's the standard warranty to offer on a roof restoration?",
+        "answer": "Most professional roof coatings come with a manufacturer's warranty of 10-15 years. You should offer a warranty that matches the product you're using. For example, Dulux AcraTex offers a 15-year warranty when applied by a registered applicator according to their specifications. Always provide this in writing, as it protects both you and the homeowner."
+      }
+    ]
+  },
+  "granny-flat-quote-template": {
+    "intro": "This granny flat quote template is for builders quoting new-builds up to 60m² in Australia. It covers standard slab-on-ground, timber or steel frame construction. The biggest mistakes we see are underquoting site preparation and forgetting council fees. A patch of grass looks cheap to build on until you hit rock or need to run services 50 metres from the main house. Using a granny flat quote template in an app like QuoteMate helps you track every variable, from excavation to the final private certifier inspection, ensuring your price is right.",
+    "sections": [
+      {
+        "heading": "How to Price the Core Structure of a Granny Flat",
+        "body": "Your profit is made or lost on the big three: slab, frame, and roof. Price concrete per square metre, not just per cubic metre. A 60m² slab can cost $15,000-$20,000 ($250-$330/m²) including formwork, mesh, and labour. For framing, price MGP10 pine per lineal metre, currently around $7/m at Bunnings Trade, and add a 15% waste factor. Roofs are priced per square metre; expect to pay about $60-$80/m² for a standard Colorbond roof, supplied and installed. Labour on a typical frame and roof package will run you about $15,000-$25,000 depending on complexity."
+      },
+      {
+        "heading": "Forgetting These Items Will Cost You on a Granny Flat Build",
+        "body": "It's the small things that add up. Site access is a big one; if you can’t get a standard truck in, you’ll need to budget for a mini-excavator at $500/day plus operator. Soil and rubbish removal requires skip bins, costing $400-$800 each. Don't forget statutory costs. Council DA or CDC application fees, private certifier stage inspections, and mandatory termite management (as per AS 3660.1) can easily add $10,000 to the job before you've even broken ground. These are real costs, not optional extras. Include them as separate line items so the client sees the value."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I allow for council and utility connection fees?",
+        "answer": "This varies by council. Budget $5,000-$10,000 for standard fees, certifiers, and inspections. Water, sewer, and electricity connections can add another $5,000-$15,000 depending on the site's distance from the mains. Always get a specific written quote from the local utility providers before you finalise your price for the client."
+      },
+      {
+        "question": "What's a realistic contingency to add to a 60m² granny flat quote?",
+        "answer": "For a standard 60m² build on a level block, a 10% contingency is the minimum for material price shifts and small client changes. If it's a tricky site with poor access or a steep slope, push that up to 15-20%. Anything less than 10% is asking for trouble on a fixed-price contract."
+      },
+      {
+        "question": "Do I need to quote for termite management?",
+        "answer": "Yes, it's mandatory under the National Construction Code and AS 3660.1. You must include a termite management system. This could be a physical barrier installed during the slab pour or a chemical reticulation system. Forgetting this will fail your inspection and can cost you thousands to fix later."
+      }
+    ]
+  },
+  "split-system-installation-quote-template": {
+    "intro": "This split system installation quote template is for standard back-to-back domestic jobs. It helps you price the install of single-head units up to about 7kW. Most tradies get burned on quoting these by underestimating labour for tricky pipe runs or completely forgetting to price a new dedicated electrical circuit from the switchboard. They’ll quote for a simple install and end up doing a complex one for the same money. This template makes sure you account for the real costs, protecting your margin on every job.",
+    "sections": [
+      {
+        "heading": "How to Price a Standard Back-to-Back Install",
+        "body": "A standard 2.5kW back-to-back install is your baseline. The unit itself, say a Mitsubishi from The Good Guys Trade, will be $800-$1100. Add materials: a wall bracket ($50 from Bunnings), 3 metres of copper pair coil from Reece ($60-$90), and an electrical isolator ($30). Labour is the biggest variable. A straightforward job takes 3-4 hours for one tech. At $100/hour, that's $300-$400. So, your base cost before markup and GST is around $1240-$1670. Always add a small percentage for consumables like fixings and sealant. Check your supplier for current unit pricing before every quote."
+      },
+      {
+        "heading": "Forgetting These Items Will Cost You Money",
+        "body": "The profit disappears in the extras. Did you quote for a new circuit? A dedicated run from the switchboard can add $400-$600 in labour and materials. Is the wall double brick or concrete? Core drilling adds an hour of labour plus tool wear. Access is another one; quoting a job that needs a scissor lift and not including the hire fee is a classic mistake. Using a quoting app like QuoteMate lets you build a library of these add-on items, so you never forget to include them. Finally, all electrical work must comply with AS/NZS 3000, so factor in time for correct installation."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a non-standard pipe run?",
+        "answer": "For runs beyond the standard 3 metres, charge per metre. A good rule of thumb is $50-$70 per additional metre. This covers the extra copper from a supplier like Reece, the pipe capping, fixings, and your labour. For a tricky 'up-and-over' through the roof space, add at least two hours to your labour estimate."
+      },
+      {
+        "question": "Do I need to include disposal of the old air con unit?",
+        "answer": "Yes, always add a line item for it. Degassing and removing an old unit can take 30-60 minutes. On top of that, you have the cost of legally disposing of it at a waste transfer station, which can be around $30-$50 depending on your local council. Forgetting this item means you’re paying to get rid of their rubbish."
+      },
+      {
+        "question": "What's the difference in quoting for a 2.5kW vs a 7.1kW unit?",
+        "answer": "The unit cost is the main difference; a 7.1kW unit can be double the price of a 2.5kW. The larger unit also requires heavier gauge electrical cable and potentially a larger circuit breaker, adding to material costs. Labour is similar for a back-to-back install, but bigger units are heavier, so you might need two techs for the lift."
+      }
+    ]
+  },
+  "end-of-lease-cleaning-quote-template": {
+    "intro": "This end of lease cleaning quote template is for professional cleaners quoting residential jobs in Australia. It’s built for anything from a one-bedroom apartment to a four-bedroom house. Most cleaners get stung in two places: underestimating the time for a proper oven deep clean, and not being specific about what their ‘bond-back guarantee’ covers. This template helps you price correctly so you don't end up working for free fixing issues that weren't your fault. Get the details right and avoid arguments with property managers.",
+    "sections": [
+      {
+        "heading": "How to Price an End of Lease Clean",
+        "body": "Your biggest cost is labour. Charge a flat rate based on the property size, not by the hour. A typical 2-bedroom, 1-bathroom unit takes two cleaners 4-5 hours, so base your price on 8-10 total labour hours. At $50/hour, that’s $400-$500 in labour. Add costs for specialised gear like a commercial carpet steamer, which might add $80-$120 to the job. Factor in about $30-$50 for consumables like oven degreaser and window cleaner from Bunnings Trade. Always add a ‘heavy soil’ clause for properties left in a bad state. For a standard 2-bed unit, you should be quoting around $550-$700 including GST."
+      },
+      {
+        "heading": "What Gets Left Off a Bond Cleaning Quote",
+        "body": "The agent's checklist is long, so it's easy to miss things. Garages, balconies, and exterior window tracks are classic examples. Inside, cleaning air conditioner filters and exhaust fan covers is often forgotten but always checked. Wall washing is another big one; your quote should specify spot cleaning of marks only, with a full wall wash priced as a separate line item. Always include a charge for parking if it’s a city job. Finally, state that your quote does not cover rubbish removal for items left by the tenant. The job is to clean an empty property, not to do a tip run."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need to charge extra for heavy carpet stains?",
+        "answer": "Yes. Your standard steam clean price covers general dirt. Quote separately for treating significant stains like red wine or pet urine. These need specific chemicals and more labour. List this as a provisional cost on the quote, so the client knows it's extra before you start. This protects you from losing money on a tough job."
+      },
+      {
+        "question": "What does a 'bond-back guarantee' actually cover?",
+        "answer": "It means you will return, free of charge, to fix any cleaning issues noted on the property manager’s exit report that relate to your service checklist. It's not a money-back offer. The guarantee should be valid for a set time, usually 48-72 hours after the clean. It doesn't cover new mess or damage made after you leave."
+      },
+      {
+        "question": "Should I charge a fixed price or by the hour?",
+        "answer": "Always quote a fixed price. It gives the client certainty and stops them watching the clock. Figure out your total estimated hours, multiply by your rate ($45-$65/hr), then add materials and a 15% margin for tricky spots. A quoting tool like QuoteMate helps you build these line items into a professional fixed-price quote that protects your profit."
+      }
+    ]
+  },
+  "pool-fencing-quote-template": {
+    "intro": "This pool fencing quote template is for fencers and builders pricing residential jobs in Australia. It suits standard glass or aluminium fencing installations. Most quotes go wrong on two items: underestimating the labour for core drilling into concrete, and completely forgetting to add the cost of the final compliance certificate. Getting these right protects your profit margin on the whole job. Use this template to make sure your numbers are accurate and every cost is covered before you send the quote to the client.",
+    "sections": [
+      {
+        "heading": "Pricing Panels and Labour Per Metre",
+        "body": "Frameless glass is a premium product, costing $250-$350 per linear metre for materials alone. A 1.2m panel from a supplier like Glass Outlet costs about $150, plus two stainless steel spigots at $40 each. Aluminium is far cheaper, around $80-$120 per metre in materials from Bunnings. Labour is the other big factor. Glass needs two people to lift safely, so budget for two installers at $80-$110 per hour each. A standard 20-metre job can take a full day. Aluminium can be a one-person job. Always add a 5% waste factor for panel offcuts or breakage."
+      },
+      {
+        "heading": "What Tradies Forget on a Pool Fencing Quote",
+        "body": "The small things sink your profit. First, site access. If you can't get the ute close, add labour for carrying heavy glass panels through a house. Second, core drilling. It’s slow work. A diamond core drill bit wears out, and hiring one costs over $100 a day. Price each core hole as a separate labour task. Finally, include the certifier's fee of $400-$600. Using a tool like QuoteMate helps you build a library of these easily forgotten items so they appear on every quote. Always specify that the installation will meet the AS 1926.1 standard."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I add for a compliant gate?",
+        "answer": "A compliant pool gate needs self-closing hinges and a self-latching mechanism. A full kit from a supplier like D&D Technologies with a MagnaLatch and TruClose hinges will cost between $150 and $300 in materials alone. Don't just price a standard hinge; list the specific compliant hardware on your quote."
+      },
+      {
+        "question": "Do I charge more for a sloping block?",
+        "answer": "Yes. A sloping site means stepping the panels, which requires longer posts and more time to get levels right. You can't just run the fence parallel to the ground. Add at least 15-20% to your labour cost for a moderate slope, as it adds a couple of hours to a standard job."
+      },
+      {
+        "question": "Who pays for the final compliance certificate?",
+        "answer": "The client pays, but you must include it on your quote. As the installer, you are responsible for arranging the inspection. Include the private certifier's fee, usually $400-$600, as a separate line item. This confirms the job will be done to Australian Standard AS 1926.1."
+      }
+    ]
+  },
+  "staircase-quote-template": {
+    "intro": "This staircase quote template is for carpenters building internal timber stairs for new builds or renovations. It works for straight flights, quarter-turn, and half-turn stairs. Most quotes go wrong in two places: under-pricing the labour for complex balustrades and forgetting the cost of site prep and temporary access during the build. Getting these details right at the start keeps your profit margin safe. Use this guide to make sure your numbers are accurate and you’ve covered every line item before you send the quote to the builder or homeowner.",
+    "sections": [
+      {
+        "heading": "How to Price Stair Materials and Labour",
+        "body": "Your main costs are stringers, treads, and the balustrade. A standard pair of pre-primed pine stringers for a 2.7m ceiling might cost $300 from Bunnings Trade. Victorian Ash or Merbau will be double that. Price treads individually; a standard 900mm Tassie Oak tread is about $60. Labour is the biggest variable. A simple, straight flight might take two carpenters 1.5 days (24 hours total). A winder staircase with a glass balustrade could take 4-5 days. Always factor labour at your hourly rate, say $85/hr, plus 15% for material waste and fixings. QuoteMate can store these rates to make pricing consistent."
+      },
+      {
+        "heading": "What Gets Left Off a Staircase Quote",
+        "body": "It's easy to miss the non-obvious costs. Site access can be a big one; if you need to hire a small crane or scaffold to get stringers to a second floor, add that cost. Demolition and disposal of an old staircase can add half a day's labour plus tip fees. Also, check if structural changes are needed to the floor joists to create the stair void. This requires engineering sign-off, which is a separate cost. Finally, all stairs and balustrades must comply with the National Construction Code (NCC) Part 3.9.1 for dimensions and safety, so make sure your design is compliant before you price it."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a glass balustrade?",
+        "answer": "A glass balustrade is a specialist job. Instead of timber balusters at $15 each, you're looking at toughened glass panels that cost $300-$500 per linear metre supplied and installed. This includes the stainless steel spigots or channel fixings. Always get a direct quote from a glass supplier and add your margin, don't guess the price."
+      },
+      {
+        "question": "Do I need to include temporary handrails in my quote?",
+        "answer": "Yes, if the site will be active while you work. WorkSafe rules require fall protection. A temporary handrail is your responsibility until the permanent balustrade is installed. You can build a simple one with construction pine and charge for 2-3 hours of labour plus materials, or hire a temporary edge protection system for around $40 per metre per week."
+      },
+      {
+        "question": "What's the Australian standard for riser and tread dimensions?",
+        "answer": "The National Construction Code (NCC) dictates the dimensions. The riser height must be between 115mm and 190mm. The tread depth (going) must be between 240mm and 355mm. The slope relationship (2 x Riser + 1 x Going) must fall between 550mm and 700mm. These dimensions are detailed in NCC 2022 Volume Two, Part 3.9.1."
+      }
+    ]
+  },
+  "termite-treatment-quote-template": {
+    "intro": "This termite treatment quote template is for residential and light commercial jobs, covering both chemical barriers and baiting systems. Quoting termite work goes wrong in two main areas: underestimating the chemical volume needed for the soil type and forgetting to price difficult access like drilling through tiled patios or concrete paths. Get those two things right and your margin is protected. A solid template stops you from guessing and ensures every litre of termiticide and every hour of labour is accounted for, giving the customer a clear price and you a profitable job.",
+    "sections": [
+      {
+        "heading": "How to Price a Chemical Barrier per Lineal Metre",
+        "body": "Your main cost is the chemical. A 2.5L bottle of Termidor SC from a supplier like Garrards costs around $550 and makes up to 416L of solution. For a standard trench and treat, you’ll use about 10L of mixed solution per lineal metre. That’s a chemical cost of about $13.20 per metre. Labour is next. A two-man team at $80/hr each takes time to trench, mix, and apply. Factor in at least 15 minutes of labour per metre, which adds another $40. Add costs for drilling concrete, plus your equipment wear and margin. A starting price of $65-$85 per lineal metre is a safe baseline before site-specific extras."
+      },
+      {
+        "heading": "The Real Costs Left Off Most Termite Quotes",
+        "body": "Forgetting site prep and reinstatement will kill your profit. Drilling through concrete paths or tiled areas requires not just the bit, but the time and cost to patch the holes cleanly. Quote this as a separate line item, around $25-$40 per lineal metre. If you hit rocks and need a jackhammer, that's extra labour. Also, factor in the cost of removing and disposing of old or contaminated soil if required. Finally, always include the annual inspection plan as a separate, optional item on the quote. The work must comply with Australian Standard AS 3660, so your Certificate of Treatment has to be included in the price."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I quote a baiting system versus a chemical barrier?",
+        "answer": "A chemical barrier has a high upfront cost for chemical and labour but lower ongoing fees. A baiting system has a lower initial installation cost but requires a mandatory, higher-priced annual monitoring program. Present both options clearly. The baiting system quote must always include the first year's monitoring contract, as per the chemical manufacturer's warranty requirements."
+      },
+      {
+        "question": "What's a fair price to add for drilling through a concrete path?",
+        "answer": "Charge this per lineal metre, not per hour. It covers the specialised drill bits, labour, and patching material. A fair rate is between $25 and $40 per metre on top of your standard treatment cost. For thicker, reinforced concrete, you should be charging at the higher end of that range. Don't forget to check for pipes before you start drilling."
+      },
+      {
+        "question": "Should the annual inspection be included in the main treatment price?",
+        "answer": "No, quote it separately. The main quote is for the active treatment and installation. The annual inspection is a separate service to maintain the warranty and check for new activity. List it as an optional line item for around $280-$450 per year, depending on the property size. This makes your upfront price clearer and sets up recurring revenue."
+      }
+    ]
+  },
+  "gutter-replacement-quote-template": {
+    "intro": "This gutter replacement quote template is for standard residential jobs, single or double storey. Most roofers get the per-metre price right but lose money on waste factors and disposal costs. Underestimating cuts on a complex roofline or the tip fees for old steel gutters can wipe out your profit before you start. This template helps you price every part of the job properly, from new downpipes to the final site clean-up. It's built to make sure you get paid for every bracket, rivet, and hour you're on the tools, so you don't end up working for free.",
+    "sections": [
+      {
+        "heading": "How to price the real costs of a gutter job",
+        "body": "Your main costs are materials and labour. Price Colorbond quad gutter from a supplier like Lysaght or Stratco at around $12-$18 per lineal metre, but always add a 15% waste factor for cuts and corners. Labour is where quotes vary. For a straightforward single-storey house, you might charge $60-$80 per lineal metre for removal and installation. For a two-storey house with difficult access, that can jump to $100-$140 per metre. Don't forget sundries like silicone, rivets, and brackets—allow about 5% of the total material cost. A quoting app like QuoteMate helps you save these as standard line items so they're never forgotten."
+      },
+      {
+        "heading": "What most roofers leave off a gutter quote",
+        "body": "Forgetting access equipment and correct disposal will destroy your margin. A single-storey job might just need ladders, but anything over 3 metres or on a steep pitch requires edge protection or scaffolding. This can add $600-$2000+ to the job cost. Also, budget for waste disposal. A ute-load of old steel guttering might cost $150 at the tip. If you find old asbestos gutters, you need a licensed remover, which can add thousands. Always check the fascia boards for rot. Replacing a few metres of timber fascia can add another $400 in materials and labour. All installations must comply with AS/NZS 3500.3 for roof drainage."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste should I actually factor in for guttering?",
+        "answer": "For a simple rectangular roof, a 10% waste factor is usually safe. For a complex roof with multiple hips, valleys, and corners, you need to increase that to 15-20%. It's always cheaper to have a half-length of gutter left over than it is to send an apprentice back to a supplier like Stratco for a single piece, losing hours of paid labour."
+      },
+      {
+        "question": "Should I quote for replacing fascia boards as well?",
+        "answer": "Always inspect the fascia while you're measuring up. If you see peeling paint, soft spots, or water stains, quote to replace those sections as an optional extra for the client. It is much better to price the potential variation upfront than to argue about it halfway through the job. A standard 4.2m length of primed timber fascia costs around $40 from Bunnings."
+      },
+      {
+        "question": "Is it worth quoting for leaf guards?",
+        "answer": "Always offer leaf guard as a separate, optional line item. Explain the benefit, especially if there are overhanging trees, but make it clear it's an add-on as it can significantly increase labour time. A good quality aluminium gutter mesh can add $30-$50 per metre to the final price, so it's a profitable upsell if the customer wants it."
+      }
+    ]
+  },
+  "colorbond-fence-quote-template": {
+    "intro": "This Colorbond fence quote template is for fencers on residential and light commercial jobs. It covers standard installations on level or slightly sloping ground. The biggest mistakes tradies make when quoting Colorbond are underestimating labour on uneven ground and forgetting the cost of removing and dumping the old fence. A good quote accounts for every post hole, every bag of concrete, and the time it takes to clear the site before you even start. Get those details right and you protect your profit margin on the whole job.",
+    "sections": [
+      {
+        "heading": "How to price your labour and materials per metre",
+        "body": "Your price should be built per linear metre. For a standard 1.8m high fence, materials from Bunnings or a local steel supplier will be about $90-$110 per metre. This includes the panel, rails, posts, caps, and concrete. Don't forget screws and brackets. Labour is the key variable. On a clear, level site, budget for 1-1.5 hours per panel for two people. That's digging, setting posts, and attaching sheets. At $70/hr per person, that's roughly $140-$210 in labour per 2.35m panel. Always add a 10% contingency for material waste, especially on runs that aren't a perfect multiple of the panel length."
+      },
+      {
+        "heading": "What gets left off a Colorbond fence quote",
+        "body": "Forgetting site prep and disposal will kill your profit. Is there an old timber or asbestos fence to remove? A 4 cubic metre skip bin for timber costs around $350-$450. Asbestos removal requires a specialist and costs thousands. What about access? If you can't get a mini-digger in, you're digging post holes by hand, which doubles your labour time. Check for underground services using Dial Before You Dig. Also, any fence over 2 metres high may need a council permit, which is a cost you should pass on to the client. The steel itself should conform to Australian Standard AS 1397 for coating and durability."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I charge for a sloping block?",
+        "answer": "For a gentle slope, add 15-20% to your labour for raking the panels. A steep site that needs to be stepped can double your labour per section due to extra cutting and the need for longer posts. You must quote for the extra post length and concrete for each step. Don't absorb this cost – spell it out as a line item."
+      },
+      {
+        "question": "What's the right amount of concrete for fence posts?",
+        "answer": "Use a 20MPa mix. For a standard post in a 600mm deep hole, one 20kg bag of quick-set concrete from Bunnings or CSR is usually enough. For gate posts or corner posts in high-wind areas, use two bags per hole to be safe. Your quote should specify the number of bags you're using so the client sees the value."
+      },
+      {
+        "question": "Do I need to include GST on my Colorbond quote?",
+        "answer": "Yes, if your business is registered for GST, your quote must show the 10% tax. The final price you present to the customer must be the total amount including GST. Using a quoting app like QuoteMate adds the GST automatically and displays it correctly on the PDF, so you don't have to worry about the calculation or confusing the client."
+      }
+    ]
+  },
+  "shower-screen-quote-template": {
+    "intro": "This shower screen quote template is for glaziers pricing standard installs in residential bathrooms. It covers frameless, semi-frameless, and framed screens up to 2.1 metres high. The biggest mistakes are underquoting labour for out-of-square walls and forgetting the cost of high-quality silicone. A cheap sealant fails in two years and costs you a callback, wrecking your profit. Get the labour and consumables right, and the glass price is easy to manage. This template helps you remember every line item for a profitable job, so you can send a professional shower screen quote every time.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Hardware Correctly",
+        "body": "A standard frameless screen takes two people about 2-3 hours, so budget $200-$300 for labour. Add an extra hour if the walls are badly out of plumb and need custom channels or packers. Hardware is the next variable. A set of basic chrome hinges and a handle from Reece might run you $150, but a matte black or brushed brass finish can easily double that. Always check current supplier pricing. Don't forget consumables. A good quality sanitary-grade silicone from Bunnings for around $25 a tube is essential. It's the difference between a clean, long-lasting finish and a mouldy callback. Factor in at least half a tube per screen."
+      },
+      {
+        "heading": "What Glaziers Forget to Add to the Quote",
+        "body": "Forgetting disposal of the old screen is a classic mistake. A trip to the tip can cost $50-$80 in fees and eats up your time. Always add a line item for removal and disposal. Also, check site access. Are you carrying a 2-metre glass panel up three flights of stairs? That’s extra time and risk, so add a site access or difficult access fee. Finally, all safety glass installations must comply with AS 1288. This dictates minimum thickness and fixing requirements. You don't quote the standard itself, but complying might mean using thicker, more expensive glass, especially for larger panels. Check the glass span tables in AS 1288 before finalising your price."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I charge for matte black hardware?",
+        "answer": "Matte black, brushed nickel, or brass hardware can be 50-100% more expensive than standard polished chrome. Check the latest catalogue from your supplier like Tradelink or Reece before quoting. A chrome hinge set might be $80, while the same thing in matte black could be $160 or more. Always confirm the exact price before sending the quote."
+      },
+      {
+        "question": "What's the Australian Standard for shower screens?",
+        "answer": "The key standard is AS 1288: Glass in buildings – Selection and installation. It specifies the type and thickness of safety glass required for bathrooms to prevent serious injury. For frameless screens, this usually means using toughened Grade A safety glass, typically 10mm thick, to meet the standard's requirements for human impact safety."
+      },
+      {
+        "question": "Should I quote for waterproofing repairs?",
+        "answer": "Only if you are licensed to do so. If you remove an old framed screen and see damage to the waterproof membrane, you must stop. Inform the client they need a licensed waterproofer to repair it to AS 3740 standards before you can proceed. You can quote for the screen install, conditional on the substrate being sound and ready."
+      }
+    ]
+  },
+  "led-downlight-installation-quote-template": {
+    "intro": "This LED downlight installation quote template is for Australian sparkies doing residential jobs, from a single-room swap-out to a full new-build fit-out. Most quotes go wrong in two places: underestimating labour for tricky ceiling access and forgetting to price quality, compatible dimmer switches. This leads to blown budgets and callbacks. Our template includes the specific line items you need to cover materials, labour, compliance, and access so you can price the job right the first time and protect your margin. Get it right and the job is profitable and straightforward.",
+    "sections": [
+      {
+        "heading": "How to Price the Labour and Materials for an LED Install",
+        "body": "Your labour is the biggest cost. A standard install into plasterboard with good roof space access takes 30-45 minutes per light. A tricky job with old wiring or limited access can push that to an hour or more. For materials, a decent 9W tri-colour dimmable LED from Beacon Lighting might be $20-$30 trade price. A compatible Clipsal trailing-edge dimmer switch is another $50-$70. Don't forget the 1.5mm TPS cable at roughly $1.50 a metre from your wholesaler, plus a few bucks per light for connectors and consumables. Always check current trade pricing before finalising the quote."
+      },
+      {
+        "heading": "What Sparkies Leave Off an LED Downlight Quote",
+        "body": "Forgetting the Certificate of Electrical Safety is a common mistake. It's a required sign-off and takes time to complete and file. Also, what happens if you hit a ceiling joist? Quoting for 'minor patching' as a provisional sum covers you. If the client has old halogen transformers, you need to quote for their removal and disposal. Every installation must comply with AS/NZS 3000, particularly the rules around clearances for insulation around IC-rated downlights. Always add a line item for testing, including insulation resistance and polarity checks, before you hand the job over. This ensures compliance and safety."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much labour time should I quote per downlight?",
+        "answer": "For a standard install with easy access, budget 30-45 minutes per light at your hourly rate. If you're crawling through a tight roof space or fishing cables down a wall, charge for at least 60-90 minutes per light. Always price the first light higher to cover your site setup and pack-down time."
+      },
+      {
+        "question": "Do I need to specify the dimmer type on the quote?",
+        "answer": "Yes, always. Specify a 'trailing-edge' or 'universal' dimmer compatible with LEDs to avoid callbacks for flickering or buzzing. Cheaper leading-edge dimmers won't work properly. A quality Clipsal or Legrand dimmer costs more, so listing the model on your quote justifies the price to the customer."
+      },
+      {
+        "question": "What's the general rule for spacing downlights?",
+        "answer": "For a standard 2.4m ceiling, space 9W downlights about 1.5 to 2 metres apart. Place the first row about half that distance (75cm-1m) from the wall to light the room's edges. This is a rule of thumb, so always confirm the final layout with the client before you start drilling holes."
+      }
+    ]
+  },
+  "epoxy-floor-coating-quote-template": {
+    "intro": "This epoxy floor coating quote template is for flooring installers pricing up residential garages, workshops, or small commercial spaces. Using quoting software like QuoteMate helps you build these items in, but the initial numbers have to be right. Most tradies get tripped up on two things: underestimating the cost of diamond grinding the slab, and not testing for moisture. A wet slab will cause the coating to fail, and a poorly prepped surface guarantees a callback. This template helps you price the prep correctly so you can submit a quote that protects your profit.",
+    "sections": [
+      {
+        "heading": "How to Price Per Square Metre for Epoxy",
+        "body": "Price epoxy floors per square metre (m²). A simple two-coat garage floor might be $35-$50/m², while a decorative flake floor for a commercial site could be $100+/m². Your biggest variable is surface preparation. Diamond grinding a soft slab might be $10/m², but hard, cured concrete could be double that. Your material cost for a standard two-coat system from a supplier like On-Crete or All Purpose Coatings will run about $15-$25/m². Always add a 10-15% waste factor. Labour is at least two site visits, so price that accordingly. A 100m² job is easily $5,000 before labour."
+      },
+      {
+        "heading": "Line Items That Get Left Off an Epoxy Quote",
+        "body": "Forgetting small items kills your profit on an epoxy job. Always test for concrete moisture. If it's high, you need a moisture barrier primer, which adds another $10-$15/m² in material costs. Quote for crack and joint repairs as a separate line item, either per linear metre or as a fixed sum. Filling a saw cut is not the same as a light skim coat. If the client wants coving up the walls, price that per linear metre as it's labour-intensive. Finally, add a line for waste disposal. A concrete grinder and dust extractor will fill multiple bags, and you have to pay to dump that. This is crucial for jobs that must meet AS 4586 slip resistance standards."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a decorative flake floor system?",
+        "answer": "A flake system adds significant material and labour. You're adding the cost of the vinyl flakes plus at least one extra clear polyurethane topcoat to encapsulate them. You should factor in an additional $20-$40 per square metre on top of your standard two-coat epoxy price. Check current flake prices from your supplier like Designer Flake before finalising the quote."
+      },
+      {
+        "question": "What's the best way to quote for fixing a badly damaged slab?",
+        "answer": "Quote major repairs separately from the coating itself. Price concrete patching or self-levelling compounds per bag plus labour. For deep cracks or spalls, quote a per-linear-metre rate for grinding out and filling with an epoxy mortar. This isolates the risk if the repair work is worse than it looks. A 20kg bag of Ardex K 15 leveller covers about 4m² at 3mm thickness."
+      },
+      {
+        "question": "Do I need to put curing times on my quote?",
+        "answer": "Yes, always specify the curing timeline. A standard epoxy system needs 24 hours before light foot traffic and up to 7 days for a full chemical cure to withstand vehicle traffic and spills. Stating this clearly on the quote manages the client's expectations about when they can use the space and prevents arguments later. This is non-negotiable for commercial jobs with tight schedules."
+      }
+    ]
+  },
+  "driveway-gate-quote-template": {
+    "intro": "This driveway gate quote template is for welders and fabricators pricing residential and light commercial jobs. It suits everything from a simple manual swing gate to a fully automated sliding one. Most quotes go wrong on two things: underestimating the labour for site prep and installation, and forgetting the cost of the electrical hook-up for the motor. Using a tool like our QuoteMate app helps you build a quote that covers every part of the job, from the steel to the final coat of paint, so you don't lose your margin on forgotten items.",
+    "sections": [
+      {
+        "heading": "How to Price Gate Fabrication and Labour",
+        "body": "Steel and aluminium prices change constantly. Price your frame and infill per linear metre, adding a 15% waste factor for offcuts. For a standard 3.5-metre sliding gate, budget around 8-10 hours of workshop fabrication time at your going rate, say $90/hour plus GST. Site installation is a separate beast. A simple post-and-swing install might take 4-6 hours, but a sliding gate with track, motor, and sensors can easily take a full day. Always factor in a separate line item for concrete for the post footings, typically 3-4 bags of general purpose mix from Bunnings per post."
+      },
+      {
+        "heading": "What Most Welders Forget on Driveway Gate Quotes",
+        "body": "It’s the small stuff that kills your margin. Did you quote for digging the post holes or trenching for the 240V cable? That's a half-day of labour plus equipment hire. What about rubbish removal for the old gate or soil from the dig? Add a line item for a tip run. If the site has tight access, you might need to price in extra labour for carrying materials. For automated gates, safety is critical. You must include photo-electric safety beams and ensure the motor has obstruction detection. Forgetting these items can cost you hundreds and leave you liable on site."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I budget for powder coating?",
+        "answer": "Powder coating is done by specialists, so quote it as a subcontracted cost. A standard 3.5m x 1.8m gate will cost between $350 and $550 depending on the colour and finish. Always get a current price from your local powder coater before finalising your quote. Reputable brands like Dulux or Interpon offer a wide range of durable finishes."
+      },
+      {
+        "question": "Do I need to quote for an electrician for a gate motor?",
+        "answer": "Yes, absolutely. A gate motor requires a 240V weatherproof GPO installed by a licensed electrician. You should include this as a provisional sum from a sparky you work with. The work must comply with AS/NZS 3000, so don't do it yourself. A typical GPO install for a gate costs between $400 and $700."
+      },
+      {
+        "question": "What contingency should I add for a sloping driveway?",
+        "answer": "A sloping site adds significant complexity. A sliding gate will need a custom-raked bottom rail to match the slope, and a swing gate may require specialised rising hinges. Add a minimum of 25% to your fabrication and installation labour estimates to account for the extra cutting, welding, and setup time. Don't price it like a flat-ground job."
+      }
+    ]
+  },
+  "tree-removal-quote-template": {
+    "intro": "This tree removal quote template is for Australian arborists pricing residential and commercial jobs. It suits everything from a single backyard gum tree to a multi-tree site clearance. The two things most often underquoted are stump grinding depth and green waste disposal. A shallow grind leaves a hump the mower will hit, and underestimating the weight of a hardwood log can kill your margin at the tip. Get those two right and the rest of the job will stack up properly.",
+    "sections": [
+      {
+        "heading": "How to Price Labour, Equipment, and Waste on a Tree Job",
+        "body": "Your price is built from labour, gear, and disposal. A climbing arborist might be on $600-$800 a day, with a groundie on $400. Factor in equipment wear and running costs. A decent chipper from Kennards Hire is $400-$500 a day. Chainsaw chains, fuel, and oil add up. Finally, green waste disposal is a big one. Council tip fees vary but expect to pay $80-$150 per tonne. A mature gum tree can easily be a few tonnes, so don't guess. The most accurate way is to use a public weighbridge on your first run to the tip."
+      },
+      {
+        "heading": "Costs Arborists Forget to Include on Quotes",
+        "body": "Access is a major cost driver often missed. If you can’t get the chipper to the tree, you’re dragging branches by hand, which adds hours. Overhead powerlines mean you need an authorised spotter. Proximity to a house might demand a crane, costing $300 an hour plus travel. If the work affects a footpath or road, you’ll need a traffic management plan, which can cost over $1,000 for the day. Always check for council permits and underground services before you start. The Safe Work Australia 'Guide to managing risks of tree trimming and removal work' is your go-to for compliance."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How deep should I quote for stump grinding?",
+        "answer": "It depends on what the client wants to do next. For laying new turf, grinding 150-200mm below ground level is usually enough. If they plan to replant a tree or build over the area, you need to go deeper, at least 300-400mm, to get the main root ball. Clarify this upfront, as grinding an extra 200mm can double the time and cost."
+      },
+      {
+        "question": "Does the type of tree change the quoting price?",
+        "answer": "Absolutely. A soft pine is quick to cut but a dense hardwood like an Ironbark will wear out your chains and take more time and fuel. Palm trees produce a huge volume of fibrous, heavy waste that’s hard to chip and costs a lot to dump. Always identify the species, as a hardwood can easily add 25% to your labour time."
+      },
+      {
+        "question": "Who organises the council permit for tree removal?",
+        "answer": "The homeowner is ultimately responsible for securing any required council permits. However, you should always ask to see the approved permit before starting work. Offering to handle the application process for the client can be a good value-add service. Just be sure to list it as a separate line item on your quote, as the paperwork takes time."
+      }
+    ]
+  },
+  "carpet-cleaning-quote-template": {
+    "intro": "This carpet cleaning quote template is for residential and small commercial jobs. It covers everything from a standard three-bedroom house to a small office space. Most cleaners get quotes wrong in two places: underestimating the time and chemicals needed for tough stains, and not charging extra for moving heavy furniture. A good quote protects your time and profit by setting clear expectations from the start. Use this template to make sure you've covered all your costs and look professional to the client, helping you win the job at the right price.",
+    "sections": [
+      {
+        "heading": "How to Price Your Steam Clean: Per Room vs. Square Metre",
+        "body": "Your main choice is pricing per room or per square metre. For standard homes, pricing per room is faster. A typical rate is $30-$40 per standard room (up to 12 sqm). For large open-plan areas or commercial jobs, use a square metre rate, usually around $3-$5 per sqm. Your labour is the biggest cost, so factor in travel, setup, and pack-down time. Chemical costs are small per job but add up. A 5L bottle of Prochem Carpet Prespray might cost $50 from a supplier like Cleanstar but will cover multiple jobs. Using an app like QuoteMate helps track these material costs accurately against each job."
+      },
+      {
+        "heading": "Forgotten Costs That Kill Your Carpet Cleaning Margin",
+        "body": "A minimum call-out fee is essential for small jobs. Set one at around $90-$120 to make sure a single-room job is worth your time. Always add a line item for moving heavy furniture; anything bigger than a coffee table should attract a fee of $20-$50. Don't forget access issues. Quoting for a third-floor apartment with no lift requires more time and effort than a ground-floor house. Finally, specialised treatments for pet urine, ink, or red wine are not standard. Price them separately and explain that success isn't guaranteed. All your work should meet the AS/NZS 3733:2018 standard."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need to charge extra for moving furniture?",
+        "answer": "Yes. Your standard per-room price should only include moving light items like small tables or chairs. For heavy furniture like sofas, beds, or bookcases, you must charge extra. Add a separate line item on your quote for 'Heavy Furniture Moving', typically priced between $20 to $50 per large item. Be clear about this upfront."
+      },
+      {
+        "question": "How should I quote for really tough stains like pet urine?",
+        "answer": "Quote specialised stain removal as a separate line item. Never include it in your standard clean price. For pet urine, red wine, or ink, charge an additional $30-$80 per area, depending on severity. Importantly, you should state that you're charging for the treatment process, not for guaranteed removal, as some stains can be permanent."
+      },
+      {
+        "question": "Is there an Australian Standard for professional carpet cleaning?",
+        "answer": "Yes, AS/NZS 3733:2018 outlines the correct procedures for cleaning textile floor coverings. Referencing this standard in your quote shows you're a professional who follows industry best practice. It helps justify your price against cheaper competitors and gives the client confidence you'll care for their carpet properly. It's a key part of a professional quote."
+      }
+    ]
+  },
+  "bathroom-tiling-quote-template": {
+    "intro": "Quoting bathroom tiling isn't just about square metres. This bathroom tiling quote template is built for Australian tilers doing residential renos and new builds. Most quotes go wrong in two places: underestimating the demolition and prep work for old, uneven surfaces, and not charging a premium for complex tile patterns. Get those two things right and you'll protect your margin. This template has the line items to cover your costs for prep, waterproofing checks, laying, grouting, and finishing, so you don't leave money on the table or end up working for free.",
+    "sections": [
+      {
+        "heading": "Calculating Your Real Costs on a Bathroom Tiling Job",
+        "body": "Your labour rate per square metre is the core of your quote. For standard 600x300mm ceramic tiles on a clean, plumb wall, you might charge $60-$70/sqm. But for intricate mosaic sheets or a herringbone pattern, you should be charging upwards of $120/sqm to cover the extra cutting and layout time. Don't forget prep work – grinding a high spot on the slab or applying a primer is billable time. For materials, a 20kg bag of Davco flexible adhesive from Bunnings costs about $40 and covers around 6sqm. Always add 15-20% for tile waste on complex patterns, not just the standard 10%."
+      },
+      {
+        "heading": "What Most Tilers Forget to Add to a Bathroom Quote",
+        "body": "The biggest mistake is quoting the tiling but forgetting the work around it. Are you removing the old tiles? That's a separate line item for demolition and rubbish removal, which can cost $200-$300 for a small skip bin. Did you factor in protecting the client's floors from your work area to the front door? Add a charge for floor protection. Always check the waterproofing meets AS 3740 standards before you start; if it doesn't, quoting to fix it is a separate, crucial step. Also, add a line item for applying silicone to all internal corners and junctions after grouting is complete."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I charge for herringbone or mosaic patterns?",
+        "answer": "For complex patterns like herringbone or small mosaics, add 50-100% to your standard square metre labour rate. The extra time for cuts, layout, and grouting is significant. If your standard rate is $65/sqm, you should be quoting between $95-$130/sqm for these detailed jobs. Your quote should specify this as a separate rate."
+      },
+      {
+        "question": "Do I need to quote for screeding the floor?",
+        "answer": "Yes, always quote screeding as a separate line item if the floor requires it. It's a separate task involving labour and materials that isn't part of tiling itself. Check the floor levels on your site visit. A standard bathroom floor might need 3-5 bags of sand and cement mix, which costs about $10 per bag from CSR."
+      },
+      {
+        "question": "Who is responsible for checking the waterproofing before I tile?",
+        "answer": "You are. Before you lay a single tile, you must ensure the waterproofing is sound and compliant. If you tile over a faulty membrane, you can be held liable for fixing the resulting leaks. Always inspect the substrate, check for a compliance certificate from the waterproofer, and document its condition according to AS 3740."
+      }
+    ]
+  },
+  "concrete-slab-quote-template": {
+    "intro": "This concrete slab quote template is built for house slabs, shed bases, and driveways. Use it to get your line items right every time. Most concreters get the basics down but lose money on two things: underestimating waste and forgetting to charge for difficult site access. A cheap job can turn expensive fast if you need a concrete pump because the truck can't get close, or if you have to cart away an extra half-dozen barrows of soil by hand. This template helps you price for the job as it is, not as you hope it will be.",
+    "sections": [
+      {
+        "heading": "How to Price Your Slab: M3, Labour, and Waste",
+        "body": "Your main cost is the concrete itself, priced per cubic metre (m3). An N25 mix from a supplier like Boral or Hanson will run you about $300-$350 per m3 delivered. Always add a waste factor of 5-10% to your total volume to account for uneven ground and spillage. For labour, you can charge a day rate per person or a square metre rate for the whole job, from prep to finish. A typical rate for a simple slab finish is $50-$85 per square metre, including labour and materials. Always factor in reo mesh like SL72 from Bunnings Trade at around $100 per sheet."
+      },
+      {
+        "heading": "What Gets Left Off a Concrete Slab Quote",
+        "body": "The biggest mistake is forgetting pump hire. If the truck can't reach the pour area, you'll need a line or boom pump, costing anywhere from $500 to over $1,000. Another forgotten cost is soil and rock disposal. Tip fees are high, so calculate the volume of spoil accurately and charge for it. Always check if a council permit is needed, as this adds time and cost. Finally, make sure your work meets the standard. All residential slabs must comply with AS 2870, which dictates things like slab thickness and reinforcement placement. Quoting to standard protects you and the client."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much reo mesh overlap do I need?",
+        "answer": "You need to overlap reinforcement mesh by at least two full squares to ensure structural integrity and prevent cracks. For SL72 mesh, with its 200mm grid, that means a 400mm overlap. Factor this into your total sheet count when ordering from a supplier like CSR, otherwise you'll come up short on the day."
+      },
+      {
+        "question": "When should I use N25 concrete over N20?",
+        "answer": "Use N20 (20MPa) for footpaths and basic shed slabs. For anything structural like a house slab or a driveway that needs to support vehicles, you must use N25 (25MPa) or stronger. The price difference is minimal for the extra strength required. Most engineers will specify N25 as the minimum for residential slabs under AS 2870."
+      },
+      {
+        "question": "Do I need to quote for control joints?",
+        "answer": "Yes, always. Control joints manage natural cracking as the concrete cures. For a basic broom-finish slab, saw cuts are the cheapest method. They should be cut within 24 hours of the pour to a depth of about one-quarter of the slab's thickness. Omitting them from the quote means you'll either wear the cost or have to ask the client for more money later."
+      }
+    ]
+  },
+  "kitchen-splashback-quote-template": {
+    "intro": "This kitchen splashback quote template is for Australian glaziers pricing up jobs for residential renos and new builds. It suits standard toughened glass installations in kitchens, laundries, and butler's pantries. Most quotes go wrong in two places: forgetting to charge per-item for GPO and switch cutouts, and not factoring in the extra labour for out-of-square walls. Getting these details right from the start protects your margin on the whole job. A clear, itemised quote prevents arguments with the builder or homeowner later, ensuring you get paid without hassle for the work you've actually done.",
+    "sections": [
+      {
+        "heading": "Pricing Toughened Glass, Cutouts, and Labour",
+        "body": "Your biggest cost is the glass itself. Price 6mm toughened Starphire or similar low-iron glass at around $350-$500 per square metre, supplied from your processor. Don't forget to add a per-item charge for cutouts; a standard double GPO cutout is about $60-$80. Labour for a straightforward splashback should be 3-4 hours for two glaziers, covering the site measure and the final installation. At $110/hour per person, that’s $660-$880 in labour. Add costs for consumables like high-grade neutral cure silicone, such as Bostik V60 from Bunnings Trade. Using a quoting app like QuoteMate helps you build these line items fast so nothing gets missed."
+      },
+      {
+        "heading": "What Glaziers Forget on a Splashback Quote",
+        "body": "Leaving items off the quote is leaving money on the table. Always include a line item for polished edges, typically charged per lineal metre. Specify the paint finish; a 2-pack polyurethane colour backing costs more than standard vinyl and should be quoted accordingly. If you have to remove an old tile splashback, charge for the labour and tip fees. Difficult site access, like a 10th-floor apartment with no lift, requires its own line item for the extra time. Finally, make sure your installation complies with AS 1288-2006 for glass in buildings, especially regarding clearances for gas cooktops. This standard is not optional."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for metallic paint?",
+        "answer": "Metallic and pearlescent finishes require more expensive pigments and extra prep work. You should add 20-30% to your normal colour-backing price. Quote it as a separate line item so the client sees the value. Always get a sample approved before ordering the glass, as metallic colours can look different under kitchen lighting."
+      },
+      {
+        "question": "Is there a standard for glass behind a gas cooktop?",
+        "answer": "Yes. The glass must be Grade A toughened safety glass, usually 6mm, compliant with AS/NZS 2208. It also needs to meet the clearance requirements specified by the cooktop manufacturer, which is often detailed in their installation manual. Failure to meet these specs can cause the glass to crack from thermal stress and is a major compliance issue."
+      },
+      {
+        "question": "Do I charge for a check measure visit?",
+        "answer": "You should factor the cost of one site visit for a check measure into your labour total. If a client, builder, or cabinet maker makes changes after you’ve measured, you are justified in charging a call-out fee for a second measure. This covers your time and travel, which can easily be $150-$200."
+      }
+    ]
+  },
+  "render-house-quote-template": {
+    "intro": "This house rendering quote template is for renderers pricing jobs on brick, block, or fibre cement sheet walls. Most quotes go wrong in two places: underestimating the prep work on old, painted surfaces, and not factoring in the full cost of scaffold hire for multi-storey homes. Get those right, and you protect your margin. This template helps you price every line item correctly, from masking the windows to the final texture coat, so you can send quotes that are fair for the client and profitable for your business.",
+    "sections": [
+      {
+        "heading": "How to Calculate Your Per-Metre Rate for Rendering",
+        "body": "Your square metre (sqm) rate is mostly labour. A good renderer can prep and apply a base coat to about 20-25 sqm per day. At a labour rate of $70/hr, that’s around $25/sqm in labour alone. Materials come next. A 20kg bag of cement render base from Bunnings costs about $15 and covers 2.5 sqm, so that's $6/sqm. Add primer and a texture coat like Dulux AcraTex, plus a 10% waste factor. Your total cost might be $40-$60/sqm before overheads and profit. Using a quoting tool like QuoteMate helps track these material costs against live supplier pricing so your rate is always current."
+      },
+      {
+        "heading": "What Gets Left Off a House Rendering Quote",
+        "body": "It’s the extras that eat your profit. Always include a line item for waste disposal; a 2-cubic-metre skip bin from a local supplier will cost you $300-$450. Scaffolding hire is another big one, often running $30-$50 per linear metre for the first week. Don't forget the non-billable labour of masking every window, door, and downpipe, which can take half a day. Finally, include substrate cleaning. A high-pressure wash is essential for proper adhesion, as specified by most render manufacturers. If you skip quoting these, you're doing them for free. Add them as separate line items so the client sees the value."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a texture finish versus a smooth one?",
+        "answer": "A texture coat requires more skill and often an extra pass, adding 20-30% to your labour time. The material is also pricier. A 15L pail of Dulux AcraTex 951 costs around $160 from a Dulux Trade Centre, whereas a standard cement render topcoat is much cheaper. Factor in at least a 25% price increase for acrylic texture finishes."
+      },
+      {
+        "question": "Do I need to charge for corner beads separately?",
+        "answer": "Yes, always list external corner beads as a separate line item per linear metre. They protect edges from chipping and are essential for a sharp, professional finish. PVC beads from Bunnings or a trade supplier cost $6-$9 per 3-metre length, but the main cost is the labour to set them perfectly straight before rendering."
+      },
+      {
+        "question": "What's a fair contingency to add for patching old brickwork?",
+        "answer": "For older homes with crumbling mortar or visible cracks, a 15% contingency on your prep labour is a safe bet. You can't see the full extent of damage until after the pressure wash. Specify in your quote that this covers minor patching, and that extensive structural repairs will be quoted as a variation to the contract."
+      }
+    ]
+  },
+  "plasterboard-installation-quote-template": {
+    "intro": "This plasterboard installation quote template is for Aussie plasterers pricing new builds, renovations, or patch jobs. Most quotes go wrong in two places: underestimating the labour for setting and sanding three full coats, or completely forgetting rubbish disposal costs for the old walls. Using a proper template makes sure you price every line item, from the Gyprock sheets and cornice cement down to the tip fees. It helps you protect your margin and deliver a professional quote that wins the work without costing you money. Get the numbers right from the start.",
+    "sections": [
+      {
+        "heading": "How to Calculate Your Square Metre Rate for Plastering",
+        "body": "Your price depends on the finish level, but a good starting point for a standard Level 4 finish is $45 to $65 per square metre (m2), supply and install. This covers materials like 10mm Gyprock Plus sheets from CSR, screws, paper tape, and compounds. It also includes your labour for hanging, setting three coats, and sanding. For a small reno, you might charge by the day instead, say $600-$800 plus materials. Always measure walls and ceilings separately and add a 10-15% waste factor on your sheet count. For premium materials like soundproof or fire-rated board, price them as separate line items as they can double your material cost per sheet."
+      },
+      {
+        "heading": "What Plasterers Forget to Add to Their Quotes",
+        "body": "The biggest mistake is forgetting site prep and cleanup. If you're ripping out old lath and plaster, you need to quote for a skip bin and the labour to fill it. Another common miss is access equipment. If you're working on a raked ceiling or in a stairwell, the cost of hiring a scissor lift or mobile scaffold must be on the quote. Also, specify the level of finish you're providing. Most domestic work is Level 4, but if the job has lots of critical light, the client might expect a Level 5 finish, which takes more time and material. Always specify this to avoid arguments, as defined in AS/NZS 2589:2017."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste should I factor in for plasterboard sheets?",
+        "answer": "For a standard square room, a 10% waste factor is usually safe. If the room has lots of angles, windows, or doors, increase that to 15%. It’s better to have one sheet left over than to make a second trip to Bunnings or your supplier for a single offcut. Always calculate your waste factor at 15% for complex jobs."
+      },
+      {
+        "question": "Does moisture-resistant board cost much more to install?",
+        "answer": "The installation labour is the same, but the material cost is higher. A sheet of Gyprock Aquachek from CSR for wet areas can be 30-50% more expensive than a standard Gyprock Plus sheet of the same size. Always price the specific board per sheet and list it as a separate material cost on your quote to show the client the price difference."
+      },
+      {
+        "question": "How should I price cornice installation?",
+        "answer": "Price cornice per linear metre (LM), including supply, adhesive, and installation labour. For a standard 90mm cove cornice, a fair rate is between $10 and $15 per LM. More decorative or oversized profiles will cost more in both materials and labour, so get a current supply price from a supplier like CSR before finalising your quote."
+      }
+    ]
+  },
+  "paving-quote-template": {
+    "intro": "This paving quote template is for landscapers pricing residential jobs like paths, patios, and driveways. It suits projects using clay, concrete, or natural stone pavers. Most quotes go wrong in two places: underestimating the labour for site prep and excavation, and completely forgetting the cost of soil disposal. A tight, accurate quote shows the client you know your stuff and protects your margin from getting eaten up by unexpected tip fees. Use this paving quote template to make sure every cost is covered before you send the price to the customer and start the job.",
+    "sections": [
+      {
+        "heading": "How to Price Paving Labour and Base Materials",
+        "body": "Your biggest cost is labour. Price it per square metre, not just per hour. A straightforward job might take two landscapers a day to prep and lay 20 square metres. At $80/hour per person, that's $1280 in labour, or $64 per square metre. Next, price your base materials. A tonne of road base from a local landscape supplier will set you back about $80-$100, and bedding sand is around $90-$110 per tonne. Don't guess these prices. Using an app like QuoteMate to pull current supplier costs ensures your material quote is accurate to the dollar. Always add a 5-10% waste factor on pavers and sand."
+      },
+      {
+        "heading": "What to Add for Site Access and Waste Disposal",
+        "body": "Don't get caught out by site costs. If access is tight, you'll need to price in a mini-excavator and dumper hire, which can be $400-$500 a day. If you're digging out an old path or lawn, you have to pay to get rid of it. A 3-cubic-metre skip bin for clean fill costs around $350, but if it's mixed with concrete or other rubbish, the price can double. Check local council rules too; some require permits or specific stormwater management which adds cost. These are separate line items, not overheads. List them clearly so the client sees what they're paying for. Tip fees are often charged by weight."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a herringbone pattern?",
+        "answer": "A herringbone pattern requires more cuts, which means more labour and more waste. Increase your labour estimate by 15-20% to cover the extra time at the wet saw. You should also increase your paver waste calculation from the standard 5% up to around 10% to account for all the angled offcuts."
+      },
+      {
+        "question": "Do I need to include paver sealing in the main quote?",
+        "answer": "No, paver sealing should be an optional extra. Present it as a separate line item with a clear price. It shows you're thorough and gives the client a choice. A good penetrating sealer from Crommelin or a similar brand at Bunnings will cost around $120 for a 4-litre tin, plus your labour to apply it."
+      },
+      {
+        "question": "What's a fair price for just the excavation and base preparation?",
+        "answer": "For a standard site with good machine access, budget around $50 to $70 per square metre. This covers digging out the area, supplying and laying the road base and sand, and compacting it properly. If you hit rock or have to move material by wheelbarrow, that price can easily climb past $100 per square metre."
+      }
+    ]
+  },
+  "ev-charger-installation-quote-template": {
+    "intro": "Quoting an EV charger install isn't just about the unit. The biggest costs come from long cable runs and old switchboards needing an upgrade. This EV charger installation quote template is for electricians pricing residential or small commercial jobs. It helps you account for the real variables, like the difference between a simple garage install next to the board and a 20-metre run through wall cavities. Get the cable length and switchboard assessment right, and you'll protect your margin on every install. This guide adds the pricing details you'll need to quote accurately.",
+    "sections": [
+      {
+        "heading": "How to Price the Cable Run and Switchboard Work",
+        "body": "The charger unit cost is fixed, but the cable and switchboard are where you make or lose money. A typical 15-metre run of 6mm² TPS cable from an electrical wholesaler like TLE will cost you around $90 in materials. Labour for a straightforward install in a garage might be two hours. A job needing a 30-metre run through a double-brick cavity could easily take five hours. At $110/hr, that's a $330 difference in labour alone. Always check the switchboard first. A new Type A RCBO is about $60, but if the board is full or has old ceramic fuses, you must quote for an upgrade, which can add $800 or more."
+      },
+      {
+        "heading": "What Sparkies Forget on an EV Charger Quote",
+        "body": "Forgetting to charge for testing and commissioning is a classic mistake. Setting up the charger on the client's Wi-Fi, walking them through the app, and performing mandatory tests takes at least 30 minutes. Also, factor in the cost of issuing a Certificate of Compliance for Electrical Work. Another trap is underestimating difficult access. Quoting a simple run and then finding you need to spend an hour fishing cable through an insulated wall will kill your profit. Clearly state what's not included, like plaster repair or painting. All electrical work must comply with AS/NZS 3000, including mandatory testing procedures you bill for."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much more should I quote for a 22kW three-phase charger over a 7kW single-phase?",
+        "answer": "A 22kW unit needs a three-phase supply. The charger itself is $300-$500 more than a 7kW model. The main cost increase is in the heavier cable and a three-pole breaker, adding at least $400-$600 in materials and extra labour. This assumes the site already has three-phase power available at the switchboard."
+      },
+      {
+        "question": "When does a switchboard need a mandatory upgrade for an EV charger?",
+        "answer": "If the existing board is full, uses old ceramic fuses, or lacks a main isolating switch, it needs an upgrade. Any new circuit requires its own RCD or RCBO protection. If you can't add one safely to the existing board, you must quote to upgrade it to meet the current wiring rules in AS/NZS 3000."
+      },
+      {
+        "question": "Should I let the customer supply their own charger?",
+        "answer": "It's risky. You lose the margin on supply and can't guarantee the quality or compliance of a unit bought online. It's better to supply a trusted brand like Zappi or Tesla from your wholesaler. If the customer insists, state clearly on your quote that your warranty covers workmanship only, not the customer-supplied hardware."
+      }
+    ]
+  },
+  "vinyl-plank-flooring-quote-template": {
+    "intro": "This vinyl plank flooring quote template is built for Australian tradies tackling residential and light commercial jobs. It's designed for quoting both floating click-systems and glue-down LVT installations. The two spots where quotes go wrong are subfloor preparation and trims. Underestimate the cost of levelling a concrete slab and you'll work for free. Forget to price 30 metres of scotia and transition bars, and you've just lost your profit on the job. This template ensures you account for every line item, from the planks to the disposal of old carpet, making your quote accurate.",
+    "sections": [
+      {
+        "heading": "Pricing Vinyl Planks: Labour and Material Costs",
+        "body": "Your main cost is the planks themselves. Expect to pay between $30/m² for basic hybrid planks from Bunnings up to $70/m² for premium, thicker options from a flooring wholesaler. Always add a 10-15% waste factor for cuts; for a 50m² job, you need to buy and bill for at least 55m² of stock. Labour is your next key item. A straightforward installation on a clean, level subfloor should be quoted at around $35-$45 per square metre. If you have to do the floor prep, like grinding concrete or pulling up old flooring, that is a separate charge on top. A good starting point is to double your total material cost to get a rough price."
+      },
+      {
+        "heading": "What Tradies Forget on a Vinyl Plank Quote",
+        "body": "Subfloor preparation is the number one missed cost. Grinding concrete high spots or pouring self-levelling compound adds significant time and material costs. A single bag of leveller from CSR might cost $50 and only cover a small area. Second, always add a line item for furniture removal and replacement. Don't do it for free. Third is the disposal of old flooring. Tip fees for carpet and underlay are a direct cost you must pass on to the customer. Finally, difficult cuts around door jambs or stair nosings take more time than open floor, so factor that in. Your work should meet the requirements of AS 1884-2012 for resilient floor coverings."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste should I factor in for vinyl planks?",
+        "answer": "A flat 10% is the standard for rooms with simple layouts. For jobs with multiple angles, hallways, or for a herringbone pattern, increase that to 15%. On a 60m² job, that's an extra 6m² to 9m² of planks you must include in the material cost on your quote."
+      },
+      {
+        "question": "Do I charge extra for subfloor levelling?",
+        "answer": "Yes, always. Subfloor prep is a separate line item and is never included in the per-metre installation rate. A bag of levelling compound like Ardex K 15 covers about 5m² at a 3mm thickness and costs around $45 from trade suppliers, plus your labour to mix and apply it."
+      },
+      {
+        "question": "Is quoting for glue-down LVT different from a floating floor?",
+        "answer": "Yes. Glue-down planks require more labour for trowelling the adhesive and a longer installation time. You must also add the cost of the glue itself, which can be over $120 for a 15-litre tub. A floating click-lock system is faster, so your labour charge per square metre will be lower."
+      }
+    ]
+  },
+  "commercial-cleaning-quote-template": {
+    "intro": "This commercial cleaning quote template is for regular contract work in small to medium Australian offices. It's not for one-off bond cleans or specialised medical facilities. Most cleaners lose money in two spots: under-pricing consumables like soap and paper towels, and not allowing enough time for high-traffic areas like kitchens and bathrooms. Get those two right and your weekly run will actually turn a profit. A tight, professional quote shows the client you know your stuff and helps you win the job without sacrificing your margin from the start.",
+    "sections": [
+      {
+        "heading": "How to Price Per Square Metre vs By the Hour",
+        "body": "Price either per square metre or by the hour. A basic office clean runs $2-$4 per square metre, monthly. For hourly, charge $45-$65 per cleaner, per hour, plus GST. The rate depends on the tasks. A simple vacuum and bin empty is cheaper than a full kitchen and bathroom sanitisation. Don’t forget your materials. A 5L bottle of commercial-grade floor cleaner from a supplier like Blackwoods costs about $30 and will cover a certain area. Track these costs. An app like QuoteMate can store your material costs and add them to each job, ensuring you always cover your overheads."
+      },
+      {
+        "heading": "What Gets Left Off a Commercial Cleaning Quote",
+        "body": "The first 'deep clean' is often forgotten. The initial clean always takes longer than a standard maintenance clean. Quote it as a separate, one-off charge. Also, specify what's not included in the regular price, like periodic steam cleaning of carpets or high-reach window cleaning. These should be quoted as separate services performed quarterly or annually. Another miss is access. If you need special keys, security passes, or after-hours alarm codes, any time spent organising this is billable. Finally, check if the building management charges for waste disposal or skip bin usage."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I charge extra for weekend or after-hours cleaning?",
+        "answer": "Yes. Your labour costs are higher outside of standard business hours. A weekend or after-hours job should have a loading of at least 25-50% on your standard hourly rate. Public holidays are usually double-time. Make this a clear line item on your quote so the client understands the price difference. Always check the Cleaning Services Award [MA000022] for current rates."
+      },
+      {
+        "question": "Do I need my own public liability insurance?",
+        "answer": "Yes, it is essential. Most commercial building managers will not allow you on site without a Certificate of Currency showing at least $10 million in public liability coverage. This cost is a business overhead that should be factored into your charge-out rate, not added as a separate fee. You cannot operate professionally without it."
+      },
+      {
+        "question": "Who pays for cleaning equipment like vacuums?",
+        "answer": "You do. The cleaning contractor is expected to provide all necessary equipment, from vacuums and mops to cloths and chemicals. You are also responsible for ensuring it's safe and compliant, including regular electrical testing and tagging for any powered gear. These equipment costs are part of your overheads, covered by your hourly or square metre rate."
+      }
+    ]
+  },
+  "smoke-alarm-installation-quote-template": {
+    "intro": "This smoke alarm installation quote template is for Australian electricians quoting residential jobs, from single-unit replacements to full home upgrades meeting new state laws. It's built for quoting interconnected photoelectric alarms, both hardwired and wireless. The two places sparkies get quotes wrong are underestimating labour for difficult access in older homes and forgetting to charge for testing and the compliance certificate. Using this template helps you price every component accurately, ensuring your quote covers the full scope of work required under Australian Standards and protects your margin on the job.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Materials for Smoke Alarm Installs",
+        "body": "The alarm unit itself is just the start. A good quality interconnected alarm like the Clipsal Fire Tek 755RLPSMA4 costs about $75 from an electrical wholesaler. The real variable is labour. A simple swap of an existing hardwired alarm might take 30 minutes. But installing a new hardwired point in a double-brick house with poor roof access could take two hours. Price your labour per point, not per house. Factor in $5-$10 per alarm for consumables like cable, screws, and wall plugs. For a standard three-bedroom home, quoting 3-4 hours of labour plus materials is a safe starting point for a fully hardwired system from scratch."
+      },
+      {
+        "heading": "What Sparkies Forget on a Smoke Alarm Quote",
+        "body": "Forgetting small items kills your profit. Always include a line item for removing and disposing of old alarms, especially ionisation models. Add 15-30 minutes of labour for testing the interconnected system once installed – walking around with a broom handle to test each unit. High ceilings or tricky access points might require special ladders or a mobile scaffold; this is a hire cost that belongs on the quote. Most importantly, charge for your compliance certificate. It's a legal document tied to your licence. Your final installation must meet all requirements of AS 3786:2014, so that certificate has real value."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I quote for hardwired or wireless interconnected alarms?",
+        "answer": "Quote both if you can. Wireless units cost more upfront; a Clipsal 755RFB2 wireless base is around $120 versus $20 for a standard one. However, they save significant labour time, especially in multi-storey or difficult-to-access homes. Presenting both options lets the customer decide between material cost and labour cost. Either way, the installation must comply with AS 3786:2014."
+      },
+      {
+        "question": "How much do I charge for the compliance certificate?",
+        "answer": "Never give it away for free. It's a critical part of the service that carries legal weight. Most electricians add a separate line item for the Certificate of Compliance, typically between $50 and $95 plus GST. This fee covers your time to complete the paperwork correctly and, where required, lodge it with the state's electrical safety authority. It's a professional service, not just a piece of paper."
+      },
+      {
+        "question": "What happens if I discover asbestos during the install?",
+        "answer": "Stop work immediately. Your quote should have a clause excluding hazardous material handling. Inform the client that the site is unsafe to continue and that a licensed asbestos removalist is now required. You cannot drill, cut, or disturb suspected asbestos-containing materials. All work must halt until the area is certified safe by a professional, as required by Safe Work Australia guidelines."
+      }
+    ]
+  },
+  "wardrobe-fitout-quote-template": {
+    "intro": "This built-in wardrobe quote template is for cabinet-makers pricing custom jobs, from simple reach-ins to full walk-in fit-outs. Most quotes go wrong in two areas: underestimating the cost of quality hardware like soft-close runners, and forgetting to price demolition and disposal of the old unit. Get these right and your margin is protected. This guide covers the key cost drivers and common mistakes to help you build a solid quote that wins work without costing you money.",
+    "sections": [
+      {
+        "heading": "How to Price Carcass, Doors, and Labour",
+        "body": "Price your carcass material by the sheet. A 2400x1200mm sheet of 16mm white melamine from Laminex or Polytec will set you back about $50-$70 plus GST. Factor in a 15-20% waste allowance, more for complex cuts. Hardware is a major variable. A pair of standard drawer runners is cheap, but quality soft-close runners from Hafele can be $50 per drawer. Labour for a standard 2.4m two-door wardrobe is typically 8-12 hours for manufacture in the workshop and 4-6 hours for site installation. At $90/hour, that's over a grand in labour alone."
+      },
+      {
+        "heading": "What Gets Left Off a Wardrobe Quote",
+        "body": "Forgetting demolition and disposal is the biggest mistake. Removing an old wardrobe and a trip to the tip can easily cost $250. Quote it as a separate line item. Site prep is another. Does the wall behind the old unit need patching and painting? Clarify who is responsible. If the client wants internal lighting, you’ll need a licensed electrician. This is not your job; you just need to allow for their access and cost. While there's no specific installation standard, building to the principles in AS/NZS 4785 for cabinet components shows good workmanship."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I budget for material waste?",
+        "answer": "A safe range is 15-20% for material waste on a standard job. For designs with many small components or angled cuts, you might push this to 25%. Always quote based on buying full sheets from your supplier, as you can't buy half a sheet of 16mm melamine from Polytec or Laminex."
+      },
+      {
+        "question": "Should my quote include patching and painting?",
+        "answer": "Generally, no. A cabinet-maker’s job is the wardrobe. Your quote should clearly state that making good any wall surfaces after removing the old unit is the client's responsibility or will be quoted separately. This avoids arguments later. The only exception is if you explicitly offer it as part of a complete renovation service."
+      },
+      {
+        "question": "What’s the real cost difference between hinged and sliding doors?",
+        "answer": "Sliding doors are almost always more expensive due to the track system. A basic set of tracks and rollers for a 2.4m opening from a supplier like Lincoln Sentry can add $200-$400 to the material cost compared to using three or four standard cabinet hinges on a pair of hinged doors."
+      }
+    ]
+  },
+  "stump-grinding-quote-template": {
+    "intro": "This stump grinding quote template is for Australian arborists pricing residential and small commercial jobs. It covers everything from single backyard stumps to clearing a few for a new driveway. Most quotes go wrong on two things: underestimating the time needed for dense hardwood stumps like ironbark, and forgetting to price the green waste disposal correctly. Getting these two items right is the difference between making a profit or doing the job for wages. Use this template to build an accurate quote that covers your costs and protects your margin every time you fire up the grinder.",
+    "sections": [
+      {
+        "heading": "How to Calculate Your Stump Grinding Rate",
+        "body": "The standard way to price is per centimetre of diameter, measured at the widest point at ground level. A common rate is $3.50 to $5.00 per cm, plus GST. This method scales well, but always have a minimum call-out fee, like $180, to cover travel and setup for small jobs. For big or tricky stumps, an hourly rate of $150-$220 might work better. Remember to factor in grinder tooth wear, which costs about $10-$15 per hour of use, plus fuel. Using software like QuoteMate helps you add these as standard line items so you never forget them."
+      },
+      {
+        "heading": "What Gets Left Off a Stump Grinding Quote",
+        "body": "Forgetting to check for underground services is the most expensive mistake. Always do a free Dial Before You Dig search before starting. Limited site access is another classic. If you can't get your Vermeer grinder through a narrow gate, you'll need to price for a smaller machine or manual work. Also, specify the backfill material. Leaving the grindings in the hole is cheapest, but trucking in clean soil from a supplier like Australian Native Landscapes costs money. Finally, state your grinding depth. Anything deeper than a standard 150mm will take longer and should be quoted as an extra."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I have to call Dial Before You Dig for a small stump?",
+        "answer": "Yes, every time. Hitting a water pipe or Telstra cable will cost you thousands and ruin your reputation. The client won't care how small the stump was. The Dial Before You Dig service is free, takes minutes online, and provides a report showing the location of registered utilities. It's your professional responsibility to check before you grind."
+      },
+      {
+        "question": "How deep do you need to grind for replanting?",
+        "answer": "For laying new turf, grinding 150mm below the final ground level is usually enough to stop regrowth. If the client wants to plant a new tree in the same spot, you need to go much deeper, around 400-600mm, to remove the entire root ball. This takes significantly more time, so price it as a separate, higher-cost line item."
+      },
+      {
+        "question": "How should I price the green waste removal?",
+        "answer": "Stump grindings expand in volume, so a small stump can create a full ute load of mulch. Check your local council tip fees for green waste, which can be $70-$120 per load. Price this as a separate line item on your quote. Alternatively, offer the client a discount to keep the grindings on-site for use as garden mulch."
+      }
+    ]
+  },
+  "bathroom-waterproofing-quote-template": {
+    "intro": "This bathroom waterproofing quote template is for builders and waterproofers on domestic wet area jobs. It suits standard renovations and new builds. Most tradies get tripped up quoting two things: the labour for proper substrate preparation, which can vary wildly, and forgetting to price in the compliance certificate and the liability that comes with it. Get those two items right and you’ll protect your margin. This template helps you remember every line item so you can quote accurately and get on with the job.",
+    "sections": [
+      {
+        "heading": "How to Price Waterproofing Labour and Materials",
+        "body": "For a standard bathroom, think per square metre. A typical job is around 10-15m² including the floor, shower walls, and hob. Your main cost is the membrane. A 15L pail of Crommelin Shower Waterproofing Membrane from Bunnings costs about $215 and covers roughly 10m² for two coats. Factor in primer, bond breaker tape, and reinforcing fabric, adding another $80-$100. Labour is the biggest variable. Allow 4-6 hours at your standard rate, say $70/hr, for prep and two coats. All up, you should be quoting around $750-$1000 for a standard bathroom, depending on site conditions."
+      },
+      {
+        "heading": "What Tradies Forget on a Waterproofing Quote",
+        "body": "The biggest mistake is quoting for a perfect surface. Most bathroom floors need grinding or a skim coat before you can even open the primer. Add a line item for substrate preparation. Second, tradies forget the cost of compliance. You're signing a legal document that says your work meets AS 3740-2010. This carries risk and insurance cost, so add $50-$150 for issuing the certificate. Using a quoting app like QuoteMate makes it easy to save these easily-forgotten items as standard line items. Finally, factor in travel time for the second coat, as you can’t do it all in one visit."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I quote for different substrates like concrete vs FC sheet?",
+        "answer": "A porous concrete slab needs more primer than fibre cement sheet. Budget for an extra litre of primer and 30 minutes of labour if you’re working on old, thirsty concrete. Always inspect the site first. Villaboard is straightforward, but old concrete can hide problems. Check the specific membrane's data sheet, like for Davco K10, for primer requirements."
+      },
+      {
+        "question": "Should I charge extra for flood testing?",
+        "answer": "Yes, always. Flood testing takes time. You have to dam the doorway, fill the area with water for 24 hours, then drain and dry it. This adds at least half a day of site visits and follow-up. Price it as a separate line item for $200-$300, as it's a critical quality check under AS 3740."
+      },
+      {
+        "question": "How much waste should I factor in for membrane and tape?",
+        "answer": "Add a 10% waste factor for your liquid membrane, as some always gets left in the pail or dries on rollers. For reinforcing tape and bond breakers, add 15%, especially for complex layouts with multiple corners or niches. It's better to have a bit left over than to stop the job for another trip to Bunnings."
+      }
+    ]
+  },
+  "garage-door-replacement-quote-template": {
+    "intro": "This garage door replacement quote template is for tradies installing standard residential roller and sectional doors. It covers the essential line items for a clean, profitable job. Most installers get stung in two places: underestimating labour on sites with poor access, and forgetting to charge for the removal and disposal of the old steel door and motor. This guide helps you price those items correctly so your quote is accurate and you don't work for free. A tight quote on labour and waste protects your margin on the whole job.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Disposal for a Standard Roller Door",
+        "body": "A single-car roller door replacement is a two-person job. Budget for two installers for 3 to 4 hours on site. At a rate of $90 per hour per person, that's $540 to $720 in labour. The door itself, a standard single Colorbond roller from a supplier like B&D Doors, will cost you around $900. A quality motor, like a Merlin SilentDrive Essential, adds another $500. Don't forget disposal. The old steel door is heavy and awkward. Your local council tip will charge a fee, so add a line item for at least $80-$120 to cover the tip fee, your time, and fuel."
+      },
+      {
+        "heading": "What Gets Left Off: Structural Fixes and Electrical Work",
+        "body": "Old garages often have problems. The timber jambs the new tracks mount to might be rotten or warped. You must inspect this first. If it needs fixing, add a line item for 'remedial frame repairs' – this can be a few hundred dollars in timber and labour. The new motor needs a GPO within a metre. If there isn't one, you'll need a licensed sparkie to install it. This is a separate cost, usually $250-$350, that must be on the quote to avoid arguments later. All wiring must comply with AS/NZS 3000. Also, note if the garage is full of the client's junk, as clearing a workspace costs you time."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much contingency should I add for a custom-sized door?",
+        "answer": "For custom-sized doors, add at least 20% to the door panel cost. Suppliers like Steel-Line or Gliderol charge a premium and have longer lead times. These orders are non-refundable if you mis-measure, so measure three times. Confirm the exact additional cost and lead time with your supplier before finalising your quote."
+      },
+      {
+        "question": "Do I need to quote for replacing the safety beams?",
+        "answer": "Yes, always include new safety beams. Modern openers require them to meet Australian safety standards. Old beams are rarely compatible with new motors. A new pair of photoelectric (PE) beams is usually included in a motor kit from suppliers like ATA or Merlin, but always check the box contents before pricing."
+      },
+      {
+        "question": "Is removing an old tilt door more work than a roller door?",
+        "answer": "Yes, much more. A tilt door's spring and counterweight assembly is heavy, bulky, and can be dangerous to dismantle. They are also harder to transport for disposal. You should add at least one to two extra hours of labour to your quote, around $180-$240, for removing an old tilt door."
+      }
+    ]
+  },
+  "ducted-aircon-quote-template": {
+    "intro": "Quoting ducted air conditioning is more than just the unit price. The real profit gets lost in tricky roof spaces and forgetting to charge for every single zone motor. This ducted air conditioning quote template is built for Aussie HVAC techs doing residential installs, from single-storey brick veneers to complex multi-level homes. It helps you remember the details that protect your margin, like difficult access charges and the labour for balancing every zone properly. Get the core costs right, and the job runs smoothly from start to finish.",
+    "sections": [
+      {
+        "heading": "How to Price the Unit, Ducting, and Labour",
+        "body": "A 14kW Daikin unit might cost you $4,500 from a supplier like Actrol, but that's just the start. The real cost is in the layout. Budget around $350-$500 per outlet for flexible ducting, plenum boxes, and diffusers. Labour is your biggest variable. A simple single-storey job might take two techs a full day, so that's 16 hours at your rate. For a tight roof space or a two-storey house, you might need to double that. Always add a 10% waste factor on flexible ducting; offcuts for tight bends are unavoidable. Your total install cost, before margin, for a 5-outlet system will often land between $8,000 and $11,000."
+      },
+      {
+        "heading": "What Gets Left Off a Ducted AC Quote",
+        "body": "The biggest mistake is assuming the sparkie's work is minor. A dedicated circuit from the switchboard can cost $500-$900, especially in an older home. Always quote this separately. Don't forget crane hire for lifting the outdoor unit on multi-storey jobs, which can add another $400. Rubbish disposal for the old unit and packaging isn't free. Forgetting to add these items as line items in QuoteMate can wipe out your profit. Finally, include the cost of your Certificate of Compliance. All electrical work must comply with AS/NZS 3000, and all air con installs must meet the Building Code of Australia (BCA) ventilation requirements."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much margin should I add to a ducted air con job?",
+        "answer": "Start with a 15-20% margin on materials like the main unit and ductwork. For labour, your hourly rate should already have profit built in. On a full system install, aiming for a total job margin of 20-25% after all costs are covered is a solid target for most residential work."
+      },
+      {
+        "question": "Do I need to quote for different zones separately?",
+        "answer": "Yes, always. Each zone needs a motorised damper, a wall controller or sensor, and extra labour for wiring and commissioning. A standard 240V damper from a supplier like Polyaire can cost over $100 plus your labour. Pricing per zone makes your quote transparent and prevents you from losing money."
+      },
+      {
+        "question": "What's the best way to handle warranty on the quote?",
+        "answer": "Specify the manufacturer's warranty on parts (usually 5 years) and your own warranty on installation labour (typically 12 months) as separate items. This clarifies that a faulty fan motor is the manufacturer's responsibility to supply, protecting you from unpaid call-outs for parts failure after your labour warranty expires."
+      }
+    ]
+  },
+  "laundry-renovation-quote-template": {
+    "intro": "This laundry renovation quote template is for builders and cabinet makers pricing small-to-medium domestic jobs. It covers the basics, from cabinetry to tapware. Most tradies get tripped up on two things: underestimating the cost of moving plumbing even 300mm, and forgetting to price waterproofing to standard. A simple laundry can quickly become unprofitable if you don't account for the plumber's time to chase pipes or the membrane required for a new floor waste. This template helps you price those items correctly from the start.",
+    "sections": [
+      {
+        "heading": "How to Price the Real Cost Drivers in a Laundry Reno",
+        "body": "Your final price isn't just the Kaboodle flatpack from Bunnings. Labour is the biggest variable. A plumber's call-out and first hour is around $250, plus $120 per hour after that. Moving a washing machine waste pipe is often a half-day of cutting, chasing, and making good. Always add a 15% waste factor on tiles, more for complex patterns. A simple laminate benchtop might be $300, but a 20mm engineered stone top for the same space will start at $800 from a stonemason. Keeping track of these supplier costs in real-time with an app like QuoteMate prevents margin loss on the job."
+      },
+      {
+        "heading": "Forgetting These Items Will Cost You Money",
+        "body": "Demolition and waste disposal are the most common omissions. A small skip bin hire costs at least $300, and you need to factor in your labour to fill it. If the house is pre-1990, you must allow for asbestos testing on wall linings. Waterproofing is another big one. If you're adding a floor waste, the whole floor and wall junctions must comply with AS 3740. That means priming, applying two coats of membrane like Davco K10 Plus, and installing bond breakers in all corners. Also, remember to price for painting and patching the walls where old cupboards were removed. It all adds up."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote to move a washing machine drain?",
+        "answer": "Moving a drain 500mm can cost more than the new trough. Budget for at least 3-4 hours of a plumber's time plus materials. This usually involves cutting the wall or slab to re-route pipework. Expect to add between $500 and $900 to the plumbing bill for this change, before any wall repairs are done."
+      },
+      {
+        "question": "Does a laundry floor legally need to be waterproofed?",
+        "answer": "Yes, if it has a floor waste. Australian Standard AS 3740 requires waterproofing for the full floor and relevant wall junctions in that case. For a laundry without a floor waste on a ground-floor slab, it's not mandatory but is good practice. For any laundry in an apartment or on a second storey, waterproofing is always required."
+      },
+      {
+        "question": "What’s the price difference for a small laminate vs. stone benchtop?",
+        "answer": "For a typical 1.5 metre laundry bench, a pre-made laminate top from Bunnings will cost around $200-$250 off the shelf. A basic 20mm engineered stone top for the same space, supplied and installed by a stonemason, will start around $750. It’s a significant jump in material cost you need to quote accurately."
+      }
+    ]
+  },
+  "outdoor-kitchen-quote-template": {
+    "intro": "This outdoor kitchen quote template is for builders pricing custom alfresco jobs, from a simple BBQ island to a full setup with a sink and fridge. Most quotes go wrong in two places: underestimating the cost of stone benchtop fabrication and forgetting the compliance certificates for gas and plumbing. A good template stops you from leaving money on the table. Use this to build accurate, professional quotes that cover every line item, from the first GPO to the last stainless steel hinge, so you can price the job right.",
+    "sections": [
+      {
+        "heading": "How to Price Stone Benchtops and Marine-Grade Cabinetry",
+        "body": "Benchtops are your biggest variable. A 20mm engineered stone top from a supplier like Caesarstone will run $800-$1200 per square metre, supplied and installed. Granite can be double that. Always get a firm quote from your stonemason that includes cutouts for the BBQ and sink. For cabinetry, marine-grade plywood is the standard for custom carcasses, costing around $150 per 2400x1200 sheet from Bunnings Trade. Factor in at least 20% for waste. Labour for a chippy to build and install custom cabinetry is typically billed at $80-$100 per hour. Don't forget stainless steel hardware; cheap hinges will rust within a year."
+      },
+      {
+        "heading": "What Gets Left Off an Outdoor Kitchen Quote",
+        "body": "It’s the small things that kill your margin. First, gas fitting requires a licensed plumber and a compliance certificate under AS/NZS 5601. That’s a separate line item, often $400-$600. Second, waterproofing the wall behind the BBQ is critical, especially on timber-framed houses. Quote for Villaboard and a membrane that meets AS 3740. Third, waste disposal for stone offcuts isn’t cheap; your mason may charge extra for it. Finally, think about site access. If you can’t get a small crane or enough blokes to lift a 200kg stone benchtop into a backyard, your labour costs will blow out fast."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a council permit for an outdoor kitchen?",
+        "answer": "Usually no, if it's not a fully enclosed structure. However, if you're building a new roofed pergola for it or running major new service lines, you might. The client should be responsible for checking with their local council before work commences, as rules vary significantly between areas."
+      },
+      {
+        "question": "How much should I allow for plumbing and electrical?",
+        "answer": "For a setup with a sink, a few GPOs, and lighting, budget at least $1500-$2500. This covers labour and materials for a plumber to run water and waste, plus a sparky for a new circuit and outdoor-rated fittings. This cost is separate from the gas fitting compliance certificate, which is its own line item."
+      },
+      {
+        "question": "What's the best material for outdoor kitchen cabinets?",
+        "answer": "Marine-grade plywood is the standard for durable, custom carcasses. For doors, you can use exterior-grade products like Laminex Alfresco Compact Laminate or specially treated timber. Avoid standard MDF or particleboard entirely. They will swell and fail within a year, even if they look protected from the rain. It's not worth the callback."
+      }
+    ]
+  },
+  "timber-floor-sanding-quote-template": {
+    "intro": "This is for flooring installers quoting timber floor sanding and polishing jobs in residential or light commercial sites. It works for common Aussie hardwoods like Spotted Gum and Blackbutt, as well as softer timbers like Pine. Most quotes go wrong by underestimating floor repairs and the number of polyurethane coats needed for a durable finish. A good timber floor sanding quote template separates the sanding price per square metre from the prep work, so you don't lose your margin fixing someone else's dodgy floorboards. Get the prep and finish right, and the price looks after itself.",
+    "sections": [
+      {
+        "heading": "How to Price Sanding and Coating by the Square Metre",
+        "body": "The standard charge for sanding and polishing is per square metre. For a straightforward job, this ranges from $30 to $50 per square metre (sqm) including GST. This price should cover three passes with the sander (coarse, medium, fine), punching nails, filling gaps with colour-matched putty, and applying three coats of polyurethane. Labour is your biggest cost, so base your rate on getting 30-40 sqm done per day. A 4-litre can of Cabot's CFP Floor Water Based from Bunnings costs about $150 and covers roughly 40 sqm for one coat, so budget around $11-$12 per sqm for three coats of a quality finish."
+      },
+      {
+        "heading": "What Gets Left Off a Floor Sanding Quote",
+        "body": "Forgetting the extras is where you lose money. Always list furniture removal as a separate line item, charging an hourly rate. If you have to pull up and dispose of old carpet and underlay, that's another cost—at least $5-$8 per sqm. Check for access issues; quoting a third-floor apartment with no lift is different from a ground-floor house. Also, specify the finish. A high-gloss finish shows every imperfection, requiring more prep time than a satin or matte finish. Your quote should state the number of coats included, typically three. Any extra coats requested by the client should be priced at around $8-$10 per sqm."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I charge for staining a floor?",
+        "answer": "Staining adds a full step to the process and requires more skill than a clear coat. You should add 20-30% to your standard square metre rate. A product like Feast Watson Prooftint from Bunnings costs about $35 per 250ml, which covers roughly 10 sqm. Factor in the extra labour time for application and drying before the top coats go on."
+      },
+      {
+        "question": "Should I quote more for water-based or oil-based polyurethane?",
+        "answer": "Yes, water-based polyurethane is usually more expensive per can but dries much faster, allowing multiple coats in a day. Oil-based is cheaper but has a longer cure time. Price water-based finishes about 10-15% higher per square metre to cover the higher material cost. For example, Cabot's water-based is around $150 for 4L, while the oil-based equivalent is closer to $120."
+      },
+      {
+        "question": "How do I price major repairs like replacing damaged boards?",
+        "answer": "Never bundle major repairs into your square metre sanding price. Quote them as a separate item with a clear description of the work. Charge your standard hourly rate (e.g., $70-$90/hour) plus the cost of materials. Sourcing and matching aged timber can be time-consuming, so make sure your labour charge reflects that effort. This keeps the sanding quote clean and protects you from unknown costs."
+      }
+    ]
+  },
+  "window-replacement-quote-template": {
+    "intro": "This window replacement quote template is for glaziers doing residential jobs, from single swaps to whole-house refits. Most quotes get the new window price right but lose money on two things: the labour for making good on internal plaster and architraves, and the real cost of disposing of old frames and glass. This template helps you price those items correctly so your final figure covers the whole job, not just the new unit. Getting the details straight means you price fairly, protect your margin, and avoid arguments with the client when the job is done.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Materials for a Window Swap",
+        "body": "Your main costs are the window unit and your time. A standard 1200x1200mm aluminium window from a supplier like Stegbar or Bradnams might cost $450-$600 plus GST. Labour is the biggest variable. A simple swap in a brick veneer home takes 2-3 hours. If it's a second-storey job or a difficult opening, budget 4-5 hours. At an $90/hour rate, that’s a big difference. Add consumables like a tube of SikaFlex PRO sealant ($25 at Bunnings) and flashing tape. Always add a 10% contingency on materials. Your base cost for that single window swap is closer to $800 before you add your margin."
+      },
+      {
+        "heading": "What Gets Left Off a Window Replacement Quote",
+        "body": "Forgetting disposal fees is the most common mistake. A trip to the tip with old frames and glass can cost $80-$150. Second is access equipment. If the window is on an upper floor, you'll need to quote for scaffold or scissor lift hire, which can be $300+ per day. Third is making good. Clearly state if your price includes patching and painting internal plaster reveals and architraves. If not, specify that it's the client's responsibility. Finally, always note that the installation complies with Australian Standard AS 2047, which covers things like structural integrity and water penetration."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I quote for a custom-sized window?",
+        "answer": "Custom-sized windows typically cost 25-50% more from the manufacturer than a standard size. You should also add at least two extra hours of labour to your quote for the careful installation and finishing they require. Make sure you get a confirmed price and lead time from your supplier, like A&L Windows, before you send the final quote to the customer."
+      },
+      {
+        "question": "Do I need to include scaffolding hire in my quote?",
+        "answer": "Yes, if any part of the window is over two metres from the ground, you need a safe work platform. List scaffold hire as a separate line item. A small mobile tower from a hire place like Kennards can cost $150-$250 for a day. If you don't quote it, that cost comes directly out of your profit. It's a non-negotiable safety item."
+      },
+      {
+        "question": "What's the standard for waterproofing a new window?",
+        "answer": "The installation must comply with AS 2047. This involves installing flexible flashing tape around the entire window opening before the frame goes in, especially in brick veneer. Relying just on a bead of sealant is not enough and will lead to leaks. Use a quality product like Grace Vycor Plus flashing tape to meet the National Construction Code requirements."
+      }
+    ]
+  },
+  "power-point-installation-quote-template": {
+    "intro": "This power point installation quote template is for Australian electricians quoting standard GPO jobs. It suits everything from adding a single point in a bedroom to a multi-point kitchen fit-out. The biggest mistakes are underquoting labour for tricky access, especially in brick walls, and forgetting to factor in travel time for a small job. A single GPO install can become unprofitable if you don't account for the drive. This template helps you price every line item correctly, from the GPO itself to the cable runs and wall clips, ensuring you don't lose your margin.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Materials for GPO Installs",
+        "body": "Labour is the biggest variable. Installing a GPO in a plasterboard wall with good roof or floor access might take 30-45 minutes. The same job on an internal double-brick wall could take 2-3 hours, requiring chasing, conduit, and patching. Your labour rate should reflect this. Materials are more fixed. A standard Clipsal 2000 series double GPO costs about $12 from Middy's. Add $2-$3 per metre for 2.5mm twin and earth cable from Bunnings Trade. A simple plasterboard install might be quoted at $180, while the brick wall equivalent could be over $400. A quoting app like QuoteMate lets you save different labour rates for each scenario."
+      },
+      {
+        "heading": "What Gets Left Off a GPO Installation Quote",
+        "body": "Forgetting to check the existing circuit load is a common mistake. If the circuit is already maxed out, you'll need to quote for a new run back to the switchboard and a new circuit breaker. This adds significant cost. Also, specify who handles plaster patching and painting. If you don't do it, state that clearly. For brick walls, always include line items for conduit and the extra time for wall chasing. Finally, confirm the new work will be covered by a safety switch (RCD). If not, you must quote to install one at the switchboard to comply with AS/NZS 3000."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need to quote for a safety switch on every new power point?",
+        "answer": "Yes, if the circuit you're connecting to isn't already protected. All new socket outlets must have RCD protection under AS/NZS 3000. Forgetting to check and quote for a new RCBO at the switchboard can cost you $50-$80 in materials plus an hour of labour."
+      },
+      {
+        "question": "How much extra is a GPO with USB ports?",
+        "answer": "The GPO unit itself is the main difference. A standard Clipsal double GPO might be $12, but a USB-C version like the Clipsal Iconic can be over $70 from an electrical wholesaler. The installation labour is identical, so just add the higher material cost plus your markup to the quote."
+      },
+      {
+        "question": "What's a fair travel or call-out fee for a single GPO job?",
+        "answer": "For one power point, a minimum charge is essential. Many sparkies set a minimum of one hour's labour, around $90-$120, plus a service vehicle fee of $50 to cover travel costs. State this minimum charge clearly on the quote so the customer knows the base price."
+      }
+    ]
+  },
+  "turf-laying-quote-template": {
+    "intro": "This is for landscapers pricing residential turf jobs. It's a turf supply & lay quote template designed for common projects like new builds or backyard makeovers. Most tradies get tripped up on two things: underestimating the labour for site prep, and forgetting the cost of dumping the old lawn and soil. A 2m³ skip bin can cost $350 before you’ve even laid a roll of turf. This template helps you price every step, from the initial weed kill to the final roll, so your margin is protected and the client knows exactly what they’re paying for.",
+    "sections": [
+      {
+        "heading": "How to Calculate Costs for Turf Supply and Lay",
+        "body": "Your price is built from four key costs: turf, soil, labour, and disposal. First, the turf itself. Sir Walter Buffalo from a turf farm will run you about $15-$18 per square metre. Next, topsoil. You’ll need at least 50mm of quality underlay, which costs around $90 per cubic metre from a landscape supplier, plus delivery. Labour for a two-person crew is about $120-$150 per hour. A standard 80m² job can take 6-8 hours for prep and laying. Finally, waste disposal. Hiring a turf cutter from Bunnings is about $120 a day, and a skip bin for the old grass will add another $250-$400 depending on its size."
+      },
+      {
+        "heading": "Mistakes That Kill Your Margin on Turf Jobs",
+        "body": "The biggest mistake is quoting for turf but forgetting the prep work. Your quote must include line items for initial glyphosate spraying, hiring a turf cutter, and the labour to strip the site. Another costly error is ignoring site access. If you can’t get a wheelbarrow to the backyard easily, your labour hours will blow out. Add an 'access fee' or increase your labour allowance for difficult sites. Also, specify a soil depth on your quote. Promising a 'new lawn' is vague. Stating you will 'supply and spread 75mm of premium topsoil' is a fixed scope. This prevents the client asking for more soil later without a variation."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much waste factor should I add for turf?",
+        "answer": "Always add 5-10% to your turf order for cuts and wastage. If the area has a lot of curves around garden beds or paths, lean towards 10%. For a simple 100m² rectangular yard, ordering 105m² of turf gives you a safe buffer for offcuts without leaving you short on the job."
+      },
+      {
+        "question": "Do I charge for site prep separately on the quote?",
+        "answer": "No, build it into the total price but list it as line items. Show the client the cost for 'Site clearing with turf cutter' and 'Waste disposal via 2m³ skip bin'. This shows the value you're providing and justifies your price, preventing arguments over work that isn't just the turf itself. A day's turf cutter hire from Kennards is about $110."
+      },
+      {
+        "question": "What's the right way to price the soil?",
+        "answer": "Price soil by the cubic metre (m³), including delivery. A healthy lawn needs a base of at least 50-100mm of quality topsoil. For a 100m² area needing 50mm of soil, you'll need 5m³ (100m² x 0.05m). Get a current price from your local landscape supplier like ANL, as delivery fees can add another $50-$100 to the material cost."
+      }
+    ]
+  },
+  "hedge-trimming-quote-template": {
+    "intro": "This hedge trimming quote template suits most residential and body corporate jobs, from simple boundary hedges to more complex shaping. It helps you price jobs accurately so you don't lose money on the two items most landscapers forget: green waste disposal and difficult site access. Quoting these correctly from the start prevents arguments with the client later. Use this hedge trimming quote template to make sure your labour, gear, and disposal costs are covered every time, leaving you with a decent margin for your work.",
+    "sections": [
+      {
+        "heading": "How to Price Hedge Trimming: By the Metre vs. By the Hour",
+        "body": "For standard jobs, pricing per linear metre is fastest. For a typical 2-metre high lilly pilly or photinia hedge, charge $20-$40 per metre, one side. Double it for both sides. If it's overgrown, tangled, or needs a serious height reduction, switch to an hourly rate. Charge $70-$100 per hour, per person on site. This covers you for unexpected challenges. Remember to factor in fuel for the trimmer and blower, plus blade sharpening costs. A can of 2-stroke oil from Bunnings is around $15, so make sure your hourly rate covers all your running costs."
+      },
+      {
+        "heading": "What Gets Left Off: Tip Fees and Tricky Site Access",
+        "body": "Green waste disposal is a real cost. A packed ute or trailer load of clippings can cost you $90-$160 at a commercial waste facility. Always include a separate line item for 'Waste Removal and Tip Fees' so the client sees what they're paying for. Also, price for access. If you have to park on the street and haul clippings 50 metres through a narrow gate, that's extra labour. Add 15-25% to your labour time for poor access. For hedges over 3 metres high, you might need scaffolding or a cherry picker, which must be quoted as a separate hire cost."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I charge for green waste removal?",
+        "answer": "Price it as a separate line item based on volume. A standard 6x4 trailer or ute tray load costs between $90 and $160 at most council tips for commercial green waste. If you're doing a big job that will fill the truck, call your local waste management centre for their current price per tonne to ensure you're covered."
+      },
+      {
+        "question": "Do I charge more for formal shaping or topiary work?",
+        "answer": "Yes. A straight trim is priced per metre or hour. Detailed shaping is a skilled, slow process that should be quoted as a fixed price per plant or section. It requires more precision and time than a standard cut. Your rate for this detailed work should be at least double your standard hourly rate to reflect the higher skill level involved."
+      },
+      {
+        "question": "What's the best way to handle a client who wants to keep the clippings?",
+        "answer": "Confirm exactly where they want them piled and state this on the quote. Specify that you will cut and drop, but not move or spread the clippings. If they want you to move the clippings to a compost heap at the back of the property, you must charge for that labour time. Clearly separating these tasks on the quote avoids disputes."
+      }
+    ]
+  },
+  "cabinet-door-replacement-quote-template": {
+    "intro": "This cabinet door replacement quote template is for cabinet-makers doing kitchen and laundry refreshes. It suits jobs where the cabinet carcasses are sound, but the doors and drawer fronts need a modern look. Most tradies get quotes wrong in two places: underestimating the labour for adjusting hinges on old or out-of-square cabinets, and completely forgetting to charge for the disposal of the old doors. This template helps you price every component accurately, from the Polytec board and Blum hinges right through to cleanup, ensuring your quote is fair for the client and profitable for you.",
+    "sections": [
+      {
+        "heading": "How to Price Labour and Materials for a Door Swap",
+        "body": "The main costs are board material and your time. A standard Polytec Woodmatt sheet (2400x1200mm) costs around $180-$250 from a trade supplier. Calculate your door sizes, add a 15% waste factor, and price the board accordingly. Labour is the tricky part. Don't charge by the hour; charge per door. A good rate is $70-$90 per door. This covers the site measure, removing old doors, installing new hinges, hanging the new door, and the final alignment. This per-unit price protects you if you hit a stubborn cabinet that needs extra work. Using a tool like QuoteMate helps you itemise each door and apply consistent pricing instantly."
+      },
+      {
+        "heading": "What Gets Left Off a Cabinet Door Quote",
+        "body": "Forgetting small items kills your profit. Always check if new handles or knobs are needed, as clients often assume they're included. A simple handle from Bunnings can be $8, but architectural handles can be over $50 each. Also, add a line item for 'Hardware Sundries' to cover screws, packers, and bumpers. Disposal is another big one; a trip to the tip isn't free. Add a minimum $100 charge for removing and legally disposing of the old doors and any packaging. Finally, if the job requires new soft-close hinges like Blum Inserta, price them individually at around $7-$10 per hinge, not as part of the general labour cost."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I add markup on materials like Polytec board and hinges?",
+        "answer": "Yes, always add a markup to cover your time sourcing materials, handling, and storage. A standard markup on materials for a cabinet-maker is between 20% and 30%. This is an industry-standard practice and ensures you aren't just a free procurement service for the client. Your quote should show a single supply price, not your cost plus markup."
+      },
+      {
+        "question": "How do I quote for replacing drawer fronts as well as doors?",
+        "answer": "Price drawer fronts separately. They require more labour than a simple hinged door because you have to mount them to the drawer box and align them perfectly with adjacent doors and drawers. A good rule is to charge about 25% more for a drawer front installation than a standard door. For example, if your door rate is $80, charge $100 per drawer front."
+      },
+      {
+        "question": "Is there an Australian Standard for replacing cabinet doors?",
+        "answer": "There is no specific standard just for replacing doors. However, your work should still align with the principles of good workmanship found in AS/NZS 4386.1 for domestic kitchen assemblies. This mainly relates to ensuring hinges are fitted correctly, doors are aligned with safe gaps, and are fit for purpose. Mentioning your work meets industry best practice is enough for the quote."
+      }
+    ]
+  },
+  "leaf-guard-installation-quote-template": {
+    "intro": "Quoting leaf guard installation looks simple, but it's easy to get stung. This leaf guard installation quote template is built for Aussie roofers doing standard residential jobs on tile or metal roofs. The main things guys get wrong are underestimating labour on steep pitches—anything over 25 degrees needs extra time and safety gear—and not factoring enough waste for complex rooflines with multiple hips and valleys. Get the measurements and labour right, and you protect your profit. This template helps you price every screw and metre of mesh correctly, so you're not working for free on the tricky bits.",
+    "sections": [
+      {
+        "heading": "How to Price Leaf Guard Labour and Materials",
+        "body": "Price leaf guard jobs per linear metre, but adjust for complexity. A simple single-storey brick veneer might be $35-$55 per metre. This covers materials like All-Flow aluminium mesh from Bunnings Trade, which runs about $10-$15 per metre, plus screws and silicone. Your labour is the biggest variable. A steep roof (over 30 degrees) or a two-storey house immediately adds 20-30% to your labour time due to harness work and extra safety precautions. Don't forget to price valleys separately; they use wider mesh and take longer to fit correctly. For a standard 60-metre home, always budget for at least 5% material waste."
+      },
+      {
+        "heading": "What Most Roofers Forget on a Leaf Guard Quote",
+        "body": "The biggest mistake is not charging for gutter cleaning. It's not part of the installation, it's a separate line item. A gutter full of wet sludge can add hours to the job. Always quote 'Gutter clean prior to installation' separately, usually $4-$6 per metre. Another forgotten cost is rubbish removal; a standard house can generate 3-4 large bags of debris. Also, factor in access. A two-storey job or a steep pitch might require edge protection or scaffolding hire, adding $500-$1500 to the cost. Forgetting this will wipe out your entire profit. All work at height must use gear that meets AS/NZS 1891 standards."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I charge more for tile roofs than metal roofs?",
+        "answer": "Yes, slightly. Tiled roofs often require more precise trimming of the mesh to sit correctly under the second course of tiles, and the saddles or clips can take longer to install than screwing directly to a metal roof's gutter lip. Add around 10-15% to your labour calculation for a standard concrete tile roof compared to a Colorbond roof."
+      },
+      {
+        "question": "What's the best way to measure up a leaf guard job?",
+        "answer": "Measure every straight run of guttering with a laser measure or tape and add them up for a total linear metre count. Don't just measure the house footprint. Walk the perimeter and measure the valleys separately as they require wider, more expensive mesh. For a typical 4-bedroom house, expect around 50-70 linear metres of guttering."
+      },
+      {
+        "question": "Should I include a warranty on my leaf guard installation?",
+        "answer": "Yes, offer a warranty on your workmanship, typically 12-24 months. This covers screws coming loose or sections lifting. The material itself usually has a manufacturer's warranty, like the 15-year warranty on Gumleaf gutter guard. Make sure your quote specifies that your warranty covers installation labour only, not product failure or storm damage."
+      }
+    ]
+  },
+  "gutter-cleaning-quote-template": {
+    "intro": "This gutter cleaning quote template is for roofers pricing residential jobs, from single-storey homes to townhouses. Most tradies get tripped up on two things: underestimating the time it takes to work safely on a two-storey roof and completely forgetting to charge for waste disposal. This template makes sure you account for both. Get your labour rates and disposal fees right, and you'll make a profit on every job. It’s built for Aussie roofers who want to send a professional quote in minutes without missing key costs.",
+    "sections": [
+      {
+        "heading": "How to Price Gutter Cleaning Per Metre",
+        "body": "Most experienced roofers charge by the linear metre. For a single-storey house with easy ladder access, $7 to $12 per metre is a common range in major cities. For a two-storey or steep-pitched roof, that can easily jump to $15 to $25 per metre because of the extra safety setup and time. Always have a minimum call-out fee, around $220-$300, to make small jobs worthwhile. This rate should cover your labour, gear, and consumables like heavy-duty refuse bags. A 10-pack of Saxon 100L bags from Bunnings costs about $10, so your per-metre rate must absorb these costs."
+      },
+      {
+        "heading": "Forgetting Access and Disposal Costs Will Kill Your Profit",
+        "body": "The biggest mistake is not quoting for difficult access and waste disposal. If the roof pitch is over 25 degrees or it's a two-storey building, you may need temporary edge protection or a full harness system to comply with Safe Work Australia guidelines. This hire cost must be on the quote. The other forgotten cost is the local tip fee. A ute-load of wet leaves and sludge is heavy, and your council tip will charge for it. This can be anywhere from $80 to $150. A quoting tool like QuoteMate lets you save these as standard line items so you never forget to include them."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I charge extra to clean gutters with guards on them?",
+        "answer": "Yes, always. Removing and refitting gutter guards can double the labour time. Add a separate line item for it. A good rule of thumb is to add 30-50% to your per-metre labour rate for any lengths covered by guards. Make sure the customer understands this charge before you start, so there are no surprises on the final invoice."
+      },
+      {
+        "question": "Is flushing downpipes included in a standard gutter clean?",
+        "answer": "It should be an optional line item. A basic water flush to check for flow is often included, but clearing a serious blockage is a different task. Specify on your quote that a basic flush is covered, but significant blockages will be quoted separately. This manages expectations and follows the stormwater maintenance principles outlined in AS/NZS 3500.3."
+      },
+      {
+        "question": "What if I find broken tiles or rust during the clean?",
+        "answer": "Your quote's scope should state it only covers the clean. Note that you will report any damage found, and repairs can be quoted as a separate job. This protects you from doing unpaid work and positions you as a helpful expert. Always take photos of any damage to show the client when you present the quote for the extra repair work."
+      }
+    ]
+  },
+  "general-pest-control-quote-template": {
+    "intro": "This general pest control quote template is for standard residential jobs: spiders, ants, and common cockroaches in a typical three-bedroom house. The biggest mistakes pesties make are under-quoting chemical costs for large perimeters and not allowing enough time for a thorough job, especially in cluttered roof voids or subfloors. Get those two things right, and you’ll stop losing money on your bread-and-butter work. This template provides the line items to make sure every litre of chemical and every minute on site is covered in your price.",
+    "sections": [
+      {
+        "heading": "How to Price a Standard Residential Pest Spray",
+        "body": "A standard 3-bedder takes about 1 to 1.5 hours on site. At a charge-out rate of $150/hr, that's up to $225 in labour. Your main chemical is a bifenthrin concentrate, like the 1L bottles from Agserv or Garrards. A bottle might cost you $80 and make 100L of spray at the general pest rate. If you use 10L per job, your chemical cost is $8. Add another $20 for vehicle running costs and consumables like gloves and masks. Your base cost is around $253 before markup and GST. An app like QuoteMate helps track these costs job-to-job."
+      },
+      {
+        "heading": "What Gets Left Off: German Cockroaches and Poor Access",
+        "body": "A general spray price doesn't cover every situation. German cockroach infestations are a classic error; they need specific gel baits and often a follow-up visit, which must be quoted as a separate, higher-priced service. Always add a line item for difficult access, like clearing a blocked manhole or working in a tight subfloor. A client's packed garage isn't your fault, so charge for the extra half-hour of labour it costs you. Also, specify the warranty period on the quote, like a 6-month service-free period for spiders, to manage expectations. All treatments must comply with the label directions approved by the APVMA."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much extra should I charge for a two-storey house?",
+        "answer": "A two-storey house adds time for moving equipment and managing ladder safety, plus it has a larger external perimeter and more eaves to treat. A good rule of thumb is to add 30-50% to your standard single-storey price. If your base job is $300, quote at least $390 for the two-storey version."
+      },
+      {
+        "question": "Do I need to quote differently for an end-of-lease spray?",
+        "answer": "Yes. An end-of-lease spray is usually for a vacant and clean property, making access easier and the job faster. You can often price it 10-15% lower than for an occupied home. The quote should specify it only covers the property as-is, as required by the real estate agent."
+      },
+      {
+        "question": "Is a German cockroach job priced the same as a general spray?",
+        "answer": "No, and quoting it the same is a quick way to lose money. A German roach job requires specialised gel baits, like Maxforce Gold, and insect growth regulators. It also often requires a follow-up visit. Price this as a separate service, typically costing at least 50% more than a general spray."
+      }
+    ]
+  },
+  "fence-repair-quote-template": {
+    "intro": "A fence repair seems simple until you're digging out an old concrete footing by hand. Underquote that labour and you've lost your profit for the day. This fence repair quote template is for Australian fencers tackling common jobs like replacing rotted posts, storm-damaged palings, or sagging sections. Most fencers get caught out by forgetting to quote for tip fees to dispose of the old treated pine and concrete, or not factoring in enough time for tricky site access. We've built this template to cover those hidden costs so your quote is accurate from the start.",
+    "sections": [
+      {
+        "heading": "Calculating Costs for Posts, Palings, and Labour",
+        "body": "The real cost in a fence repair is labour, not materials. Don't quote by the hour; quote per post or per metre. Digging out and replacing a single rotted post can take 2-3 hours, so budget at least $200 in labour for just one. For materials, a 90x90mm H4 treated pine post from Bunnings runs about $35, plus $10 for a bag of Rapid Set concrete. Standard 1.8m palings are cheap at around $3.50 each, but always add a 10% waste factor for splits and offcuts. For a typical three-post, ten-paling repair, your base material cost will be around $150 before markup."
+      },
+      {
+        "heading": "Hidden Costs: Site Access and Waste Disposal",
+        "body": "Two costs kill your profit on small repairs: waste disposal and site access. Old treated pine and concrete footings can't just go in the bin. A trip to the tip with a ute-load will cost you $80 to $150, so add a line item for 'Waste Removal'. Second, check the access. If you're carting concrete bags and posts 50 metres up a sloping backyard, add a 'Difficult Access Surcharge' to your labour. It's also a mistake not to check for underground services before you dig. A quick check on the Dial Before You Dig website is free and saves you from hitting a water pipe."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should I charge a call-out fee for a small fence repair quote?",
+        "answer": "Yes, for jobs under a few hundred dollars, a call-out fee of $80-$120 is standard. It covers your travel time and expertise if the customer doesn't proceed. Be upfront about it, and offer to waive it if they accept the quote. This filters out tyre-kickers and ensures you're paid for your time. Most genuine customers understand you have to cover your fuel and an hour of your day."
+      },
+      {
+        "question": "How much markup should I add to materials for a fence repair?",
+        "answer": "For small repair jobs, a 20-25% markup on materials is typical. This covers your time sourcing parts from suppliers like Bunnings or a local timber yard, plus handling. On a larger job you might reduce this to 15%, but for a handful of posts and palings, a 25% margin is fair and standard industry practice."
+      },
+      {
+        "question": "Do I need to specify the exact type of screws in the quote?",
+        "answer": "Yes, be specific. It shows professionalism and justifies your cost. List 'Galvanised Bugle Batten Screws 14g x 100mm' for rails, not just 'screws'. This prevents arguments about using cheap fasteners that will rust. Specifying quality galvanised hardware from a supplier like Bunnings shows you aren't cutting corners and builds trust with the client."
+      }
+    ]
+  },
+  "rodent-control-quote-template": {
+    "intro": "This rodent control quote template is for residential and light commercial jobs. It covers standard baiting and trapping for rats and mice in houses, sheds, and small offices. The biggest mistake pesties make is quoting a flat fee without seeing the site. A small unit is different from a large house with a cluttered roof space. The other classic error is forgetting to price the follow-up visits. This template helps you itemise everything so you get paid for all the work you do.",
+    "sections": [
+      {
+        "heading": "How to Price Baiting, Trapping, and Labour",
+        "body": "The cost is driven by materials and time. A standard lockable bait station from Agserv or Garrards costs about $10-$15. You'll need 4-6 for a typical house exterior. A bucket of Contrac Blox might be $100, but you only use a few blocks per station. The real variable is labour. A standard call-out fee for the first hour is usually $220-$300 including GST. This covers the initial inspection and setup. Any follow-up visits should be quoted separately, typically at a lower rate like $120 per visit, as they're quicker checks and re-baits."
+      },
+      {
+        "heading": "What Gets Left Off a Rodent Control Quote",
+        "body": "Always quote for follow-up visits. Most jobs need at least one check at the 2-week mark to assess activity and rebait. Forgetting this line item means you do it for free. Also, consider adding rodent-proofing as an optional extra. This involves blocking entry points with steel wool or sealant and is a separate charge. Difficult access is another one. If you need to crawl through a tight roof void or under a low deck, add a labour charge for the extra time. Finally, factor in safe disposal of any carcasses, as this is part of the service covered by the AEPMA Code of Practice."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much should I charge for a follow-up visit?",
+        "answer": "A follow-up is shorter than the initial setup, so charge less. A common rate is a fixed fee between $90 and $150 plus GST. This should cover up to 30 minutes on site for checking stations, removing any carcasses, and topping up bait. Always state the cost for follow-ups clearly on your initial quote."
+      },
+      {
+        "question": "Should I include rodent-proofing in the main quote?",
+        "answer": "No, quote it as a separate, optional line item. Rodent-proofing is a construction task, not a pest control task. It uses different materials and skills. Separating it gives the customer a clear choice and protects your margin if they only want the baiting service. You can source proofing mesh and fillers from stores like Bunnings."
+      },
+      {
+        "question": "Do I need to add GST to my rodent control quote?",
+        "answer": "Yes, if your business is registered for GST, you must add 10% to the total price. Pest control services are not GST-free in Australia. Forgetting it means you pay the 10% out of your own pocket. Using software like QuoteMate automatically calculates and adds GST to every line item, ensuring your invoices are always correct."
+      }
+    ]
+  }
+}
