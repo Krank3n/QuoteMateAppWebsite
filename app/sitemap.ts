@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { trades, cities, quoteTemplates, guides, paymentHub, manageJobsHub, quotingHub, reeceIntegration } from '@/lib/data';
 import { competitors } from './compare/data';
-import { TEMPLATES_WITH_VIDEOS } from '@/lib/videos';
+import { TEMPLATES_WITH_VIDEOS, TRADES_WITH_VIDEOS } from '@/lib/videos';
 
 export const dynamic = 'force-static';
 
@@ -54,12 +54,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const tradePages: MetadataRoute.Sitemap = trades.map((trade) => ({
-    url: `${baseUrl}/quotes-for-${trade.slug}/`,
-    lastModified,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const tradePages: MetadataRoute.Sitemap = trades.map((trade) => {
+    const hasVideo = TRADES_WITH_VIDEOS.has(trade.slug);
+    return {
+      url: `${baseUrl}/quotes-for-${trade.slug}/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: hasVideo ? 0.85 : 0.8,
+      ...(hasVideo
+        ? {
+            videos: [
+              {
+                title: `${trade.name} quote demo`,
+                thumbnail_loc: `${baseUrl}/assets/videos/trades/${trade.slug}-poster.jpg`,
+                description: `Watch a real ${trade.name.toLowerCase()} quote built in under a minute with QuoteMate.`,
+                content_loc: `${baseUrl}/assets/videos/trades/${trade.slug}.mp4`,
+              },
+            ],
+          }
+        : {}),
+    };
+  });
 
   const TIER_1_CITIES = new Set(['sydney', 'melbourne', 'brisbane']);
   const TIER_2_CITIES = new Set(['perth', 'adelaide']);

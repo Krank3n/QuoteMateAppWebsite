@@ -8,9 +8,8 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
 import { trades, cities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs } from '@/lib/data';
-import TradePromoVideo from '../components/TradePromoVideo';
-
-const TRADES_WITH_VIDEOS = new Set(['electricians', 'plumbers', 'carpenters']);
+import WalkthroughPlayer from '../components/WalkthroughPlayer';
+import { TRADES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
 
 interface Props {
   params: Promise<{ tradeSlug: string }>;
@@ -69,6 +68,7 @@ export default async function TradePage({ params }: Props) {
   if (!trade) notFound();
 
   const templates = getTemplatesForTrade(trade.slug);
+  const hasVideo = TRADES_WITH_VIDEOS.has(trade.slug);
   const faqItems = getTradeFAQs(trade);
 
   return (
@@ -82,38 +82,53 @@ export default async function TradePage({ params }: Props) {
               { label: 'Trades', href: '/trades' },
               { label: trade.name },
             ]} />
-            <div className="seo-hero-content">
-              <span className="seo-badge">Quoting App for {trade.name}</span>
-              {trade.partnerBadge && (
-                <Link href={trade.partnerBadge.href} className="seo-partner-badge">
-                  <Image
-                    src={trade.partnerBadge.logo}
-                    alt=""
-                    width={trade.partnerBadge.logoWidth ?? 48}
-                    height={trade.partnerBadge.logoHeight ?? 32}
-                    aria-hidden="true"
+            <div className={hasVideo ? 'seo-hero-layout' : undefined}>
+              <div className="seo-hero-content">
+                <span className="seo-badge">Quoting App for {trade.name}</span>
+                {trade.partnerBadge && (
+                  <Link href={trade.partnerBadge.href} className="seo-partner-badge">
+                    <Image
+                      src={trade.partnerBadge.logo}
+                      alt=""
+                      width={trade.partnerBadge.logoWidth ?? 48}
+                      height={trade.partnerBadge.logoHeight ?? 32}
+                      aria-hidden="true"
+                    />
+                    <span>{trade.partnerBadge.label}</span>
+                  </Link>
+                )}
+                <h1 className="seo-hero-title">{trade.heroTitle}</h1>
+                <p className="seo-hero-subtitle">{trade.description}</p>
+                {hasVideo && <p className="seo-hero-videocue">▶ Watch a real {trade.name.toLowerCase()} quote built in under a minute</p>}
+                <CTAButtons showWebLink />
+              </div>
+              {hasVideo && (
+                <div className="seo-hero-media">
+                  <WalkthroughPlayer basePath="trades" slug={trade.slug} poster={`/assets/videos/trades/${trade.slug}-poster.jpg`} label={`${trade.name} quote demo`} />
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                      '@context': 'https://schema.org',
+                      '@type': 'VideoObject',
+                      name: `${trade.name} quote demo — real prices in under a minute`,
+                      description: trade.description,
+                      thumbnailUrl: `https://quotemateapp.au/assets/videos/trades/${trade.slug}-poster.jpg`,
+                      uploadDate: VIDEO_UPLOAD_DATE,
+                      duration: 'PT1M',
+                      contentUrl: `https://quotemateapp.au/assets/videos/trades/${trade.slug}.mp4`,
+                      embedUrl: `https://quotemateapp.au/quotes-for-${trade.slug}`,
+                      publisher: {
+                        '@type': 'Organization',
+                        name: 'QuoteMate',
+                        logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' },
+                      },
+                    }) }}
                   />
-                  <span>{trade.partnerBadge.label}</span>
-                </Link>
+                </div>
               )}
-              <h1 className="seo-hero-title">{trade.heroTitle}</h1>
-              <p className="seo-hero-subtitle">{trade.description}</p>
-              <CTAButtons showWebLink />
             </div>
           </div>
         </section>
-
-        {TRADES_WITH_VIDEOS.has(trade.slug) && (
-          <section className="trade-promo-video-section">
-            <div className="container">
-              <h2 className="section-title">Yeah Nah, Not Like That</h2>
-              <p className="section-subtitle">Sloppy quotes? There&apos;s a better way, mate.</p>
-              <div className="trade-promo-video-wrap">
-                <TradePromoVideo tradeSlug={trade.slug} tradeName={trade.name} />
-              </div>
-            </div>
-          </section>
-        )}
 
         <section className="seo-pain-point">
           <div className="container">

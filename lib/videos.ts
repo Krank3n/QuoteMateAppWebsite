@@ -39,9 +39,24 @@ export const TEMPLATES_WITH_VIDEOS = new Set<string>([
   'vinyl-plank-flooring-quote-template',
   'shower-screen-quote-template',
   'stump-grinding-quote-template',
+  // Reused from existing renders for base templates that priced short:
+  'fence-quote-template',
+  'led-downlight-installation-quote-template',
+]);
+
+// Trade slugs (/quotes-for-<slug>) with a promo video under
+// /public/assets/videos/trades/<slug>.{mp4,webm} + <slug>-poster.jpg.
+export const TRADES_WITH_VIDEOS = new Set<string>([
+  // Original trade videos:
+  'electricians', 'plumbers', 'carpenters',
+  // Reusing a representative niche video as the trade demo:
+  'painters', 'roofers', 'landscapers', 'tilers', 'concreters', 'pest-controllers',
+  'cleaners', 'renderers', 'plasterers', 'cabinet-makers', 'hvac-technicians',
+  'glaziers', 'fencers', 'flooring-installers', 'arborists', 'builders',
 ]);
 
 // Approx upload date for VideoObject schema (kept stable for static builds).
 export const VIDEO_UPLOAD_DATE = '2026-06-23';
 
 export const templateHasVideo = (slug: string): boolean => TEMPLATES_WITH_VIDEOS.has(slug);
+export const tradeHasVideo = (slug: string): boolean => TRADES_WITH_VIDEOS.has(slug);
