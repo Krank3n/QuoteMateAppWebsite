@@ -56,7 +56,9 @@ export const TRADES_WITH_VIDEOS = new Set<string>([
 ]);
 
 // Approx upload date for VideoObject schema (kept stable for static builds).
-export const VIDEO_UPLOAD_DATE = '2026-06-23';
+// Must be a full, timezone-aware ISO 8601 datetime (Google Rich Results /
+// VideoObject.uploadDate requirement). AEST is UTC+10:00.
+export const VIDEO_UPLOAD_DATE = '2026-06-23T10:00:00+10:00';
 
 export const templateHasVideo = (slug: string): boolean => TEMPLATES_WITH_VIDEOS.has(slug);
 export const tradeHasVideo = (slug: string): boolean => TRADES_WITH_VIDEOS.has(slug);
