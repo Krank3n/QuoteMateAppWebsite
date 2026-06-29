@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 
 const GA_ID = 'G-E3JERN2D5V';
@@ -32,7 +33,13 @@ function getClosestSection(el: Element): string {
 }
 
 export default function Analytics() {
+  // Don't load GA on the internal /admin CRM — it pollutes marketing analytics
+  // with team traffic (inflated sessions, fake "top pages", skewed funnel).
+  const pathname = usePathname();
+  const disabled = pathname?.startsWith('/admin') ?? false;
+
   useEffect(() => {
+    if (disabled) return;
     // Fire experiment impression once per mount
     const variant = getVariant();
     track('experiment_impression', { experiment_id: 'home_hero_v1', variant });
@@ -124,7 +131,9 @@ export default function Analytics() {
       window.removeEventListener('scroll', checkScrollDepth);
       timeouts.forEach(clearTimeout);
     };
-  }, []);
+  }, [disabled]);
+
+  if (disabled) return null;
 
   return (
     <>

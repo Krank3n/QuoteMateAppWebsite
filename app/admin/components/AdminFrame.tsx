@@ -27,11 +27,13 @@ import {
   IconPhone,
   IconAiCost,
   IconBoard,
+  IconTrendUp,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', Icon: IconDashboard },
+  { href: '/admin/analytics', label: 'Analytics', Icon: IconTrendUp },
   { href: '/admin/tickets', label: 'Tasks', Icon: IconBoard },
   { href: '/admin/users', label: 'Users', Icon: IconUsers },
   { href: '/admin/leads', label: 'Leads', Icon: IconSend },
