@@ -10,7 +10,8 @@ import {
 } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, functions, auth, storage } from './firebase';
+import { functions, auth } from './firebase';
+import { db, storage } from './firebaseDb';
 
 export interface ExtractedItem {
   name: string;
