@@ -833,12 +833,19 @@ html[data-home-variant="b"] .eng-home .mobile-menu .ghost {
       but the first section after hb-hero is integrations whose border-top
       reads var(--line) — that already works. No extra rule needed.) */
 
-/* 6. Marquee cards — white-tint bg becomes explicit panel */
+/* 6. Marquee cards — KEEP DARK in variant B. The partner logos (Xero, Square,
+      Reece, CallKatie) are near-white assets built for the dark hero, so on a
+      white panel they'd be light-on-light and vanish. Dark chips are the surface
+      they were designed for — matching the device mockups that also stay dark.
+      Google Calendar's full-colour logo reads fine on dark too. */
 html[data-home-variant="b"] .eng-home .mcard {
-  background: var(--panel);
+  background: #0f1421;
+  border-color: rgba(255,255,255,.10);
+}
+html[data-home-variant="b"] .eng-home .mcard:hover {
+  border-color: rgba(255,255,255,.22);
 }
 html[data-home-variant="b"] .eng-home .mcard img {
-  /* partner logos often have dark text/colour — leave opacity alone */
   opacity: 1;
 }
 
