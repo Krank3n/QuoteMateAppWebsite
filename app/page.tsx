@@ -114,7 +114,7 @@ export default function HomePage() {
           <div>
             <span className="tag">
               <span className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span><b>5.0</b> on Google Reviews</span>
+              <span><b>5.0</b> on Google Play</span>
             </span>
             <h1>Don&apos;t quote at night <span className="moon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg></span><br />Quote <span className="hl">On-site</span><span className="h1badge">in 2 min</span></h1>
             <ol className="sub-steps">
@@ -682,18 +682,18 @@ export default function HomePage() {
           <div className="tgrid">
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p>&ldquo;I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest — materials, live supplier prices, the lot.&rdquo;</p>
-              <div className="who"><div className="av">DR</div><div><b>Dave R.</b><span>carpenter &middot; sydney</span></div></div>
+              <p>&ldquo;It&apos;s actually an unreal idea, it&apos;s a lot more than just a quoting app, and the AI makes everything so much easier and quicker than inputting all the information manually! Can definitely recommend.&rdquo;</p>
+              <div className="who"><div className="av">SL</div><div><b>Sonni Joshua Lynton</b><span>Google Play &middot; verified</span></div></div>
             </div>
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p>&ldquo;The AI material suggestions are spot on. Described a switchboard upgrade and it pulled every item I needed with current pricing. Saved me an hour per quote.&rdquo;</p>
-              <div className="who"><div className="av">MT</div><div><b>Mick T.</b><span>electrician &middot; melbourne</span></div></div>
+              <p>&ldquo;The tool understands exactly what I need and generates clear, professional quotes with minimal input&hellip; One of the best parts is how much time it saves &mdash; it feels like having an extra assistant that never makes mistakes.&rdquo;</p>
+              <div className="who"><div className="av">TM</div><div><b>TMAK 11</b><span>Google Play &middot; verified</span></div></div>
             </div>
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p>&ldquo;Finally an app that understands what tradies need. No bloat — just fast, accurate quotes from my phone. The offline mode is a lifesaver on rural jobs.&rdquo;</p>
-              <div className="who"><div className="av">SK</div><div><b>Sarah K.</b><span>painter &middot; brisbane</span></div></div>
+              <p>Rated <b>5.0</b> by tradies on Google Play. Used QuoteMate on a job? We&apos;d genuinely love your honest review.</p>
+              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&amp;hl=en_AU" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
             </div>
           </div>
         </div>
@@ -969,7 +969,7 @@ export default function HomePage() {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
-          "reviewCount": "3",
+          "reviewCount": "2",
           "bestRating": "5",
           "worstRating": "1",
         },
@@ -977,20 +977,18 @@ export default function HomePage() {
           {
             "@type": "Review",
             "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "author": { "@type": "Person", "name": "Dave R.", "jobTitle": "Carpenter" },
-            "reviewBody": "I used to spend hours on quotes after a long day on site. Now I punch in the job details and QuoteMate does the rest — materials, live supplier prices, the lot. Clients love the professional PDFs too.",
+            "author": { "@type": "Person", "name": "Sonni Joshua Lynton" },
+            "datePublished": "2026-04-27",
+            "publisher": { "@type": "Organization", "name": "Google Play" },
+            "reviewBody": "It's actually an unreal idea, it's a lot more than just a quoting app, and the AI makes everything so much easier and quicker than inputting all the information manually! Can definitely recommend",
           },
           {
             "@type": "Review",
             "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "author": { "@type": "Person", "name": "Mick T.", "jobTitle": "Electrician" },
-            "reviewBody": "The AI material suggestions are spot on. Described a switchboard upgrade and it pulled every item I needed with current pricing. Saved me at least an hour per quote. Worth every cent of the Pro plan.",
-          },
-          {
-            "@type": "Review",
-            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-            "author": { "@type": "Person", "name": "Sarah K.", "jobTitle": "Painter" },
-            "reviewBody": "Finally an app that actually understands what tradies need. No bloat, no complicated setup — just fast, accurate quotes I can send straight from my phone. The offline mode is a lifesaver on rural jobs.",
+            "author": { "@type": "Person", "name": "TMAK 11" },
+            "datePublished": "2026-04-13",
+            "publisher": { "@type": "Organization", "name": "Google Play" },
+            "reviewBody": "The tool understands exactly what I need and generates clear, professional quotes with minimal input. It reduces human error and helps me stay consistent, which has made a big difference in how I present my services to clients. One of the best parts is how much time it saves. Instead of getting stuck on admin tasks, I can focus more on actual work and growing my business. It feels like having an extra assistant that never makes mistakes and is always available. Great development team, 5 stars.",
           },
         ],
         "author": {
@@ -1091,7 +1089,7 @@ export default function HomePage() {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
-          "reviewCount": "3",
+          "reviewCount": "2",
           "bestRating": "5",
         },
       })}} />
