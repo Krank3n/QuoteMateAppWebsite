@@ -108,10 +108,8 @@ export default async function TradeCityPage({ params }: Props) {
           <div className="container">
             <div className="local-card">
               <h2>{trade.name} in {city.name}, {city.state}</h2>
-              <p>{city.name} ({city.description}) is home to {city.population} residents{city.region ? ` across ${city.region}` : ''}. {city.localNote}, {trade.name.toLowerCase()} rely on QuoteMate to create professional quotes quickly and accurately.</p>
-              {city.buildingStock && <p>{city.buildingStock} {city.climateNote}</p>}
-              {city.demandNote && <p>{city.demandNote} {city.stateLicensing}</p>}
-              <p>Whether you&rsquo;re quoting a small repair or a major {trade.keyword} project, QuoteMate&rsquo;s AI-powered quoting engine helps you price jobs accurately with real-time material costs from major Australian suppliers.</p>
+              <p>{city.name} ({city.description}) is home to {city.population} residents{city.region ? ` across ${city.region}` : ''}. {city.localNote}, {trade.name.toLowerCase()} rely on QuoteMate to price {trade.keyword} jobs quickly and accurately.</p>
+              {city.buildingStock && <p>{city.buildingStock} {city.climateNote}{city.demandNote ? ` ${city.demandNote}` : ''}</p>}
             </div>
           </div>
         </section>
