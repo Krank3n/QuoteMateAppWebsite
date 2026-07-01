@@ -833,20 +833,25 @@ html[data-home-variant="b"] .eng-home .mobile-menu .ghost {
       but the first section after hb-hero is integrations whose border-top
       reads var(--line) — that already works. No extra rule needed.) */
 
-/* 6. Marquee cards — KEEP DARK in variant B. The partner logos (Xero, Square,
-      Reece, CallKatie) are near-white assets built for the dark hero, so on a
-      white panel they'd be light-on-light and vanish. Dark chips are the surface
-      they were designed for — matching the device mockups that also stay dark.
-      Google Calendar's full-colour logo reads fine on dark too. */
+/* 6. Marquee cards stay LIGHT in variant B — darken the LOGOS, not the chips.
+      Xero, Square and Reece ship as near-white wordmarks built for the dark
+      hero, so on the light chip they'd be light-on-light — darken them to read.
+      CallKatie (own dark tile) and Google Calendar (full colour) already read on
+      white, and brightness(0) would flatten their detail into a dark blob, so
+      leave those two untouched. Chips stay light — dark chips looked like buttons. */
 html[data-home-variant="b"] .eng-home .mcard {
-  background: #0f1421;
-  border-color: rgba(255,255,255,.10);
+  background: var(--panel);
 }
-html[data-home-variant="b"] .eng-home .mcard:hover {
-  border-color: rgba(255,255,255,.22);
+html[data-home-variant="b"] .eng-home .mcard img[src*="xero"],
+html[data-home-variant="b"] .eng-home .mcard img[src*="square"],
+html[data-home-variant="b"] .eng-home .mcard img[src*="reece"] {
+  filter: brightness(0);
+  opacity: .6;
 }
-html[data-home-variant="b"] .eng-home .mcard img {
-  opacity: 1;
+html[data-home-variant="b"] .eng-home .mcard:hover img[src*="xero"],
+html[data-home-variant="b"] .eng-home .mcard:hover img[src*="square"],
+html[data-home-variant="b"] .eng-home .mcard:hover img[src*="reece"] {
+  opacity: .85;
 }
 
 /* 7. Walkthrough phone frame: KEEP dark — it is a device/app mockup.
