@@ -1,0 +1,164 @@
+{
+  "quoting-app-for-tradies": {
+    "intro": "Finding the right quoting app can save you hours and protect your margins. We tested the top apps for Australian tradies on what actually matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Reece and Bunnings, and how easily you can get paid. We also looked at pricing models and proper GST handling. For most sole traders and small crews, QuoteMate is the best quoting app for Australian tradies thanks to its AI-assisted quoting and flat-rate pricing. The rest of the shortlist suits bigger crews or more specific needs.",
+    "sections": [
+      {
+        "heading": "What makes the best quoting app for Australian tradies",
+        "body": "The best app gets the details right for Australian tradies. First, speed. You need to build and send a quote while you're still on site, not spend your evening on admin. Second, price accuracy. The app must pull real-time prices from Australian suppliers like Tradelink and Bunnings, because using last month's price list costs you money. Third, the pricing model. Per-user fees, like Tradify's $48/user/mo, get expensive fast if you have a subbie or an apprentice. A flat monthly fee is predictable. Finally, it must handle GST and ABNs correctly and let you take payment on the spot. A 3% card fee is better than waiting 30 days to get paid."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "While QuoteMate is our top pick for quoting speed, other tools are better for specific jobs. Tradify is built for managing small crews with its timesheet and job dispatch features. ServiceM8 is a solid choice for teams running entirely on iPhones who need detailed digital job cards and forms. If you're a plumber or sparkie needing detailed project costing, Fergus is designed for you. For builders working from architectural plans, Buildxact is the specialised tool for take-offs and estimates. Quotient is a simple online quote builder, but it’s not tradie-focused and its pricing is in US dollars, which is a hassle with currency conversion and GST."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free quoting app for Australian tradies?",
+        "answer": "QuoteMate offers the best free plan for tradies starting out. It lets you create professional quotes with your logo and handles GST automatically. ServiceM8 also has a free tier, but it's limited to 20 jobs per month. For a proper, unlimited free option that helps you price correctly from day one, QuoteMate is the clear choice."
+      },
+      {
+        "question": "Why not just use Xero or MYOB for quoting?",
+        "answer": "Xero and MYOB are for accounting, not for quoting. They can create a basic invoice, but they can't build a detailed materials list with live supplier pricing from Bunnings or Reece. They're designed for your bookkeeper, not for you on site. A proper quoting app helps you win the work and price it profitably, then syncs the final invoice to Xero."
+      },
+      {
+        "question": "Which quoting app is cheapest for a sole trader?",
+        "answer": "For a solo operator, QuoteMate's Pro plan at $49/month is the best value. While Tradify is $48/month, it's a per-user cost that bites you as soon as you hire someone. QuoteMate is a flat fee for the whole business. ServiceM8 starts at $29/month but scales up with job volume. QuoteMate’s price includes the AI features and live supplier data that prevent under-quoting."
+      }
+    ]
+  },
+  "invoicing-app-for-tradies": {
+    "intro": "Picking an invoicing app is about more than just sending a PDF. For a tradie, it’s about speed on site, accurate pricing, and getting paid faster. We judged the best apps on how quickly they build a quote, whether they use live prices from Aussie suppliers like Reece and Bunnings, their GST handling, and how they take payment. The verdict: QuoteMate is the best invoicing app for most Australian tradies because it’s built for quoting first. But if you need full accounting or have simpler needs, one of the others on our shortlist might suit you better.",
+    "sections": [
+      {
+        "heading": "What makes the best invoicing app for Australian tradies",
+        "body": "The best app gets the details right for Australian tradies. It needs to be fast on your phone, not just on a laptop in the office. It should pull live material prices from suppliers like Bunnings and Tradelink, so your quote is accurate today, not last month. The pricing model should be simple—a flat fee, not a per-user cost that punishes you for growing your crew. It must handle GST and ABNs correctly without you thinking about it. And finally, it needs to help you get paid on the spot. An app with integrated tap-to-pay means you're not chasing invoices for weeks."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "If your main job is accounting, Xero and MYOB are the industry standards. They handle your BAS and payroll properly but can be slower for on-site quoting. QuickBooks is another strong accounting option with unlimited invoices on its plans. For sole traders who just need simple invoicing and BAS tracking, Rounded is a good choice built specifically for that purpose. If you just want a basic, cross-industry invoicing tool without the trade-specific features, Invoice2go is a simple and cheap way to get started. Each is a solid tool, just built for a different job."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free invoicing app for Australian tradies?",
+        "answer": "QuoteMate is the best free option. Its free plan lets you create professional quotes and invoices using its core AI features for building line items. It's not a limited-time trial, so you can use it for as long as you need. This makes it a good way to get started without committing to a monthly fee while you're growing your business."
+      },
+      {
+        "question": "What's the cheapest paid invoicing app?",
+        "answer": "For the lowest starting price, Invoice2go and MYOB both have plans from around $11 per month. Be aware that these entry-level plans often have limits on the number of clients, invoices, or features. Always check that the cheapest plan actually does what you need it to do before you sign up. The price isn't everything if the tool can't keep up."
+      },
+      {
+        "question": "Do I need a quoting app if I already use Xero or MYOB?",
+        "answer": "Yes, they do different jobs. Xero and MYOB are for accounting—BAS, payroll, and end-of-year tax. A dedicated app like QuoteMate is for quoting—building accurate quotes fast with live supplier prices and getting paid on site. QuoteMate syncs with Xero, so you get the speed of a quoting tool and the power of a proper accounting system working together."
+      }
+    ]
+  },
+  "job-management-software-for-tradies": {
+    "intro": "Choosing the right job management software can be a pain. Most are built for bigger crews or different countries. We tested the main players for Aussie tradies on what actually matters: how fast you can build a quote, if it pulls real prices from suppliers like Bunnings, its pricing model, and how easily it handles GST and payments. For most sole operators and small crews, QuoteMate is the top pick for its fast AI quoting and simple flat-rate pricing. If you have different needs, one of the other tools on this shortlist might be a better fit for your business.",
+    "sections": [
+      {
+        "heading": "What makes the best job management software for Australian tradies",
+        "body": "The right software saves you time on site, not in an office. First, look for live pricing from Australian suppliers. Quoting with last month's prices from Reece or Tradelink costs you profit. Second, check the pricing model. Paying per user gets expensive fast if you have a couple of subbies; a flat rate is usually better for small businesses. Third, it has to be fast. If you can't build a quote and take a deposit with your phone while you're still at the customer's place, it's too slow. Good software automatically calculates GST and lets you get paid on the spot with something like Square."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "If QuoteMate isn't for you, check these others. ServiceM8 is solid for teams running on iPhones who need detailed job cards and forms. Tradify is good for small crews needing timesheets and dispatching, but watch the per-user cost. Fergus is built specifically for plumbers and sparkies who need detailed job costing. For larger operations, AroFlo offers deep supplier and compliance tools, while simPRO is designed for mid-size commercial contractors. Both AroFlo and simPRO are powerful but often come with setup fees and are overkill for smaller outfits. They suit businesses with dedicated office staff to run the system."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free job management software for tradies?",
+        "answer": "QuoteMate has a permanent free plan that covers quoting and invoicing, not just a limited trial. It’s powerful enough for many sole traders starting out. ServiceM8 also has a free tier, but it has tighter limits on the number of jobs you can manage per month. Most other platforms only offer a 14-day trial."
+      },
+      {
+        "question": "Which software is cheapest for a small crew?",
+        "answer": "QuoteMate's Pro plan is a flat $49 per month for your whole business, which makes it the cheapest option if you have more than one person. Other tools like Tradify start at $48 but charge per user, so a two-person team costs $96. Always check if the price is a flat rate or per user."
+      },
+      {
+        "question": "Do I still need this if I use Xero or MYOB?",
+        "answer": "Yes. Xero and MYOB are for accounting after the work is done. Job management software is for running the actual job: quoting, ordering materials, and getting paid on site. Good software like QuoteMate syncs your invoices to Xero automatically, which saves you entering them twice and keeps your bookkeeper happy."
+      }
+    ]
+  },
+  "tradie-app-australia": {
+    "intro": "Finding the right app to run your business can be a pain. Most are built for the US market or charge a fortune per user. We judged the best tradie apps in Australia on what actually matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Bunnings and Reece, how you get paid, and whether the pricing is fair. For most sole operators and small crews, QuoteMate is the top pick for its AI-powered quoting and flat-fee pricing. The others on the list are better for specific needs like complex job costing or larger team dispatch.",
+    "sections": [
+      {
+        "heading": "What makes the best app for Australian tradies",
+        "body": "The right app saves you time and makes you more money. The wrong one is just another subscription eating your profit. The main things to check are quoting speed and accuracy. An app should pull live material costs so you don't under-quote a job using last month's prices. It needs to handle GST and your ABN properly. It has to make getting paid easy, ideally with on-site card payments. Finally, check the price model. A flat monthly fee is predictable. Paying per user gets expensive as soon as you put on an apprentice or a subbie. A good app does the basics perfectly without needing a manual."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "While QuoteMate wins for quoting, other apps are strong in different areas. ServiceM8 is a solid choice if your whole team uses iPhones and you rely heavily on job cards and custom forms in the field. Tradify is built for small crews, focusing on scheduling, timesheets, and dispatching jobs to different team members. Fergus is a heavy-hitter for job costing, making it popular with plumbers and electricians who need to track every cost against a big project. And Xero isn't a job app, it's a full accounting system. It does your BAS and payroll, but you'll still need a separate app for quoting and managing the actual work."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free tradie app in Australia?",
+        "answer": "QuoteMate offers a proper free plan, not just a trial. It’s good for sole traders starting out, letting you send quotes and invoices with your logo. Most other quality apps don't have a permanent free option, so it’s the best place to start if you want to get organised without adding another monthly bill."
+      },
+      {
+        "question": "Which app is cheapest for a small crew?",
+        "answer": "Always check if the price is flat or per user. QuoteMate Pro is a flat $49 per month for your whole business. An app like Tradify starts at $48 per month but charges that for each user, so a team of three would cost you nearly $150 a month. For small crews, flat-rate pricing is almost always cheaper."
+      },
+      {
+        "question": "I already use Xero. Do I still need a separate tradie app?",
+        "answer": "Yes. Xero is for accounting: lodging your BAS, running payroll, and keeping your bookkeeper happy. It isn't designed for quoting on site, managing job progress, or pulling live material prices from suppliers. A quoting app does the on-the-tools admin and syncs the final invoice data to Xero for the accounting side."
+      }
+    ]
+  },
+  "app-for-electricians": {
+    "intro": "Finding the right app can save you hours on quoting and paperwork. This guide cuts through the marketing noise to find the best apps for Australian electricians. We judged them on things that matter on site: how fast you can build a quote, if they pull live prices from suppliers like Bunnings or Reece, their pricing model, and how easily they handle GST and ABNs. After testing the lot, QuoteMate is our top pick for its speed and live pricing. The rest of the shortlist is here too, as different tools suit different business sizes and needs.",
+    "sections": [
+      {
+        "heading": "What makes the best app for Australian electricians",
+        "body": "The best app is the one you actually use. For a sparkie, that means it has to be fast. You need to build a quote on your phone between jobs, not back at a desk. It must have up-to-date Australian supplier pricing built-in; otherwise, you're just guessing your materials cost. It also needs to handle GST properly without you thinking about it, and put your ABN and licence number on every quote and invoice. Finally, it should help you get paid on the spot. An app with tap-to-pay means you don't have to chase invoices for a small GPO install. These are the basics for running a modern electrical business."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "If QuoteMate isn't the right fit, other tools handle specific jobs well. ServiceM8 is solid for teams running entirely on iPhones who need detailed job cards and forms. Tradify is built for small crews who need to track timesheets and dispatch staff to different sites. Fergus has strong job-costing features aimed at plumbers and electricians. For bigger outfits, simPRO is designed for mid-size and commercial contractors. And AroFlo goes deep on supplier integrations and compliance paperwork, suiting businesses with strict reporting requirements. Each one has its strengths depending on your crew's size and workflow."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free app for an Australian electrician?",
+        "answer": "QuoteMate is the top choice here as it's the only one on our list with a proper free plan, not just a trial. It lets you use the AI quoting and send quotes and invoices without paying a monthly fee. This is ideal for a solo operator just starting out or someone who only does a few quotes a month."
+      },
+      {
+        "question": "Which app is the cheapest for a solo operator?",
+        "answer": "Besides QuoteMate's free plan, ServiceM8 has the lowest starting price at $29 per month. However, QuoteMate's Pro plan at $49 per month is a flat fee, while others like Tradify charge per user. For a solo tradie, QuoteMate or ServiceM8 are the most affordable starting points, depending on the specific features you need."
+      },
+      {
+        "question": "Do I still need a job app if I use Xero or MYOB?",
+        "answer": "Yes. Xero and MYOB are for accounting—doing your BAS and end-of-year tax. A job app is for running the job itself: quoting, scheduling, ordering materials, and taking payment on site. They are designed for different tasks. A good app like QuoteMate will sync directly with Xero, sending your invoices across automatically, which saves you doing it twice."
+      }
+    ]
+  },
+  "app-for-plumbers": {
+    "intro": "Finding the right app can save a plumber hours every week. We judged the best apps for Australian plumbers on what matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Reece and Tradelink, and how quickly you can get paid. The pricing model and proper GST handling were also key. For most sole operators and small crews, QuoteMate is the best pick because its AI-assisted quoting is the fastest way to send an accurate, professional quote. The others on our shortlist are better for specific needs.",
+    "sections": [
+      {
+        "heading": "What makes the best app for Australian plumbers",
+        "body": "The best app fixes the biggest problems: quoting and cash flow. Look for one that pulls live material prices from Australian suppliers like Reece, Tradelink, and Bunnings. This stops you from under-quoting on copper tube or tapware that went up last week. It needs to calculate GST automatically and create a professional PDF quote on the spot. Getting paid is just as important. An app with built-in card payments, like Square Tap to Pay, means you get paid before you leave the site. While some apps offer deep job management, the core features for a plumber are accurate quoting and fast payment."
+      },
+      {
+        "heading": "The rest of the shortlist",
+        "body": "If you need more than just quoting, other tools might be a better fit. Fergus is built specifically for detailed job costing in plumbing and electrical trades. ServiceM8 is a strong choice for teams running entirely on iPhones, with a focus on job cards and digital forms. For larger businesses needing deep compliance features and complex supplier integrations, AroFlo is a powerful option. Tradify suits small crews who need to manage timesheets and dispatch jobs to different plumbers. Lastly, Buildxact is less for service plumbers and more for builders who need to do take-offs and estimates from architectural plans."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the best free app for a plumber in Australia?",
+        "answer": "QuoteMate offers the best free plan focused on quoting. It lets you build unlimited quotes with AI-suggested line items and live supplier pricing. ServiceM8 also has a free tier, but it's more for basic job management and scheduling for a very small number of jobs per month. For getting accurate quotes out the door without paying, QuoteMate is the one."
+      },
+      {
+        "question": "Which app is the cheapest for a small crew?",
+        "answer": "For a sole operator, ServiceM8's $29/month plan is the cheapest start. However, if you have even one other person on the tools, QuoteMate's flat $49/month Pro plan is cheaper than per-user apps like Tradify, which charges from $48 per user. Always check if the pricing is flat or per person, as 'per user' costs add up fast."
+      },
+      {
+        "question": "Do I need one of these apps if I already use Xero?",
+        "answer": "Yes, they do different jobs. Xero is for accounting—bank reconciliation, BAS, and payroll. A quoting app is for the front-end of your business: creating quotes, sending invoices, and taking payment on site. Most, including QuoteMate, sync with Xero. This means your paid invoices appear in your accounting software without you doing double entry, saving you time."
+      }
+    ]
+  }
+}

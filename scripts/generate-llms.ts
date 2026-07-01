@@ -19,6 +19,8 @@ import { pathToFileURL } from 'url';
 const ROOT = path.join(__dirname, '..');
 const DATA_PATH = path.join(ROOT, 'seo', 'data.json');
 const COMPARE_PATH = path.join(ROOT, 'app', 'compare', 'data.ts');
+const ALTERNATIVES_PATH = path.join(ROOT, 'app', 'alternatives', 'data.ts');
+const BEST_PATH = path.join(ROOT, 'app', 'best', 'data.ts');
 const OUT_DIR = path.join(ROOT, 'public');
 const SHORT_OUT = path.join(OUT_DIR, 'llms.txt');
 const FULL_OUT = path.join(OUT_DIR, 'llms-full.txt');
@@ -90,6 +92,11 @@ async function main() {
   const compareModule = await import(pathToFileURL(COMPARE_PATH).href) as { competitors: Competitor[] };
   const competitors: Competitor[] = compareModule.competitors ?? [];
 
+  const altModule = await import(pathToFileURL(ALTERNATIVES_PATH).href) as { alternativePages: { slug: string; competitor: string; tagline: string }[] };
+  const alternativePages = altModule.alternativePages ?? [];
+  const bestModule = await import(pathToFileURL(BEST_PATH).href) as { bestPages: { slug: string; h1: string; tagline: string }[] };
+  const bestPages = bestModule.bestPages ?? [];
+
   const indexLines: string[] = [];
   indexLines.push('# QuoteMate');
   indexLines.push('');
@@ -115,6 +122,8 @@ async function main() {
   indexLines.push(`- [Manage Jobs](${BASE_URL}/manage-jobs/): Hub for the full job lifecycle (9-stage pipeline, scheduling, photos, checklists, follow-ups, Google Calendar sync).`);
   indexLines.push(`- [Quoting](${BASE_URL}/quoting/): Hub for quoting power tools (section-based quoting, section templates, voice-to-text, trade-specific pricing memory).`);
   indexLines.push(`- [Compare](${BASE_URL}/compare/): Side-by-side feature/price comparisons against ${competitors.length} competitor apps.`);
+  indexLines.push(`- [Alternatives](${BASE_URL}/alternatives/): Roundups of the best alternatives to ${alternativePages.length} leading tradie apps (Tradify, ServiceM8, Fergus, simPRO, AroFlo, Jobber and more).`);
+  indexLines.push(`- [Best Apps](${BASE_URL}/best/): Editor roundups of the best quoting, invoicing and job-management apps for Australian tradies, electricians and plumbers.`);
   indexLines.push(`- [Shower Quoting Tool](${BASE_URL}/shower-quoting-tool/): Free interactive tool that prices a shower-screen install in seconds.`);
   indexLines.push('');
 
@@ -181,6 +190,24 @@ async function main() {
     indexLines.push('');
     for (const c of competitors) {
       indexLines.push(`- [QuoteMate vs ${c.name}](${BASE_URL}/compare/${c.slug}/): ${truncate(c.summary, 200)}`);
+    }
+    indexLines.push('');
+  }
+
+  if (alternativePages.length) {
+    indexLines.push('## Alternatives roundups');
+    indexLines.push('');
+    for (const p of alternativePages) {
+      indexLines.push(`- [Best ${p.competitor} alternatives](${BASE_URL}/alternatives/${p.slug}/): ${truncate(p.tagline, 200)}`);
+    }
+    indexLines.push('');
+  }
+
+  if (bestPages.length) {
+    indexLines.push('## Best-of roundups');
+    indexLines.push('');
+    for (const p of bestPages) {
+      indexLines.push(`- [${p.h1.replace('The Best', 'Best')}](${BASE_URL}/best/${p.slug}/): ${truncate(p.tagline, 200)}`);
     }
     indexLines.push('');
   }

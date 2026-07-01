@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { trades, cities, quoteTemplates, guides, paymentHub, manageJobsHub, quotingHub, reeceIntegration } from '@/lib/data';
 import { competitors } from './compare/data';
+import { alternativePages } from './alternatives/data';
+import { bestPages } from './best/data';
 import { TEMPLATES_WITH_VIDEOS, TRADES_WITH_VIDEOS } from '@/lib/videos';
 
 export const dynamic = 'force-static';
@@ -19,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/pricing/`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/about/`, lastModified, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/compare/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/alternatives/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/best/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/shower-quoting-tool/`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/get-paid/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/manage-jobs/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
@@ -130,5 +134,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...paymentSpokePages, ...manageJobsSpokePages, ...quotingSpokePages, ...reeceSpokePages];
+  const alternativesPages: MetadataRoute.Sitemap = alternativePages.map((p) => ({
+    url: `${baseUrl}/alternatives/${p.slug}/`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
+  const bestOfPages: MetadataRoute.Sitemap = bestPages.map((p) => ({
+    url: `${baseUrl}/best/${p.slug}/`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...alternativesPages, ...bestOfPages, ...paymentSpokePages, ...manageJobsSpokePages, ...quotingSpokePages, ...reeceSpokePages];
 }

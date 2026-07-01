@@ -31,6 +31,8 @@ export default function Footer() {
               <li><Link href="/about">About</Link></li>
               <li><Link href="/pricing">Pricing</Link></li>
               <li><Link href="/compare">Compare</Link></li>
+              <li><Link href="/best/quoting-app-for-tradies">Best Tradie Apps</Link></li>
+              <li><Link href="/alternatives">App Alternatives</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
               <li><Link href="/terms">Terms of Service</Link></li>
             </ul>

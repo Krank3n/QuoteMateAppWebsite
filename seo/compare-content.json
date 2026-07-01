@@ -173,5 +173,302 @@
         "answer": "No, it's a simple process. You can export your customer list from Invoice2go as a file and import it straight into QuoteMate to get started. All your client details will be there. The bigger change is getting used to building detailed quotes first, which then turn into your invoices with a single click."
       }
     ]
+  },
+  "aroflo": {
+    "intro": "Choosing between QuoteMate and AroFlo comes down to your business size and complexity. AroFlo is a complete field service platform built for established teams managing projects, inventory, and compliance. It's powerful but comes with per-user fees and a significant setup cost. QuoteMate is built for sole traders and small crews who need to get accurate quotes out fast. It focuses on AI-assisted quoting with live supplier prices, on a simple flat monthly fee. If you run a crew of 5 or more and need deep project management, AroFlo is the go. If you're a one-man band, QuoteMate is the better fit.",
+    "sections": [
+      {
+        "heading": "Who AroFlo is best for",
+        "body": "AroFlo is built for established trade businesses with multiple crews and dedicated office staff. Its strengths are in managing complexity across the entire operation, not just quoting. It handles advanced job scheduling and dispatch, timesheets, inventory management, and SWMS compliance forms. For businesses doing large commercial projects, the Gantt charts and project management features are essential. The deep integration with over 600 suppliers for direct purchase ordering is a genuine advantage for companies with high materials turnover and an admin handling procurement. The per-user pricing and one-time onboarding fees, often starting from $899, reflect a system designed for larger, process-driven operations that need end-to-end control."
+      },
+      {
+        "heading": "Why tradies switch from AroFlo to QuoteMate",
+        "body": "Sole traders and small crews often find AroFlo too complex and expensive for what they need. The switch is usually about two things: flat pricing and faster quoting on the go. Paying per user, often with a three-user minimum, plus a four-figure setup fee, doesn't stack up for a one-man operation. They need a tool that helps them quote after a long day on site, not a system that requires an office admin to run. QuoteMate's AI-assisted line items, voice-to-text input, and live pricing from Bunnings, Reece, and Tradelink mean a quote can be built on-site in minutes, all for a flat $49 a month."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does QuoteMate fully replace AroFlo for a larger team?",
+        "answer": "No. QuoteMate is designed for fast quoting, invoicing, and payment for sole traders and small crews. AroFlo is a full field service management platform with advanced project management, inventory, timesheets, and dispatch features that a larger team needs. A 10-person crew would find QuoteMate too simple for their operational needs."
+      },
+      {
+        "question": "What does a sole trader pay for AroFlo vs QuoteMate?",
+        "answer": "QuoteMate has a free plan, or a Pro plan for a flat $49 per month with no setup fee. AroFlo's full product has a per-user cost and a 3-user minimum, putting it over $135 per month, plus a one-time onboarding fee that can be over $2,000. While AroFlo has a lighter AroFloGo product, QuoteMate's simple, flat pricing is a key difference."
+      },
+      {
+        "question": "Can I move my jobs and clients from AroFlo to QuoteMate?",
+        "answer": "There is no direct, one-click migration tool. You can export your client list from AroFlo as a CSV file and import that into QuoteMate. However, your past quotes, invoices, and job history will not transfer across. It is best to finish any active jobs in AroFlo before making a complete switch to a new system."
+      }
+    ]
+  },
+  "buildxact": {
+    "intro": "Trying to decide between QuoteMate vs Buildxact? They're both solid Australian tools, but built for different types of work. Buildxact is for residential builders who need to estimate whole houses from digital plans. It's a desktop-first platform for managing complex projects, with features like takeoffs and scheduling. QuoteMate is for the tradie on the tools—plumbers, electricians, chippies—who needs to send a professional quote from their phone before leaving the site. If you're quoting from plans and managing a crew, Buildxact is a strong choice. If you need speed and accuracy on service jobs, QuoteMate is built for you.",
+    "sections": [
+      {
+        "heading": "Who Buildxact is best for",
+        "body": "Buildxact is a powerful tool for residential builders and larger renovation companies. Its biggest strength is digital takeoff, letting you measure and estimate materials directly from a set of plans on your computer. This makes it ideal for pricing new builds, extensions, and large-scale renos where you're working from detailed drawings. It also handles job management, scheduling, and purchase orders, acting as a central hub for complex projects. If you run a crew and need to manage multiple jobs from the office, it's a solid system. The pricing, starting at $169 a month, reflects its focus on larger businesses that need comprehensive project management, not just fast quoting."
+      },
+      {
+        "heading": "Why tradies switch from Buildxact to QuoteMate",
+        "body": "Tradies often move from Buildxact when their work is more about service and speed than large-scale construction. The main reasons are cost and on-site usability. Buildxact's $169/month starting price is steep for a sole operator, whereas QuoteMate is a flat $49/month with no per-user fees. For plumbers and gasfitters, QuoteMate is the clear choice because it has live pricing from Reece and Tradelink, which Buildxact lacks. It’s also built for mobile. You can use your voice to create a line-item list on your phone, get live materials pricing, and send the quote before you even get back in the ute."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Buildxact worth it for a sole trader?",
+        "answer": "For most sole traders, no. Buildxact's features are designed for larger building companies and its pricing starts at $169 per month for a single user. QuoteMate offers a free plan to get started and a Pro plan at a flat $49 per month, which is much more practical for a one-person operation focused on service jobs and smaller projects."
+      },
+      {
+        "question": "Does QuoteMate do digital takeoffs from plans?",
+        "answer": "No, QuoteMate is not designed for digital takeoffs from architectural plans. It's built for quoting quickly while you're on site, using your phone. If your main work involves estimating materials from PDF plans for new builds or large extensions, Buildxact is the right tool for that specific task. QuoteMate focuses on speed for service and repair work."
+      },
+      {
+        "question": "Can QuoteMate replace Buildxact completely?",
+        "answer": "If you're a plumber, electrician, or handyman doing service jobs, then yes. QuoteMate handles the fast, accurate quoting and invoicing you need. But if you're a builder managing new homes from plans, you'll still need Buildxact for its digital takeoffs and complex project management features. They are built for different scales of work."
+      }
+    ]
+  },
+  "jobber": {
+    "intro": "Choosing between QuoteMate and Jobber comes down to what your business does. If you run a larger crew with complex scheduling and recurring maintenance jobs, Jobber is a solid, mature platform. But if you're a sole trader or small crew in Australia who needs to get accurate quotes out fast, QuoteMate is built for you. This guide compares them head-to-head on pricing, quoting speed, and features that matter to an Australian tradie, so you can pick the right tool for your work.",
+    "sections": [
+      {
+        "heading": "Who Jobber is best for",
+        "body": "Jobber is a polished field-service tool that works well for home service businesses managing multiple staff and recurring work. Think cleaning companies, lawn mowing rounds, or HVAC crews on service contracts. Its strengths are detailed team scheduling, dispatching, and a client portal where customers can see upcoming jobs. It's a genuine all-in-one platform for managing the logistics of a service crew. The main catch for Aussie tradies is that it’s built for North America. It bills in US dollars, has no live pricing from local suppliers like Reece or CSR, and handling GST is a manual setup."
+      },
+      {
+        "heading": "Why tradies switch from Jobber to QuoteMate",
+        "body": "The two biggest reasons Aussie tradies move from Jobber are price and quoting speed. Jobber's US-dollar, per-user pricing gets expensive fast for a small crew. QuoteMate is a flat AUD fee. The core difference is the focus. Jobber manages jobs; QuoteMate is built to win them. The AI-assisted takeoff creates a full materials list from a few voice notes, pulling live prices from Bunnings or Tradelink. It handles GST automatically and takes payments on-site with a Square tap-to-pay integration that actually works in Australia. For a local tradie, it means less time on admin and more accurate quotes."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can QuoteMate fully replace Jobber?",
+        "answer": "For quoting, invoicing, and getting paid on site, yes. It's faster and built for Australian tax and suppliers. However, if your business depends on Jobber's advanced team dispatch, timesheets, or automated recurring job scheduling, QuoteMate doesn't have those specific features. It uses a simple Google Calendar sync for scheduling jobs."
+      },
+      {
+        "question": "What's the real cost for a sole trader: Jobber vs QuoteMate?",
+        "answer": "Jobber's entry plan is US$348 a year. With the exchange rate, that's over $520 AUD before any currency conversion fees. QuoteMate's Pro plan is a flat $328 AUD for the year. It's priced in Aussie dollars, includes GST, and you can add staff later without paying extra per person."
+      },
+      {
+        "question": "How do I move my client list from Jobber?",
+        "answer": "It's straightforward. You can export your full client list from Jobber into a standard CSV file. QuoteMate has a CSV import function, so you just upload that file directly. Your customer names, phone numbers, and addresses will appear in the app, ready to go. The whole process usually takes less than 10 minutes."
+      }
+    ]
+  },
+  "simpro": {
+    "intro": "Choosing between QuoteMate and simPRO is about picking the right tool for your business size. If you're running a commercial operation with multiple crews, a warehouse, and complex job costing, simPRO is built for you. For sole traders and small crews who just need to send fast, accurate quotes and get paid, it's overkill. This guide breaks down who each platform is for, so you don't pay for features you'll never use. The short version: simPRO is for managing a big company; QuoteMate is for winning the next job.",
+    "sections": [
+      {
+        "heading": "Who simPRO is Best For: Big Teams and Commercial Jobs",
+        "body": "simPRO is a serious bit of kit for established, mid-to-large trade businesses. Think multiple crews, a fleet of utes, and an office manager running the schedule. Its strengths are in managing complexity: detailed job costing, multi-stage project management, inventory control, and dispatching teams to different sites. If you need to track stock from a warehouse to a specific job or manage timesheets for a dozen sparkies, simPRO has you covered. The pricing reflects this. Expect a quoted per-user monthly fee, a significant upfront implementation project, and a multi-year contract."
+      },
+      {
+        "heading": "Why Small Crews Pick QuoteMate Instead",
+        "body": "Sole traders and small teams find simPRO too complex and expensive. The main reason they choose an app like QuoteMate is speed and cost. You don't need a three-day training course to get started. You can sign up and send your first professional quote in under two minutes using the AI assistant and live pricing from Australian suppliers like Tradelink and CSR. The pricing is simple: a flat $49 a month, not a per-user fee that punishes you for growing. There's no big setup cost or contract. It’s built to do one job perfectly: help you quote accurately and win work."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What does simPRO cost for a sole trader?",
+        "answer": "simPRO doesn't publish its prices. It's quoted per user with a significant one-off implementation fee, making it unsuitable for a sole trader. You're looking at hundreds a month for a small team. In contrast, QuoteMate is designed for smaller operators, with a free plan and a Pro version at a flat $49 per month."
+      },
+      {
+        "question": "Can QuoteMate do everything simPRO does?",
+        "answer": "No, they are for different jobs. QuoteMate is laser-focused on fast, accurate quoting, invoicing, and getting paid. It doesn't have simPRO's features for multi-crew dispatch or warehouse inventory. If you run a large commercial operation that needs those tools, simPRO is the better fit. For quoting speed and simplicity, QuoteMate wins."
+      },
+      {
+        "question": "Is it hard to switch from simPRO to QuoteMate?",
+        "answer": "There is no direct data migration tool. However, setting up QuoteMate is a five-minute job. Because it's a simple quoting tool, not a full business management system, you can start fresh and build your first quote immediately. You don't need to import years of complex project data, which is often the hardest part of changing software."
+      }
+    ]
+  },
+  "servicetitan": {
+    "intro": "Comparing QuoteMate and ServiceTitan is like comparing a ute to a road train. Both are for moving things, but they're built for different loads. ServiceTitan is a US enterprise system for big companies with fleets of vans and dedicated office staff. QuoteMate is an AI quoting app for Australian sole traders and small crews who need to price jobs fast. This guide breaks down who each tool is for, so you can pick the right one for your business without a sales pitch. The wrong choice costs you time and thousands of dollars.",
+    "sections": [
+      {
+        "heading": "Who ServiceTitan is best for",
+        "body": "ServiceTitan is built for large, established contractors, typically with 20 or more technicians on the road. It's a full business operating system, handling complex dispatching, timesheets, fleet management, and deep financial reporting. If you have a dedicated office manager running payroll and scheduling for a big crew, ServiceTitan provides the control and oversight you need. The pricing reflects this: it's quoted per technician in US dollars on annual contracts, with a significant setup fee. It’s powerful software for managing a large-scale operation, but it is not built for a sole trader quoting on-site."
+      },
+      {
+        "heading": "Why Aussie tradies choose QuoteMate over ServiceTitan",
+        "body": "The main reasons are price, speed, and local focus. ServiceTitan's per-user US dollar pricing and mandatory annual contracts don't fit a sole trader or small crew. Its quoting tools are built for office sales teams, not a tradie on the tools. QuoteMate is designed for this exact job. It uses AI to build a line-item materials list from a voice note, pulls live prices from suppliers like Bunnings and Reece, and handles Australian GST automatically. For a flat $49 a month with no lock-in contract, it solves the core problem: quoting faster and more accurately, right from your phone."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What does ServiceTitan cost for a sole trader in Australia?",
+        "answer": "ServiceTitan isn't priced for sole traders. Its model is designed for large teams, with fees typically from US$250 per technician per month, plus a one-time onboarding project fee often in the thousands. This structure makes it financially impractical for a one-person operation or a small crew in Australia."
+      },
+      {
+        "question": "Can QuoteMate replace ServiceTitan for dispatch and fleet management?",
+        "answer": "No. QuoteMate is focused on fast, accurate quoting and invoicing for sole traders and small crews. It does not have the advanced dispatching, fleet tracking, or enterprise-level reporting that ServiceTitan offers. If you manage a large fleet of vehicles and technicians, ServiceTitan is the more appropriate tool for operations."
+      },
+      {
+        "question": "Does ServiceTitan have live Australian supplier pricing?",
+        "answer": "No, ServiceTitan does not integrate with Australian suppliers like Reece, Tradelink or CSR for live pricing. Its system is primarily focused on the US market. QuoteMate connects directly to local supplier catalogues, so your material costs are always current, which helps protect your margins on every quote you send."
+      }
+    ]
+  },
+  "housecallpro": {
+    "intro": "Housecall Pro is a big field-service tool for US and Canadian businesses running multiple crews. QuoteMate is an AI quoting app for Australian sole traders and small teams. If you’re a large American company, Housecall Pro’s team management and dispatch features are strong. If you’re an Aussie tradie who needs to get accurate quotes out fast, QuoteMate is built for you. The main difference is the country. Housecall Pro isn’t designed for Australia; it lacks GST, Xero sync, and local supplier pricing, making it unusable for local work.",
+    "sections": [
+      {
+        "heading": "Who Housecall Pro is best for",
+        "body": "Housecall Pro suits medium-to-large home service companies in the United States and Canada. It’s a full field-service management system, not just a quoting tool. Its strengths are in managing multiple teams with features like job scheduling, employee dispatching, and timesheets. For a business with five or more vans on the road in North America, it offers a lot of control. However, for an Australian tradie, it doesn’t work. The platform is priced in US dollars, has no function for GST or ABNs, and its payment processing isn’t available in Australia. It’s the right tool for a different market."
+      },
+      {
+        "heading": "Why Australian tradies choose QuoteMate over Housecall Pro",
+        "body": "An Australian tradie chooses QuoteMate because it’s built for our market. The pricing is a flat $49 AUD per month, not a per-user fee in US dollars that changes with the exchange rate. It handles GST and ABNs on quotes and invoices automatically and syncs with Xero. The quoting process is faster, using AI to suggest materials and labour line items. It pulls live prices from Bunnings, Reece, and Tradelink, so your margins are protected. You can also take payments on-site with Square tap-to-pay. It is designed to solve the problems Australian tradies face."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What’s the price difference for a sole trader?",
+        "answer": "QuoteMate has a free plan to get you started. Its Pro plan is a flat $49 AUD per month. Housecall Pro’s basic plan is US$59 per month for just one user, which is over $85 AUD. On top of the higher cost, it doesn't handle Australian GST or ABNs, making it unsuitable for local business."
+      },
+      {
+        "question": "Can QuoteMate do everything Housecall Pro does?",
+        "answer": "QuoteMate is focused on fast, accurate quoting and invoicing for Australian tradies. Housecall Pro is a broader tool for US companies managing large teams, with more advanced scheduling and dispatch features. For the core tasks of quoting, invoicing, and getting paid in Australia, QuoteMate is the purpose-built tool. It handles scheduling via a Google Calendar sync."
+      },
+      {
+        "question": "Can I use Housecall Pro in Australia?",
+        "answer": "No, not effectively. Housecall Pro is designed for the US and Canada. You cannot sign up with an Australian address, it doesn't calculate GST, it's priced in US dollars, and its payment features don't work here. QuoteMate is built from the ground up for Australian tax, banking, and supplier systems."
+      }
+    ]
+  },
+  "ascora": {
+    "intro": "Choosing between QuoteMate and Ascora comes down to your business size and complexity. This isn't about which one is 'better', but which one fits the job you need done. Ascora is a full job management system built for established trade businesses running multiple crews, with strong scheduling and accounting features. QuoteMate is designed for sole traders and small crews who need to create accurate quotes faster. It focuses on quoting speed, live Australian supplier pricing, and a simple, flat monthly fee. If you're a one-man band, start here. If you're managing a fleet, Ascora is built for that.",
+    "sections": [
+      {
+        "heading": "Who Ascora is best for",
+        "body": "Ascora is built for an established trade business running multiple crews. If you have several utes on the road, staff in the office, and need to track timesheets, equipment, and complex schedules, it's a solid Australian platform. Its main strength is deep integration with local accounting software like MYOB and QuickBooks, something simpler apps don't offer. The per-user pricing model, starting at $45 per user per month, makes sense when you need to manage individual staff permissions. It’s a proper field service management tool for when your business grows beyond just quoting and invoicing, and you need custom forms and detailed reporting to keep things organised."
+      },
+      {
+        "heading": "Why tradies switch from Ascora to QuoteMate",
+        "body": "Tradies often move from Ascora to QuoteMate for two main reasons: price and quoting speed. Ascora's per-user pricing gets expensive for a small crew, especially when you're paying $59 a month for every person. QuoteMate is a flat $49 a month for the whole business, with a free plan to start. The second reason is the quoting engine. QuoteMate uses AI to build your materials list from a job description and pulls live prices from Bunnings, Reece, and Tradelink. This saves hours of manual data entry. For a sole trader who just needs to send a professional PDF quote quickly, Ascora can feel like overkill."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the real price difference for a sole trader?",
+        "answer": "A sole trader on Ascora's most popular 'Elite' plan pays $59 per month. With QuoteMate, you can start on the free plan for basic quoting. The Pro plan, which includes AI features and unlimited quotes, is a flat $49 per month for your entire business. Ascora has no free plan and its price is per user, making QuoteMate cheaper for individuals and small teams."
+      },
+      {
+        "question": "Does QuoteMate work with MYOB like Ascora does?",
+        "answer": "No. Ascora has strong integrations with Xero, MYOB, and QuickBooks, which is a major reason larger businesses choose it. QuoteMate currently only integrates with Xero. If your business runs on MYOB or QuickBooks, Ascora is the better fit for your accounting workflow. QuoteMate is focused more on quoting and payment rather than full bookkeeping sync across all platforms."
+      },
+      {
+        "question": "Can QuoteMate completely replace Ascora for my business?",
+        "answer": "It depends on what you use Ascora for. If you primarily need fast, accurate quoting, invoicing, and on-site payments, then yes. But QuoteMate doesn't have Ascora's advanced multi-crew scheduling, timesheets, or equipment tracking. It's designed to be a simpler, faster tool for quoting, not a full job management system for a large team running multiple vehicles."
+      }
+    ]
+  },
+  "xero": {
+    "intro": "Trying to compare QuoteMate vs Xero is like choosing between a cordless drill and a drop saw. You need both, but for different jobs. Xero is the market leader for your back-office accounting, BAS, and payroll. QuoteMate is the tool you use on-site to build a quote in minutes with live supplier prices. This guide explains who uses which tool and why most tradies use both. Xero runs the business, QuoteMate wins the work. It's that simple. We'll cover the specific jobs each one is built for so you can stop doing data entry.",
+    "sections": [
+      {
+        "heading": "Who Xero is best for",
+        "body": "Xero is the standard for Australian small business accounting, and for good reason. If you have employees and need to run payroll, manage superannuation, and track timesheets, Xero is built for it. Your accountant or bookkeeper already uses it, which makes lodging your BAS and end-of-year tax simple. It's a full general ledger, meaning it handles bank reconciliation, profit and loss statements, and asset tracking. It's the system of record for your entire business. Where it falls short for a tradie is on the tools. It’s not designed for banging out a quick quote on your phone with live prices from Reece or Bunnings."
+      },
+      {
+        "heading": "Why tradies switch from Xero to QuoteMate for quoting",
+        "body": "Tradies don't leave Xero, they just stop using it for quoting. The main reason is speed and accuracy on site. Xero's quoting function is basic; it doesn't have live pricing from Australian suppliers like Tradelink or CSR. You're guessing material costs or using old price lists. QuoteMate uses AI to build a line-item list from a voice note and pulls current prices instantly. It's built for your phone, not a laptop in the office. Xero's entry plans also cap your invoices at 20 per month. QuoteMate has no limits, even on the free plan, and its Pro plan is a flat fee."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can QuoteMate completely replace my Xero subscription?",
+        "answer": "No. QuoteMate is for quoting, job management, and on-site payments. It is not a full accounting ledger. It syncs paid invoices into Xero, which handles your BAS, payroll, and your accountant's end-of-year reporting. They are designed to work together, with QuoteMate as the on-site tool and Xero as the back-office engine."
+      },
+      {
+        "question": "What's the real cost difference for a sole trader?",
+        "answer": "QuoteMate has a free plan with no invoice caps. Its Pro plan is a flat $49/month. Xero's entry plan is about $35/month but limits you to 20 invoices. If you do more than 20 jobs a month, you're forced onto a more expensive Xero tier. Using QuoteMate for quoting avoids this cap, feeding unlimited invoices into any Xero plan."
+      },
+      {
+        "question": "How does the sync between QuoteMate and Xero work?",
+        "answer": "It's a one-tap process. When you mark an invoice as paid in QuoteMate, it automatically creates a corresponding invoice in Xero with the customer details and line items. This saves you re-keying everything and gives your bookkeeper clean data for bank reconciliation. There's no manual data entry needed between the two systems."
+      }
+    ]
+  },
+  "myob": {
+    "intro": "Choosing between QuoteMate vs MYOB comes down to one thing: are you trying to fix your quoting or your accounting? MYOB is a full accounting package for managing your books, payroll, and BAS. It’s been around for ages and accountants know it. QuoteMate is a quoting tool first. It’s built for tradies on-site who need to price jobs fast and accurately, then get paid. If you’re a sole trader or small crew losing money on bad quotes, you need a quoting tool. If you have staff and complex books, you need accounting software.",
+    "sections": [
+      {
+        "heading": "Who MYOB is best for",
+        "body": "MYOB is proper accounting software for an established business, especially one with employees. If your main problem is managing payroll, lodging your own BAS, or running detailed financial reports, MYOB is the right tool. Its higher-tier plans like AccountRight and Business are built for this. They handle timesheets, complex invoicing, and deep bookkeeping. It’s software for the office, not for the ute. If you already have a solid system for quoting but need to get your back-end accounting organised, MYOB is a trusted Australian standard that your bookkeeper will understand without any training."
+      },
+      {
+        "heading": "Why tradies switch from MYOB to QuoteMate",
+        "body": "Tradies move from MYOB when they realise it’s not built for quoting on the tools. MYOB's cheapest mobile plan, Solo, can’t even create a quote. You need a more expensive plan, and even then, it’s not designed for speed on-site. Tradies switch to QuoteMate for AI-assisted material lists and live supplier pricing from places like Tradelink and CSR. You can build a detailed quote on your phone in minutes, complete with photos and checklists, and take payment with Square on the spot. The flat pricing is also simpler than MYOB's multiple tiers. It’s about winning work faster."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can QuoteMate replace MYOB completely?",
+        "answer": "No, it’s not a full accounting package. QuoteMate handles quoting, invoicing, and payment processing. It doesn't do payroll, BAS lodgements, or a full business ledger. It’s designed to work with accounting software. You use QuoteMate to win the job and get paid, then export the data to your accountant who uses MYOB or Xero."
+      },
+      {
+        "question": "What’s the real cost difference for a sole trader?",
+        "answer": "QuoteMate has a free plan to get you started. The Pro plan is a flat $49 per month. MYOB's cheapest plan, Solo, costs around $11 per month but cannot create quotes. To get quoting features in MYOB, you need to step up to a more expensive plan designed for larger businesses, which is often overkill for a sole operator."
+      },
+      {
+        "question": "Does QuoteMate integrate with MYOB?",
+        "answer": "QuoteMate has a direct integration with Xero. For MYOB, you can export your job and invoice data as a CSV file. Your bookkeeper or accountant can then easily import this file into your MYOB account. This keeps your quoting fast and your accounting accurate without needing to enter data twice."
+      }
+    ]
+  },
+  "quickbooks": {
+    "intro": "Choosing between QuoteMate and QuickBooks comes down to what problem you need to solve. If you run a larger crew and need a full accounting system with payroll, BAS, and detailed project management, QuickBooks is a solid choice. But if you're a sole trader or small team who loses money on bad quotes and needs to price jobs fast on site, QuoteMate is built for you. It handles the quoting, invoicing, and on-site payments, while your accountant can still use QuickBooks or Xero for the books.",
+    "sections": [
+      {
+        "heading": "Who QuickBooks is best for",
+        "body": "QuickBooks Online is proper accounting software for businesses that need to manage the books first. It’s a good fit for larger outfits with office staff who handle payroll, track team timesheets, and lodge the BAS. Its plans start from around $33 a month and scale up, offering project tracking on the higher tiers. While it can create unlimited quotes and invoices, it’s not designed for speed on the tools. It’s a desktop-first system for managing the financial health of the whole business, not for pricing up a bathroom reno while you’re standing in it. It's solid for the back-office side of things."
+      },
+      {
+        "heading": "Why tradies switch from QuickBooks to QuoteMate",
+        "body": "Tradies often move from QuickBooks because quoting with it is slow and disconnected from the job site. It doesn't have live Australian supplier pricing, so you're guessing material costs or manually checking the Reece website. QuoteMate fixes this. You can use your voice to describe a job on your phone, and its AI suggests a full materials list with current prices from Bunnings or Tradelink. It’s built for quoting on site, with job photos and checklists. The pricing is also simpler: a flat fee of $49 a month with no per-user charges, unlike QuickBooks' tiered system that gets more expensive as you grow."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I have to ditch QuickBooks to use QuoteMate?",
+        "answer": "No, you can use both. QuoteMate handles the front-end work: quoting, invoicing, and taking payment on site. It's designed to be fast on the tools. You can then sync your data to an accounting package or have your bookkeeper enter the figures into QuickBooks for lodging your BAS and running payroll. They do different jobs."
+      },
+      {
+        "question": "Which is cheaper for a sole trader?",
+        "answer": "QuoteMate has a free plan to get you started. Its Pro plan is a flat $49 per month with no hidden fees. QuickBooks Online starts around $33 per month but its more useful features are on higher tiers costing over $60. QuoteMate's flat pricing is often better value for a sole operator who doesn't need full-blown payroll."
+      },
+      {
+        "question": "Can QuoteMate handle my BAS and payroll?",
+        "answer": "No, QuoteMate is not a full accounting ledger. It’s a specialist tool for fast, accurate quoting and invoicing for tradies. It manages the job from the first inquiry to the final payment. For end-of-quarter BAS statements and paying your staff, you will still need to use proper accounting software like QuickBooks or Xero. QuoteMate focuses on getting the quote right."
+      }
+    ]
+  },
+  "quotient": {
+    "intro": "Choosing quoting software comes down to what your business does. This is a straight comparison between Quotient, a general online quoting tool, and QuoteMate, an app built specifically for Australian tradies. If you run a small service business with a few staff and just need clean online quotes, Quotient might fit. But if you're a tradie who needs to price jobs quickly with live supplier data, send an invoice, and get paid on the spot, QuoteMate is designed for that entire workflow. We'll break down the key differences.",
+    "sections": [
+      {
+        "heading": "Who Quotient is best for",
+        "body": "Quotient is a solid tool for small service businesses that aren't in the trades. Think consultants, designers, or agencies. Its strength is in creating customisable online quotes that clients can accept with one click. The team plan handles 2 to 5 users, making it decent for a small office that needs to track proposals. It does the quoting part well, with follow-up reminders and view tracking. However, it stops there. It doesn't do invoicing, payments, or job management. It’s also priced in US dollars and isn't connected to any Australian suppliers."
+      },
+      {
+        "heading": "Why tradies switch from Quotient to QuoteMate",
+        "body": "Tradies move from Quotient because it’s not built for them. The biggest reason is speed and accuracy. QuoteMate’s AI helps build a materials list from a voice note, then prices it against live feeds from Bunnings, Reece, and Tradelink. This protects your margin. Second is the price. Quotient is in US dollars, so the cost fluctuates. A flat AU$49 gets a whole business on QuoteMate. Finally, QuoteMate handles the whole job. It turns the accepted quote into an invoice in one tap and lets you take payment on-site with Square."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What's the real price difference for a solo tradie?",
+        "answer": "Quotient's Solo plan is US$28 per month, which is about AU$40-$45. QuoteMate's Pro plan is a flat AU$49 per month. For that price, QuoteMate includes AI quoting with live supplier pricing, invoicing, a job pipeline, and on-site payments via Square. Quotient is strictly for sending quotes and stops there."
+      },
+      {
+        "question": "Can QuoteMate replace Quotient completely?",
+        "answer": "Yes. QuoteMate handles everything Quotient does for quoting, like professional PDF quotes and online acceptance. It also replaces the separate accounting software you’d need for invoicing and the payment terminal for taking card payments. It’s designed to manage the job from the first enquiry all the way through to getting paid."
+      },
+      {
+        "question": "Is it difficult to move my client list across?",
+        "answer": "No, it's straightforward. You can export your client list from Quotient as a standard CSV file. QuoteMate lets you import that file directly, which usually takes a few minutes to bring all your contacts over. Your old quotes won't transfer, so the best time to make the switch is after you've finished and invoiced your current jobs."
+      }
+    ]
   }
 }
