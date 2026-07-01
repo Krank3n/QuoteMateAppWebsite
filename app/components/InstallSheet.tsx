@@ -26,6 +26,20 @@ export default function InstallSheet() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Let the hero CTAs open the sheet on demand (fired from EngHomeClient on
+  // mobile). An explicit tap re-opens it even if it was auto-dismissed earlier.
+  useEffect(() => {
+    const open = () => {
+      const detected = detectPlatform();
+      if (!detected) return; // no native app to install (e.g. desktop)
+      setPlatform(detected);
+      setDismissed(false);
+      setVisible(true);
+    };
+    window.addEventListener('qm:open-install', open);
+    return () => window.removeEventListener('qm:open-install', open);
+  }, []);
+
   const dismiss = () => {
     setVisible(false);
     setDismissed(true);

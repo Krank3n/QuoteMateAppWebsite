@@ -716,7 +716,13 @@ html[data-home-variant="b"] .eng-home .mobile-menu a { color: #6b6760; border-bo
   padding: 12px 12px 12px 20px;
   box-shadow: 0 2px 12px rgba(0,0,0,.1);
   gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow .15s, transform .1s;
 }
+.eng-home .hb-chat-input:active { transform: scale(.99); }
+.eng-home .hb-chat-input:hover { box-shadow: 0 4px 18px rgba(0,0,0,.14); }
 
 .eng-home .hb-chat-placeholder {
   flex: 1;
@@ -730,7 +736,7 @@ html[data-home-variant="b"] .eng-home .mobile-menu a { color: #6b6760; border-bo
   border-radius: 50%;
   background: #f97316;
   border: none;
-  cursor: default;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;

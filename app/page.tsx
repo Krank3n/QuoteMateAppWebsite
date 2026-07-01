@@ -275,7 +275,7 @@ export default function HomePage() {
               and QuoteMate builds the materials list, prices it up, and turns it into a professional quote.
             </p>
             <div className="hb-ctas">
-              <a href="/app" className="hb-btn-primary nav-cta hb-cta-primary">Get my first quote</a>
+              <a href="/app" className="hb-btn-primary nav-cta hb-cta-primary" data-hero-cta>Get my first quote</a>
               <a href="#how-it-works" className="hb-btn-outline nav-cta hb-cta-secondary">See how it works</a>
             </div>
           </div>
@@ -315,17 +315,18 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Mobile-only chat input bar */}
+            {/* Mobile-only chat input bar — doubles as the primary CTA:
+                on a phone it prompts a native install, otherwise it opens /app. */}
             <div className="hb-chat-bar">
-              <div className="hb-chat-input">
+              <a href="/app" className="hb-chat-input" data-hero-cta aria-label="Quote this up — get my first quote">
                 <span className="hb-chat-placeholder">quote this up mate</span>
-                <button className="hb-chat-send" aria-label="Send" tabIndex={-1}>
+                <span className="hb-chat-send" aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
-                </button>
-              </div>
+                </span>
+              </a>
             </div>
           </div>
         </div>

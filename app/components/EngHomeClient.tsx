@@ -193,5 +193,25 @@ export default function EngHomeClient() {
     });
   }, []);
 
+  // ── Hero primary CTA behaviour ───────────────────────────────────────────
+  // Both "Get my first quote" and the mobile "quote this up mate" bar carry
+  // [data-hero-cta] and point to /app. On a real phone (iOS/Android) we
+  // intercept and open the native-install prompt instead; everywhere else the
+  // <a href="/app"> falls through and opens the web app. Kept in its own effect
+  // so it never depends on the video wiring above.
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || '';
+    const isMobileDevice = /iPad|iPhone|iPod/.test(ua) || /android/i.test(ua);
+    if (!isMobileDevice) return; // desktop: let the /app link open the web app
+
+    const ctas = Array.from(document.querySelectorAll<HTMLElement>('[data-hero-cta]'));
+    const onClick = (e: Event) => {
+      e.preventDefault();
+      window.dispatchEvent(new Event('qm:open-install'));
+    };
+    ctas.forEach((el) => el.addEventListener('click', onClick));
+    return () => ctas.forEach((el) => el.removeEventListener('click', onClick));
+  }, []);
+
   return null;
 }
