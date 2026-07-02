@@ -397,13 +397,13 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
           <div className={styles.cardHeader}>
             <div>
               <div className={styles.cardTitle}>Conversion funnel</div>
-              <div className={styles.cardSubtitle}>Each step as a share of signups</div>
+              <div className={styles.cardSubtitle}>Bars and % are shares of signups; notes give the step-to-step rate</div>
             </div>
           </div>
           <FunnelStep label="Signups" value={f.signups} max={f.signups} />
-          <FunnelStep label="Started a trial" value={f.startedTrial} max={f.signups} detail={`${pct1(f.pctStartedTrial)}% of signups`} />
-          <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of trials`} />
-          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(f.pctPaying)}% of quoters`} accent />
+          <FunnelStep label="Started a trial" value={f.startedTrial} max={f.signups} />
+          <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of trial starters send one`} />
+          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of trial starters pay · north star`} accent />
         </div>
 
         {/* Actionable: never sent a quote */}
@@ -463,9 +463,11 @@ function ActionTable({ rows, lastCol, emptyLabel }: { rows: FunnelActionRow[]; l
   );
 }
 
-// Whole-number percent from a 0..1 fraction (one decimal for small conversion rates).
+// Whole-number percent from a 0..1 fraction (one decimal for small conversion
+// rates). Capped at 100: the funnel cohorts aren't strictly nested (e.g. a payer
+// who never wrote trialStartedAt), so raw ratios can exceed 1.
 function pct1(fraction: number): number {
-  const p = (fraction || 0) * 100;
+  const p = Math.min(fraction || 0, 1) * 100;
   return Math.round(p * 10) / 10;
 }
 
