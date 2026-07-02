@@ -36,6 +36,38 @@ interface Traffic {
     | { available: true; variants: Array<{ variant: string; impressions: number; ctaClicks: number; ctr: number }> };
 }
 
+interface FunnelActionRow {
+  uid: string;
+  email: string | null;
+  businessName: string | null;
+  signupAt: number | null;
+  lastActivityAt: number | null;
+  trialDaysRemaining: number | null;
+}
+
+interface Funnel {
+  funnel: {
+    signups: number;
+    startedTrial: number;
+    sentQuote: number;
+    paying: number;
+    pctStartedTrial: number;
+    pctSentQuote: number;
+    pctPaying: number;
+  };
+  conversion: {
+    trialToPaid: number;
+    activationRate: number;
+  };
+  expiringTrials: number;
+  actionable: {
+    neverSentQuote: FunnelActionRow[];
+    expiringTrialsInactive: FunnelActionRow[];
+  };
+  asOf: number;
+  cached: boolean;
+}
+
 const DAY_OPTIONS = [7, 28, 90];
 
 export default function AnalyticsPage() {
@@ -44,6 +76,8 @@ export default function AnalyticsPage() {
   const [signups7d, setSignups7d] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [funnel, setFunnel] = useState<Funnel | null>(null);
+  const [funnelError, setFunnelError] = useState<string | null>(null);
 
   useSetPageMeta({
     title: 'Analytics',
@@ -94,11 +128,38 @@ export default function AnalyticsPage() {
     };
   }, [days]);
 
+  // Business health funnel — not day-scoped, so it loads once. Instant-paint
+  // from cache, then revalidate, exactly like the traffic stats above.
+  useEffect(() => {
+    let cancelled = false;
+    const cached = getCached<Funnel>('analytics-funnel');
+    if (cached) setFunnel(cached);
+    setFunnelError(null);
+
+    api
+      .funnelStats({})
+      .then((f: any) => {
+        if (cancelled) return;
+        setFunnel(f as Funnel);
+        setCached('analytics-funnel', f);
+      })
+      .catch((e) => {
+        if (!cancelled) setFunnelError(e?.message || 'Failed to load business health');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const sessionsSeries = (data?.daily || []).map((d) => d.sessions);
   const usersSeries = (data?.daily || []).map((d) => d.users);
 
   return (
     <>
+      {/* Business health — trial→paid conversion is the founder's #1 metric, so
+          it sits above the web-traffic content. */}
+      <BusinessHealth funnel={funnel} error={funnelError} />
+
       {loading && !data && (
         <div className={styles.statGrid}>
           {[0, 1, 2, 3].map((i) => (
@@ -263,6 +324,149 @@ export default function AnalyticsPage() {
       )}
     </>
   );
+}
+
+function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: string | null }) {
+  const title = (
+    <div className={styles.cardHeader} style={{ marginBottom: 12 }}>
+      <div>
+        <div className={styles.cardTitle}>Business health</div>
+        <div className={styles.cardSubtitle}>Signup → trial → sent quote → paying</div>
+      </div>
+    </div>
+  );
+
+  if (error && !funnel) {
+    return (
+      <div className={styles.card} style={{ borderColor: 'rgba(239, 68, 68, 0.3)', marginBottom: 16 }}>
+        <div className={styles.cardTitle}>Couldn't load business health</div>
+        <div className={styles.cardSubtitle}>{error}</div>
+        <div className={styles.cardSubtitle} style={{ marginTop: 8 }}>
+          If this says the function isn't found, deploy <code>adminFunnelStats</code> first.
+        </div>
+      </div>
+    );
+  }
+
+  if (!funnel) {
+    return (
+      <div className={styles.statGrid} style={{ marginBottom: 16 }}>
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className={styles.statCard}>
+            <div className={styles.skeleton} style={{ height: 14, width: '40%', marginBottom: 12 }} />
+            <div className={styles.skeleton} style={{ height: 32, width: '60%' }} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  const f = funnel.funnel;
+  const c = funnel.conversion;
+
+  return (
+    <div style={{ marginBottom: 24 }}>
+      {title}
+
+      {/* North-star cards. Trial→paid is highlighted (target 5%). */}
+      <div className={styles.statGrid}>
+        <StatCard
+          label="Trial → paid"
+          value={pct1(c.trialToPaid)}
+          valueSuffix="%"
+          sub={`${f.paying.toLocaleString()} of ${f.startedTrial.toLocaleString()} trials · target 5%`}
+          accent
+        />
+        <StatCard
+          label="Activation"
+          value={pct1(c.activationRate)}
+          valueSuffix="%"
+          sub={`${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} sent a quote`}
+        />
+        <StatCard label="Paying customers" value={f.paying} sub="billed subscriptions" />
+        <StatCard
+          label="Trials expiring ≤3d"
+          value={funnel.expiringTrials}
+          sub={`${funnel.actionable.expiringTrialsInactive.length.toLocaleString()} inactive · need a nudge`}
+        />
+      </div>
+
+      <div className={styles.dashGrid}>
+        {/* Conversion funnel */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Conversion funnel</div>
+              <div className={styles.cardSubtitle}>Each step as a share of signups</div>
+            </div>
+          </div>
+          <FunnelStep label="Signups" value={f.signups} max={f.signups} />
+          <FunnelStep label="Started a trial" value={f.startedTrial} max={f.signups} detail={`${pct1(f.pctStartedTrial)}% of signups`} />
+          <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of trials`} />
+          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(f.pctPaying)}% of quoters`} accent />
+        </div>
+
+        {/* Actionable: never sent a quote */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Signed up, never sent a quote</div>
+              <div className={styles.cardSubtitle}>≥2 days in, still no quote or invoice sent</div>
+            </div>
+          </div>
+          <ActionTable rows={funnel.actionable.neverSentQuote} lastCol="activity" emptyLabel="Everyone past the grace window has sent something" />
+        </div>
+      </div>
+
+      {/* Actionable: expiring trials with no recent activity */}
+      <div className={styles.card} style={{ marginTop: 16 }}>
+        <div className={styles.cardHeader}>
+          <div>
+            <div className={styles.cardTitle}>Expiring trials to nudge</div>
+            <div className={styles.cardSubtitle}>≤3 days left and no activity in the last week</div>
+          </div>
+        </div>
+        <ActionTable rows={funnel.actionable.expiringTrialsInactive} lastCol="daysLeft" emptyLabel="No expiring trials need a nudge right now" />
+      </div>
+
+      <div style={{ marginTop: 12, fontSize: 12, color: 'var(--color-text-secondary)', textAlign: 'right' }}>
+        refreshed {fmtRelative(funnel.asOf)}
+        {funnel.cached ? ' · cached' : ''}
+      </div>
+    </div>
+  );
+}
+
+function ActionTable({ rows, lastCol, emptyLabel }: { rows: FunnelActionRow[]; lastCol: 'activity' | 'daysLeft'; emptyLabel: string }) {
+  if (rows.length === 0) return <EmptyInline label={emptyLabel} />;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 14, padding: '2px 12px', fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.4 }}>
+        <span>Email</span>
+        <span style={{ textAlign: 'right' }}>Signed up</span>
+        <span style={{ textAlign: 'right', minWidth: 84 }}>{lastCol === 'daysLeft' ? 'Days left' : 'Last active'}</span>
+      </div>
+      {rows.map((r) => (
+        <div key={r.uid} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 14, alignItems: 'center', padding: '8px 12px', borderRadius: 8, background: 'rgba(0,0,0,0.15)', fontSize: 13 }}>
+          <Link href={`/admin/users/${r.uid}`} style={{ color: 'inherit', textDecoration: 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {r.email || r.businessName || r.uid}
+          </Link>
+          <span style={{ color: 'var(--color-text-secondary)' }}>{fmtRelative(r.signupAt)}</span>
+          <span style={{ color: 'var(--color-text-tertiary)', minWidth: 84, textAlign: 'right' }}>
+            {lastCol === 'daysLeft'
+              ? `${(r.trialDaysRemaining ?? 0).toLocaleString()}d`
+              : fmtRelative(r.lastActivityAt)}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Whole-number percent from a 0..1 fraction (one decimal for small conversion rates).
+function pct1(fraction: number): number {
+  const p = (fraction || 0) * 100;
+  return Math.round(p * 10) / 10;
 }
 
 function StatCard({ label, value, valueSuffix, sub, icon, accent, series }: { label: string; value: number; valueSuffix?: string; sub?: string; icon?: React.ReactNode; accent?: boolean; series?: number[] }) {
