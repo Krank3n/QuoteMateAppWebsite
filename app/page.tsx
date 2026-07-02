@@ -839,7 +839,7 @@ export default function HomePage() {
             <p className="secsub">Feature request, feedback, or just want to say g&apos;day — email us any time.</p>
           </div>
           <div className="hero-ctas" style={{ justifyContent: 'center' }}>
-            <a href="mailto:hello@quotemateapp.au" className="btn btn-primary">hello@quotemateapp.au</a>
+            <a href="mailto:tom@hansendev.com.au" className="btn btn-primary">tom@hansendev.com.au</a>
           </div>
         </div>
       </section>
@@ -890,7 +890,7 @@ export default function HomePage() {
           </div>
           <div className="foot-col">
             <h4>Connect</h4>
-            <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a>
+            <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a>
             <div className="social">
               <a href="https://www.facebook.com/profile.php?id=61579534155762" aria-label="Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
@@ -984,7 +984,7 @@ export default function HomePage() {
           "@type": "Organization",
           "name": "QuoteMate",
           "url": "https://quotemateapp.au",
-          "email": "hello@quotemateapp.au",
+          "email": "tom@hansendev.com.au",
         },
       })}} />
 
@@ -994,7 +994,7 @@ export default function HomePage() {
         "name": "QuoteMate",
         "url": "https://quotemateapp.au",
         "logo": "https://quotemateapp.au/assets/logo.png",
-        "email": "hello@quotemateapp.au",
+        "email": "tom@hansendev.com.au",
         "description": "AI-powered quoting and invoicing app built for Australian tradies.",
         "sameAs": [
           "https://www.facebook.com/quotemateapp",

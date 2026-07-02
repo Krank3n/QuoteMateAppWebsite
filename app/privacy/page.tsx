@@ -133,7 +133,7 @@ export default function PrivacyPage() {
             <h2>11. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us:</p>
             <ul>
-              <li>Email: <a href="mailto:hello@quotemateapp.au">hello@quotemateapp.au</a></li>
+              <li>Email: <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a></li>
               <li>Website: <a href="https://quotemateapp.au">quotemateapp.au</a></li>
             </ul>
             <p>If you are not satisfied with our response to a privacy complaint, you may contact the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a>.</p>
