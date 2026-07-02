@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './home-engineered.css';
 import EngHomeClient from './components/EngHomeClient';
-import EngEmailSignup from './components/EngEmailSignup';
-import EngContactForm from './components/EngContactForm';
 import InstallSheet from './components/InstallSheet';
 
 export const metadata: Metadata = {
@@ -832,27 +830,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── EMAIL SIGNUP ── */}
-      <section className="section" id="signup">
-        <div className="container">
-          <div className="sechead">
-            <span className="seclabel">// stay in the loop</span>
-            <h2 className="sectitle">Get quoting tips &amp; <span className="acc">new features</span></h2>
-            <p className="secsub">Quoting tips, new feature updates, and tradie business advice — straight to your inbox. No spam, unsubscribe anytime.</p>
-          </div>
-          <EngEmailSignup />
-        </div>
-      </section>
-
       {/* ── CONTACT ── */}
       <section className="section" id="contact">
         <div className="container">
           <div className="sechead">
             <span className="seclabel">// get in touch</span>
             <h2 className="sectitle">Got a question? <span className="acc">We&apos;d love to hear it.</span></h2>
-            <p className="secsub">Feature request, feedback, or just want to say g&apos;day — reach out any time.</p>
+            <p className="secsub">Feature request, feedback, or just want to say g&apos;day — email us any time.</p>
           </div>
-          <EngContactForm />
+          <div className="hero-ctas" style={{ justifyContent: 'center' }}>
+            <a href="mailto:hello@quotemateapp.au" className="btn btn-primary">hello@quotemateapp.au</a>
+          </div>
         </div>
       </section>
 
