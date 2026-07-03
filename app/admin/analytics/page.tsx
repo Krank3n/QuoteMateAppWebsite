@@ -51,6 +51,9 @@ interface Funnel {
     startedTrial: number;
     sentQuote: number;
     paying: number;
+    generatedList?: number;
+    fetchedPrices?: number;
+    usedConversation?: number;
     pctStartedTrial: number;
     pctSentQuote: number;
     pctPaying: number;
@@ -63,6 +66,9 @@ interface Funnel {
   actionable: {
     neverSentQuote: FunnelActionRow[];
     expiringTrialsInactive: FunnelActionRow[];
+    generatedListForQuote?: FunnelActionRow[];
+    fetchedPricesForQuote?: FunnelActionRow[];
+    usedConversationForQuote?: FunnelActionRow[];
   };
   asOf: number;
   cached: boolean;
@@ -363,6 +369,9 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
 
   const f = funnel.funnel;
   const c = funnel.conversion;
+  const generatedList = typeof f.generatedList === 'number' ? f.generatedList : funnel.actionable.generatedListForQuote?.length;
+  const fetchedPrices = typeof f.fetchedPrices === 'number' ? f.fetchedPrices : funnel.actionable.fetchedPricesForQuote?.length;
+  const usedConversation = typeof f.usedConversation === 'number' ? f.usedConversation : funnel.actionable.usedConversationForQuote?.length;
 
   return (
     <div style={{ marginBottom: 24 }}>
@@ -402,19 +411,65 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
           </div>
           <FunnelStep label="Signups" value={f.signups} max={f.signups} />
           <FunnelStep label="Started a trial" value={f.startedTrial} max={f.signups} />
+          {typeof generatedList === 'number' && (
+            <FunnelStep
+              label="Generated materials list"
+              value={generatedList}
+              max={f.signups}
+              detail={`${pct1(f.startedTrial ? generatedList / f.startedTrial : 0)}% of trial starters generated one`}
+            />
+          )}
+          {typeof fetchedPrices === 'number' && (
+            <FunnelStep
+              label="Fetched supplier prices"
+              value={fetchedPrices}
+              max={f.signups}
+              detail={`${pct1((generatedList || 0) ? fetchedPrices / (generatedList || 1) : 0)}% of list generators fetched prices`}
+            />
+          )}
+          {typeof usedConversation === 'number' && (
+            <FunnelStep
+              label="Used Mate conversation"
+              value={usedConversation}
+              max={f.signups}
+              detail={`${pct1(f.startedTrial ? usedConversation / f.startedTrial : 0)}% of trial starters used a quote conversation`}
+            />
+          )}
           <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of trial starters send one`} />
           <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of trial starters pay · north star`} accent />
+          <WorkflowUserSnapshot funnel={funnel} />
         </div>
 
-        {/* Actionable: never sent a quote */}
+        {/* Activation snapshot */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
             <div>
-              <div className={styles.cardTitle}>Signed up, never sent a quote</div>
-              <div className={styles.cardSubtitle}>≥2 days in, still no quote or invoice sent</div>
+              <div className={styles.cardTitle}>Activation snapshot</div>
+              <div className={styles.cardSubtitle}>How quickly signups reach value and convert</div>
             </div>
           </div>
-          <ActionTable rows={funnel.actionable.neverSentQuote} lastCol="activity" emptyLabel="Everyone past the grace window has sent something" />
+          <MetricRow
+            label="Quote activation"
+            value={`${pct1(c.activationRate)}%`}
+            detail={`${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} signups sent a quote`}
+            barValue={f.sentQuote}
+            barMax={f.signups}
+          />
+          <MetricRow
+            label="Trial starters activated"
+            value={`${pct1(f.startedTrial ? f.sentQuote / f.startedTrial : 0)}%`}
+            detail={`${Math.max(f.startedTrial - f.sentQuote, 0).toLocaleString()} trial starters have not sent a quote yet`}
+            barValue={f.sentQuote}
+            barMax={f.startedTrial}
+          />
+          <MetricRow
+            label="Trial → paid"
+            value={`${pct1(c.trialToPaid)}%`}
+            detail={`${Math.max(f.startedTrial - f.paying, 0).toLocaleString()} trial starters have not converted yet`}
+            barValue={f.paying}
+            barMax={f.startedTrial}
+            accent
+          />
         </div>
       </div>
 
@@ -437,6 +492,40 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
   );
 }
 
+function WorkflowUserSnapshot({ funnel }: { funnel: Funnel }) {
+  const groups = [
+    { label: 'Generated list', rows: funnel.actionable.generatedListForQuote || [] },
+    { label: 'Fetched prices', rows: funnel.actionable.fetchedPricesForQuote || [] },
+    { label: 'Used conversation', rows: funnel.actionable.usedConversationForQuote || [] },
+  ].filter((g) => g.rows.length > 0);
+
+  if (groups.length === 0) return null;
+
+  return (
+    <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 8 }}>Users behind quote workflow events</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 8 }}>
+        {groups.map((g) => (
+          <div key={g.label} style={{ padding: 10, borderRadius: 10, background: 'rgba(0,0,0,0.16)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, fontSize: 12, marginBottom: 6 }}>
+              <span style={{ fontWeight: 700 }}>{g.label}</span>
+              <span style={{ color: 'var(--color-text-secondary)' }}>{g.rows.length}</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {g.rows.slice(0, 4).map((r) => (
+                <Link key={r.uid} href={`/admin/users?uid=${encodeURIComponent(r.uid)}`} style={{ color: 'var(--color-text-secondary)', textDecoration: 'none', fontSize: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {r.email || r.businessName || r.uid}
+                </Link>
+              ))}
+              {g.rows.length > 4 && <div style={{ color: 'var(--color-text-tertiary)', fontSize: 11 }}>+{g.rows.length - 4} more</div>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ActionTable({ rows, lastCol, emptyLabel }: { rows: FunnelActionRow[]; lastCol: 'activity' | 'daysLeft'; emptyLabel: string }) {
   if (rows.length === 0) return <EmptyInline label={emptyLabel} />;
   return (
@@ -448,7 +537,7 @@ function ActionTable({ rows, lastCol, emptyLabel }: { rows: FunnelActionRow[]; l
       </div>
       {rows.map((r) => (
         <div key={r.uid} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 14, alignItems: 'center', padding: '8px 12px', borderRadius: 8, background: 'rgba(0,0,0,0.15)', fontSize: 13 }}>
-          <Link href={`/admin/users/${r.uid}`} style={{ color: 'inherit', textDecoration: 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <Link href={`/admin/users?uid=${encodeURIComponent(r.uid)}`} style={{ color: 'inherit', textDecoration: 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {r.email || r.businessName || r.uid}
           </Link>
           <span style={{ color: 'var(--color-text-secondary)' }}>{fmtRelative(r.signupAt)}</span>
@@ -459,6 +548,22 @@ function ActionTable({ rows, lastCol, emptyLabel }: { rows: FunnelActionRow[]; l
           </span>
         </div>
       ))}
+    </div>
+  );
+}
+
+function MetricRow({ label, value, detail, barValue, barMax, accent }: { label: string; value: string; detail: string; barValue: number; barMax: number; accent?: boolean }) {
+  const w = Math.max(2, Math.min(100, (barValue / (barMax || 1)) * 100));
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'baseline', marginBottom: 4 }}>
+        <span style={{ fontWeight: 700, fontSize: 13 }}>{label}</span>
+        <span style={{ fontWeight: 800, fontSize: 18, color: accent ? '#fb923c' : 'inherit' }}>{value}</span>
+      </div>
+      <div style={{ height: 8, background: 'rgba(255,255,255,0.06)', borderRadius: 4, overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${w}%`, background: accent ? 'linear-gradient(90deg,#f97316,#fb923c)' : 'var(--gradient-accent)', borderRadius: 4 }} />
+      </div>
+      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 4 }}>{detail}</div>
     </div>
   );
 }
