@@ -78,10 +78,11 @@ export default function PricingPage() {
                 <div className="pricing-card-header">
                   <h2>Pro Monthly</h2>
                   <div className="pricing-amount">
+                    <span className="price-was" style={{ textDecoration: 'line-through', opacity: 0.55, fontWeight: 600, marginRight: '8px' }}>$99</span>
                     <span className="price">$49</span>
                     <span className="period">/month</span>
                   </div>
-                  <p className="pricing-desc">14-day free trial. Cancel anytime.</p>
+                  <p className="pricing-desc">Launch offer &mdash; 51% off the regular price. 14-day free trial. Cancel anytime.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Free</li>
@@ -99,10 +100,11 @@ export default function PricingPage() {
                 <div className="pricing-card-header">
                   <h2>Pro Annual</h2>
                   <div className="pricing-amount">
+                    <span className="price-was" style={{ textDecoration: 'line-through', opacity: 0.55, fontWeight: 600, marginRight: '8px' }}>$658</span>
                     <span className="price">$328</span>
                     <span className="period">/year</span>
                   </div>
-                  <p className="pricing-desc">14-day free trial. Just $27.33/month &mdash; save 44%.</p>
+                  <p className="pricing-desc">Launch offer &mdash; 50% off the regular price. Equivalent to $27.33/month, billed annually.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Pro Monthly</li>
