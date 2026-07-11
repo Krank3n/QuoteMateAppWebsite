@@ -204,6 +204,7 @@ export default function DiscoveryPage() {
               <Stat label="Suppressed" value={result.dedupedSuppressed} />
               <Stat label="Existing user" value={result.dedupedExistingUser} />
               <Stat label="Place fetch fails" value={result.placeFetchFailures} />
+              <Stat label="Non-AU skipped" value={result.skippedNonAu} />
             </div>
             {result.campaignId && (
               <Link href={`/admin/leads`} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} style={{ marginTop: 12 }}>
