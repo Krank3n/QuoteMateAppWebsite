@@ -4,172 +4,186 @@ import { useEffect } from 'react';
 
 export default function EngHomeClient() {
   useEffect(() => {
-    // Video walkthrough player
-    const v = document.getElementById('qm-walk') as HTMLVideoElement | null;
-    if (!v) return;
+    // Shared video player wiring — used by the walkthrough (#qm-walk) and the
+    // hero intro videos (video.qm-video in both hero variants). Behaviour:
+    // autoplay muted in view, tap to unmute, tap again to pause + show controls.
+    function wirePlayer(v: HTMLVideoElement) {
+      const box = v.parentNode as HTMLElement;
+      if (!box) return null;
 
-    const box = v.parentNode as HTMLElement;
-    if (!box) return;
+      const overlay = box.querySelector<HTMLElement>('.video-paused-overlay');
+      const controls = box.querySelector<HTMLElement>('.video-controls');
+      const progress = box.querySelector<HTMLElement>('.video-progress');
+      const track = box.querySelector<HTMLElement>('.video-progress-track');
+      const fill = box.querySelector<HTMLElement>('.video-progress-fill');
+      const thumb = box.querySelector<HTMLElement>('.video-progress-thumb');
+      const hint = box.querySelector<HTMLElement>('.tap-for-sound');
 
-    const overlay = box.querySelector<HTMLElement>('.video-paused-overlay');
-    const controls = box.querySelector<HTMLElement>('.video-controls');
-    const progress = box.querySelector<HTMLElement>('.video-progress');
-    const track = box.querySelector<HTMLElement>('.video-progress-track');
-    const fill = box.querySelector<HTMLElement>('.video-progress-fill');
-    const thumb = box.querySelector<HTMLElement>('.video-progress-thumb');
-    const hint = box.querySelector<HTMLElement>('.tap-for-sound');
+      let activated = false;
+      let paused = false;
+      let dragging = false;
 
-    let activated = false;
-    let paused = false;
-    let dragging = false;
+      function play() {
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      }
 
-    function play() {
-      const p = v!.play();
-      if (p && p.catch) p.catch(() => {});
-    }
+      function render() {
+        const show = activated && paused;
+        if (controls) controls.classList.toggle('video-controls--visible', show);
+        if (progress) progress.classList.toggle('video-progress--visible', show);
+        if (overlay) overlay.style.display = show ? 'block' : 'none';
+        if (hint) hint.style.display = activated ? 'none' : '';
+      }
 
-    function render() {
-      const show = activated && paused;
-      if (controls) controls.classList.toggle('video-controls--visible', show);
-      if (progress) progress.classList.toggle('video-progress--visible', show);
-      if (overlay) overlay.style.display = show ? 'block' : 'none';
-      if (hint) hint.style.display = activated ? 'none' : '';
-    }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                play();
+                paused = false;
+              } else {
+                v.pause();
+              }
+              render();
+            });
+          },
+          { threshold: 0.25 }
+        ).observe(v);
+      } else {
+        play();
+      }
 
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              play();
-              paused = false;
-            } else {
-              v!.pause();
-            }
+      v.addEventListener('timeupdate', () => {
+        if (!dragging && v.duration) {
+          const pct = (v.currentTime / v.duration) * 100;
+          if (fill) fill.style.width = pct + '%';
+          if (thumb) thumb.style.left = pct + '%';
+        }
+      });
+
+      box.addEventListener('click', () => {
+        if (!activated) {
+          v.muted = false;
+          play();
+          activated = true;
+          paused = false;
+          render();
+          return;
+        }
+        if (v.paused) {
+          play();
+          paused = false;
+        } else {
+          v.pause();
+          paused = true;
+        }
+        render();
+      });
+
+      function bind(a: string, fn: () => void) {
+        const b = box.querySelector<HTMLElement>(`[data-a="${a}"]`);
+        if (b)
+          b.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fn();
             render();
           });
-        },
-        { threshold: 0.25 }
-      ).observe(v);
-    } else {
-      play();
-    }
-
-    v.addEventListener('timeupdate', () => {
-      if (!dragging && v.duration) {
-        const pct = (v.currentTime / v.duration) * 100;
-        if (fill) fill.style.width = pct + '%';
-        if (thumb) thumb.style.left = pct + '%';
       }
-    });
 
-    box.addEventListener('click', () => {
-      if (!activated) {
-        v.muted = false;
-        play();
-        activated = true;
-        paused = false;
-        render();
-        return;
-      }
-      if (v.paused) {
-        play();
-        paused = false;
-      } else {
-        v.pause();
-        paused = true;
-      }
-      render();
-    });
+      bind('play', () => { play(); paused = false; });
+      bind('reset', () => { v.currentTime = 0; play(); paused = false; });
+      bind('mute', () => { v.muted = true; activated = false; paused = false; play(); });
+      bind('full', () => {
+        if (v.requestFullscreen) v.requestFullscreen();
+        else if ((v as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen)
+          (v as HTMLVideoElement & { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
+      });
 
-    function bind(a: string, fn: () => void) {
-      const b = box.querySelector<HTMLElement>(`[data-a="${a}"]`);
-      if (b)
-        b.addEventListener('click', (e) => {
+      function seek(x: number) {
+        if (!v.duration || !track) return;
+        const r = track.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (x - r.left) / r.width));
+        v.currentTime = ratio * v.duration;
+        if (fill) fill.style.width = ratio * 100 + '%';
+        if (thumb) thumb.style.left = ratio * 100 + '%';
+      }
+
+      if (progress) {
+        progress.addEventListener('click', (e) => e.stopPropagation());
+
+        const down = (e: MouseEvent | TouchEvent) => {
           e.stopPropagation();
-          fn();
-          render();
-        });
-    }
+          dragging = true;
+          const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
+          seek(x);
 
-    bind('play', () => { play(); paused = false; });
-    bind('reset', () => { v!.currentTime = 0; play(); paused = false; });
-    bind('mute', () => { v!.muted = true; activated = false; paused = false; play(); });
-    bind('full', () => {
-      const vid = v!;
-      if (vid.requestFullscreen) vid.requestFullscreen();
-      else if ((vid as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen)
-        (vid as HTMLVideoElement & { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
-    });
-
-    function seek(x: number) {
-      if (!v!.duration || !track) return;
-      const r = track.getBoundingClientRect();
-      const ratio = Math.max(0, Math.min(1, (x - r.left) / r.width));
-      v!.currentTime = ratio * v!.duration;
-      if (fill) fill.style.width = ratio * 100 + '%';
-      if (thumb) thumb.style.left = ratio * 100 + '%';
-    }
-
-    if (progress) {
-      progress.addEventListener('click', (e) => e.stopPropagation());
-
-      const down = (e: MouseEvent | TouchEvent) => {
-        e.stopPropagation();
-        dragging = true;
-        const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
-        seek(x);
-
-        const mv = (ev: MouseEvent | TouchEvent) => {
-          const mx = 'touches' in ev ? ev.touches[0].clientX : ev.clientX;
-          seek(mx);
+          const mv = (ev: MouseEvent | TouchEvent) => {
+            const mx = 'touches' in ev ? ev.touches[0].clientX : ev.clientX;
+            seek(mx);
+          };
+          const up = () => {
+            dragging = false;
+            window.removeEventListener('mousemove', mv as EventListener);
+            window.removeEventListener('mouseup', up);
+            window.removeEventListener('touchmove', mv as EventListener);
+            window.removeEventListener('touchend', up);
+          };
+          window.addEventListener('mousemove', mv as EventListener);
+          window.addEventListener('mouseup', up);
+          window.addEventListener('touchmove', mv as EventListener);
+          window.addEventListener('touchend', up);
         };
-        const up = () => {
-          dragging = false;
-          window.removeEventListener('mousemove', mv as EventListener);
-          window.removeEventListener('mouseup', up);
-          window.removeEventListener('touchmove', mv as EventListener);
-          window.removeEventListener('touchend', up);
-        };
-        window.addEventListener('mousemove', mv as EventListener);
-        window.addEventListener('mouseup', up);
-        window.addEventListener('touchmove', mv as EventListener);
-        window.addEventListener('touchend', up);
-      };
 
-      progress.addEventListener('mousedown', down as EventListener);
-      progress.addEventListener('touchstart', down as EventListener, { passive: true });
-    }
+        progress.addEventListener('mousedown', down as EventListener);
+        progress.addEventListener('touchstart', down as EventListener, { passive: true });
+      }
 
-    render();
+      render();
 
-    // Timeline seek buttons
-    const rows = document.querySelectorAll<HTMLElement>('.vt[data-t]');
-    rows.forEach((el) => {
-      el.tabIndex = 0;
-      el.setAttribute('role', 'button');
-
-      const go = () => {
-        const t = parseFloat(el.getAttribute('data-t') || '');
-        if (!isNaN(t)) {
-          v!.currentTime = t;
+      return {
+        seekTo(t: number) {
+          v.currentTime = t;
           play();
           paused = false;
           render();
-        }
-        rows.forEach((x) => x.classList.remove('vt-active'));
-        el.classList.add('vt-active');
-        v!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        },
       };
+    }
 
-      el.addEventListener('click', go);
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          go();
-        }
+    // Walkthrough player (drives the timeline below it)
+    const walk = document.getElementById('qm-walk') as HTMLVideoElement | null;
+    const walkApi = walk ? wirePlayer(walk) : null;
+
+    // Hero intro videos (variant A + variant B — only the visible one
+    // ever intersects, so the hidden variant never plays)
+    document.querySelectorAll<HTMLVideoElement>('video.qm-video').forEach((v) => wirePlayer(v));
+
+    // Timeline seek buttons
+    if (walk && walkApi) {
+      const rows = document.querySelectorAll<HTMLElement>('.vt[data-t]');
+      rows.forEach((el) => {
+        el.tabIndex = 0;
+        el.setAttribute('role', 'button');
+
+        const go = () => {
+          const t = parseFloat(el.getAttribute('data-t') || '');
+          if (!isNaN(t)) walkApi.seekTo(t);
+          rows.forEach((x) => x.classList.remove('vt-active'));
+          el.classList.add('vt-active');
+          walk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        el.addEventListener('click', go);
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            go();
+          }
+        });
       });
-    });
+    }
 
     // FAQ accordion (vanilla, matches mockup behaviour)
     const fitems = document.querySelectorAll<HTMLElement>('.eng-home .fitem');
@@ -203,7 +217,6 @@ export default function EngHomeClient() {
     const ua = navigator.userAgent || navigator.vendor || '';
     const isMobileDevice = /iPad|iPhone|iPod/.test(ua) || /android/i.test(ua);
     if (!isMobileDevice) return; // desktop: let the /app link open the web app
-
     const ctas = Array.from(document.querySelectorAll<HTMLElement>('[data-hero-cta]'));
     const onClick = (e: Event) => {
       e.preventDefault();

@@ -55,6 +55,56 @@ const CheckSvg = () => (
   </svg>
 );
 
+// Phone-framed intro video — same player chrome/behaviour as the walkthrough
+// (EngHomeClient wires every `video.qm-video` with the shared controls).
+const HeroIntroVideo = ({ id }: { id: string }) => (
+  <div className="phone hero-phone">
+    <div className="notch"></div>
+    <div className="screen">
+      <video id={id} className="qm-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/videos/intro-poster.jpg" aria-label="QuoteMate app intro video">
+        <source src="/assets/videos/intro.webm" type="video/webm" />
+        <source src="/assets/videos/intro.mp4" type="video/mp4" />
+      </video>
+      <div className="video-paused-overlay" style={{ display: 'none' }}></div>
+      <div className="video-controls">
+        <button className="vc-btn" data-a="play" aria-label="Play">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3" /></svg>
+        </button>
+        <button className="vc-btn" data-a="reset" aria-label="Restart">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+          </svg>
+        </button>
+        <button className="vc-btn" data-a="mute" aria-label="Mute">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+        </button>
+        <button className="vc-btn" data-a="full" aria-label="Fullscreen">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
+            <line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
+          </svg>
+        </button>
+      </div>
+      <div className="video-progress">
+        <div className="video-progress-track">
+          <div className="video-progress-fill"></div>
+          <div className="video-progress-thumb"></div>
+        </div>
+      </div>
+      <div className="tap-for-sound">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+        </svg>
+        <span>Tap for sound</span>
+      </div>
+    </div>
+  </div>
+);
+
 export default function HomePage() {
   return (
     <div className="eng-home">
@@ -137,118 +187,8 @@ export default function HomePage() {
             <a href="/app" className="hero-web">Try it free on the web &rarr;</a>
           </div>
 
-          {/* Quote window */}
-          <div className="win">
-            <div className="win-bar">
-              <div className="dots"><i></i><i></i><i></i></div>
-              <span className="tab">Q-016 — Door hanging</span>
-              <span className="live"><span className="d"></span> live pricing</span>
-            </div>
-            <div className="win-body">
-              {/* Screen 1: Materials */}
-              <div className="screen s-mat">
-                <div className="doc-sec">
-                  <span className="h">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#009868" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                      <line x1="12" y1="22.08" x2="12" y2="12" />
-                    </svg>
-                    {' '}Materials (9)
-                  </span>
-                  <span className="edit">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                    </svg>
-                  </span>
-                </div>
-                <div className="sectag">Internal Door Opening</div>
-                <div className="li">
-                  <div><div className="nm">Internal Hollow Core Door 2040&times;820</div><div className="meta">4 each &times; $48.60 <span className="src bunnings">Bunnings</span></div></div>
-                  <div className="amt">$194.40</div>
-                </div>
-                <div className="li">
-                  <div><div className="nm">Chrome Lever-on-Rose Handle Set</div><div className="meta">4 each &times; $45.75 <span className="src reece">Reece</span></div></div>
-                  <div className="amt">$183.00</div>
-                </div>
-                <div className="li">
-                  <div><div className="nm">Tubular Latch + Chrome Striker 60mm</div><div className="meta">4 each &times; $9.28 <span className="src custom">Custom</span></div></div>
-                  <div className="amt">$37.12</div>
-                </div>
-                <div className="li">
-                  <div><div className="nm">Primed Pine Architrave 66&times;18mm</div><div className="meta">6 m &times; $16.38 <span className="src bunnings">Bunnings</span></div></div>
-                  <div className="amt">$98.28</div>
-                </div>
-                <div className="more">+ 5 more items</div>
-                <div className="docdiv"></div>
-                <div className="drow"><span className="l">Materials subtotal</span><span className="v">$602.01</span></div>
-              </div>
-
-              {/* Screen 2: PDF */}
-              <div className="screen s-pdf">
-                <div className="pdf-page">
-                  <div className="pdf-top"><b>QuoteMate</b><span>QUOTE</span></div>
-                  <div className="pdf-meta"><b>Q-016</b> &middot; 23 Jun 2026<br />For: Jacinta M.</div>
-                  <div className="pdf-line"><span>Door hanging — materials</span><span>$602.01</span></div>
-                  <div className="pdf-line"><span>Labour &middot; 8 hrs</span><span>$680.00</span></div>
-                  <div className="pdf-line"><span>GST (10%)</span><span>$128.20</span></div>
-                  <div className="pdf-total"><span>Total</span><span>$1,410.21</span></div>
-                  <div className="pdf-foot">Valid 30 days &middot; Prices incl. GST &middot; ABN 12 345 678 901</div>
-                </div>
-              </div>
-
-              {/* Screen 3: Email */}
-              <div className="screen s-email">
-                <div className="mail-hd">New message</div>
-                <div className="mail-row"><span className="mk">To</span><span>jacinta.m@email.com</span></div>
-                <div className="mail-row"><span className="mk">Subject</span><span>Your quote — door hanging</span></div>
-                <div className="mail-body">Hi Jacinta,<br /><br />Thanks for the opportunity. Your quote for the door hanging is attached — happy to talk it through whenever suits.</div>
-                <div className="mail-attach">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                  </svg>
-                  {' '}Quote-Q016.pdf &middot; 142 KB
-                </div>
-                <div className="mail-send">
-                  <span className="btn-send">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <line x1="22" y1="2" x2="11" y2="13" />
-                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
-                    {' '}Send
-                  </span>
-                </div>
-              </div>
-
-              {/* Screen 4: Sent */}
-              <div className="screen s-sent">
-                <div className="sent-ic">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#009868" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div className="sent-h">Sent to Jacinta</div>
-                <div className="sent-sub">Q-016 &middot; $1,410.21 &middot; just now</div>
-                <div className="sent-status"><span className="d"></span> Awaiting response</div>
-              </div>
-
-              {/* Screen 5: Tap to Pay */}
-              <div className="screen s-pay">
-                <div className="pay-amt">$1,410.21</div>
-                <div className="pay-sub">Q-016 &middot; Jacinta M.</div>
-                <div className="pay-nfc">
-                  <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                    <path d="M6 8.5a9 9 0 0 1 0 7" />
-                    <path d="M10 6a14 14 0 0 1 0 12" />
-                    <path d="M14 4.5a18 18 0 0 1 0 15" />
-                  </svg>
-                </div>
-                <div className="pay-hint">Tap card or phone to pay</div>
-                <div className="pay-sq">Powered by Square</div>
-              </div>
-            </div>
-          </div>
+          {/* Intro video (replaces the animated quote window) */}
+          <HeroIntroVideo id="qm-hero-a" />
         </div>
 
         {/* Stat strip */}
@@ -286,6 +226,10 @@ export default function HomePage() {
                 alt="Deck build job"
                 className="hb-photo"
               />
+              {/* Intro video — phone mockup overlaid on the deck photo */}
+              <div className="hb-video">
+                <HeroIntroVideo id="qm-hero-b" />
+              </div>
               {/* Floating quote-draft card */}
               <div className="hb-quote-card quote-draft-card">
                 <div className="hb-qc-header">
