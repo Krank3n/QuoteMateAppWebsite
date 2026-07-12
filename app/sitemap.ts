@@ -7,6 +7,16 @@ import { TEMPLATES_WITH_VIDEOS, TRADES_WITH_VIDEOS } from '@/lib/videos';
 
 export const dynamic = 'force-static';
 
+// Next.js serializes video title/description into the sitemap XML without
+// escaping, so raw `&`/`<` in trade or template names breaks the whole file.
+const xmlEscape = (s: string): string =>
+  s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://quotemateapp.au';
   const lastModified = new Date();
@@ -69,9 +79,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? {
             videos: [
               {
-                title: `${trade.name} quote demo`,
+                title: xmlEscape(`${trade.name} quote demo`),
                 thumbnail_loc: `${baseUrl}/assets/videos/trades/${trade.slug}-poster.jpg`,
-                description: `Watch a real ${trade.name.toLowerCase()} quote built in under a minute with QuoteMate.`,
+                description: xmlEscape(`Watch a real ${trade.name.toLowerCase()} quote built in under a minute with QuoteMate.`),
                 content_loc: `${baseUrl}/assets/videos/trades/${trade.slug}.mp4`,
               },
             ],
@@ -109,9 +119,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? {
             videos: [
               {
-                title: `${jobName} quote demo`,
+                title: xmlEscape(`${jobName} quote demo`),
                 thumbnail_loc: `${baseUrl}/assets/videos/templates/${template.slug}-poster.jpg`,
-                description: (template.description || `${jobName} quote demo`).slice(0, 200),
+                description: xmlEscape((template.description || `${jobName} quote demo`).slice(0, 200)),
                 content_loc: `${baseUrl}/assets/videos/templates/${template.slug}.mp4`,
               },
             ],
