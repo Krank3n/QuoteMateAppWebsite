@@ -189,6 +189,12 @@ export default function AnalyticsPage() {
 
       {data && (
         <>
+          {/* Full journey — the one strip that connects web traffic to revenue.
+              Windows differ per segment (GA is day-scoped, Firestore funnel is
+              all-time), so each segment carries its own window chip and the
+              web→app bridge compares weekly rates instead of raw counts. */}
+          <FullJourney data={data} funnel={funnel} signups7d={signups7d} />
+
           {/* Headline metrics */}
           <div className={styles.statGrid}>
             <StatCard label="Sessions" value={data.summary.sessions} sub={`last ${data.days} days`} icon={<IconTrendUp />} series={sessionsSeries} />
@@ -233,37 +239,15 @@ export default function AnalyticsPage() {
               )}
             </div>
 
-            {/* Signup funnel */}
+            {/* Hero A/B test */}
             <div className={styles.card}>
               <div className={styles.cardHeader}>
                 <div>
-                  <div className={styles.cardTitle}>Signup funnel</div>
-                  <div className={styles.cardSubtitle}>Web → CTA → app signup</div>
+                  <div className={styles.cardTitle}>Hero A/B test</div>
+                  <div className={styles.cardSubtitle}>experiment_impression → CTA click-through, by variant</div>
                 </div>
               </div>
-              <FunnelStep label="Sessions" value={data.funnel.sessions} max={data.funnel.sessions} />
-              <FunnelStep label="Engaged sessions" value={data.funnel.engaged} max={data.funnel.sessions} />
-              <FunnelStep
-                label="Store / web CTA clicks"
-                value={data.funnel.ctaClicks}
-                max={data.funnel.sessions}
-                detail={`web ${data.funnel.byCta.web} · App Store ${data.funnel.byCta.appStore} · Play ${data.funnel.byCta.googlePlay} · pricing ${data.funnel.byCta.pricing}`}
-              />
-              {signups7d !== null && (
-                <FunnelStep label="App signups (7d)" value={signups7d} max={data.funnel.sessions} note="separate timeframe — from Firestore" accent />
-              )}
-            </div>
-          </div>
-
-          {/* Hero A/B test */}
-          <div className={styles.card} style={{ marginTop: 16 }}>
-            <div className={styles.cardHeader}>
-              <div>
-                <div className={styles.cardTitle}>Hero A/B test</div>
-                <div className={styles.cardSubtitle}>experiment_impression → CTA click-through, by variant</div>
-              </div>
-            </div>
-            {data.abTest.available ? (
+              {data.abTest.available ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
                 {data.abTest.variants.map((v) => {
                   const winner = Math.max(...(data.abTest as any).variants.map((x: any) => x.ctr));
@@ -282,17 +266,18 @@ export default function AnalyticsPage() {
                   );
                 })}
               </div>
-            ) : (
-              <div style={{ padding: '8px 2px' }}>
-                <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', marginBottom: 10 }}>
-                  Not available yet. {data.abTest.reason}
+              ) : (
+                <div style={{ padding: '8px 2px' }}>
+                  <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', marginBottom: 10 }}>
+                    Not available yet. {data.abTest.reason}
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
+                    GA → <strong>Admin</strong> → <strong>Custom definitions</strong> → <strong>Create custom dimensions</strong>
+                    <br />Dimension name: <code>Hero variant</code> · Scope: <code>Event</code> · Event parameter: <code>variant</code>
+                  </div>
                 </div>
-                <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', lineHeight: 1.6 }}>
-                  GA → <strong>Admin</strong> → <strong>Custom definitions</strong> → <strong>Create custom dimensions</strong>
-                  <br />Dimension name: <code>Hero variant</code> · Scope: <code>Event</code> · Event parameter: <code>variant</code>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* Top pages */}
@@ -329,6 +314,80 @@ export default function AnalyticsPage() {
         </>
       )}
     </>
+  );
+}
+
+function FullJourney({ data, funnel, signups7d }: { data: Traffic; funnel: Funnel | null; signups7d: number | null }) {
+  const w = data.funnel;
+  const f = funnel?.funnel;
+  // The web→app bridge can't compare raw counts (GA is day-scoped, signups are
+  // a 7d Firestore count), so it compares weekly averages instead.
+  const clicksPerWeek = data.days > 0 ? (w.ctaClicks / data.days) * 7 : 0;
+  const bridgePct = signups7d !== null && clicksPerWeek > 0 ? Math.round(Math.min(signups7d / clicksPerWeek, 9.99) * 100) : null;
+  const webWindow = `last ${data.days}d`;
+
+  return (
+    <div className={styles.card} style={{ marginBottom: 16 }}>
+      <div className={styles.cardHeader}>
+        <div>
+          <div className={styles.cardTitle}>Full journey</div>
+          <div className={styles.cardSubtitle}>Website visit → paying customer, in one strip</div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: 8 }}>
+        <JourneyStage label="Sessions" value={w.sessions} windowLabel={webWindow} />
+        <JourneyArrow label={pct(w.engaged, w.sessions)} />
+        <JourneyStage label="Engaged" value={w.engaged} windowLabel={webWindow} />
+        <JourneyArrow label={pct(w.ctaClicks, w.engaged)} />
+        <JourneyStage label="Store / web clicks" value={w.ctaClicks} windowLabel={webWindow} />
+        <JourneyArrow label={bridgePct !== null ? `≈${bridgePct}%` : '·'} note="weekly avg" />
+        {signups7d !== null && <JourneyStage label="App signups" value={signups7d} windowLabel="last 7d" />}
+        {f && (
+          <>
+            <JourneyStage label="Signups" value={f.signups} windowLabel="all-time" />
+            <JourneyArrow label={pct(f.startedTrial, f.signups)} />
+            <JourneyStage label="Trials" value={f.startedTrial} windowLabel="all-time" />
+            <JourneyArrow label={pct(f.sentQuote, f.startedTrial)} />
+            <JourneyStage label="Sent a quote" value={f.sentQuote} windowLabel="all-time" />
+            <JourneyArrow label={pct(f.paying, f.sentQuote)} />
+            <JourneyStage label="Paying" value={f.paying} windowLabel="all-time" accent />
+          </>
+        )}
+      </div>
+      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10 }}>
+        Web stages come from GA ({webWindow}); app stages are all-time Firestore counts. The click → signup rate compares
+        weekly averages, not the same users — treat it as a gauge, not a cohort.
+      </div>
+    </div>
+  );
+}
+
+function JourneyStage({ label, value, windowLabel, accent }: { label: string; value: number; windowLabel: string; accent?: boolean }) {
+  return (
+    <div
+      style={{
+        flex: '1 1 104px',
+        minWidth: 100,
+        padding: '10px 12px',
+        borderRadius: 10,
+        background: 'rgba(0,0,0,0.18)',
+        border: `1px solid ${accent ? 'rgba(249,115,22,0.35)' : 'rgba(255,255,255,0.05)'}`,
+      }}
+    >
+      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.4, whiteSpace: 'nowrap' }}>{label}</div>
+      <div style={{ fontSize: 22, fontWeight: 800, margin: '2px 0', color: accent ? '#fb923c' : 'inherit' }}>{value.toLocaleString()}</div>
+      <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>{windowLabel}</div>
+    </div>
+  );
+}
+
+function JourneyArrow({ label, note }: { label: string; note?: string }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 44, fontSize: 11, color: 'var(--color-text-secondary)' }}>
+      <span style={{ fontWeight: 700 }}>{label}</span>
+      <span aria-hidden style={{ opacity: 0.6 }}>→</span>
+      {note && <span style={{ fontSize: 9, color: 'var(--color-text-tertiary)' }}>{note}</span>}
+    </div>
   );
 }
 
