@@ -40,9 +40,14 @@ export default function Analytics() {
 
   useEffect(() => {
     if (disabled) return;
-    // Fire experiment impression once per mount
-    const variant = getVariant();
-    track('experiment_impression', { experiment_id: 'home_hero_v1', variant });
+    // Fire experiment impression once per mount — homepage only. The hero
+    // experiment only renders on '/', so impressions from other pages would
+    // dilute the A/B denominators with visitors who never saw either hero.
+    // (window.location, not usePathname, to keep this effect single-run.)
+    if (window.location.pathname === '/') {
+      const variant = getVariant();
+      track('experiment_impression', { experiment_id: 'home_hero_v1', variant });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

@@ -177,7 +177,7 @@ export default function HomePage() {
                 </svg>
                 <span><small>Download on the</small>App Store</span>
               </a>
-              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU" className="btn btn-store-lg">
+              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" className="btn btn-store-lg">
                 <svg width="18" height="20" viewBox="0 0 20 22" fill="currentColor" aria-hidden="true">
                   <path d="M1.22.56L11.35 10.5 1.22 20.44C.97 19.95.78 19.37.78 18.71V2.29C.78 1.63.97 1.05 1.22.56zM13.04 12.18l2.68 2.68-8.66 5.02 5.98-7.7zM17.37 9.57l2.34 1.36c.65.38.65.99 0 1.36l-2.34 1.36-2.94-2.04 2.94-2.04zM7.06 4.12l8.66 5.02-2.68 2.68-5.98-7.7z" />
                 </svg>
@@ -636,7 +636,7 @@ export default function HomePage() {
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <p>Rated <b>5.0</b> by tradies on Google Play. Used QuoteMate on a job? We&apos;d genuinely love your honest review.</p>
-              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&amp;hl=en_AU" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
+              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
             </div>
           </div>
         </div>
@@ -718,7 +718,7 @@ export default function HomePage() {
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
               <h3>Android</h3>
               <p>Phones &amp; tablets</p>
-              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU" className="btn-platform">Google Play</a>
+              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" className="btn-platform">Google Play</a>
             </div>
             <div className="platform-card">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
@@ -851,7 +851,7 @@ export default function HomePage() {
               <svg width="13" height="15" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true"><path d="M16.52 12.46c-.03-3.13 2.55-4.63 2.67-4.71-1.45-2.12-3.72-2.41-4.53-2.45-1.93-.2-3.77 1.14-4.74 1.14-.98 0-2.49-1.11-4.1-1.08-2.11.03-4.06 1.23-5.15 3.12-2.2 3.81-.56 9.45 1.58 12.54 1.05 1.52 2.3 3.22 3.94 3.16 1.58-.06 2.18-1.02 4.09-1.02 1.91 0 2.46 1.02 4.13.99 1.7-.03 2.78-1.55 3.82-3.08 1.2-1.76 1.7-3.47 1.73-3.56-.04-.02-3.31-1.27-3.34-5.05zM13.39 3.51C14.26 2.44 14.85.99 14.7-.5c-1.33.05-2.94.89-3.89 2.01-.86.99-1.6 2.56-1.4 4.07 1.48.12 2.99-.76 3.98-2.07z" /></svg>
               {' '}App Store
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU" className="btn-store">
+            <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" className="btn-store">
               <svg width="13" height="15" viewBox="0 0 20 22" fill="currentColor" aria-hidden="true"><path d="M1.22.56L11.35 10.5 1.22 20.44C.97 19.95.78 19.37.78 18.71V2.29C.78 1.63.97 1.05 1.22.56zM13.04 12.18l2.68 2.68-8.66 5.02 5.98-7.7zM17.37 9.57l2.34 1.36c.65.38.65.99 0 1.36l-2.34 1.36-2.94-2.04 2.94-2.04zM7.06 4.12l8.66 5.02-2.68 2.68-5.98-7.7z" /></svg>
               {' '}Google Play
             </a>

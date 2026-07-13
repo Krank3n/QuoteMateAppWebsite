@@ -50,7 +50,7 @@ export default function InstallSheet() {
 
   const storeLink = platform === 'ios'
     ? 'https://apps.apple.com/au/app/quotemate/id6754000046'
-    : 'https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU';
+    : 'https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite';
 
   const storeName = platform === 'ios' ? 'App Store' : 'Google Play';
   const storeLabel = platform === 'ios' ? 'Download on the' : 'Get it on';

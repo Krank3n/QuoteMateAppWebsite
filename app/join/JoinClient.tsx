@@ -57,7 +57,7 @@ export function JoinClient() {
         </p>
         <div style={styles.buttons}>
           <a
-            href="https://apps.apple.com/au/app/quotemate/id6738030590"
+            href="https://apps.apple.com/au/app/quotemate/id6754000046"
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...styles.button, ...styles.iosButton }}
@@ -66,7 +66,7 @@ export function JoinClient() {
             App Store
           </a>
           <a
-            href="https://play.google.com/store/apps/details?id=com.quotemate.app"
+            href="https://play.google.com/store/apps/details?id=com.quotemate.app&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite%26utm_campaign%3Dreferral"
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...styles.button, ...styles.androidButton }}
