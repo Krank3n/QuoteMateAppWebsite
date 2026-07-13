@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 
@@ -36,10 +36,26 @@ export default function Analytics() {
   // Don't load GA on the internal /admin CRM — it pollutes marketing analytics
   // with team traffic (inflated sessions, fake "top pages", skewed funnel).
   const pathname = usePathname();
-  const disabled = pathname?.startsWith('/admin') ?? false;
+  const isAdmin = pathname?.startsWith('/admin') ?? false;
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (disabled) return;
+    if (isAdmin) return;
+    // Owner opt-out: visit any page with ?notrack=1 once per browser to keep
+    // your own visits out of GA (?notrack=0 re-enables). Needed because the
+    // team's IPs are dynamic, so GA4's IP-based internal filter can't catch them.
+    try {
+      const q = new URLSearchParams(window.location.search).get('notrack');
+      if (q === '1') localStorage.setItem('qm_notrack', '1');
+      else if (q === '0') localStorage.removeItem('qm_notrack');
+      setEnabled(localStorage.getItem('qm_notrack') !== '1');
+    } catch {
+      setEnabled(true);
+    }
+  }, [isAdmin]);
+
+  useEffect(() => {
+    if (!enabled) return;
     // Fire experiment impression once per mount — homepage only. The hero
     // experiment only renders on '/', so impressions from other pages would
     // dilute the A/B denominators with visitors who never saw either hero.
@@ -141,9 +157,9 @@ export default function Analytics() {
       window.removeEventListener('scroll', checkScrollDepth);
       timeouts.forEach(clearTimeout);
     };
-  }, [disabled]);
+  }, [enabled]);
 
-  if (disabled) return null;
+  if (!enabled) return null;
 
   return (
     <>
