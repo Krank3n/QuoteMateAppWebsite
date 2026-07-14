@@ -46,6 +46,7 @@ export const api = {
   metricsSeries: call<{ days?: number }>('adminMetricsSeries'),
   trafficStats: call<{ days?: number }>('adminTrafficStats'),
   funnelStats: call('adminFunnelStats'),
+  weeklyDigest: call('adminWeeklyDigest'),
   assistantCosts: call<{ days?: number; topLimit?: number }>('adminAssistantCosts'),
   listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
   emailHealth: call('adminEmailHealth'),

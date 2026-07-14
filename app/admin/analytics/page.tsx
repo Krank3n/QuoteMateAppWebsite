@@ -76,6 +76,13 @@ interface Funnel {
 
 const DAY_OPTIONS = [7, 28, 90];
 
+interface Digest {
+  available: boolean;
+  html?: string;
+  aiGenerated?: boolean;
+  generatedAt?: number | null;
+}
+
 export default function AnalyticsPage() {
   const [days, setDays] = useState(28);
   const [data, setData] = useState<Traffic | null>(null);
@@ -84,6 +91,7 @@ export default function AnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [funnel, setFunnel] = useState<Funnel | null>(null);
   const [funnelError, setFunnelError] = useState<string | null>(null);
+  const [digest, setDigest] = useState<Digest | null>(null);
 
   useSetPageMeta({
     title: 'Analytics',
@@ -157,6 +165,25 @@ export default function AnalyticsPage() {
     };
   }, []);
 
+  // Latest stored weekly AI digest — written by the weeklyAnalyticsDigest
+  // function every Monday. Quiet failure: the card just doesn't render.
+  useEffect(() => {
+    let cancelled = false;
+    const cached = getCached<Digest>('analytics-digest');
+    if (cached) setDigest(cached);
+    api
+      .weeklyDigest({})
+      .then((d: any) => {
+        if (cancelled) return;
+        setDigest(d as Digest);
+        setCached('analytics-digest', d);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const sessionsSeries = (data?.daily || []).map((d) => d.sessions);
   const usersSeries = (data?.daily || []).map((d) => d.users);
 
@@ -165,6 +192,8 @@ export default function AnalyticsPage() {
       {/* Business health — trial→paid conversion is the founder's #1 metric, so
           it sits above the web-traffic content. */}
       <BusinessHealth funnel={funnel} error={funnelError} />
+
+      <WeeklyDigestCard digest={digest} />
 
       {loading && !data && (
         <div className={styles.statGrid}>
@@ -314,6 +343,53 @@ export default function AnalyticsPage() {
         </>
       )}
     </>
+  );
+}
+
+function WeeklyDigestCard({ digest }: { digest: Digest | null }) {
+  // No doc yet (function hasn't run) or still loading → render nothing rather
+  // than an empty card.
+  if (!digest?.available || !digest.html) return null;
+
+  return (
+    <div className={styles.card} style={{ marginBottom: 16 }}>
+      <div className={styles.cardHeader}>
+        <div>
+          <div className={styles.cardTitle}>Weekly AI digest</div>
+          <div className={styles.cardSubtitle}>
+            {digest.aiGenerated === false ? 'Numbers only — AI summary was unavailable this week' : 'What changed last week and the one thing to do'}
+            {digest.generatedAt ? ` · generated ${fmtRelative(digest.generatedAt)}` : ''}
+          </div>
+        </div>
+      </div>
+      {/* The HTML fragment is produced by our own Cloud Function (Claude output
+          constrained to h3/ul/li), stored admin-side, and served through an
+          admin-gated callable — same trust level as the rest of this page. */}
+      <div
+        className="weekly-digest-body"
+        style={{ fontSize: 13, lineHeight: 1.6 }}
+        dangerouslySetInnerHTML={{ __html: digest.html }}
+      />
+      <style jsx global>{`
+        .weekly-digest-body h3 {
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+          color: var(--color-text-tertiary, #94a3b8);
+          margin: 14px 0 6px;
+        }
+        .weekly-digest-body h3:first-child {
+          margin-top: 0;
+        }
+        .weekly-digest-body ul {
+          margin: 0;
+          padding-left: 18px;
+        }
+        .weekly-digest-body li {
+          margin-bottom: 4px;
+        }
+      `}</style>
+    </div>
   );
 }
 
