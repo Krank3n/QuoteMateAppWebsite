@@ -47,6 +47,7 @@ export const api = {
   trafficStats: call<{ days?: number }>('adminTrafficStats'),
   funnelStats: call('adminFunnelStats'),
   weeklyDigest: call('adminWeeklyDigest'),
+  subscriptionAudit: call('adminSubscriptionAudit'),
   assistantCosts: call<{ days?: number; topLimit?: number }>('adminAssistantCosts'),
   listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
   emailHealth: call('adminEmailHealth'),

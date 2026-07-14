@@ -51,6 +51,8 @@ interface Funnel {
     startedTrial: number;
     sentQuote: number;
     paying: number;
+    payingBilled?: number;
+    payingRestored?: number;
     generatedList?: number;
     fetchedPrices?: number;
     usedConversation?: number;
@@ -83,6 +85,28 @@ interface Digest {
   generatedAt?: number | null;
 }
 
+interface SubAuditIssue {
+  uid: string;
+  email: string | null;
+  reason: 'restored_awaiting_receipt' | 'restored_unknown_platform' | 'restored_expired' | 'bare_ispro';
+  platform: string | null;
+  incidentProUntil: string | null;
+}
+
+interface SubAudit {
+  issues: SubAuditIssue[];
+  billed: number;
+  scanned: number;
+  generatedAt: number;
+}
+
+const AUDIT_REASON_LABELS: Record<SubAuditIssue['reason'], string> = {
+  restored_awaiting_receipt: 'Paying — awaiting receipt re-sync',
+  restored_unknown_platform: 'Incident restore, platform unknown',
+  restored_expired: 'Incident grant lapsed, still Pro',
+  bare_ispro: 'Pro with no billing record',
+};
+
 export default function AnalyticsPage() {
   const [days, setDays] = useState(28);
   const [data, setData] = useState<Traffic | null>(null);
@@ -92,6 +116,7 @@ export default function AnalyticsPage() {
   const [funnel, setFunnel] = useState<Funnel | null>(null);
   const [funnelError, setFunnelError] = useState<string | null>(null);
   const [digest, setDigest] = useState<Digest | null>(null);
+  const [subAudit, setSubAudit] = useState<SubAudit | null>(null);
 
   useSetPageMeta({
     title: 'Analytics',
@@ -179,6 +204,12 @@ export default function AnalyticsPage() {
         setCached('analytics-digest', d);
       })
       .catch(() => {});
+    api
+      .subscriptionAudit({})
+      .then((a: any) => {
+        if (!cancelled) setSubAudit(a as SubAudit);
+      })
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -191,7 +222,7 @@ export default function AnalyticsPage() {
     <>
       {/* Business health — trial→paid conversion is the founder's #1 metric, so
           it sits above the web-traffic content. */}
-      <BusinessHealth funnel={funnel} error={funnelError} />
+      <BusinessHealth funnel={funnel} error={funnelError} subAudit={subAudit} />
 
       <WeeklyDigestCard digest={digest} />
 
@@ -470,7 +501,7 @@ function JourneyArrow({ label, note }: { label: string; note?: string }) {
   );
 }
 
-function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: string | null }) {
+function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; error: string | null; subAudit: SubAudit | null }) {
   const title = (
     <div className={styles.cardHeader} style={{ marginBottom: 12 }}>
       <div>
@@ -530,7 +561,15 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
           valueSuffix="%"
           sub={`${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} sent a quote`}
         />
-        <StatCard label="Paying customers" value={f.paying} sub="billed subscriptions" />
+        <StatCard
+          label="Paying customers"
+          value={f.paying}
+          sub={
+            f.payingRestored
+              ? `${(f.payingBilled ?? f.paying).toLocaleString()} billed · ${f.payingRestored.toLocaleString()} restored, awaiting receipt re-sync`
+              : 'billed subscriptions'
+          }
+        />
         <StatCard
           label="Trials expiring ≤3d"
           value={funnel.expiringTrials}
@@ -622,9 +661,46 @@ function BusinessHealth({ funnel, error }: { funnel: Funnel | null; error: strin
         <ActionTable rows={funnel.actionable.expiringTrialsInactive} lastCol="daysLeft" emptyLabel="No expiring trials need a nudge right now" />
       </div>
 
+      <SubscriptionAuditCard audit={subAudit} />
+
       <div style={{ marginTop: 12, fontSize: 12, color: 'var(--color-text-secondary)', textAlign: 'right' }}>
         refreshed {fmtRelative(funnel.asOf)}
         {funnel.cached ? ' · cached' : ''}
+      </div>
+    </div>
+  );
+}
+
+function SubscriptionAuditCard({ audit }: { audit: SubAudit | null }) {
+  // Nothing to reconcile → no card. The nightly subscriptionAuditDaily
+  // function keeps this fresh; the callable computes live if it's stale.
+  if (!audit || audit.issues.length === 0) return null;
+
+  return (
+    <div className={styles.card} style={{ marginTop: 16, borderColor: 'rgba(249, 115, 22, 0.25)' }}>
+      <div className={styles.cardHeader}>
+        <div>
+          <div className={styles.cardTitle}>Subscription reconciliation</div>
+          <div className={styles.cardSubtitle}>
+            Pro access without a billing record — restored payers self-heal on next app open; the rest need a look
+          </div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        {audit.issues.map((i) => (
+          <div key={i.uid} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 14, alignItems: 'center', padding: '8px 12px', borderRadius: 8, background: 'rgba(0,0,0,0.15)', fontSize: 13 }}>
+            <Link href={`/admin/users?uid=${encodeURIComponent(i.uid)}`} style={{ color: 'inherit', textDecoration: 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {i.email || i.uid}
+            </Link>
+            <span style={{ color: i.reason === 'restored_awaiting_receipt' ? '#6ee7b7' : 'var(--color-text-secondary)' }}>
+              {AUDIT_REASON_LABELS[i.reason] || i.reason}
+            </span>
+            <span style={{ color: 'var(--color-text-tertiary)', minWidth: 70, textAlign: 'right' }}>{i.platform || '—'}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 8 }}>
+        {audit.billed} billed of {audit.scanned} subscription docs · checked {fmtRelative(audit.generatedAt)}
       </div>
     </div>
   );
