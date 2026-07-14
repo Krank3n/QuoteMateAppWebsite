@@ -171,7 +171,7 @@ export default function HomePage() {
               <li><span className="sn">3</span>Send the quote.</li>
             </ol>
             <div className="ctas">
-              <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn btn-store-lg">
+              <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn btn-store-lg">
                 <svg width="18" height="22" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true">
                   <path d="M16.52 12.46c-.03-3.13 2.55-4.63 2.67-4.71-1.45-2.12-3.72-2.41-4.53-2.45-1.93-.2-3.77 1.14-4.74 1.14-.98 0-2.49-1.11-4.1-1.08-2.11.03-4.06 1.23-5.15 3.12-2.2 3.81-.56 9.45 1.58 12.54 1.05 1.52 2.3 3.22 3.94 3.16 1.58-.06 2.18-1.02 4.09-1.02 1.91 0 2.46 1.02 4.13.99 1.7-.03 2.78-1.55 3.82-3.08 1.2-1.76 1.7-3.47 1.73-3.56-.04-.02-3.31-1.27-3.34-5.05zM13.39 3.51C14.26 2.44 14.85.99 14.7-.5c-1.33.05-2.94.89-3.89 2.01-.86.99-1.6 2.56-1.4 4.07 1.48.12 2.99-.76 3.98-2.07z" />
                 </svg>
@@ -712,7 +712,7 @@ export default function HomePage() {
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
               <h3>iOS</h3>
               <p>iPhone &amp; iPad</p>
-              <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn-platform" target="_blank" rel="noopener noreferrer">App Store</a>
+              <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn-platform" target="_blank" rel="noopener noreferrer">App Store</a>
             </div>
             <div className="platform-card">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
@@ -799,7 +799,7 @@ export default function HomePage() {
           <p>Ditch the spreadsheets and handwritten quotes — quote from your phone in under 2 minutes.</p>
           <div className="ctas">
             <a href="/app" className="btn btn-primary">Start free</a>
-            <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn btn-cmd"><span className="p">$</span> quotemate&nbsp;download</a>
+            <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn btn-cmd"><span className="p">$</span> quotemate&nbsp;download</a>
           </div>
         </div>
       </section>
@@ -847,7 +847,7 @@ export default function HomePage() {
         </div>
         <div className="foot-bottom">
           <div className="store">
-            <a href="https://apps.apple.com/au/app/quotemate/id6754000046" className="btn-store">
+            <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn-store">
               <svg width="13" height="15" viewBox="0 0 20 24" fill="currentColor" aria-hidden="true"><path d="M16.52 12.46c-.03-3.13 2.55-4.63 2.67-4.71-1.45-2.12-3.72-2.41-4.53-2.45-1.93-.2-3.77 1.14-4.74 1.14-.98 0-2.49-1.11-4.1-1.08-2.11.03-4.06 1.23-5.15 3.12-2.2 3.81-.56 9.45 1.58 12.54 1.05 1.52 2.3 3.22 3.94 3.16 1.58-.06 2.18-1.02 4.09-1.02 1.91 0 2.46 1.02 4.13.99 1.7-.03 2.78-1.55 3.82-3.08 1.2-1.76 1.7-3.47 1.73-3.56-.04-.02-3.31-1.27-3.34-5.05zM13.39 3.51C14.26 2.44 14.85.99 14.7-.5c-1.33.05-2.94.89-3.89 2.01-.86.99-1.6 2.56-1.4 4.07 1.48.12 2.99-.76 3.98-2.07z" /></svg>
               {' '}App Store
             </a>

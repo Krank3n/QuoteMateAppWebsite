@@ -57,7 +57,7 @@ export function JoinClient() {
         </p>
         <div style={styles.buttons}>
           <a
-            href="https://apps.apple.com/au/app/quotemate/id6754000046"
+            href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=referral&mt=8"
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...styles.button, ...styles.iosButton }}
