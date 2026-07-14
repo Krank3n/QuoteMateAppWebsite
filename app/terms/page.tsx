@@ -62,10 +62,10 @@ export default function TermsPage() {
 
             <h2>4. Subscription and Billing</h2>
             <h3>4.1 Free Plan</h3>
-            <p>QuoteMate offers a free plan with limited features, including up to 5 quotes per month. The free plan may be subject to additional limitations as described on our pricing page.</p>
+            <p>QuoteMate offers a free plan that includes unlimited quotes and invoices, with no credit card required. Certain premium features are reserved for the Pro subscription, as described on our pricing page.</p>
 
             <h3>4.2 Pro Subscription</h3>
-            <p>The Pro subscription provides access to additional features, including unlimited quotes and invoices. Pro subscriptions are available on a monthly or annual basis. Pricing is displayed in Australian Dollars (AUD) and includes GST where applicable.</p>
+            <p>The Pro subscription provides access to premium features, including additional payment options (bank transfer, PayID, BPAY, PayPal), AI material generation, all PDF templates, your business logo on documents, invoice and payment tracking, a lower Square processing fee, and priority support. Pro subscriptions are available on a monthly or annual basis. Pricing is displayed in Australian Dollars (AUD) and includes GST where applicable.</p>
 
             <h3>4.3 Free Trial</h3>
             <p>We may offer a free trial period for the Pro subscription. At the end of the trial period, you will be charged the applicable subscription fee unless you cancel before the trial ends. You may only use one free trial per account.</p>

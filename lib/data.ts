@@ -290,7 +290,7 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
     },
     {
       question: `Is QuoteMate free for ${trade.name.toLowerCase()}?`,
-      answer: `QuoteMate offers a free 7-day trial so you can create quotes immediately — no credit card required. Pro plans start at $49/month or $328/year (save 44%) for unlimited quotes, invoicing, and all premium features.`,
+      answer: `QuoteMate has a free plan with unlimited quotes and invoices — no credit card required. New users also get a 14-day Pro trial that starts when you create your first quote. Pro plans start at $49/month or $328/year (save 44%) and add lower Square fees, more payment options, AI material generation, and all premium templates.`,
     },
     ...(trade.extraFaqs ?? []),
   ];

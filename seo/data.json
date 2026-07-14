@@ -3,7 +3,7 @@
     "url": "https://quotemateapp.au",
     "name": "QuoteMate",
     "tagline": "Professional Quotes & Invoices for Australian Tradies",
-    "appStoreUrl": "#",
+    "appStoreUrl": "https://apps.apple.com/au/app/quotemate/id6754000046",
     "playStoreUrl": "https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU",
     "webAppUrl": "/app"
   },
@@ -6553,7 +6553,7 @@
           },
           {
             "question": "Does the Reece integration cost extra?",
-            "answer": "No. The Reece integration is included on every paid QuoteMate plan and the 7-day free trial. No add-on fee, no per-order surcharge."
+            "answer": "No. The Reece integration is included on every paid QuoteMate plan and the 14-day free trial. No add-on fee, no per-order surcharge."
           },
           {
             "question": "What if I'm not a plumber?",

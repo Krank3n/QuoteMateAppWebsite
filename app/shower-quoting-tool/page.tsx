@@ -226,7 +226,7 @@ export default function ShowerQuotingToolPage() {
         url,
         offers: [
           { '@type': 'Offer', price: '0', priceCurrency: 'AUD', name: 'Free' },
-          { '@type': 'Offer', price: '29', priceCurrency: 'AUD', name: 'Pro', billingIncrement: 'month' },
+          { '@type': 'Offer', price: '49', priceCurrency: 'AUD', name: 'Pro', billingIncrement: 'month' },
         ],
         provider: {
           '@type': 'Organization',
