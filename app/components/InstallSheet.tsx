@@ -65,11 +65,8 @@ export default function InstallSheet() {
         <div className="install-sheet-icon">
           <img src="/assets/logo.png" alt="QuoteMate" width={64} height={64} />
         </div>
-        <div className="install-sheet-rating" aria-label="Rated 4.9 out of 5">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 7.1-1.01L12 2z"/></svg>
-          ))}
-          <span>4.9 · Free to start</span>
+        <div className="install-sheet-rating">
+          <span>Free to start · Built for Aussie tradies</span>
         </div>
         <h3 className="install-sheet-title">Get the QuoteMate App</h3>
         <p className="install-sheet-desc">Create professional quotes in under 2 minutes — now available on {platform === 'ios' ? 'iOS' : 'Android'}.</p>
