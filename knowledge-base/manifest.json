@@ -1,0 +1,269 @@
+{
+  "name": "QuoteMate Customer Knowledge Base",
+  "description": "Customer-facing help content for QuoteMate, structured for support agents and for ingestion by a retrieval-augmented (RAG) chatbot.",
+  "version": "1.0.0",
+  "last_updated": "2026-07-05",
+  "audience": "QuoteMate users (Australian tradies) and prospective customers browsing the website. Not the homeowners who receive quotes.",
+  "currency": "AUD",
+  "source_of_truth": {
+    "pricing": "Free $0 (unlimited quotes/invoices) / Pro Monthly $49 / Pro Annual $328",
+    "free_trial": "14 days, starts on first quote creation",
+    "support_email": "tom@hansendev.com.au"
+  },
+  "categories": [
+    "Getting Started",
+    "Quoting",
+    "Invoicing & Payments",
+    "Job Management",
+    "Integrations",
+    "Pricing & Billing",
+    "Account & Settings",
+    "Troubleshooting",
+    "FAQ"
+  ],
+  "documents": [
+    {
+      "id": "getting-started-what-is-quotemate",
+      "title": "What is QuoteMate?",
+      "category": "Getting Started",
+      "path": "01-getting-started/what-is-quotemate.md",
+      "summary": "Product overview: an AI quoting and invoicing app for Australian tradies. What it does, who it's for, Australian focus, the Mate beta assistant.",
+      "keywords": ["what is quotemate", "overview", "quoting app", "invoicing app", "features"],
+      "question_examples": ["What is QuoteMate?", "What does the app do?", "Who is QuoteMate for?"]
+    },
+    {
+      "id": "getting-started-create-your-account",
+      "title": "Create your account and set up your business",
+      "category": "Getting Started",
+      "path": "01-getting-started/create-your-account.md",
+      "summary": "Sign up by email, Google, or Apple; email verification; the 6-step onboarding (company, trade, contact/ABN, branding, rates, payments).",
+      "keywords": ["sign up", "register", "login", "email verification", "onboarding"],
+      "question_examples": ["How do I sign up?", "Can I log in with Google or Apple?", "Do I need a credit card to sign up?"]
+    },
+    {
+      "id": "getting-started-quick-start-first-quote",
+      "title": "Quick start — send your first quote",
+      "category": "Getting Started",
+      "path": "01-getting-started/quick-start-first-quote.md",
+      "summary": "The fastest path to sending a first quote, plus the note that the 14-day trial starts on first quote.",
+      "keywords": ["first quote", "quick start", "how to quote", "send quote"],
+      "question_examples": ["How do I send my first quote?", "What's the quickest way to make a quote?"]
+    },
+    {
+      "id": "getting-started-supported-platforms",
+      "title": "Supported platforms, devices, and offline use",
+      "category": "Getting Started",
+      "path": "01-getting-started/supported-platforms-and-devices.md",
+      "summary": "iOS, Android, and web; one subscription across devices; offline-first with auto-sync; Tap to Pay device requirements; mobile-only features.",
+      "keywords": ["platforms", "ios", "android", "web", "offline", "sync", "devices"],
+      "question_examples": ["What devices does it work on?", "Can I use it on the web?", "Does it work offline?"]
+    },
+    {
+      "id": "getting-started-trades-supported",
+      "title": "Trades QuoteMate supports",
+      "category": "Getting Started",
+      "path": "01-getting-started/trades-supported.md",
+      "summary": "24+ supported trades and the trade-specific touches for electricians, plumbers/gasfitters, and tilers.",
+      "keywords": ["trades", "supported trades", "does it work for my trade"],
+      "question_examples": ["What trades does QuoteMate support?", "Does it work for electricians?", "Is my trade supported?"]
+    },
+    {
+      "id": "quoting-creating-a-quote",
+      "title": "Creating a quote",
+      "category": "Quoting",
+      "path": "02-quoting/creating-a-quote.md",
+      "summary": "The quoting flow (details, customer, materials, pricing, preview), section-based quoting, and sending by email/SMS/WhatsApp.",
+      "keywords": ["create quote", "quoting flow", "sections", "send quote"],
+      "question_examples": ["How do I create a quote?", "Can I split a quote into sections?", "How do I send a quote?"]
+    },
+    {
+      "id": "quoting-ai-material-suggestions",
+      "title": "How AI material suggestions work",
+      "category": "Quoting",
+      "path": "02-quoting/ai-material-suggestions.md",
+      "summary": "Describe a job in plain English to get suggested materials and quantities; everything is editable; AI generation is a Pro feature.",
+      "keywords": ["ai", "material suggestions", "plain english", "auto generate"],
+      "question_examples": ["How does the AI quoting work?", "Do I have to enter every material myself?"]
+    },
+    {
+      "id": "quoting-supplier-pricing",
+      "title": "Live supplier pricing and your trade rates",
+      "category": "Quoting",
+      "path": "02-quoting/supplier-pricing.md",
+      "summary": "The price-priority chain (your data first), importing supplier price lists, saving trade rates, and fixing 'no prices found'.",
+      "keywords": ["supplier pricing", "live pricing", "trade rates", "import price list", "no prices found"],
+      "question_examples": ["How does live supplier pricing work?", "Can I use my own trade rates?", "Why does it say no prices found?"]
+    },
+    {
+      "id": "quoting-job-templates-and-sections",
+      "title": "Job templates and section templates",
+      "category": "Quoting",
+      "path": "02-quoting/job-templates-and-sections.md",
+      "summary": "Built-in job templates (deck, fence, pergola, stairs) and reusable saved section templates for repeat work.",
+      "keywords": ["templates", "job templates", "section templates", "reusable"],
+      "question_examples": ["Are there quote templates?", "Can I save a section and reuse it?"]
+    },
+    {
+      "id": "quoting-gst-labour-markup-travel",
+      "title": "GST, labour, markup, and travel",
+      "category": "Quoting",
+      "path": "02-quoting/gst-labour-markup-and-travel.md",
+      "summary": "Automatic 10% GST, labour hours/days and rate, separate materials/labour markup, and a travel adjustment with fuel estimator.",
+      "keywords": ["gst", "labour", "markup", "margin", "travel"],
+      "question_examples": ["Does QuoteMate calculate GST?", "How do I add labour?", "Can I charge for travel?"]
+    },
+    {
+      "id": "payments-invoices-and-converting-quotes",
+      "title": "Invoices and converting a quote to an invoice",
+      "category": "Invoicing & Payments",
+      "path": "03-invoicing-and-payments/invoices-and-converting-quotes.md",
+      "summary": "One-tap quote-to-invoice (idempotent, no duplicates), creating invoices directly, deposits, partial payments, and invoice statuses.",
+      "keywords": ["invoice", "convert quote to invoice", "deposit", "partial payment", "status"],
+      "question_examples": ["How do I turn a quote into an invoice?", "Can I take a deposit?"]
+    },
+    {
+      "id": "payments-payment-methods",
+      "title": "Payment methods your customers can use",
+      "category": "Invoicing & Payments",
+      "path": "03-invoicing-and-payments/payment-methods.md",
+      "summary": "Square, card, cash, cheque on all plans; bank transfer, PayID, BPAY, PayPal on Pro.",
+      "keywords": ["payment methods", "bank transfer", "payid", "bpay", "paypal"],
+      "question_examples": ["What ways can my customers pay?", "Do you support PayID and BPAY?"]
+    },
+    {
+      "id": "payments-getting-paid-with-square",
+      "title": "Getting paid with Square (Tap to Pay, fees, payouts)",
+      "category": "Invoicing & Payments",
+      "path": "03-invoicing-and-payments/getting-paid-with-square.md",
+      "summary": "Canonical fees doc. Tap to Pay requirements, online links, the fee table (Free 1.7% vs Pro 1.0% online / 1.5% in-person), 2.9% surcharge passthrough, next-day payouts, refunds via Square.",
+      "keywords": ["square", "tap to pay", "fees", "surcharge", "payout", "refund"],
+      "question_examples": ["How do I take card payments on-site?", "What are the Square fees?", "How long until the money hits my account?"]
+    },
+    {
+      "id": "payments-tracking-and-reminders",
+      "title": "Tracking payments and chasing unpaid invoices",
+      "category": "Invoicing & Payments",
+      "path": "03-invoicing-and-payments/tracking-payments-and-reminders.md",
+      "summary": "Invoice statuses, automatic overdue detection, automated invoice reminders and quote follow-ups, receipts, and GST logging for BAS.",
+      "keywords": ["track payments", "overdue", "reminders", "follow up", "unpaid"],
+      "question_examples": ["Can I track which invoices are paid?", "Does QuoteMate send payment reminders?"]
+    },
+    {
+      "id": "jobs-and-the-pipeline",
+      "title": "Managing jobs and the pipeline",
+      "category": "Job Management",
+      "path": "04-job-management/jobs-and-the-pipeline.md",
+      "summary": "The 9-stage job pipeline, scheduling, on-site photos with annotation, checklists, and follow-ups. Conservative note on Google Calendar sync.",
+      "keywords": ["jobs", "pipeline", "stages", "schedule", "photos", "checklist"],
+      "question_examples": ["Can I manage jobs after the quote is sent?", "What are the job stages?", "Can I attach photos?"]
+    },
+    {
+      "id": "integrations-xero",
+      "title": "Xero integration",
+      "category": "Integrations",
+      "path": "05-integrations/xero-integration.md",
+      "summary": "Connect Xero via OAuth, choose organisation, push invoices in one tap, auto-create contacts, bulk sync, CSV export.",
+      "keywords": ["xero", "accounting", "sync invoices", "contacts", "csv"],
+      "question_examples": ["Does QuoteMate integrate with Xero?", "How do I connect Xero?"]
+    },
+    {
+      "id": "integrations-reece-max",
+      "title": "Reece maX integration",
+      "category": "Integrations",
+      "path": "05-integrations/reece-max-integration.md",
+      "summary": "Live Reece maX integration: connect via OAuth, trade-rate pricing refreshed nightly, order to Reece from an accepted quote, on by default for plumbers/gasfitters, no extra cost.",
+      "keywords": ["reece", "reece max", "plumbing", "trade pricing", "order"],
+      "question_examples": ["Does QuoteMate work with Reece?", "Can I order from Reece inside the app?"]
+    },
+    {
+      "id": "integrations-square",
+      "title": "Connecting Square for payments",
+      "category": "Integrations",
+      "path": "05-integrations/square-payments-integration.md",
+      "summary": "How to connect Square (onboarding or Settings), OAuth, needing a Square account on your ABN, and what you can do after connecting. Fees live in the getting-paid doc.",
+      "keywords": ["square", "connect square", "payments setup", "oauth"],
+      "question_examples": ["How do I connect Square?", "Do I need a Square account?"]
+    },
+    {
+      "id": "integrations-google-calendar",
+      "title": "Google Calendar integration",
+      "category": "Integrations",
+      "path": "05-integrations/google-calendar-integration.md",
+      "summary": "Connect Google Calendar in Settings. Conservative on automatic job sync pending verification.",
+      "keywords": ["google calendar", "calendar", "schedule", "sync"],
+      "question_examples": ["Can I connect Google Calendar?", "Do scheduled jobs show on my calendar?"]
+    },
+    {
+      "id": "integrations-callkatie",
+      "title": "CallKatie (call answering partner)",
+      "category": "Integrations",
+      "path": "05-integrations/callkatie.md",
+      "summary": "Third-party call-answering partner surfaced in the app, billed separately (from $149/mo). Not a QuoteMate-built feature.",
+      "keywords": ["callkatie", "receptionist", "missed calls", "answering service"],
+      "question_examples": ["What is CallKatie?", "Does QuoteMate answer my phone?"]
+    },
+    {
+      "id": "billing-plans-and-pricing",
+      "title": "Plans and pricing",
+      "category": "Pricing & Billing",
+      "path": "06-pricing-and-billing/plans-and-pricing.md",
+      "summary": "Free (unlimited quotes/invoices) vs Pro ($49/mo, $328/yr). What each plan includes; one subscription across devices.",
+      "keywords": ["pricing", "plans", "free", "pro", "cost", "how much"],
+      "question_examples": ["How much does QuoteMate cost?", "What's the difference between Free and Pro?"]
+    },
+    {
+      "id": "billing-free-trial",
+      "title": "Free trial — how it works",
+      "category": "Pricing & Billing",
+      "path": "06-pricing-and-billing/free-trial.md",
+      "summary": "14-day Pro trial starting on first quote, no card needed, and what happens when it ends.",
+      "keywords": ["free trial", "14 day trial", "when does trial start"],
+      "question_examples": ["How does the free trial work?", "When does my trial start?", "What happens when the trial ends?"]
+    },
+    {
+      "id": "billing-managing-your-subscription",
+      "title": "Managing, upgrading, and cancelling your subscription",
+      "category": "Pricing & Billing",
+      "path": "06-pricing-and-billing/managing-your-subscription.md",
+      "summary": "Upgrade in-app; billed via App Store / Google Play / Stripe by platform; cancel any time and keep Pro to period end; GST-inclusive AUD.",
+      "keywords": ["subscription", "upgrade", "cancel", "billing", "app store", "google play"],
+      "question_examples": ["How do I upgrade to Pro?", "How do I cancel?", "Where am I billed?"]
+    },
+    {
+      "id": "account-business-profile-and-branding",
+      "title": "Business profile, logo, and branding",
+      "category": "Account & Settings",
+      "path": "07-account-and-settings/business-profile-and-branding.md",
+      "summary": "Set business name, ABN, contact details, brand colour, and logo; branding on PDFs (logo is a Pro feature); defaults and rates.",
+      "keywords": ["logo", "branding", "abn", "business details", "brand colour"],
+      "question_examples": ["How do I add my logo?", "Can I put my ABN on quotes?"]
+    },
+    {
+      "id": "account-data-security-and-privacy",
+      "title": "Data security and privacy",
+      "category": "Account & Settings",
+      "path": "07-account-and-settings/data-security-and-privacy.md",
+      "summary": "Firebase storage, encryption in transit and at rest, Australian Privacy Act compliance, AI processing note, 30-day deletion.",
+      "keywords": ["security", "privacy", "encryption", "firebase", "delete account"],
+      "question_examples": ["Is my data secure?", "Where is my data stored?", "How do I delete my account?"]
+    },
+    {
+      "id": "troubleshooting-common-issues",
+      "title": "Troubleshooting common issues",
+      "category": "Troubleshooting",
+      "path": "08-troubleshooting/troubleshooting-common-issues.md",
+      "summary": "Fixes for 'no prices found', login/email verification, sync, refunds via Square, web vs mobile differences, and how to contact support.",
+      "keywords": ["troubleshooting", "no prices found", "login", "sync", "support", "contact"],
+      "question_examples": ["It says no prices found — what do I do?", "I can't verify my email", "How do I contact support?"]
+    },
+    {
+      "id": "faq",
+      "title": "Frequently asked questions",
+      "category": "FAQ",
+      "path": "faq.md",
+      "summary": "Short answers to the most common customer questions, each linking to the full article. Good quick-answer chunks for a chatbot.",
+      "keywords": ["faq", "questions", "help", "quick answers"],
+      "question_examples": ["Common questions about QuoteMate", "Quick answers"]
+    }
+  ]
+}
