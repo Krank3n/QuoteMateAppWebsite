@@ -278,8 +278,11 @@ export default function AnalyticsPage() {
               </div>
               {data.abTest.available ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
-                {data.abTest.variants.map((v) => {
-                  const winner = Math.max(...(data.abTest as any).variants.map((x: any) => x.ctr));
+                {/* "(not set)" rows are events from before the variant custom
+                    dimension existed (pre 2026-06-29) — historical junk, not a
+                    third arm of the test. */}
+                {data.abTest.variants.filter((v) => v.variant !== '(not set)').map((v, _i, shown) => {
+                  const winner = Math.max(...shown.map((x) => x.ctr));
                   const isWinner = v.ctr === winner && v.impressions > 0;
                   return (
                     <div key={v.variant} style={{ padding: 14, borderRadius: 12, background: 'rgba(0,0,0,0.2)', border: `1px solid ${isWinner ? 'rgba(16,185,129,0.4)' : 'rgba(255,255,255,0.05)'}` }}>
