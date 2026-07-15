@@ -6,8 +6,8 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { quoteTemplates } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Free Quote Templates for Australian Tradies',
-  description: 'Browse free quoting templates for decks, bathrooms, fences, kitchens, painting, concrete, solar, and more. Customise and send professional PDF quotes.',
+  title: 'Free Quote Templates for Tradies (Australia 2026)',
+  description: 'Free quote templates for building, fencing, construction, concrete, electrical, painting and 40+ more trades. Materials, steps and pricing included — customise and send as a branded PDF.',
   alternates: { canonical: 'https://quotemateapp.au/templates' },
 };
 

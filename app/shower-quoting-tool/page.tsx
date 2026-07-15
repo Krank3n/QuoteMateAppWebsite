@@ -7,7 +7,7 @@ import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
 
 const url = 'https://quotemateapp.au/shower-quoting-tool';
-const title = 'Shower Quoting Tool — Free for Aussie Tradies | QuoteMate';
+const title = 'Shower Quoting Tool for Aussie Tradies';
 const description = 'Quote shower jobs in 2 minutes — waterproofing, tiles, screens, mixers, niches, drainage. AI-powered shower quoting tool for Australian tilers, plumbers and bathroom renovators.';
 
 export const metadata: Metadata = {

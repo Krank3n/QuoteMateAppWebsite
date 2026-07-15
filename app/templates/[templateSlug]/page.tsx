@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const template = getTemplateBySlug(templateSlug);
   if (!template) return {};
   const url = `https://quotemateapp.au/templates/${template.slug}`;
-  const title = template.metaTitle ?? `Free ${template.name} (PDF & Excel) | QuoteMate`;
+  const title = template.metaTitle ?? `Free ${template.name} (PDF & Excel)`;
   const description = template.metaDescription ?? `Free ${template.name.toLowerCase()} for Australian tradies. Itemised materials, GST, and pro PDF formatting — send quotes in minutes with QuoteMate.`;
   return {
     title,

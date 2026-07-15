@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const comp = getCompetitorBySlug(slug);
   if (!comp) return {};
   return {
-    title: `QuoteMate vs ${comp.name} — Compare Quoting Apps for Tradies`,
-    description: `Compare QuoteMate and ${comp.name} side by side. See which quoting app is better for Australian tradies on pricing, features, AI quoting, and supplier integration.`,
+    title: { absolute: comp.metaTitle ?? `QuoteMate vs ${comp.name} — Compare Quoting Apps for Tradies` },
+    description: comp.metaDescription ?? `Compare QuoteMate and ${comp.name} side by side. See which quoting app is better for Australian tradies on pricing, features, AI quoting, and supplier integration.`,
     alternates: { canonical: `https://quotemateapp.au/compare/${comp.slug}` },
   };
 }

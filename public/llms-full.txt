@@ -3379,6 +3379,10 @@ URL: https://quotemateapp.au/get-paid/chasing-unpaid-invoices/
 
 An unpaid invoice is one of the most expensive problems in trade. Time spent chasing is time not earning, and the longer an invoice sits past due, the lower the chance you'll ever collect it. The good news is there's a clear escalation path that resolves most cases inside 30 days without lawyers and without burning the relationship.
 
+#### What an unpaid invoice actually costs you
+
+More than the invoice total. On a $4,400 bathroom job you have usually already paid for materials on your trade account, so the money owing is mostly your labour, and the supplier bill lands in 30 days whether the client pays or not. Then there's the chasing: three phone calls, a couple of texts and a re-sent invoice is easily two hours of admin, which is $180–$200 of unpaid time at typical charge-out rates. The longer it drags, the worse your odds. An invoice that is 90 days overdue is far harder to collect than one chased in the first fortnight, so treat week one as the cheapest collection window you will ever get.
+
 #### Day 1–7: Friendly reminder
 
 Most overdue invoices aren't deliberate — clients forget, lose the email, or are waiting on their own customer to pay. A polite SMS or email on day 1 past due, then a follow-up at day 7, resolves the majority of cases. Keep the tone neutral and assume good faith. QuoteMate sends these automatically with templates that mention the invoice number, amount, due date, and a one-click payment link, so the client can pay without digging up the original invoice.
@@ -3391,6 +3395,14 @@ If two reminders haven't worked, escalate to a formal letter of demand. State th
 
 For amounts under $25,000 (NSW NCAT, VIC VCAT) or $20,000 (QLD QCAT), small claims tribunals are cheap, fast, and don't require a lawyer. Filing fees are around $50–$200 and you can usually get a hearing inside 8 weeks. For larger debts or commercial work, a debt collection agency (typically 10%–25% commission) is faster than court. The key is to have your trail documented: original quote, signed acceptance, invoice, reminders, demand letter. QuoteMate keeps all of this in one place per client.
 
+#### When the client disputes the work instead of paying
+
+A dispute and a debt need different handling. First, get the complaint in writing: ask exactly what is wrong and where. If it's a genuine defect, fix it fast, because a rectified defect removes the excuse and most clients pay within days. If only part of the job is disputed, ask for the undisputed balance now and resolve the rest separately — that's what a tribunal would expect anyway. If the work is sound and the dispute is a stalling tactic, put your paper trail in front of them: signed quote, written variations, completion photos. For building and construction work, every state also has security of payment legislation that lets you recover progress payments through fast adjudication instead of court.
+
+#### How to stop unpaid invoices happening again
+
+Collection starts at the quote, not the invoice. Take a deposit before you order materials (our deposits guide below covers the state rules). Break anything longer than a week into progress payments tied to milestones, so no single invoice is big enough to hurt. Put payment terms on the quote itself, and make them 7 days, not 30 — residential clients don't need trade terms. Most effective of all: take payment on site the moment the job is signed off. QuoteMate turns the quote into an invoice on the spot and takes card payment through Square before you've packed the ute, which beats any reminder schedule ever written.
+
 FAQ:
 
 Q: Can I charge interest on overdue invoices in Australia?
@@ -3398,6 +3410,12 @@ A: Yes, if it was specified in your original quote or contract terms. Standard r
 
 Q: What's the cheapest way to recover an unpaid invoice?
 A: Send a formal letter of demand first. If that doesn't work, your state's small claims tribunal (NCAT, VCAT, QCAT, etc.) is cheaper and faster than court for amounts under $20,000–$25,000.
+
+Q: How long do I have to chase an unpaid invoice in Australia?
+A: Legally, up to six years in most states and territories (three in the Northern Territory) before the debt is statute-barred. Practically, collect early — the odds fall away sharply after 90 days. If an invoice is heading past 30 days, escalate to a letter of demand rather than sending a fourth reminder.
+
+Q: Can I stop work or take back materials if I haven't been paid?
+A: You can usually suspend further work when payment terms are breached, and for commercial or staged construction work the security of payment acts set out a formal process for it. Don't remove installed materials — once fixed to the property they are generally no longer yours to take, and doing so can turn a debt you're owed into a claim against you.
 
 Q: Should I use a debt collector?
 A: For larger debts ($5,000+) or commercial clients, yes — debt collectors usually charge 10%–25% commission but are faster than court. For smaller residential debts, a tribunal is usually better value.
@@ -3437,11 +3455,11 @@ A: Most state laws apply specifically to 'domestic building work' for residentia
 Q: Can I take a deposit on the spot via card?
 A: Yes — using Tap to Pay through Square on iPhone or NFC-capable Android, you can take a deposit by card the moment the customer accepts the quote. The deposit invoice is auto-generated and the payment is logged automatically. If you'd rather not absorb the card fee, the optional 2.9% surcharge passthrough adds it to the customer's total.
 
-### Automated Payment Reminders for Tradies
+### Automated Invoice Follow-Up & Payment Reminders for Tradies
 
 URL: https://quotemateapp.au/get-paid/automated-payment-reminders/
 
-Manually chasing invoices is one of the most expensive habits in trade. A 30-minute reminder phone call at $90/hour effective rate is $45 of unpaid time per chase, and most clients need 2–3 nudges. Automated reminders sent via email and SMS resolve the same invoices without using a minute of your day, and the data shows they get paid faster than manual follow-ups.
+Manually following up invoices is one of the most expensive habits in trade. A 30-minute reminder phone call at $90/hour effective rate is $45 of unpaid time per chase, and most clients need 2–3 nudges. Automated reminders sent via email and SMS resolve the same invoices without using a minute of your day, and the data shows they get paid faster than manual follow-ups.
 
 #### The reminder cadence that works
 
@@ -3454,6 +3472,14 @@ Use both. SMS reminders have an average open rate of around 95% within minutes; 
 #### Templates that actually get a response
 
 Three things make a reminder convert: a clear subject line that mentions the invoice number, a polite but specific tone (no passive-aggression, but no vague 'just checking in' either), and a payment link that takes the customer one tap away from settling. Avoid attaching a PDF of the invoice — most people don't open them on phones. Instead, summarise in plain text: 'Hi {first name}, this is a reminder that invoice #{number} for ${amount} was due {date}. You can pay here: {link}.' QuoteMate uses templates like this and personalises them automatically.
+
+#### Set up invoice follow-up once, then leave it alone
+
+An automated follow-up sequence only needs five decisions: when the first reminder goes (the day before the due date), how many follow-ups (three is plenty), the gap between them (about a week), when the tone firms up (the last one), and when a human takes over (14 days past due). Every reminder must stop automatically the moment the invoice is paid — nothing burns goodwill like a reminder for a settled bill. Set per-client exceptions for builders and commercial clients on 30-day terms so they aren't nudged on day two. In QuoteMate this is a one-time setting; from then on, every invoice you send carries its own follow-up schedule.
+
+#### When automated follow-up isn't enough
+
+Automation resolves the forgetful and the disorganised, which covers most late payers. It doesn't resolve the client who has decided not to pay. If three reminders and 14 days haven't produced payment or a reply, stop sending reminders — a fourth message just teaches them you'll nag forever and never escalate. Move to the manual path: a phone call, then a formal letter of demand, then your state's tribunal if it comes to that. Our guide to chasing unpaid invoices (linked below) walks through the full escalation. The handover rule is simple: automation owns the first fortnight, you own everything after.
 
 FAQ:
 
@@ -3468,6 +3494,9 @@ A: Yes — in QuoteMate you can override the default cadence for specific client
 
 Q: Does QuoteMate send reminders by SMS?
 A: Yes. SMS reminders are included in the Pro plan and use your business name as the sender. Email reminders are included in all plans, including the free trial.
+
+Q: Do automated reminders work for commercial clients on 30-day terms?
+A: Yes, but adjust the schedule. For a builder or commercial client on 30-day terms, set the first reminder a few days before the 30-day due date and the follow-ups after it. Chasing a commercial client on day two reads as amateur; not chasing them at day 35 costs you the invoice.
 
 ## Managing jobs
 

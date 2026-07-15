@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tradeSlug } = await params;
   const trade = getTradeBySlug(parseTradeSlug(tradeSlug));
   if (!trade) return {};
-  const title = trade.metaTitle ?? `Free Quoting App for ${trade.name} (2026) | QuoteMate`;
+  const title = trade.metaTitle ?? `Free Quoting App for ${trade.name} (2026)`;
   const description = trade.metaDescription ?? trade.description;
   const url = `https://quotemateapp.au/quotes-for-${trade.slug}`;
   return {

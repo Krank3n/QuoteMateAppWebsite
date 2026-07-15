@@ -6,7 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { competitors, getCompareHubContent } from './data';
 
 export const metadata: Metadata = {
-  title: 'QuoteMate vs Competitors — Compare Quoting Apps',
+  title: { absolute: 'QuoteMate vs Competitors — Compare Quoting Apps' },
   description: 'Compare QuoteMate with other quoting apps for tradies. See how QuoteMate stacks up against Tradify, ServiceM8, Fergus, and more on pricing, features, and ease of use.',
   alternates: { canonical: 'https://quotemateapp.au/compare' },
 };

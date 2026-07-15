@@ -63,7 +63,9 @@
             "body": "The three line items most often forgotten on Australian electrical quotes are: hole cutting and patching for downlights and GPOs in plaster, isolators required between switchboards and high-load appliances like ovens and split systems, and the surcharge for after-hours or live-board work that requires power isolation across multiple circuits. QuoteMate's AI flags these automatically based on the job description. For commercial work, the tool also captures access fees, scaffold hire, and the testing and tagging certificate that's billable but rarely quoted."
           }
         ]
-      }
+      },
+      "metaTitle": "Electrical Quoting App for Electricians (2026)",
+      "metaDescription": "Quote electrical jobs in minutes. AI builds the materials list — cable, switchboards, GPOs, RCDs — with live Australian supplier pricing. Free plan, GST sorted."
     },
     {
       "slug": "plumbers",
@@ -5786,7 +5788,7 @@
   ],
   "paymentHub": {
     "hub": {
-      "metaTitle": "Get Paid Faster as a Tradie (Australia 2026) | QuoteMate",
+      "metaTitle": "Get Paid Faster as a Tradie (Australia 2026)",
       "metaDescription": "The complete guide to getting paid as an Australian tradie. Tap to Pay on iPhone, deposits, chasing unpaid invoices and automated reminders — and the app that handles all of it.",
       "heroTitle": "Get Paid Faster — Without Chasing",
       "heroSubtitle": "The complete guide to getting paid as an Australian tradie. Tap to Pay on iPhone, deposits, chasing unpaid invoices, and automated reminders — and the app that handles all of it on your phone.",
@@ -5800,7 +5802,7 @@
         "title": "Tap to Pay on iPhone for Tradies",
         "shortLabel": "Tap to Pay on iPhone",
         "summary": "Take card, Apple Pay and Google Pay on your phone — no terminal, no extra hardware. The setup that's killing portable EFTPOS for Aussie trade businesses.",
-        "metaTitle": "Tap to Pay on iPhone for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Tap to Pay on iPhone for Tradies (Australia 2026)",
         "metaDescription": "Take card payments on your iPhone (or NFC-capable Android) with no extra hardware. How Tap to Pay works for Australian tradies — supported phones, real fees, and the easiest way to get set up through Square.",
         "intro": "Tap to Pay on iPhone lets you accept Visa, Mastercard, Amex and Apple Pay payments by tapping a customer's card or phone on the back of your iPhone — no reader, no terminal, no Bluetooth pairing. QuoteMate uses Square's Mobile Payments SDK so the feature also works on NFC-capable Android phones, plus Google Pay. For Australian tradies who still rely on portable EFTPOS terminals, paper invoices, or 'I'll bank-transfer you tonight' (which becomes Saturday, then never), it's the biggest payments shift since contactless launched.",
         "sections": [
@@ -5849,10 +5851,14 @@
         "title": "How to Chase Unpaid Invoices in Australia",
         "shortLabel": "Chasing Unpaid Invoices",
         "summary": "What to actually do when an invoice goes 7, 14, 30, and 60 days overdue — including the legal options most Australian tradies don't know exist.",
-        "metaTitle": "How to Chase Unpaid Invoices for Tradies (Australia 2026) | QuoteMate",
-        "metaDescription": "What to do when a client doesn't pay. The exact escalation path Australian tradies should follow at 7, 14, 30 and 60 days overdue, plus the legal options most don't know.",
+        "metaTitle": "Unpaid Invoices: What to Do When a Client Won't Pay",
+        "metaDescription": "What to do when a client doesn't pay: reminders at day 7, letter of demand at 14, tribunal or debt collector at 30+. The full escalation path for Australian tradies.",
         "intro": "An unpaid invoice is one of the most expensive problems in trade. Time spent chasing is time not earning, and the longer an invoice sits past due, the lower the chance you'll ever collect it. The good news is there's a clear escalation path that resolves most cases inside 30 days without lawyers and without burning the relationship.",
         "sections": [
+          {
+            "heading": "What an unpaid invoice actually costs you",
+            "body": "More than the invoice total. On a $4,400 bathroom job you have usually already paid for materials on your trade account, so the money owing is mostly your labour, and the supplier bill lands in 30 days whether the client pays or not. Then there's the chasing: three phone calls, a couple of texts and a re-sent invoice is easily two hours of admin, which is $180–$200 of unpaid time at typical charge-out rates. The longer it drags, the worse your odds. An invoice that is 90 days overdue is far harder to collect than one chased in the first fortnight, so treat week one as the cheapest collection window you will ever get."
+          },
           {
             "heading": "Day 1–7: Friendly reminder",
             "body": "Most overdue invoices aren't deliberate — clients forget, lose the email, or are waiting on their own customer to pay. A polite SMS or email on day 1 past due, then a follow-up at day 7, resolves the majority of cases. Keep the tone neutral and assume good faith. QuoteMate sends these automatically with templates that mention the invoice number, amount, due date, and a one-click payment link, so the client can pay without digging up the original invoice."
@@ -5864,6 +5870,14 @@
           {
             "heading": "Day 30+: Tribunals and debt collection",
             "body": "For amounts under $25,000 (NSW NCAT, VIC VCAT) or $20,000 (QLD QCAT), small claims tribunals are cheap, fast, and don't require a lawyer. Filing fees are around $50–$200 and you can usually get a hearing inside 8 weeks. For larger debts or commercial work, a debt collection agency (typically 10%–25% commission) is faster than court. The key is to have your trail documented: original quote, signed acceptance, invoice, reminders, demand letter. QuoteMate keeps all of this in one place per client."
+          },
+          {
+            "heading": "When the client disputes the work instead of paying",
+            "body": "A dispute and a debt need different handling. First, get the complaint in writing: ask exactly what is wrong and where. If it's a genuine defect, fix it fast, because a rectified defect removes the excuse and most clients pay within days. If only part of the job is disputed, ask for the undisputed balance now and resolve the rest separately — that's what a tribunal would expect anyway. If the work is sound and the dispute is a stalling tactic, put your paper trail in front of them: signed quote, written variations, completion photos. For building and construction work, every state also has security of payment legislation that lets you recover progress payments through fast adjudication instead of court."
+          },
+          {
+            "heading": "How to stop unpaid invoices happening again",
+            "body": "Collection starts at the quote, not the invoice. Take a deposit before you order materials (our deposits guide below covers the state rules). Break anything longer than a week into progress payments tied to milestones, so no single invoice is big enough to hurt. Put payment terms on the quote itself, and make them 7 days, not 30 — residential clients don't need trade terms. Most effective of all: take payment on site the moment the job is signed off. QuoteMate turns the quote into an invoice on the spot and takes card payment through Square before you've packed the ute, which beats any reminder schedule ever written."
           }
         ],
         "faqs": [
@@ -5874,6 +5888,14 @@
           {
             "question": "What's the cheapest way to recover an unpaid invoice?",
             "answer": "Send a formal letter of demand first. If that doesn't work, your state's small claims tribunal (NCAT, VCAT, QCAT, etc.) is cheaper and faster than court for amounts under $20,000–$25,000."
+          },
+          {
+            "question": "How long do I have to chase an unpaid invoice in Australia?",
+            "answer": "Legally, up to six years in most states and territories (three in the Northern Territory) before the debt is statute-barred. Practically, collect early — the odds fall away sharply after 90 days. If an invoice is heading past 30 days, escalate to a letter of demand rather than sending a fourth reminder."
+          },
+          {
+            "question": "Can I stop work or take back materials if I haven't been paid?",
+            "answer": "You can usually suspend further work when payment terms are breached, and for commercial or staged construction work the security of payment acts set out a formal process for it. Don't remove installed materials — once fixed to the property they are generally no longer yours to take, and doing so can turn a debt you're owed into a claim against you."
           },
           {
             "question": "Should I use a debt collector?",
@@ -5890,7 +5912,7 @@
         "title": "Taking Deposits Legally in Australia",
         "shortLabel": "Deposits & the Law",
         "summary": "Maximum deposit amounts are capped by law in most Australian states. The actual numbers, by state, plus how to take a deposit without getting sideways with consumer protection.",
-        "metaTitle": "Taking Deposits Legally for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Taking Deposits Legally for Tradies (Australia 2026)",
         "metaDescription": "How much deposit can you legally ask for as an Australian tradie? The exact caps in NSW, VIC, QLD, WA, SA, ACT and Tasmania, plus the safest way to take a deposit.",
         "intro": "Asking for a deposit before starting a job is completely legal in Australia — but the maximum amount is capped by state-based home building laws. Get this wrong and you can be hit with fines, forced refunds, or have your contractor licence reviewed. The good news: the rules are simple once you know them.",
         "sections": [
@@ -5928,12 +5950,12 @@
       },
       {
         "slug": "automated-payment-reminders",
-        "title": "Automated Payment Reminders for Tradies",
+        "title": "Automated Invoice Follow-Up & Payment Reminders for Tradies",
         "shortLabel": "Automated Reminders",
         "summary": "The exact reminder cadence that gets invoices paid without nagging clients — and why doing it manually is the most expensive habit in trade.",
-        "metaTitle": "Automated Payment Reminders for Tradies (Australia 2026) | QuoteMate",
-        "metaDescription": "The reminder cadence that actually gets tradies paid. Templates, timing, and how QuoteMate auto-sends SMS and email reminders so you never have to chase an invoice.",
-        "intro": "Manually chasing invoices is one of the most expensive habits in trade. A 30-minute reminder phone call at $90/hour effective rate is $45 of unpaid time per chase, and most clients need 2–3 nudges. Automated reminders sent via email and SMS resolve the same invoices without using a minute of your day, and the data shows they get paid faster than manual follow-ups.",
+        "metaTitle": "Automated Invoice Follow-Up & Payment Reminders for Tradies",
+        "metaDescription": "Set up automated invoice follow-up once and stop chasing. The reminder cadence, timing, and SMS and email templates that get Australian tradies paid faster.",
+        "intro": "Manually following up invoices is one of the most expensive habits in trade. A 30-minute reminder phone call at $90/hour effective rate is $45 of unpaid time per chase, and most clients need 2–3 nudges. Automated reminders sent via email and SMS resolve the same invoices without using a minute of your day, and the data shows they get paid faster than manual follow-ups.",
         "sections": [
           {
             "heading": "The reminder cadence that works",
@@ -5946,6 +5968,14 @@
           {
             "heading": "Templates that actually get a response",
             "body": "Three things make a reminder convert: a clear subject line that mentions the invoice number, a polite but specific tone (no passive-aggression, but no vague 'just checking in' either), and a payment link that takes the customer one tap away from settling. Avoid attaching a PDF of the invoice — most people don't open them on phones. Instead, summarise in plain text: 'Hi {first name}, this is a reminder that invoice #{number} for ${amount} was due {date}. You can pay here: {link}.' QuoteMate uses templates like this and personalises them automatically."
+          },
+          {
+            "heading": "Set up invoice follow-up once, then leave it alone",
+            "body": "An automated follow-up sequence only needs five decisions: when the first reminder goes (the day before the due date), how many follow-ups (three is plenty), the gap between them (about a week), when the tone firms up (the last one), and when a human takes over (14 days past due). Every reminder must stop automatically the moment the invoice is paid — nothing burns goodwill like a reminder for a settled bill. Set per-client exceptions for builders and commercial clients on 30-day terms so they aren't nudged on day two. In QuoteMate this is a one-time setting; from then on, every invoice you send carries its own follow-up schedule."
+          },
+          {
+            "heading": "When automated follow-up isn't enough",
+            "body": "Automation resolves the forgetful and the disorganised, which covers most late payers. It doesn't resolve the client who has decided not to pay. If three reminders and 14 days haven't produced payment or a reply, stop sending reminders — a fourth message just teaches them you'll nag forever and never escalate. Move to the manual path: a phone call, then a formal letter of demand, then your state's tribunal if it comes to that. Our guide to chasing unpaid invoices (linked below) walks through the full escalation. The handover rule is simple: automation owns the first fortnight, you own everything after."
           }
         ],
         "faqs": [
@@ -5964,6 +5994,10 @@
           {
             "question": "Does QuoteMate send reminders by SMS?",
             "answer": "Yes. SMS reminders are included in the Pro plan and use your business name as the sender. Email reminders are included in all plans, including the free trial."
+          },
+          {
+            "question": "Do automated reminders work for commercial clients on 30-day terms?",
+            "answer": "Yes, but adjust the schedule. For a builder or commercial client on 30-day terms, set the first reminder a few days before the 30-day due date and the follow-ups after it. Chasing a commercial client on day two reads as amateur; not chasing them at day 35 costs you the invoice."
           }
         ]
       }
@@ -5971,7 +6005,7 @@
   },
   "manageJobsHub": {
     "hub": {
-      "metaTitle": "Job Management for Australian Tradies (2026) | QuoteMate",
+      "metaTitle": "Job Management for Australian Tradies (2026)",
       "metaDescription": "Track every job from inquiry to paid on your phone. Schedule, photograph, checklist and chase — the job management built for Aussie sole traders and small crews.",
       "heroTitle": "Run Every Job From Your Phone — Inquiry to Paid",
       "heroSubtitle": "Quoting is only half the work. QuoteMate tracks every job through nine clear stages, with scheduling, on-site photos, checklists and follow-ups built for tradies who hate paperwork.",
@@ -5985,7 +6019,7 @@
         "title": "Job Scheduling for Tradies",
         "shortLabel": "Job Scheduling",
         "summary": "Schedule every accepted quote on your phone, see the week ahead, and stop double-booking jobs you accepted three weeks ago and forgot.",
-        "metaTitle": "Job Scheduling App for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Job Scheduling App for Tradies (Australia 2026)",
         "metaDescription": "Schedule every accepted quote into a real start date, see your week ahead, and never double-book. The scheduling tool built for Australian tradies who hate spreadsheets.",
         "intro": "Most tradies schedule jobs on a whiteboard, a paper diary, or 'I'll fit you in next week'. None of these survive contact with a busy fortnight. QuoteMate turns every accepted quote into a scheduled job in two taps. Pick a start date, optionally an end date, and the job lands on your calendar with the customer, scope, materials, and deposit status all attached.",
         "sections": [
@@ -6030,7 +6064,7 @@
         "title": "The 9-Stage Job Pipeline for Tradies",
         "shortLabel": "Job Stages Pipeline",
         "summary": "Inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed. The job lifecycle every tradie runs in their head — made visible on your phone.",
-        "metaTitle": "Tradie Job Pipeline & Stages App (Australia 2026) | QuoteMate",
+        "metaTitle": "Tradie Job Pipeline & Stages App (Australia 2026)",
         "metaDescription": "Track every tradie job through nine stages from inquiry to paid. The pipeline view built for Australian sole traders who want to see where every dollar is sitting.",
         "intro": "Every tradie already runs a job pipeline in their head: someone called, you quoted, they accepted, you scheduled it, you did the work, you sent the invoice, they paid you. The trouble is keeping all that in your head across 30 active jobs. QuoteMate makes the pipeline a real thing on your phone — nine stages, automatic timestamps, a single dashboard view of where every job sits.",
         "sections": [
@@ -6079,7 +6113,7 @@
         "title": "On-Site Job Photos and Annotation for Tradies",
         "shortLabel": "On-Site Photos & Annotation",
         "summary": "Snap site photos against the job, not buried in your camera roll. Draw arrows, mark damage, note dimensions — straight from the phone.",
-        "metaTitle": "On-Site Job Photos App for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "On-Site Job Photos App for Tradies (Australia 2026)",
         "metaDescription": "Take and annotate site photos against each job, not lost in your camera roll. The job photo tool for Aussie tradies who need to show damage, dimensions and before-and-after.",
         "intro": "Site photos win disputes. They protect you when a customer changes their story about what was there before, they prove you did what you quoted, and they fast-track the quote on every similar job after this one. The problem is that a photo on your camera roll, with no caption and no job attached, is roughly as useful as no photo at all. QuoteMate attaches photos to the job, with annotation built in, so they're actually findable a year later.",
         "sections": [
@@ -6124,7 +6158,7 @@
         "title": "On-Site Job Checklists for Tradies",
         "shortLabel": "Job Checklists",
         "summary": "Brain-dump materials and to-dos on the day, tick them off as you go. The checklist that stops you driving back to Bunnings at 4pm.",
-        "metaTitle": "Job Checklists App for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Job Checklists App for Tradies (Australia 2026)",
         "metaDescription": "Brain-dump materials and to-dos against every job and tick them off on-site. The checklist tool for Australian tradies who lose hours to forgotten parts and missed steps.",
         "intro": "Every tradie has driven back to Bunnings at 4pm for the one tube of silicone they forgot. The materials list on the quote is part of the answer, but it's never the whole answer — there's always something you only think of on the day. QuoteMate's job checklist is a place to brain-dump those items against the job, tick them off as you do them, and stop the same thing happening on the next similar job.",
         "sections": [
@@ -6169,7 +6203,7 @@
         "title": "Automated Quote Follow-Ups for Tradies",
         "shortLabel": "Quote Follow-Ups",
         "summary": "Send a quote, then forget about it. QuoteMate chases the customer for you so the ones that ghosted you actually come back.",
-        "metaTitle": "Automated Quote Follow-Ups for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Automated Quote Follow-Ups for Tradies (Australia 2026)",
         "metaDescription": "Stop chasing quotes manually. QuoteMate sends polite follow-ups on a schedule so the customers who went quiet actually come back. Built for Australian tradies.",
         "intro": "The single biggest reason tradies lose work isn't price — it's silence. A customer who liked the quote but didn't reply on Monday is busy on Tuesday, distracted on Wednesday, and quoting two competitors by Friday. A polite follow-up at the right time, with the same payment link they had the first time, recovers a quote that would otherwise be dead. QuoteMate runs the follow-up cadence automatically so you never have to remember.",
         "sections": [
@@ -6214,7 +6248,7 @@
         "title": "Google Calendar Sync for Tradie Jobs",
         "shortLabel": "Google Calendar Sync",
         "summary": "Every scheduled job lands in Google Calendar so your phone, ute dashboard and partner's calendar all know what's on this week.",
-        "metaTitle": "Google Calendar Sync for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Google Calendar Sync for Tradies (Australia 2026)",
         "metaDescription": "Sync every scheduled QuoteMate job to Google Calendar. Customer name, address, scope, and a link back to the job — visible on your phone, ute, and shared with your partner.",
         "intro": "Your business calendar shouldn't live in two places. QuoteMate's Google Calendar integration writes every scheduled job to your Google account so it shows up on your phone calendar, your ute's Android Auto or CarPlay screen, and (if you share the calendar) your partner's phone. One source of truth, no double-entry, no 'I thought you were home Tuesday'.",
         "sections": [
@@ -6258,7 +6292,7 @@
   },
   "quotingHub": {
     "hub": {
-      "metaTitle": "Quoting Tools for Australian Tradies (2026) | QuoteMate",
+      "metaTitle": "Quoting Tools for Australian Tradies (2026)",
       "metaDescription": "The quoting power tools built for Aussie tradies — section-based quoting, reusable section templates, voice-to-text on-site, and trade-specific pricing memory.",
       "heroTitle": "Quote the Way You Actually Work",
       "heroSubtitle": "Section-based quoting, voice-to-text on-site, reusable section templates, and trade-specific pricing memory. The quoting power tools no other Aussie app gives you.",
@@ -6272,7 +6306,7 @@
         "title": "Section-Based Quoting for Tradies",
         "shortLabel": "Section-Based Quoting",
         "summary": "Quote the way you actually work — '8 fence bays + 2 gates' — with per-section labour and materials, not one giant flat list.",
-        "metaTitle": "Section-Based Quoting App for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Section-Based Quoting App for Tradies (Australia 2026)",
         "metaDescription": "Quote jobs in sections — fence bays, gates, rooms, zones — each with its own labour and materials. The structured quoting tool built for Australian tradies.",
         "intro": "Most quoting apps give you one big flat list of line items. Real trade jobs aren't flat — a fence is 8 bays plus 2 gates plus a hardstand. A bathroom reno is demo plus waterproofing plus tiling plus fit-off. A kitchen is base cabinets plus wall cabinets plus benchtop plus splashback. Section-based quoting splits the job into named sections so the quote reads the way the customer thinks about the work, and so you can price each section properly without burying the labour in a single line.",
         "sections": [
@@ -6321,7 +6355,7 @@
         "title": "Section Templates for Repeating Quote Blocks",
         "shortLabel": "Section Templates",
         "summary": "Save the sections you use on every job — a metre of fence, a gate hang, a downlight rough-in — and drop them into new quotes in one tap.",
-        "metaTitle": "Section Templates for Tradie Quotes (Australia 2026) | QuoteMate",
+        "metaTitle": "Section Templates for Tradie Quotes (Australia 2026)",
         "metaDescription": "Save reusable quote sections — fence metre, gate hang, downlight rough-in — and drop them into any new quote. The shortcut Aussie tradies use to halve quoting time.",
         "intro": "Most trade jobs aren't unique. A fencer quotes 'a metre of colorbond fence' a hundred times a year. An electrician quotes a downlight rough-in five times a week. A plumber quotes a hot water swap twice a month. Section templates let you save those repeating chunks once, with the materials, labour hours, and markup baked in, then drop the whole block into any future quote in one tap.",
         "sections": [
@@ -6370,7 +6404,7 @@
         "title": "Voice-to-Text Quoting On-Site",
         "shortLabel": "Voice-to-Text Quoting",
         "summary": "Describe a job into your phone on-site, and QuoteMate writes the description and generates the materials list — no typing needed.",
-        "metaTitle": "Voice-to-Text Quoting for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Voice-to-Text Quoting for Tradies (Australia 2026)",
         "metaDescription": "Talk into your phone on-site and QuoteMate writes the job description, generates the materials list, and prices it against live Australian supplier pricing.",
         "intro": "Typing a job description on a phone with dirty hands, at the back of a ute, in 38°C heat is the slowest part of quoting. Most tradies put it off, get home tired, type it up later, and the quote goes out a day late. Voice-to-text lets you describe the job out loud on-site — '4 metre hardwood deck off the back of a single-storey weatherboard, two steps down to the lawn, stainless balustrade, customer wants Spotted Gum' — and QuoteMate turns the words into a structured job description plus a materials list with quantities, on the spot.",
         "sections": [
@@ -6415,7 +6449,7 @@
         "title": "Trade-Specific Pricing Memory for Tradies",
         "shortLabel": "Trade-Specific Pricing",
         "summary": "QuoteMate remembers what you charged for an item last time, so your prices stay consistent across jobs without you having to look them up.",
-        "metaTitle": "Trade Pricing Memory App for Tradies (Australia 2026) | QuoteMate",
+        "metaTitle": "Trade Pricing Memory App for Tradies (Australia 2026)",
         "metaDescription": "Stop quoting the same item at three different prices in one month. QuoteMate remembers your trade pricing per item so quotes stay consistent — built for Australian tradies.",
         "intro": "Most tradies don't have one price for a 90 mm bend. They have a price they charged on the last job, a price they think they charged the job before that, and a guess about what they'd charge today. The result is the same item going out at $42 on Monday's quote and $58 on Tuesday's, the customer noticing, and a conversation no one wants to have. Trade-specific pricing memory fixes this: every time you set a price on an item, QuoteMate remembers it as your trade rate for that item and uses it as the default next time.",
         "sections": [
@@ -6465,10 +6499,10 @@
     "reece": {
       "hub": {
         "slug": "reece",
-        "metaTitle": "Reece × QuoteMate — Real Trade Prices in Every Plumbing Quote (2026)",
-        "metaDescription": "Connect your Reece maX account to QuoteMate. Pull real trade-discounted prices into every line item, sync the full catalogue nightly, and place orders to Reece without leaving the quote. Live now.",
+        "metaTitle": "Reece maX Integration for Plumbing Quotes",
+        "metaDescription": "Connect your Reece maX account and quote with your real trade-discounted prices. Catalogue synced nightly. Order to Reece straight from the quote. Setup takes a minute.",
         "heroBadge": "Reece maX integration · Live",
-        "heroTitle": "Pull your real Reece trade prices into every quote",
+        "heroTitle": "Pull your real Reece maX trade prices into every quote",
         "heroSubtitle": "Connect your Reece maX account to QuoteMate and your trade-discounted pricing flows into every plumbing line item. Catalogue refreshes nightly. Order to Reece without leaving the quote. Setup takes about a minute.",
         "heroImage": "/assets/partners/reece/ReeceMaterials.png",
         "heroImageAlt": "Reece materials priced at trade rates inside a QuoteMate plumbing quote",
@@ -6568,7 +6602,7 @@
           "slug": "hot-water-system",
           "jobName": "Hot water system replacement",
           "keyword": "hot water system quote",
-          "metaTitle": "Quote a Hot Water System Replacement with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Hot Water System Replacement with Reece Trade Prices",
           "metaDescription": "Quote hot water system replacements with your real Reece maX trade prices. Rheem, Rinnai, Vulcan, Bosch and Sanden units priced at your rate, plus tempering valves, tundish, flexis and pipework.",
           "summary": "Pull real trade pricing on the unit, tempering valve, tundish, flexis and pipework — straight from your Reece maX account.",
           "intro": "Hot water system replacements are the highest-margin job most Aussie plumbers run, and the unit itself is usually 60–70% of the materials cost. Getting the unit price right — at your real Reece trade rate, not RRP — is the difference between a fair quote and leaving money on the bench. QuoteMate's Reece integration pulls your trade-discounted pricing on every Rheem, Rinnai, Vulcan, Bosch and Sanden unit in your maX account, plus all the install hardware, the second you describe the job.",
@@ -6644,7 +6678,7 @@
           "slug": "blocked-drain",
           "jobName": "Blocked drain clearing",
           "keyword": "blocked drain quote",
-          "metaTitle": "Quote a Blocked Drain Clearing with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Blocked Drain Clearing with Reece Trade Prices",
           "metaDescription": "Quote blocked drain jobs accurately. Real Reece trade pricing on jet nozzles, CCTV camera consumables, root cutters, and any DWV pipe replacement that comes out of the inspection.",
           "summary": "CCTV consumables, jetting nozzles, root cutters, and replacement DWV — priced at your real Reece trade rate when a clear-out becomes a repair.",
           "intro": "Blocked drains start as a clearing job and turn into a repair more often than tradies quote for. The customer wants a price for unblocking; you arrive, run the camera, find a tree-root intrusion or a collapsed PVC junction, and now you're quoting a dig-up. QuoteMate handles both halves on one quote — the diagnostic and clearing rate up front, plus a real-trade-priced contingency line for the repair work the camera reveals — using your Reece maX catalogue for any DWV materials you'd order if it goes that way.",
@@ -6720,7 +6754,7 @@
           "slug": "bathroom-rough-in",
           "jobName": "Bathroom rough-in",
           "keyword": "bathroom rough-in quote",
-          "metaTitle": "Quote a Bathroom Rough-In with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Bathroom Rough-In with Reece Trade Prices",
           "metaDescription": "Quote bathroom rough-ins with real Reece maX trade prices on copper, PEX, mixer bodies, in-wall cisterns, brassware and waste. The right SKU at your rate, every line.",
           "summary": "Copper, PEX, mixer bodies, in-wall cisterns, brassware and waste — every fitting in the bathroom priced at your real Reece trade rate.",
           "intro": "Bathroom rough-ins are death by a thousand fittings. A typical residential bathroom rough-in carries 80–150 individual line items — copper offcuts, PEX runs, brass fittings, mixer bodies, in-wall cisterns, tundish, traps, waste arms — and most quoting tools either lump them into a 'sundries' line or price them at RRP. QuoteMate's Reece integration prices every single fitting at your real maX trade rate, so the materials line at the bottom of the quote actually reflects what you'll pay at the trade counter.",
@@ -6796,7 +6830,7 @@
           "slug": "gas-fitting",
           "jobName": "Gas fitting",
           "keyword": "gas fitting quote",
-          "metaTitle": "Quote a Gas Fitting Job with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Gas Fitting Job with Reece Trade Prices",
           "metaDescription": "Quote gas fitting jobs with real Reece maX trade prices on regulators, test gauges, gas pipe, isolators and AS 5601 compliance gear. CoC-aware quotes in under two minutes.",
           "summary": "Regulators, test gauges, gas pipe, isolation valves, AS 5601 compliance items — priced at your real Reece trade rate.",
           "intro": "Gas fitting is the highest-stakes plumbing work. A wrong reading on a manometer, the wrong regulator, an isolator in the wrong spot, and you're either failing audit or risking a coronial inquest. QuoteMate's Reece integration pulls trade-rate pricing on every piece of gas gear in your maX catalogue — regulators, test gauges, gas-rated isolators, copper or stainless gas line, multilayer gas pipe — so the quote you put in front of the customer reflects exactly what the job needs and exactly what it costs at your trade rate.",
@@ -6872,7 +6906,7 @@
           "slug": "tap-mixer-installation",
           "jobName": "Tap and mixer installation",
           "keyword": "tap and mixer quote",
-          "metaTitle": "Quote a Tap and Mixer Installation with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Tap and Mixer Installation with Reece Trade Prices",
           "metaDescription": "Quote tap and mixer fit-offs with real Reece maX trade prices. Brand-match Caroma, Methven, Phoenix, Dorf cartridges and trim kits at your rate, every time.",
           "summary": "Brand-match tapware cartridges, trim kits, flexis and isolators — priced at your real Reece trade rate so the right cartridge is in the bag.",
           "intro": "Tap and mixer fit-offs are the job most likely to produce a callback for the wrong reason — wrong cartridge, wrong finish, wrong O-ring kit. The brand-match problem is real: a Caroma Liano cartridge isn't a Methven Maku cartridge, and the wrong one in the bag means a second trip and a margin write-off. QuoteMate's Reece integration reads the brand from the job description and pulls the matching cartridge, trim kit, and consumables from your maX catalogue at your real trade rate, so the right gear is on the quote and on the truck.",
@@ -6948,7 +6982,7 @@
           "slug": "toilet-replacement",
           "jobName": "Toilet replacement",
           "keyword": "toilet replacement quote",
-          "metaTitle": "Quote a Toilet Replacement with Reece Trade Prices | QuoteMate",
+          "metaTitle": "Quote a Toilet Replacement with Reece Trade Prices",
           "metaDescription": "Quote toilet swaps with real Reece maX trade prices on pans, cisterns, connectors, pan collars and seats. Caroma, Fienza, Geberit at your trade rate, with disposal handled.",
           "summary": "Pans, cisterns, connectors, pan collars, seats, and removal — priced at your real Reece trade rate, including the disposal line most quotes miss.",
           "intro": "Toilet replacements look simple — pull the old, drop in the new — until the set-out is wrong, the pan collar offset is non-standard, or the cistern doesn't sit flush against the wall plumb. QuoteMate's Reece integration prices the pan, cistern, connector, pan collar offset, isolation stop-tap, and the new seat at your real maX trade rate, then prefills the removal-and-disposal line that gets forgotten on most quotes. The result: a quote the customer accepts, a kit on the truck that fits the existing set-out, and a swap that doesn't turn into a tile-cut.",

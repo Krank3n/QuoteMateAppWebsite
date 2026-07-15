@@ -6,6 +6,8 @@ export interface Competitor {
   pricing: string;
   features: { name: string; quotemate: boolean | string; competitor: boolean | string }[];
   summary: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export const competitors: Competitor[] = [
@@ -37,6 +39,8 @@ export const competitors: Competitor[] = [
   {
     slug: 'servicem8',
     name: 'ServiceM8',
+    metaTitle: 'QuoteMate vs ServiceM8 (Service Mate) — Comparison 2026',
+    metaDescription: "Searching for Service Mate? It's spelled ServiceM8. See how ServiceM8 and QuoteMate compare for Australian tradies on pricing, AI quoting, supplier pricing and payments.",
     tagline: 'See how QuoteMate and ServiceM8 compare for quoting and invoicing.',
     description: 'ServiceM8 is a field service management app covering job management, quoting, scheduling, invoicing, and client communication.',
     pricing: 'ServiceM8 plans range from $0 to $379/month depending on job volume and features.',

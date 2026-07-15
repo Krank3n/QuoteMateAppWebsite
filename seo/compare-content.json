@@ -53,6 +53,10 @@
     ],
     "faqs": [
       {
+        "question": "Is ServiceM8 the same as Service Mate?",
+        "answer": "Yes — plenty of tradies search for 'Service Mate' or 'ServiceMate', but the product's actual name is ServiceM8 (the 8 stands in for 'ate'). It's an Australian field service management app. This page compares ServiceM8 against QuoteMate on pricing, quoting speed, and features."
+      },
+      {
         "question": "Can I move my jobs from ServiceM8 to QuoteMate?",
         "answer": "There isn't a direct data import. The simplest way is to finish your active jobs in ServiceM8 while starting all new quotes in QuoteMate. You can be set up and sending professional quotes from QuoteMate in under an hour. The focus is on winning new work faster, not migrating years of old job data."
       },

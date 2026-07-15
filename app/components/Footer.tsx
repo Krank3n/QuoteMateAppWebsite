@@ -22,6 +22,7 @@ export default function Footer() {
               <li><Link href="/trades">Quoting by Trade</Link></li>
               <li><Link href="/templates">Quote Templates</Link></li>
               <li><Link href="/articles">Quoting Guides</Link></li>
+              <li><Link href="/get-paid">Get Paid Faster</Link></li>
               <li><Link href="/portal">Supplier Portal</Link></li>
             </ul>
           </div>
