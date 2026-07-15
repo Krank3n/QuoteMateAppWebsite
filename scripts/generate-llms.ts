@@ -36,7 +36,7 @@ interface Trade {
 }
 interface Template { slug: string; name: string; description: string }
 interface Guide { slug: string; title: string; description: string; sections?: { heading: string; body: string }[]; tips?: string[] }
-interface City { slug: string; name: string; state: string }
+interface City { slug: string; name: string; state: string; cityPage?: boolean }
 interface Spoke { slug: string; title: string; summary: string; intro?: string; sections?: { heading: string; body: string }[]; faqs?: { question: string; answer: string }[] }
 interface PaymentHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
 interface ManageJobsHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
@@ -515,7 +515,7 @@ async function main() {
 
   full.push('## Cities served (local pages)');
   full.push('');
-  full.push(`QuoteMate has trade-by-city landing pages for every supported trade in: ${data.cities.map(c => `${c.name}, ${c.state}`).join('; ')}.`);
+  full.push(`QuoteMate has trade-by-city landing pages for every supported trade in: ${data.cities.filter(c => c.cityPage !== false).map(c => `${c.name}, ${c.state}`).join('; ')}.`);
   full.push(`URL pattern: ${BASE_URL}/quotes-for-{trade}/{city}/`);
   full.push('');
 

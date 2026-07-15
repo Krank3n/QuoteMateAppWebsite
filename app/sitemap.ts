@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { trades, cities, quoteTemplates, guides, paymentHub, manageJobsHub, quotingHub, reeceIntegration } from '@/lib/data';
+import { trades, cityPageCities, quoteTemplates, guides, paymentHub, manageJobsHub, quotingHub, reeceIntegration } from '@/lib/data';
 import { competitors } from './compare/data';
 import { alternativePages } from './alternatives/data';
 import { bestPages } from './best/data';
@@ -99,7 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   const tradeCityPages: MetadataRoute.Sitemap = trades.flatMap((trade) =>
-    cities.map((city) => ({
+    cityPageCities.map((city) => ({
       url: `${baseUrl}/quotes-for-${trade.slug}/${city.slug}/`,
       lastModified,
       changeFrequency: 'monthly',

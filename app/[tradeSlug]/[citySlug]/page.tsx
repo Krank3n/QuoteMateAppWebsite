@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
-import { trades, cities, getTradeBySlug, getCityBySlug, getTradeFAQs, getLocalInsight } from '@/lib/data';
+import { trades, cityPageCities, getTradeBySlug, getCityBySlug, getTradeFAQs, getLocalInsight } from '@/lib/data';
 
 interface Props {
   params: Promise<{ tradeSlug: string; citySlug: string }>;
@@ -17,7 +17,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const params: { tradeSlug: string; citySlug: string }[] = [];
   for (const trade of trades) {
-    for (const city of cities) {
+    for (const city of cityPageCities) {
       params.push({ tradeSlug: `quotes-for-${trade.slug}`, citySlug: city.slug });
     }
   }
@@ -34,7 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = getCityBySlug(citySlug);
   if (!trade || !city) return {};
   const title = `${trade.name} Quoting App in ${city.name} ${city.state}`;
-  const description = `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time supplier pricing.`;
+  const insight = getLocalInsight(trade.slug, city.slug);
+  const insightSnippet = insight && insight.body.length > 40
+    ? `${insight.body.slice(0, 150).replace(/\s+\S*$/, '')}…`
+    : undefined;
+  const description = insightSnippet ?? `Create professional ${trade.keyword} quotes in ${city.name}. QuoteMate helps ${trade.name.toLowerCase()} in ${city.name} create accurate quotes with real-time supplier pricing.`;
   const url = `https://quotemateapp.au/quotes-for-${trade.slug}/${city.slug}`;
   return {
     title,
@@ -184,7 +188,7 @@ export default async function TradeCityPage({ params }: Props) {
               <div className="links-column">
                 <h3>{trade.name} in Other Cities</h3>
                 <ul>
-                  {cities.filter(c => c.slug !== city.slug).map((c) => (
+                  {cityPageCities.filter(c => c.slug !== city.slug).map((c) => (
                     <li key={c.slug}>
                       <Link href={`/quotes-for-${trade.slug}/${c.slug}`}>
                         {trade.name} in {c.name}

@@ -39,6 +39,8 @@ export interface City {
   keySuburbs?: string[];
   stateLicensing?: string;
   demandNote?: string;
+  /** false = city data kept for reference but no /quotes-for-{trade}/{city} pages are generated */
+  cityPage?: boolean;
 }
 
 export interface LocalInsight {
@@ -242,6 +244,10 @@ const data = rawData as unknown as {
 };
 
 export const { site, trades, cities, guides } = data;
+// Cities that get trade×city landing pages. Minor metros keep their data but
+// no longer generate pages — 240 near-duplicate pages earned ~21 clicks/quarter
+// and half were "Crawled - currently not indexed" (GSC, July 2026).
+export const cityPageCities: City[] = cities.filter((c: City) => c.cityPage !== false);
 // Base templates from seo/data.json plus orphan pages (niche videos with no base template).
 export const quoteTemplates: QuoteTemplate[] = [...data.quoteTemplates, ...extraTemplates];
 export const faqData: FAQ[] = data.faqData || [];

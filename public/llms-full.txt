@@ -4303,7 +4303,7 @@ Bottom line: Quotient is a clean online quoting tool, but it is cross-industry, 
 
 ## Cities served (local pages)
 
-QuoteMate has trade-by-city landing pages for every supported trade in: Sydney, NSW; Melbourne, VIC; Brisbane, QLD; Perth, WA; Adelaide, SA; Gold Coast, QLD; Canberra, ACT; Hobart, TAS; Newcastle, NSW; Wollongong, NSW.
+QuoteMate has trade-by-city landing pages for every supported trade in: Sydney, NSW; Melbourne, VIC; Brisbane, QLD; Perth, WA; Adelaide, SA.
 URL pattern: https://quotemateapp.au/quotes-for-{trade}/{city}/
 
 ## Contact

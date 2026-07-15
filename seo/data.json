@@ -1671,7 +1671,8 @@
         "Palm Beach"
       ],
       "stateLicensing": "All licensed trade work in Queensland is regulated by the Queensland Building and Construction Commission (QBCC). Quotes for jobs over $3,300 must be backed by a QBCC-compliant domestic building contract.",
-      "demandNote": "Demand is driven by the constant refurbishment of tourism high-rises and holiday lets, plus strong population growth fuelling new estates. The renovation market is huge, with older homes constantly being updated or knocked down for luxury rebuilds."
+      "demandNote": "Demand is driven by the constant refurbishment of tourism high-rises and holiday lets, plus strong population growth fuelling new estates. The renovation market is huge, with older homes constantly being updated or knocked down for luxury rebuilds.",
+      "cityPage": false
     },
     {
       "slug": "canberra",
@@ -1693,7 +1694,8 @@
         "Coombs"
       ],
       "stateLicensing": "All trade licensing in the ACT is handled by Access Canberra. Quotes must account for compliance with the Building Act 2004 and specific trade codes, as inspections are common.",
-      "demandNote": "Demand is driven by a stable public service economy, major new land releases in Gungahlin and Molonglo, and the ongoing Mr Fluffy knockdown-rebuild scheme. Infill development and apartment projects in town centres also provide consistent work."
+      "demandNote": "Demand is driven by a stable public service economy, major new land releases in Gungahlin and Molonglo, and the ongoing Mr Fluffy knockdown-rebuild scheme. Infill development and apartment projects in town centres also provide consistent work.",
+      "cityPage": false
     },
     {
       "slug": "hobart",
@@ -1715,7 +1717,8 @@
         "Claremont"
       ],
       "stateLicensing": "All trade work is regulated by Consumer, Building and Occupational Services (CBOS). Your CBOS licence number must be on all written quotes, contracts, and advertising, so make sure your quoting software includes it.",
-      "demandNote": "Demand is strong from both renovations on older housing stock and new builds in growth corridors like the Kingborough and Clarence municipalities. A tight rental market also means steady work for maintenance tradies keeping investment properties up to scratch."
+      "demandNote": "Demand is strong from both renovations on older housing stock and new builds in growth corridors like the Kingborough and Clarence municipalities. A tight rental market also means steady work for maintenance tradies keeping investment properties up to scratch.",
+      "cityPage": false
     },
     {
       "slug": "newcastle",
@@ -1737,7 +1740,8 @@
         "Cameron Park"
       ],
       "stateLicensing": "All quotes for work over $5,000 must include a licence number from NSW Fair Trading. They regulate most trades, and not showing your licence on quotes and contracts is a compliance breach.",
-      "demandNote": "Demand is strong due to major health and education projects expanding the city, plus ongoing urban renewal in the CBD. New housing estates in the western corridor and Maitland are driving constant work for residential trades."
+      "demandNote": "Demand is strong due to major health and education projects expanding the city, plus ongoing urban renewal in the CBD. New housing estates in the western corridor and Maitland are driving constant work for residential trades.",
+      "cityPage": false
     },
     {
       "slug": "wollongong",
@@ -1759,7 +1763,8 @@
         "Port Kembla"
       ],
       "stateLicensing": "All work is regulated by NSW Fair Trading. Your quote must show your licence number, and any job over $5,000 needs a Home Building Compensation Fund certificate and a formal written contract.",
-      "demandNote": "Demand is driven by new housing developments in the West Dapto release area and constant renovation work on older homes, particularly in the northern coastal suburbs. The University of Wollongong's growth also creates steady work on student accommodation and rentals."
+      "demandNote": "Demand is driven by new housing developments in the West Dapto release area and constant renovation work on older homes, particularly in the northern coastal suburbs. The University of Wollongong's growth also creates steady work on student accommodation and rentals.",
+      "cityPage": false
     }
   ],
   "quoteTemplates": [
