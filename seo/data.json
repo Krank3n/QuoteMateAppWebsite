@@ -74,7 +74,7 @@
       "keyword": "plumbing",
       "icon": "droplet",
       "description": "Generate accurate plumbing quotes in minutes. QuoteMate auto-suggests pipes, fittings, fixtures, and hot water systems with live supplier pricing — so your quotes are always spot-on.",
-      "heroTitle": "Plumbing Quotes in Minutes, Not Hours",
+      "heroTitle": "Plumbing Quote Software with Real Reece Prices",
       "painPoint": "No more guessing pipe lengths and fitting quantities — let AI do the heavy lifting.",
       "features": [
         "Auto-suggest pipes, fittings, and valves",
@@ -154,8 +154,18 @@
         {
           "question": "Do I need a Reece maX account?",
           "answer": "Yes. The integration uses Reece maX OAuth, so you'll need an active Reece trade account. Setup takes about a minute — you log into maX, approve QuoteMate, and you're back in the app with your trade pricing flowing through."
+        },
+        {
+          "question": "What should a plumbing quotation include?",
+          "answer": "A proper plumbing quotation lists the call-out or first-hour rate, labour, materials with brands named (a client who approved a Rheem 315L can’t dispute it at handover), fixtures as separate lines, GST shown, and payment terms with a validity date. Itemised quotes win more work than lump sums because the client can see where the money goes — QuoteMate builds them in this format by default."
+        },
+        {
+          "question": "Is QuoteMate proper plumbing quote software or a generic quoting app?",
+          "answer": "Purpose-built. It connects to your Reece maX account so every line item carries your actual trade-discounted price, auto-suggests pipes, fittings and valves from the job description, and has templates for hot water changeovers, bathroom rough-ins, blocked drains and stormwater. You can order the materials to Reece without leaving the quote."
         }
-      ]
+      ],
+      "metaTitle": "Plumbing Quote Software for Australian Plumbers (2026)",
+      "metaDescription": "Plumbing quote software with real Reece maX trade pricing. AI itemises pipes, fittings and hot water systems. Send a branded plumbing quotation from site in minutes."
     },
     {
       "slug": "carpenters",
@@ -853,7 +863,7 @@
       "keyword": "glazing",
       "icon": "square",
       "description": "Create glazing quotes with glass type, size, and installation pricing. QuoteMate helps glaziers quote everything from window replacements to shower screens and splashbacks.",
-      "heroTitle": "Glazing Quotes — Clear and Professional",
+      "heroTitle": "The Glass Quoting Program for Australian Glaziers",
       "painPoint": "Quoting custom glass sizes with different types and thicknesses is complex — simplify it.",
       "features": [
         "Glass type and thickness pricing",
@@ -909,7 +919,19 @@
             "body": "The easiest way to lose money on a window job is to quote only the glass. Replacing a second-storey window might require hiring a small scissor lift, which costs around $250 a day. Removing broken glass from a frame takes time and care, and disposal isn't free. You also need to factor in the cost of new glazing tape, backing rubber, or putty for timber frames. A simple single-pane replacement can take an hour, but a double-glazed unit in an aluminium frame could take three. Always add a line item for waste disposal, as a trip to the tip can cost $60 or more."
           }
         ]
-      }
+      },
+      "metaTitle": "Glass Quoting Program & Glazing Software for Glaziers",
+      "metaDescription": "Glass quoting program for Australian glaziers. Price by type, thickness and size: shower screens, splashbacks, windows, mirrors. Send branded PDF quotes on site.",
+      "extraFaqs": [
+        {
+          "question": "Is QuoteMate a proper glass quoting program or a generic quote app?",
+          "answer": "It's built for glass work. Describe the job and it prices by glass type and thickness — toughened, laminated or annealed in 6mm, 10mm or 12mm — against the measured size, then adds hardware, channels, silicone and labour as their own lines. Shower screens, splashbacks, mirrors, windows and balustrades all have templates, and you can override any rate with your own glass supplier pricing."
+        },
+        {
+          "question": "Does it handle safety glass requirements?",
+          "answer": "Quotes can specify Grade A safety glass where AS 1288 requires it — shower screens, doors, low-level glazing and balustrades. Naming the standard and the glass grade on the quote does two jobs: it shows the client you're compliant, and it explains why your price is higher than the bloke quoting annealed glass that can't legally go in a shower."
+        }
+      ]
     },
     {
       "slug": "solar-installers",
