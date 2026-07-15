@@ -146,6 +146,21 @@ export default function ShowerQuotingToolPage() {
           </div>
         </section>
 
+        <section className="seo-rich-content">
+          <div className="container">
+            <div className="rich-content-block">
+              <div className="rich-content-section">
+                <h2>What a Shower Quote Should Include (and What It Costs)</h2>
+                <p>A complete shower replacement quote in Australia has six blocks. Demolition and waste removal runs $400–$800 with skip or trailer fees. Waterproofing a standard 900×900 recess to AS 3740 (primer, bond breakers, two-coat membrane and flood test) sits around $500–$800 including the second visit for cure time. Screed and fall to drain adds $250–$450. Tile supply and lay is where quotes swing most: wall tiling runs $60–$90 per square metre laid plus tile cost, and a 4sqm shower needs 10% waste on a straight lay or 15% on herringbone. A frameless screen supplied and installed is $1,200–$2,500 depending on glass thickness and hinge hardware; semi-frameless drops that by roughly a third. Tapware and fit-off (mixer, rail, rose and waste) finishes at $300–$900 depending on brand. Put every block on the quote as its own line. A single &ldquo;shower replacement: $8,500&rdquo; number invites haggling; an itemised quote answers the questions before they're asked.</p>
+              </div>
+              <div className="rich-content-section">
+                <h2>Where Shower Quotes Lose Money</h2>
+                <p>Three misses cause most of the margin loss on shower work. First, the membrane cure: waterproofing needs 24–48 hours before tiling, which means a second site visit that rarely makes it onto the quote as travel and setup time. Second, tile waste on pattern lays: quoting herringbone or stack-bond at the straight-lay waste rate silently gives away a box of tiles per job. Third, the screen remeasure: frameless glass is cut to the tiled opening, not the framed one, so the glazier's final measure happens after tiling and any out-of-square walls become custom cuts. A shower quoting tool that itemises the job from a plain-English description catches these because the line items are already in the list — you delete what doesn't apply instead of remembering what does.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="seo-common-jobs">
           <div className="container">
             <h2 className="section-title">Built for Aussie Trades</h2>

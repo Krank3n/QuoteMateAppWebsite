@@ -131,6 +131,14 @@
           {
             "heading": "Order materials without leaving the quote",
             "body": "Once a customer accepts a quote, place the order to Reece in two taps — pick a branch, choose pickup or delivery, set the required-by date. The order lands on your Reece account with the materials list straight from the quote. Defaulted on for plumbers and gasfitters, no setup hunt."
+          },
+          {
+            "heading": "Quoting shower and wet-area work",
+            "body": "Shower jobs are where plumbing quotes get fiddly: mixer and rose supply, hot and cold rough-in, waste and fall to drain, plus the waterproofing interface with the tiler. Quote the rough-in and the fit-off as separate stages so a delayed tiler doesn't hold up your invoice, and name the fixture brands on the quote — a client who approved a specific mixer can't dispute it at handover.",
+            "link": {
+              "href": "/shower-quoting-tool",
+              "label": "Quote a complete shower in one pass with the shower quoting tool"
+            }
           }
         ]
       },
@@ -508,7 +516,11 @@
           },
           {
             "heading": "Quoting subfloor prep and waterproofing correctly",
-            "body": "Always quote floor levelling and waterproofing as separate, mandatory line items on wet-area jobs. A perfect tiling job needs a dead-flat substrate and a fully compliant waterproof membrane. Explain to the client that this isn't optional; it's required under Australian Standard AS 3740. A bag of Ardex K 15 levelling compound costs around $50 from a trade supplier and covers about 5sqm at 3mm depth. Skipping this step to save a few bucks on the quote is the fastest way to get a callback for cracked grout or failed waterproofing."
+            "body": "Always quote floor levelling and waterproofing as separate, mandatory line items on wet-area jobs. A perfect tiling job needs a dead-flat substrate and a fully compliant waterproof membrane. Explain to the client that this isn't optional; it's required under Australian Standard AS 3740. A bag of Ardex K 15 levelling compound costs around $50 from a trade supplier and covers about 5sqm at 3mm depth. Skipping this step to save a few bucks on the quote is the fastest way to get a callback for cracked grout or failed waterproofing.",
+            "link": {
+              "href": "/shower-quoting-tool",
+              "label": "Quote a full shower — waterproofing, tiles and screen — with the shower quoting tool"
+            }
           },
           {
             "heading": "Calculating adhesives, grout, and sealants",
@@ -707,7 +719,7 @@
       "keyword": "HVAC",
       "icon": "thermometer",
       "description": "Create HVAC quotes with unit pricing, ductwork estimates, and installation materials. QuoteMate pulls current pricing on split systems, ducted units, and accessories from suppliers.",
-      "heroTitle": "HVAC Quoting — Cool, Calm, Professional",
+      "heroTitle": "HVAC Quoting Software That Prices the Whole Job",
       "painPoint": "Pricing up split system installs and ducted units with brackets, pipes, and electrical shouldn't take all day.",
       "features": [
         "Split system and ducted unit pricing",
@@ -759,7 +771,19 @@
             "body": "The most common costs missed on a service quote are refrigerant recovery, waste disposal fees, and pressure testing with nitrogen. A basic quote might only cover the call-out and the cost of the R32 or R410a top-up. But your time and materials for leak testing, safely recovering old gas according to ARC regulations, and the nitrogen itself all need to be priced in. These extras protect the customer's system and your business from call-backs. Remember that a D-size bottle of nitrogen from BOC costs over $400 plus rental, so every pressure test has a real material cost attached."
           }
         ]
-      }
+      },
+      "metaTitle": "HVAC Quoting Software for Australian Technicians",
+      "metaDescription": "HVAC quoting software for Australian techs. Price split systems, ducted units, pair coil, brackets and isolators with live supplier pricing. Quote on site in minutes.",
+      "extraFaqs": [
+        {
+          "question": "Is QuoteMate proper HVAC quoting software or a generic quote app?",
+          "answer": "It's built for the trade. Describe a split system install and it lines up the head unit, condenser, wall bracket, pair coil, condensate drain and electrical isolator — the parts generic quoting apps make you add by hand. Ducted, evaporative, ventilation and service/re-gas jobs have the same treatment, and every line pulls live Australian supplier pricing you can override with your own rates."
+        },
+        {
+          "question": "Can I quote a ducted air conditioning system with zones?",
+          "answer": "Yes. Describe the house — say, four zones across 180sqm with a 14kW inverter unit — and the quote itemises the unit, ductwork, zone controllers, vents and returns, electrical and commissioning. Typical ducted installs in Australia run $8,000–$20,000, and showing the breakdown is what wins the job over a single lump-sum number."
+        }
+      ]
     },
     {
       "slug": "renderers",
@@ -874,7 +898,11 @@
           },
           {
             "heading": "Line Items to Include on a Frameless Shower Screen Quote",
-            "body": "A frameless shower screen quote is more than just glass. The hardware can add hundreds to the cost. You need to price the specific hinges (e.g., Fethers glass-to-glass, around $80 a pair), wall brackets, a handle, and the clear polycarbonate water seals. Labour for measuring, drilling cutouts before toughening, and the final install is also significant. Using a quoting tool like QuoteMate lets you build a template with these items pre-loaded, so you never forget to charge for a $50 handle or the silicone needed to seal the fixed panels. A single tube of sanitary grade silicone from Bunnings can cost over $20."
+            "body": "A frameless shower screen quote is more than just glass. The hardware can add hundreds to the cost. You need to price the specific hinges (e.g., Fethers glass-to-glass, around $80 a pair), wall brackets, a handle, and the clear polycarbonate water seals. Labour for measuring, drilling cutouts before toughening, and the final install is also significant. Using a quoting tool like QuoteMate lets you build a template with these items pre-loaded, so you never forget to charge for a $50 handle or the silicone needed to seal the fixed panels. A single tube of sanitary grade silicone from Bunnings can cost over $20.",
+            "link": {
+              "href": "/shower-quoting-tool",
+              "label": "Price the whole shower, screen included, with the shower quoting tool"
+            }
           },
           {
             "heading": "Factoring in Access and Cleanup for Window Replacements",
