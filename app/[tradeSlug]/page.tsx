@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
-import { trades, cityPageCities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs } from '@/lib/data';
+import { trades, cityPageCities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs, rotatedTrades } from '@/lib/data';
 import WalkthroughPlayer from '../components/WalkthroughPlayer';
 import { TRADES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
 
@@ -264,7 +264,7 @@ export default async function TradePage({ params }: Props) {
               <div className="links-column">
                 <h3>Other Trades</h3>
                 <ul>
-                  {trades.filter(t => t.slug !== trade.slug).slice(0, 8).map((t) => (
+                  {rotatedTrades(trade.slug, 8, trade.slug).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/quotes-for-${t.slug}`}>{t.name}</Link>
                     </li>

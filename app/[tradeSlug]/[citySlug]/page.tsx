@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
-import { trades, cityPageCities, getTradeBySlug, getCityBySlug, getTradeFAQs, getLocalInsight } from '@/lib/data';
+import { trades, cityPageCities, getTradeBySlug, getCityBySlug, getTradeFAQs, getLocalInsight, rotatedTrades } from '@/lib/data';
 
 interface Props {
   params: Promise<{ tradeSlug: string; citySlug: string }>;
@@ -200,7 +200,7 @@ export default async function TradeCityPage({ params }: Props) {
               <div className="links-column">
                 <h3>Other Trades in {city.name}</h3>
                 <ul>
-                  {trades.filter(t => t.slug !== trade.slug).slice(0, 8).map((t) => (
+                  {rotatedTrades(`${trade.slug}/${city.slug}`, 8, trade.slug).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/quotes-for-${t.slug}/${city.slug}`}>
                         {t.name} in {city.name}
@@ -213,7 +213,7 @@ export default async function TradeCityPage({ params }: Props) {
                 <h3>More {trade.name} Pages</h3>
                 <ul>
                   <li><Link href={`/quotes-for-${trade.slug}`}>All {trade.name} Quoting</Link></li>
-                  {trades.filter(t => t.slug !== trade.slug).slice(0, 6).map((t) => (
+                  {rotatedTrades(`${city.slug}/${trade.slug}`, 6, trade.slug).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/quotes-for-${t.slug}`}>{t.name}</Link>
                     </li>

@@ -8,7 +8,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CTAButtons from '../../components/CTAButtons';
-import { guides, trades, getGuideBySlug, getTradeBySlug, getTemplateBySlug, type Guide } from '@/lib/data';
+import { guides, getGuideBySlug, getTradeBySlug, getTemplateBySlug, rotated, rotatedTrades, type Guide } from '@/lib/data';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -175,7 +175,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="links-column">
                 <h3>More Guides</h3>
                 <ul>
-                  {guides.filter(g => g.slug !== guide.slug).slice(0, 8).map((g) => (
+                  {rotated(guides.filter(g => g.slug !== guide.slug), guide.slug, 8).map((g) => (
                     <li key={g.slug}>
                       <Link href={`/articles/${g.slug}`}>{g.title}</Link>
                     </li>
@@ -185,7 +185,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="links-column">
                 <h3>Browse by Trade</h3>
                 <ul>
-                  {trades.slice(0, 8).map((t) => (
+                  {rotatedTrades(guide.slug, 8).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/quotes-for-${t.slug}`}>{t.name}</Link>
                     </li>

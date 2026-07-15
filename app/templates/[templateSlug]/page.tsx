@@ -7,7 +7,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import FAQ from '../../components/FAQ';
 import CTAButtons from '../../components/CTAButtons';
 import WalkthroughPlayer from '../../components/WalkthroughPlayer';
-import { quoteTemplates, trades, getTemplateBySlug, getTradeBySlug, getTradeFAQs, getTemplateContent } from '@/lib/data';
+import { quoteTemplates, getTemplateBySlug, getTradeBySlug, getTradeFAQs, getTemplateContent, rotated, rotatedTrades } from '@/lib/data';
 import { TEMPLATES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
 
 interface Props {
@@ -189,7 +189,7 @@ export default async function TemplatePage({ params }: Props) {
               <div className="links-column">
                 <h3>Other Templates</h3>
                 <ul>
-                  {quoteTemplates.filter(t => t.slug !== template.slug).slice(0, 8).map((t) => (
+                  {rotated(quoteTemplates.filter(t => t.slug !== template.slug), template.slug, 8).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/templates/${t.slug}`}>{t.name}</Link>
                     </li>
@@ -199,7 +199,7 @@ export default async function TemplatePage({ params }: Props) {
               <div className="links-column">
                 <h3>Browse by Trade</h3>
                 <ul>
-                  {trades.slice(0, 8).map((t) => (
+                  {rotatedTrades(template.slug, 8).map((t) => (
                     <li key={t.slug}>
                       <Link href={`/quotes-for-${t.slug}`}>{t.name}</Link>
                     </li>

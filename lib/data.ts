@@ -302,6 +302,25 @@ export function getTradeFAQs(trade: Trade): FAQ[] {
   ];
 }
 
+/**
+ * Deterministic per-page rotation through a list for internal-link columns.
+ * Every item receives a near-equal share of inbound links instead of the
+ * first N collecting them all (which left late-array trades like cleaners
+ * and cabinet makers link-starved despite ranking near page 1).
+ */
+export function rotated<T>(pool: T[], seed: string, count: number): T[] {
+  if (pool.length === 0) return [];
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  const start = h % pool.length;
+  return Array.from({ length: Math.min(count, pool.length) }, (_, i) => pool[(start + i) % pool.length]);
+}
+
+export function rotatedTrades(seed: string, count: number, excludeSlug?: string): Trade[] {
+  const pool = excludeSlug ? trades.filter((t: Trade) => t.slug !== excludeSlug) : trades;
+  return rotated(pool, seed, count);
+}
+
 export function getTradeBySlug(slug: string): Trade | undefined {
   return trades.find(t => t.slug === slug);
 }
