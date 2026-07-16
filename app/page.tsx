@@ -5,6 +5,7 @@ import EngHomeClient from './components/EngHomeClient';
 import EngEmailSignup from './components/EngEmailSignup';
 import EngContactForm from './components/EngContactForm';
 import InstallSheet from './components/InstallSheet';
+import FoundingPriceNote from './components/FoundingPriceNote';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -672,7 +673,7 @@ export default function HomePage() {
               <span className="pbadge">Most popular</span>
               <h3>Pro Monthly</h3>
               <div className="amt"><span className="p">$49</span><span className="per">/month</span></div>
-              <p className="pd">14-day free trial. Cancel anytime.</p>
+              <p className="pd"><FoundingPriceNote period="monthly" variant="short" />14-day free trial. Cancel anytime.</p>
               <ul>
                 <li><CheckSvg /> Everything in Free</li>
                 <li><CheckSvg /> Bank Transfer, PayID, BPAY, PayPal</li>
@@ -689,7 +690,7 @@ export default function HomePage() {
               <span className="pbadge save">Best value</span>
               <h3>Pro Annual</h3>
               <div className="amt"><span className="p">$328</span><span className="per">/year</span></div>
-              <p className="pd">Just $27.33/month — save 44%.</p>
+              <p className="pd"><FoundingPriceNote period="yearly" variant="short" />Just $27.33/month — save 44%.</p>
               <ul>
                 <li><CheckSvg /> Everything in Pro Monthly</li>
                 <li><CheckSvg /> Save $260 per year</li>
