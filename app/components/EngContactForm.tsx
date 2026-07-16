@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { submitWebsiteForm } from './formApi';
 
 export default function EngContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '', website: '' });
@@ -14,15 +15,9 @@ export default function EngContactForm() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
+      const result = await submitWebsiteForm('websiteContact', form);
 
-      const result = await response.json();
-
-      if (response.ok) {
+      if (result.ok) {
         setStatus('success');
         setForm({ name: '', email: '', message: '', website: '' });
       } else {

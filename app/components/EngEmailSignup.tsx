@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { submitWebsiteForm } from './formApi';
 
 export default function EngEmailSignup() {
   const [email, setEmail] = useState('');
@@ -15,15 +16,9 @@ export default function EngEmailSignup() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, website }),
-      });
+      const result = await submitWebsiteForm('websiteSubscribe', { email, website });
 
-      const result = await response.json();
-
-      if (response.ok) {
+      if (result.ok) {
         setStatus('success');
         setEmail('');
       } else {
