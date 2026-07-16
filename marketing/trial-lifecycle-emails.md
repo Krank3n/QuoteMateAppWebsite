@@ -1,11 +1,27 @@
-# Trial lifecycle email sequence (v1 draft — 2026-07-16)
+# Trial lifecycle email sequence (v1 — 2026-07-16)
 
 Target: lift trial→paid (currently ~1.5%). Five emails across the 14-day Pro trial,
 which starts when the user creates their first quote.
 
+**Implementation status (2026-07-16):**
+- Emails **4 and 5 are live** as `trial_ending` (T-2) and `trial_ended` (T+0–3) in
+  `QuoteMate/functions/src/lifecycleEmails.ts` (`trialLifecycleDaily`, `LIFECYCLE_LIVE=true`).
+  The code is the deployed truth; this doc is the copy reference.
+- Emails **1–3 were not implemented** and are **superseded** by the trial→monetised
+  conversion-engine spec (founding-member + Square lifecycle). Don't build from the
+  drafts below without reconciling against that spec first.
+- ⚠ Email 2's "Tap to pay" claim: native Tap-to-Pay is currently iOS-gated
+  (`useTapToPayEnabled`); pay links work everywhere. Verify before that copy ever ships.
+
+**Copy rules (project guardrails — apply to every draft in this file):**
+- Never the word "AI" in user-facing copy (describe the outcome: "builds the materials
+  list for you", "prices the job from your description").
+- Aussie and gender-neutral — no "blokes/guys/fancy/folks".
+- Any number (savings, spots, deadlines) must be real and enforced, never invented.
+
 **Source-of-truth facts used** (per knowledge-base/, do not drift):
 - Free plan: unlimited quotes & invoices, branded PDFs, GST, online card payment (platform fee added to customer's bill).
-- Pro ($49/mo or $328/yr, save 44%): AI material generation, all premium templates, lower Square rate, bank/PayID/BPAY/PayPal payment options.
+- Pro ($49/mo or $328/yr, save 44%): material lists built for you with live supplier pricing, all premium templates, lower Square rate, bank/PayID/BPAY/PayPal payment options.
 - Trial: 14 days, starts on first quote, no card required.
 
 **Send rules**
@@ -34,7 +50,7 @@ lose.
 
 Two things worth knowing straight away:
 
-- Describe any job and the AI builds the materials list with live Australian
+- Describe any job and QuoteMate builds the materials list with live Australian
   supplier prices. Check it, adjust it, send it.
 - When the job's done, the quote becomes the invoice in one tap. No re-typing.
 
@@ -109,12 +125,12 @@ Straight version, no tricks:
 **You keep, free, forever:** unlimited quotes and invoices, your branding on
 every PDF, GST handled, online card payments.
 
-**Pro keeps doing:** AI-built material lists with live supplier pricing, every
-premium template, the lower Square rate, and bank/PayID/BPAY/PayPal payment
-options for your customers.
+**Pro keeps doing:** material lists built for you with live supplier pricing,
+every premium template, the lower Square rate, and bank/PayID/BPAY/PayPal
+payment options for your customers.
 
 Pro is **$49/month**, or **$328 for the year** — 44% off, which works out
-around $6.30 a week. Most blokes lose more than that in forgotten line items
+around $6.30 a week. Most tradies lose more than that in forgotten line items
 on one quote.
 
 If the last two weeks saved you time, keep it going: **[Upgrade — takes 30
