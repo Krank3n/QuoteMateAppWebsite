@@ -89,9 +89,15 @@ export default function Analytics() {
       btn.addEventListener('click', function(this: HTMLElement) {
         const label = this.getAttribute('aria-label') || this.textContent?.trim() || '';
         const section = getClosestSection(this);
+        // Classify by DESTINATION first, label second: variant B's hero
+        // primary ("Get my first quote") links to /app — a web-app exit in
+        // everything but wording — and label matching left it hiding in
+        // generic cta_click, understating B's store-exit rate in the A/B read.
+        const href = this.getAttribute('href') || '';
         let ctaType = 'cta_click';
-        if (label.toLowerCase().includes('app store')) ctaType = 'app_store_click';
-        else if (label.toLowerCase().includes('google play')) ctaType = 'google_play_click';
+        if (href === '/app' || href.startsWith('/app/') || href.startsWith('/app?')) ctaType = 'web_app_click';
+        else if (href.includes('apps.apple.com') || label.toLowerCase().includes('app store')) ctaType = 'app_store_click';
+        else if (href.includes('play.google.com') || label.toLowerCase().includes('google play')) ctaType = 'google_play_click';
         else if (label.toLowerCase().includes('web')) ctaType = 'web_app_click';
         else if (this.classList.contains('pricing-btn')) ctaType = 'pricing_cta_click';
         track(ctaType, { button_text: label.substring(0, 100), section });
