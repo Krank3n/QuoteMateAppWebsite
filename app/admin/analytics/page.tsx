@@ -33,7 +33,7 @@ interface Traffic {
   topPages: Array<{ path: string; views: number; sessions: number; users: number }>;
   abTest:
     | { available: false; reason: string }
-    | { available: true; variants: Array<{ variant: string; impressions: number; ctaClicks: number; ctr: number }> };
+    | { available: true; variants: Array<{ variant: string; impressions: number; ctaClicks: number; ctr: number; storeExits?: number; storeExitRate?: number; signups?: number }> };
 }
 
 interface FunnelActionRow {
@@ -304,7 +304,7 @@ export default function AnalyticsPage() {
               <div className={styles.cardHeader}>
                 <div>
                   <div className={styles.cardTitle}>Hero A/B test</div>
-                  <div className={styles.cardSubtitle}>experiment_impression → CTA click-through, by variant</div>
+                  <div className={styles.cardSubtitle}>impression → clicks → store exits → web signups, by variant</div>
                 </div>
               </div>
               {data.abTest.available ? (
@@ -313,8 +313,14 @@ export default function AnalyticsPage() {
                     dimension existed (pre 2026-06-29) — historical junk, not a
                     third arm of the test. */}
                 {data.abTest.variants.filter((v) => v.variant !== '(not set)').map((v, _i, shown) => {
-                  const winner = Math.max(...shown.map((x) => x.ctr));
-                  const isWinner = v.ctr === winner && v.impressions > 0;
+                  // Signups are the experiment's real outcome; fall back to CTA
+                  // rate for the badge until sign_up-by-variant data exists
+                  // (only web-app signups carry the variant — store installs
+                  // are invisible to GA, so treat this as a directional read).
+                  const haveSignups = shown.some((x) => (x.signups ?? 0) > 0);
+                  const score = (x: typeof v) => (haveSignups ? (x.signups ?? 0) : x.ctr);
+                  const winner = Math.max(...shown.map(score));
+                  const isWinner = score(v) === winner && v.impressions > 0;
                   return (
                     <div key={v.variant} style={{ padding: 14, borderRadius: 12, background: 'rgba(0,0,0,0.2)', border: `1px solid ${isWinner ? 'rgba(16,185,129,0.4)' : 'rgba(255,255,255,0.05)'}` }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
@@ -324,6 +330,12 @@ export default function AnalyticsPage() {
                       <div style={{ fontSize: 26, fontWeight: 800 }}>{(v.ctr * 100).toFixed(1)}%</div>
                       <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 4 }}>
                         {v.ctaClicks.toLocaleString()} clicks / {v.impressions.toLocaleString()} impressions
+                      </div>
+                      <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 6 }}>
+                        {(v.storeExits ?? 0).toLocaleString()} store exits · {((v.storeExitRate ?? 0) * 100).toFixed(1)}%
+                      </div>
+                      <div style={{ fontSize: 12, marginTop: 6, fontWeight: 600, color: (v.signups ?? 0) > 0 ? '#6ee7b7' : 'var(--color-text-tertiary)' }}>
+                        {(v.signups ?? 0).toLocaleString()} web signups
                       </div>
                     </div>
                   );
