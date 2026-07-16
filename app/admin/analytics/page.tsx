@@ -76,6 +76,31 @@ interface Funnel {
   cached: boolean;
 }
 
+// Payload of adminEventFunnelStats (functions/src/eventFunnel.helpers.ts).
+// `pending` means the aggregateEventFunnel cron hasn't produced a cache yet.
+interface EventFunnelData {
+  pending?: boolean;
+  shared: { signups: number; quoteDraft: number; quoteSent: number };
+  pathA: {
+    paywallViewed: number;
+    checkoutStarted: number;
+    proPaid: number;
+    pctCheckoutStarted: number;
+    pctProPaid: number;
+  };
+  pathB: { squareConnected: number; firstPaymentCollected: number; pctFirstPayment: number };
+  monetized: { count: number; viaPro: number; viaSquare: number; viaBoth: number };
+  conversion: { trialToMonetized: number; activationRate: number };
+  trialStarted: number;
+  histogram: {
+    shared: { signup: number; quote_draft: number; quote_sent: number };
+    pathA: { paywall_viewed: number; checkout_started: number; pro_paid: number };
+    pathB: { square_connected: number; first_payment_collected: number };
+  };
+  asOf: number;
+  eventWindowDays: number;
+}
+
 const DAY_OPTIONS = [7, 28, 90];
 
 interface Digest {
@@ -115,6 +140,8 @@ export default function AnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [funnel, setFunnel] = useState<Funnel | null>(null);
   const [funnelError, setFunnelError] = useState<string | null>(null);
+  const [eventFunnel, setEventFunnel] = useState<EventFunnelData | null>(null);
+  const [eventFunnelError, setEventFunnelError] = useState<string | null>(null);
   const [digest, setDigest] = useState<Digest | null>(null);
   const [subAudit, setSubAudit] = useState<SubAudit | null>(null);
 
@@ -190,6 +217,29 @@ export default function AnalyticsPage() {
     };
   }, []);
 
+  // Trial→monetised event funnel — cron-aggregated server-side, so this is a
+  // cheap cache read. Same instant-paint-then-revalidate pattern as above.
+  useEffect(() => {
+    let cancelled = false;
+    const cached = getCached<EventFunnelData>('analytics-event-funnel');
+    if (cached) setEventFunnel(cached);
+    setEventFunnelError(null);
+
+    api
+      .eventFunnelStats({})
+      .then((f: any) => {
+        if (cancelled) return;
+        setEventFunnel(f as EventFunnelData);
+        if (!f?.pending) setCached('analytics-event-funnel', f);
+      })
+      .catch((e) => {
+        if (!cancelled) setEventFunnelError(e?.message || 'Failed to load event funnel');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Latest stored weekly AI digest — written by the weeklyAnalyticsDigest
   // function every Monday. Quiet failure: the card just doesn't render.
   useEffect(() => {
@@ -223,6 +273,10 @@ export default function AnalyticsPage() {
       {/* Business health — trial→paid conversion is the founder's #1 metric, so
           it sits above the web-traffic content. */}
       <BusinessHealth funnel={funnel} error={funnelError} subAudit={subAudit} />
+
+      {/* Trial → monetised: BOTH revenue paths (Pro subs + Square-collecting
+          free tradies). Target 20%; the histogram shows where users stall. */}
+      <EventFunnelSection data={eventFunnel} error={eventFunnelError} />
 
       <WeeklyDigestCard digest={digest} />
 
@@ -509,6 +563,165 @@ function JourneyArrow({ label, note }: { label: string; note?: string }) {
       <span style={{ fontWeight: 700 }}>{label}</span>
       <span aria-hidden style={{ opacity: 0.6 }}>→</span>
       {note && <span style={{ fontSize: 9, color: 'var(--color-text-tertiary)' }}>{note}</span>}
+    </div>
+  );
+}
+
+function EventFunnelSection({ data, error }: { data: EventFunnelData | null; error: string | null }) {
+  const title = (
+    <div className={styles.cardHeader} style={{ marginBottom: 12 }}>
+      <div>
+        <div className={styles.cardTitle}>Trial → monetised</div>
+        <div className={styles.cardSubtitle}>
+          Both revenue paths: Pro subscription (A) and Square collecting (B) · target 20%
+        </div>
+      </div>
+    </div>
+  );
+
+  if (error && !data) {
+    return (
+      <div className={styles.card} style={{ borderColor: 'rgba(239, 68, 68, 0.3)', marginBottom: 16 }}>
+        <div className={styles.cardTitle}>Couldn't load the event funnel</div>
+        <div className={styles.cardSubtitle}>{error}</div>
+        <div className={styles.cardSubtitle} style={{ marginTop: 8 }}>
+          If this says the function isn't found, deploy <code>adminEventFunnelStats</code> first.
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) return null;
+
+  if (data.pending) {
+    return (
+      <div className={styles.card} style={{ marginBottom: 16 }}>
+        {title}
+        <div className={styles.cardSubtitle}>
+          Waiting on the first <code>aggregateEventFunnel</code> run (every 6 hours). Trigger it manually
+          from the Cloud Console to populate this now.
+        </div>
+      </div>
+    );
+  }
+
+  const monetised = data.monetized;
+  const h = data.histogram;
+
+  return (
+    <div style={{ marginBottom: 24 }}>
+      {title}
+
+      <div className={styles.statGrid}>
+        <StatCard
+          label="Trial → monetised"
+          value={pct1(data.conversion.trialToMonetized)}
+          valueSuffix="%"
+          sub={`${monetised.count.toLocaleString()} of ${data.trialStarted.toLocaleString()} trials · target 20%`}
+          accent
+        />
+        <StatCard
+          label="Monetised — Pro"
+          value={monetised.viaPro}
+          sub={monetised.viaBoth ? `${monetised.viaBoth.toLocaleString()} also collect via Square` : 'billed subscriptions'}
+        />
+        <StatCard
+          label="Monetised — Square"
+          value={monetised.viaSquare}
+          sub={`${data.pathB.squareConnected.toLocaleString()} connected · ${pct1(data.pathB.pctFirstPayment)}% collected`}
+        />
+        <StatCard
+          label="Sent a quote"
+          value={data.shared.quoteSent}
+          sub={`${pct1(data.conversion.activationRate)}% of ${data.shared.signups.toLocaleString()} signups`}
+        />
+      </div>
+
+      <div className={styles.dashGrid}>
+        {/* Path A — Pro subscription */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Path A — Pro subscription</div>
+              <div className={styles.cardSubtitle}>
+                Events from the last {data.eventWindowDays} days; paid status is durable
+              </div>
+            </div>
+          </div>
+          <FunnelStep label="Viewed paywall" value={data.pathA.paywallViewed} max={Math.max(data.pathA.paywallViewed, 1)} />
+          <FunnelStep
+            label="Started checkout"
+            value={data.pathA.checkoutStarted}
+            max={Math.max(data.pathA.paywallViewed, 1)}
+            detail={`${pct1(data.pathA.pctCheckoutStarted)}% of paywall viewers`}
+          />
+          <FunnelStep
+            label="Paid — Pro"
+            value={data.pathA.proPaid}
+            max={Math.max(data.pathA.paywallViewed, 1)}
+            detail={`${pct1(data.pathA.pctProPaid)}% of checkout starters`}
+            accent
+          />
+          <MetricRow
+            label="Viewed paywall, never checked out"
+            value={h.pathA.paywall_viewed.toLocaleString()}
+            detail="stalled at the paywall — pricing or value objection"
+            barValue={h.pathA.paywall_viewed}
+            barMax={Math.max(data.pathA.paywallViewed, 1)}
+          />
+          <MetricRow
+            label="Started checkout, never paid"
+            value={h.pathA.checkout_started.toLocaleString()}
+            detail="abandoned mid-purchase — friction or store errors"
+            barValue={h.pathA.checkout_started}
+            barMax={Math.max(data.pathA.paywallViewed, 1)}
+          />
+        </div>
+
+        {/* Path B — Square collecting */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Path B — Square collecting</div>
+              <div className={styles.cardSubtitle}>Free tradies monetise via the payment cut</div>
+            </div>
+          </div>
+          <FunnelStep
+            label="Connected Square"
+            value={data.pathB.squareConnected}
+            max={Math.max(data.pathB.squareConnected, 1)}
+          />
+          <FunnelStep
+            label="Collected a payment"
+            value={data.pathB.firstPaymentCollected}
+            max={Math.max(data.pathB.squareConnected, 1)}
+            detail={`${pct1(data.pathB.pctFirstPayment)}% of connectors`}
+            accent
+          />
+          <MetricRow
+            label="Connected, never collected"
+            value={h.pathB.square_connected.toLocaleString()}
+            detail="have the button, haven't used it — prime nudge cohort"
+            barValue={h.pathB.square_connected}
+            barMax={Math.max(data.pathB.squareConnected, 1)}
+            accent
+          />
+          <MetricRow
+            label="Drafted, never sent"
+            value={h.shared.quote_draft.toLocaleString()}
+            detail="stalled before the funnel forks — send-nudge cohort"
+            barValue={h.shared.quote_draft}
+            barMax={Math.max(data.shared.signups, 1)}
+          />
+          <MetricRow
+            label="Signed up, no quote yet"
+            value={h.shared.signup.toLocaleString()}
+            detail="never activated — first-quote email cohort"
+            barValue={h.shared.signup}
+            barMax={Math.max(data.shared.signups, 1)}
+          />
+        </div>
+      </div>
     </div>
   );
 }
