@@ -34,6 +34,7 @@ interface Traffic {
   abTest:
     | { available: false; reason: string }
     | { available: true; variants: Array<{ variant: string; impressions: number; ctaClicks: number; ctr: number; storeExits?: number; storeExitRate?: number; signups?: number }> };
+  abSince?: string;
 }
 
 interface FunnelActionRow {
@@ -358,7 +359,10 @@ export default function AnalyticsPage() {
               <div className={styles.cardHeader}>
                 <div>
                   <div className={styles.cardTitle}>Hero A/B test</div>
-                  <div className={styles.cardSubtitle}>impression → clicks → store exits → web signups, by variant</div>
+                  <div className={styles.cardSubtitle}>
+                    impression → clicks → store exits → web signups, by variant
+                    {data.abSince ? ` · v2, data since ${data.abSince}` : ''}
+                  </div>
                 </div>
               </div>
               {data.abTest.available ? (

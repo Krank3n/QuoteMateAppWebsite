@@ -357,8 +357,10 @@
 .eng-home .btn-store-lg svg { color: var(--tx); flex-shrink: 0; }
 .eng-home .btn-store-lg span { display: flex; flex-direction: column; text-align: left; line-height: 1.15; font: 600 .92rem var(--display); }
 .eng-home .btn-store-lg span small { font: 400 .6rem var(--mono); color: var(--tx2); text-transform: uppercase; letter-spacing: .04em; }
-.eng-home .hero-web { display: inline-block; margin-top: 18px; font: 600 .95rem var(--display); color: var(--tx); border-bottom: 1.5px solid var(--acc); padding-bottom: 2px; transition: color .15s; }
-.eng-home .hero-web:hover { color: var(--acc); }
+.eng-home .hero-cta { padding: 14px 28px; font-size: .98rem; }
+.eng-home .ctas-stores { margin-top: 14px; }
+.eng-home .ctas-stores .btn-store-lg { padding: 8px 14px; }
+.eng-home .ctas-stores .btn-store-lg span { font-size: .8rem; }
 
 /* walkthrough video */
 .eng-home .video-wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; max-width: 900px; margin: 0 auto; }
@@ -1010,9 +1012,6 @@ html[data-home-variant="b"] .eng-home .btn-cmd:hover {
   border-color: var(--acc);
   color: var(--acc);
 }
-
-/* 21. hero-web "Try on web" link (inside hero-a, hidden in B but defensive) */
-html[data-home-variant="b"] .eng-home .hero-web { color: var(--tx); }
 
 /* 22. h1badge (inside hero-a — hidden in B, but defensive reset) */
 /* (no change needed — it's hidden) */

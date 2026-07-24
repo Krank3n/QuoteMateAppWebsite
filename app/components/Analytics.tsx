@@ -62,7 +62,9 @@ export default function Analytics() {
     // (window.location, not usePathname, to keep this effect single-run.)
     if (window.location.pathname === '/') {
       const variant = getVariant();
-      track('experiment_impression', { experiment_id: 'home_hero_v1', variant });
+      // v2 (2026-07-24): variant A gained the web-first "Get my first quote"
+      // primary CTA — the mechanic that won v1 — so this is a fresh test.
+      track('experiment_impression', { experiment_id: 'home_hero_v2', variant });
     }
 
     // Smooth scroll for anchor links
@@ -80,12 +82,12 @@ export default function Analytics() {
     });
 
     // CTA button tracking. Includes the hero's OWN CTAs: `btn-store-lg` (the big
-    // App Store / Google Play buttons) and `hero-web` (the "try it free on the web"
-    // link). These differ from the footer's `btn-store` and the component's
-    // `hero-web-link`, so the homepage hero previously logged zero CTA clicks —
-    // which biased the home_hero_v1 A/B test (variant B's buttons carry `nav-cta`
-    // and were counted; variant A's hero buttons were not).
-    document.querySelectorAll('.btn-store, .btn-store-lg, .hero-web, .pricing-btn, .nav-cta').forEach((btn) => {
+    // App Store / Google Play buttons) and `[data-hero-cta]` — both heroes'
+    // primary "Get my first quote" buttons AND variant B's mobile chat bar,
+    // which carries no tracked class and was invisible to the v1 A/B read.
+    // (querySelectorAll returns unique elements, so a button matching several
+    // selectors is only wired once.)
+    document.querySelectorAll('.btn-store, .btn-store-lg, .pricing-btn, .nav-cta, [data-hero-cta]').forEach((btn) => {
       btn.addEventListener('click', function(this: HTMLElement) {
         const label = this.getAttribute('aria-label') || this.textContent?.trim() || '';
         const section = getClosestSection(this);
