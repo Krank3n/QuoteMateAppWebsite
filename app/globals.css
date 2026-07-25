@@ -2098,6 +2098,83 @@ ul {
     transform: translateY(0);
 }
 
+/* Minimized install bar — the sheet collapses to this when closed */
+.install-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.45);
+    transform: translateY(102%);
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.install-bar.visible {
+    transform: translateY(0);
+}
+
+.install-bar-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.install-bar-body img {
+    border-radius: 9px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--color-border);
+    flex-shrink: 0;
+}
+
+.install-bar-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.install-bar-text b {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.install-bar-text small {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.install-bar-btn {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
 .install-sheet-btn span {
     display: flex;
     flex-direction: column;
