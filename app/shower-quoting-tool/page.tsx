@@ -72,7 +72,7 @@ const faqItems = [
   },
   {
     question: 'How accurate is the material pricing?',
-    answer: 'QuoteMate uses real-time pricing feeds from major Australian suppliers (Reece, Tradelink, Bunnings and others depending on category). You can override any line with your own trade pricing before sending.',
+    answer: 'QuoteMate uses real-time pricing from major Australian hardware and trade suppliers, including live Reece maX trade pricing if you connect your account. You can override any line with your own trade pricing before sending.',
   },
   {
     question: 'Can I send the quote directly to the homeowner?',

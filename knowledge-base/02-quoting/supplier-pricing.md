@@ -3,8 +3,8 @@ id: quoting-supplier-pricing
 title: Live supplier pricing and your trade rates
 category: Quoting
 audience: [customers, prospects]
-last_updated: 2026-07-05
-keywords: [supplier pricing, live pricing, bunnings, reece, trade rates, price list, import prices, no prices found]
+last_updated: 2026-07-25
+keywords: [supplier pricing, live pricing, reece, trade rates, price list, import prices, no prices found]
 question_examples:
   - "How does live supplier pricing work?"
   - "Where do the prices come from?"
@@ -23,9 +23,8 @@ QuoteMate looks for each material's price in this order, so your own data always
 
 1. **Your saved section templates** — bundles you've priced before.
 2. **Your supplier favourites** — your personal price book at your real trade rates.
-3. **Bunnings pricing** — if Bunnings is one of your configured suppliers.
-4. **Your other configured suppliers** — prices pulled from the supplier sites you use.
-5. **AI estimate** — a fallback when nothing else returns a price.
+3. **Your configured suppliers** — live prices pulled from the hardware and trade suppliers you've set up in the app.
+4. **AI estimate** — a fallback when nothing else returns a price.
 
 Plumbers connected to **Reece maX** get live Reece trade-rate pricing on matched items. See [Reece maX integration](../05-integrations/reece-max-integration.md).
 
