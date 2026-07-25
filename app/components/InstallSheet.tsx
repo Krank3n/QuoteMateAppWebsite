@@ -73,6 +73,14 @@ export default function InstallSheet() {
     return () => window.removeEventListener('qm:open-install', open);
   }, []);
 
+  // Flag the sticky bar on <html> so other fixed-bottom UI can clear it —
+  // SupportChat.module.css lifts the chat launcher above the bar while this
+  // class is present.
+  useEffect(() => {
+    document.documentElement.classList.toggle('qm-install-bar-visible', mode === 'bar');
+    return () => document.documentElement.classList.remove('qm-install-bar-visible');
+  }, [mode]);
+
   // Closing the sheet minimizes it to the sticky footer bar instead of
   // removing it; the session flag means later page loads skip straight to
   // the bar once the scroll trigger fires.

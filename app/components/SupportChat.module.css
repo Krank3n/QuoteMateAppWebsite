@@ -190,3 +190,13 @@
   .panel { bottom: 80px; right: 16px; }
   .launcher { bottom: 16px; right: 16px; }
 }
+
+/* When the mobile install bar is pinned to the bottom (InstallSheet toggles
+   this class on <html>), lift the chat clear of it so the launcher isn't
+   buried underneath. The bar is ~60px + safe-area tall. */
+:global(html.qm-install-bar-visible) .launcher {
+  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+}
+:global(html.qm-install-bar-visible) .panel {
+  bottom: calc(152px + env(safe-area-inset-bottom, 0px));
+}
