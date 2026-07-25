@@ -35,6 +35,7 @@ const PAGES: Item[] = [
   { id: 'p-campaigns', kind: 'page', title: 'Campaigns', href: '/admin/campaigns', Icon: IconCampaign, keywords: 'email broadcast' },
   { id: 'p-feedback', kind: 'page', title: 'Feedback', href: '/admin/feedback', Icon: IconFeedback, keywords: 'reviews inbox' },
   { id: 'p-conversations', kind: 'page', title: 'Conversations', href: '/admin/conversations', Icon: IconChat, keywords: 'mate assistant chat transcripts voice proposals' },
+  { id: 'p-support-chats', kind: 'page', title: 'Support chats', href: '/admin/support-chats', Icon: IconChat, keywords: 'website chatbot support bot kb knowledge base handoff' },
   { id: 'p-subscriptions', kind: 'page', title: 'Subscriptions', href: '/admin/subscriptions', Icon: IconSubscription, keywords: 'revenue mrr billing pro' },
   { id: 'p-affiliates', kind: 'page', title: 'Affiliates', href: '/admin/affiliates', Icon: IconAffiliate, keywords: 'referrals earnings' },
 ];

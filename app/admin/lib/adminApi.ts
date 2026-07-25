@@ -50,6 +50,7 @@ export const api = {
   weeklyDigest: call('adminWeeklyDigest'),
   subscriptionAudit: call('adminSubscriptionAudit'),
   assistantCosts: call<{ days?: number; topLimit?: number }>('adminAssistantCosts'),
+  supportChats: call<{ action?: 'list' | 'transcript'; chatId?: string; limit?: number }>('adminSupportChats'),
   listEmailEvents: call<{ limit?: number; category?: string; status?: string; userId?: string }>('adminListEmailEvents'),
   emailHealth: call('adminEmailHealth'),
   grantPro: call<{ uid: string; months?: number }>('adminGrantPro'),

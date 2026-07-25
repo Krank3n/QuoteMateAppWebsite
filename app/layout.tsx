@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk, Space_Mono } from 'next/font/google';
 import './globals.css';
 import ScrollReveal from './components/ScrollReveal';
 import Analytics from './components/Analytics';
+import SupportChat from './components/SupportChat';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         {children}
         <ScrollReveal />
+        <SupportChat />
       </body>
     </html>
   );
