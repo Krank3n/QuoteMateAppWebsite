@@ -1993,7 +1993,11 @@ ul {
     padding: 14px 24px calc(28px + env(safe-area-inset-bottom, 0px));
     text-align: center;
     transform: translateY(102%);
-    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+    /* visibility with a delay: fully hidden once the slide-out ends, so the
+       off-screen sheet can't flash over the footer during iOS overscroll
+       bounce (translateY alone keeps it painted just below the viewport) */
+    visibility: hidden;
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), visibility 0s linear 0.45s;
     max-width: 480px;
     margin: 0 auto;
     box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.55);
@@ -2001,6 +2005,8 @@ ul {
 
 .install-sheet.visible {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .install-sheet-handle {
@@ -2118,11 +2124,15 @@ ul {
     border-top-right-radius: 16px;
     box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.45);
     transform: translateY(102%);
-    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+    /* same overscroll-bounce guard as .install-sheet above */
+    visibility: hidden;
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), visibility 0s linear 0.45s;
 }
 
 .install-bar.visible {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .install-bar-body {
