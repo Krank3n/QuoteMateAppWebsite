@@ -100,6 +100,14 @@ interface EventFunnelData {
   };
   asOf: number;
   eventWindowDays: number;
+  // Per-ad acquisition scoreboard (functions/src/attributionRollup.helpers.ts).
+  // Optional: absent until the first aggregateEventFunnel run after the
+  // attribution deploy. Row key = utm_content (ad name) or source/campaign.
+  attribution?: {
+    rows: { key: string; signups: number; trials: number; sent: number; monetized: number }[];
+    attributedSignups: number;
+    organicSignups: number;
+  };
 }
 
 const DAY_OPTIONS = [7, 28, 90];
@@ -726,6 +734,55 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
           />
         </div>
       </div>
+
+      {/* Per-ad acquisition scoreboard — the Monday kill/scale table
+          (marketing/fb-ads-growth-system-2026-07.md §6). */}
+      {data.attribution && (
+        <div className={styles.card} style={{ marginTop: 16 }}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Acquisition by ad</div>
+              <div className={styles.cardSubtitle}>
+                First-touch utm_content per signup ·{' '}
+                {data.attribution.attributedSignups.toLocaleString()} attributed,{' '}
+                {data.attribution.organicSignups.toLocaleString()} organic baseline
+              </div>
+            </div>
+          </div>
+          {data.attribution.rows.length === 0 ? (
+            <div className={styles.cardSubtitle}>
+              No attributed signups yet — appears once ad traffic lands with UTM params.
+            </div>
+          ) : (
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Ad / channel</th>
+                    <th>Signups</th>
+                    <th>Trials</th>
+                    <th>Sent</th>
+                    <th>Monetised</th>
+                    <th>Trial → monetised</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.attribution.rows.map((row) => (
+                    <tr key={row.key}>
+                      <td><code>{row.key}</code></td>
+                      <td>{row.signups.toLocaleString()}</td>
+                      <td>{row.trials.toLocaleString()}</td>
+                      <td>{row.sent.toLocaleString()}</td>
+                      <td>{row.monetized.toLocaleString()}</td>
+                      <td>{row.trials > 0 ? `${pct1(row.monetized / row.trials)}%` : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

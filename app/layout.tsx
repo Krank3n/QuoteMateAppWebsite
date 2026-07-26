@@ -4,6 +4,7 @@ import './globals.css';
 import ScrollReveal from './components/ScrollReveal';
 import Analytics from './components/Analytics';
 import SupportChat from './components/SupportChat';
+import AttributionBridge from './components/AttributionBridge';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Analytics />
+        <AttributionBridge />
         {children}
         <ScrollReveal />
         <SupportChat />
