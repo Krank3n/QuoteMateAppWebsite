@@ -22,7 +22,10 @@ import Script from 'next/script';
 
 const STORAGE_KEY = 'qm_attribution';
 const PARAM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'];
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+// Pixel IDs are public (visible in any page source). Default to the QuoteMate
+// dataset so the pixel survives build environments (e.g. DO App Platform)
+// that don't carry the local .env; the env var stays as an override.
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1714708188811919';
 
 function collectParams(): Record<string, string> | null {
   const search = new URLSearchParams(window.location.search);
