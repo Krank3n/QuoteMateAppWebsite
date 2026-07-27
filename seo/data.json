@@ -6165,6 +6165,61 @@
       ],
       "datePublished": "2026-07-25",
       "dateModified": "2026-07-25"
+    },
+    {
+      "slug": "nsw-ecert-ccew-digital-lodgement",
+      "title": "NSW eCert and the Digital CCEW: What Changed on 1 July 2026",
+      "trade": "electricians",
+      "keyword": "nsw ecert ccew",
+      "secondaryKeywords": [
+        "ecert portal nsw",
+        "how to submit a ccew",
+        "digital ccew nsw",
+        "ccew fine nsw"
+      ],
+      "description": "Since 1 July 2026 every NSW CCEW must be lodged through the BCNSW eCert portal. What changed, the seven-day rule, the fines, and how to get set up.",
+      "relatedTemplate": "electrical-switchboard-upgrade-quote-template",
+      "sections": [
+        {
+          "heading": "What Actually Changed on 1 July 2026",
+          "body": "From 1 July 2026, the only way to lodge a Certificate of Compliance for Electrical Work in NSW is digitally, through the Building Commission NSW eCert portal. The paper and PDF era is over. The old CCEW PDF form is gone, emailing a filled-in PDF is no longer accepted, the Essential Energy portal is no longer a lodgement route, and hard copy forms including the NECA book forms are finished. If you have a half-used book of carbon-copy forms in the ute, it is now scrap paper. This is not a new obligation to issue certificates. Electrical wiring work in NSW has always needed a CCEW, and it has always been an offence not to supply one. What changed is the channel. The eCert portal has actually been live since December 2025 for anyone who wanted to use it voluntarily, so it is not brand new software with brand new bugs. The 1 July date is simply when the alternatives were switched off. Full details are on the NSW Government site at https://www.nsw.gov.au/housing-and-construction/compliance-and-regulation/ecert-portal and it is worth ten minutes of your time rather than relying on what someone told you at the wholesaler."
+        },
+        {
+          "heading": "It Is Not Just Sparkies: Gasfitters Changed in March",
+          "body": "This gets missed constantly, because most of the noise has been about electricians. The eCert portal covers three licensed groups, not one. Licensed electricians lodge CCEWs, including certificates for metering installations, solar and battery work. Licensed gasfitters lodge certificates of compliance and certificates of inspection for gasfitting work. Licensed medical gasfitters and medical gas technicians lodge certificates of compliance for medical gas work. The dates were staggered. Medical gas professionals could register from December 2025. Gasfitters and medical gas professionals had to stop using their legacy portals from 1 March 2026, which is four months before the electrical deadline that has been getting all the attention. So if you hold both an electrical and a gasfitting ticket, or you run a mixed plumbing and gasfitting outfit, you have had two separate transitions to manage and the gas one has already passed. If you are a gasfitter who has been quietly wondering why your old portal login stopped working earlier this year, that is why. Worth checking your registration is actually complete rather than assuming, because a lapsed registration only becomes obvious on the day you need to lodge."
+        },
+        {
+          "heading": "The Seven-Day Rule and Who Gets a Copy",
+          "body": "The timeframe is the part people get wrong, because it is tied to the test, not to the invoice. Whoever carried out the electrical test must submit the CCEW as soon as practical, and no later than seven days after that test was completed. Not seven days after you finish the job, not seven days after you get paid, and not whenever you next sit down to do paperwork. Seven days from the test. Once it is lodged, eCert distributes the certificate for you rather than you chasing three separate parties. Copies go to the electrical distributor where the work is a new installation or affects the network, to the customer where you have supplied their email address, and to your employer or principal contractor where you have supplied theirs. That distribution step is genuinely the best thing about the new system, and it is why getting the customer's email into the job record properly is now worth doing at the time of quoting rather than digging for it a week later. A missing email address does not stop the lodgement, but it does mean the customer never automatically receives their certificate."
+        },
+        {
+          "heading": "What the Fines Actually Are",
+          "body": "There are two very different numbers floating around, and they are not the same offence, so it is worth being precise. On-the-spot fines of up to $1,000 apply for each instance a certificate of compliance is not supplied to Building Commission NSW. Read that as per certificate, not per audit. Ten jobs where the paperwork never got lodged is ten separate occasions, not one bad day. Separately, and much more seriously, failing to carry out electrical installation work in accordance with the technical standards set out in the regulation carries penalties of up to $550,000. That is a workmanship and safety offence rather than a paperwork one, and it is the reason the certificate regime exists in the first place. There is also a records dimension if you are lodging through the API rather than the portal: businesses have to be able to provide CCEW information to regulators within seven days, with penalties up to 40 penalty units for corporations. The practical read on all this is straightforward. The paperwork fine is not the thing that will ruin you, but it is the thing that is now trivially easy for the regulator to spot, because every lodgement is timestamped in one central system."
+        },
+        {
+          "heading": "Getting Set Up Before Your Next Job",
+          "body": "If you have not lodged one yet, do not let the first attempt happen while you are standing in a customer's kitchen at four o'clock on a Friday. Register on the portal on a quiet night with your licence details in front of you, and make sure the licence you register with is current and the details match what Building Commission NSW already holds. Then do a real lodgement on a small, low-stakes job in the next week or so, purely so the first one is not on a job that matters. Two practical habits worth building now. First, capture the customer's email address at quoting time, not at certificate time, because that is what makes the automatic distribution work. Second, log the test date deliberately, since that is what starts the seven-day clock, and on a job that runs over several visits the test date and the finish date can be a fortnight apart. Most sparkies who have had trouble with this have had trouble for administrative reasons rather than technical ones: wrong licence details, an email address nobody wrote down, or a test date nobody recorded."
+        },
+        {
+          "heading": "What the eCert API Means for Your Job Software",
+          "body": "Building Commission NSW has published an API that lets eligible businesses and software providers submit CCEW data directly, instead of re-typing job details into the portal after the fact. Eligibility covers job management system providers serving licensed electricians, electrical businesses on company or partnership contractor licences doing high volumes, and DCCEEW-registered CER Installer Portal users. It supports both instant and batched submission. Onboarding runs through a test environment first, requested from Building Commission NSW, then production credentials. One point in the documentation deserves emphasis: the individual electrician remains responsible for the accuracy and completeness of every CCEW, regardless of what software lodged it. An integration saves you the typing, not the responsibility. If you already pay for job management or quoting software, asking your vendor where they sit on the eCert API is a fair question, and the answer tells you something about how closely they follow the Australian market. Be aware that very few have shipped it so far, and that in-progress and integrated are not the same thing. Ask for a date."
+        },
+        {
+          "heading": "Put the Certificate on the Quote, Not on Your Own Time",
+          "body": "None of this is free to you. Completing the certificate correctly, capturing the details and lodging it inside seven days is real administrative time on every single job, and going digital has not removed that time so much as moved it. Most electricians already charge a separate line item for the Certificate of Compliance, typically in the $50 to $95 plus GST range, and if you are not doing that you are absorbing a legal obligation as unpaid overhead. Put it on the quote as its own line so the customer can see what it is. It is a licensed professional service with legal weight attached, not a free piece of paper, and itemising it tends to prompt fewer questions than burying it in the labour rate. This is the part QuoteMate handles: your compliance line items sit in your price list and drop into every electrical quote automatically, so the fee is never the thing you forget to charge for. The lodgement itself still happens in eCert. Just make sure you are getting paid for the time it takes."
+        }
+      ],
+      "tips": [
+        "The seven-day clock starts at the electrical test, not at job completion or invoicing. On a multi-visit job those dates can be weeks apart.",
+        "Do your first lodgement on a small job you do not care about, on a quiet evening, rather than learning the portal under pressure on site.",
+        "Capture the customer's email address at quoting time. It is what makes eCert automatically send them their certificate.",
+        "Gasfitters and medical gas technicians moved to eCert on 1 March 2026, four months before electricians. If you hold both tickets, check both registrations.",
+        "The $1,000 on-the-spot fine is per occasion a certificate is not supplied, not per inspection. Ten unlodged jobs is ten occasions.",
+        "Charge the Certificate of Compliance as its own line item, usually $50 to $95 plus GST. It is billable professional time, not a freebie.",
+        "If your job software claims eCert API integration, ask whether it is live or in progress, and ask for a date. The two get used interchangeably in marketing."
+      ],
+      "datePublished": "2026-07-27",
+      "dateModified": "2026-07-27"
     }
   ],
   "paymentHub": {
