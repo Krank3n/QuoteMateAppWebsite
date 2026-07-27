@@ -68,6 +68,11 @@ rule).
 
 ## Priority order + status (2026-07-16)
 
+> **Superseded for the comment workstream (2026-07-27):** see
+> `research/comment-engagement-plan-2026-07-27.md` for the dated execution
+> plan, the NSW eCert opportunity, and the Just Send It AI competitor find.
+> Item 4 below is re-sequenced there (non-Reddit channels first).
+
 1. **Xero marketplace listing** — copy DRAFTED (store-listing/
    xero-app-store-listing.md). Next: confirm support URL, join Xero App
    Partner Program, prepare 3–5 screenshots (1280×800), submit.

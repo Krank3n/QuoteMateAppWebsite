@@ -3188,6 +3188,93 @@ Pro tips:
 - Review your monthly schedule for common bottlenecks and adjust future planning.
 - Block out dedicated time in your calendar for quotes, admin, and material pick-ups.
 
+### Getting Your On Site Job Photos for Tradies Right: A Builder's Guide
+
+URL: https://quotemateapp.au/articles/on-site-job-photos-for-tradies/
+
+Learn why crystal-clear on-site job photos are crucial for builders. Avoid disputes, track progress, and get paid for variations with organised project images.
+
+#### Why On Site Job Photos Are Your Best Mate on Every Build
+
+Clear **on site job photos for tradies** aren't just for showing off; they're your most important evidence. For builders, a good set of project photos stops arguments before they start, proves what was agreed, and justifies variations. Think of it as free insurance. Before you even touch a tool, snap photos of existing conditions. This protects you if a client claims you damaged something or changed what was there. Photos also prove your progress. If a client is slow to pay a stage claim, your organised **trade job photos** show the work is done. It's not just about covering your backside; it builds trust with clients when they see you're meticulous. Good photographic records mean less hassle and more accurate invoicing, letting you focus on the tools instead of chasing paperwork. Don't underestimate the power of a solid visual record from day one; it saves you money and headaches down the line.
+
+#### Setting Up Your Site Photography Workflow for Builders
+
+The best way to manage **trade job photos** is to have a system. Don't just snap random shots. Start with a dedicated folder for each job on your phone or tablet. Create sub-folders for key stages: 'Before Demo', 'Frame', 'Rough-in', 'Waterproofing', 'After Completion'. Always use your phone's camera at its highest quality setting. When taking photos, include a reference point like a tape measure or an item of known size to give scale. Label images clearly or add notes directly to them using a **tradie photo app** if available. This makes searching for specific evidence quick and easy later. Consistency is key; make it part of your routine on every site visit, not just when there's a problem. A solid workflow means you always have the proof you need, right when you need it, avoiding guesswork or disputes about project specifics down the track.
+
+#### Leveraging Before and After Tradie Photos for Progress and Payments
+
+**Before and after tradie photos** are your strongest tool for managing expectations and securing payments. For every significant stage of work, capture the 'before' state, document the process, and then photograph the 'after'. This is critical for showing progress payments are due and for validating variations. Did the client decide to move a wall after the framing was up? A 'before' photo of the original frame and an 'after' photo of the modified frame clearly show the additional work, making it easy to justify a variation cost of, say, an extra $350 for labour and materials. Always date and time-stamp your images. These visual comparisons are far more compelling than written descriptions alone when discussing job scope with clients or subcontractors. They simplify what can be complex discussions and keep everyone on the same page from start to finish, protecting your bottom line.
+
+#### Avoiding Common Pitfalls with On Site Job Photos
+
+Many tradies fall into traps when it comes to job photos. The biggest one is not taking enough photos or failing to keep them organised. Another common mistake is relying on texts or emails without a centralised record; those photos get lost easily. Always back up your photos to a cloud service daily – Google Photos or Apple iCloud are fine, but dedicated **tradie photo app** storage is even better. Don't forget privacy; ensure any people in photos have given consent, especially if images might be used for marketing. Over-exposing photos or taking them in poor light also makes them useless. Your photos need to be clear enough to stand up in a dispute. Remember, the quality and accessibility of your photo records are only as good as the system you use. Keep them professional and always available. See the Australian Government's advice on keeping business records at https://www.ato.gov.au/business/record-keeping-for-small-business/ for more information on good practices.
+
+#### Using Photo Evidence to Justify Variations and Final Invoicing
+
+When a client requests changes, the best way to back up your variation quote is with photos. Show them the initial site condition, then clearly document the extra work required with **on site job photos for tradies**. For example, if you quote a bathroom reno based on standard stud spacing, and then hit an unexpected steel beam during demolition, photos of the beam and the extra cutting/reinforcement needed ($180 extra labour, $75 for steel fixings from Bunnings) justify the variation. Similarly, when sending your final invoice, a folder of 'after' photos reinforces the quality and completeness of your work. This level of detail makes it nearly impossible for clients to dispute the final bill. QuoteMate, our invoicing app, lets you easily attach job details, including photos, to your quotes and invoices, making the whole process transparent and professional. Good photos remove doubt and get you paid faster for every bit of work you've done.
+
+#### Protecting Yourself from Disputes with Comprehensive Photo Documentation
+
+Comprehensive photo documentation is your shield against customer disputes. For builders, a detailed visual record of every stage – from the initial site inspection to the final handover – is invaluable. If a client claims a floor was scratched after you left, your **trade job photos** showing the pristine condition upon completion are undeniable proof. This applies equally to issues with existing structures. Did you notice a crack in the plaster before starting work? Photograph it, date it, and include it in your site report. AS 3740-2021 (Waterproofing of domestic wet areas) often requires photos of membranes before tiling; meeting such standards with clear photos protects your reputation and limits liability. By consistently capturing **before and after tradie photos**, you create an indisputable timeline of work and conditions, saving you thousands in potential reworks or legal fees. It's about being proactive, not reactive, when things go pear-shaped.
+
+#### Getting Started with a Tradie Photo App for Better Organisation
+
+Investing in a dedicated **tradie photo app** can seriously lift your game. These apps aren't just for snapping; they’re built for organisation. Many allow you to tag photos with job numbers, client names, and specific tasks, making it simple to find what you need months later. Some even integrate with project management or quoting software, so your photos link directly to your job records and invoices. Imagine needing to find every photo related to the electrical rough-in on a job from six months ago. A good app lets you search and pull those up instantly. While a basic camera roll works for a start, these apps offer cloud storage, team collaboration features, and robust search functions that save hours. They're a small investment, often less than $20 a month, for a massive gain in efficiency and dispute prevention. Get one, learn it, and make it part of your daily site routine.
+
+Pro tips:
+- Always take 'before' photos of the site, even if it's just a clear patch of dirt.
+- Use a dedicated folder system on your phone or a specific tradie photo app for each job.
+- Include a ruler or tape measure in photos for scale when documenting specific issues or changes.
+- Date and time-stamp all important job photos automatically via your phone settings.
+- Back up your photos to a cloud service daily to prevent loss if your device breaks.
+- Take wide shots for context and close-ups for detail on critical elements.
+- Use 'before and after' photos to justify variations and progress payments.
+- Review photos before sending them to clients to ensure clarity and professionalism.
+
+### NSW eCert and the Digital CCEW: What Changed on 1 July 2026
+
+URL: https://quotemateapp.au/articles/nsw-ecert-ccew-digital-lodgement/
+
+Since 1 July 2026 every NSW CCEW must be lodged through the BCNSW eCert portal. What changed, the seven-day rule, the fines, and how to get set up.
+
+#### What Actually Changed on 1 July 2026
+
+From 1 July 2026, the only way to lodge a Certificate of Compliance for Electrical Work in NSW is digitally, through the Building Commission NSW eCert portal. The paper and PDF era is over. The old CCEW PDF form is gone, emailing a filled-in PDF is no longer accepted, the Essential Energy portal is no longer a lodgement route, and hard copy forms including the NECA book forms are finished. If you have a half-used book of carbon-copy forms in the ute, it is now scrap paper. This is not a new obligation to issue certificates. Electrical wiring work in NSW has always needed a CCEW, and it has always been an offence not to supply one. What changed is the channel. The eCert portal has actually been live since December 2025 for anyone who wanted to use it voluntarily, so it is not brand new software with brand new bugs. The 1 July date is simply when the alternatives were switched off. Full details are on the NSW Government site at https://www.nsw.gov.au/housing-and-construction/compliance-and-regulation/ecert-portal and it is worth ten minutes of your time rather than relying on what someone told you at the wholesaler.
+
+#### It Is Not Just Sparkies: Gasfitters Changed in March
+
+This gets missed constantly, because most of the noise has been about electricians. The eCert portal covers three licensed groups, not one. Licensed electricians lodge CCEWs, including certificates for metering installations, solar and battery work. Licensed gasfitters lodge certificates of compliance and certificates of inspection for gasfitting work. Licensed medical gasfitters and medical gas technicians lodge certificates of compliance for medical gas work. The dates were staggered. Medical gas professionals could register from December 2025. Gasfitters and medical gas professionals had to stop using their legacy portals from 1 March 2026, which is four months before the electrical deadline that has been getting all the attention. So if you hold both an electrical and a gasfitting ticket, or you run a mixed plumbing and gasfitting outfit, you have had two separate transitions to manage and the gas one has already passed. If you are a gasfitter who has been quietly wondering why your old portal login stopped working earlier this year, that is why. Worth checking your registration is actually complete rather than assuming, because a lapsed registration only becomes obvious on the day you need to lodge.
+
+#### The Seven-Day Rule and Who Gets a Copy
+
+The timeframe is the part people get wrong, because it is tied to the test, not to the invoice. Whoever carried out the electrical test must submit the CCEW as soon as practical, and no later than seven days after that test was completed. Not seven days after you finish the job, not seven days after you get paid, and not whenever you next sit down to do paperwork. Seven days from the test. Once it is lodged, eCert distributes the certificate for you rather than you chasing three separate parties. Copies go to the electrical distributor where the work is a new installation or affects the network, to the customer where you have supplied their email address, and to your employer or principal contractor where you have supplied theirs. That distribution step is genuinely the best thing about the new system, and it is why getting the customer's email into the job record properly is now worth doing at the time of quoting rather than digging for it a week later. A missing email address does not stop the lodgement, but it does mean the customer never automatically receives their certificate.
+
+#### What the Fines Actually Are
+
+There are two very different numbers floating around, and they are not the same offence, so it is worth being precise. On-the-spot fines of up to $1,000 apply for each instance a certificate of compliance is not supplied to Building Commission NSW. Read that as per certificate, not per audit. Ten jobs where the paperwork never got lodged is ten separate occasions, not one bad day. Separately, and much more seriously, failing to carry out electrical installation work in accordance with the technical standards set out in the regulation carries penalties of up to $550,000. That is a workmanship and safety offence rather than a paperwork one, and it is the reason the certificate regime exists in the first place. There is also a records dimension if you are lodging through the API rather than the portal: businesses have to be able to provide CCEW information to regulators within seven days, with penalties up to 40 penalty units for corporations. The practical read on all this is straightforward. The paperwork fine is not the thing that will ruin you, but it is the thing that is now trivially easy for the regulator to spot, because every lodgement is timestamped in one central system.
+
+#### Getting Set Up Before Your Next Job
+
+If you have not lodged one yet, do not let the first attempt happen while you are standing in a customer's kitchen at four o'clock on a Friday. Register on the portal on a quiet night with your licence details in front of you, and make sure the licence you register with is current and the details match what Building Commission NSW already holds. Then do a real lodgement on a small, low-stakes job in the next week or so, purely so the first one is not on a job that matters. Two practical habits worth building now. First, capture the customer's email address at quoting time, not at certificate time, because that is what makes the automatic distribution work. Second, log the test date deliberately, since that is what starts the seven-day clock, and on a job that runs over several visits the test date and the finish date can be a fortnight apart. Most sparkies who have had trouble with this have had trouble for administrative reasons rather than technical ones: wrong licence details, an email address nobody wrote down, or a test date nobody recorded.
+
+#### What the eCert API Means for Your Job Software
+
+Building Commission NSW has published an API that lets eligible businesses and software providers submit CCEW data directly, instead of re-typing job details into the portal after the fact. Eligibility covers job management system providers serving licensed electricians, electrical businesses on company or partnership contractor licences doing high volumes, and DCCEEW-registered CER Installer Portal users. It supports both instant and batched submission. Onboarding runs through a test environment first, requested from Building Commission NSW, then production credentials. One point in the documentation deserves emphasis: the individual electrician remains responsible for the accuracy and completeness of every CCEW, regardless of what software lodged it. An integration saves you the typing, not the responsibility. If you already pay for job management or quoting software, asking your vendor where they sit on the eCert API is a fair question, and the answer tells you something about how closely they follow the Australian market. Be aware that very few have shipped it so far, and that in-progress and integrated are not the same thing. Ask for a date.
+
+#### Put the Certificate on the Quote, Not on Your Own Time
+
+None of this is free to you. Completing the certificate correctly, capturing the details and lodging it inside seven days is real administrative time on every single job, and going digital has not removed that time so much as moved it. Most electricians already charge a separate line item for the Certificate of Compliance, typically in the $50 to $95 plus GST range, and if you are not doing that you are absorbing a legal obligation as unpaid overhead. Put it on the quote as its own line so the customer can see what it is. It is a licensed professional service with legal weight attached, not a free piece of paper, and itemising it tends to prompt fewer questions than burying it in the labour rate. This is the part QuoteMate handles: your compliance line items sit in your price list and drop into every electrical quote automatically, so the fee is never the thing you forget to charge for. The lodgement itself still happens in eCert. Just make sure you are getting paid for the time it takes.
+
+Pro tips:
+- The seven-day clock starts at the electrical test, not at job completion or invoicing. On a multi-visit job those dates can be weeks apart.
+- Do your first lodgement on a small job you do not care about, on a quiet evening, rather than learning the portal under pressure on site.
+- Capture the customer's email address at quoting time. It is what makes eCert automatically send them their certificate.
+- Gasfitters and medical gas technicians moved to eCert on 1 March 2026, four months before electricians. If you hold both tickets, check both registrations.
+- The $1,000 on-the-spot fine is per occasion a certificate is not supplied, not per inspection. Ten unlodged jobs is ten occasions.
+- Charge the Certificate of Compliance as its own line item, usually $50 to $95 plus GST. It is billable professional time, not a freebie.
+- If your job software claims eCert API integration, ask whether it is live or in progress, and ask for a date. The two get used interchangeably in marketing.
+
 ## Quote templates
 
 Free, customisable starting points for the most common Australian trade jobs. Each template includes typical materials, steps, and a default labour structure.
