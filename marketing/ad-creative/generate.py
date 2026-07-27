@@ -122,32 +122,44 @@ ADS = {
         "Crisp editorial layout. All text exactly as specified, spelled correctly."
     ),
     # Native-highlight format (Suby): raw photo + zoomed detail in a red-ringed
-    # circle inset + hand-drawn arrow. The inset must be a TRUE zoom of the
-    # thing the arrow points at - the first round zoomed a flat sheet while the
-    # hand held a crumpled ball, which reads as a mistake.
+    # circle inset + hand-drawn arrow.
+    #
+    # TWO failure modes, and avoiding one causes the other:
+    #  1. The inset must be a TRUE zoom of what the arrow points at. Round one
+    #     zoomed a flat sheet while the hand held a crumpled ball.
+    #  2. The inset must REVEAL something. Round two made the base detail large
+    #     and perfectly legible, so the circle magnified something already
+    #     readable - pure decoration that just covers up image area.
+    # So: in the BASE photo the detail is small, angled or glare-washed - you can
+    # tell a number is there but not read it. The circle is what makes it
+    # readable. That is also what keeps these visibly distinct from their plain
+    # counterparts (qm-b2-ute-driveway, qm-a1-kitchen-9pm), which matters because
+    # >60% creative similarity gets collapsed into one entity by Meta.
     "qm-b2-inset": (
         "Candid smartphone photo from the DRIVER'S seat of an Australian ute parked in a suburban "
         "driveway. This is a right-hand-drive vehicle: the steering wheel is on the RIGHT of the frame. "
-        "A single hand holds a phone up in front of the dashboard; the driver's other hand is out of "
-        "shot. Exactly one person is present, so only ONE arm and ONE hand appear anywhere in the frame - "
-        "there is no second pair of hands and no spare arm near the steering wheel. "
-        "The phone screen shows a total '$4,850' above a blue 'Send quote' button. "
-        "Overlaid on the top-right: a large circular inset with a thick red ring containing a zoomed-in "
-        "close-up of that same phone screen, showing the same '$4,850' and the same blue 'Send quote' "
-        "button, held in the same hand at the same angle. A hand-drawn style red arrow points from the "
-        "circle down to the phone. Grainy authentic phone-photo look for the base image, crisp readable "
-        "detail inside the circle. Brick house visible through the windscreen in daylight. "
+        "This is a WIDE interior shot taking in the whole cabin, so the phone is SMALL in the frame. "
+        "A hand rests a phone low down near the centre console, tilted away from the camera with "
+        "daylight glare washing across the screen: you can tell a quote with a dollar figure and a blue "
+        "button is on it, but the screen is small and reflective and the number cannot be read. "
+        "Overlaid on the top-right: a large circular inset with a thick red ring containing a zoomed-in, "
+        "glare-free close-up of that same phone screen, where '$4,850' and a blue 'Send quote' button "
+        "are now big and perfectly readable. A hand-drawn style red arrow points from the circle down to "
+        "the small phone. Grainy authentic phone-photo look for the base image, crisp readable detail "
+        "inside the circle only. Brick house visible through the windscreen in daylight. "
         "The centre of the steering wheel is a plain undecorated plastic airbag cover: it carries NO "
         "emblem, NO oval or circular badge, NO logo and NO lettering of any kind."
     ),
     "qm-a1-inset": (
         "Candid low-light smartphone photo of a tradesperson in a hi-vis shirt at a kitchen table at "
         "night, hunched over a laptop with crumpled paper quotes and a coffee mug, warm pendant light. "
-        "On the kitchen wall behind them is a digital clock reading '9:05 PM'. "
+        "This is a WIDE shot of the whole kitchen taken from the far side of the room, so the small "
+        "digital clock on the far bench is TINY in the frame - you can see it is a clock with glowing "
+        "digits, but at that distance the time cannot be read. "
         "Overlaid on the top-left: a large circular inset with a thick red ring containing a zoomed-in "
-        "close-up of that same wall clock, showing the same '9:05 PM'. A hand-drawn style red arrow "
-        "points from the circle across to the clock on the wall. "
-        "Grainy authentic phone-photo look, crisp detail inside the circle. "
+        "close-up of that same small clock, where '9:05 PM' is now big and perfectly readable. "
+        "A hand-drawn style red arrow points from the circle across to the tiny clock on the bench. "
+        "Grainy authentic phone-photo look, crisp detail inside the circle only. "
         "The papers on the table are blurred and carry no readable text or logos. "
         "The laptop is a plain dark laptop and the back of its lid is completely blank: no illuminated "
         "logo, no fruit symbol, no badge, no lettering. "
@@ -163,13 +175,15 @@ ADS = {
         "Bold black sans-serif news headline reading EXACTLY: 'The quote that took 4 hours just lost "
         "to a number pulled from a hat'. Smaller grey subheadline: 'Tradies are ditching the "
         "late-night quote grind for a 4-minute version'. "
-        "Below the text, the article photo: a hand pulling a FLAT, slightly creased piece of paper out "
-        "of an upturned yellow hard hat on a timber workbench. The paper is held flat and facing the "
-        "camera with the handwritten price '$1500' scrawled on it in thick marker, large and clearly "
-        "readable. Overlaid on the photo's top-right corner is a large red-ringed circular inset "
-        "containing a zoomed close-up of that SAME flat piece of paper showing the SAME handwritten "
-        "'$1500' at the same angle, and a hand-drawn style red arrow runs from the circle down to the "
-        "paper in the hand. Crisp editorial layout. All text exactly as specified, spelled correctly."
+        "Below the text, the article photo is a WIDE shot of a whole timber workbench, so the hard hat "
+        "and paper sit SMALL within it: a hand lifts a slightly creased piece of paper out of an "
+        "upturned yellow hard hat, the paper tilted steeply away from the camera so the handwritten "
+        "marker scrawl on it is small and foreshortened - you can see a price is written there but you "
+        "cannot read it. Overlaid on the photo's top-right corner is a large red-ringed circular inset "
+        "containing a zoomed, straightened close-up of that SAME piece of paper, where the handwritten "
+        "'$1500' is now big and perfectly readable. A hand-drawn style red arrow runs from the circle "
+        "down to the small paper. Crisp editorial layout. The headline and subheadline text is exactly "
+        "as specified and spelled correctly."
     ),
 }
 
