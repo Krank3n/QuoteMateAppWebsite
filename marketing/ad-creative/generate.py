@@ -117,7 +117,10 @@ ADS = {
         "22.6 days - some tradies now take the card payment at the job'. "
         "Under the text, a news-style photo taken at an Australian front door: a tradesperson in a "
         "hi-vis shirt holds out a small plain card reader and a customer taps a bank card against it. "
-        "The card reader has a single small green tick light and no writing on it. Warm natural "
+        "The card reader has a single small green tick light and no writing on it. The bank card is a "
+        "plain blank card: it carries NO card-network logo, no interlocking circles, no numbers and no "
+        "lettering of any kind. The tradesperson's whole head and face are inside the frame - the top "
+        "of the head is NOT cropped off. Warm natural "
         "daylight, real and unstaged. No paperwork, no calendar, no invoice and no desk in the shot. "
         "Crisp editorial layout. All text exactly as specified, spelled correctly."
     ),
@@ -179,11 +182,37 @@ ADS = {
         "and paper sit SMALL within it: a hand lifts a slightly creased piece of paper out of an "
         "upturned yellow hard hat, the paper tilted steeply away from the camera so the handwritten "
         "marker scrawl on it is small and foreshortened - you can see a price is written there but you "
-        "cannot read it. Overlaid on the photo's top-right corner is a large red-ringed circular inset "
+        "cannot read it. Overlaid on the photo's top-right corner is a MODEST red-ringed circular inset "
+        "- it spans roughly one quarter of the photo's width, sits entirely inside the photo's bounds, "
+        "and does not crop the photo or cover the hand and hard hat - "
         "containing a zoomed, straightened close-up of that SAME piece of paper, where the handwritten "
-        "'$1500' is now big and perfectly readable. A hand-drawn style red arrow runs from the circle "
+        "'$1500' is big and perfectly readable. A hand-drawn style red arrow runs from the circle "
         "down to the small paper. Crisp editorial layout. The headline and subheadline text is exactly "
         "as specified and spelled correctly."
+    ),
+    # TV-broadcast variant (added 29 Jul at Tom's request). He asked for something
+    # that looks "super similar" to Seven/Nine - which would be trademark
+    # infringement, misleading conduct under Australian Consumer Law, and a Meta
+    # policy breach for implying a broadcaster endorsed us. What actually drives
+    # the format is the VISUAL GRAMMAR of TV news - breaking flag, lower third,
+    # station bug - so this reproduces that with a clearly fictional network.
+    # Never name, style or imply a real broadcaster.
+    "qm-b1-tvnews": (
+        "A square graphic that looks like a still frame captured from an Australian television news "
+        "bulletin. The underlying image is field-camera footage of a tradesperson in a hi-vis shirt "
+        "standing in front of a suburban brick house on a residential job site in bright daylight, "
+        "shot like a TV news reporter's piece to camera. "
+        "Across the bottom third sits a broadcast lower-third graphic: on the left a bold red "
+        "rectangular flag containing the single word 'BREAKING' in white capitals; beside it a dark "
+        "navy bar carrying two lines of white sans-serif text - the first line large and bold in "
+        "capitals reading 'TRADIES DITCH THE LATE-NIGHT QUOTE GRIND', the second line smaller reading "
+        "'Four-hour quotes now taking four minutes'. Beneath the bar runs a thin lighter-blue strip "
+        "with no text on it. "
+        "In the top-right corner a small clean station identifier reads 'TW NEWS' in white - this is a "
+        "fictional network. Do NOT use, imitate or evoke the name, logo, numerals, colour scheme or "
+        "on-screen styling of any real television network or broadcaster. "
+        "Subtle broadcast video grain, slightly soft focus, realistic television picture quality. "
+        "All text exactly as specified and spelled correctly."
     ),
 }
 
