@@ -955,7 +955,12 @@ export default function HomePage() {
         "logo": "https://quotemateapp.au/assets/logo.png",
         "email": "tom@hansendev.com.au",
         "description": "AI-powered quoting and invoicing app built for Australian tradies.",
+        // Entity anchors. The store listings are the only third-party
+        // properties that carry QuoteMate's name today, so they do the
+        // heavy lifting when an answer engine resolves "QuoteMate".
         "sameAs": [
+          "https://apps.apple.com/au/app/quotemate/id6754000046",
+          "https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU",
           "https://www.facebook.com/quotemateapp",
           "https://www.instagram.com/quotemateapp",
           "https://www.linkedin.com/company/quotemateapp"
