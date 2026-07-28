@@ -1,10 +1,10 @@
 {
   "quoting-app-for-tradies": {
-    "intro": "Finding the right quoting app can save you hours and protect your margins. We tested the top apps for Australian tradies on what actually matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Reece and Bunnings, and how easily you can get paid. We also looked at pricing models and proper GST handling. For most sole traders and small crews, QuoteMate is the best quoting app for Australian tradies thanks to its AI-assisted quoting and flat-rate pricing. The rest of the shortlist suits bigger crews or more specific needs.",
+    "intro": "Finding the right quoting app can save you hours and protect your margins. We tested the top apps for Australian tradies on what actually matters on site: how fast you can build a quote, if it pulls live prices from Australian suppliers, and how easily you can get paid. We also looked at pricing models and proper GST handling. For most sole traders and small crews, QuoteMate is the best quoting app for Australian tradies thanks to its AI-assisted quoting and flat-rate pricing. The rest of the shortlist suits bigger crews or more specific needs.",
     "sections": [
       {
         "heading": "What makes the best quoting app for Australian tradies",
-        "body": "The best app gets the details right for Australian tradies. First, speed. You need to build and send a quote while you're still on site, not spend your evening on admin. Second, price accuracy. The app must pull real-time prices from Australian suppliers like Tradelink and Bunnings, because using last month's price list costs you money. Third, the pricing model. Per-user fees, like Tradify's $48/user/mo, get expensive fast if you have a subbie or an apprentice. A flat monthly fee is predictable. Finally, it must handle GST and ABNs correctly and let you take payment on the spot. A 3% card fee is better than waiting 30 days to get paid."
+        "body": "The best app gets the details right for Australian tradies. First, speed. You need to build and send a quote while you're still on site, not spend your evening on admin. Second, price accuracy. The app must pull real-time prices from Australian suppliers, because using last month's price list costs you money. Third, the pricing model. Per-user fees, like Tradify's $48/user/mo, get expensive fast if you have a subbie or an apprentice. A flat monthly fee is predictable. Finally, it must handle GST and ABNs correctly and let you take payment on the spot. A 3% card fee is better than waiting 30 days to get paid."
       },
       {
         "heading": "The rest of the shortlist",
@@ -18,7 +18,7 @@
       },
       {
         "question": "Why not just use Xero or MYOB for quoting?",
-        "answer": "Xero and MYOB are for accounting, not for quoting. They can create a basic invoice, but they can't build a detailed materials list with live supplier pricing from Bunnings or Reece. They're designed for your bookkeeper, not for you on site. A proper quoting app helps you win the work and price it profitably, then syncs the final invoice to Xero."
+        "answer": "Xero and MYOB are for accounting, not for quoting. They can create a basic invoice, but they can't build a detailed materials list with live supplier pricing. They're designed for your bookkeeper, not for you on site. A proper quoting app helps you win the work and price it profitably, then syncs the final invoice to Xero."
       },
       {
         "question": "Which quoting app is cheapest for a sole trader?",
@@ -27,11 +27,11 @@
     ]
   },
   "invoicing-app-for-tradies": {
-    "intro": "Picking an invoicing app is about more than just sending a PDF. For a tradie, it’s about speed on site, accurate pricing, and getting paid faster. We judged the best apps on how quickly they build a quote, whether they use live prices from Aussie suppliers like Reece and Bunnings, their GST handling, and how they take payment. The verdict: QuoteMate is the best invoicing app for most Australian tradies because it’s built for quoting first. But if you need full accounting or have simpler needs, one of the others on our shortlist might suit you better.",
+    "intro": "Picking an invoicing app is about more than just sending a PDF. For a tradie, it’s about speed on site, accurate pricing, and getting paid faster. We judged the best apps on how quickly they build a quote, whether they use live prices from Australian suppliers, their GST handling, and how they take payment. The verdict: QuoteMate is the best invoicing app for most Australian tradies because it’s built for quoting first. But if you need full accounting or have simpler needs, one of the others on our shortlist might suit you better.",
     "sections": [
       {
         "heading": "What makes the best invoicing app for Australian tradies",
-        "body": "The best app gets the details right for Australian tradies. It needs to be fast on your phone, not just on a laptop in the office. It should pull live material prices from suppliers like Bunnings and Tradelink, so your quote is accurate today, not last month. The pricing model should be simple—a flat fee, not a per-user cost that punishes you for growing your crew. It must handle GST and ABNs correctly without you thinking about it. And finally, it needs to help you get paid on the spot. An app with integrated tap-to-pay means you're not chasing invoices for weeks."
+        "body": "The best app gets the details right for Australian tradies. It needs to be fast on your phone, not just on a laptop in the office. It should pull live material prices from Australian suppliers, so your quote is accurate today, not last month. The pricing model should be simple—a flat fee, not a per-user cost that punishes you for growing your crew. It must handle GST and ABNs correctly without you thinking about it. And finally, it needs to help you get paid on the spot. An app with integrated tap-to-pay means you're not chasing invoices for weeks."
       },
       {
         "heading": "The rest of the shortlist",
@@ -54,7 +54,7 @@
     ]
   },
   "job-management-software-for-tradies": {
-    "intro": "Choosing the right job management software can be a pain. Most are built for bigger crews or different countries. We tested the main players for Aussie tradies on what actually matters: how fast you can build a quote, if it pulls real prices from suppliers like Bunnings, its pricing model, and how easily it handles GST and payments. For most sole operators and small crews, QuoteMate is the top pick for its fast AI quoting and simple flat-rate pricing. If you have different needs, one of the other tools on this shortlist might be a better fit for your business.",
+    "intro": "Choosing the right job management software can be a pain. Most are built for bigger crews or different countries. We tested the main players for Aussie tradies on what actually matters: how fast you can build a quote, if it pulls real prices from Australian suppliers, its pricing model, and how easily it handles GST and payments. For most sole operators and small crews, QuoteMate is the top pick for its fast AI quoting and simple flat-rate pricing. If you have different needs, one of the other tools on this shortlist might be a better fit for your business.",
     "sections": [
       {
         "heading": "What makes the best job management software for Australian tradies",
@@ -81,7 +81,7 @@
     ]
   },
   "tradie-app-australia": {
-    "intro": "Finding the right app to run your business can be a pain. Most are built for the US market or charge a fortune per user. We judged the best tradie apps in Australia on what actually matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Bunnings and Reece, how you get paid, and whether the pricing is fair. For most sole operators and small crews, QuoteMate is the top pick for its AI-powered quoting and flat-fee pricing. The others on the list are better for specific needs like complex job costing or larger team dispatch.",
+    "intro": "Finding the right app to run your business can be a pain. Most are built for the US market or charge a fortune per user. We judged the best tradie apps in Australia on what actually matters on site: how fast you can build a quote, if it pulls live prices from Australian suppliers, how you get paid, and whether the pricing is fair. For most sole operators and small crews, QuoteMate is the top pick for its AI-powered quoting and flat-fee pricing. The others on the list are better for specific needs like complex job costing or larger team dispatch.",
     "sections": [
       {
         "heading": "What makes the best app for Australian tradies",
@@ -108,7 +108,7 @@
     ]
   },
   "app-for-electricians": {
-    "intro": "Finding the right app can save you hours on quoting and paperwork. This guide cuts through the marketing noise to find the best apps for Australian electricians. We judged them on things that matter on site: how fast you can build a quote, if they pull live prices from suppliers like Bunnings or Reece, their pricing model, and how easily they handle GST and ABNs. After testing the lot, QuoteMate is our top pick for its speed and live pricing. The rest of the shortlist is here too, as different tools suit different business sizes and needs.",
+    "intro": "Finding the right app can save you hours on quoting and paperwork. This guide cuts through the marketing noise to find the best apps for Australian electricians. We judged them on things that matter on site: how fast you can build a quote, if they pull live prices from Australian suppliers, their pricing model, and how easily they handle GST and ABNs. After testing the lot, QuoteMate is our top pick for its speed and live pricing. The rest of the shortlist is here too, as different tools suit different business sizes and needs.",
     "sections": [
       {
         "heading": "What makes the best app for Australian electricians",
@@ -139,7 +139,7 @@
     "sections": [
       {
         "heading": "What makes the best app for Australian plumbers",
-        "body": "The best app fixes the biggest problems: quoting and cash flow. Look for one that pulls live material prices from Australian suppliers like Reece, Tradelink, and Bunnings. This stops you from under-quoting on copper tube or tapware that went up last week. It needs to calculate GST automatically and create a professional PDF quote on the spot. Getting paid is just as important. An app with built-in card payments, like Square Tap to Pay, means you get paid before you leave the site. While some apps offer deep job management, the core features for a plumber are accurate quoting and fast payment."
+        "body": "The best app fixes the biggest problems: quoting and cash flow. Look for one that pulls live material prices from Australian suppliers. This stops you from under-quoting on copper tube or tapware that went up last week. It needs to calculate GST automatically and create a professional PDF quote on the spot. Getting paid is just as important. An app with built-in card payments, like Square Tap to Pay, means you get paid before you leave the site. While some apps offer deep job management, the core features for a plumber are accurate quoting and fast payment."
       },
       {
         "heading": "The rest of the shortlist",
