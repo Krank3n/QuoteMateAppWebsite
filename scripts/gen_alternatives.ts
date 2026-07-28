@@ -49,7 +49,7 @@ function prompt(p: typeof alternativePages[number]): string {
 
 ---
 
-Write fair, factual editorial for the page **"${p.h1}"** — a roundup helping an Australian tradie who is considering switching away from ${p.competitor}. QuoteMate is an AI quoting app for tradies (free plan; Pro $49/month or $328/year flat, no per-user fees; live Australian supplier pricing from Bunnings, Reece and Tradelink; Square tap-to-pay; automatic GST; Xero sync).
+Write fair, factual editorial for the page **"${p.h1}"** — a roundup helping an Australian tradie who is considering switching away from ${p.competitor}. QuoteMate is an AI quoting app for tradies (free plan; Pro $49/month or $328/year flat, no per-user fees; live Australian supplier pricing; Square tap-to-pay; automatic GST; Xero sync).
 
 ${p.competitor} context: ${p.competitor} pricing is "${p.competitorPricing}". Common reasons tradies look for an alternative:
 ${reasons}

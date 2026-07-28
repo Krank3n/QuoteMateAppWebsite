@@ -47,7 +47,7 @@ function prompt(p: typeof bestPages[number]): string {
 
 ---
 
-Write a fair, factual roundup for the guide **"${p.h1}"** — the best ${p.category}, for Australian tradies. QuoteMate is an AI quoting app for tradies (free plan; Pro $49/month or $328/year flat, no per-user fees; live Australian supplier pricing from Bunnings, Reece and Tradelink; Square tap-to-pay; automatic GST; Xero sync) and is our top pick.
+Write a fair, factual roundup for the guide **"${p.h1}"** — the best ${p.category}, for Australian tradies. QuoteMate is an AI quoting app for tradies (free plan; Pro $49/month or $328/year flat, no per-user fees; live Australian supplier pricing; Square tap-to-pay; automatic GST; Xero sync) and is our top pick.
 
 The ranked shortlist (QuoteMate is #1):
 ${list}

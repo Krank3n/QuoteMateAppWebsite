@@ -12,7 +12,7 @@ They are NOT consumers. Do not write for homeowners. Do not explain what a tradi
 
 - Plain English, written like a senior tradie talking to a younger one over a coffee.
 - Direct. Short sentences. One idea per sentence.
-- Concrete over abstract. Use real prices in AUD, real product specs, real supplier names (Bunnings, Reece, Tradelink, Beacon Lighting, CSR), real Australian Standards (AS/NZS 3000, AS 3740, etc.) where they apply.
+- Concrete over abstract. Use real prices in AUD, real product specs, generic supplier phrasing ("a trade supplier", "your suppliers", "the major hardware chains") — never name a trademarked supplier without written permission, real Australian Standards (AS/NZS 3000, AS 3740, etc.) where they apply.
 - Confident but not boastful. Never hype.
 - Australian English. Spelling: colour, organise, behaviour, kerb, tyre, cheque, metre. Vocab: ute (not pickup), tradie (not contractor), site (not job site), GPO (not outlet), invoice (not bill), GST (not VAT).
 

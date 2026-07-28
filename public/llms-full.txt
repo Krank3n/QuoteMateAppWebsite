@@ -12,7 +12,7 @@ Available on iOS, Android, and any web browser. One subscription works across ev
 
 A tradie can paste a job description into ChatGPT or Gemini and get a "quote", but the result is unsuitable for sending to a customer for several concrete reasons:
 
-1. Hallucinated prices and product codes. LLMs invent line items that look plausible but do not match what suppliers like Bunnings, Reece, Tradelink, or Mitre 10 actually stock today. QuoteMate uses live supplier pricing, web price-search for specialty items, and the tradie's own imported price lists.
+1. Hallucinated prices and product codes. LLMs invent line items that look plausible but do not match what Australian trade suppliers actually stock today. QuoteMate uses live supplier pricing, web price-search for specialty items, and the tradie's own imported price lists.
 2. Inconsistent output between runs. Ask the same LLM the same question twice and you get different quantities, different markups, and different totals. QuoteMate uses reusable, version-controlled templates so every quote of a given job type starts from the same baseline.
 3. No PDF, no branding, no tracking. An LLM produces a chat reply. QuoteMate produces a branded PDF with the tradie's logo, ABN, payment terms, and customer details, plus tracking for sent/accepted/declined/paid status.
 4. No payment rails. An LLM cannot accept a card on-site or send a payment link. QuoteMate accepts Apple Pay / Google Pay tap-to-pay through Square, online payment links, BPAY, PayID, bank transfer, PayPal, cash, and cheque.
@@ -3918,7 +3918,7 @@ A: No hard limit. Storage is generous on every plan, and you can archive or dele
 
 URL: https://quotemateapp.au/manage-jobs/job-checklists/
 
-Every tradie has driven back to Bunnings at 4pm for the one tube of silicone they forgot. The materials list on the quote is part of the answer, but it's never the whole answer — there's always something you only think of on the day. QuoteMate's job checklist is a place to brain-dump those items against the job, tick them off as you do them, and stop the same thing happening on the next similar job.
+Every tradie has driven back to the supplier at 4pm for the one tube of silicone they forgot. The materials list on the quote is part of the answer, but it's never the whole answer — there's always something you only think of on the day. QuoteMate's job checklist is a place to brain-dump those items against the job, tick them off as you do them, and stop the same thing happening on the next similar job.
 
 #### Why the quote's materials list isn't enough
 
@@ -4144,7 +4144,7 @@ Most tradies don't have one price for a 90 mm bend. They have a price they charg
 
 #### Why supplier pricing isn't enough on its own
 
-Live supplier pricing tells you what Bunnings or Reece charge today. That's not the same as what you charge. Your price builds in your trade discount (if you have one), your handling time, your bin/disposal margin on the item, and a margin that reflects how much of a hassle that item is to fit. A retail Bunnings price for a hot water unit is $1,189, your trade rate at Reece might be $940, but your price on the quote is $1,150 because that includes the hour you spend organising freight. Pricing memory captures that final number, per item, so it stays consistent.
+Live supplier pricing tells you what your suppliers charge today. That's not the same as what you charge. Your price builds in your trade discount (if you have one), your handling time, your bin/disposal margin on the item, and a margin that reflects how much of a hassle that item is to fit. A retail price for a hot water unit is $1,189, your trade rate might be $940, but your price on the quote is $1,150 because that includes the hour you spend organising freight. Pricing memory captures that final number, per item, so it stays consistent.
 
 #### How memory builds over time
 
@@ -4267,7 +4267,7 @@ ChatGPT (and other AI chatbots) pricing: ChatGPT Plus, Gemini Advanced, and Clau
 
 Feature comparison:
 - Generates a job description — QuoteMate: AI-assisted, voice-to-text | ChatGPT (and other AI chatbots): Yes
-- Live, accurate supplier prices (Bunnings, Reece, Tradelink, etc.) — QuoteMate: Yes | ChatGPT (and other AI chatbots): Hallucinated / outdated
+- Live, accurate Australian supplier prices — QuoteMate: Yes | ChatGPT (and other AI chatbots): Hallucinated / outdated
 - Consistent output between runs — QuoteMate: Reusable templates | ChatGPT (and other AI chatbots): Different every time
 - Branded PDF quote with your logo & ABN — QuoteMate: Yes | ChatGPT (and other AI chatbots): No
 - Convert quote to invoice in one tap — QuoteMate: Yes | ChatGPT (and other AI chatbots): No
@@ -4346,7 +4346,7 @@ AroFlo pricing: AroFlo uses per-user pricing (roughly $45–$77/user/month acros
 
 Feature comparison:
 - AI-powered quoting — QuoteMate: Yes | AroFlo: New (Lightning add-on)
-- Live Australian supplier pricing — QuoteMate: Bunnings, Reece, Tradelink | AroFlo: 600+ connected suppliers
+- Live Australian supplier pricing — QuoteMate: Live Australian supplier pricing | AroFlo: 600+ connected suppliers
 - Direct purchase-order ordering to suppliers — QuoteMate: Reece integration | AroFlo: Yes
 - Professional PDF quotes — QuoteMate: Yes | AroFlo: Yes
 - Invoicing — QuoteMate: Yes | AroFlo: Yes
@@ -4360,7 +4360,7 @@ Feature comparison:
 - One-time setup / onboarding fee — QuoteMate: None | AroFlo: $899–$2,900
 - Flat pricing (no per-user fees) — QuoteMate: $49/month | AroFlo: Per-user + minimum seats
 
-Bottom line: AroFlo is one of the deepest Australian platforms for established, process-heavy trade and commercial operations — its live supplier catalogues with direct purchase-order ordering are genuinely more advanced than most. But it is priced and built for teams with dedicated admin, with per-user fees and four-figure onboarding. QuoteMate targets the sole trader and small crew AroFlo steers toward its lighter product: the same fast AI quoting with live Bunnings, Reece and Tradelink pricing, on a flat $49/month with no setup fee and a free plan.
+Bottom line: AroFlo is one of the deepest Australian platforms for established, process-heavy trade and commercial operations — its live supplier catalogues with direct purchase-order ordering are genuinely more advanced than most. But it is priced and built for teams with dedicated admin, with per-user fees and four-figure onboarding. QuoteMate targets the sole trader and small crew AroFlo steers toward its lighter product: the same fast AI quoting with live Australian supplier pricing, on a flat $49/month with no setup fee and a free plan.
 
 ### QuoteMate vs Buildxact
 
@@ -4372,7 +4372,7 @@ Buildxact pricing: Buildxact starts at $169/month (1 user, or $133/month billed 
 
 Feature comparison:
 - AI-powered quoting — QuoteMate: Yes | Buildxact: Blu AI assistant
-- Live Australian supplier pricing — QuoteMate: Bunnings, Reece, Tradelink | Buildxact: Bunnings, Mitre 10, Dahlsens
+- Live Australian supplier pricing — QuoteMate: Live Australian supplier pricing | Buildxact: Major hardware and building suppliers
 - Plumbing suppliers (Reece / Tradelink) — QuoteMate: Yes | Buildxact: No
 - Digital takeoff from plans — QuoteMate: No | Buildxact: Yes
 - Professional PDF quotes — QuoteMate: Yes | Buildxact: Yes
@@ -4385,7 +4385,7 @@ Feature comparison:
 - Free plan available — QuoteMate: Yes | Buildxact: No
 - Flat pricing — QuoteMate: $49/month | Buildxact: From $169/month
 
-Bottom line: Buildxact is the one estimating tool that genuinely matches QuoteMate on live Australian supplier pricing plus AI — but it is built for residential builders pricing whole houses off plans, is desktop-first, and costs from $169/month with a real learning curve. QuoteMate is built for the tradie who needs a professional quote before leaving the driveway: describe the job by voice, get an AI materials list priced against live Bunnings, Reece and Tradelink rates, and send it from your phone. For plumbers and gas fitters especially, QuoteMate covers Reece and Tradelink where Buildxact does not.
+Bottom line: Buildxact is the one estimating tool that genuinely matches QuoteMate on live Australian supplier pricing plus AI — but it is built for residential builders pricing whole houses off plans, is desktop-first, and costs from $169/month with a real learning curve. QuoteMate is built for the tradie who needs a professional quote before leaving the driveway: describe the job by voice, get an AI materials list priced against live Australian supplier rates, and send it from your phone. For plumbers and gas fitters especially, QuoteMate covers Reece and Tradelink where Buildxact does not.
 
 ### QuoteMate vs Jobber
 
@@ -4483,7 +4483,7 @@ Feature comparison:
 - Voice-to-text quoting — QuoteMate: Yes | Housecall Pro: No
 - Free plan available — QuoteMate: Yes | Housecall Pro: No
 
-Bottom line: Housecall Pro is a capable all-in-one for US and Canadian home-service businesses, but for an Australian tradie it is largely unusable out of the box: no Australian sign-up, no GST, no Xero, US-dollar pricing, and payment rails that do not operate here. QuoteMate is built for Australia from the ground up — automatic GST and ABN, Xero sync, live Bunnings, Reece and Tradelink pricing, and Square tap-to-pay on site — with a free plan and flat $49/month Pro. It is the local tool Housecall Pro is not.
+Bottom line: Housecall Pro is a capable all-in-one for US and Canadian home-service businesses, but for an Australian tradie it is largely unusable out of the box: no Australian sign-up, no GST, no Xero, US-dollar pricing, and payment rails that do not operate here. QuoteMate is built for Australia from the ground up — automatic GST and ABN, Xero sync, live Australian supplier pricing, and Square tap-to-pay on site — with a free plan and flat $49/month Pro. It is the local tool Housecall Pro is not.
 
 ### QuoteMate vs Ascora
 
@@ -4495,7 +4495,7 @@ Ascora pricing: Ascora starts at $45/user/month (Essentials) and $59/user/month 
 
 Feature comparison:
 - AI-powered quoting (materials list) — QuoteMate: Yes | Ascora: No
-- Live Australian supplier pricing — QuoteMate: Bunnings, Reece, Tradelink | Ascora: Reece price-file sync
+- Live Australian supplier pricing — QuoteMate: Live Australian supplier pricing | Ascora: Reece price-file sync
 - Xero integration — QuoteMate: Yes | Ascora: Yes
 - MYOB integration — QuoteMate: No | Ascora: Yes
 - QuickBooks integration — QuoteMate: No | Ascora: Yes
@@ -4532,7 +4532,7 @@ Feature comparison:
 - Voice-to-text quoting — QuoteMate: Yes | Xero: No
 - Free plan available — QuoteMate: Yes | Xero: No
 
-Bottom line: Xero is not really a competitor — it is a partner. It owns the books, your accountant relationship, GST and payroll, and QuoteMate syncs straight to it. What Xero does not do is on-site trade quoting: there is no AI materials list, no live supplier pricing, no job pipeline, and its entry plan caps invoices. QuoteMate is the front-of-van tool that feeds Xero. Quote fast on site with live Bunnings and Reece pricing, take the payment, and push a clean invoice into Xero without re-keying a thing.
+Bottom line: Xero is not really a competitor — it is a partner. It owns the books, your accountant relationship, GST and payroll, and QuoteMate syncs straight to it. What Xero does not do is on-site trade quoting: there is no AI materials list, no live supplier pricing, no job pipeline, and its entry plan caps invoices. QuoteMate is the front-of-van tool that feeds Xero. Quote fast on site with live Australian supplier pricing, take the payment, and push a clean invoice into Xero without re-keying a thing.
 
 ### QuoteMate vs MYOB
 
@@ -4578,7 +4578,7 @@ Feature comparison:
 - Voice-to-text quoting — QuoteMate: Yes | QuickBooks: No
 - Free plan available — QuoteMate: Yes | QuickBooks: No
 
-Bottom line: QuickBooks Online is capable accounting software and, unlike Xero's entry plan, it allows unlimited quotes and invoices low down. But it is still books-first: no AI materials list, no live supplier pricing, no trade job pipeline, and it is not built for quoting on site. QuoteMate handles the on-site quoting layer — describe the job, get a priced materials list from live Bunnings and Reece rates, send a branded PDF, take payment — and you keep QuickBooks or Xero for the accounting. Different jobs, and they work together.
+Bottom line: QuickBooks Online is capable accounting software and, unlike Xero's entry plan, it allows unlimited quotes and invoices low down. But it is still books-first: no AI materials list, no live supplier pricing, no trade job pipeline, and it is not built for quoting on site. QuoteMate handles the on-site quoting layer — describe the job, get a priced materials list from live Australian supplier rates, send a branded PDF, take payment — and you keep QuickBooks or Xero for the accounting. Different jobs, and they work together.
 
 ### QuoteMate vs Quotient
 
@@ -4602,7 +4602,7 @@ Feature comparison:
 - Voice-to-text quoting — QuoteMate: Yes | Quotient: No
 - Free plan available — QuoteMate: Yes | Quotient: No
 
-Bottom line: Quotient is a clean online quoting tool, but it is cross-industry, priced in US dollars, and stops at the quote — no invoicing, no payments, no job management, and no Australian supplier pricing or GST. QuoteMate is purpose-built for Australian tradies and covers the whole loop: AI materials lists priced against live Bunnings, Reece and Tradelink rates, a branded PDF, online acceptance, one-tap invoicing, Square tap-to-pay, and automatic GST — on a flat $49/month with a free plan.
+Bottom line: Quotient is a clean online quoting tool, but it is cross-industry, priced in US dollars, and stops at the quote — no invoicing, no payments, no job management, and no Australian supplier pricing or GST. QuoteMate is purpose-built for Australian tradies and covers the whole loop: AI materials lists priced against live Australian supplier rates, a branded PDF, online acceptance, one-tap invoicing, Square tap-to-pay, and automatic GST — on a flat $49/month with a free plan.
 
 ## Cities served (local pages)
 

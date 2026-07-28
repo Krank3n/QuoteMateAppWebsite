@@ -48,7 +48,7 @@
       },
       {
         "heading": "Why tradies switch from ServiceM8 to QuoteMate",
-        "body": "The main reasons tradies move to QuoteMate are quoting speed and simpler pricing. ServiceM8’s plans can get expensive as your job volume grows, whereas QuoteMate is a flat $49 a month. The bigger issue is the quote itself. In QuoteMate, you can describe a job with your voice and its AI suggests line items with current materials pricing from suppliers like Bunnings and Reece. This avoids digging through catalogues or ringing suppliers. ServiceM8 requires manual data entry for quotes and doesn't have that live link to Australian suppliers. For sole operators, that time saved on quoting is time spent earning."
+        "body": "The main reasons tradies move to QuoteMate are quoting speed and simpler pricing. ServiceM8’s plans can get expensive as your job volume grows, whereas QuoteMate is a flat $49 a month. The bigger issue is the quote itself. In QuoteMate, you can describe a job with your voice and its AI suggests line items with current materials pricing from Australian suppliers. This avoids digging through catalogues or ringing suppliers. ServiceM8 requires manual data entry for quotes and doesn't have that live link to Australian suppliers. For sole operators, that time saved on quoting is time spent earning."
       }
     ],
     "faqs": [
@@ -102,7 +102,7 @@
     "sections": [
       {
         "heading": "Who ChatGPT (and other AI chatbots) is best for",
-        "body": "A general AI chatbot like ChatGPT, Gemini, or Claude is useful if you just need a writing assistant. It’s good for brainstorming a scope of works or drafting a tricky email to a client. You can paste in a few notes and it will write a clean paragraph. But it stops there. It’s a general tool, not a trade tool. It doesn't know the current price of a GPO at Bunnings or the cost of 90mm pine per metre. For around $30 a month, it helps you write. You will still need another app to build the quote, add your logo, calculate GST, and send it."
+        "body": "A general AI chatbot like ChatGPT, Gemini, or Claude is useful if you just need a writing assistant. It’s good for brainstorming a scope of works or drafting a tricky email to a client. You can paste in a few notes and it will write a clean paragraph. But it stops there. It’s a general tool, not a trade tool. It doesn't know the current price of a GPO or the cost of 90mm pine per metre. For around $30 a month, it helps you write. You will still need another app to build the quote, add your logo, calculate GST, and send it."
       },
       {
         "heading": "Why tradies switch from chatbots to QuoteMate",
@@ -116,7 +116,7 @@
       },
       {
         "question": "Does QuoteMate just use ChatGPT in the background?",
-        "answer": "No. General chatbots guess at prices based on old internet data. QuoteMate’s AI is connected to live Australian supplier price lists from places like Bunnings, CSR, and Beacon Lighting. This means when it suggests a product, the price is current and accurate for your area. It’s the difference between a guess and a real number you can base a contract on."
+        "answer": "No. General chatbots guess at prices based on old internet data. QuoteMate’s AI is connected to live Australian supplier price lists. This means when it suggests a product, the price is current and accurate for your area. It’s the difference between a guess and a real number you can base a contract on."
       },
       {
         "question": "What's the real cost difference for a sole trader?",
@@ -133,7 +133,7 @@
       },
       {
         "heading": "Why tradies switch from Excel & Google Sheets to QuoteMate",
-        "body": "Tradies leave spreadsheets when manual errors start costing them real money. Using a Bunnings or Reece price list from six months ago eats your margin. Forgetting to add GST to a big quote is a painful mistake. QuoteMate fixes this by connecting directly to supplier price books for live costs. It generates material lists with AI and calculates GST automatically. What takes an hour in a spreadsheet—finding prices, formatting the PDF, writing a follow-up email—takes about ten minutes. It turns an accepted quote into an invoice in one tap and lets customers pay by card on the spot. It's less flexible than Excel, but it's much faster for quoting."
+        "body": "Tradies leave spreadsheets when manual errors start costing them real money. Using a supplier price list from six months ago eats your margin. Forgetting to add GST to a big quote is a painful mistake. QuoteMate fixes this by connecting directly to supplier price books for live costs. It generates material lists with AI and calculates GST automatically. What takes an hour in a spreadsheet—finding prices, formatting the PDF, writing a follow-up email—takes about ten minutes. It turns an accepted quote into an invoice in one tap and lets customers pay by card on the spot. It's less flexible than Excel, but it's much faster for quoting."
       }
     ],
     "faqs": [
@@ -160,7 +160,7 @@
       },
       {
         "heading": "Why tradies switch from Invoice2go to QuoteMate",
-        "body": "Tradies move from Invoice2go when their quoting gets serious. The main reason is profit margin. Invoice2go can't pull live material prices from Bunnings or Tradelink, so you risk under-quoting. QuoteMate connects directly to these suppliers, so your costs are always current. It also uses AI to suggest line items you might forget, like waterproofing membrane or extra GPOs, which protects your profit. The whole workflow is built for a tradie. You can manage a job from the initial quote, through scheduling and on-site photos, to the final invoice. It's one system for the entire job, not just the paperwork at the end."
+        "body": "Tradies move from Invoice2go when their quoting gets serious. The main reason is profit margin. Invoice2go can't pull live Australian supplier prices, so you risk under-quoting. QuoteMate connects directly to these suppliers, so your costs are always current. It also uses AI to suggest line items you might forget, like waterproofing membrane or extra GPOs, which protects your profit. The whole workflow is built for a tradie. You can manage a job from the initial quote, through scheduling and on-site photos, to the final invoice. It's one system for the entire job, not just the paperwork at the end."
       }
     ],
     "faqs": [
@@ -187,7 +187,7 @@
       },
       {
         "heading": "Why tradies switch from AroFlo to QuoteMate",
-        "body": "Sole traders and small crews often find AroFlo too complex and expensive for what they need. The switch is usually about two things: flat pricing and faster quoting on the go. Paying per user, often with a three-user minimum, plus a four-figure setup fee, doesn't stack up for a one-man operation. They need a tool that helps them quote after a long day on site, not a system that requires an office admin to run. QuoteMate's AI-assisted line items, voice-to-text input, and live pricing from Bunnings, Reece, and Tradelink mean a quote can be built on-site in minutes, all for a flat $49 a month."
+        "body": "Sole traders and small crews often find AroFlo too complex and expensive for what they need. The switch is usually about two things: flat pricing and faster quoting on the go. Paying per user, often with a three-user minimum, plus a four-figure setup fee, doesn't stack up for a one-man operation. They need a tool that helps them quote after a long day on site, not a system that requires an office admin to run. QuoteMate's AI-assisted line items, voice-to-text input, and live Australian supplier pricing mean a quote can be built on-site in minutes, all for a flat $49 a month."
       }
     ],
     "faqs": [
@@ -241,7 +241,7 @@
       },
       {
         "heading": "Why tradies switch from Jobber to QuoteMate",
-        "body": "The two biggest reasons Aussie tradies move from Jobber are price and quoting speed. Jobber's US-dollar, per-user pricing gets expensive fast for a small crew. QuoteMate is a flat AUD fee. The core difference is the focus. Jobber manages jobs; QuoteMate is built to win them. The AI-assisted takeoff creates a full materials list from a few voice notes, pulling live prices from Bunnings or Tradelink. It handles GST automatically and takes payments on-site with a Square tap-to-pay integration that actually works in Australia. For a local tradie, it means less time on admin and more accurate quotes."
+        "body": "The two biggest reasons Aussie tradies move from Jobber are price and quoting speed. Jobber's US-dollar, per-user pricing gets expensive fast for a small crew. QuoteMate is a flat AUD fee. The core difference is the focus. Jobber manages jobs; QuoteMate is built to win them. The AI-assisted takeoff creates a full materials list from a few voice notes, pulling live Australian supplier prices. It handles GST automatically and takes payments on-site with a Square tap-to-pay integration that actually works in Australia. For a local tradie, it means less time on admin and more accurate quotes."
       }
     ],
     "faqs": [
@@ -295,7 +295,7 @@
       },
       {
         "heading": "Why Aussie tradies choose QuoteMate over ServiceTitan",
-        "body": "The main reasons are price, speed, and local focus. ServiceTitan's per-user US dollar pricing and mandatory annual contracts don't fit a sole trader or small crew. Its quoting tools are built for office sales teams, not a tradie on the tools. QuoteMate is designed for this exact job. It uses AI to build a line-item materials list from a voice note, pulls live prices from suppliers like Bunnings and Reece, and handles Australian GST automatically. For a flat $49 a month with no lock-in contract, it solves the core problem: quoting faster and more accurately, right from your phone."
+        "body": "The main reasons are price, speed, and local focus. ServiceTitan's per-user US dollar pricing and mandatory annual contracts don't fit a sole trader or small crew. Its quoting tools are built for office sales teams, not a tradie on the tools. QuoteMate is designed for this exact job. It uses AI to build a line-item materials list from a voice note, pulls live Australian supplier prices, and handles Australian GST automatically. For a flat $49 a month with no lock-in contract, it solves the core problem: quoting faster and more accurately, right from your phone."
       }
     ],
     "faqs": [
@@ -322,7 +322,7 @@
       },
       {
         "heading": "Why Australian tradies choose QuoteMate over Housecall Pro",
-        "body": "An Australian tradie chooses QuoteMate because it’s built for our market. The pricing is a flat $49 AUD per month, not a per-user fee in US dollars that changes with the exchange rate. It handles GST and ABNs on quotes and invoices automatically and syncs with Xero. The quoting process is faster, using AI to suggest materials and labour line items. It pulls live prices from Bunnings, Reece, and Tradelink, so your margins are protected. You can also take payments on-site with Square tap-to-pay. It is designed to solve the problems Australian tradies face."
+        "body": "An Australian tradie chooses QuoteMate because it’s built for our market. The pricing is a flat $49 AUD per month, not a per-user fee in US dollars that changes with the exchange rate. It handles GST and ABNs on quotes and invoices automatically and syncs with Xero. The quoting process is faster, using AI to suggest materials and labour line items. It pulls live Australian supplier prices, so your margins are protected. You can also take payments on-site with Square tap-to-pay. It is designed to solve the problems Australian tradies face."
       }
     ],
     "faqs": [
@@ -349,7 +349,7 @@
       },
       {
         "heading": "Why tradies switch from Ascora to QuoteMate",
-        "body": "Tradies often move from Ascora to QuoteMate for two main reasons: price and quoting speed. Ascora's per-user pricing gets expensive for a small crew, especially when you're paying $59 a month for every person. QuoteMate is a flat $49 a month for the whole business, with a free plan to start. The second reason is the quoting engine. QuoteMate uses AI to build your materials list from a job description and pulls live prices from Bunnings, Reece, and Tradelink. This saves hours of manual data entry. For a sole trader who just needs to send a professional PDF quote quickly, Ascora can feel like overkill."
+        "body": "Tradies often move from Ascora to QuoteMate for two main reasons: price and quoting speed. Ascora's per-user pricing gets expensive for a small crew, especially when you're paying $59 a month for every person. QuoteMate is a flat $49 a month for the whole business, with a free plan to start. The second reason is the quoting engine. QuoteMate uses AI to build your materials list from a job description and pulls live Australian supplier prices. This saves hours of manual data entry. For a sole trader who just needs to send a professional PDF quote quickly, Ascora can feel like overkill."
       }
     ],
     "faqs": [
@@ -372,7 +372,7 @@
     "sections": [
       {
         "heading": "Who Xero is best for",
-        "body": "Xero is the standard for Australian small business accounting, and for good reason. If you have employees and need to run payroll, manage superannuation, and track timesheets, Xero is built for it. Your accountant or bookkeeper already uses it, which makes lodging your BAS and end-of-year tax simple. It's a full general ledger, meaning it handles bank reconciliation, profit and loss statements, and asset tracking. It's the system of record for your entire business. Where it falls short for a tradie is on the tools. It’s not designed for banging out a quick quote on your phone with live prices from Reece or Bunnings."
+        "body": "Xero is the standard for Australian small business accounting, and for good reason. If you have employees and need to run payroll, manage superannuation, and track timesheets, Xero is built for it. Your accountant or bookkeeper already uses it, which makes lodging your BAS and end-of-year tax simple. It's a full general ledger, meaning it handles bank reconciliation, profit and loss statements, and asset tracking. It's the system of record for your entire business. Where it falls short for a tradie is on the tools. It’s not designed for banging out a quick quote on your phone with live supplier prices."
       },
       {
         "heading": "Why tradies switch from Xero to QuoteMate for quoting",
@@ -430,7 +430,7 @@
       },
       {
         "heading": "Why tradies switch from QuickBooks to QuoteMate",
-        "body": "Tradies often move from QuickBooks because quoting with it is slow and disconnected from the job site. It doesn't have live Australian supplier pricing, so you're guessing material costs or manually checking the Reece website. QuoteMate fixes this. You can use your voice to describe a job on your phone, and its AI suggests a full materials list with current prices from Bunnings or Tradelink. It’s built for quoting on site, with job photos and checklists. The pricing is also simpler: a flat fee of $49 a month with no per-user charges, unlike QuickBooks' tiered system that gets more expensive as you grow."
+        "body": "Tradies often move from QuickBooks because quoting with it is slow and disconnected from the job site. It doesn't have live Australian supplier pricing, so you're guessing material costs or manually checking the Reece website. QuoteMate fixes this. You can use your voice to describe a job on your phone, and its AI suggests a full materials list with current supplier prices. It’s built for quoting on site, with job photos and checklists. The pricing is also simpler: a flat fee of $49 a month with no per-user charges, unlike QuickBooks' tiered system that gets more expensive as you grow."
       }
     ],
     "faqs": [
@@ -457,7 +457,7 @@
       },
       {
         "heading": "Why tradies switch from Quotient to QuoteMate",
-        "body": "Tradies move from Quotient because it’s not built for them. The biggest reason is speed and accuracy. QuoteMate’s AI helps build a materials list from a voice note, then prices it against live feeds from Bunnings, Reece, and Tradelink. This protects your margin. Second is the price. Quotient is in US dollars, so the cost fluctuates. A flat AU$49 gets a whole business on QuoteMate. Finally, QuoteMate handles the whole job. It turns the accepted quote into an invoice in one tap and lets you take payment on-site with Square."
+        "body": "Tradies move from Quotient because it’s not built for them. The biggest reason is speed and accuracy. QuoteMate’s AI helps build a materials list from a voice note, then prices it against live Australian supplier feeds. This protects your margin. Second is the price. Quotient is in US dollars, so the cost fluctuates. A flat AU$49 gets a whole business on QuoteMate. Finally, QuoteMate handles the whole job. It turns the accepted quote into an invoice in one tap and lets you take payment on-site with Square."
       }
     ],
     "faqs": [

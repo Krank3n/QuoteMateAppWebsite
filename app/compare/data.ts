@@ -95,7 +95,7 @@ export const competitors: Competitor[] = [
     pricing: 'ChatGPT Plus, Gemini Advanced, and Claude Pro are each ~$30 AUD/month — and you still need a separate quoting app to actually send the quote.',
     features: [
       { name: 'Generates a job description', quotemate: 'AI-assisted, voice-to-text', competitor: true },
-      { name: 'Live, accurate supplier prices (Bunnings, Reece, Tradelink, etc.)', quotemate: true, competitor: 'Hallucinated / outdated' },
+      { name: 'Live, accurate Australian supplier prices', quotemate: true, competitor: 'Hallucinated / outdated' },
       { name: 'Consistent output between runs', quotemate: 'Reusable templates', competitor: 'Different every time' },
       { name: 'Branded PDF quote with your logo & ABN', quotemate: true, competitor: false },
       { name: 'Convert quote to invoice in one tap', quotemate: true, competitor: false },
@@ -168,7 +168,7 @@ export const competitors: Competitor[] = [
     pricing: 'AroFlo uses per-user pricing (roughly $45–$77/user/month across Standard and Premium, 3-user minimum on the full product) plus one-time onboarding fees commonly $899–$2,900. A free AroFloGo self-service tier exists for micro operators.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: 'New (Lightning add-on)' },
-      { name: 'Live Australian supplier pricing', quotemate: 'Bunnings, Reece, Tradelink', competitor: '600+ connected suppliers' },
+      { name: 'Live Australian supplier pricing', quotemate: 'Live Australian supplier pricing', competitor: '600+ connected suppliers' },
       { name: 'Direct purchase-order ordering to suppliers', quotemate: 'Reece integration', competitor: true },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
       { name: 'Invoicing', quotemate: true, competitor: true },
@@ -182,7 +182,7 @@ export const competitors: Competitor[] = [
       { name: 'One-time setup / onboarding fee', quotemate: 'None', competitor: '$899–$2,900' },
       { name: 'Flat pricing (no per-user fees)', quotemate: '$49/month', competitor: 'Per-user + minimum seats' },
     ],
-    summary: 'AroFlo is one of the deepest Australian platforms for established, process-heavy trade and commercial operations — its live supplier catalogues with direct purchase-order ordering are genuinely more advanced than most. But it is priced and built for teams with dedicated admin, with per-user fees and four-figure onboarding. QuoteMate targets the sole trader and small crew AroFlo steers toward its lighter product: the same fast AI quoting with live Bunnings, Reece and Tradelink pricing, on a flat $49/month with no setup fee and a free plan.',
+    summary: 'AroFlo is one of the deepest Australian platforms for established, process-heavy trade and commercial operations — its live supplier catalogues with direct purchase-order ordering are genuinely more advanced than most. But it is priced and built for teams with dedicated admin, with per-user fees and four-figure onboarding. QuoteMate targets the sole trader and small crew AroFlo steers toward its lighter product: the same fast AI quoting with live Australian supplier pricing, on a flat $49/month with no setup fee and a free plan.',
   },
   {
     slug: 'buildxact',
@@ -192,7 +192,7 @@ export const competitors: Competitor[] = [
     pricing: 'Buildxact starts at $169/month (1 user, or $133/month billed annually), scaling to $279 and $439/month for larger teams, with extra users added per plan. 14-day free trial; no free plan.',
     features: [
       { name: 'AI-powered quoting', quotemate: true, competitor: 'Blu AI assistant' },
-      { name: 'Live Australian supplier pricing', quotemate: 'Bunnings, Reece, Tradelink', competitor: 'Bunnings, Mitre 10, Dahlsens' },
+      { name: 'Live Australian supplier pricing', quotemate: 'Live Australian supplier pricing', competitor: 'Major hardware and building suppliers' },
       { name: 'Plumbing suppliers (Reece / Tradelink)', quotemate: true, competitor: false },
       { name: 'Digital takeoff from plans', quotemate: false, competitor: true },
       { name: 'Professional PDF quotes', quotemate: true, competitor: true },
@@ -205,7 +205,7 @@ export const competitors: Competitor[] = [
       { name: 'Free plan available', quotemate: true, competitor: false },
       { name: 'Flat pricing', quotemate: '$49/month', competitor: 'From $169/month' },
     ],
-    summary: 'Buildxact is the one estimating tool that genuinely matches QuoteMate on live Australian supplier pricing plus AI — but it is built for residential builders pricing whole houses off plans, is desktop-first, and costs from $169/month with a real learning curve. QuoteMate is built for the tradie who needs a professional quote before leaving the driveway: describe the job by voice, get an AI materials list priced against live Bunnings, Reece and Tradelink rates, and send it from your phone. For plumbers and gas fitters especially, QuoteMate covers Reece and Tradelink where Buildxact does not.',
+    summary: 'Buildxact is the one estimating tool that genuinely matches QuoteMate on live Australian supplier pricing plus AI — but it is built for residential builders pricing whole houses off plans, is desktop-first, and costs from $169/month with a real learning curve. QuoteMate is built for the tradie who needs a professional quote before leaving the driveway: describe the job by voice, get an AI materials list priced against live Australian supplier rates, and send it from your phone. For plumbers and gas fitters especially, QuoteMate covers Reece and Tradelink where Buildxact does not.',
   },
   {
     slug: 'jobber',
@@ -295,7 +295,7 @@ export const competitors: Competitor[] = [
       { name: 'Voice-to-text quoting', quotemate: true, competitor: false },
       { name: 'Free plan available', quotemate: true, competitor: false },
     ],
-    summary: 'Housecall Pro is a capable all-in-one for US and Canadian home-service businesses, but for an Australian tradie it is largely unusable out of the box: no Australian sign-up, no GST, no Xero, US-dollar pricing, and payment rails that do not operate here. QuoteMate is built for Australia from the ground up — automatic GST and ABN, Xero sync, live Bunnings, Reece and Tradelink pricing, and Square tap-to-pay on site — with a free plan and flat $49/month Pro. It is the local tool Housecall Pro is not.',
+    summary: 'Housecall Pro is a capable all-in-one for US and Canadian home-service businesses, but for an Australian tradie it is largely unusable out of the box: no Australian sign-up, no GST, no Xero, US-dollar pricing, and payment rails that do not operate here. QuoteMate is built for Australia from the ground up — automatic GST and ABN, Xero sync, live Australian supplier pricing, and Square tap-to-pay on site — with a free plan and flat $49/month Pro. It is the local tool Housecall Pro is not.',
   },
   {
     slug: 'ascora',
@@ -305,7 +305,7 @@ export const competitors: Competitor[] = [
     pricing: 'Ascora starts at $45/user/month (Essentials) and $59/user/month (Elite, most popular), with a one-time implementation fee on higher plans. 14-day free trial; no free plan.',
     features: [
       { name: 'AI-powered quoting (materials list)', quotemate: true, competitor: false },
-      { name: 'Live Australian supplier pricing', quotemate: 'Bunnings, Reece, Tradelink', competitor: 'Reece price-file sync' },
+      { name: 'Live Australian supplier pricing', quotemate: 'Live Australian supplier pricing', competitor: 'Reece price-file sync' },
       { name: 'Xero integration', quotemate: true, competitor: true },
       { name: 'MYOB integration', quotemate: false, competitor: true },
       { name: 'QuickBooks integration', quotemate: false, competitor: true },
@@ -340,7 +340,7 @@ export const competitors: Competitor[] = [
       { name: 'Voice-to-text quoting', quotemate: true, competitor: false },
       { name: 'Free plan available', quotemate: true, competitor: false },
     ],
-    summary: 'Xero is not really a competitor — it is a partner. It owns the books, your accountant relationship, GST and payroll, and QuoteMate syncs straight to it. What Xero does not do is on-site trade quoting: there is no AI materials list, no live supplier pricing, no job pipeline, and its entry plan caps invoices. QuoteMate is the front-of-van tool that feeds Xero. Quote fast on site with live Bunnings and Reece pricing, take the payment, and push a clean invoice into Xero without re-keying a thing.',
+    summary: 'Xero is not really a competitor — it is a partner. It owns the books, your accountant relationship, GST and payroll, and QuoteMate syncs straight to it. What Xero does not do is on-site trade quoting: there is no AI materials list, no live supplier pricing, no job pipeline, and its entry plan caps invoices. QuoteMate is the front-of-van tool that feeds Xero. Quote fast on site with live Australian supplier pricing, take the payment, and push a clean invoice into Xero without re-keying a thing.',
   },
   {
     slug: 'myob',
@@ -382,7 +382,7 @@ export const competitors: Competitor[] = [
       { name: 'Voice-to-text quoting', quotemate: true, competitor: false },
       { name: 'Free plan available', quotemate: true, competitor: false },
     ],
-    summary: 'QuickBooks Online is capable accounting software and, unlike Xero\'s entry plan, it allows unlimited quotes and invoices low down. But it is still books-first: no AI materials list, no live supplier pricing, no trade job pipeline, and it is not built for quoting on site. QuoteMate handles the on-site quoting layer — describe the job, get a priced materials list from live Bunnings and Reece rates, send a branded PDF, take payment — and you keep QuickBooks or Xero for the accounting. Different jobs, and they work together.',
+    summary: 'QuickBooks Online is capable accounting software and, unlike Xero\'s entry plan, it allows unlimited quotes and invoices low down. But it is still books-first: no AI materials list, no live supplier pricing, no trade job pipeline, and it is not built for quoting on site. QuoteMate handles the on-site quoting layer — describe the job, get a priced materials list from live Australian supplier rates, send a branded PDF, take payment — and you keep QuickBooks or Xero for the accounting. Different jobs, and they work together.',
   },
   {
     slug: 'quotient',
@@ -404,7 +404,7 @@ export const competitors: Competitor[] = [
       { name: 'Voice-to-text quoting', quotemate: true, competitor: false },
       { name: 'Free plan available', quotemate: true, competitor: false },
     ],
-    summary: 'Quotient is a clean online quoting tool, but it is cross-industry, priced in US dollars, and stops at the quote — no invoicing, no payments, no job management, and no Australian supplier pricing or GST. QuoteMate is purpose-built for Australian tradies and covers the whole loop: AI materials lists priced against live Bunnings, Reece and Tradelink rates, a branded PDF, online acceptance, one-tap invoicing, Square tap-to-pay, and automatic GST — on a flat $49/month with a free plan.',
+    summary: 'Quotient is a clean online quoting tool, but it is cross-industry, priced in US dollars, and stops at the quote — no invoicing, no payments, no job management, and no Australian supplier pricing or GST. QuoteMate is purpose-built for Australian tradies and covers the whole loop: AI materials lists priced against live Australian supplier rates, a branded PDF, online acceptance, one-tap invoicing, Square tap-to-pay, and automatic GST — on a flat $49/month with a free plan.',
   },
 ];
 

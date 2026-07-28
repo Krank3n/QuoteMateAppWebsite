@@ -239,7 +239,7 @@ async function main() {
   full.push('');
   full.push('A tradie can paste a job description into ChatGPT or Gemini and get a "quote", but the result is unsuitable for sending to a customer for several concrete reasons:');
   full.push('');
-  full.push('1. Hallucinated prices and product codes. LLMs invent line items that look plausible but do not match what suppliers like Bunnings, Reece, Tradelink, or Mitre 10 actually stock today. QuoteMate uses live supplier pricing, web price-search for specialty items, and the tradie\'s own imported price lists.');
+  full.push('1. Hallucinated prices and product codes. LLMs invent line items that look plausible but do not match what Australian trade suppliers actually stock today. QuoteMate uses live supplier pricing, web price-search for specialty items, and the tradie\'s own imported price lists.');
   full.push('2. Inconsistent output between runs. Ask the same LLM the same question twice and you get different quantities, different markups, and different totals. QuoteMate uses reusable, version-controlled templates so every quote of a given job type starts from the same baseline.');
   full.push('3. No PDF, no branding, no tracking. An LLM produces a chat reply. QuoteMate produces a branded PDF with the tradie\'s logo, ABN, payment terms, and customer details, plus tracking for sent/accepted/declined/paid status.');
   full.push('4. No payment rails. An LLM cannot accept a card on-site or send a payment link. QuoteMate accepts Apple Pay / Google Pay tap-to-pay through Square, online payment links, BPAY, PayID, bank transfer, PayPal, cash, and cheque.');

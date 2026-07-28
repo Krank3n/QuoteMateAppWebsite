@@ -24,7 +24,7 @@ Loaded into every generation prompt as hard rules, then re-checked programmatica
 
 - Lead with the answer in each section, then explain.
 - One concrete AUD price or AS standard reference per 200 words.
-- Use real supplier names where natural (Bunnings, Reece, Tradelink, Beacon, CSR, Boral).
+- Never name a trademarked supplier (Bunnings, Reece, Tradelink, Beacon, CSR, Boral) without written permission. Use generic phrasing: "a trade supplier", "your suppliers", "the major hardware chains".
 - One em-dash per 200 words maximum.
 
 ## Cross-product link
