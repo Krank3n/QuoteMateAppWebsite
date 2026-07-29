@@ -24,7 +24,7 @@ Everything needed to go from "pixel exists" to "ads live" in one sitting. Rules 
 | Advantage+ creative enhancements | **OFF** (auto-altered creative breaks single-variable testing) |
 | CTA on all ads | **Learn More** |
 
-## 2. Launch batch (4 ads — one per concept, <60% similar)
+## 2. Launch batch (5 ads — one per concept, <60% similar)
 
 Link URL pattern (per ad): `https://quotemateapp.au/?utm_source=facebook&utm_medium=paid&utm_campaign=qm-launch&utm_content=<AD NAME>`. **Ad name in Ads Manager = utm_content, exactly.**
 
@@ -51,6 +51,14 @@ Link URL pattern (per ad): `https://quotemateapp.au/?utm_source=facebook&utm_med
 - Primary text: `Xero's data says 48% of Aussie small-business invoices get paid late, and the average wait is 22.6 days. The fix isn't chasing harder — it's making paying easy at the job. QuoteMate sends the invoice from the ute and takes the card payment on the spot through Square, so the money lands before the excuses start.`
 - Headline: `Invoiced and paid at the job`
 - Description: `Quote, invoice, card payment — one app`
+
+### Ad 5 — `qm-b1-tvnews` (TV broadcast still, quote-grind story)
+- Creative: `ad-creative/qm-b1-tvnews.png`
+- Primary text: `Nobody minds the work. It's the second shift that stings — kitchen table, cold dinner, pricing every length of timber and every box of screws so one quote can go out in the morning. That's the part tradies are quietly dropping. Talk the job into the phone before the ute leaves site: materials priced as it builds, labour and margin on top, quote in the customer's inbox that afternoon. Free 14-day trial — and it doesn't start until the first quote gets made.`
+- Headline (Meta field): `Why tradies stopped quoting at night`
+- Description: `Free 14-day trial — starts on the first quote`
+- **Format note:** the fictional "TW NEWS" network is deliberate. Never restyle this toward a real broadcaster (Seven, Nine, ABC etc.) — that is trademark infringement, misleading conduct under Australian Consumer Law, and a Meta policy breach for implying an endorsement. The stopping power comes from the visual grammar (BREAKING flag, lower third, station bug), not from any real network's identity.
+- Shares the quote-grind angle with `qm-b1-news-inset` but is a different format and different copy — this pair is the broadcast-vs-article-card test.
 
 ## 3. Bench (swap in per §5 of the growth system — 1 winner-iteration + 1 net-new per cycle)
 
