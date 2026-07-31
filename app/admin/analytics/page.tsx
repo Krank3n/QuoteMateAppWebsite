@@ -46,6 +46,21 @@ interface FunnelActionRow {
   trialDaysRemaining: number | null;
 }
 
+// One signup cohort: everyone who signed up inside the window, followed through
+// every step. Keyed by window in days in `Funnel.cohorts`. Optional throughout —
+// absent until the adminFunnelStats cache refreshes after the cohort deploy.
+interface FunnelCohort {
+  days: number;
+  since: number;
+  matureForPaid: boolean;
+  signups: number;
+  startedTrial: number;
+  sentQuote: number;
+  paying: number;
+  trialToPaid: number;
+  activationRate: number;
+}
+
 interface Funnel {
   funnel: {
     signups: number;
@@ -61,6 +76,7 @@ interface Funnel {
     pctSentQuote: number;
     pctPaying: number;
   };
+  cohorts?: Record<string, FunnelCohort>;
   conversion: {
     trialToPaid: number;
     activationRate: number;
@@ -111,6 +127,10 @@ interface EventFunnelData {
 }
 
 const DAY_OPTIONS = [7, 28, 90];
+
+// Mirrors functions/src/subscription.helpers.ts TRIAL_DAYS — only used to
+// explain why a young signup cohort can't show paid conversions yet.
+const TRIAL_DAYS = 14;
 
 interface Digest {
   available: boolean;
@@ -312,11 +332,11 @@ export default function AnalyticsPage() {
 
       {data && (
         <>
-          {/* Full journey — the one strip that connects web traffic to revenue.
-              Windows differ per segment (GA is day-scoped, Firestore funnel is
-              all-time), so each segment carries its own window chip and the
-              web→app bridge compares weekly rates instead of raw counts. */}
-          <FullJourney data={data} funnel={funnel} signups7d={signups7d} />
+          {/* Full journey — web traffic and the app funnel, side by side. They
+              are drawn as two separate bands because the windows and the
+              populations differ (GA day-scoped vs all-time Firestore), and
+              store installs never touch the website at all. */}
+          <FullJourney data={data} funnel={funnel} signups7d={signups7d} days={days} setDays={setDays} />
 
           {/* Headline metrics */}
           <div className={styles.statGrid}>
@@ -505,76 +525,317 @@ function WeeklyDigestCard({ digest }: { digest: Digest | null }) {
   );
 }
 
-function FullJourney({ data, funnel, signups7d }: { data: Traffic; funnel: Funnel | null; signups7d: number | null }) {
+// Two funnels, not one. The website half (GA) and the app half (Firestore
+// signup cohorts) measure different people, so they're drawn as two separate
+// bands with an explicit "these don't join" note between them. Rendering them
+// as one 8-step strip implied a cohort that doesn't exist and produced a >100%
+// "conversion" at the seam.
+//
+// The window control drives BOTH halves: picking 7/28/90d moves the page's GA
+// window and selects the matching signup cohort, so the two bands always cover
+// the same span of time. "All time" is app-only — GA has no all-time.
+function FullJourney({
+  data,
+  funnel,
+  signups7d,
+  days,
+  setDays,
+}: {
+  data: Traffic;
+  funnel: Funnel | null;
+  signups7d: number | null;
+  days: number;
+  setDays: (d: number) => void;
+}) {
+  const [allTime, setAllTime] = useState(false);
   const w = data.funnel;
-  const f = funnel?.funnel;
-  // The web→app bridge can't compare raw counts (GA is day-scoped, signups are
-  // a 7d Firestore count), so it compares weekly averages instead.
-  const clicksPerWeek = data.days > 0 ? (w.ctaClicks / data.days) * 7 : 0;
-  const bridgePct = signups7d !== null && clicksPerWeek > 0 ? Math.round(Math.min(signups7d / clicksPerWeek, 9.99) * 100) : null;
-  const webWindow = `last ${data.days}d`;
+
+  // Cohorts are absent until the adminFunnelStats cache refreshes after the
+  // cohort deploy — fall back to all-time rather than rendering an empty card.
+  const cohort = funnel?.cohorts?.[String(days)];
+  const cohortsUnavailable = !!funnel && !funnel.cohorts;
+  const useAllTime = allTime || cohortsUnavailable || !cohort;
+  const app = funnel?.funnel;
+
+  const webStages: Stage[] = [
+    { label: 'Sessions', value: w.sessions, note: 'landed on the site' },
+    { label: 'Engaged', value: w.engaged, note: 'stayed and read' },
+    { label: 'Clicked to get it', value: w.ctaClicks, note: 'store link or web app' },
+  ];
+
+  const appSource = useAllTime ? app : cohort;
+  const appStages: Stage[] = appSource
+    ? [
+        { label: 'Signed up', value: appSource.signups, note: 'account created' },
+        { label: 'Started a trial', value: appSource.startedTrial, note: 'trial began' },
+        { label: 'Sent a quote', value: appSource.sentQuote, note: 'got real value out of it' },
+        { label: 'Paying', value: appSource.paying, note: 'billed subscription', accent: true },
+      ]
+    : [];
+
+  const clicksPerWeek = data.days > 0 ? Math.round((w.ctaClicks / data.days) * 7) : 0;
+  // Prefer the funnel's own 7-day cohort over dashboardStats.signupsThisWeek:
+  // both mean "signups last week" but they're computed by different endpoints,
+  // and the card must never show two different numbers for the same thing.
+  const signupsPerWeek = funnel?.cohorts?.['7']?.signups ?? signups7d;
+  const appWindowLabel = useAllTime ? 'all-time' : `signed up in the last ${days}d`;
+  // A cohort younger than a trial + billing lag structurally can't have payers
+  // yet, so 0% there means "too early to tell", not "nobody converts".
+  const tooYoungForPaid = !useAllTime && cohort ? !cohort.matureForPaid : false;
 
   return (
     <div className={styles.card} style={{ marginBottom: 16 }}>
-      <div className={styles.cardHeader}>
+      <div className={styles.cardHeader} style={{ alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
         <div>
           <div className={styles.cardTitle}>Full journey</div>
-          <div className={styles.cardSubtitle}>Website visit → paying customer, in one strip</div>
+          <div className={styles.cardSubtitle}>
+            {useAllTime
+              ? 'The website, then the app — two funnels that follow different people.'
+              : `Both halves cover the last ${days} days. The app side is a true cohort: the same people, followed step by step.`}
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          {DAY_OPTIONS.map((d) => (
+            <button
+              key={d}
+              className={`${styles.btn} ${styles.btnSmall} ${!allTime && d === days ? styles.btnPrimary : styles.btnGhost}`}
+              onClick={() => {
+                setAllTime(false);
+                setDays(d);
+              }}
+            >
+              {d}d
+            </button>
+          ))}
+          <button
+            className={`${styles.btn} ${styles.btnSmall} ${allTime ? styles.btnPrimary : styles.btnGhost}`}
+            onClick={() => setAllTime(true)}
+          >
+            All time
+          </button>
         </div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: 8 }}>
-        <JourneyStage label="Sessions" value={w.sessions} windowLabel={webWindow} />
-        <JourneyArrow label={pct(w.engaged, w.sessions)} />
-        <JourneyStage label="Engaged" value={w.engaged} windowLabel={webWindow} />
-        <JourneyArrow label={pct(w.ctaClicks, w.engaged)} />
-        <JourneyStage label="Store / web clicks" value={w.ctaClicks} windowLabel={webWindow} />
-        <JourneyArrow label={bridgePct !== null ? `≈${bridgePct}%` : '·'} note="weekly avg" />
-        {signups7d !== null && <JourneyStage label="App signups" value={signups7d} windowLabel="last 7d" />}
-        {f && (
-          <>
-            <JourneyStage label="Signups" value={f.signups} windowLabel="all-time" />
-            <JourneyArrow label={pct(f.startedTrial, f.signups)} />
-            <JourneyStage label="Trials" value={f.startedTrial} windowLabel="all-time" />
-            <JourneyArrow label={pct(f.sentQuote, f.startedTrial)} />
-            <JourneyStage label="Sent a quote" value={f.sentQuote} windowLabel="all-time" />
-            <JourneyArrow label={pct(f.paying, f.sentQuote)} />
-            <JourneyStage label="Paying" value={f.paying} windowLabel="all-time" accent />
-          </>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 12 }}>
+        <JourneyBand
+          title="On the website"
+          windowLabel={`GA · last ${data.days}d`}
+          stages={webStages}
+          footnote={
+            allTime
+              ? `GA has no all-time view, so the website half is still the last ${data.days} days.`
+              : undefined
+          }
+        />
+        {appStages.length > 0 ? (
+          <JourneyBand
+            title="In the app"
+            windowLabel={appWindowLabel}
+            stages={appStages}
+            flagBiggestDrop
+            endToEndUnavailable={tooYoungForPaid ? 'too early to tell — trials from this window are still running' : undefined}
+            footnote={
+              cohortsUnavailable
+                ? 'Time-sliced cohorts appear once the funnel cache refreshes (within 15 min of deploy).'
+                : tooYoungForPaid
+                  ? `Too new to judge paid conversion — a trial runs ${TRIAL_DAYS} days, so this cohort mostly hasn't reached the decision yet.`
+                  : undefined
+            }
+          />
+        ) : (
+          <EmptyInline label="App funnel still loading" />
         )}
       </div>
-      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10 }}>
-        Web stages come from GA ({webWindow}); app stages are all-time Firestore counts. The click → signup rate compares
-        weekly averages, not the same users — treat it as a gauge, not a cohort.
+
+      {/* The honest version of what used to render as a "≈109%" arrow. */}
+      <div
+        style={{
+          display: 'flex',
+          gap: 10,
+          alignItems: 'flex-start',
+          padding: '10px 12px',
+          marginTop: 12,
+          borderRadius: 10,
+          background: 'rgba(0,0,0,0.18)',
+          fontSize: 11,
+          lineHeight: 1.6,
+          color: 'var(--color-text-secondary)',
+        }}
+      >
+        <span aria-hidden style={{ fontSize: 14, fontWeight: 700, opacity: 0.6, lineHeight: 1.2 }}>≠</span>
+        <div>
+          <strong style={{ color: 'var(--color-text-primary)' }}>The two halves don&apos;t join up.</strong>{' '}
+          {signupsPerWeek !== null
+            ? `≈${clicksPerWeek.toLocaleString()} website clicks a week vs ${signupsPerWeek.toLocaleString()} app signups last week — `
+            : ''}
+          most tradies install straight from the App Store or Play, so the website never sees them. Read each side on its
+          own; there is no website → signup rate to compute.
+        </div>
       </div>
     </div>
   );
 }
 
-function JourneyStage({ label, value, windowLabel, accent }: { label: string; value: number; windowLabel: string; accent?: boolean }) {
+interface Stage {
+  label: string;
+  value: number;
+  note: string;
+  accent?: boolean;
+}
+
+// One funnel as proportional bars. Bars are shares of the FIRST step, so the
+// card actually looks like a funnel — equal-width tiles hid the shape.
+function JourneyBand({
+  title,
+  windowLabel,
+  stages,
+  flagBiggestDrop,
+  footnote,
+  endToEndUnavailable,
+}: {
+  title: string;
+  windowLabel: string;
+  stages: Stage[];
+  flagBiggestDrop?: boolean;
+  footnote?: string;
+  endToEndUnavailable?: string;
+}) {
+  const top = stages[0]?.value || 0;
+  const last = stages.length > 1 ? stages[stages.length - 1] : undefined;
+  const accentEndToEnd = !!last?.accent;
+
+  // "Biggest drop" is by people lost, not by lowest percentage — losing 156 of
+  // 190 trials matters more than losing 30 of 34 quote-senders, even though
+  // 18% > 12%. Ties and all-zero funnels leave it unflagged.
+  let worstIndex = -1;
+  if (flagBiggestDrop) {
+    let worstLoss = 0;
+    stages.forEach((s, i) => {
+      if (i === 0) return;
+      const lost = stages[i - 1].value - s.value;
+      if (lost > worstLoss) {
+        worstLoss = lost;
+        worstIndex = i;
+      }
+    });
+  }
+
   return (
     <div
       style={{
-        flex: '1 1 104px',
-        minWidth: 100,
-        padding: '10px 12px',
-        borderRadius: 10,
-        background: 'rgba(0,0,0,0.18)',
-        border: `1px solid ${accent ? 'rgba(249,115,22,0.35)' : 'rgba(255,255,255,0.05)'}`,
+        borderRadius: 12,
+        border: '1px solid rgba(255,255,255,0.06)',
+        background: 'rgba(0,0,0,0.12)',
+        padding: 14,
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: 0.4, whiteSpace: 'nowrap' }}>{label}</div>
-      <div style={{ fontSize: 22, fontWeight: 800, margin: '2px 0', color: accent ? '#fb923c' : 'inherit' }}>{value.toLocaleString()}</div>
-      <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)' }}>{windowLabel}</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.6, color: 'var(--color-text-secondary)' }}>
+          {title}
+        </span>
+        <span className={styles.miniBadge}>{windowLabel}</span>
+      </div>
+
+      {/* End-to-end rate, stated rather than left as an exercise. One decimal:
+          4-of-293 rounds to "1%" at integer precision and then never visibly
+          moves. Suppressed entirely when the window is too young to have
+          produced conversions — a big orange 0% reads as a catastrophe when it
+          really means "ask again in a fortnight". */}
+      {last && top > 0 && (
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+          {endToEndUnavailable ? (
+            <>
+              <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-text-secondary)', lineHeight: 1.1 }}>—</span>
+              <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>{endToEndUnavailable}</span>
+            </>
+          ) : (
+            <>
+              <span style={{ fontSize: 20, fontWeight: 800, color: accentEndToEnd ? '#fb923c' : 'inherit', lineHeight: 1.1 }}>
+                {pct1(last.value / top)}%
+              </span>
+              <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>
+                end to end · {last.value.toLocaleString()} of {top.toLocaleString()} reach &ldquo;{last.label}&rdquo;
+              </span>
+            </>
+          )}
+        </div>
+      )}
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
+        {stages.map((s, i) => (
+          <JourneyStep
+            key={s.label}
+            label={s.label}
+            value={s.value}
+            note={s.note}
+            share={top > 0 ? s.value / top : 0}
+            prev={i > 0 ? stages[i - 1].value : undefined}
+            worst={i === worstIndex}
+            accent={s.accent}
+          />
+        ))}
+      </div>
+
+      {footnote && (
+        <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 12, lineHeight: 1.5 }}>{footnote}</div>
+      )}
     </div>
   );
 }
 
-function JourneyArrow({ label, note }: { label: string; note?: string }) {
+function JourneyStep({
+  label,
+  value,
+  note,
+  share,
+  prev,
+  worst,
+  accent,
+}: {
+  label: string;
+  value: number;
+  note: string;
+  share: number;
+  prev?: number;
+  worst?: boolean;
+  accent?: boolean;
+}) {
+  // A non-zero step always gets a sliver of bar, so "4 of 293" stays visible
+  // instead of rounding away to nothing.
+  const width = value > 0 ? Math.max(share * 100, 1.5) : 0;
+  const lost = prev !== undefined ? prev - value : 0;
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 44, fontSize: 11, color: 'var(--color-text-secondary)' }}>
-      <span style={{ fontWeight: 700 }}>{label}</span>
-      <span aria-hidden style={{ opacity: 0.6 }}>→</span>
-      {note && <span style={{ fontSize: 9, color: 'var(--color-text-tertiary)' }}>{note}</span>}
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
+        <span style={{ fontSize: 12, fontWeight: 600 }}>{label}</span>
+        <span style={{ fontSize: 17, fontWeight: 800, color: accent ? '#fb923c' : 'inherit' }}>{value.toLocaleString()}</span>
+      </div>
+      <div style={{ height: 7, borderRadius: 999, background: 'rgba(255,255,255,0.08)', margin: '5px 0 4px', overflow: 'hidden' }}>
+        <div
+          style={{
+            height: '100%',
+            width: `${width}%`,
+            borderRadius: 999,
+            background: accent ? '#fb923c' : 'rgba(148,163,184,0.8)',
+          }}
+        />
+      </div>
+      <div style={{ fontSize: 10, color: worst ? '#fca5a5' : 'var(--color-text-tertiary)', display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        {prev === undefined ? (
+          <span>{note}</span>
+        ) : (
+          <>
+            <span>
+              <strong style={{ fontWeight: 700 }}>{pct(value, prev)}</strong> of the step above
+            </span>
+            {lost > 0 && <span>· {lost.toLocaleString()} lost here</span>}
+            {worst && <span style={{ fontWeight: 700 }}>· biggest drop</span>}
+          </>
+        )}
+      </div>
     </div>
   );
 }
