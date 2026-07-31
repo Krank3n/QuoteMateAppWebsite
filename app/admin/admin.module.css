@@ -342,6 +342,353 @@
   }
 }
 
+/* --- Dashboard follow-up centre --- */
+.followUpSection {
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.followUpHeader {
+  padding: 20px 20px 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.followUpEyebrow {
+  margin-bottom: 4px;
+  color: var(--color-accent-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.followUpTitle {
+  color: var(--color-text-primary);
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.followUpHeaderStats {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.followUpUrgentCount {
+  padding: 4px 9px;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.followUpFilters {
+  display: flex;
+  gap: 7px;
+  padding: 0 20px 14px;
+  overflow-x: auto;
+}
+
+.followUpFilterActive {
+  color: var(--color-accent-light);
+  background: rgba(249, 115, 22, 0.14);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.followUpFilterCount {
+  opacity: 0.62;
+  font-size: 10px;
+}
+
+.followUpList {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.followUpRow {
+  display: grid;
+  grid-template-columns: minmax(210px, 1.05fr) minmax(240px, 1.25fr) minmax(280px, 1.35fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  transition: background 0.12s ease;
+}
+
+.followUpRow:last-child {
+  border-bottom: none;
+}
+
+.followUpRow:hover {
+  background: rgba(249, 115, 22, 0.035);
+}
+
+.followUpPerson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.followUpPriorityDot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+}
+
+.followUpPriorityUrgent {
+  background: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+.followUpPrioritySoon {
+  background: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+}
+
+.followUpPriorityNew {
+  background: #60a5fa;
+}
+
+.followUpPersonBody {
+  min-width: 0;
+}
+
+.followUpPersonName {
+  display: block;
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: 13.5px;
+  font-weight: 650;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.followUpPersonName:hover {
+  color: var(--color-accent-light);
+}
+
+.followUpPersonMeta {
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.followUpReason {
+  min-width: 0;
+}
+
+.followUpReasonTop {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-text-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.followUpPriorityLabel {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.followUpPriorityTextUrgent { color: #fca5a5; }
+.followUpPriorityTextSoon { color: #fcd34d; }
+.followUpPriorityTextNew { color: #93c5fd; }
+
+.followUpReasonMore,
+.followUpTiming {
+  margin-top: 4px;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-size: 10.5px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.followUpTiming {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-tertiary, #64748b);
+}
+
+.followUpTiming svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+.followUpProgress {
+  min-width: 0;
+}
+
+.followUpProgressSummary {
+  margin-bottom: 7px;
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.followUpSteps {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.followUpSteps::-webkit-scrollbar {
+  display: none;
+}
+
+.followUpStep {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  padding: 2px 6px;
+  color: #64748b;
+  background: rgba(100, 116, 139, 0.08);
+  border: 1px solid rgba(100, 116, 139, 0.12);
+  border-radius: 999px;
+  font-size: 9.5px;
+}
+
+.followUpStepDone {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.14);
+}
+
+.followUpStepWarning {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.09);
+  border-color: rgba(239, 68, 68, 0.16);
+}
+
+.followUpActions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: flex-end;
+}
+
+.followUpActions svg,
+.followUpMore svg {
+  width: 12px;
+  height: 12px;
+}
+
+.followUpMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  color: var(--color-accent-light);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.followUpMore:hover {
+  background: rgba(249, 115, 22, 0.04);
+}
+
+.followUpEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 30px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  text-align: center;
+}
+
+.followUpEmpty strong {
+  color: var(--color-text-primary);
+  font-size: 13px;
+}
+
+.followUpLoading {
+  display: grid;
+  gap: 8px;
+  padding: 12px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.followUpLoading > div {
+  height: 64px;
+}
+
+@media (max-width: 1280px) {
+  .followUpRow {
+    grid-template-columns: minmax(210px, 1fr) minmax(240px, 1.1fr) auto;
+  }
+
+  .followUpProgress {
+    grid-column: 1 / 3;
+    padding-left: 53px;
+  }
+
+  .followUpActions {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+}
+
+@media (max-width: 760px) {
+  .followUpHeader {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .followUpRow {
+    grid-template-columns: 1fr auto;
+    gap: 11px;
+  }
+
+  .followUpReason,
+  .followUpProgress {
+    grid-column: 1 / -1;
+    padding-left: 0;
+  }
+
+  .followUpActions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .followUpActions .btnGhost {
+    display: none;
+  }
+}
+
 /* --- Tables --- */
 .tableWrap {
   background: rgba(30, 41, 59, 0.4);

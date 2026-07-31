@@ -1,12 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import styles from './admin.module.css';
 import { api, fmtRelative } from './lib/adminApi';
 import { getCached, setCached } from './lib/cache';
 import { useSetPageMeta } from './lib/pageMeta';
-import { IconUsers, IconSupplier, IconSubscription, IconFeedback, IconTrendUp, IconExternal } from './components/icons';
+import {
+  IconUsers,
+  IconSupplier,
+  IconSubscription,
+  IconFeedback,
+  IconTrendUp,
+  IconExternal,
+  IconPhone,
+  IconClock,
+} from './components/icons';
 import { Sparkline, pctChange } from './components/Sparkline';
 
 interface Stats {
@@ -28,11 +37,67 @@ interface Snapshot {
   suppliersTotal?: number;
 }
 
+interface FollowUpUser {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  businessName: string | null;
+  phone: string | null;
+  signupAt: number | null;
+  lastActivityAt: number | null;
+  planTier: string;
+  quoteCount: number;
+  invoiceCount: number;
+  supplierBookCount: number;
+  healthScore: number;
+  squareStatus: 'connected' | 'broken' | 'none';
+  noteCount: number;
+  lastNoteAt: number | null;
+}
+
+interface FollowUpSubscription {
+  uid: string;
+  status: string;
+  currentPeriodEnd: number | null;
+  cancelAt: number | null;
+}
+
+interface FollowUpSource {
+  users: FollowUpUser[];
+  subscriptions: FollowUpSubscription[];
+}
+
+type FollowUpKind = 'trial' | 'new' | 'stuck' | 'canceling' | 'square';
+type FollowUpPriority = 'urgent' | 'soon' | 'new';
+
+interface FollowUpItem extends FollowUpUser {
+  name: string;
+  priority: FollowUpPriority;
+  score: number;
+  kinds: FollowUpKind[];
+  reasons: string[];
+  onboardingSummary: string;
+}
+
+const DAY = 24 * 60 * 60 * 1000;
+const FOLLOW_UP_FILTERS: Array<{ id: 'all' | FollowUpKind; label: string }> = [
+  { id: 'all', label: 'All priorities' },
+  { id: 'trial', label: 'Trials' },
+  { id: 'new', label: 'New signups' },
+  { id: 'stuck', label: 'Stuck' },
+  { id: 'canceling', label: 'Canceling' },
+  { id: 'square', label: 'Square issues' },
+];
+
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [series, setSeries] = useState<Snapshot[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [followUpSource, setFollowUpSource] = useState<FollowUpSource | null>(null);
+  const [followUpsLoading, setFollowUpsLoading] = useState(true);
+  const [followUpsError, setFollowUpsError] = useState<string | null>(null);
+  const [followUpFilter, setFollowUpFilter] = useState<(typeof FOLLOW_UP_FILTERS)[number]['id']>('all');
 
   useEffect(() => {
     let cancelled = false;
@@ -65,6 +130,50 @@ export default function AdminDashboard() {
       });
     return () => { cancelled = true; };
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const cached = getCached<FollowUpSource>('dashboard-follow-ups');
+    if (cached) {
+      setFollowUpSource(cached);
+      setFollowUpsLoading(false);
+    }
+
+    Promise.all([
+      api.listUsers({ limit: 500 }),
+      api.listSubscriptions({}).catch(() => ({ subscriptions: [] })),
+    ])
+      .then(([userResult, subscriptionResult]: any[]) => {
+        if (cancelled) return;
+        const source: FollowUpSource = {
+          users: userResult?.users || [],
+          subscriptions: subscriptionResult?.subscriptions || [],
+        };
+        setFollowUpSource(source);
+        setFollowUpsLoading(false);
+        setCached('dashboard-follow-ups', source);
+      })
+      .catch((e) => {
+        if (cancelled) return;
+        setFollowUpsError(e?.message || 'Failed to build the follow-up list');
+        setFollowUpsLoading(false);
+      });
+
+    return () => { cancelled = true; };
+  }, []);
+
+  const followUps = useMemo(() => buildFollowUps(followUpSource), [followUpSource]);
+  const visibleFollowUps = useMemo(
+    () => followUps.filter((item) => followUpFilter === 'all' || item.kinds.includes(followUpFilter)),
+    [followUps, followUpFilter],
+  );
+  const followUpCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: followUps.length };
+    for (const filter of FOLLOW_UP_FILTERS.slice(1)) {
+      counts[filter.id] = followUps.filter((item) => item.kinds.includes(filter.id as FollowUpKind)).length;
+    }
+    return counts;
+  }, [followUps]);
 
   const usersTrend = series.map((s) => s.usersTotal || 0);
   const signupsTrend = series.map((s) => s.signupsToday || 0);
@@ -125,6 +234,16 @@ export default function AdminDashboard() {
               icon={<IconSupplier />}
             />
           </div>
+
+          <FollowUpCentre
+            items={visibleFollowUps}
+            total={followUps.length}
+            counts={followUpCounts}
+            activeFilter={followUpFilter}
+            onFilter={setFollowUpFilter}
+            loading={followUpsLoading}
+            error={followUpsError}
+          />
 
           {series.length >= 2 && (
             <div className={styles.card} style={{ marginBottom: 20 }}>
@@ -236,6 +355,261 @@ export default function AdminDashboard() {
       )}
     </>
   );
+}
+
+function FollowUpCentre({
+  items,
+  total,
+  counts,
+  activeFilter,
+  onFilter,
+  loading,
+  error,
+}: {
+  items: FollowUpItem[];
+  total: number;
+  counts: Record<string, number>;
+  activeFilter: (typeof FOLLOW_UP_FILTERS)[number]['id'];
+  onFilter: (filter: (typeof FOLLOW_UP_FILTERS)[number]['id']) => void;
+  loading: boolean;
+  error: string | null;
+}) {
+  const urgentCount = items.filter((item) => item.priority === 'urgent').length;
+
+  return (
+    <section className={styles.followUpSection}>
+      <div className={styles.followUpHeader}>
+        <div>
+          <div className={styles.followUpEyebrow}>Today&apos;s action list</div>
+          <div className={styles.followUpTitle}>People to follow up</div>
+          <div className={styles.cardSubtitle}>
+            Prioritised from trial timing, onboarding progress and recent activity.
+          </div>
+        </div>
+        <div className={styles.followUpHeaderStats}>
+          {urgentCount > 0 && <span className={styles.followUpUrgentCount}>{urgentCount} urgent</span>}
+          <span>{total} to review</span>
+        </div>
+      </div>
+
+      <div className={styles.followUpFilters}>
+        {FOLLOW_UP_FILTERS.map((filter) => (
+          <button
+            key={filter.id}
+            className={`${styles.chip} ${activeFilter === filter.id ? styles.followUpFilterActive : ''}`}
+            onClick={() => onFilter(filter.id)}
+          >
+            {filter.label} <span className={styles.followUpFilterCount}>{counts[filter.id] || 0}</span>
+          </button>
+        ))}
+      </div>
+
+      {loading && total === 0 ? (
+        <div className={styles.followUpLoading}>
+          {[0, 1, 2].map((i) => <div key={i} className={styles.skeleton} />)}
+        </div>
+      ) : error && total === 0 ? (
+        <div className={styles.followUpEmpty}>Couldn&apos;t load follow-ups: {error}</div>
+      ) : items.length === 0 ? (
+        <div className={styles.followUpEmpty}>
+          <strong>Nothing in this queue.</strong>
+          <span>Try another filter — or enjoy the clear list.</span>
+        </div>
+      ) : (
+        <div className={styles.followUpList}>
+          {items.slice(0, 18).map((item) => (
+            <FollowUpRow key={item.uid} item={item} />
+          ))}
+          {items.length > 18 && (
+            <Link href="/admin/users" className={styles.followUpMore}>
+              Open users to review {items.length - 18} more <IconExternal />
+            </Link>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function FollowUpRow({ item }: { item: FollowUpItem }) {
+  const statusSteps = [
+    { label: 'Account', done: true, warning: false },
+    { label: 'Business', done: !!item.businessName, warning: false },
+    { label: 'Supplier', done: item.supplierBookCount > 0, warning: false },
+    { label: 'First quote', done: item.quoteCount > 0, warning: false },
+    ...(item.squareStatus === 'none'
+      ? []
+      : [{ label: 'Square', done: item.squareStatus === 'connected', warning: item.squareStatus === 'broken' }]),
+  ];
+
+  return (
+    <div className={styles.followUpRow}>
+      <div className={styles.followUpPerson}>
+        <span className={`${styles.followUpPriorityDot} ${styles[`followUpPriority${capitalize(item.priority)}`]}`} />
+        <div className={styles.listAvatar}>{initialsForFollowUp(item.name)}</div>
+        <div className={styles.followUpPersonBody}>
+          <Link href={`/admin/users?uid=${encodeURIComponent(item.uid)}`} className={styles.followUpPersonName}>
+            {item.name}
+          </Link>
+          <div className={styles.followUpPersonMeta}>
+            {item.phone || item.email || 'No contact details'}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.followUpReason}>
+        <div className={styles.followUpReasonTop}>
+          <span className={`${styles.followUpPriorityLabel} ${styles[`followUpPriorityText${capitalize(item.priority)}`]}`}>
+            {item.priority}
+          </span>
+          <span>{item.reasons[0]}</span>
+        </div>
+        {item.reasons.length > 1 && (
+          <div className={styles.followUpReasonMore}>{item.reasons.slice(1).join(' · ')}</div>
+        )}
+        <div className={styles.followUpTiming}>
+          <IconClock /> Joined {fmtRelative(item.signupAt)} · active {fmtRelative(item.lastActivityAt)}
+          {item.lastNoteAt ? ` · touched ${fmtRelative(item.lastNoteAt)}` : ' · never contacted'}
+        </div>
+      </div>
+
+      <div className={styles.followUpProgress}>
+        <div className={styles.followUpProgressSummary}>{item.onboardingSummary}</div>
+        <div className={styles.followUpSteps}>
+          {statusSteps.map((step) => (
+            <span
+              key={step.label}
+              className={`${styles.followUpStep} ${step.warning ? styles.followUpStepWarning : step.done ? styles.followUpStepDone : ''}`}
+            >
+              <span>{step.warning ? '!' : step.done ? '✓' : '○'}</span> {step.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.followUpActions}>
+        {item.phone ? (
+          <a href={`tel:${item.phone}`} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSmall}`}>
+            <IconPhone /> Call
+          </a>
+        ) : (
+          <Link href={`/admin/users?uid=${encodeURIComponent(item.uid)}`} className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`}>
+            View
+          </Link>
+        )}
+        <Link
+          href={`/admin/users?uid=${encodeURIComponent(item.uid)}`}
+          className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+          title="Open full CRM profile and log the outcome"
+        >
+          <IconExternal />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function buildFollowUps(source: FollowUpSource | null): FollowUpItem[] {
+  if (!source) return [];
+  const now = Date.now();
+  const subscriptions = new Map(source.subscriptions.map((sub) => [sub.uid, sub]));
+  const result: FollowUpItem[] = [];
+
+  for (const user of source.users) {
+    const sub = subscriptions.get(user.uid);
+    const kinds: FollowUpKind[] = [];
+    const reasons: string[] = [];
+    let score = 0;
+    const signupAge = user.signupAt ? now - user.signupAt : Infinity;
+    const inactiveFor = user.lastActivityAt ? now - user.lastActivityAt : Infinity;
+    const status = sub?.status || user.planTier;
+    const periodEnd = sub?.cancelAt || sub?.currentPeriodEnd;
+
+    if (status === 'trialing' && periodEnd) {
+      const days = Math.ceil((periodEnd - now) / DAY);
+      if (days <= 7) {
+        kinds.push('trial');
+        if (days < 0) reasons.push(`Trial ended ${Math.abs(days)}d ago`);
+        else if (days === 0) reasons.push('Trial ends today');
+        else if (days === 1) reasons.push('Trial ends tomorrow');
+        else reasons.push(`Trial ends in ${days} days`);
+        score += days <= 1 ? 100 : days <= 3 ? 82 : 65;
+      }
+    } else if (status === 'trial_expired') {
+      const daysSinceEnd = periodEnd ? Math.floor((now - periodEnd) / DAY) : null;
+      if (daysSinceEnd === null || daysSinceEnd <= 14) {
+        kinds.push('trial');
+        reasons.push(daysSinceEnd !== null && daysSinceEnd > 0 ? `Trial expired ${daysSinceEnd}d ago` : 'Trial has expired');
+        score += 94;
+      }
+    }
+
+    if (status === 'canceling' || status === 'pro_canceling') {
+      kinds.push('canceling');
+      const days = periodEnd ? Math.max(0, Math.ceil((periodEnd - now) / DAY)) : null;
+      reasons.push(days !== null ? `Subscription cancels in ${days}d` : 'Subscription is canceling');
+      score += 96;
+    }
+
+    if (user.squareStatus === 'broken') {
+      kinds.push('square');
+      reasons.push('Square connection needs help');
+      score += 90;
+    }
+
+    if (signupAge <= 7 * DAY && (user.noteCount || 0) === 0) {
+      kinds.push('new');
+      reasons.push(signupAge < DAY ? 'New signup today — welcome call' : `New signup ${Math.max(1, Math.floor(signupAge / DAY))}d ago — not contacted`);
+      score += signupAge < DAY ? 72 : 55;
+    }
+
+    if (signupAge >= 2 * DAY && signupAge <= 21 * DAY && user.quoteCount === 0 && inactiveFor >= 2 * DAY) {
+      kinds.push('stuck');
+      reasons.push(`No quote yet · inactive ${formatDays(inactiveFor)}`);
+      score += 68;
+    }
+
+    if (kinds.length === 0) continue;
+    if (user.phone) score += 4;
+    if ((user.healthScore || 0) < 30) score += 6;
+
+    const priority: FollowUpPriority = score >= 90 ? 'urgent' : score >= 65 ? 'soon' : 'new';
+    result.push({
+      ...user,
+      name: user.businessName || user.displayName || user.email || user.uid.slice(0, 8),
+      priority,
+      score,
+      kinds: Array.from(new Set(kinds)),
+      reasons,
+      onboardingSummary: onboardingSummary(user),
+    });
+  }
+
+  return result.sort((a, b) => b.score - a.score || (b.signupAt || 0) - (a.signupAt || 0));
+}
+
+function onboardingSummary(user: FollowUpUser): string {
+  if (user.quoteCount > 0) {
+    return `${user.quoteCount} quote${user.quoteCount === 1 ? '' : 's'} · ${user.invoiceCount || 0} invoice${user.invoiceCount === 1 ? '' : 's'}`;
+  }
+  if (user.supplierBookCount > 0) return `${user.supplierBookCount} supplier${user.supplierBookCount === 1 ? '' : 's'} added · no quote yet`;
+  if (user.businessName) return 'Business set up · no supplier or quote yet';
+  return 'Account created · onboarding not started';
+}
+
+function formatDays(ms: number): string {
+  if (!Number.isFinite(ms)) return 'since signup';
+  const days = Math.max(1, Math.floor(ms / DAY));
+  return `${days}d`;
+}
+
+function capitalize(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function initialsForFollowUp(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] || '') + (parts[1]?.[0] || '')).toUpperCase() || '?';
 }
 
 function StatCard({
