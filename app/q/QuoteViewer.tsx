@@ -47,8 +47,10 @@ export default function QuoteViewer() {
       src={src}
       title="Your quote"
       style={styles.frame}
-      // The framed page only reads its own form + posts to its own origin.
-      sandbox="allow-scripts allow-forms allow-same-origin"
+      // The framed page reads its own form + posts to its own origin, and
+      // offers the quote PDF as a download — without allow-downloads Chrome
+      // silently blocks that button inside a sandboxed frame.
+      sandbox="allow-scripts allow-forms allow-same-origin allow-downloads"
     />
   );
 }
