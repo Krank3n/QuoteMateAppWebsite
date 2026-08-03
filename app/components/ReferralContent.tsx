@@ -8,14 +8,25 @@ export default function ReferralContent() {
   useEffect(() => {
     const path = window.location.pathname.replace(/\/+$/, '');
     const match = path.match(/^\/ref\/(.+)$/);
-    if (match) {
-      setCode(decodeURIComponent(match[1]));
-      // Hide the 404 content when showing referral page
-      const notFoundEl = document.getElementById('not-found-content');
-      if (notFoundEl) notFoundEl.style.display = 'none';
-      // Update page title
-      document.title = "You've been referred to QuoteMate";
-    }
+    if (!match) return;
+
+    // Only render for something that actually looks like one of our codes.
+    // The value lands in the DOM, so anything else is untrusted input that
+    // would otherwise be echoed back on a "you've been referred" page.
+    const raw = decodeURIComponent(match[1]).trim().toUpperCase();
+    if (!/^QM-[A-HJ-NP-Z2-9]{6}$/.test(raw)) return;
+
+    setCode(raw);
+    // Hide the 404 content when showing referral page
+    const notFoundEl = document.getElementById('not-found-content');
+    if (notFoundEl) notFoundEl.style.display = 'none';
+    // Update page title
+    document.title = "You've been referred to QuoteMate";
+
+    // If the app is already installed, hand the code straight to it — iOS
+    // Universal Links / Android App Links now claim /ref/* (see the app's
+    // apple-app-site-association and android.intentFilters), so this page is
+    // the fallback for people who don't have the app yet.
   }, []);
 
   if (!code) return null;
@@ -60,6 +71,9 @@ export default function ReferralContent() {
             <p style={{ fontSize: 13, color: '#888', marginTop: 8, margin: '8px 0 0' }}>
               Enter this code in the app after signing up
             </p>
+            <p style={{ fontSize: 12, color: '#888', margin: '10px 0 0' }}>
+              Using a referral code just credits your mate &mdash; it doesn&apos;t change your price or your plan.
+            </p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
@@ -93,7 +107,7 @@ export default function ReferralContent() {
             <ol style={{ margin: 0, paddingLeft: 20, color: '#555', fontSize: 14, lineHeight: 2 }}>
               <li>Download QuoteMate from the App Store or Google Play</li>
               <li>Create your free account</li>
-              <li>Go to Settings &rarr; Refer a Friend</li>
+              <li>Go to Settings &rarr; Refer a Mate</li>
               <li>Enter the code <strong style={{ color: '#f97316' }}>{code}</strong></li>
             </ol>
           </div>
