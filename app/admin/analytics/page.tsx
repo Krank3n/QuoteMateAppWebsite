@@ -8,6 +8,7 @@ import { getCached, setCached } from '../lib/cache';
 import { useSetPageMeta } from '../lib/pageMeta';
 import { Sparkline } from '../components/Sparkline';
 import { IconTrendUp, IconUsers, IconExternal } from '../components/icons';
+import { buildAppStages, hasWizardDetail } from '../lib/journeyStages';
 
 interface Traffic {
   propertyId: string;
@@ -55,6 +56,12 @@ interface FunnelCohort {
   matureForPaid: boolean;
   signups: number;
   startedTrial: number;
+  // The quote wizard, screen by screen. Optional: absent until the
+  // adminFunnelStats cache refreshes after the wizard-steps deploy.
+  describedJob?: number;
+  addedCustomer?: number;
+  addedMaterials?: number;
+  reachedPreview?: number;
   sentQuote: number;
   paying: number;
   trialToPaid: number;
@@ -65,6 +72,10 @@ interface Funnel {
   funnel: {
     signups: number;
     startedTrial: number;
+    describedJob?: number;
+    addedCustomer?: number;
+    addedMaterials?: number;
+    reachedPreview?: number;
     sentQuote: number;
     paying: number;
     payingBilled?: number;
@@ -564,14 +575,8 @@ function FullJourney({
   ];
 
   const appSource = useAllTime ? app : cohort;
-  const appStages: Stage[] = appSource
-    ? [
-        { label: 'Signed up', value: appSource.signups, note: 'account created' },
-        { label: 'Started a trial', value: appSource.startedTrial, note: 'trial began' },
-        { label: 'Sent a quote', value: appSource.sentQuote, note: 'got real value out of it' },
-        { label: 'Paying', value: appSource.paying, note: 'billed subscription', accent: true },
-      ]
-    : [];
+  const appStages: Stage[] = buildAppStages(appSource);
+  const wizardDetail = hasWizardDetail(appSource);
 
   const clicksPerWeek = data.days > 0 ? Math.round((w.ctaClicks / data.days) * 7) : 0;
   // Prefer the funnel's own 7-day cohort over dashboardStats.signupsThisWeek:
@@ -635,11 +640,19 @@ function FullJourney({
             flagBiggestDrop
             endToEndUnavailable={tooYoungForPaid ? 'too early to tell — trials from this window are still running' : undefined}
             footnote={
-              cohortsUnavailable
-                ? 'Time-sliced cohorts appear once the funnel cache refreshes (within 15 min of deploy).'
-                : tooYoungForPaid
+              [
+                cohortsUnavailable
+                  ? 'Time-sliced cohorts appear once the funnel cache refreshes (within 15 min of deploy).'
+                  : null,
+                tooYoungForPaid
                   ? `Too new to judge paid conversion — a trial runs ${TRIAL_DAYS} days, so this cohort mostly hasn't reached the decision yet.`
-                  : undefined
+                  : null,
+                wizardDetail
+                  ? 'Wizard steps read the screen each draft was last parked on. Drafts saved before that marker shipped are read from their contents instead, which can understate a step but never inflate it.'
+                  : 'Wizard steps appear once the funnel cache refreshes (within 15 min of deploy).',
+              ]
+                .filter(Boolean)
+                .join(' ') || undefined
             }
           />
         ) : (
