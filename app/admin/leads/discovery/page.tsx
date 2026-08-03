@@ -7,14 +7,43 @@ import styles from '../../admin.module.css';
 import { api } from '../../lib/adminApi';
 import { useSetPageMeta } from '../../lib/pageMeta';
 
-const NSW_SUBURBS = [
-  'Sydney', 'Newcastle', 'Wollongong', 'Central Coast', 'Maitland',
-  'Penrith', 'Parramatta', 'Liverpool', 'Blacktown', 'Campbelltown',
-  'Bondi', 'Manly', 'Cronulla', 'Hornsby', 'Chatswood',
-  'Mosman', 'Northern Beaches', 'Eastern Suburbs', 'Inner West', 'Sutherland Shire',
-  'Western Sydney', 'Hills District', 'Macarthur', 'Illawarra',
-  'Byron Bay', 'Coffs Harbour', 'Port Macquarie', 'Tamworth', 'Orange', 'Wagga Wagga',
-];
+// Mirrors AU_REGIONS in functions/src/leadOutreach.ts. Locations carry their
+// state code so Places queries are unambiguous — "Richmond" straddles four
+// states. Keep the two lists in sync when adding regions.
+const AU_REGIONS: Record<string, string[]> = {
+  NSW: [
+    'Sydney NSW', 'Parramatta NSW', 'Penrith NSW', 'Liverpool NSW', 'Campbelltown NSW',
+    'Blacktown NSW', 'Hornsby NSW', 'Sutherland NSW', 'Cronulla NSW', 'Manly NSW',
+    'Bondi NSW', 'Chatswood NSW', 'Newcastle NSW', 'Central Coast NSW', 'Wollongong NSW',
+    'Gosford NSW', 'Maitland NSW', 'Byron Bay NSW', 'Coffs Harbour NSW', 'Port Macquarie NSW',
+    'Wagga Wagga NSW', 'Orange NSW', 'Tamworth NSW', 'Dubbo NSW', 'Albury NSW',
+  ],
+  VIC: [
+    'Melbourne VIC', 'Geelong VIC', 'Ballarat VIC', 'Bendigo VIC', 'Frankston VIC',
+    'Dandenong VIC', 'Werribee VIC', 'Ringwood VIC', 'Box Hill VIC', 'Preston VIC',
+    'Sunshine VIC', 'Cranbourne VIC', 'Pakenham VIC', 'Shepparton VIC', 'Traralgon VIC',
+    'Mornington VIC', 'Sunbury VIC', 'Melton VIC',
+  ],
+  QLD: [
+    'Brisbane QLD', 'Gold Coast QLD', 'Sunshine Coast QLD', 'Ipswich QLD', 'Logan QLD',
+    'Toowoomba QLD', 'Cairns QLD', 'Townsville QLD', 'Mackay QLD', 'Rockhampton QLD',
+    'Bundaberg QLD', 'Hervey Bay QLD', 'Caboolture QLD', 'Redcliffe QLD', 'Gladstone QLD',
+  ],
+  WA: [
+    'Perth WA', 'Fremantle WA', 'Joondalup WA', 'Rockingham WA', 'Mandurah WA',
+    'Bunbury WA', 'Geraldton WA', 'Albany WA', 'Midland WA', 'Armadale WA',
+    'Busselton WA', 'Kalgoorlie WA',
+  ],
+  SA: [
+    'Adelaide SA', 'Port Adelaide SA', 'Elizabeth SA', 'Noarlunga SA', 'Mount Barker SA',
+    'Mount Gambier SA', 'Whyalla SA', 'Gawler SA', 'Murray Bridge SA',
+  ],
+  TAS: ['Hobart TAS', 'Launceston TAS', 'Devonport TAS', 'Burnie TAS'],
+  ACT: ['Canberra ACT', 'Belconnen ACT', 'Tuggeranong ACT', 'Gungahlin ACT'],
+  NT: ['Darwin NT', 'Palmerston NT', 'Alice Springs NT'],
+};
+const AU_STATES = Object.keys(AU_REGIONS);
+const ALL_REGIONS = AU_STATES.flatMap((s) => AU_REGIONS[s]);
 
 const TRADES = [
   { id: 'fencer', label: 'Fencer' },
@@ -24,6 +53,7 @@ const TRADES = [
   { id: 'electrician', label: 'Electrician' },
   { id: 'hvac', label: 'HVAC / air-con' },
   { id: 'carpenter', label: 'Carpenter' },
+  { id: 'cabinet-maker', label: 'Cabinet maker' },
   { id: 'painter', label: 'Painter' },
   { id: 'roofer', label: 'Roofer' },
   { id: 'flooring', label: 'Flooring' },
@@ -120,25 +150,54 @@ export default function DiscoveryPage() {
 
         <div style={{ marginBottom: 18 }}>
           <label style={labelStyle}>Suburbs / regions ({suburbs.length} selected)</label>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 10 }}>
-            {NSW_SUBURBS.map((s) => {
-              const active = suburbs.includes(s);
-              return (
-                <button
-                  key={s}
-                  type="button"
-                  onClick={() => toggle(s)}
-                  className={styles.chip}
-                  style={{
-                    background: active ? 'rgba(249, 115, 22, 0.18)' : undefined,
-                    color: active ? 'var(--color-accent-light)' : undefined,
-                    borderColor: active ? 'rgba(249, 115, 22, 0.4)' : undefined,
-                  }}
-                >
-                  {s}
-                </button>
-              );
-            })}
+          {AU_STATES.map((state) => {
+            const regions = AU_REGIONS[state];
+            const allOn = regions.every((s) => suburbs.includes(s));
+            return (
+              <div key={state} style={{ marginBottom: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--color-text-tertiary)', minWidth: 34 }}>{state}</span>
+                  <button
+                    type="button"
+                    onClick={() => setSuburbs((prev) => allOn
+                      ? prev.filter((s) => !regions.includes(s))
+                      : Array.from(new Set([...prev, ...regions])))}
+                    style={{ background: 'none', border: 'none', color: 'var(--color-accent-light)', cursor: 'pointer', fontSize: 11 }}
+                  >
+                    {allOn ? 'clear' : 'select all'}
+                  </button>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {regions.map((s) => {
+                    const active = suburbs.includes(s);
+                    return (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => toggle(s)}
+                        className={styles.chip}
+                        style={{
+                          background: active ? 'rgba(249, 115, 22, 0.18)' : undefined,
+                          color: active ? 'var(--color-accent-light)' : undefined,
+                          borderColor: active ? 'rgba(249, 115, 22, 0.4)' : undefined,
+                        }}
+                      >
+                        {s.replace(new RegExp(`\\s${state}$`), '')}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+          <div style={{ marginBottom: 10 }}>
+            <button
+              type="button"
+              className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`}
+              onClick={() => setSuburbs(suburbs.length === ALL_REGIONS.length ? [] : [...ALL_REGIONS])}
+            >
+              {suburbs.length === ALL_REGIONS.length ? 'Clear all' : `Select all Australia (${ALL_REGIONS.length})`}
+            </button>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <input
@@ -233,7 +292,7 @@ export default function DiscoveryPage() {
                   onChange={(e) => saveAutoCfg({ enabled: e.target.checked })}
                   disabled={autoSaving}
                 />
-                <span style={{ fontSize: 13, fontWeight: 600 }}>Enable weekly auto-discovery</span>
+                <span style={{ fontSize: 13, fontWeight: 600 }}>Enable daily auto-discovery</span>
               </label>
 
               <div style={{ marginBottom: 10 }}>
@@ -278,13 +337,14 @@ export default function DiscoveryPage() {
                   className={styles.input}
                   value={autoCfg.targetPerWeek ?? 50}
                   min={1}
-                  max={500}
+                  max={2000}
                   onChange={(e) => setAutoCfg({ ...autoCfg, targetPerWeek: Number(e.target.value) || 0 })}
                   onBlur={() => saveAutoCfg({ targetPerWeek: autoCfg.targetPerWeek })}
                   style={{ width: 100 }}
                 />
                 <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginLeft: 8 }}>
-                  ~7× your daily auto-ramp cap is a sensible target
+                  Split across 7 daily runs. Only ~48% of leads yield an email, so
+                  aim for ~2× the emails you want to send per week.
                 </span>
               </div>
 
