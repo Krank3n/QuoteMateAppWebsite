@@ -17,6 +17,18 @@ import {
   IconClock,
 } from './components/icons';
 import { Sparkline, pctChange } from './components/Sparkline';
+import {
+  buildFollowUps,
+  contactNoteText,
+  followUpCounts,
+  outstanding,
+  pruneContacted,
+  FOLLOW_UP_FILTERS,
+  type ContactedEntry,
+  type ContactedMap,
+  type FollowUpItem,
+  type FollowUpSource,
+} from './lib/followUps';
 
 interface Stats {
   users: { total: number; signupsToday: number; signupsThisWeek: number; activeSevenDay: number };
@@ -37,61 +49,6 @@ interface Snapshot {
   suppliersTotal?: number;
 }
 
-interface FollowUpUser {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  businessName: string | null;
-  phone: string | null;
-  signupAt: number | null;
-  lastActivityAt: number | null;
-  planTier: string;
-  quoteCount: number;
-  invoiceCount: number;
-  supplierBookCount: number;
-  healthScore: number;
-  squareStatus: 'connected' | 'broken' | 'none';
-  noteCount: number;
-  lastNoteAt: number | null;
-}
-
-interface FollowUpSubscription {
-  uid: string;
-  status: string;
-  currentPeriodEnd: number | null;
-  cancelAt: number | null;
-  // Real trial end (trialStartedAt + 14 days), from deriveSubFields. Never use
-  // currentPeriodEnd for trial dates — on a non-Pro account that is the month
-  // end of the free-quote counter, so it reads "trial ended" every 1st.
-  trialEndsAt: number | null;
-}
-
-interface FollowUpSource {
-  users: FollowUpUser[];
-  subscriptions: FollowUpSubscription[];
-}
-
-type FollowUpKind = 'trial' | 'new' | 'stuck' | 'canceling' | 'square';
-type FollowUpPriority = 'urgent' | 'soon' | 'new';
-
-interface FollowUpItem extends FollowUpUser {
-  name: string;
-  priority: FollowUpPriority;
-  score: number;
-  kinds: FollowUpKind[];
-  reasons: string[];
-  onboardingSummary: string;
-}
-
-const DAY = 24 * 60 * 60 * 1000;
-const FOLLOW_UP_FILTERS: Array<{ id: 'all' | FollowUpKind; label: string }> = [
-  { id: 'all', label: 'All priorities' },
-  { id: 'trial', label: 'Trials' },
-  { id: 'new', label: 'New signups' },
-  { id: 'stuck', label: 'Stuck' },
-  { id: 'canceling', label: 'Canceling' },
-  { id: 'square', label: 'Square issues' },
-];
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
@@ -102,6 +59,7 @@ export default function AdminDashboard() {
   const [followUpsLoading, setFollowUpsLoading] = useState(true);
   const [followUpsError, setFollowUpsError] = useState<string | null>(null);
   const [followUpFilter, setFollowUpFilter] = useState<(typeof FOLLOW_UP_FILTERS)[number]['id']>('all');
+  const [contacted, setContacted] = useState<ContactedMap>({});
 
   useEffect(() => {
     let cancelled = false;
@@ -166,18 +124,28 @@ export default function AdminDashboard() {
     return () => { cancelled = true; };
   }, []);
 
+  // Ticks live on until the server-side note comes back through listUsers,
+  // which is what actually drops the row out of the queue.
+  useEffect(() => {
+    const stored = getCached<ContactedMap>('dashboard-contacted');
+    if (stored) setContacted(pruneContacted(stored));
+  }, []);
+
+  const markContacted = (uid: string, entry: ContactedEntry) => {
+    setContacted((prev) => {
+      const next = pruneContacted({ ...prev, [uid]: entry });
+      setCached('dashboard-contacted', next);
+      return next;
+    });
+  };
+
   const followUps = useMemo(() => buildFollowUps(followUpSource), [followUpSource]);
   const visibleFollowUps = useMemo(
     () => followUps.filter((item) => followUpFilter === 'all' || item.kinds.includes(followUpFilter)),
     [followUps, followUpFilter],
   );
-  const followUpCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: followUps.length };
-    for (const filter of FOLLOW_UP_FILTERS.slice(1)) {
-      counts[filter.id] = followUps.filter((item) => item.kinds.includes(filter.id as FollowUpKind)).length;
-    }
-    return counts;
-  }, [followUps]);
+  const counts = useMemo(() => followUpCounts(followUps, contacted), [followUps, contacted]);
+  const openCount = useMemo(() => outstanding(followUps, contacted).length, [followUps, contacted]);
 
   const usersTrend = series.map((s) => s.usersTotal || 0);
   const signupsTrend = series.map((s) => s.signupsToday || 0);
@@ -241,8 +209,10 @@ export default function AdminDashboard() {
 
           <FollowUpCentre
             items={visibleFollowUps}
-            total={followUps.length}
-            counts={followUpCounts}
+            total={openCount}
+            counts={counts}
+            contacted={contacted}
+            onContacted={markContacted}
             activeFilter={followUpFilter}
             onFilter={setFollowUpFilter}
             loading={followUpsLoading}
@@ -365,6 +335,8 @@ function FollowUpCentre({
   items,
   total,
   counts,
+  contacted,
+  onContacted,
   activeFilter,
   onFilter,
   loading,
@@ -373,12 +345,15 @@ function FollowUpCentre({
   items: FollowUpItem[];
   total: number;
   counts: Record<string, number>;
+  contacted: ContactedMap;
+  onContacted: (uid: string, entry: ContactedEntry) => void;
   activeFilter: (typeof FOLLOW_UP_FILTERS)[number]['id'];
   onFilter: (filter: (typeof FOLLOW_UP_FILTERS)[number]['id']) => void;
   loading: boolean;
   error: string | null;
 }) {
-  const urgentCount = items.filter((item) => item.priority === 'urgent').length;
+  const urgentCount = items.filter((item) => item.priority === 'urgent' && !contacted[item.uid]).length;
+  const doneCount = items.filter((item) => contacted[item.uid]).length;
 
   return (
     <section className={styles.followUpSection}>
@@ -387,12 +362,14 @@ function FollowUpCentre({
           <div className={styles.followUpEyebrow}>Today&apos;s action list</div>
           <div className={styles.followUpTitle}>People to follow up</div>
           <div className={styles.cardSubtitle}>
-            Prioritised from trial timing, onboarding progress and recent activity.
+            Prioritised from trial timing, onboarding progress and recent activity. Tick someone off once
+            you&apos;ve spoken to them — it logs a note against their profile.
           </div>
         </div>
         <div className={styles.followUpHeaderStats}>
           {urgentCount > 0 && <span className={styles.followUpUrgentCount}>{urgentCount} urgent</span>}
           <span>{total} to review</span>
+          {doneCount > 0 && <span className={styles.followUpDoneCount}>{doneCount} done</span>}
         </div>
       </div>
 
@@ -422,7 +399,7 @@ function FollowUpCentre({
       ) : (
         <div className={styles.followUpList}>
           {items.slice(0, 18).map((item) => (
-            <FollowUpRow key={item.uid} item={item} />
+            <FollowUpRow key={item.uid} item={item} contacted={contacted[item.uid]} onContacted={onContacted} />
           ))}
           {items.length > 18 && (
             <Link href="/admin/users" className={styles.followUpMore}>
@@ -435,7 +412,52 @@ function FollowUpCentre({
   );
 }
 
-function FollowUpRow({ item }: { item: FollowUpItem }) {
+function FollowUpRow({
+  item,
+  contacted,
+  onContacted,
+}: {
+  item: FollowUpItem;
+  contacted: ContactedEntry | undefined;
+  onContacted: (uid: string, entry: ContactedEntry) => void;
+}) {
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [summary, setSummary] = useState('');
+  const [summarySaving, setSummarySaving] = useState(false);
+
+  // The tick writes straight away with a plain "Contacted" note, so a single
+  // click is never lost. The summary is a second, optional note on top.
+  const tick = async () => {
+    if (contacted || saving) return;
+    setSaving(true);
+    setSaveError(null);
+    try {
+      await api.addUserNote({ uid: item.uid, note: contactNoteText() });
+      onContacted(item.uid, { at: Date.now(), summary: null });
+    } catch (e: any) {
+      setSaveError(e?.message || 'Could not save that');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const saveSummary = async () => {
+    const note = summary.trim();
+    if (!note || summarySaving) return;
+    setSummarySaving(true);
+    setSaveError(null);
+    try {
+      await api.addUserNote({ uid: item.uid, note });
+      onContacted(item.uid, { at: contacted?.at || Date.now(), summary: note });
+      setSummary('');
+    } catch (e: any) {
+      setSaveError(e?.message || 'Could not save that');
+    } finally {
+      setSummarySaving(false);
+    }
+  };
+
   const statusSteps = [
     { label: 'Account', done: true, warning: false },
     { label: 'Business', done: !!item.businessName, warning: false },
@@ -447,8 +469,20 @@ function FollowUpRow({ item }: { item: FollowUpItem }) {
   ];
 
   return (
-    <div className={styles.followUpRow}>
+    <div className={`${styles.followUpRow} ${contacted ? styles.followUpRowDone : ''}`}>
       <div className={styles.followUpPerson}>
+        <button
+          type="button"
+          role="checkbox"
+          aria-checked={!!contacted}
+          aria-label={contacted ? `${item.name} contacted` : `Mark ${item.name} as contacted`}
+          title={contacted ? 'Contacted — note saved to their profile' : 'Tick once you’ve spoken to them'}
+          className={`${styles.followUpTick} ${contacted ? styles.followUpTickDone : ''}`}
+          onClick={tick}
+          disabled={!!contacted || saving}
+        >
+          {contacted ? '✓' : saving ? '…' : ''}
+        </button>
         <span className={`${styles.followUpPriorityDot} ${styles[`followUpPriority${capitalize(item.priority)}`]}`} />
         <div className={styles.listAvatar}>{initialsForFollowUp(item.name)}</div>
         <div className={styles.followUpPersonBody}>
@@ -473,8 +507,39 @@ function FollowUpRow({ item }: { item: FollowUpItem }) {
         )}
         <div className={styles.followUpTiming}>
           <IconClock /> Joined {fmtRelative(item.signupAt)} · active {fmtRelative(item.lastActivityAt)}
-          {item.lastNoteAt ? ` · touched ${fmtRelative(item.lastNoteAt)}` : ' · never contacted'}
+          {contacted
+            ? ' · contacted just now'
+            : item.lastNoteAt
+            ? ` · touched ${fmtRelative(item.lastNoteAt)}`
+            : ' · never contacted'}
         </div>
+
+        {contacted && (
+          contacted.summary ? (
+            <div className={styles.followUpContactNote}>“{contacted.summary}”</div>
+          ) : (
+            <form
+              className={styles.followUpContactForm}
+              onSubmit={(e) => { e.preventDefault(); saveSummary(); }}
+            >
+              <input
+                className={styles.followUpContactInput}
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+                placeholder="Add what happened (optional)"
+                maxLength={280}
+                disabled={summarySaving}
+              />
+              {summary.trim() && (
+                <button type="submit" className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={summarySaving}>
+                  {summarySaving ? 'Saving…' : 'Save'}
+                </button>
+              )}
+            </form>
+          )
+        )}
+
+        {saveError && <div className={styles.followUpContactError}>{saveError}</div>}
       </div>
 
       <div className={styles.followUpProgress}>
@@ -511,102 +576,6 @@ function FollowUpRow({ item }: { item: FollowUpItem }) {
       </div>
     </div>
   );
-}
-
-function buildFollowUps(source: FollowUpSource | null): FollowUpItem[] {
-  if (!source) return [];
-  const now = Date.now();
-  const subscriptions = new Map(source.subscriptions.map((sub) => [sub.uid, sub]));
-  const result: FollowUpItem[] = [];
-
-  for (const user of source.users) {
-    const sub = subscriptions.get(user.uid);
-    const kinds: FollowUpKind[] = [];
-    const reasons: string[] = [];
-    let score = 0;
-    const signupAge = user.signupAt ? now - user.signupAt : Infinity;
-    const inactiveFor = user.lastActivityAt ? now - user.lastActivityAt : Infinity;
-    const status = sub?.status || user.planTier;
-    const trialEndsAt = sub?.trialEndsAt || null;
-
-    if (status === 'trialing') {
-      // Still trialing by definition (status is derived from trialStartedAt +
-      // 14 days), so this branch never reports a trial as over.
-      const days = trialEndsAt ? Math.ceil((trialEndsAt - now) / DAY) : null;
-      if (days !== null && days <= 7) {
-        kinds.push('trial');
-        if (days <= 0) reasons.push('Trial ends today');
-        else if (days === 1) reasons.push('Trial ends tomorrow');
-        else reasons.push(`Trial ends in ${days} days`);
-        score += days <= 1 ? 100 : days <= 3 ? 82 : 65;
-      }
-    } else if (status === 'trial_expired') {
-      const daysSinceEnd = trialEndsAt ? Math.floor((now - trialEndsAt) / DAY) : null;
-      if (daysSinceEnd === null || daysSinceEnd <= 14) {
-        kinds.push('trial');
-        reasons.push(daysSinceEnd !== null && daysSinceEnd > 0 ? `Trial expired ${daysSinceEnd}d ago` : 'Trial has expired');
-        score += 94;
-      }
-    }
-
-    if (status === 'canceling' || status === 'pro_canceling') {
-      const periodEnd = sub?.cancelAt || sub?.currentPeriodEnd;
-      kinds.push('canceling');
-      const days = periodEnd ? Math.max(0, Math.ceil((periodEnd - now) / DAY)) : null;
-      reasons.push(days !== null ? `Subscription cancels in ${days}d` : 'Subscription is canceling');
-      score += 96;
-    }
-
-    if (user.squareStatus === 'broken') {
-      kinds.push('square');
-      reasons.push('Square connection needs help');
-      score += 90;
-    }
-
-    if (signupAge <= 7 * DAY && (user.noteCount || 0) === 0) {
-      kinds.push('new');
-      reasons.push(signupAge < DAY ? 'New signup today — welcome call' : `New signup ${Math.max(1, Math.floor(signupAge / DAY))}d ago — not contacted`);
-      score += signupAge < DAY ? 72 : 55;
-    }
-
-    if (signupAge >= 2 * DAY && signupAge <= 21 * DAY && user.quoteCount === 0 && inactiveFor >= 2 * DAY) {
-      kinds.push('stuck');
-      reasons.push(`No quote yet · inactive ${formatDays(inactiveFor)}`);
-      score += 68;
-    }
-
-    if (kinds.length === 0) continue;
-    if (user.phone) score += 4;
-    if ((user.healthScore || 0) < 30) score += 6;
-
-    const priority: FollowUpPriority = score >= 90 ? 'urgent' : score >= 65 ? 'soon' : 'new';
-    result.push({
-      ...user,
-      name: user.businessName || user.displayName || user.email || user.uid.slice(0, 8),
-      priority,
-      score,
-      kinds: Array.from(new Set(kinds)),
-      reasons,
-      onboardingSummary: onboardingSummary(user),
-    });
-  }
-
-  return result.sort((a, b) => b.score - a.score || (b.signupAt || 0) - (a.signupAt || 0));
-}
-
-function onboardingSummary(user: FollowUpUser): string {
-  if (user.quoteCount > 0) {
-    return `${user.quoteCount} quote${user.quoteCount === 1 ? '' : 's'} · ${user.invoiceCount || 0} invoice${user.invoiceCount === 1 ? '' : 's'}`;
-  }
-  if (user.supplierBookCount > 0) return `${user.supplierBookCount} supplier${user.supplierBookCount === 1 ? '' : 's'} added · no quote yet`;
-  if (user.businessName) return 'Business set up · no supplier or quote yet';
-  return 'Account created · onboarding not started';
-}
-
-function formatDays(ms: number): string {
-  if (!Number.isFinite(ms)) return 'since signup';
-  const days = Math.max(1, Math.floor(ms / DAY));
-  return `${days}d`;
 }
 
 function capitalize(value: string): string {
