@@ -546,6 +546,28 @@
   line-height: 1.4;
 }
 
+.followUpUndo {
+  margin-top: 5px;
+  padding: 0;
+  color: var(--color-text-tertiary, #64748b);
+  font-size: 11px;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.followUpUndo:hover:not(:disabled) {
+  color: #fca5a5;
+}
+
+.followUpUndo:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
 .followUpContactError {
   margin-top: 5px;
   color: #fca5a5;

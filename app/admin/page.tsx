@@ -21,8 +21,11 @@ import {
   buildFollowUps,
   contactNoteText,
   followUpCounts,
+  forgetContacted,
   outstanding,
   pruneContacted,
+  undoableNoteIds,
+  withContactNote,
   FOLLOW_UP_FILTERS,
   type ContactedEntry,
   type ContactedMap,
@@ -139,6 +142,14 @@ export default function AdminDashboard() {
     });
   };
 
+  const clearContacted = (uid: string) => {
+    setContacted((prev) => {
+      const next = forgetContacted(prev, uid);
+      setCached('dashboard-contacted', next);
+      return next;
+    });
+  };
+
   const followUps = useMemo(() => buildFollowUps(followUpSource), [followUpSource]);
   const visibleFollowUps = useMemo(
     () => followUps.filter((item) => followUpFilter === 'all' || item.kinds.includes(followUpFilter)),
@@ -213,6 +224,7 @@ export default function AdminDashboard() {
             counts={counts}
             contacted={contacted}
             onContacted={markContacted}
+            onUndoContacted={clearContacted}
             activeFilter={followUpFilter}
             onFilter={setFollowUpFilter}
             loading={followUpsLoading}
@@ -337,6 +349,7 @@ function FollowUpCentre({
   counts,
   contacted,
   onContacted,
+  onUndoContacted,
   activeFilter,
   onFilter,
   loading,
@@ -347,6 +360,7 @@ function FollowUpCentre({
   counts: Record<string, number>;
   contacted: ContactedMap;
   onContacted: (uid: string, entry: ContactedEntry) => void;
+  onUndoContacted: (uid: string) => void;
   activeFilter: (typeof FOLLOW_UP_FILTERS)[number]['id'];
   onFilter: (filter: (typeof FOLLOW_UP_FILTERS)[number]['id']) => void;
   loading: boolean;
@@ -399,7 +413,13 @@ function FollowUpCentre({
       ) : (
         <div className={styles.followUpList}>
           {items.slice(0, 18).map((item) => (
-            <FollowUpRow key={item.uid} item={item} contacted={contacted[item.uid]} onContacted={onContacted} />
+            <FollowUpRow
+              key={item.uid}
+              item={item}
+              contacted={contacted[item.uid]}
+              onContacted={onContacted}
+              onUndoContacted={onUndoContacted}
+            />
           ))}
           {items.length > 18 && (
             <Link href="/admin/users" className={styles.followUpMore}>
@@ -416,25 +436,29 @@ function FollowUpRow({
   item,
   contacted,
   onContacted,
+  onUndoContacted,
 }: {
   item: FollowUpItem;
   contacted: ContactedEntry | undefined;
   onContacted: (uid: string, entry: ContactedEntry) => void;
+  onUndoContacted: (uid: string) => void;
 }) {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [summary, setSummary] = useState('');
   const [summarySaving, setSummarySaving] = useState(false);
+  const [undoing, setUndoing] = useState(false);
+  const busy = saving || summarySaving || undoing;
 
   // The tick writes straight away with a plain "Contacted" note, so a single
   // click is never lost. The summary is a second, optional note on top.
   const tick = async () => {
-    if (contacted || saving) return;
+    if (contacted || busy) return;
     setSaving(true);
     setSaveError(null);
     try {
-      await api.addUserNote({ uid: item.uid, note: contactNoteText() });
-      onContacted(item.uid, { at: Date.now(), summary: null });
+      const res: any = await api.addUserNote({ uid: item.uid, note: contactNoteText() });
+      onContacted(item.uid, withContactNote(undefined, { at: Date.now(), noteId: res?.id }));
     } catch (e: any) {
       setSaveError(e?.message || 'Could not save that');
     } finally {
@@ -444,17 +468,37 @@ function FollowUpRow({
 
   const saveSummary = async () => {
     const note = summary.trim();
-    if (!note || summarySaving) return;
+    if (!note || busy) return;
     setSummarySaving(true);
     setSaveError(null);
     try {
-      await api.addUserNote({ uid: item.uid, note });
-      onContacted(item.uid, { at: contacted?.at || Date.now(), summary: note });
+      const res: any = await api.addUserNote({ uid: item.uid, note });
+      onContacted(item.uid, withContactNote(contacted, { at: Date.now(), noteId: res?.id, summary: note }));
       setSummary('');
     } catch (e: any) {
       setSaveError(e?.message || 'Could not save that');
     } finally {
       setSummarySaving(false);
+    }
+  };
+
+  // Undo deletes only the notes this tick wrote, so earlier CRM history is
+  // never touched — and the row goes straight back into the queue.
+  const undo = async () => {
+    const noteIds = undoableNoteIds(contacted);
+    if (!noteIds.length || busy) return;
+    setUndoing(true);
+    setSaveError(null);
+    try {
+      for (const noteId of noteIds) {
+        await api.deleteUserNote({ uid: item.uid, noteId });
+      }
+      onUndoContacted(item.uid);
+      setSummary('');
+    } catch (e: any) {
+      setSaveError(e?.message || 'Could not undo that');
+    } finally {
+      setUndoing(false);
     }
   };
 
@@ -479,7 +523,7 @@ function FollowUpRow({
           title={contacted ? 'Contacted — note saved to their profile' : 'Tick once you’ve spoken to them'}
           className={`${styles.followUpTick} ${contacted ? styles.followUpTickDone : ''}`}
           onClick={tick}
-          disabled={!!contacted || saving}
+          disabled={!!contacted || busy}
         >
           {contacted ? '✓' : saving ? '…' : ''}
         </button>
@@ -515,28 +559,35 @@ function FollowUpRow({
         </div>
 
         {contacted && (
-          contacted.summary ? (
-            <div className={styles.followUpContactNote}>“{contacted.summary}”</div>
-          ) : (
-            <form
-              className={styles.followUpContactForm}
-              onSubmit={(e) => { e.preventDefault(); saveSummary(); }}
-            >
-              <input
-                className={styles.followUpContactInput}
-                value={summary}
-                onChange={(e) => setSummary(e.target.value)}
-                placeholder="Add what happened (optional)"
-                maxLength={280}
-                disabled={summarySaving}
-              />
-              {summary.trim() && (
-                <button type="submit" className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={summarySaving}>
-                  {summarySaving ? 'Saving…' : 'Save'}
-                </button>
-              )}
-            </form>
-          )
+          <>
+            {contacted.summary ? (
+              <div className={styles.followUpContactNote}>“{contacted.summary}”</div>
+            ) : (
+              <form
+                className={styles.followUpContactForm}
+                onSubmit={(e) => { e.preventDefault(); saveSummary(); }}
+              >
+                <input
+                  className={styles.followUpContactInput}
+                  value={summary}
+                  onChange={(e) => setSummary(e.target.value)}
+                  placeholder="Add what happened (optional)"
+                  maxLength={280}
+                  disabled={busy}
+                />
+                {summary.trim() && (
+                  <button type="submit" className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSmall}`} disabled={busy}>
+                    {summarySaving ? 'Saving…' : 'Save'}
+                  </button>
+                )}
+              </form>
+            )}
+            {undoableNoteIds(contacted).length > 0 && (
+              <button type="button" className={styles.followUpUndo} onClick={undo} disabled={busy}>
+                {undoing ? 'Undoing…' : contacted.summary ? 'Undo — remove the note' : 'Ticked by mistake? Undo'}
+              </button>
+            )}
+          </>
         )}
 
         {saveError && <div className={styles.followUpContactError}>{saveError}</div>}

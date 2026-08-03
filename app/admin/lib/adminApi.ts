@@ -17,6 +17,7 @@ export const api = {
   listUsers: call<{ search?: string; limit?: number }>('adminListUsers'),
   getUser: call<{ uid: string }>('adminGetUser'),
   addUserNote: call<{ uid: string; note: string }>('adminAddUserNote'),
+  deleteUserNote: call<{ uid: string; noteId: string }>('adminDeleteUserNote'),
   logCall: call<{ uid: string; outcome: string; notes: string; durationSec?: number }>('adminLogCall'),
   setUserTags: call<{ uid: string; tags: string[] }>('adminSetUserTags'),
   sendUserEmail: call<{ uid: string; subject: string; body: string; bypassPrefs?: boolean }>('adminSendUserEmail'),

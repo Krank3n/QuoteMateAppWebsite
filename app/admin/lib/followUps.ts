@@ -51,6 +51,11 @@ export interface FollowUpItem extends FollowUpUser {
 export interface ContactedEntry {
   at: number;
   summary: string | null;
+  /**
+   * The notes this tick created, newest last. Undo deletes exactly these, so a
+   * tick can only ever remove its own notes — never earlier CRM history.
+   */
+  noteIds: string[];
 }
 
 export type ContactedMap = Record<string, ContactedEntry>;
@@ -171,6 +176,33 @@ export function formatDays(ms: number): string {
  */
 export function contactNoteText(summary?: string | null): string {
   return (summary || '').trim() || 'Contacted';
+}
+
+/** Fold a freshly saved note into the tick, keeping the original tick time. */
+export function withContactNote(
+  prev: ContactedEntry | undefined,
+  note: { at: number; noteId: string; summary?: string | null },
+): ContactedEntry {
+  return {
+    at: prev?.at ?? note.at,
+    summary: note.summary !== undefined ? note.summary : prev?.summary ?? null,
+    noteIds: [...(prev?.noteIds || []), note.noteId],
+  };
+}
+
+export function forgetContacted(contacted: ContactedMap, uid: string): ContactedMap {
+  const next = { ...contacted };
+  delete next[uid];
+  return next;
+}
+
+/**
+ * Undo is only offered when we know which notes the tick wrote. Ticks stored
+ * before note ids were recorded can't be undone blindly — deleting "the latest
+ * note" could take out real CRM history.
+ */
+export function undoableNoteIds(entry: ContactedEntry | undefined): string[] {
+  return (entry?.noteIds || []).filter((id) => typeof id === 'string' && id.length > 0);
 }
 
 /** Ticked-off rows stay on screen but stop counting as outstanding work. */

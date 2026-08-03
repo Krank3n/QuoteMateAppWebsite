@@ -3,9 +3,13 @@ import {
   buildFollowUps,
   contactNoteText,
   followUpCounts,
+  forgetContacted,
   outstanding,
   pruneContacted,
+  undoableNoteIds,
+  withContactNote,
   DAY,
+  type ContactedEntry,
   type FollowUpSource,
   type FollowUpUser,
 } from './followUps';
@@ -120,19 +124,56 @@ describe('ticking someone off the list', () => {
     ]),
     NOW,
   );
+  const tick = (over: Partial<ContactedEntry> = {}): ContactedEntry => ({ at: NOW, summary: null, noteIds: ['n1'], ...over });
 
   it('drops contacted people from the outstanding work', () => {
     expect(items).toHaveLength(2);
-    expect(outstanding(items, { a: { at: NOW, summary: null } }).map((i) => i.uid)).toEqual(['b']);
+    expect(outstanding(items, { a: tick() }).map((i) => i.uid)).toEqual(['b']);
   });
 
   it('subtracts them from the queue counts too', () => {
     const before = followUpCounts(items, {});
-    const after = followUpCounts(items, { b: { at: NOW, summary: 'Fixed their Square link' } });
+    const after = followUpCounts(items, { b: tick({ summary: 'Fixed their Square link' }) });
     expect(before.all).toBe(2);
     expect(before.square).toBe(1);
     expect(after.all).toBe(1);
     expect(after.square).toBe(0);
+  });
+
+  it('puts an undone person straight back into the queue', () => {
+    const contacted = { a: tick() };
+    expect(outstanding(items, contacted)).toHaveLength(1);
+    const undone = forgetContacted(contacted, 'a');
+    expect(outstanding(items, undone)).toHaveLength(2);
+    expect(followUpCounts(items, undone).all).toBe(2);
+    expect(contacted.a).toBeDefined(); // original map untouched
+  });
+});
+
+describe('withContactNote', () => {
+  it('records the note the tick wrote', () => {
+    const entry = withContactNote(undefined, { at: NOW, noteId: 'n1' });
+    expect(entry).toEqual({ at: NOW, summary: null, noteIds: ['n1'] });
+  });
+
+  it('adds the summary note without losing the tick or its first note', () => {
+    const ticked = withContactNote(undefined, { at: NOW, noteId: 'n1' });
+    const withSummary = withContactNote(ticked, { at: NOW + 9000, noteId: 'n2', summary: 'Callback Thursday' });
+    expect(withSummary.at).toBe(NOW);
+    expect(withSummary.summary).toBe('Callback Thursday');
+    expect(withSummary.noteIds).toEqual(['n1', 'n2']);
+  });
+});
+
+describe('undoableNoteIds', () => {
+  it('returns every note the tick created, so undo removes all of them', () => {
+    expect(undoableNoteIds({ at: NOW, summary: 'x', noteIds: ['n1', 'n2'] })).toEqual(['n1', 'n2']);
+  });
+
+  it('refuses to guess for ticks saved before note ids were tracked', () => {
+    expect(undoableNoteIds({ at: NOW, summary: null } as ContactedEntry)).toEqual([]);
+    expect(undoableNoteIds(undefined)).toEqual([]);
+    expect(undoableNoteIds({ at: NOW, summary: null, noteIds: ['', null as any] })).toEqual([]);
   });
 });
 
@@ -140,8 +181,8 @@ describe('pruneContacted', () => {
   it('keeps today\'s ticks and drops yesterday\'s', () => {
     const pruned = pruneContacted(
       {
-        fresh: { at: NOW - 2 * 60 * 60 * 1000, summary: null },
-        stale: { at: NOW - 30 * 60 * 60 * 1000, summary: null },
+        fresh: { at: NOW - 2 * 60 * 60 * 1000, summary: null, noteIds: ['n1'] },
+        stale: { at: NOW - 30 * 60 * 60 * 1000, summary: null, noteIds: ['n2'] },
       },
       NOW,
     );
