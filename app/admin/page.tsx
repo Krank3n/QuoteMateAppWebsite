@@ -60,6 +60,10 @@ interface FollowUpSubscription {
   status: string;
   currentPeriodEnd: number | null;
   cancelAt: number | null;
+  // Real trial end (trialStartedAt + 14 days), from deriveSubFields. Never use
+  // currentPeriodEnd for trial dates — on a non-Pro account that is the month
+  // end of the free-quote counter, so it reads "trial ended" every 1st.
+  trialEndsAt: number | null;
 }
 
 interface FollowUpSource {
@@ -523,20 +527,21 @@ function buildFollowUps(source: FollowUpSource | null): FollowUpItem[] {
     const signupAge = user.signupAt ? now - user.signupAt : Infinity;
     const inactiveFor = user.lastActivityAt ? now - user.lastActivityAt : Infinity;
     const status = sub?.status || user.planTier;
-    const periodEnd = sub?.cancelAt || sub?.currentPeriodEnd;
+    const trialEndsAt = sub?.trialEndsAt || null;
 
-    if (status === 'trialing' && periodEnd) {
-      const days = Math.ceil((periodEnd - now) / DAY);
-      if (days <= 7) {
+    if (status === 'trialing') {
+      // Still trialing by definition (status is derived from trialStartedAt +
+      // 14 days), so this branch never reports a trial as over.
+      const days = trialEndsAt ? Math.ceil((trialEndsAt - now) / DAY) : null;
+      if (days !== null && days <= 7) {
         kinds.push('trial');
-        if (days < 0) reasons.push(`Trial ended ${Math.abs(days)}d ago`);
-        else if (days === 0) reasons.push('Trial ends today');
+        if (days <= 0) reasons.push('Trial ends today');
         else if (days === 1) reasons.push('Trial ends tomorrow');
         else reasons.push(`Trial ends in ${days} days`);
         score += days <= 1 ? 100 : days <= 3 ? 82 : 65;
       }
     } else if (status === 'trial_expired') {
-      const daysSinceEnd = periodEnd ? Math.floor((now - periodEnd) / DAY) : null;
+      const daysSinceEnd = trialEndsAt ? Math.floor((now - trialEndsAt) / DAY) : null;
       if (daysSinceEnd === null || daysSinceEnd <= 14) {
         kinds.push('trial');
         reasons.push(daysSinceEnd !== null && daysSinceEnd > 0 ? `Trial expired ${daysSinceEnd}d ago` : 'Trial has expired');
@@ -545,6 +550,7 @@ function buildFollowUps(source: FollowUpSource | null): FollowUpItem[] {
     }
 
     if (status === 'canceling' || status === 'pro_canceling') {
+      const periodEnd = sub?.cancelAt || sub?.currentPeriodEnd;
       kinds.push('canceling');
       const days = periodEnd ? Math.max(0, Math.ceil((periodEnd - now) / DAY)) : null;
       reasons.push(days !== null ? `Subscription cancels in ${days}d` : 'Subscription is canceling');

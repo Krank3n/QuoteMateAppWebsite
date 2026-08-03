@@ -20,8 +20,17 @@ interface Sub {
   currentPeriodStart: number | null;
   currentPeriodEnd: number | null;
   cancelAt: number | null;
+  trialEndsAt: number | null;
   validatedAt: number | null;
   quotesThisMonth: number;
+}
+
+// What the "Next renewal" column should actually show. Trial accounts have no
+// renewal — their currentPeriodEnd is the free-quote counter's month end, so
+// showing it there reads as a billing date that doesn't exist.
+function renewalDate(s: Sub): number | null {
+  if (s.status === 'trialing' || s.status === 'trial_expired') return s.trialEndsAt;
+  return s.cancelAt || s.currentPeriodEnd;
 }
 
 const STATUS_FILTERS: Array<{ id: string; label: string }> = [
@@ -58,7 +67,7 @@ export default function SubscriptionsPage() {
     const sortedList = [...list];
     if (sortBy === 'business') sortedList.sort((a, b) => (a.businessName || a.email || '').localeCompare(b.businessName || b.email || ''));
     else if (sortBy === 'created') sortedList.sort((a, b) => (b.validatedAt || 0) - (a.validatedAt || 0));
-    else if (sortBy === 'renewal') sortedList.sort((a, b) => (a.currentPeriodEnd || Infinity) - (b.currentPeriodEnd || Infinity));
+    else if (sortBy === 'renewal') sortedList.sort((a, b) => (renewalDate(a) || Infinity) - (renewalDate(b) || Infinity));
     else if (sortBy === 'status') sortedList.sort((a, b) => a.status.localeCompare(b.status));
     return sortedList;
   }, [data, filter, sortBy]);
@@ -172,6 +181,10 @@ export default function SubscriptionsPage() {
                         <td>
                           {s.cancelAt
                             ? <span style={{ color: '#fca5a5' }}>cancels {fmtDate(s.cancelAt)}</span>
+                            : s.status === 'trialing'
+                            ? (s.trialEndsAt ? `trial ends ${fmtDate(s.trialEndsAt)}` : '—')
+                            : s.status === 'trial_expired'
+                            ? (s.trialEndsAt ? `trial ended ${fmtDate(s.trialEndsAt)}` : '—')
                             : s.currentPeriodEnd
                             ? fmtDate(s.currentPeriodEnd)
                             : '—'}
