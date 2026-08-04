@@ -903,7 +903,7 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
           label="Trial → monetised"
           value={pct1(data.conversion.trialToMonetized)}
           valueSuffix="%"
-          sub={`${monetised.count.toLocaleString()} of ${data.trialStarted.toLocaleString()} trials · target 20%`}
+          sub={`${monetised.count.toLocaleString()} of ${data.trialStarted.toLocaleString()} who made a first quote · target 20%`}
           accent
         />
         <StatCard
@@ -1034,7 +1034,7 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
                   <tr>
                     <th>Ad / channel</th>
                     <th>Signups</th>
-                    <th>Trials</th>
+                    <th>1st quote</th>
                     <th>Sent</th>
                     <th>Monetised</th>
                     <th>Trial → monetised</th>
@@ -1066,7 +1066,7 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
     <div className={styles.cardHeader} style={{ marginBottom: 12 }}>
       <div>
         <div className={styles.cardTitle}>Business health</div>
-        <div className={styles.cardSubtitle}>Signup → trial → sent quote → paying</div>
+        <div className={styles.cardSubtitle}>Signup → first quote → sent quote → paying</div>
       </div>
     </div>
   );
@@ -1112,7 +1112,7 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
           label="Trial → paid"
           value={pct1(c.trialToPaid)}
           valueSuffix="%"
-          sub={`${f.paying.toLocaleString()} of ${f.startedTrial.toLocaleString()} trials · target 5%`}
+          sub={`${f.paying.toLocaleString()} of ${f.startedTrial.toLocaleString()} who made a first quote · target 5%`}
           accent
         />
         <StatCard
@@ -1147,13 +1147,13 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
             </div>
           </div>
           <FunnelStep label="Signups" value={f.signups} max={f.signups} />
-          <FunnelStep label="Started a trial" value={f.startedTrial} max={f.signups} />
+          <FunnelStep label="Made a first quote" value={f.startedTrial} max={f.signups} detail="opened the builder — starts the trial clock, not proof of value" />
           {typeof generatedList === 'number' && (
             <FunnelStep
               label="Generated materials list"
               value={generatedList}
               max={f.signups}
-              detail={`${pct1(f.startedTrial ? generatedList / f.startedTrial : 0)}% of trial starters generated one`}
+              detail={`${pct1(f.startedTrial ? generatedList / f.startedTrial : 0)}% of first-quote makers generated one`}
             />
           )}
           {typeof fetchedPrices === 'number' && (
@@ -1169,11 +1169,11 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
               label="Used Mate conversation"
               value={usedConversation}
               max={f.signups}
-              detail={`${pct1(f.startedTrial ? usedConversation / f.startedTrial : 0)}% of trial starters used a quote conversation`}
+              detail={`${pct1(f.startedTrial ? usedConversation / f.startedTrial : 0)}% of first-quote makers used a quote conversation`}
             />
           )}
-          <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of trial starters send one`} />
-          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of trial starters pay · north star`} accent />
+          <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of first-quote makers send one · THE activation gate`} />
+          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of first-quote makers pay · north star`} accent />
           <WorkflowUserSnapshot funnel={funnel} />
         </div>
 
@@ -1193,16 +1193,16 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
             barMax={f.signups}
           />
           <MetricRow
-            label="Trial starters activated"
+            label="First-quote makers activated"
             value={`${pct1(f.startedTrial ? f.sentQuote / f.startedTrial : 0)}%`}
-            detail={`${Math.max(f.startedTrial - f.sentQuote, 0).toLocaleString()} trial starters have not sent a quote yet`}
+            detail={`${Math.max(f.startedTrial - f.sentQuote, 0).toLocaleString()} first-quote makers have not sent one yet`}
             barValue={f.sentQuote}
             barMax={f.startedTrial}
           />
           <MetricRow
             label="Trial → paid"
             value={`${pct1(c.trialToPaid)}%`}
-            detail={`${Math.max(f.startedTrial - f.paying, 0).toLocaleString()} trial starters have not converted yet`}
+            detail={`${Math.max(f.startedTrial - f.paying, 0).toLocaleString()} first-quote makers have not converted yet`}
             barValue={f.paying}
             barMax={f.startedTrial}
             accent

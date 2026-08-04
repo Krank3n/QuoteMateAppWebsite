@@ -27,9 +27,20 @@ export interface AppFunnelSource {
  * Signup → paying, with the quote wizard opened up in the middle.
  *
  * The trial starts when the quote builder is opened (createNewQuote calls
- * startTrialIfNeeded), so "Started a trial" and "opened the builder" are the
- * same moment — everything between it and "Sent a quote" is a screen in the
+ * startTrialIfNeeded), so this step and "opened the builder" are the same
+ * moment — everything between it and "Sent a quote" is a screen in the
  * wizard, which is what makes that stretch readable at all.
+ *
+ * It is deliberately NOT called "Started a trial". That label read as an
+ * activation milestone, and it isn't one: the 2026-08 audit found 28 of 157
+ * first quotes were throwaways (explicit "Test"/"ABC" customers, $0 totals, or
+ * no customer name and no contact details at all), and NONE of those 28 users
+ * ever paid — against 5% of the users whose first quote was real work. Reading
+ * it as activation overstated the funnel by roughly a fifth.
+ *
+ * "Sent a quote" is the activation gate. analyticsService.ts has said so since
+ * the July audit: sending IS the activation event, and only ~24% of
+ * quote-creators have ever sent one.
  */
 export function buildAppStages(source: AppFunnelSource | null | undefined): JourneyStage[] {
   if (!source) return [];
@@ -46,7 +57,7 @@ export function buildAppStages(source: AppFunnelSource | null | undefined): Jour
 
   return [
     { label: 'Signed up', value: source.signups, note: 'account created' },
-    { label: 'Started a trial', value: source.startedTrial, note: 'trial began — the first quote was started' },
+    { label: 'Made a first quote', value: source.startedTrial, note: 'opened the builder — starts the trial clock, not proof of value' },
     ...wizard,
     { label: 'Sent a quote', value: source.sentQuote, note: 'went to a customer' },
     { label: 'Paying', value: source.paying, note: 'billed subscription', accent: true },
