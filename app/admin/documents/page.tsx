@@ -649,10 +649,27 @@ function DocModal({
                 <div className={styles.detailFactGrid}>
                   <Fact label="Materials subtotal" value={`$${Number(full.materialsSubtotal || 0).toFixed(2)}`} />
                   <Fact label="Labor total" value={`$${Number(full.laborTotal || 0).toFixed(2)}`} />
+                  {(() => {
+                    // Labour is stored canonically in hours at a $/hour rate.
+                    // Show the effective hourly rate outright: an inflated quote
+                    // (the Aug 2026 ×8 day-rate bug) is obvious here and nowhere
+                    // else, because a doubled rate is still self-consistent.
+                    const sectionRate = (sections as any[]).find((s) => Number(s?.laborRate) > 0);
+                    const raw = Number(sectionRate?.laborRate ?? full.laborRate ?? 0);
+                    const unit = sectionRate ? sectionRate.laborUnit : full.laborUnit;
+                    const hourly = unit === 'days' ? raw / HOURS_PER_DAY : raw;
+                    if (!(hourly > 0)) return null;
+                    return (
+                      <Fact
+                        label="Labour rate"
+                        value={`$${hourly.toFixed(2)}/h ($${(hourly * HOURS_PER_DAY).toFixed(2)}/day)`}
+                      />
+                    );
+                  })()}
                   {Number(full.laborExtraHours || 0) !== 0 && (
                     <Fact
                       label="Extra labour"
-                      value={`${full.laborExtraHours} ${full.laborUnit || 'h'} (+$${(Number(full.laborExtraHours) * Number(full.laborRate || 0)).toFixed(2)})`}
+                      value={`${full.laborExtraHours} ${full.laborUnit === 'days' ? 'days' : 'h'} (+$${(Number(full.laborExtraHours) * Number(full.laborRate || 0)).toFixed(2)})`}
                     />
                   )}
                   <Fact label="Subtotal (pre-markup)" value={`$${Number(full.subtotal || 0).toFixed(2)}`} />
