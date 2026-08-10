@@ -23,6 +23,10 @@ type DocType = 'quote' | 'invoice';
 // back to hours so day-unit sections reconcile with the job's hour estimate.
 const HOURS_PER_DAY = 8;
 
+// Below this share of collected dollars running through Square, the attach-rate
+// tile goes red. Tunable — it's a "this needs attention" line, not a target.
+const LOW_SQUARE_ATTACH_PCT = 25;
+
 interface DocumentRow {
   id: string;
   uid: string;
@@ -61,6 +65,8 @@ interface DocumentRow {
   hasAcceptanceToken: boolean;
   depositPaid: number;
   paidTotal: number;
+  /** Subset of paidTotal that ran through Square — the only slice we earn a fee on. */
+  squarePaidTotal: number;
   balanceDue: number;
   depositPaidAt: number | null;
   squarePaymentId: string | null;
@@ -90,6 +96,8 @@ interface ListTotals {
   valueInvoiced: number;
   valuePaid: number;
   paidCount: number;
+  valuePaidSquare: number;
+  paidCountSquare: number;
 }
 
 const TYPE_FILTERS: Array<{ id: '' | DocType; label: string }> = [
@@ -234,9 +242,15 @@ function DocumentsPageInner() {
           sub={`${(totals.invoice_sent || 0) + (totals.partially_paid || 0) + (totals.paid || 0)} invoices · ${totals.paid || 0} paid`}
         />
         <StatTile
-          label="Paid via Square"
+          label="Payments recorded"
           value={`$${Math.round(totals.valuePaid || 0).toLocaleString()}`}
-          sub={`${totals.paidCount || 0} docs with payments`}
+          sub={`${totals.paidCount || 0} docs · all methods`}
+        />
+        <StatTile
+          label="Of that, via Square"
+          value={`$${Math.round(totals.valuePaidSquare || 0).toLocaleString()}`}
+          sub={`${totals.paidCountSquare || 0} docs · ${squareAttachRate(totals)}% of $ collected`}
+          warn={(totals.paidCount || 0) > 0 && squareAttachRate(totals) < LOW_SQUARE_ATTACH_PCT}
         />
       </div>
 
@@ -514,6 +528,17 @@ function conversionRate(totals: Partial<ListTotals>): number {
   const sent = (totals.quote_sent || 0) + (totals.quote_accepted || 0) + (totals.quote_rejected || 0);
   if (!sent) return 0;
   return Math.round(((totals.quote_accepted || 0) / sent) * 100);
+}
+
+/**
+ * Share of collected dollars that ran through Square. Everything else is a
+ * manual cash/bank/cheque entry the tradie ticked off — real money for them,
+ * zero platform fee for us, so this is the monetisation number to watch.
+ */
+function squareAttachRate(totals: Partial<ListTotals>): number {
+  const collected = totals.valuePaid || 0;
+  if (!collected) return 0;
+  return Math.round(((totals.valuePaidSquare || 0) / collected) * 100);
 }
 
 function DocModal({
