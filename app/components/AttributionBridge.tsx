@@ -20,8 +20,9 @@ import Script from 'next/script';
  *    signups stay the reporting truth in Firestore).
  */
 
+import { PARAM_KEYS, withAttributionReferrer } from './attributionReferrer';
+
 const STORAGE_KEY = 'qm_attribution';
-const PARAM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'];
 // Pixel IDs are public (visible in any page source). Default to the QuoteMate
 // dataset so the pixel survives build environments (e.g. DO App Platform)
 // that don't carry the local .env; the env var stays as an override.
@@ -99,6 +100,25 @@ export default function AttributionBridge() {
       // attribution is best-effort; never break the page
     }
   }, [isAdmin, pathname]);
+
+  // Play badges: swap the hardcoded organic referrer for stored first-touch
+  // attribution at click time (delegated + capture, so late-rendered badges
+  // like InstallSheet's are covered too). Organic visitors keep the default.
+  useEffect(() => {
+    if (isAdmin) return;
+    const onClick = (e: MouseEvent) => {
+      const badge = (e.target as Element | null)?.closest?.('a[href^="https://play.google.com/"]');
+      if (!(badge instanceof HTMLAnchorElement)) return;
+      try {
+        const rewritten = withAttributionReferrer(badge.href, sessionStorage.getItem(STORAGE_KEY));
+        if (rewritten) badge.href = rewritten;
+      } catch {
+        // attribution is best-effort; never interfere with the click
+      }
+    };
+    document.addEventListener('click', onClick, true);
+    return () => document.removeEventListener('click', onClick, true);
+  }, [isAdmin]);
 
   // SignupStart on /app CTA clicks (delegated so it survives re-renders).
   useEffect(() => {

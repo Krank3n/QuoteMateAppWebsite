@@ -148,7 +148,7 @@ export default function PricingPage() {
                 { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel your Pro subscription anytime from the app. You\'ll keep Pro access until the end of your billing period, then revert to Free.' },
                 { q: 'Do I need to pay separately for each device?', a: 'No. One subscription works across iOS, Android, and Web. Buy on any platform, use on all of them.' },
                 { q: 'Is GST included in the pricing?', a: 'The prices shown are in AUD. GST is included where applicable.' },
-                { q: 'What payment methods do you accept?', a: 'We accept all major credit cards, Google Pay, and Apple Pay through the respective app stores.' },
+                { q: 'What payment methods do you accept?', a: 'All major credit and debit cards through our secure web checkout, or Google Pay and Apple Pay if you subscribe inside the app. One subscription works across web, iOS, and Android.' },
               ].map((item, i) => (
                 <div key={i} className="guide-section">
                   <h3>{item.q}</h3>
@@ -163,7 +163,7 @@ export default function PricingPage() {
           <div className="container">
             <div className="final-cta-content">
               <h2 className="section-title">Ready to Get Started?</h2>
-              <p className="section-subtitle">Join thousands of Australian tradies creating professional quotes with QuoteMate.</p>
+              <p className="section-subtitle">Join hundreds of Australian tradies creating professional quotes with QuoteMate.</p>
               <CTAButtons showWebLink />
             </div>
           </div>
