@@ -640,6 +640,16 @@ export default function HomePage() {
             </div>
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;I had to fix some decking, I took a photo and it gave me a list of stuff I needed to buy, it got prices from the website&hellip; it added things that I would have forgot. Basically I took a photo, and I got a list, perfect!&rdquo;</p>
+              <div className="who"><div className="av">KV</div><div><b>Karl van Lieshout</b><span>Google Play &middot; verified</span></div></div>
+            </div>
+            <div className="tcard">
+              <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;I was very long time trying to find something like this. I am a cabinet maker who spending countless time to quote clients&hellip; but it seems this app make it easier.&rdquo;</p>
+              <div className="who"><div className="av">MH</div><div><b>Msmokhtar Hosseini</b><span>Google Play &middot; verified</span></div></div>
+            </div>
+            <div className="tcard">
+              <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <p>Rated <b>5.0</b> by tradies on Google Play. Used QuoteMate on a job? We&apos;d genuinely love your honest review.</p>
               <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
             </div>
@@ -917,11 +927,27 @@ export default function HomePage() {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
-          "reviewCount": "2",
+          "reviewCount": "4",
           "bestRating": "5",
           "worstRating": "1",
         },
         "review": [
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Karl van Lieshout" },
+            "datePublished": "2026-07-19",
+            "publisher": { "@type": "Organization", "name": "Google Play" },
+            "reviewBody": "A friend told me about quote mate, and at first I didn't quite get it. I had to fix some decking, I took a photo and it gave me a list of stuff I needed to buy, it got prices from the website. Basically it took all the thinking out of it for me. The best thing was it added things that I would have forgot. Basically I took a photo, and I got a list, perfect!",
+          },
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Msmokhtar Hosseini" },
+            "datePublished": "2026-08-14",
+            "publisher": { "@type": "Organization", "name": "Google Play" },
+            "reviewBody": "I found this app very interesting, I was very long time trying to find something like this I am a cabinet maker who spending countless time to quote clients. But it seems this app make it easier, thanks founder and chat gbt for recommendations.",
+          },
           {
             "@type": "Review",
             "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
