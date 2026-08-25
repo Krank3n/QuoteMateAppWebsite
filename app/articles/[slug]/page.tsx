@@ -103,7 +103,7 @@ export default async function ArticlePage({ params }: Props) {
             <div className="seo-hero-content">
               <div className="blog-meta">
                 {trade && <span className="seo-badge">{trade.name}</span>}
-                <span className="blog-meta-text">Updated {formatMonthYear(modified)} &middot; {readingTime} min read</span>
+                <span className="blog-meta-text">By <Link href="/about#tom" className="blog-author-link">Tom Hansen</Link>, QuoteMate founder &middot; Updated {formatMonthYear(modified)} &middot; {readingTime} min read</span>
               </div>
               <h1 className="seo-hero-title">{guide.title}</h1>
               <p className="seo-hero-subtitle">{guide.description}</p>
@@ -123,6 +123,12 @@ export default async function ArticlePage({ params }: Props) {
                 height={450}
                 loading="eager"
               />
+              {guide.summary && (
+                <div className="guide-quick-answer">
+                  <h2>Quick answer</h2>
+                  <p>{renderBody(guide.summary)}</p>
+                </div>
+              )}
               {guide.sections.map((section, i) => (
                 <div key={i} className="guide-section">
                   <h2>{section.heading}</h2>
@@ -206,7 +212,8 @@ export default async function ArticlePage({ params }: Props) {
         "image": `https://quotemateapp.au${heroImage}`,
         "datePublished": published,
         "dateModified": modified,
-        "author": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au" },
+        ...(guide.summary ? { "abstract": guide.summary } : {}),
+        "author": { "@type": "Person", "name": "Tom Hansen", "url": "https://quotemateapp.au/about#tom", "jobTitle": "Founder, QuoteMate" },
         "publisher": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au", "logo": { "@type": "ImageObject", "url": "https://quotemateapp.au/assets/logo.png" } },
       })}} />
     </>

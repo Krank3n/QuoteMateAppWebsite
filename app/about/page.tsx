@@ -65,6 +65,11 @@ export default function AboutPage() {
                 </ul>
               </div>
 
+              <div className="guide-section" id="tom">
+                <h2>Who&rsquo;s Behind QuoteMate</h2>
+                <p>QuoteMate is built and run by <strong>Tom Hansen</strong>, an Australian software developer. Tom writes and reviews the quoting guides on this site, drawing on what he learns from the tradies using QuoteMate every day &mdash; what jobs they quote, where quotes blow out, and what actually gets invoices paid. He also builds <a href="https://callkatie.ai" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)' }}>CallKatie</a>, QuoteMate&rsquo;s sister product.</p>
+              </div>
+
               <div className="guide-section">
                 <h2>Get in Touch</h2>
                 <p>We&rsquo;d love to hear from you. Whether it&rsquo;s a feature request, a question, or just to say g&rsquo;day &mdash; drop us a line at <a href="mailto:tom@hansendev.com.au" style={{ color: 'var(--color-accent)' }}>tom@hansendev.com.au</a>.</p>
@@ -80,6 +85,17 @@ export default function AboutPage() {
         </section>
       </main>
       <Footer />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://quotemateapp.au/about#tom",
+        "name": "Tom Hansen",
+        "jobTitle": "Founder, QuoteMate",
+        "url": "https://quotemateapp.au/about#tom",
+        "email": "tom@hansendev.com.au",
+        "worksFor": { "@type": "Organization", "name": "QuoteMate", "url": "https://quotemateapp.au" },
+      })}} />
     </>
   );
 }

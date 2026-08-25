@@ -2845,7 +2845,9 @@
         "Use real-time pricing — material costs change frequently",
         "Add a 5–10% contingency for unforeseen issues",
         "Include payment terms and a timeline estimate"
-      ]
+      ],
+      "summary": "A standard Australian bathroom renovation costs $15,000–$35,000: budget jobs start at $10,000–$15,000, mid-range sits at $20,000–$30,000, and premium fit-outs exceed $40,000. Quote with a 10% tile-and-adhesive waste factor and a 5–10% contingency line, and itemise trades, fixtures, and waterproofing separately so variations don't eat your margin.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-a-deck-build",
@@ -2921,7 +2923,8 @@
         "Include a clear allowance for plumbing and electrical relocations",
         "Specify painting scope — is it just splashback area or full kitchen?",
         "Add a timeline showing trade sequence and expected completion date"
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-fence-installation",
@@ -3035,7 +3038,8 @@
         "Quote exposed aggregate or coloured concrete as a premium add-on",
         "Factor in existing concrete removal if applicable",
         "Specify curing time (usually 7 days before vehicle traffic)"
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-solar-installation",
@@ -3073,7 +3077,8 @@
         "Specify warranty periods for panels, inverter, and workmanship separately",
         "Check if meter board upgrade is needed and include it in the quote",
         "Present payback period to help the customer justify the investment"
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-pergola",
@@ -3149,7 +3154,9 @@
         "Quote cable runs and point installations separately",
         "Specify if the switchboard needs upgrading to accommodate new circuits",
         "Use real-time pricing for materials — electrical supplies fluctuate"
-      ]
+      ],
+      "summary": "Most Australian electricians quote either an hourly rate of $80–$120 plus materials, or per-point pricing of $100–$200 per power or light point. Standard jobs suit fixed prices: power points $150–$250 each, downlights $80–$150, safety switches $200–$350, switchboard upgrades $1,500–$4,000. Add materials markup and travel before you send it.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-plumbing-work",
@@ -3225,7 +3232,9 @@
         "Account for access — tight sites increase labour and equipment costs",
         "Check for underground services before committing to a wall position",
         "Quote spoil removal separately if significant excavation is needed"
-      ]
+      ],
+      "summary": "Australian retaining walls are quoted per linear metre: timber sleepers $200–$400, concrete sleepers $300–$600, rendered besser block $350–$550, natural stone $400–$800. Height drives cost — a 1.5m wall runs roughly double a 600mm wall per metre once posts, engineering ($500–$2,000), and drainage are in. Price drainage and site access before you quote.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-a-roof-restoration",
@@ -3301,7 +3310,8 @@
         "Include the energy star rating and estimated running costs",
         "Quote pipe covers as an optional extra for a neat finish",
         "Specify warranty periods for unit, compressor, and labour separately"
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-landscaping",
@@ -3339,7 +3349,9 @@
         "Quote plant species and pot sizes specifically",
         "Include irrigation as a standard recommendation, not an afterthought",
         "Factor in seasonal timing — some work is best done in specific seasons"
-      ]
+      ],
+      "summary": "Quote landscaping by component, per square metre: turf $25–$45/m² including soil prep, paving $80–$180/m² installed, planted garden beds with mulch $100–$200/m², and drip irrigation $10–$20/m². A small courtyard makeover typically lands at $5,000–$15,000; a full front-and-back project runs $15,000–$50,000. Itemising each element wins more jobs than a lump sum.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-tiling",
@@ -3643,7 +3655,9 @@
         "Factor in a contingency of 5-10% for unforeseen costs or minor variations that might arise during the build.",
         "Clearly state your lead times for materials and project completion, managing client expectations from the outset.",
         "Keep up-to-date with local council requirements and Australian Standards (e.g., AS/NZS 1170 for structural design actions) to ensure compliance and avoid penalties."
-      ]
+      ],
+      "summary": "A 3x3m garden shed runs $2,000–$6,000 for kit and basic install, a 6x6m–9x9m workshop shed $10,000–$35,000 including slab, and 12x12m+ rural sheds $30,000–$100,000+. Price the slab separately ($80–$150/m² for concreters), allow $60–$100/hour for skilled labour, and check council permits and engineering before you commit to a number.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-a-driveway-gate-installation",
@@ -3681,7 +3695,9 @@
         "Stay informed about relevant Australian Standards, particularly AS/NZS 3000 for electrical work and AS 1926.1-2012 for pool gates, ensuring compliance and client safety.",
         "Leverage technology like QuoteMate to streamline your quoting process, create professional, detailed quotes quickly, and track project profitability effortlessly.",
         "Build strong relationships with local suppliers and automation providers; this can lead to better pricing, faster delivery, and reliable technical support."
-      ]
+      ],
+      "summary": "Manual driveway swing gates run $2,500–$6,000+ installed and sliding gates $3,500–$8,000+; automation lifts that to $6,000–$15,000+ for swing and $7,000–$20,000+ for sliding. Big line items: gate panels $1,000–$7,000 by material, posts $100–$500 each, automation kits $700–$3,000, plus licensed electrical work to AS/NZS 3000. Quote site prep and finishes separately.",
+      "dateModified": "2026-08-25"
     },
     {
       "slug": "how-to-quote-gutter-replacement",
@@ -3757,7 +3773,8 @@
         "Specify cure times in your quote, informing the client exactly when the floor will be trafficable and fully cured, managing their expectations.",
         "Consider offering tiered options (e.g., a standard finish, a flake system, or a metallic finish) to cater to different budgets and client preferences.",
         "Utilise quoting software like QuoteMate to ensure all line items are included, calculations are accurate, and your quotes look professional and detailed."
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-laundry-renovation",
@@ -3833,7 +3850,8 @@
         "Itemise all costs, including materials, labour, hardware, gates, waste removal, and any permits required, for transparency.",
         "Include a small contingency (e.g., 5-10%) in your quote for unexpected minor issues or material fluctuations.",
         "Use QuoteMate to generate professional, detailed, and itemised quotes quickly, helping you win more pool fencing jobs."
-      ]
+      ],
+      "unlisted": true
     },
     {
       "slug": "missed-calls-cost-tradies",
@@ -4167,7 +4185,8 @@
         "Use a skip bin for waste removal; don't rely on multiple tip runs."
       ],
       "datePublished": "2026-05-11",
-      "dateModified": "2026-05-11"
+      "dateModified": "2026-08-25",
+      "summary": "Most Australian kitchen renovations land between $20,000 and $45,000: budget cosmetic updates run $10,000–$25,000, mid-range family kitchens $25,000–$50,000, and premium fit-outs with stone and integrated appliances push past $60,000 — up to $100,000 in Sydney or Melbourne. Price by scope tier first, then line-item cabinetry, benchtops, appliances, and trades."
     },
     {
       "slug": "how-to-quote-concrete-driveway",
@@ -4217,7 +4236,8 @@
         "Detail waste disposal costs clearly, especially for old concrete removal."
       ],
       "datePublished": "2026-05-13",
-      "dateModified": "2026-05-13"
+      "dateModified": "2026-08-25",
+      "summary": "Plain grey concrete runs $60–$80 per square metre for material and pour at standard 100–125mm thickness, before prep and finishing labour. Coloured concrete adds $15–$30/m², exposed aggregate pushes to $100–$150/m², and SL82 mesh adds $15–$25/m². Quote per square metre and add pump hire ($400–$700) if truck access is tight."
     },
     {
       "slug": "how-to-quote-roof-replacement-australia",
@@ -4327,7 +4347,8 @@
         "For slate, account for extra time in cutting and handling due to its weight and brittleness."
       ],
       "datePublished": "2026-05-17",
-      "dateModified": "2026-05-17"
+      "dateModified": "2026-08-25",
+      "summary": "Quote standard tiling per square metre, with a minimum charge of around $350 plus materials for small repairs under 5m². Allow 10% wastage for straight-laid tiles and 15–20% for intricate patterns or large-format tiles, and load the m² rate on small jobs to cover setup time. Complex prep or specialist slate work can justify an hourly rate instead."
     },
     {
       "slug": "how-to-quote-painting-interior-house",
@@ -4378,7 +4399,8 @@
         "Review your labour rate every 6-12 months to match rising costs and market rates."
       ],
       "datePublished": "2026-05-19",
-      "dateModified": "2026-05-19"
+      "dateModified": "2026-08-25",
+      "summary": "Australian painters typically charge $10–$25 per square metre for interior walls and ceilings, or a daily rate of $450–$650 ex GST. Materials: a 15L drum of premium interior paint is $200–$280, trade primer about $130–$160 per 10L, plus $50–$100 per room in consumables. Prep eats 20–40% of job time — quote filling, sanding, and masking explicitly."
     },
     {
       "slug": "how-to-quote-retaining-wall-installation",
@@ -4432,7 +4454,8 @@
         "Check local council requirements for wall height, location, and structural integrity before quoting."
       ],
       "datePublished": "2026-05-21",
-      "dateModified": "2026-05-21"
+      "dateModified": "2026-05-21",
+      "unlisted": true
     },
     {
       "slug": "how-to-price-a-fence-installation",
@@ -4483,7 +4506,8 @@
         "Clearly state payment terms and a deposit amount in your quote to secure the job."
       ],
       "datePublished": "2026-05-23",
-      "dateModified": "2026-05-23"
+      "dateModified": "2026-05-23",
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-solar-panel-installation",
@@ -4639,7 +4663,8 @@
         "Verify local council building regulations for minimum insulation R-value requirements in your climate zone."
       ],
       "datePublished": "2026-05-29",
-      "dateModified": "2026-05-29"
+      "dateModified": "2026-08-25",
+      "summary": "Quote insulation per square metre by area: a standard R3.5 glasswool ceiling batt costs about $10–15/m² in materials, underfloor batts $15–20/m², plus installation. A skilled installer covers 20–30m² an hour in an accessible ceiling but only 10–15m² in tight underfloor spaces, so price access, not just area. Allow 5–10% wastage and match R-values to AS/NZS 4859.1."
     },
     {
       "slug": "how-to-quote-driveway-pressure-cleaning",
@@ -4690,7 +4715,8 @@
         "Regularly review your material and chemical costs from your suppliers."
       ],
       "datePublished": "2026-05-31",
-      "dateModified": "2026-05-31"
+      "dateModified": "2026-08-25",
+      "summary": "Basic concrete driveway pressure cleaning in Australia is priced at $2.50–$5.00 per square metre — a standard 60m² driveway at $3.50/m² comes to $210 plus GST. Build the rate from your real costs (a commercial 4000 PSI washer runs $2,000–$5,000) plus a skilled-labour rate of $50–$80/hour, then adjust for grime level and access."
     },
     {
       "slug": "how-to-quote-pest-inspection",
@@ -4745,7 +4771,8 @@
         "Don't just email a quote; follow up with a quick call to answer any questions."
       ],
       "datePublished": "2026-06-01",
-      "dateModified": "2026-06-01"
+      "dateModified": "2026-06-01",
+      "unlisted": true
     },
     {
       "slug": "how-to-handle-missed-tradie-calls",
@@ -4800,7 +4827,8 @@
         "Check your website's contact form functionality monthly on a mobile device."
       ],
       "datePublished": "2026-06-03",
-      "dateModified": "2026-06-03"
+      "dateModified": "2026-08-25",
+      "summary": "Small-business tradies report losing up to $1,000 a week from unanswered calls. The fixes, in rising cost order: an auto-reply text on your business number (often under $50/month with your provider), a virtual assistant at $30–$50/hour, or an AI receptionist from around $149/month that answers and qualifies every call while you're on the tools."
     },
     {
       "slug": "after-hours-plumber-call-out-rates",
@@ -4854,7 +4882,8 @@
         "Review your after-hours pricing annually to keep pace with inflation and wage increases."
       ],
       "datePublished": "2026-06-05",
-      "dateModified": "2026-06-05"
+      "dateModified": "2026-08-25",
+      "summary": "In major Australian cities an after-hours plumbing callout fee typically runs $180–$350, and most metro after-hours jobs land at $350–$700 all-up for the callout plus the first hour, excluding major parts. A common structure is double your standard hourly rate — $90/hr becomes $180/hr on a Sunday. Itemise callout, time, and parts (marked up 15–25%) separately."
     },
     {
       "slug": "how-tradies-can-stop-losing-leads",
@@ -4913,7 +4942,8 @@
         "Review your lead sources and conversion rates monthly to spot where jobs are falling through."
       ],
       "datePublished": "2026-06-07",
-      "dateModified": "2026-06-07"
+      "dateModified": "2026-08-25",
+      "summary": "Tradies lose most leads to slow follow-up, not price — responding fast can lift initial-inquiry conversion by up to 30%, and a five-star Google rating brings in up to 20% more inquiries than four stars. The fix is a system: capture every call, reply the same day, send a professional itemised quote, and follow up — especially on jobs over $10,000."
     },
     {
       "slug": "how-much-should-i-charge-for-callout-fees",
@@ -4968,7 +4998,8 @@
         "Keep a record of typical callout fees in your area to stay competitive but profitable."
       ],
       "datePublished": "2026-06-11",
-      "dateModified": "2026-06-11"
+      "dateModified": "2026-08-25",
+      "summary": "Most Australian tradies charge $80–$150 for a standard weekday callout, then $70–$120 per hour once the job runs past the initial block. After-hours work runs $180–$350, and genuine public-holiday emergencies up to $500 or more. Itemise the callout, hourly rate, and parts separately so the customer sees exactly what they're paying for."
     },
     {
       "slug": "how-to-quote-bathroom-waterproofing-compliance",
@@ -5410,7 +5441,8 @@
         "Include a small contingency in your quote for unforeseen site challenges."
       ],
       "datePublished": "2026-06-27",
-      "dateModified": "2026-06-27"
+      "dateModified": "2026-06-27",
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-bathroom-tiling",
@@ -5519,7 +5551,8 @@
         "Detail waste removal and disposal fees as a separate line item to avoid surprises."
       ],
       "datePublished": "2026-07-01",
-      "dateModified": "2026-07-01"
+      "dateModified": "2026-07-01",
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-a-garage-door-replacement",
@@ -5735,7 +5768,8 @@
         "Confirm the desired finish type and sheen level with your client in writing."
       ],
       "datePublished": "2026-07-09",
-      "dateModified": "2026-07-09"
+      "dateModified": "2026-07-09",
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-smoke-alarm-installation",
@@ -5784,7 +5818,8 @@
         "Always provide a compliance certificate or declaration with the final invoice."
       ],
       "datePublished": "2026-07-11",
-      "dateModified": "2026-07-11"
+      "dateModified": "2026-07-11",
+      "unlisted": true
     },
     {
       "slug": "how-to-quote-commercial-cleaning",
@@ -5889,7 +5924,8 @@
         "Factor in the cost savings from reduced admin time, not just the monthly fee."
       ],
       "datePublished": "2026-07-15",
-      "dateModified": "2026-07-15"
+      "dateModified": "2026-08-25",
+      "summary": "A tradie job management app should cover quoting, invoicing, scheduling, and payments in one place — Australian pricing runs $30 to $150+ per month. Judge it on hours saved: cutting 10 hours of admin a week is worth around $750 at typical tradie rates, so even a $79/month app pays for itself. Check GST handling, offline access, and payment fees before committing."
     },
     {
       "slug": "job-scheduling-app-for-tradies",
@@ -6219,7 +6255,8 @@
         "If your job software claims eCert API integration, ask whether it is live or in progress, and ask for a date. The two get used interchangeably in marketing."
       ],
       "datePublished": "2026-07-27",
-      "dateModified": "2026-07-27"
+      "dateModified": "2026-08-25",
+      "summary": "Since 1 July 2026, NSW electricians must lodge the Certificate of Compliance (CCEW) digitally through eCert — paper certificates no longer count. Missing it risks on-the-spot fines of up to $1,000 per certificate, and non-compliant work carries penalties up to $550,000. Most sparkies charge $50–$95 plus GST per certificate as a line item; if you're not, you're working for free."
     },
     {
       "slug": "tradie-job-photo-annotation-app",

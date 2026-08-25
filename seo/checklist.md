@@ -19,11 +19,19 @@ Loaded into every generation prompt as hard rules, then re-checked programmatica
 | 11 | No banned slop words (see voice.md) | — | — |
 | 12 | No US English (color/center/neighborhood/USD) | — | — |
 | 13 | No competitor SaaS mentions (Tradify, ServiceM8, Jobber, etc.) | — | — |
+| 14 | Quick-answer `summary`: 2–4 sentences that directly answer the primary query (chars) | 180 | 450 |
+| 15 | Concrete verifiable figures in body (AUD prices, %, AS/NZS refs, years) | 3 | — |
+
+Rules 14–15 exist for AI search (added Aug 2026): AI Overviews cite pages that
+open with a direct answer and attach a number, date, or standard to every claim.
+The `summary` renders as the "Quick answer" box under the H1 and as the
+Article schema `abstract`.
 
 ## Soft rules (prompt-enforced, not validated)
 
 - Lead with the answer in each section, then explain.
 - One concrete AUD price or AS standard reference per 200 words.
+- One first-hand observation from running QuoteMate (see "First-hand signal" in voice.md). Never invent customer stories, names, or statistics.
 - Never name a trademarked supplier (Bunnings, Reece, Tradelink, Beacon, CSR, Boral) without written permission. Use generic phrasing: "a trade supplier", "your suppliers", "the major hardware chains".
 - One em-dash per 200 words maximum.
 

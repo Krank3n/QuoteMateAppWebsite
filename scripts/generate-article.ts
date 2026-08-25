@@ -124,6 +124,7 @@ const responseSchema = {
   properties: {
     title: { type: Type.STRING },
     description: { type: Type.STRING },
+    summary: { type: Type.STRING },
     sections: {
       type: Type.ARRAY,
       items: {
@@ -137,7 +138,7 @@ const responseSchema = {
     },
     tips: { type: Type.ARRAY, items: { type: Type.STRING } },
   },
-  required: ['title', 'description', 'sections', 'tips'],
+  required: ['title', 'description', 'summary', 'sections', 'tips'],
 };
 
 function buildPrompt(
@@ -178,6 +179,7 @@ Return ONLY a JSON object matching the schema (no markdown, no code fences):
 {
   "title": "An H1 title that contains the primary keyword and reads naturally",
   "description": "120-160 char meta description ending with a benefit",
+  "summary": "2-3 sentences (180-450 chars) that DIRECTLY answer the primary query with at least one concrete figure. This renders as a 'Quick answer' box under the H1 and is what AI search engines quote — no throat-clearing, no 'this article covers'.",
   "sections": [
     { "heading": "Specific H2", "body": "90-350 words leading with the answer" }
   ],
@@ -222,6 +224,7 @@ async function generateArticleBody(
     const draft: ArticleDraft = {
       title: parsed.title ?? '',
       description: parsed.description ?? '',
+      summary: parsed.summary ?? '',
       keyword: row.primary,
       secondaryKeywords: row.secondaries,
       sections: parsed.sections ?? [],
@@ -360,6 +363,7 @@ async function main() {
     keyword: row.primary,
     secondaryKeywords: row.secondaries,
     description: draft.description,
+    summary: draft.summary,
     relatedTemplate: row.relatedTemplate,
     sections: draft.sections,
     tips: draft.tips,

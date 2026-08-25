@@ -38,6 +38,17 @@ These trigger the AI-slop detector and tank both reader trust and rankings:
 - Close every section with a concrete number, supplier reference, or standard, not a summary.
 - No "in summary" closing section. The last H2 should be a useful one — common mistakes, contingency tips, or a price-check checklist — not filler.
 
+## First-hand signal
+
+Every article includes exactly ONE first-hand observation — something we can honestly say from building and running QuoteMate. Google and AI search engines are actively separating human expertise from generated filler; one honest first-person line does more than ten generic paragraphs.
+
+Allowed framings (pick one, adapt to the topic):
+- "Across the quotes tradies build in QuoteMate, [pattern] — e.g. materials-only quotes get revised twice as often as itemised ones."
+- "The most common question we get from [trade] using the app is…"
+- "When we built the [feature] in QuoteMate, the thing tradies kept asking for was…"
+
+Hard limits: never invent a named customer, a testimonial, or a specific statistic we don't have. If you can't make an honest observation for this topic, generalise it ("a pattern we see with tradie quoting is…") rather than fabricating precision. One per article, in-prose, no heading.
+
 ## QuoteMate-specific cues
 
 - We are a paid app. We charge tradies for it. Never propose free alternatives or DIY spreadsheets as equivalents.

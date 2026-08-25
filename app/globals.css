@@ -3073,6 +3073,39 @@ ul {
     line-height: 1.8;
 }
 
+.guide-quick-answer {
+    background: var(--color-bg-dark);
+    border-left: 3px solid #f97316;
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+}
+
+.guide-quick-answer h2 {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #f97316;
+    margin-bottom: 8px;
+}
+
+.guide-quick-answer p {
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.blog-author-link {
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.blog-author-link:hover {
+    color: var(--color-accent);
+}
+
 .guide-tip-list {
     list-style: none;
 }

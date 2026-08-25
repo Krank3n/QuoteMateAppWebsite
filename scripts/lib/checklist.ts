@@ -8,6 +8,7 @@
 export interface ArticleDraft {
   title: string;
   description: string;
+  summary: string;
   keyword: string;
   secondaryKeywords?: string[];
   sections: { heading: string; body: string }[];
@@ -43,6 +44,10 @@ const COMPETITORS = [
 ];
 
 const URL_RE = /\bhttps?:\/\/[^\s<>()"']+/g;
+
+// Verifiable concrete figures: AUD amounts, percentages, AS/NZS standard
+// references, and years. AI Overviews cite claims that carry a number.
+const CONCRETE_FIGURE_RE = /\$\s?\d[\d,]*(?:\.\d+)?|\b\d+(?:\.\d+)?\s?%|\bAS(?:\/NZS)?\s?\d{3,4}\b|\b(?:19|20)\d{2}\b/g;
 
 function bodyText(a: ArticleDraft): string {
   return a.sections.map((s) => `${s.heading}\n${s.body}`).join('\n\n');
@@ -83,6 +88,19 @@ export function validate(a: ArticleDraft): ValidationFailure[] {
   const dlen = a.description.length;
   if (dlen < 120) failures.push({ rule: 'meta-description-short', detail: `${dlen} chars (min 120)` });
   if (dlen > 160) failures.push({ rule: 'meta-description-long', detail: `${dlen} chars (max 160)` });
+
+  // 4b. Quick-answer summary: 2–4 sentences, 180–450 chars, answer-first
+  const slen = (a.summary || '').trim().length;
+  if (slen < 180) failures.push({ rule: 'summary-short', detail: `${slen} chars (min 180) — 2-3 full sentences that directly answer the query` });
+  if (slen > 450) failures.push({ rule: 'summary-long', detail: `${slen} chars (max 450)` });
+  const summarySentences = (a.summary || '').split(/[.!?]+\s/).filter((s) => s.trim().length > 0).length;
+  if (summarySentences > 4) failures.push({ rule: 'summary-too-many-sentences', detail: `${summarySentences} sentences (max 4)` });
+
+  // 4c. At least 3 concrete verifiable figures ($AUD, %, AS/NZS ref, or year)
+  const figures = all.match(CONCRETE_FIGURE_RE) || [];
+  if (figures.length < 3) {
+    failures.push({ rule: 'too-few-concrete-figures', detail: `${figures.length} concrete figures found (min 3: AUD prices, percentages, AS/NZS standards, or years)` });
+  }
 
   // 5. Title contains primary keyword
   if (!a.title.toLowerCase().includes(a.keyword.toLowerCase())) {

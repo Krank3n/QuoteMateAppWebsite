@@ -72,11 +72,13 @@ export interface Guide {
   keyword: string;
   secondaryKeywords?: string[];
   description: string;
+  summary?: string;
   relatedTemplate: string;
   sections: GuideSection[];
   tips: string[];
   datePublished?: string;
   dateModified?: string;
+  unlisted?: boolean;
 }
 
 export interface SiteData {
@@ -243,7 +245,11 @@ const data = rawData as unknown as {
   integrations?: { reece?: ReeceIntegration };
 };
 
-export const { site, trades, cities, guides } = data;
+export const { site, trades, cities } = data;
+// Guides flagged `unlisted` keep their data but generate no page, sitemap entry,
+// or internal links — same pattern as cityPage below. Used to retire
+// zero-impression articles without deleting the content (GSC audit, Aug 2026).
+export const guides: Guide[] = data.guides.filter((g: Guide) => !g.unlisted);
 // Cities that get trade×city landing pages. Minor metros keep their data but
 // no longer generate pages — 240 near-duplicate pages earned ~21 clicks/quarter
 // and half were "Crawled - currently not indexed" (GSC, July 2026).

@@ -2,8 +2,10 @@ name: Generate Article
 
 on:
   schedule:
-    # Every 2 days at 7:17am AEST (21:17 UTC previous day)
-    - cron: '17 21 */2 * *'
+    # Twice weekly — Mon & Thu 7:17am AEST (Sun & Wed 21:17 UTC).
+    # Dropped from every-2-days after the Aug 2026 spam update: fewer,
+    # deeper, human-reviewed articles over metronomic AI publishing.
+    - cron: '17 21 * * 0,3'
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
@@ -11,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -35,11 +38,23 @@ jobs:
         run: |
           git diff --quiet seo/data.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Commit and push
+      # Articles open as a PR (not straight to main) so every one gets a
+      # human read before it publishes under the founder byline.
+      - name: Open pull request
         if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          SLUG=$(git diff seo/data.json | grep -m1 '"slug"' | sed 's/.*"slug": "\(.*\)".*/\1/')
+          BRANCH="article/${SLUG:-$(date +%Y%m%d)}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
           git add seo/data.json public/assets/articles/
-          git commit -m "Add new article (auto-generated)"
-          git push
+          git commit -m "Add new article: ${SLUG:-auto-generated}"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "New article: ${SLUG:-auto-generated}" \
+            --body "Auto-generated draft for review. Check: the Quick answer box directly answers the query, figures/prices are plausible, the first-hand observation is honest, external links resolve. Merge to publish under the founder byline." \
+            --base main \
+            --head "$BRANCH"

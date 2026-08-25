@@ -35,7 +35,7 @@ interface Trade {
   commonJobs?: (string | { name: string; desc: string })[];
 }
 interface Template { slug: string; name: string; description: string }
-interface Guide { slug: string; title: string; description: string; sections?: { heading: string; body: string }[]; tips?: string[] }
+interface Guide { slug: string; title: string; description: string; sections?: { heading: string; body: string }[]; tips?: string[]; unlisted?: boolean }
 interface City { slug: string; name: string; state: string; cityPage?: boolean }
 interface Spoke { slug: string; title: string; summary: string; intro?: string; sections?: { heading: string; body: string }[]; faqs?: { question: string; answer: string }[] }
 interface PaymentHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
@@ -88,6 +88,8 @@ main().catch((err) => { console.error(err); process.exit(1); });
 
 async function main() {
   const data = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SeoData;
+  // Unlisted guides generate no page (see lib/data.ts) — keep them out of llms.txt too.
+  data.guides = data.guides.filter((g) => !g.unlisted);
 
   const compareModule = await import(pathToFileURL(COMPARE_PATH).href) as { competitors: Competitor[] };
   const competitors: Competitor[] = compareModule.competitors ?? [];
