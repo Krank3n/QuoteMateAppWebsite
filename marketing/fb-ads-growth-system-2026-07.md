@@ -45,15 +45,27 @@ Meta prospecting stays in the plan because the creative system is built and the 
 ```
 Campaign: qm-leads  (Advantage+ Leads or CBO — ONE campaign)
   Ad set: ONE, broad AU 22–55, all placements, exclude customer list
-    → ALL creatives in it (5–10 genuinely distinct concepts, <60% similarity
-      so Andromeda doesn't collapse them into one entity)
+    → TWO concepts at a time below $50/day (see the consolidation caveat), or
+      5–10 genuinely distinct concepts at higher spend, <60% similarity so
+      Andromeda doesn't collapse them into one entity
 Campaign: qm-retargeting  (launch only when matched audience ≥1,000)
 ```
+
+**Consolidation caveat (added 2026-08-11, learned the expensive way).** "ONE ad
+set, all creatives" is right for *delivery* and wrong for *learning* at low
+budget: Meta picks a favourite within days and starves the rest. In the Phase-1
+run one ad took 78% of spend and three took 2–6% of judgment spend, so a
+five-concept batch returned exactly one data point — and the defunded ads had
+*cheaper* traffic ($0.39–$0.46/session vs $0.77) than the one Meta backed. Below
+$50/day, run **two concepts at a time**, and when the question is "which hook
+wins" rather than "how cheap can this get", use Meta's A/B (split) test so budget
+is forced even rather than allocated. Starved ads are **untested, not killed** —
+they go back in the bench queue at full standing.
 
 - **No traffic-objective phase** (the "traffic trap" — clicker CTR doesn't predict conversion performance). Launch on the conversion objective from dollar one.
 - **Optimization event:** `SignupStart` micro-conversion (CTA click / auth-start on quotemateapp.au), NOT the completed Lead. Reason: learning needs ~50 events/wk (budget ≈ CPA×50÷7); a $40/day budget supports learning only if the event costs ≲$5.60. Completed signups stay the *reporting* truth; the cheap upstream event is the *optimization* signal.
 - **Pixel + CAPI with event_id dedup from day one** (pixel-only loses 25–40% of conversions — fatal at our volume). Same-domain simplification (verified): web app serves at `quotemateapp.au/app`, so no cross-domain cookie forwarding needed; UTM/fbclid just have to survive the internal nav to `/app`.
-- Expect **Learning Limited anyway** at this budget — that's normal for small accounts; consolidation minimizes the damage.
+- Expect **Learning Limited anyway** at this budget — that's normal for small accounts; consolidation minimizes the damage. **(2026-08-11: stronger than "expect" — it is arithmetically certain.** SignupStart came in at $19–25, so the ~50 events/week Meta needs costs ~$150/day. At $25/day the optimizer is not a participant, and Phase 1 buys a creative + landing-page read, nothing more. Do not respond to this by switching to a cheap traffic-style event — that is the clicker trap above.)
 - Naming discipline unchanged: ad name = `utm_content` exactly.
 
 ## 4. Budget ladder
@@ -62,6 +74,13 @@ Campaign: qm-retargeting  (launch only when matched audience ≥1,000)
 |---|---|---|---|---|
 | 0: Build | $0 | now | tracking live + end-to-end tested | — |
 | 1: Creative test | **$25/day, $500 cap ⇒ ~3 weeks = 3 decision cycles** | tracking live | a creative at ≤A$60/signup with healthy CTR | $150 spent, zero signups (tracking bug or creative catastrophe — diagnose, don't just rebuy) |
+
+**Concept budget rule (added 2026-08-11 after the Phase-1 run — see `marketing/ads-log.md`).**
+A phase can only judge `budget ÷ (3 × target CPA)` concepts, because §5.2 needs
+~3× target CPA of spend before a concept can be killed. At the $500 Phase-1 cap
+and an A$60 target that is **two concepts, total** — Phase 1 launched five, and
+four of them never reached 6% of judgment spend. Count the concepts against the
+budget *before* building creative, not after.
 | 2: Conversion proof | $50/day, $1,500/mo | Phase-1 winner **AND trial→monetised ≥5%** | cost/trial ≤A$60 sustained 2 wks AND attributed monetised >0 | trailing-14d cost/trial >A$120 |
 | 3: Scale | +20% per 3–4 days (never >30%) | CAC ≤$150 on ≥5 attributed monetised | keep climbing while CAC ≤ ceiling; recompute ceiling when real LTV lands | CAC >2× ceiling trailing 30d, or payback >6mo |
 | 4: Portfolio expand | shift marginal $ to best CAC channel (likely ASA/Google) | 3 profitable months on any channel | — | per-channel same rules |
@@ -101,6 +120,9 @@ Monthly: cohort retention of ad-acquired vs organic (updates LTV → recomputes 
 - Peeking → Monday decisions, thresholds only.
 - **(v2) False negatives** — killing good ads on thin data was v1's biggest error; the 3×-CPA rule exists to prevent it.
 - **(v2) Entity collapse** — near-identical variants cannibalize under Andromeda; keep concepts distinct.
+- **(v3, 2026-08-11) Budget starvation masquerading as a creative verdict** — an ad that got 6% of judgment spend told you nothing. Never move a starved concept to "killed"; §5.2 kills on *spend reached with zero signups*, not on Meta's delivery choices.
+- **(v3) Blaming the landing page for an intent gap** — Phase 1 turned 416 paid visits into 4 signups (0.96%) and the first read called the page the constraint. It isn't: on the same page in the same fortnight, **organic mobile converted 25.3% of sessions to a product click and paid mobile 2.5%**, with paid sessions lasting *longer* (278s vs 263s). Cold interruption traffic is ~10× harder than search intent, and no page fixes that. Always run the organic-vs-paid comparison on the same page and device class before prescribing a redesign.
+- **(v3) Paying to randomise the landing page** — the homepage hero A/B split paid traffic 207/212 while the creative test ran, so neither test could be read. Pin paid traffic to one variant; let organic run the experiment.
 - **(v2) Channel tunnel-vision** — Meta CAC must compete with ASA/Google/partnership CAC monthly, or lose its budget.
 - Ad-acquired cohort quality vs organic; compliance drift (stats stay on the verified list) — unchanged.
 
