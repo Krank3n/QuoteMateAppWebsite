@@ -68,6 +68,31 @@ interface FunnelCohort {
   activationRate: number;
 }
 
+// One Mon–Sun (AEST) signup segment (adminFunnel.helpers.ts WeekCohort).
+// Optional on the payload until the funnel cache refreshes after the
+// weekly-cohorts deploy.
+interface WeekCohortRow {
+  start: number;
+  end: number;
+  matureForPaid: boolean;
+  signups: number;
+  startedTrial: number;
+  sentQuote: number;
+  paying: number;
+}
+
+// A paying subscriber, newest billing period first — visible the day they
+// convert, whatever cohort they signed up in.
+interface RecentPayer {
+  uid: string;
+  email: string | null;
+  businessName: string | null;
+  signupAt: number | null;
+  platform: string | null;
+  periodStart: number | null;
+  restored: boolean;
+}
+
 interface Funnel {
   funnel: {
     signups: number;
@@ -88,6 +113,8 @@ interface Funnel {
     pctPaying: number;
   };
   cohorts?: Record<string, FunnelCohort>;
+  weekCohorts?: WeekCohortRow[];
+  recentPayers?: RecentPayer[];
   conversion: {
     trialToPaid: number;
     activationRate: number;
@@ -348,6 +375,11 @@ export default function AnalyticsPage() {
               populations differ (GA day-scoped vs all-time Firestore), and
               store installs never touch the website at all. */}
           <FullJourney data={data} funnel={funnel} signups7d={signups7d} days={days} setDays={setDays} />
+
+          {/* Week-by-week signup segments + the payer list. The cohort funnels
+              above answer "how far does a cohort get"; these answer "is it
+              getting better" and "who started paying, when". */}
+          <CohortSegments funnel={funnel} />
 
           {/* Headline metrics */}
           <div className={styles.statGrid}>
@@ -685,6 +717,167 @@ function FullJourney({
           own; there is no website → signup rate to compute.
         </div>
       </div>
+    </div>
+  );
+}
+
+// "18–24 Aug", or "28 Jul – 3 Aug" across a month boundary. The admin runs in
+// the founder's timezone, which matches the AEST week boundaries the payload
+// uses.
+function fmtWeekRange(start: number, endExclusive: number): string {
+  const s = new Date(start);
+  const e = new Date(endExclusive - 1);
+  const month = (d: Date) => d.toLocaleDateString('en-AU', { month: 'short' });
+  if (s.getMonth() === e.getMonth()) return `${s.getDate()}–${e.getDate()} ${month(e)}`;
+  return `${s.getDate()} ${month(s)} – ${e.getDate()} ${month(e)}`;
+}
+
+function fmtDay(ms: number | null): string {
+  return ms ? new Date(ms).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }) : '—';
+}
+
+// Week-by-week signup segments + the payer list. The cohort funnel above
+// answers "how far does a cohort get"; this answers "is it getting better"
+// (segments, not a rolling blur) and "who started paying, when" — a
+// conversion shows here the day it lands, even when the tradie signed up
+// weeks before (the cohort funnels structurally hide those).
+function CohortSegments({ funnel }: { funnel: Funnel | null }) {
+  if (!funnel) return null;
+  const weeks = funnel.weekCohorts;
+  const payers = funnel.recentPayers;
+  const now = Date.now();
+
+  if (!weeks && !payers) {
+    return (
+      <div className={styles.card} style={{ marginBottom: 16 }}>
+        <div className={styles.cardTitle}>Cohorts week by week</div>
+        <div className={styles.cardSubtitle}>
+          Appears once the funnel cache refreshes — within 15 minutes of the weekly-cohorts deploy.
+        </div>
+      </div>
+    );
+  }
+
+  const numCell: React.CSSProperties = {
+    textAlign: 'right',
+    fontVariantNumeric: 'tabular-nums',
+    whiteSpace: 'nowrap',
+  };
+  const rateNote: React.CSSProperties = { color: 'var(--color-text-tertiary)', fontWeight: 400 };
+  const anyImmature = (weeks || []).some((w) => !w.matureForPaid);
+
+  return (
+    <div className={styles.card} style={{ marginBottom: 16 }}>
+      <div className={styles.cardHeader}>
+        <div>
+          <div className={styles.cardTitle}>Cohorts week by week</div>
+          <div className={styles.cardSubtitle}>
+            Each row is the tradies who signed up that week (Mon–Sun), followed to wherever they are
+            now — compare rows to spot improvement or trouble.
+          </div>
+        </div>
+      </div>
+
+      {weeks && (
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Signup week</th>
+                <th style={{ textAlign: 'right' }}>Signed up</th>
+                <th style={{ textAlign: 'right' }}>Made a quote</th>
+                <th style={{ textAlign: 'right' }}>Sent a quote</th>
+                <th style={{ textAlign: 'right' }}>Paying</th>
+              </tr>
+            </thead>
+            <tbody>
+              {weeks.map((w, i) => (
+                <tr key={w.start}>
+                  <td style={{ whiteSpace: 'nowrap' }}>
+                    {fmtWeekRange(w.start, w.end)}
+                    {i === 0 && (
+                      <span style={{ marginLeft: 8, fontSize: 10, color: 'var(--color-text-tertiary)' }}>
+                        this week, still filling
+                      </span>
+                    )}
+                  </td>
+                  <td style={numCell}>{w.signups.toLocaleString()}</td>
+                  <td style={numCell}>
+                    {w.startedTrial.toLocaleString()}{' '}
+                    <span style={rateNote}>· {pct(w.startedTrial, w.signups)}</span>
+                  </td>
+                  <td style={numCell}>
+                    {w.sentQuote.toLocaleString()}{' '}
+                    <span style={rateNote}>· {pct(w.sentQuote, w.signups)}</span>
+                  </td>
+                  <td style={numCell}>
+                    {w.paying > 0 ? (
+                      <span style={{ color: '#fb923c', fontWeight: 700 }}>
+                        {w.paying.toLocaleString()}
+                        {!w.matureForPaid && '*'}
+                      </span>
+                    ) : w.matureForPaid ? (
+                      '0'
+                    ) : (
+                      <span style={{ color: 'var(--color-text-tertiary)' }}>—*</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {weeks && anyImmature && (
+        <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10, lineHeight: 1.5 }}>
+          * still maturing — a trial runs {TRIAL_DAYS} days, so this row&apos;s paying count can only
+          grow. A dash means &ldquo;too soon to tell&rdquo;, not &ldquo;nobody converted&rdquo;.
+        </div>
+      )}
+
+      {payers && payers.length > 0 && (
+        <div style={{ marginTop: 18 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.6, color: 'var(--color-text-secondary)', marginBottom: 4 }}>
+            Paying customers — newest billing first
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginBottom: 10 }}>
+            Billing-period start is the first charge for a new payer, or the latest renewal for an
+            established one. A conversion appears here the day it happens, whatever week they signed up.
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {payers.map((p) => {
+              const recent = p.periodStart !== null && now - p.periodStart < 7 * 24 * 60 * 60 * 1000;
+              return (
+                <div
+                  key={p.uid}
+                  style={{
+                    display: 'flex',
+                    gap: 10,
+                    alignItems: 'baseline',
+                    flexWrap: 'wrap',
+                    fontSize: 12,
+                    padding: '7px 10px',
+                    borderRadius: 8,
+                    background: recent ? 'rgba(249,115,22,0.08)' : 'rgba(0,0,0,0.14)',
+                  }}
+                >
+                  <span style={{ fontWeight: 600, minWidth: 0, overflowWrap: 'anywhere' }}>
+                    {p.businessName || p.email || p.uid}
+                  </span>
+                  {p.platform && <span className={styles.miniBadge}>{p.platform}</span>}
+                  {p.restored && <span className={styles.miniBadge}>restored — awaiting receipt</span>}
+                  <span style={{ marginLeft: 'auto', color: recent ? '#fb923c' : 'var(--color-text-secondary)', fontWeight: recent ? 700 : 400, whiteSpace: 'nowrap' }}>
+                    billing {fmtDay(p.periodStart)}
+                  </span>
+                  <span style={{ color: 'var(--color-text-tertiary)', whiteSpace: 'nowrap' }}>
+                    signed up {fmtDay(p.signupAt)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
