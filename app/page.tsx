@@ -127,6 +127,7 @@ export default function HomePage() {
           <a href="/articles">Articles</a>
         </nav>
         <div className="nav-cta">
+          <a href="/app" className="nav-login">Log in</a>
           <a href="/portal" className="btn ghost">Supplier Portal</a>
           <a href="#download" className="btn prim">Download App</a>
         </div>
@@ -140,6 +141,7 @@ export default function HomePage() {
           <a href="#trades">Trades</a>
           <a href="#faq">FAQ</a>
           <a href="/articles">Articles</a>
+          <a href="/app">Log in</a>
           <a href="/portal" className="btn ghost">Supplier Portal</a>
           <a href="#download" className="btn prim">Download App</a>
         </div>

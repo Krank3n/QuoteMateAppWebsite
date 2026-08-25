@@ -90,6 +90,7 @@ export default function Header({ homeLinks = false }: HeaderProps) {
           </ul>
 
           <div className="nav-cta-group">
+            <a href="/app" className="nav-login">Log in</a>
             <Link href="/portal" className="btn btn-secondary nav-cta">Supplier Portal</Link>
             <Link href={`${prefix}#download`} className="btn btn-primary nav-cta">Download App</Link>
           </div>
@@ -125,6 +126,7 @@ export default function Header({ homeLinks = false }: HeaderProps) {
               <li role="none"><Link href={`${prefix}#trades`} role="menuitem" onClick={closeMenu}>Trades</Link></li>
               <li role="none"><Link href={`${prefix}#faq`} role="menuitem" onClick={closeMenu}>FAQ</Link></li>
               <li role="none"><Link href="/articles" role="menuitem" onClick={closeMenu}>Articles</Link></li>
+              <li role="none"><a href="/app" role="menuitem" onClick={closeMenu}>Log in</a></li>
             </ul>
             <div className="mobile-cta-group">
               <Link href="/portal" className="btn btn-secondary" onClick={closeMenu}>Supplier Portal</Link>

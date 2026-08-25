@@ -318,6 +318,19 @@ ul {
     font-size: 0.875rem;
 }
 
+.nav-login {
+    padding: 10px 12px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 400;
+    transition: color var(--transition);
+}
+
+.nav-login:hover {
+    color: var(--color-text-primary);
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;

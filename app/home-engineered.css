@@ -45,6 +45,8 @@
 .eng-home .nav { display: flex; align-items: center; gap: 22px; margin-right: auto; font: 400 .8rem var(--mono); color: var(--tx2); }
 .eng-home .nav a:hover { color: var(--tx); }
 .eng-home .nav-cta { display: flex; align-items: center; gap: 10px; }
+.eng-home .nav-login { padding: 9px 10px; font: 400 .8rem var(--mono); color: var(--tx2); }
+.eng-home .nav-login:hover { color: var(--tx); }
 .eng-home .nav-cta .btn { padding: 9px 16px; font: 600 .82rem var(--display); border-radius: 6px; border: 1px solid transparent; }
 .eng-home .ghost { background: transparent; border-color: var(--line2) !important; color: var(--tx); }
 .eng-home .ghost:hover { border-color: var(--acc) !important; color: var(--acc); }
