@@ -757,18 +757,18 @@ function JourneyBand({
           produced conversions — a big orange 0% reads as a catastrophe when it
           really means "ask again in a fortnight". */}
       {last && top > 0 && (
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
           {endToEndUnavailable ? (
             <>
-              <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--color-text-secondary)', lineHeight: 1.1 }}>—</span>
-              <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>{endToEndUnavailable}</span>
+              <span style={{ fontSize: 22, fontWeight: 800, color: 'var(--color-text-secondary)', lineHeight: 1.1 }}>—</span>
+              <span style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>{endToEndUnavailable}</span>
             </>
           ) : (
             <>
-              <span style={{ fontSize: 20, fontWeight: 800, color: accentEndToEnd ? '#fb923c' : 'inherit', lineHeight: 1.1 }}>
+              <span style={{ fontSize: 22, fontWeight: 800, color: accentEndToEnd ? '#fb923c' : 'inherit', lineHeight: 1.1 }}>
                 {pct1(last.value / top)}%
               </span>
-              <span style={{ fontSize: 11, color: 'var(--color-text-tertiary)' }}>
+              <span style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>
                 end to end · {last.value.toLocaleString()} of {top.toLocaleString()} reach &ldquo;{last.label}&rdquo;
               </span>
             </>
@@ -776,13 +776,14 @@ function JourneyBand({
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
         {stages.map((s, i) => (
           <JourneyStep
             key={s.label}
             label={s.label}
             value={s.value}
             note={s.note}
+            showNote={i === 0}
             share={top > 0 ? s.value / top : 0}
             prev={i > 0 ? stages[i - 1].value : undefined}
             worst={i === worstIndex}
@@ -792,7 +793,7 @@ function JourneyBand({
       </div>
 
       {footnote && (
-        <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', marginTop: 12, lineHeight: 1.5 }}>{footnote}</div>
+        <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 14, lineHeight: 1.5 }}>{footnote}</div>
       )}
     </div>
   );
@@ -802,6 +803,7 @@ function JourneyStep({
   label,
   value,
   note,
+  showNote,
   share,
   prev,
   worst,
@@ -810,6 +812,7 @@ function JourneyStep({
   label: string;
   value: number;
   note: string;
+  showNote?: boolean;
   share: number;
   prev?: number;
   worst?: boolean;
@@ -821,34 +824,66 @@ function JourneyStep({
   const lost = prev !== undefined ? prev - value : 0;
 
   return (
-    <div>
+    <div style={{ marginTop: prev === undefined ? 0 : 9 }}>
+      {/* The step-to-step transition sits BETWEEN the bars it connects, so
+          "84% continued" can't be misread as this bar's share of signups —
+          the bar widths carry that. */}
+      {prev !== undefined && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            flexWrap: 'wrap',
+            padding: '0 0 7px 2px',
+            fontSize: 11.5,
+            lineHeight: 1.4,
+            color: worst ? '#fca5a5' : 'var(--color-text-secondary)',
+          }}
+        >
+          <span aria-hidden style={{ opacity: 0.7 }}>↓</span>
+          <span>
+            <strong style={{ fontWeight: 700 }}>{pct(value, prev)}</strong> continued
+            {lost > 0 && <> · {lost.toLocaleString()} lost</>}
+          </span>
+          {worst && (
+            <span
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: 0.5,
+                padding: '1px 7px',
+                borderRadius: 999,
+                background: 'rgba(239,68,68,0.16)',
+                color: '#fca5a5',
+              }}
+            >
+              biggest drop
+            </span>
+          )}
+        </div>
+      )}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
-        <span style={{ fontSize: 12, fontWeight: 600 }}>{label}</span>
-        <span style={{ fontSize: 17, fontWeight: 800, color: accent ? '#fb923c' : 'inherit' }}>{value.toLocaleString()}</span>
+        <span title={note} style={{ fontSize: 13, fontWeight: 600 }}>{label}</span>
+        <span style={{ fontSize: 16, fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: accent ? '#fb923c' : 'inherit' }}>
+          {value.toLocaleString()}
+        </span>
       </div>
-      <div style={{ height: 7, borderRadius: 999, background: 'rgba(255,255,255,0.08)', margin: '5px 0 4px', overflow: 'hidden' }}>
+      {/* Rounded at the data end only; square at the left baseline. */}
+      <div style={{ height: 20, borderRadius: '0 4px 4px 0', background: 'rgba(148,163,184,0.12)', marginTop: 6, overflow: 'hidden' }}>
         <div
           style={{
             height: '100%',
             width: `${width}%`,
-            borderRadius: 999,
-            background: accent ? '#fb923c' : 'rgba(148,163,184,0.8)',
+            borderRadius: '0 4px 4px 0',
+            background: accent ? '#fb923c' : '#94a3b8',
           }}
         />
       </div>
-      <div style={{ fontSize: 10, color: worst ? '#fca5a5' : 'var(--color-text-tertiary)', display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-        {prev === undefined ? (
-          <span>{note}</span>
-        ) : (
-          <>
-            <span>
-              <strong style={{ fontWeight: 700 }}>{pct(value, prev)}</strong> of the step above
-            </span>
-            {lost > 0 && <span>· {lost.toLocaleString()} lost here</span>}
-            {worst && <span style={{ fontWeight: 700 }}>· biggest drop</span>}
-          </>
-        )}
-      </div>
+      {showNote && (
+        <div style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 5 }}>{note}</div>
+      )}
     </div>
   );
 }
