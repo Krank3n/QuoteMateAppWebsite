@@ -3,6 +3,17 @@ import localContent from '@/seo/local-content.json';
 import templateContent from '@/seo/template-content.json';
 import { extraTemplates } from './extraTemplates';
 
+// A small data-driven price table. Figures must come from copy already
+// published on the site (the linked source article) — never invented here.
+export interface PriceTable {
+  title: string;
+  columns: string[];
+  rows: string[][];
+  note?: string;
+  sourceHref?: string;
+  sourceLabel?: string;
+}
+
 export interface Trade {
   slug: string;
   name: string;
@@ -16,6 +27,8 @@ export interface Trade {
   commonJobs: (string | { name: string; desc: string })[];
   avgQuoteRange: string;
   templateSnippet: string;
+  summary?: string;
+  priceTable?: PriceTable;
   metaTitle?: string;
   metaDescription?: string;
   richContent?: {
@@ -73,6 +86,7 @@ export interface Guide {
   secondaryKeywords?: string[];
   description: string;
   summary?: string;
+  priceTable?: PriceTable;
   relatedTemplate: string;
   sections: GuideSection[];
   tips: string[];

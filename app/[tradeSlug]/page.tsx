@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import FAQ from '../components/FAQ';
 import CTAButtons from '../components/CTAButtons';
+import PriceTable from '../components/PriceTable';
 import { trades, cityPageCities, getTradeBySlug, getTemplatesForTrade, getTradeFAQs, rotatedTrades } from '@/lib/data';
 import WalkthroughPlayer from '../components/WalkthroughPlayer';
 import { TRADES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
@@ -130,6 +131,17 @@ export default async function TradePage({ params }: Props) {
           </div>
         </section>
 
+        {trade.summary && (
+          <section className="seo-quick-answer">
+            <div className="container">
+              <div className="guide-quick-answer">
+                <h2>Quick answer</h2>
+                <p>{trade.summary}</p>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="seo-pain-point">
           <div className="container">
             <div className="pain-point-card">
@@ -171,6 +183,14 @@ export default async function TradePage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {trade.priceTable && (
+          <section className="seo-price-table">
+            <div className="container">
+              <PriceTable table={trade.priceTable} />
+            </div>
+          </section>
+        )}
 
         {trade.richContent && (
           <section className="seo-rich-content">

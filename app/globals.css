@@ -3106,6 +3106,72 @@ ul {
     color: var(--color-accent);
 }
 
+.seo-quick-answer {
+    padding: 8px 0 24px;
+}
+
+.seo-quick-answer .guide-quick-answer,
+.seo-price-table .price-table-block {
+    max-width: 760px;
+}
+
+.seo-price-table {
+    padding: 8px 0 24px;
+}
+
+.price-table-block {
+    margin-bottom: 40px;
+}
+
+.price-table-block h2 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-text-primary);
+}
+
+.price-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    border-radius: var(--radius-md);
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+}
+
+.price-table th {
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    background: var(--color-bg-dark);
+    padding: 12px 16px;
+    white-space: nowrap;
+}
+
+.price-table td {
+    padding: 12px 16px;
+    color: var(--color-text-secondary);
+    border-top: 1px solid rgba(51, 65, 85, 0.5);
+    line-height: 1.6;
+}
+
+.price-table tr td:last-child {
+    white-space: nowrap;
+}
+
+.price-table-note {
+    margin-top: 10px;
+    font-size: 0.8125rem;
+    color: var(--color-text-tertiary);
+}
+
+.price-table-note a {
+    color: var(--color-accent);
+}
+
 .guide-tip-list {
     list-style: none;
 }

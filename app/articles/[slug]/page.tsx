@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CTAButtons from '../../components/CTAButtons';
+import PriceTable from '../../components/PriceTable';
 import { guides, getGuideBySlug, getTradeBySlug, getTemplateBySlug, rotated, rotatedTrades, type Guide } from '@/lib/data';
 
 interface Props {
@@ -129,6 +130,7 @@ export default async function ArticlePage({ params }: Props) {
                   <p>{renderBody(guide.summary)}</p>
                 </div>
               )}
+              {guide.priceTable && <PriceTable table={guide.priceTable} />}
               {guide.sections.map((section, i) => (
                 <div key={i} className="guide-section">
                   <h2>{section.heading}</h2>
