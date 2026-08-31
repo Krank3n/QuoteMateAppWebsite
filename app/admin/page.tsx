@@ -10,6 +10,7 @@ import {
   IconUsers,
   IconSupplier,
   IconSubscription,
+  IconRevenue,
   IconFeedback,
   IconTrendUp,
   IconExternal,
@@ -37,6 +38,16 @@ interface Stats {
   users: { total: number; signupsToday: number; signupsThisWeek: number; activeSevenDay: number };
   subscriptions: { active: number; canceling: number; canceled: number; trialing: number; trialExpired: number };
   suppliers: { total: number; top: Array<{ id: string; name: string; subscriberCount: number }> };
+  // Billed revenue, deduped per store purchase (subscription.helpers
+  // rollupRevenue). Absent on a payload cached before this shipped.
+  revenue?: {
+    payers: number;
+    mrrGross: number;
+    mrrNet: number;
+    arrGross: number;
+    arrNet: number;
+    estimatedPricing: number;
+  };
   feedback: Array<{ id: string; message?: string; rating?: number; email?: string; createdAt?: any; replied?: boolean }>;
   generatedAt: string;
 }
@@ -207,8 +218,21 @@ export default function AdminDashboard() {
               value={stats.subscriptions.active + stats.subscriptions.canceling + stats.subscriptions.trialing}
               sub={`${stats.subscriptions.active} pro · ${stats.subscriptions.trialing} trial · ${stats.subscriptions.canceling} canceling`}
               icon={<IconSubscription />}
-              accent
               series={proTrend}
+            />
+            {/* Real billed revenue — one row per store purchase, priced at what
+                each subscriber is actually charged. /admin/revenue breaks it down. */}
+            <StatCard
+              label="MRR"
+              value={Math.round(stats.revenue?.mrrGross || 0)}
+              display={`$${Math.round(stats.revenue?.mrrGross || 0).toLocaleString()}`}
+              sub={
+                stats.revenue
+                  ? `$${Math.round(stats.revenue.mrrNet).toLocaleString()} net · ${stats.revenue.payers} paying · $${Math.round(stats.revenue.arrGross).toLocaleString()} ARR`
+                  : 'No billed subscriptions'
+              }
+              icon={<IconRevenue />}
+              accent
             />
             <StatCard
               label="Suppliers"
@@ -641,6 +665,7 @@ function initialsForFollowUp(name: string): string {
 function StatCard({
   label,
   value,
+  display,
   sub,
   icon,
   accent,
@@ -648,6 +673,8 @@ function StatCard({
 }: {
   label: string;
   value: number;
+  /** Overrides the number for display — for money and other formatted values. */
+  display?: string;
   sub?: string;
   icon?: React.ReactNode;
   accent?: boolean;
@@ -665,7 +692,7 @@ function StatCard({
           </div>
         )}
       </div>
-      <div className={styles.statValue}>{value.toLocaleString()}</div>
+      <div className={styles.statValue}>{display ?? value.toLocaleString()}</div>
       {sub && <div className={styles.statSub}>{sub}</div>}
       {series && series.length >= 2 && (
         <div style={{ marginTop: 8 }}>

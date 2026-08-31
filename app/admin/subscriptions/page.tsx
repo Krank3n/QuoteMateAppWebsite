@@ -44,7 +44,7 @@ const STATUS_FILTERS: Array<{ id: string; label: string }> = [
 ];
 
 export default function SubscriptionsPage() {
-  const [data, setData] = useState<{ subscriptions: Sub[]; totals: any } | null>(null);
+  const [data, setData] = useState<{ subscriptions: Sub[]; totals: any; revenue?: any } | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState<'status' | 'created' | 'renewal' | 'business'>('renewal');
@@ -72,11 +72,16 @@ export default function SubscriptionsPage() {
     return sortedList;
   }, [data, filter, sortBy]);
 
-  // MRR + paying count come from the backend, which prices each sub by its real
-  // billing interval ($49/mo, $328/yr) and excludes comps / bare isPro flags.
-  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, trialing: 0, trial_expired: 0, free: 0, all: 0, mrr: 0, paying: 0, comped: 0 };
-  const mrr = totals.mrr || 0;
-  const arr = mrr * 12;
+  // MRR + paying count come from the backend, which prices every subscriber at
+  // what their store actually charges them (grandfathered SKUs included),
+  // counts one store purchase once however many accounts carry it, and drops
+  // comps, sandbox purchases and lapsed periods. See /admin/revenue for the
+  // full breakdown and everything the number had to assume.
+  const totals = data?.totals || { active: 0, canceling: 0, canceled: 0, trialing: 0, trial_expired: 0, free: 0, all: 0, mrr: 0, mrrGross: 0, mrrNet: 0, paying: 0, comped: 0 };
+  const revenue = data?.revenue as { mrrGross: number; mrrNet: number; arrGross: number; estimatedPricing: number; duplicateUids: string[] } | undefined;
+  const mrr = revenue?.mrrGross ?? totals.mrr ?? 0;
+  const arr = revenue?.arrGross ?? mrr * 12;
+  const mrrNet = revenue?.mrrNet ?? 0;
   const retentionRate = totals.active + totals.canceled
     ? Math.round((totals.active / (totals.active + totals.canceled)) * 100)
     : 0;
@@ -108,7 +113,12 @@ export default function SubscriptionsPage() {
       ) : (
         <>
           <div className={styles.statGrid}>
-            <StatTile label="MRR (est.)" value={`$${mrr.toLocaleString()}`} sub={`ARR ≈ $${arr.toLocaleString()} · ${totals.paying} paying`} accent />
+            <StatTile
+              label="MRR"
+              value={`$${mrr.toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+              sub={`$${mrrNet.toLocaleString(undefined, { maximumFractionDigits: 0 })} net · ARR ≈ $${arr.toLocaleString(undefined, { maximumFractionDigits: 0 })} · ${totals.paying} paying`}
+              accent
+            />
             <StatTile label="Active" value={totals.active} sub={`${totals.paying} paying · ${totals.comped} comp/internal · ${retentionRate}% retained`} />
             <StatTile label="Trialing" value={totals.trialing} sub={`${totals.trial_expired} expired`} />
             <StatTile label="Canceling" value={totals.canceling} sub="Active until period end" warn={totals.canceling > 0} />
