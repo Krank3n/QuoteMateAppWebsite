@@ -135,7 +135,16 @@ interface Funnel {
 // `pending` means the aggregateEventFunnel cron hasn't produced a cache yet.
 interface EventFunnelData {
   pending?: boolean;
-  shared: { signups: number; quoteDraft: number; quoteSent: number };
+  // customerViewed / quoteAccepted (and the other outcome fields below) are
+  // optional: a cached payload from before the outcome-stage deploy has none,
+  // and the card waits for the next cron run rather than rendering zeros.
+  shared: {
+    signups: number;
+    quoteDraft: number;
+    quoteSent: number;
+    customerViewed?: number;
+    quoteAccepted?: number;
+  };
   pathA: {
     paywallViewed: number;
     checkoutStarted: number;
@@ -145,10 +154,28 @@ interface EventFunnelData {
   };
   pathB: { squareConnected: number; firstPaymentCollected: number; pctFirstPayment: number };
   monetized: { count: number; viaPro: number; viaSquare: number; viaBoth: number };
-  conversion: { trialToMonetized: number; activationRate: number };
+  conversion: {
+    trialToMonetized: number;
+    activationRate: number;
+    sentToViewed?: number;
+    sentToAccepted?: number;
+  };
   trialStarted: number;
+  // Monetised users by their furthest shared stage — read against
+  // histogram.shared for the rate. The question it answers: does a customer
+  // answering the quote predict the tradie paying?
+  monetizedByStage?: Record<string, number>;
+  // app_opened rollup: anyone who opened in the window, who came back on a
+  // later sitting (≥12 h gap), and who came back from a notification tap.
+  returns?: { opened: number; returnedLater: number; viaPush: number };
   histogram: {
-    shared: { signup: number; quote_draft: number; quote_sent: number };
+    shared: {
+      signup: number;
+      quote_draft: number;
+      quote_sent: number;
+      customer_viewed?: number;
+      quote_accepted?: number;
+    };
     pathA: { paywall_viewed: number; checkout_started: number; pro_paid: number };
     pathB: { square_connected: number; first_payment_collected: number };
   };
@@ -1237,6 +1264,8 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
         </div>
       </div>
 
+      <AfterTheSendCard data={data} />
+
       {/* Per-ad acquisition scoreboard — the Monday kill/scale table
           (marketing/fb-ads-growth-system-2026-07.md §6). */}
       {data.attribution && (
@@ -1573,6 +1602,144 @@ function MetricRow({ label, value, detail, barValue, barMax, accent }: { label: 
 // Whole-number percent from a 0..1 fraction (one decimal for small conversion
 // rates). Capped at 100: the funnel cohorts aren't strictly nested (e.g. a payer
 // who never wrote trialStartedAt), so raw ratios can exceed 1.
+/**
+ * The stretch between "sent" and "viewed the paywall" that used to be dark:
+ * did the customer open the quote, did they say yes, and did the tradie come
+ * back to see it. Sending is the activation event (Jul 2026 audit); this is
+ * the read on what happens next, and whether it predicts paying.
+ */
+function AfterTheSendCard({ data }: { data: EventFunnelData }) {
+  const sent = data.shared.quoteSent;
+  const viewed = data.shared.customerViewed;
+  const accepted = data.shared.quoteAccepted;
+  const h = data.histogram.shared;
+  const byStage = data.monetizedByStage;
+  const returns = data.returns;
+
+  const cell: React.CSSProperties = { textAlign: 'right', fontVariantNumeric: 'tabular-nums' };
+  const rateNote: React.CSSProperties = { color: 'var(--color-text-tertiary)', fontWeight: 400 };
+
+  const header = (
+    <div className={styles.cardHeader}>
+      <div>
+        <div className={styles.cardTitle}>After the send</div>
+        <div className={styles.cardSubtitle}>
+          Did the customer answer, and did the tradie come back to see it · outcomes are durable,
+          returns from app_opened events in the last {data.eventWindowDays} days
+        </div>
+      </div>
+    </div>
+  );
+
+  if (viewed === undefined || accepted === undefined) {
+    return (
+      <div className={styles.card} style={{ marginTop: 16 }}>
+        {header}
+        <div className={styles.cardSubtitle}>
+          Appears after the next <code>aggregateEventFunnel</code> run picks up the outcome stages.
+        </div>
+      </div>
+    );
+  }
+
+  const outcomeRows: { key: string; label: string; note: string }[] = [
+    { key: 'quote_sent', label: 'Sent, never opened', note: 'the quote never reached anyone' },
+    { key: 'customer_viewed', label: 'Opened, no answer', note: 'the customer looked and went quiet' },
+    { key: 'quote_accepted', label: 'Accepted', note: 'the job was won — the app visibly earned its keep' },
+  ];
+
+  return (
+    <div className={styles.card} style={{ marginTop: 16 }}>
+      {header}
+      <div className={styles.dashGrid}>
+        <div>
+          <FunnelStep label="Sent a quote" value={sent} max={Math.max(sent, 1)} />
+          <FunnelStep
+            label="Customer opened it"
+            value={viewed}
+            max={Math.max(sent, 1)}
+            detail={`${pct1(data.conversion.sentToViewed ?? 0)}% of senders`}
+          />
+          <FunnelStep
+            label="Customer said yes"
+            value={accepted}
+            max={Math.max(sent, 1)}
+            detail={`${pct1(data.conversion.sentToAccepted ?? 0)}% of senders`}
+            note="on the acceptance link, or marked accepted in the app"
+            accent
+          />
+          {returns && (
+            <>
+              <MetricRow
+                label="Opened the app"
+                value={returns.opened.toLocaleString()}
+                detail="anyone who showed up at all in the window"
+                barValue={returns.opened}
+                barMax={Math.max(data.shared.signups, 1)}
+              />
+              <MetricRow
+                label="Came back on a later sitting"
+                value={returns.returnedLater.toLocaleString()}
+                detail="an open ≥12 h after the previous one — the day-1 retention read"
+                barValue={returns.returnedLater}
+                barMax={Math.max(data.shared.signups, 1)}
+              />
+              <MetricRow
+                label="Came back from a push"
+                value={returns.viaPush.toLocaleString()}
+                detail="opened from a notification tap at least once"
+                barValue={returns.viaPush}
+                barMax={Math.max(data.shared.signups, 1)}
+                accent
+              />
+            </>
+          )}
+        </div>
+
+        <div>
+          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>
+            Monetised, by how far the customer got
+          </div>
+          <div className={styles.cardSubtitle} style={{ marginBottom: 10 }}>
+            Each sender counted once, at their furthest outcome. If the bottom row converts and the
+            top row doesn't, the lever is getting quotes answered, not the paywall.
+          </div>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Furthest outcome</th>
+                  <th style={cell}>Tradies</th>
+                  <th style={cell}>Monetised</th>
+                </tr>
+              </thead>
+              <tbody>
+                {outcomeRows.map((row) => {
+                  const users = (h as Record<string, number | undefined>)[row.key] ?? 0;
+                  const paid = byStage?.[row.key] ?? 0;
+                  return (
+                    <tr key={row.key}>
+                      <td>
+                        <div style={{ fontWeight: 600 }}>{row.label}</div>
+                        <div className={styles.cardSubtitle}>{row.note}</div>
+                      </td>
+                      <td style={cell}>{users.toLocaleString()}</td>
+                      <td style={cell}>
+                        {paid.toLocaleString()}{' '}
+                        <span style={rateNote}>· {users ? pct1(paid / users) : 0}%</span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function pct1(fraction: number): number {
   const p = Math.min(fraction || 0, 1) * 100;
   return Math.round(p * 10) / 10;
