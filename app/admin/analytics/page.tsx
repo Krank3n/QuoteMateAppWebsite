@@ -131,6 +131,19 @@ interface Funnel {
   cached: boolean;
 }
 
+type OutcomeBucket = 'never_opened' | 'opened_no_answer' | 'rejected' | 'accepted';
+interface WaitSummary { samples: number; median: number; p90: number; max: number }
+interface OutcomeBreakdown {
+  senders: number;
+  buckets: Record<OutcomeBucket, number>;
+  monetized: Record<OutcomeBucket, number>;
+  openedLink: number;
+  quotes: { sent: number; opened: number; accepted: number; rejected: number };
+  hoursToOpen: WaitSummary;
+  hoursToAccept: WaitSummary;
+  bySendMethod: Record<string, { sent: number; opened: number; accepted: number }>;
+}
+
 // Payload of adminEventFunnelStats (functions/src/eventFunnel.helpers.ts).
 // `pending` means the aggregateEventFunnel cron hasn't produced a cache yet.
 interface EventFunnelData {
@@ -166,8 +179,13 @@ interface EventFunnelData {
   // answering the quote predict the tradie paying?
   monetizedByStage?: Record<string, number>;
   // app_opened rollup: anyone who opened in the window, who came back on a
-  // later sitting (≥12 h gap), and who came back from a notification tap.
-  returns?: { opened: number; returnedLater: number; viaPush: number };
+  // later sitting (≥12 h gap), who came back from a notification tap, and
+  // which push types did the pulling.
+  returns?: { opened: number; returnedLater: number; viaPush: number; byPushType?: Record<string, number> };
+  // Exclusive per-sender outcomes + per-quote timing and channel splits
+  // (functions/src/eventFunnel.helpers.ts rollupOutcomes). Optional until the
+  // first cron run after that deploy.
+  outcomes?: OutcomeBreakdown;
   histogram: {
     shared: {
       signup: number;
@@ -1604,140 +1622,304 @@ function MetricRow({ label, value, detail, barValue, barMax, accent }: { label: 
 // who never wrote trialStartedAt), so raw ratios can exceed 1.
 /**
  * The stretch between "sent" and "viewed the paywall" that used to be dark:
- * did the customer open the quote, did they say yes, and did the tradie come
- * back to see it. Sending is the activation event (Jul 2026 audit); this is
- * the read on what happens next, and whether it predicts paying.
+ * what the customer did with the quote, how long they took, which channel got
+ * it opened, and whether the tradie came back to see any of it. Sending is the
+ * activation event (Jul 2026 audit); this is the read on what happens next and
+ * whether it predicts paying.
+ *
+ * One hue throughout, with the row the story is about (a won job) in the
+ * accent — emphasis, not a category palette. Values sit beside every bar and
+ * the bar carries a hover readout, so nothing is colour-only.
  */
 function AfterTheSendCard({ data }: { data: EventFunnelData }) {
-  const sent = data.shared.quoteSent;
-  const viewed = data.shared.customerViewed;
-  const accepted = data.shared.quoteAccepted;
-  const h = data.histogram.shared;
-  const byStage = data.monetizedByStage;
+  const o = data.outcomes;
   const returns = data.returns;
-
-  const cell: React.CSSProperties = { textAlign: 'right', fontVariantNumeric: 'tabular-nums' };
-  const rateNote: React.CSSProperties = { color: 'var(--color-text-tertiary)', fontWeight: 400 };
 
   const header = (
     <div className={styles.cardHeader}>
       <div>
         <div className={styles.cardTitle}>After the send</div>
         <div className={styles.cardSubtitle}>
-          Did the customer answer, and did the tradie come back to see it · outcomes are durable,
-          returns from app_opened events in the last {data.eventWindowDays} days
+          What the customer did with the quote, and whether the tradie came back to see it ·
+          outcomes are durable, returns from app_opened events in the last {data.eventWindowDays} days
         </div>
       </div>
     </div>
   );
 
-  if (viewed === undefined || accepted === undefined) {
+  if (!o) {
     return (
       <div className={styles.card} style={{ marginTop: 16 }}>
         {header}
         <div className={styles.cardSubtitle}>
-          Appears after the next <code>aggregateEventFunnel</code> run picks up the outcome stages.
+          Appears after the next <code>aggregateEventFunnel</code> run picks up the outcome breakdown.
         </div>
       </div>
     );
   }
 
-  const outcomeRows: { key: string; label: string; note: string }[] = [
-    { key: 'quote_sent', label: 'Sent, never opened', note: 'the quote never reached anyone' },
-    { key: 'customer_viewed', label: 'Opened, no answer', note: 'the customer looked and went quiet' },
-    { key: 'quote_accepted', label: 'Accepted', note: 'the job was won — the app visibly earned its keep' },
+  const senders = Math.max(o.senders, 1);
+  const rate = (num: number, den: number) => (den > 0 ? num / den : 0);
+  const outcomeRows: { key: OutcomeBucket; label: string; note: string; accent?: boolean }[] = [
+    { key: 'never_opened', label: 'Never opened', note: 'the link was never clicked' },
+    { key: 'opened_no_answer', label: 'Opened, no answer', note: 'looked, then went quiet' },
+    { key: 'rejected', label: 'Said no', note: 'answered on the link' },
+    { key: 'accepted', label: 'Said yes', note: 'the job was won', accent: true },
   ];
+  const wonRate = rate(o.monetized.accepted, o.buckets.accepted);
+  const lostRate = rate(
+    o.monetized.never_opened + o.monetized.opened_no_answer + o.monetized.rejected,
+    o.buckets.never_opened + o.buckets.opened_no_answer + o.buckets.rejected,
+  );
+  const lift = lostRate > 0 ? wonRate / lostRate : null;
+
+  const methodLabel: Record<string, string> = {
+    email: 'Email',
+    sms: 'SMS',
+    share: 'Share sheet',
+    export_pdf: 'PDF export',
+    manual: 'Marked sent by hand',
+    unknown: 'Before channel tracking',
+  };
+  const methods = Object.entries(o.bySendMethod)
+    .filter(([, v]) => v.sent > 0)
+    .sort((a, b) => rate(b[1].opened, b[1].sent) - rate(a[1].opened, a[1].sent) || b[1].sent - a[1].sent);
+
+  const pushLabel: Record<string, string> = {
+    quote_viewed: 'Customer opened your quote',
+    quote_accepted: 'Customer said yes',
+    quote_rejected: 'Customer said no',
+    quote_expiring: 'Quote about to expire',
+    invoice_paid: 'Invoice paid',
+    invoice_overdue: 'Invoice overdue',
+    quote_priced: 'Mate finished pricing',
+    quote_pricing_snag: 'Mate hit a pricing snag',
+    milestone: 'Milestone',
+    inactivity: 'Inactivity nudge',
+    draft_nudge: 'Unsent draft nudge',
+  };
+  const pushRows = Object.entries(returns?.byPushType ?? {}).sort((a, b) => b[1] - a[1]);
+  const returnsQuiet = !returns || returns.opened === 0;
+
+  const sectionTitle: React.CSSProperties = { fontWeight: 700, fontSize: 13, marginBottom: 2 };
+  const sectionSub: React.CSSProperties = { fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 };
+  const twoCol: React.CSSProperties = { display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: 24 };
 
   return (
     <div className={styles.card} style={{ marginTop: 16 }}>
       {header}
-      <div className={styles.dashGrid}>
+
+      <div style={twoCol}>
+        {/* ---- What the customer did, and who paid ---- */}
         <div>
-          <FunnelStep label="Sent a quote" value={sent} max={Math.max(sent, 1)} />
-          <FunnelStep
-            label="Customer opened it"
-            value={viewed}
-            max={Math.max(sent, 1)}
-            detail={`${pct1(data.conversion.sentToViewed ?? 0)}% of senders`}
+          <div style={sectionTitle}>What the customer did — and how many of each paid</div>
+          <div style={sectionSub}>
+            {o.senders.toLocaleString()} tradies sent a quote, each counted once at the best answer they ever got
+          </div>
+          {outcomeRows.map((row) => {
+            const n = o.buckets[row.key];
+            const paid = o.monetized[row.key];
+            return (
+              <OutcomeBar
+                key={row.key}
+                label={row.label}
+                note={row.note}
+                value={n}
+                max={senders}
+                valueText={`${n.toLocaleString()} · ${pct1(rate(n, senders))}%`}
+                paidText={`${paid.toLocaleString()} paid · ${pct1(rate(paid, n))}%`}
+                paidFraction={rate(paid, n)}
+                accent={row.accent}
+                title={`${row.label}: ${n} of ${o.senders} senders (${pct1(rate(n, senders))}%) · ${paid} monetised (${pct1(rate(paid, n))}%)`}
+              />
+            );
+          })}
+          <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 4 }}>
+            {lift !== null && o.buckets.accepted > 0
+              ? <>A tradie whose customer said yes pays at <strong>{pct1(wonRate)}%</strong>, against <strong>{pct1(lostRate)}%</strong> for everyone still waiting or turned down — <strong>{lift.toFixed(1)}×</strong>. The lever is getting quotes answered, not the paywall.</>
+              : <>No won jobs yet — the paid-rate comparison appears once a customer says yes.</>}
+          </div>
+        </div>
+
+        {/* ---- How fast customers answer ---- */}
+        <div>
+          <div style={sectionTitle}>How fast customers answer</div>
+          <div style={sectionSub}>Per quote, from the send — median, with the slow tail</div>
+          <TimingTile
+            label="Until the customer first opens it"
+            summary={o.hoursToOpen}
+            sub={`${o.quotes.opened.toLocaleString()} of ${o.quotes.sent.toLocaleString()} quotes were opened at all · ${pct1(rate(o.quotes.opened, o.quotes.sent))}%`}
           />
-          <FunnelStep
-            label="Customer said yes"
-            value={accepted}
-            max={Math.max(sent, 1)}
-            detail={`${pct1(data.conversion.sentToAccepted ?? 0)}% of senders`}
-            note="on the acceptance link, or marked accepted in the app"
+          <TimingTile
+            label="Until they say yes"
+            summary={o.hoursToAccept}
+            sub={`${o.quotes.accepted.toLocaleString()} accepted, ${o.quotes.rejected.toLocaleString()} declined`}
             accent
           />
-          {returns && (
-            <>
-              <MetricRow
-                label="Opened the app"
-                value={returns.opened.toLocaleString()}
-                detail="anyone who showed up at all in the window"
-                barValue={returns.opened}
-                barMax={Math.max(data.shared.signups, 1)}
+          <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginTop: 8 }}>
+            Anything unanswered past the slow tail is a quote to chase, and the follow-up nudge should fire before it.
+          </div>
+        </div>
+      </div>
+
+      <div style={{ ...twoCol, marginTop: 24, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        {/* ---- Which channel gets opened ---- */}
+        <div>
+          <div style={sectionTitle}>Which channel gets the quote opened</div>
+          <div style={sectionSub}>Opened rate by how the quote went out · quotes, not tradies</div>
+          {methods.length === 0 ? (
+            <div className={styles.cardSubtitle}>No sent quotes with a channel recorded yet.</div>
+          ) : (
+            methods.map(([method, v]) => (
+              <OutcomeBar
+                key={method}
+                label={methodLabel[method] ?? method}
+                note={`${v.sent.toLocaleString()} sent`}
+                value={v.opened}
+                max={Math.max(v.sent, 1)}
+                valueText={`${v.opened.toLocaleString()} opened · ${pct1(rate(v.opened, v.sent))}%`}
+                paidText={`${v.accepted.toLocaleString()} said yes`}
+                paidFraction={rate(v.accepted, v.sent)}
+                title={`${methodLabel[method] ?? method}: ${v.opened} of ${v.sent} opened (${pct1(rate(v.opened, v.sent))}%), ${v.accepted} accepted`}
               />
-              <MetricRow
-                label="Came back on a later sitting"
-                value={returns.returnedLater.toLocaleString()}
-                detail="an open ≥12 h after the previous one — the day-1 retention read"
-                barValue={returns.returnedLater}
-                barMax={Math.max(data.shared.signups, 1)}
-              />
-              <MetricRow
-                label="Came back from a push"
-                value={returns.viaPush.toLocaleString()}
-                detail="opened from a notification tap at least once"
-                barValue={returns.viaPush}
-                barMax={Math.max(data.shared.signups, 1)}
-                accent
-              />
-            </>
+            ))
           )}
         </div>
 
+        {/* ---- Did the tradie come back ---- */}
         <div>
-          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 8 }}>
-            Monetised, by how far the customer got
+          <div style={sectionTitle}>Did the tradie come back</div>
+          <div style={sectionSub}>
+            {returnsQuiet
+              ? 'Collecting since 3 Sep 2026 — reads zero until app opens accumulate'
+              : `Of ${data.shared.signups.toLocaleString()} signups, in the last ${data.eventWindowDays} days`}
           </div>
-          <div className={styles.cardSubtitle} style={{ marginBottom: 10 }}>
-            Each sender counted once, at their furthest outcome. If the bottom row converts and the
-            top row doesn't, the lever is getting quotes answered, not the paywall.
-          </div>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Furthest outcome</th>
-                  <th style={cell}>Tradies</th>
-                  <th style={cell}>Monetised</th>
-                </tr>
-              </thead>
-              <tbody>
-                {outcomeRows.map((row) => {
-                  const users = (h as Record<string, number | undefined>)[row.key] ?? 0;
-                  const paid = byStage?.[row.key] ?? 0;
-                  return (
-                    <tr key={row.key}>
-                      <td>
-                        <div style={{ fontWeight: 600 }}>{row.label}</div>
-                        <div className={styles.cardSubtitle}>{row.note}</div>
-                      </td>
-                      <td style={cell}>{users.toLocaleString()}</td>
-                      <td style={cell}>
-                        {paid.toLocaleString()}{' '}
-                        <span style={rateNote}>· {users ? pct1(paid / users) : 0}%</span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          {returns && !returnsQuiet ? (
+            <>
+              <OutcomeBar
+                label="Opened the app"
+                note="showed up at all"
+                value={returns.opened}
+                max={Math.max(data.shared.signups, 1)}
+                valueText={`${returns.opened.toLocaleString()} · ${pct1(rate(returns.opened, data.shared.signups))}%`}
+                title={`${returns.opened} of ${data.shared.signups} signups opened the app`}
+              />
+              <OutcomeBar
+                label="Came back on a later sitting"
+                note="an open ≥12 h after the previous one — the day-1 retention read"
+                value={returns.returnedLater}
+                max={Math.max(returns.opened, 1)}
+                valueText={`${returns.returnedLater.toLocaleString()} · ${pct1(rate(returns.returnedLater, returns.opened))}%`}
+                title={`${returns.returnedLater} of ${returns.opened} openers came back on a later sitting`}
+              />
+              <OutcomeBar
+                label="Came back from a push"
+                note="opened from a notification tap"
+                value={returns.viaPush}
+                max={Math.max(returns.opened, 1)}
+                valueText={`${returns.viaPush.toLocaleString()} · ${pct1(rate(returns.viaPush, returns.opened))}%`}
+                title={`${returns.viaPush} of ${returns.opened} openers arrived from a push`}
+                accent
+              />
+              {pushRows.length > 0 && (
+                <div style={{ marginTop: 6 }}>
+                  <div style={{ ...sectionSub, marginBottom: 6 }}>Which pushes did the pulling · tradies brought back by each</div>
+                  {pushRows.map(([type, n]) => (
+                    <OutcomeBar
+                      key={type}
+                      label={pushLabel[type] ?? type}
+                      value={n}
+                      max={Math.max(returns.viaPush, 1)}
+                      valueText={n.toLocaleString()}
+                      title={`${pushLabel[type] ?? type}: ${n} tradies opened the app from this push`}
+                      compact
+                    />
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <div className={styles.cardSubtitle}>
+              The app now records every open — cold start, return from the background, or a notification tap —
+              so this panel will show who comes back, and which push brought them.
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
+}
+
+/**
+ * One labelled bar with its value at the tip and an optional second reading
+ * (paid share) beside it. Single hue; `accent` is the emphasis slot. Bars are
+ * ≤ 12px thick, rounded only at the data end, on a recessive track, and the
+ * whole row carries a hover readout via `title`.
+ */
+function OutcomeBar({ label, note, value, max, valueText, paidText, paidFraction, accent, title, compact }: {
+  label: string;
+  note?: string;
+  value: number;
+  max: number;
+  valueText: string;
+  paidText?: string;
+  paidFraction?: number;
+  accent?: boolean;
+  title?: string;
+  compact?: boolean;
+}) {
+  const w = value > 0 ? Math.max(1.5, Math.min(100, (value / (max || 1)) * 100)) : 0;
+  const fill = accent ? '#fb923c' : 'rgba(148, 163, 184, 0.55)';
+  const paidW = paidFraction !== undefined ? Math.min(100, Math.max(0, paidFraction * 100)) : 0;
+  return (
+    <div title={title} style={{ display: 'grid', gridTemplateColumns: paidText ? 'minmax(0, 1fr) 128px' : 'minmax(0, 1fr)', gap: 12, alignItems: 'center', marginBottom: compact ? 8 : 12 }}>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'baseline', marginBottom: compact ? 2 : 4 }}>
+          <span style={{ fontWeight: compact ? 500 : 700, fontSize: compact ? 12 : 13, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {label}
+            {note && !compact && <span style={{ fontWeight: 400, color: 'var(--color-text-tertiary)' }}> · {note}</span>}
+          </span>
+          <span style={{ fontWeight: 700, fontSize: compact ? 12 : 13, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{valueText}</span>
+        </div>
+        <div style={{ height: compact ? 6 : 10, background: 'rgba(255,255,255,0.06)', borderRadius: '0 4px 4px 0' }}>
+          <div style={{ height: '100%', width: `${w}%`, background: fill, borderRadius: '0 4px 4px 0', transition: 'width 240ms ease' }} />
+        </div>
+      </div>
+      {paidText && (
+        <div>
+          <div style={{ fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', marginBottom: 4, color: 'var(--color-text-secondary)' }}>{paidText}</div>
+          <div style={{ height: 6, background: 'rgba(255,255,255,0.06)', borderRadius: '0 3px 3px 0' }}>
+            <div style={{ height: '100%', width: `${paidW}%`, background: fill, borderRadius: '0 3px 3px 0' }} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Median as the figure, p90 and sample size as the caption. Hours in, humane units out. */
+function TimingTile({ label, summary, sub, accent }: { label: string; summary: WaitSummary; sub: string; accent?: boolean }) {
+  const has = summary.samples > 0;
+  return (
+    <div style={{ padding: '12px 14px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, marginBottom: 10, borderColor: accent ? 'rgba(249, 115, 22, 0.25)' : undefined }}>
+      <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginBottom: 4 }}>{label}</div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+        <span style={{ fontSize: 26, fontWeight: 800, lineHeight: 1 }}>{has ? fmtHours(summary.median) : '—'}</span>
+        <span style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>
+          {has ? `median · 9 in 10 within ${fmtHours(summary.p90)} · ${summary.samples.toLocaleString()} quotes` : 'no timed samples yet'}
+        </span>
+      </div>
+      <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginTop: 6 }}>{sub}</div>
+    </div>
+  );
+}
+
+/** 0.4 → "24 min", 6 → "6.0 h", 72 → "3.0 d". */
+function fmtHours(h: number): string {
+  if (!Number.isFinite(h) || h < 0) return '—';
+  if (h < 1) return `${Math.round(h * 60)} min`;
+  if (h < 48) return `${h.toFixed(1)} h`;
+  return `${(h / 24).toFixed(1)} d`;
 }
 
 function pct1(fraction: number): number {
