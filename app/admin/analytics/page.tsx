@@ -138,10 +138,13 @@ interface OutcomeBreakdown {
   buckets: Record<OutcomeBucket, number>;
   monetized: Record<OutcomeBucket, number>;
   openedLink: number;
-  quotes: { sent: number; opened: number; accepted: number; rejected: number };
+  // withLink is optional until the first cron run after it shipped; older
+  // caches are read as "every sent quote had a link", which is how it was
+  // measured before.
+  quotes: { sent: number; withLink?: number; opened: number; accepted: number; rejected: number };
   hoursToOpen: WaitSummary;
   hoursToAccept: WaitSummary;
-  bySendMethod: Record<string, { sent: number; opened: number; accepted: number }>;
+  bySendMethod: Record<string, { sent: number; withLink?: number; opened: number; accepted: number }>;
 }
 
 // Payload of adminEventFunnelStats (functions/src/eventFunnel.helpers.ts).
@@ -1663,7 +1666,7 @@ function AfterTheSendCard({ data }: { data: EventFunnelData }) {
   const outcomeRows: { key: OutcomeBucket; label: string; note: string; accent?: boolean }[] = [
     { key: 'never_opened', label: 'Never opened', note: 'the link was never clicked' },
     { key: 'opened_no_answer', label: 'Opened, no answer', note: 'looked, then went quiet' },
-    { key: 'rejected', label: 'Said no', note: 'answered on the link' },
+    { key: 'rejected', label: 'Said no', note: 'declined' },
     { key: 'accepted', label: 'Said yes', note: 'the job was won', accent: true },
   ];
   const wonRate = rate(o.monetized.accepted, o.buckets.accepted);
@@ -1681,9 +1684,25 @@ function AfterTheSendCard({ data }: { data: EventFunnelData }) {
     manual: 'Marked sent by hand',
     unknown: 'Before channel tracking',
   };
+  // Open rate is measured against quotes that carried a link — a shared or
+  // exported PDF has nothing for a customer to click, so "0 opened" there
+  // would be a false alarm. Channels with a link sort first, by open rate.
+  const linked = (v: { sent: number; withLink?: number }) => v.withLink ?? v.sent;
   const methods = Object.entries(o.bySendMethod)
     .filter(([, v]) => v.sent > 0)
-    .sort((a, b) => rate(b[1].opened, b[1].sent) - rate(a[1].opened, a[1].sent) || b[1].sent - a[1].sent);
+    .sort((a, b) => {
+      const la = linked(a[1]);
+      const lb = linked(b[1]);
+      if ((la > 0) !== (lb > 0)) return la > 0 ? -1 : 1;
+      return rate(b[1].opened, lb) - rate(a[1].opened, la) || b[1].sent - a[1].sent;
+    });
+  const quotesLinked = o.quotes.withLink ?? o.quotes.sent;
+  const sms = o.bySendMethod.sms;
+  const email = o.bySendMethod.email;
+  const channelLift =
+    sms && email && linked(sms) >= 5 && linked(email) >= 5 && rate(email.opened, linked(email)) > 0
+      ? rate(sms.opened, linked(sms)) / rate(email.opened, linked(email))
+      : null;
 
   const pushLabel: Record<string, string> = {
     quote_viewed: 'Customer opened your quote',
@@ -1748,7 +1767,9 @@ function AfterTheSendCard({ data }: { data: EventFunnelData }) {
           <TimingTile
             label="Until the customer first opens it"
             summary={o.hoursToOpen}
-            sub={`${o.quotes.opened.toLocaleString()} of ${o.quotes.sent.toLocaleString()} quotes were opened at all · ${pct1(rate(o.quotes.opened, o.quotes.sent))}%`}
+            sub={`${o.quotes.opened.toLocaleString()} of ${quotesLinked.toLocaleString()} quotes with a link were opened · ${pct1(rate(o.quotes.opened, quotesLinked))}%${
+              o.quotes.sent > quotesLinked ? ` · ${(o.quotes.sent - quotesLinked).toLocaleString()} went out with nothing to click` : ''
+            }`}
           />
           <TimingTile
             label="Until they say yes"
@@ -1766,23 +1787,37 @@ function AfterTheSendCard({ data }: { data: EventFunnelData }) {
         {/* ---- Which channel gets opened ---- */}
         <div>
           <div style={sectionTitle}>Which channel gets the quote opened</div>
-          <div style={sectionSub}>Opened rate by how the quote went out · quotes, not tradies</div>
+          <div style={sectionSub}>Opened rate among quotes that carried a link, by how they went out · quotes, not tradies</div>
           {methods.length === 0 ? (
             <div className={styles.cardSubtitle}>No sent quotes with a channel recorded yet.</div>
           ) : (
-            methods.map(([method, v]) => (
-              <OutcomeBar
-                key={method}
-                label={methodLabel[method] ?? method}
-                note={`${v.sent.toLocaleString()} sent`}
-                value={v.opened}
-                max={Math.max(v.sent, 1)}
-                valueText={`${v.opened.toLocaleString()} opened · ${pct1(rate(v.opened, v.sent))}%`}
-                paidText={`${v.accepted.toLocaleString()} said yes`}
-                paidFraction={rate(v.accepted, v.sent)}
-                title={`${methodLabel[method] ?? method}: ${v.opened} of ${v.sent} opened (${pct1(rate(v.opened, v.sent))}%), ${v.accepted} accepted`}
-              />
-            ))
+            methods.map(([method, v]) => {
+              const l = linked(v);
+              const hasLink = l > 0;
+              const name = methodLabel[method] ?? method;
+              return (
+                <OutcomeBar
+                  key={method}
+                  label={name}
+                  note={hasLink && l < v.sent ? `${v.sent.toLocaleString()} sent · ${l.toLocaleString()} with a link` : `${v.sent.toLocaleString()} sent`}
+                  value={hasLink ? v.opened : 0}
+                  max={Math.max(l, 1)}
+                  valueText={hasLink ? `${v.opened.toLocaleString()} opened · ${pct1(rate(v.opened, l))}%` : 'no link to open'}
+                  paidText={`${v.accepted.toLocaleString()} said yes`}
+                  paidFraction={rate(v.accepted, v.sent)}
+                  title={hasLink
+                    ? `${name}: ${v.opened} of ${l} linked quotes opened (${pct1(rate(v.opened, l))}%), ${v.accepted} of ${v.sent} accepted`
+                    : `${name}: ${v.sent} sent with no acceptance link, ${v.accepted} accepted`}
+                />
+              );
+            })
+          )}
+          {channelLift !== null && (
+            <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 4 }}>
+              An SMS gets opened <strong>{channelLift.toFixed(1)}×</strong> as often as an email
+              {sms && email ? ` (${pct1(rate(sms.opened, linked(sms)))}% vs ${pct1(rate(email.opened, linked(email)))}%)` : ''}.
+              Emailed quotes mostly go unopened — worth finding out whether they arrive at all.
+            </div>
           )}
         </div>
 
