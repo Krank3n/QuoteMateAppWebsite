@@ -3743,45 +3743,6 @@ A: Yes. Once the customer accepts, place the order to your home branch — picku
 
 QuoteMate handles the full payment cycle for sole traders and small trade businesses in Australia. Quote on the spot, take a deposit before you start, send the invoice when the job's done, accept the payment via Square (Tap to Pay on iPhone or NFC-capable Android, or a hosted online payment link), and let automated reminders chase the slow ones. The total cost of acceptance is around 3.1% in-person and 2.9% online — or zero if you turn on the surcharge passthrough and let the customer pay the fee. This hub covers each stage and how to set it up properly.
 
-### Tap to Pay on iPhone for Tradies
-
-URL: https://quotemateapp.au/get-paid/tap-to-pay-iphone-tradies/
-
-Tap to Pay on iPhone lets you accept Visa, Mastercard, Amex and Apple Pay payments by tapping a customer's card or phone on the back of your iPhone — no reader, no terminal, no Bluetooth pairing. QuoteMate uses Square's Mobile Payments SDK so the feature also works on NFC-capable Android phones, plus Google Pay. For Australian tradies who still rely on portable EFTPOS terminals, paper invoices, or 'I'll bank-transfer you tonight' (which becomes Saturday, then never), it's the biggest payments shift since contactless launched.
-
-#### What you need to use Tap to Pay in QuoteMate
-
-Three things: a supported phone (iPhone XS or later on iOS 16.4+, or any NFC-capable Android), a connected Square account against your ABN, and the QuoteMate app. There's no reader to buy and no monthly hardware fee. Square verifies the seller (one-time KYC), the feature lights up inside QuoteMate's payment sheet, and you can take a card or contactless payment within about 30 seconds of finishing a job. Manual key-in is also supported on every device for the rare card that won't tap.
-
-#### Why tradies are switching from portable EFTPOS
-
-Standalone EFTPOS terminals cost $20–$50 a month in rental, need their own SIM or Wi-Fi, run flat at the worst possible time, and add another piece of gear to the ute. Tap to Pay removes the hardware entirely. Square's published rate for in-person Tap to Pay in Australia is 1.6% per transaction — lower than the rates typically charged for keyed-in or online payments. Funds usually clear into your linked bank account the next business day. For a tradie doing 5 jobs a week at $800 average, that's the difference between getting paid this week and chasing payment for the next fortnight.
-
-#### What it actually costs through QuoteMate
-
-Two costs apply on every Tap to Pay transaction: Square's processing fee (1.6% in-person in Australia) and QuoteMate's platform fee (1.5% in-person), for a total cost of acceptance of around 3.1%. If you'd rather not eat the fee, you can switch on the surcharge passthrough — QuoteMate adds 2.9% to the customer's total at the payment step (clearly labelled), so you net the full quoted amount. The 2.9% cap keeps the surcharge under ACCC's excessive-surcharge threshold for any realistic card type, so you stay compliant without doing the maths yourself.
-
-#### How to take a payment in QuoteMate
-
-Open the invoice on your phone, tap 'Take Payment', tap 'Card on this device', and have the customer hold their card or phone against the back of yours. The transaction completes in a couple of seconds, the invoice is automatically marked as paid, the customer receives an emailed receipt, and the GST is logged for your BAS. You don't have to remember to update anything manually — Square's webhook reconciles the payment status in the background.
-
-FAQ:
-
-Q: Is Tap to Pay on iPhone available in Australia?
-A: Yes — Tap to Pay on iPhone launched in Australia in 2023 and is supported by Square, Tyro, CommBank Smart, and others. QuoteMate uses Square's Mobile Payments SDK, which works for any Australian ABN on iPhone XS or later (iOS 16.4+) and NFC-capable Android.
-
-Q: Does it work on Android too?
-A: Yes. QuoteMate's Tap to Pay support runs through Square's Mobile Payments SDK on both iOS and Android, so any NFC-capable Android phone can accept contactless payments and Google Pay.
-
-Q: What are the fees?
-A: Square's standard Australian rate for in-person Tap to Pay is 1.6%. QuoteMate adds a 1.5% platform fee, for a total cost of acceptance of about 3.1% per transaction. Or enable the surcharge passthrough — QuoteMate adds 2.9% to the customer's total so you net the full quoted amount. There are no monthly hardware or rental fees either way.
-
-Q: Can I pass the card fee on to my customer?
-A: Yes. Turn on 'Surcharge payment fees' in QuoteMate's Square settings — a 2.9% surcharge is added to the customer's total at the payment step and clearly disclosed. The cap keeps you under ACCC excessive-surcharge rules for any realistic card type.
-
-Q: How fast does the money hit my bank?
-A: Square typically deposits funds into your linked bank account the next business day. Square also offers same-day deposits for an extra fee if you need cash flow faster.
-
 ### How to Chase Unpaid Invoices in Australia
 
 URL: https://quotemateapp.au/get-paid/chasing-unpaid-invoices/

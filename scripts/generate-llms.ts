@@ -37,7 +37,7 @@ interface Trade {
 interface Template { slug: string; name: string; description: string }
 interface Guide { slug: string; title: string; description: string; sections?: { heading: string; body: string }[]; tips?: string[]; unlisted?: boolean }
 interface City { slug: string; name: string; state: string; cityPage?: boolean }
-interface Spoke { slug: string; title: string; summary: string; intro?: string; sections?: { heading: string; body: string }[]; faqs?: { question: string; answer: string }[] }
+interface Spoke { draft?: boolean; draftReason?: string; slug: string; title: string; summary: string; intro?: string; sections?: { heading: string; body: string }[]; faqs?: { question: string; answer: string }[] }
 interface PaymentHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
 interface ManageJobsHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
 interface QuotingHub { hub: { heroTitle: string; heroSubtitle: string; intro: string }; spokes: Spoke[] }
@@ -153,7 +153,7 @@ async function main() {
   if (data.paymentHub) {
     indexLines.push('## Get paid (payments hub)');
     indexLines.push('');
-    for (const s of data.paymentHub.spokes) {
+    for (const s of data.paymentHub.spokes.filter((s) => !s.draft)) {
       indexLines.push(`- [${s.title}](${BASE_URL}/get-paid/${s.slug}/): ${s.summary}`);
     }
     indexLines.push('');
@@ -402,7 +402,7 @@ async function main() {
     full.push('');
     full.push(data.paymentHub.hub.intro);
     full.push('');
-    for (const s of data.paymentHub.spokes) {
+    for (const s of data.paymentHub.spokes.filter((s) => !s.draft)) {
       full.push(`### ${s.title}`);
       full.push('');
       full.push(`URL: ${BASE_URL}/get-paid/${s.slug}/`);

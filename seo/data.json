@@ -7904,6 +7904,8 @@
     },
     "spokes": [
       {
+        "draft": true,
+        "draftReason": "Withheld until Apple grants the Tap to Pay on iPhone PUBLISHING entitlement. Shipped builds carry no entitlement at all, so the iPhone flow this page describes cannot work for any user, and the copy is self-authored rather than from Apple's Marketing Toolkit. Flip draft to false once the entitlement lands and the feature ships.",
         "slug": "tap-to-pay-iphone-tradies",
         "title": "Tap to Pay on iPhone for Tradies",
         "shortLabel": "Tap to Pay on iPhone",

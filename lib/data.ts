@@ -172,6 +172,14 @@ export interface ReeceIntegration {
 }
 
 export interface PaymentHubSpoke {
+  /**
+   * Withhold this spoke from the site: no page, no sitemap entry, no hub link,
+   * no llms.txt mention. The content stays here so restoring it is one flag
+   * rather than an archaeology dig through git history.
+   */
+  draft?: boolean;
+  /** Why it is withheld, and what has to be true to publish it again. */
+  draftReason?: string;
   slug: string;
   title: string;
   shortLabel: string;
@@ -271,7 +279,15 @@ export const cityPageCities: City[] = cities.filter((c: City) => c.cityPage !== 
 // Base templates from seo/data.json plus orphan pages (niche videos with no base template).
 export const quoteTemplates: QuoteTemplate[] = [...data.quoteTemplates, ...extraTemplates];
 export const faqData: FAQ[] = data.faqData || [];
-export const paymentHub: PaymentHub | undefined = data.paymentHub;
+/**
+ * Draft spokes are stripped once, here, so every consumer — the [slug] route's
+ * generateStaticParams, the hub listing, and the sitemap — drops them together.
+ * Filtering per-consumer is how you end up with a hub linking to a 404.
+ * `scripts/generate-llms.ts` reads the JSON directly and filters separately.
+ */
+export const paymentHub: PaymentHub | undefined = data.paymentHub
+  ? { ...data.paymentHub, spokes: data.paymentHub.spokes.filter((s) => !s.draft) }
+  : undefined;
 export const manageJobsHub: ManageJobsHub | undefined = data.manageJobsHub;
 export const quotingHub: QuotingHub | undefined = data.quotingHub;
 export const reeceIntegration: ReeceIntegration | undefined = data.integrations?.reece;
