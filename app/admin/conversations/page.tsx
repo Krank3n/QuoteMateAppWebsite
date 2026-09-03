@@ -8,12 +8,32 @@ import { api, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
 import { useSetPageMeta } from '../lib/pageMeta';
 import { IconChat, IconExternal } from '../components/icons';
 
+/** Which build of the app the chat came from — see the app's services/appIdentity. */
+interface ConversationAppBuild {
+  version: string | null;
+  build: string | null;
+  platform: string | null;
+  updateId: string | null;
+  runtimeVersion: string | null;
+  channel: string | null;
+  updatedAt: string | null;
+}
+
+/** "1.56 (94) · OTA 01a065b1" — or "1.56 (94) · embedded" when no update was applied. */
+function appBuildLabel(app: ConversationAppBuild | null | undefined): string | null {
+  if (!app || !app.version) return null;
+  const build = app.build ? ` (${app.build})` : '';
+  const ota = app.updateId ? `OTA ${app.updateId.slice(0, 8)}` : 'embedded';
+  return `${app.version}${build} · ${ota}`;
+}
+
 interface ConversationRow {
   id: string;
   uid: string;
   userEmail: string | null;
   userBusinessName: string | null;
   platform: string | null;
+  app?: ConversationAppBuild | null;
   createdAt: number | null;
   updatedAt: number | null;
   syncedAt: number | null;
@@ -232,7 +252,11 @@ function ConversationsPageInner() {
                         <div style={{ fontSize: 12, fontWeight: 600, ...truncStyle, maxWidth: 160 }}>
                           {r.userBusinessName || r.userEmail?.split('@')[0] || r.uid.slice(0, 8)}
                         </div>
-                        {r.platform && <div style={{ fontSize: 10, opacity: 0.5 }}>{r.platform}</div>}
+                        {(r.platform || appBuildLabel(r.app)) && (
+                          <div style={{ fontSize: 10, opacity: 0.5 }} title={r.app?.updateId || undefined}>
+                            {[r.platform, appBuildLabel(r.app)].filter(Boolean).join(' · ')}
+                          </div>
+                        )}
                       </div>
                     </Link>
                   </td>
@@ -376,6 +400,7 @@ function ConversationModal({
               <span>{row.messageCount} messages</span>
               {row.proposalCount > 0 && <span>{row.proposalCount} proposed · {row.appliedCount} applied{row.failedCount > 0 ? ` · ${row.failedCount} failed` : ''}</span>}
               {row.platform && <span>{row.platform}</span>}
+              {appBuildLabel(row.app) && <span title={row.app?.updateId || undefined}>{appBuildLabel(row.app)}</span>}
               <span>Updated {fmtRelative(row.updatedAt)}</span>
               <Link
                 href={`/admin/users?uid=${encodeURIComponent(row.uid)}`}
