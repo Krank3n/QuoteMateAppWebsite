@@ -27,6 +27,25 @@ function appBuildLabel(app: ConversationAppBuild | null | undefined): string | n
   return `${app.version}${build} · ${ota}`;
 }
 
+/** Which brain(s) answered — see the app's shared/assistant/modelsUsed. */
+interface ConversationModels {
+  all: string[];
+  primary: string | null;
+  mixed: boolean;
+  stampedTurns: number;
+}
+
+/**
+ * Model names are long and the column is narrow, so show the short tail:
+ * "claude-sonnet-5", "gemini-live-2.5-flash-preview" -> "…flash-preview".
+ * A mixed conversation gets a "+1" rather than a second full name.
+ */
+function modelLabel(models: ConversationModels | null | undefined): string | null {
+  if (!models?.primary) return null;
+  const extra = models.all.length - 1;
+  return extra > 0 ? `${models.primary} +${extra}` : models.primary;
+}
+
 interface ConversationRow {
   id: string;
   uid: string;
@@ -34,6 +53,7 @@ interface ConversationRow {
   userBusinessName: string | null;
   platform: string | null;
   app?: ConversationAppBuild | null;
+  models?: ConversationModels | null;
   createdAt: number | null;
   updatedAt: number | null;
   syncedAt: number | null;
@@ -257,6 +277,17 @@ function ConversationsPageInner() {
                             {[r.platform, appBuildLabel(r.app)].filter(Boolean).join(' · ')}
                           </div>
                         )}
+                        {modelLabel(r.models) && (
+                          <div
+                            style={{ fontSize: 10, opacity: 0.5, ...truncStyle, maxWidth: 160 }}
+                            title={
+                              r.models!.all.join(', ') +
+                              (r.models!.mixed ? ' — more than one model answered in this chat' : '')
+                            }
+                          >
+                            {modelLabel(r.models)}
+                          </div>
+                        )}
                       </div>
                     </Link>
                   </td>
@@ -401,6 +432,11 @@ function ConversationModal({
               {row.proposalCount > 0 && <span>{row.proposalCount} proposed · {row.appliedCount} applied{row.failedCount > 0 ? ` · ${row.failedCount} failed` : ''}</span>}
               {row.platform && <span>{row.platform}</span>}
               {appBuildLabel(row.app) && <span title={row.app?.updateId || undefined}>{appBuildLabel(row.app)}</span>}
+              {modelLabel(row.models) && (
+                <span title={`${row.models!.stampedTurns} of ${row.assistantMessages} Mate turns stamped`}>
+                  {row.models!.mixed ? row.models!.all.join(' → ') : row.models!.primary}
+                </span>
+              )}
               <span>Updated {fmtRelative(row.updatedAt)}</span>
               <Link
                 href={`/admin/users?uid=${encodeURIComponent(row.uid)}`}
@@ -461,6 +497,22 @@ function MessageBubble({ m }: { m: any }) {
           {isUser ? 'Tradie' : 'Mate'}
         </span>
         {m.createdAt && <span style={{ fontSize: 10, color: 'var(--color-text-secondary)', opacity: 0.7 }}>{fmtDateTime(m.createdAt)}</span>}
+        {/* Per-turn, because it changes WITHIN a conversation: a dead Claude
+            key falls the next turn back to Gemini server-side, and voice and
+            text run different brains on purpose. "Which model said that?" is
+            the question this panel gets asked, and it is answerable per
+            bubble or not at all. Absent on turns logged before stamping. */}
+        {!isUser && typeof m.model === 'string' && m.model.trim() && (
+          <span
+            style={{
+              fontSize: 9.5, color: 'var(--color-text-secondary)', opacity: 0.65,
+              border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '1px 5px',
+            }}
+            title="Model that produced this turn"
+          >
+            {m.model}
+          </span>
+        )}
       </div>
 
       {hasText && (
