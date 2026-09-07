@@ -42,7 +42,7 @@ Yes — 10% GST is calculated and shown automatically on every quote and invoice
 ## Pricing and billing
 
 **Is there a free plan?**
-Yes — Free forever, no credit card, with **unlimited quotes and invoices**. Customers pay online via Square (a 1.7% platform fee is added to their bill). → [Plans and pricing](06-pricing-and-billing/plans-and-pricing.md)
+Yes — Free forever, no credit card, with **unlimited quotes and invoices**. Customers pay online via Square; QuoteMate's 1.7% platform fee comes out of **your payout**, not the customer's bill. → [Plans and pricing](06-pricing-and-billing/plans-and-pricing.md)
 
 **How much is Pro?**
 $49/month or $328/year (about $27.33/month). → [Plans and pricing](06-pricing-and-billing/plans-and-pricing.md)

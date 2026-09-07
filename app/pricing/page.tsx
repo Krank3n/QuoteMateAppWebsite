@@ -27,7 +27,7 @@ const features = [
   { name: 'Cloud sync', free: true, pro: true },
   { name: 'Online card payments via Square', free: true, pro: true },
   { name: 'Bank Transfer, PayID, BPAY, PayPal', free: false, pro: true },
-  { name: 'Lower Square fee (1% vs 1.7%)', free: false, pro: true },
+  { name: 'Lower QuoteMate fee (1% online / 1.5% in person, vs 1.7%)', free: false, pro: true },
   { name: 'AI material & title generation', free: false, pro: true },
   { name: 'All PDF templates', free: false, pro: true },
   { name: 'Business logo on documents', free: false, pro: true },
@@ -63,7 +63,7 @@ export default function PricingPage() {
                     <span className="price">$0</span>
                     <span className="period">forever</span>
                   </div>
-                  <p className="pricing-desc">No credit card. Customers pay online via Square (1.7% platform fee added to their bill).</p>
+                  <p className="pricing-desc">No credit card. Customers pay online via Square — QuoteMate’s 1.7% fee comes out of your payout, not their bill, on top of Square’s own processing fee.</p>
                 </div>
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Unlimited quotes &amp; invoices</li>
@@ -72,7 +72,7 @@ export default function PricingPage() {
                   <li><CheckIcon /> Live supplier pricing</li>
                   <li><CheckIcon /> Cloud sync</li>
                 </ul>
-                <a href="/app" className="btn btn-secondary pricing-btn">Get Started Free</a>
+                <a href="/app?signup=1" className="btn btn-secondary pricing-btn">Get Started Free</a>
               </div>
               <div className="pricing-card pricing-card-pro">
                 <div className="pricing-badge">MOST POPULAR</div>
@@ -87,13 +87,13 @@ export default function PricingPage() {
                 <ul className="pricing-features" role="list">
                   <li><CheckIcon /> Everything in Free</li>
                   <li><CheckIcon /> Bank Transfer, PayID, BPAY, PayPal</li>
-                  <li><CheckIcon /> Lower Square fee (1% vs 1.7%)</li>
+                  <li><CheckIcon /> Lower QuoteMate fee (1% online / 1.5% in person, vs 1.7%)</li>
                   <li><CheckIcon /> AI material &amp; title generation</li>
                   <li><CheckIcon /> All PDF templates</li>
                   <li><CheckIcon /> Business logo on documents</li>
                   <li><CheckIcon /> Priority support</li>
                 </ul>
-                <a href="/app" className="btn btn-primary pricing-btn">Start 14-Day Free Trial</a>
+                <a href="/app?signup=1" className="btn btn-primary pricing-btn">Start 14-Day Free Trial</a>
               </div>
               <div className="pricing-card pricing-card-annual">
                 <div className="pricing-badge pricing-badge-save">BEST VALUE</div>
@@ -110,7 +110,7 @@ export default function PricingPage() {
                   <li><CheckIcon /> Save $260 per year</li>
                   <li><CheckIcon /> Cancel anytime</li>
                 </ul>
-                <a href="/app" className="btn btn-primary pricing-btn">Subscribe Annually</a>
+                <a href="/app?signup=1" className="btn btn-primary pricing-btn">Subscribe Annually</a>
               </div>
             </div>
 
@@ -144,7 +144,7 @@ export default function PricingPage() {
             <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '32px' }}>Pricing FAQ</h2>
             <div className="guide-content" style={{ maxWidth: '720px', margin: '0 auto' }}>
               {[
-                { q: 'Is there really a free plan?', a: 'Yes — fully free forever. Send unlimited quotes and invoices and let customers pay online via Square (a small 1.7% platform fee is added to the customer’s bill). New users also get a 14-day Pro trial so you can try every feature before deciding.' },
+                { q: 'Is there really a free plan?', a: 'Yes — fully free forever. Send unlimited quotes and invoices and let customers pay online via Square. QuoteMate takes a 1.7% fee out of your payout — it is not added to your customer’s bill — on top of Square’s own processing fee. Pro drops it to 1% online and 1.5% in person. New users also get a 14-day Pro trial so you can try every feature before deciding.' },
                 { q: 'Can I cancel anytime?', a: 'Absolutely. Cancel your Pro subscription anytime from the app. You\'ll keep Pro access until the end of your billing period, then revert to Free.' },
                 { q: 'Do I need to pay separately for each device?', a: 'No. One subscription works across iOS, Android, and Web. Buy on any platform, use on all of them.' },
                 { q: 'Is GST included in the pricing?', a: 'The prices shown are in AUD. GST is included where applicable.' },
@@ -178,7 +178,7 @@ export default function PricingPage() {
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "iOS, Android, Web",
         "offers": [
-          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "description": "Free forever. Customers pay online via Square (1.7% platform fee added to their bill). No credit card required." },
+          { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "name": "Free", "description": "Free forever. Customers pay online via Square. QuoteMate's 1.7% platform fee comes out of your payout, on top of Square's own processing fee. No credit card required." },
           { "@type": "Offer", "price": "49", "priceCurrency": "AUD", "name": "Pro Monthly", "billingIncrement": "month" },
           { "@type": "Offer", "price": "328", "priceCurrency": "AUD", "name": "Pro Annual", "billingIncrement": "year" }
         ]

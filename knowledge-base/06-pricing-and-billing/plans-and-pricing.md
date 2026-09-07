@@ -34,11 +34,11 @@ One subscription covers iPhone, iPad, Android, and web — there's no per-device
 - Live supplier pricing
 - Cloud sync across your devices
 - Professional PDF template (one)
-- Customers pay online via Square (a 1.7% platform fee is added to the customer's bill)
+- Customers pay online via Square (QuoteMate's 1.7% platform fee comes out of **your payout**, not the customer's bill)
 
 ## What Pro adds
 
-- **Lower Square fee** — 1.0% online / 1.5% in-person, vs 1.7% on Free
+- **Lower QuoteMate fee** — 1.0% online / 1.5% in-person, vs 1.7% on Free (this is QuoteMate's cut, separate from Square's own processing fee)
 - More payment options — **Bank transfer, PayID, BPAY, PayPal**
 - **AI material and title generation**
 - **All PDF templates**

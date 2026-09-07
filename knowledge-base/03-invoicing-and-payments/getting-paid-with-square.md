@@ -45,7 +45,7 @@ Two fees apply to a card payment: Square's own processing fee, and QuoteMate's p
 
 As a rough guide, the **total cost of acceptance in-person on Pro is about 3.1%** (Square ~1.6% + QuoteMate 1.5%). Lowering the QuoteMate fee is one of the reasons tradies upgrade to Pro.
 
-> On the **Free plan**, the 1.7% QuoteMate platform fee is added to the customer's bill. On **Pro**, you choose whether to absorb the fees or pass a surcharge on (below).
+> Both fees come out of **your payout** — neither is added to the customer's bill. The optional surcharge (below) is the only thing that changes what your customer is charged, and it's available on any plan once Square is connected.
 
 ## Surcharge passthrough (optional)
 

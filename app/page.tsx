@@ -18,7 +18,7 @@ const faqItems = [
   { question: 'Does QuoteMate integrate with Xero?', answer: 'Yes! Push invoices to Xero in one tap, auto-create contacts, record payments, and bulk sync multiple invoices. You can also export Xero-compatible CSVs if you prefer manual import.' },
   { question: 'Is my data secure?', answer: 'Absolutely. QuoteMate uses Firebase with enterprise-grade encryption. Your data is securely stored in the cloud and synced across your devices. We never share your business data with third parties.' },
   { question: 'Can I use it offline?', answer: "Yes! Create and edit quotes without an internet connection. Everything syncs automatically when you're back online — perfect for remote job sites." },
-  { question: 'How does the free plan and trial work?', answer: "Sign up with no credit card. You're on the Free plan forever — send unlimited quotes and invoices, with customers paying online via Square (a small 1.7% platform fee is added to their bill). New users also get a 14-day Pro trial automatically when they create their first quote, so you can try every feature (bank/PayID/BPAY/PayPal options, AI material generation, all PDF templates, lower Square rate) before deciding whether to upgrade." },
+  { question: 'How does the free plan and trial work?', answer: "Sign up with no credit card. You're on the Free plan forever — send unlimited quotes and invoices, with customers paying online via Square. QuoteMate takes a 1.7% fee out of your payout — it is not added to your customer's bill — on top of Square's own processing fee. New users also get a 14-day Pro trial automatically when they create their first quote, so you can try every feature (bank/PayID/BPAY/PayPal options, AI material generation, all PDF templates, lower QuoteMate fee) before deciding whether to upgrade." },
   { question: 'Can I track invoices and payments?', answer: 'Yes. Track invoice status (draft, sent, paid, partial, overdue), record partial payments and deposits, and get automatic overdue detection. Support for bank transfer, PayID, BPAY, PayPal, card, cash, and cheque.' },
   { question: 'Can I manage jobs after the quote is sent?', answer: 'Yes. QuoteMate tracks every job through a 9-stage pipeline (inquiry, quoted, accepted, scheduled, in progress, completed, paid, closed, cancelled) with scheduling, on-site photos with annotation, job checklists, and automated quote follow-ups. Scheduled jobs sync to Google Calendar so they show up on your phone, ute, and any shared calendars.' },
   { question: 'Does it calculate GST?', answer: 'Yes. QuoteMate automatically calculates and displays GST on all quotes and invoices, keeping you compliant with Australian tax requirements.' },
@@ -175,8 +175,12 @@ export default function HomePage() {
               <li><span className="sn">2</span>We pull live prices.</li>
               <li><span className="sn">3</span>Send the quote.</li>
             </ol>
+            {/* Acquisition CTAs carry ?signup=1; the app's AuthScreen reads it and
+                opens on "Create your account" instead of "Welcome back" (see
+                QuoteMate/src/utils/signupIntent.ts). "Log in" links must NOT
+                carry it. AttributionBridge appends utm/fbclid after ours. */}
             <div className="ctas">
-              <a href="/app" className="btn btn-primary hero-cta" data-hero-cta>Get my first quote</a>
+              <a href="/app?signup=1" className="btn btn-primary hero-cta" data-hero-cta>Get my first quote</a>
             </div>
             <div className="ctas ctas-stores">
               <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn btn-store-lg">
@@ -220,7 +224,7 @@ export default function HomePage() {
               and QuoteMate builds the materials list, prices it up, and turns it into a professional quote.
             </p>
             <div className="hb-ctas">
-              <a href="/app" className="hb-btn-primary nav-cta hb-cta-primary" data-hero-cta>Get my first quote</a>
+              <a href="/app?signup=1" className="hb-btn-primary nav-cta hb-cta-primary" data-hero-cta>Get my first quote</a>
               <a href="#how-it-works" className="hb-btn-outline nav-cta hb-cta-secondary">See how it works</a>
             </div>
           </div>
@@ -267,7 +271,7 @@ export default function HomePage() {
             {/* Mobile-only chat input bar — doubles as the primary CTA:
                 on a phone it prompts a native install, otherwise it opens /app. */}
             <div className="hb-chat-bar">
-              <a href="/app" className="hb-chat-input" data-hero-cta aria-label="Quote this up — get my first quote">
+              <a href="/app?signup=1" className="hb-chat-input" data-hero-cta aria-label="Quote this up — get my first quote">
                 <span className="hb-chat-placeholder">quote this up mate</span>
                 <span className="hb-chat-send" aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -672,7 +676,7 @@ export default function HomePage() {
             <div className="pcard">
               <h3>Free</h3>
               <div className="amt"><span className="p">$0</span><span className="per">forever</span></div>
-              <p className="pd">No credit card. Customers pay online via Square (1.7% platform fee).</p>
+              <p className="pd">No credit card. Customers pay online via Square — QuoteMate’s 1.7% fee comes out of your payout, not their bill.</p>
               <ul>
                 <li><CheckSvg /> Unlimited quotes &amp; invoices</li>
                 <li><CheckSvg /> Online card payments via Square</li>
@@ -680,7 +684,7 @@ export default function HomePage() {
                 <li><CheckSvg /> Live supplier pricing</li>
                 <li><CheckSvg /> Cloud sync</li>
               </ul>
-              <a href="/app" className="btn ghost">Get Started Free</a>
+              <a href="/app?signup=1" className="btn ghost">Get Started Free</a>
             </div>
             {/* Pro Monthly */}
             <div className="pcard pro">
@@ -691,13 +695,13 @@ export default function HomePage() {
               <ul>
                 <li><CheckSvg /> Everything in Free</li>
                 <li><CheckSvg /> Bank Transfer, PayID, BPAY, PayPal</li>
-                <li><CheckSvg /> Lower Square fee (1% vs 1.7%)</li>
+                <li><CheckSvg /> Lower QuoteMate fee (1% online / 1.5% in person, vs 1.7%)</li>
                 <li><CheckSvg /> AI material &amp; title generation</li>
                 <li><CheckSvg /> All PDF templates</li>
                 <li><CheckSvg /> Business logo on documents</li>
                 <li><CheckSvg /> Priority support</li>
               </ul>
-              <a href="/app" className="btn btn-primary">Start 14-Day Free Trial</a>
+              <a href="/app?signup=1" className="btn btn-primary">Start 14-Day Free Trial</a>
             </div>
             {/* Pro Annual */}
             <div className="pcard">
@@ -710,7 +714,7 @@ export default function HomePage() {
                 <li><CheckSvg /> Save $260 per year</li>
                 <li><CheckSvg /> Cancel anytime</li>
               </ul>
-              <a href="/app" className="btn ghost">Subscribe Annually</a>
+              <a href="/app?signup=1" className="btn ghost">Subscribe Annually</a>
             </div>
           </div>
         </div>
@@ -825,7 +829,7 @@ export default function HomePage() {
           <h2>Ready to quote <span className="acc">smarter?</span></h2>
           <p>Ditch the spreadsheets and handwritten quotes — quote from your phone in under 2 minutes.</p>
           <div className="ctas">
-            <a href="/app" className="btn btn-primary">Start free</a>
+            <a href="/app?signup=1" className="btn btn-primary">Start free</a>
             <a href="https://apps.apple.com/au/app/quotemate/id6754000046?pt=128219706&ct=website&mt=8" className="btn btn-cmd"><span className="p">$</span> quotemate&nbsp;download</a>
           </div>
         </div>

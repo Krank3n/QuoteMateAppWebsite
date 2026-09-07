@@ -152,7 +152,7 @@ Free plan available · Free trial available · Subscription
 
 ### 4.2 Plans
 ```
-Free — $0 forever. Unlimited quotes and invoices, no credit card required. Customers can pay online via Square; a 1.7% platform fee is added to the customer's bill.
+Free — $0 forever. Unlimited quotes and invoices, no credit card required. Customers can pay online via Square; QuoteMate's 1.7% platform fee comes out of the tradie's payout, not the customer's bill.
 
 Pro Monthly — A$49 per month, flat rate (not per user). AI material generation, all PDF templates, bank transfer / PayID / BPAY / PayPal options, and a lower Square rate.
 

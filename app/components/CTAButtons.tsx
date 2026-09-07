@@ -22,7 +22,8 @@ export default function CTAButtons({ className = '', showWebLink = false }: CTAB
           </span>
         </a>
       </div>
-      {showWebLink && <a href="/app" className="hero-web-link">Or try it on the web &rarr;</a>}
+      {/* ?signup=1: acquisition intent, so the web app opens on sign-up. */}
+      {showWebLink && <a href="/app?signup=1" className="hero-web-link">Or try it on the web &rarr;</a>}
     </>
   );
 }
