@@ -1,0 +1,184 @@
+{
+  "window": "2026-08-08 to 2026-09-04",
+  "channel_filter": "sessionDefaultChannelGroup EXACT Organic Search",
+  "events": [
+    {
+      "eventName": "page_view",
+      "eventCount": "1714",
+      "totalUsers": "485",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "scroll_depth",
+      "eventCount": "1074",
+      "totalUsers": "339",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "time_on_page",
+      "eventCount": "1050",
+      "totalUsers": "308",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "section_view",
+      "eventCount": "1046",
+      "totalUsers": "110",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "session_start",
+      "eventCount": "629",
+      "totalUsers": "485",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "first_visit",
+      "eventCount": "458",
+      "totalUsers": "457",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "user_engagement",
+      "eventCount": "447",
+      "totalUsers": "326",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "scroll",
+      "eventCount": "260",
+      "totalUsers": "151",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "experiment_impression",
+      "eventCount": "172",
+      "totalUsers": "111",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "onboarding_step_viewed",
+      "eventCount": "153",
+      "totalUsers": "21",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "click",
+      "eventCount": "72",
+      "totalUsers": "63",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "nav_click",
+      "eventCount": "56",
+      "totalUsers": "40",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "auth_bootstrap_finished",
+      "eventCount": "52",
+      "totalUsers": "25",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "auth_bootstrap_started",
+      "eventCount": "52",
+      "totalUsers": "25",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "outbound_link_click",
+      "eventCount": "46",
+      "totalUsers": "39",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "onboarding_started",
+      "eventCount": "36",
+      "totalUsers": "21",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "app_store_click",
+      "eventCount": "35",
+      "totalUsers": "30",
+      "keyEvents": "35"
+    },
+    {
+      "eventName": "onboarding_step_skipped",
+      "eventCount": "26",
+      "totalUsers": "10",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "cta_click",
+      "eventCount": "21",
+      "totalUsers": "20",
+      "keyEvents": "21"
+    },
+    {
+      "eventName": "web_app_click",
+      "eventCount": "19",
+      "totalUsers": "18",
+      "keyEvents": "19"
+    },
+    {
+      "eventName": "google_play_click",
+      "eventCount": "17",
+      "totalUsers": "16",
+      "keyEvents": "17"
+    },
+    {
+      "eventName": "onboarding_completed",
+      "eventCount": "15",
+      "totalUsers": "15",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "sign_up",
+      "eventCount": "15",
+      "totalUsers": "15",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "login",
+      "eventCount": "5",
+      "totalUsers": "5",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "contact_email_click",
+      "eventCount": "3",
+      "totalUsers": "1",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "support_chat_opened",
+      "eventCount": "3",
+      "totalUsers": "3",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "password_reset_requested",
+      "eventCount": "2",
+      "totalUsers": "1",
+      "keyEvents": "0"
+    },
+    {
+      "eventName": "form_start",
+      "eventCount": "1",
+      "totalUsers": "1",
+      "keyEvents": "0"
+    }
+  ],
+  "configured_key_event_names": [
+    "close_convert_lead",
+    "qualify_lead",
+    "purchase",
+    "cta_click",
+    "app_store_click",
+    "google_play_click",
+    "pricing_cta_click",
+    "web_app_click"
+  ]
+}

@@ -11,6 +11,9 @@ import { defineConfig } from 'vitest/config';
  * and `import.meta` there trips a Vite config-loader warning.
  */
 export default defineConfig({
+  // Next preserves JSX for its compiler; Vitest needs the automatic transform
+  // to exercise the actual client components in jsdom.
+  oxc: { jsx: { runtime: 'automatic' } },
   resolve: {
     alias: {
       '@': path.resolve(__dirname),

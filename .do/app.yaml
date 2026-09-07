@@ -9,6 +9,34 @@ domains:
   zone: quotemateapp.au
 ingress:
   rules:
+  # Retired equivalents only. Keep in sync with seo/redirects.json.
+  # Prefix matches cover the slashless URL, its slash variant and descendants.
+  # These rules must be merged into the LIVE app spec; pushing this file alone
+  # does not apply App Platform ingress changes.
+  - match:
+      path:
+        prefix: /articles/how-to-quote-a-concrete-driveway
+    redirect:
+      uri: /articles/how-to-quote-concrete-driveway/
+      redirect_code: 301
+  - match:
+      path:
+        prefix: /articles/how-to-quote-retaining-wall-installation
+    redirect:
+      uri: /articles/how-to-quote-a-retaining-wall/
+      redirect_code: 301
+  - match:
+      path:
+        prefix: /articles/how-to-quote-an-epoxy-floor-coating
+    redirect:
+      uri: /articles/how-to-quote-epoxy-floor-coating/
+      redirect_code: 301
+  - match:
+      path:
+        prefix: /articles/how-to-price-a-fence-installation
+    redirect:
+      uri: /articles/how-to-quote-a-fence-installation/
+      redirect_code: 301
   - component:
       name: quotemate-web
     match:

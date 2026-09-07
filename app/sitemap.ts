@@ -19,51 +19,47 @@ const xmlEscape = (s: string): string =>
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://quotemateapp.au';
-  const lastModified = new Date();
-
+  // Only emit a lastmod when the content has an explicit date. A deployment
+  // timestamp is not evidence that every page was substantively updated.
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/`, lastModified, changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${baseUrl}/terms/`, lastModified, changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${baseUrl}/privacy/`, lastModified, changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${baseUrl}/trades/`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/templates/`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/articles/`, lastModified, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${baseUrl}/pricing/`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${baseUrl}/about/`, lastModified, changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${baseUrl}/compare/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/alternatives/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/best/`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/shower-quoting-tool/`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/get-paid/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/manage-jobs/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/quoting/`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${baseUrl}/integrations/reece/`, lastModified, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/`, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${baseUrl}/terms/`, changeFrequency: 'monthly', priority: 0.3 },
+    { url: `${baseUrl}/privacy/`, changeFrequency: 'monthly', priority: 0.3 },
+    { url: `${baseUrl}/trades/`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/templates/`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/articles/`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/pricing/`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/about/`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${baseUrl}/compare/`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/alternatives/`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/best/`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/shower-quoting-tool/`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/get-paid/`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/manage-jobs/`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/quoting/`, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/integrations/reece/`, changeFrequency: 'monthly', priority: 0.85 },
   ];
 
   const paymentSpokePages: MetadataRoute.Sitemap = (paymentHub?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/get-paid/${spoke.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
   const manageJobsSpokePages: MetadataRoute.Sitemap = (manageJobsHub?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/manage-jobs/${spoke.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
   const quotingSpokePages: MetadataRoute.Sitemap = (quotingHub?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/quoting/${spoke.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
   const reeceSpokePages: MetadataRoute.Sitemap = (reeceIntegration?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/integrations/reece/${spoke.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
@@ -72,7 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const hasVideo = TRADES_WITH_VIDEOS.has(trade.slug);
     return {
       url: `${baseUrl}/quotes-for-${trade.slug}/`,
-      lastModified,
       changeFrequency: 'monthly' as const,
       priority: hasVideo ? 0.85 : 0.8,
       ...(hasVideo
@@ -101,7 +96,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tradeCityPages: MetadataRoute.Sitemap = trades.flatMap((trade) =>
     cityPageCities.map((city) => ({
       url: `${baseUrl}/quotes-for-${trade.slug}/${city.slug}/`,
-      lastModified,
       changeFrequency: 'monthly',
       priority: cityPriority(city.slug),
     }))
@@ -112,7 +106,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const jobName = template.name.replace(/ Quote Template$/i, '');
     return {
       url: `${baseUrl}/templates/${template.slug}/`,
-      lastModified,
       changeFrequency: 'monthly',
       priority: hasVideo ? 0.8 : 0.7,
       ...(hasVideo
@@ -132,28 +125,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPages: MetadataRoute.Sitemap = guides.map((guide) => ({
     url: `${baseUrl}/articles/${guide.slug}/`,
-    lastModified,
+    lastModified: guide.dateModified || guide.datePublished,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   const comparePages: MetadataRoute.Sitemap = competitors.map((comp) => ({
     url: `${baseUrl}/compare/${comp.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   const alternativesPages: MetadataRoute.Sitemap = alternativePages.map((p) => ({
     url: `${baseUrl}/alternatives/${p.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
 
   const bestOfPages: MetadataRoute.Sitemap = bestPages.map((p) => ({
     url: `${baseUrl}/best/${p.slug}/`,
-    lastModified,
     changeFrequency: 'monthly',
     priority: 0.75,
   }));

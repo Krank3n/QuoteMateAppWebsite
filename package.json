@@ -3,14 +3,16 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "predev": "npm run generate-template-assets",
     "dev": "next dev --turbopack",
-    "prebuild": "tsx scripts/generate-llms.ts",
+    "prebuild": "tsx scripts/generate-template-assets.ts && tsx scripts/generate-llms.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
     "generate-article": "tsx scripts/generate-article.ts",
-    "generate-llms": "tsx scripts/generate-llms.ts"
+    "generate-llms": "tsx scripts/generate-llms.ts",
+    "generate-template-assets": "tsx scripts/generate-template-assets.ts"
   },
   "dependencies": {
     "@google/genai": "^1.45.0",
@@ -29,8 +31,10 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "jsdom": "^26.1.0",
     "tsx": "^4.21.0",
     "typescript": "^5.7.0",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "yaml": "^2.9.0"
   }
 }

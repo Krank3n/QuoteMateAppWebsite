@@ -1,0 +1,433 @@
+{
+  "extracted_on": "2026-09-07",
+  "property": "527922866",
+  "property_name": "QuoteMateWebsite",
+  "time_zone": "Australia/Brisbane",
+  "current_window": {
+    "start_date": "2026-08-08",
+    "end_date": "2026-09-04"
+  },
+  "previous_window": {
+    "start_date": "2026-07-11",
+    "end_date": "2026-08-07"
+  },
+  "channel_comparison": [
+    {
+      "sessionDefaultChannelGroup": "Organic Search",
+      "dateRange": "date_range_0",
+      "sessions": "627",
+      "engagedSessions": "464",
+      "keyEvents": "92"
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Search",
+      "dateRange": "date_range_1",
+      "sessions": "541",
+      "engagedSessions": "414",
+      "keyEvents": "106"
+    },
+    {
+      "sessionDefaultChannelGroup": "Paid Social",
+      "dateRange": "date_range_1",
+      "sessions": "340",
+      "engagedSessions": "213",
+      "keyEvents": "15"
+    },
+    {
+      "sessionDefaultChannelGroup": "Direct",
+      "dateRange": "date_range_0",
+      "sessions": "323",
+      "engagedSessions": "119",
+      "keyEvents": "18"
+    },
+    {
+      "sessionDefaultChannelGroup": "Direct",
+      "dateRange": "date_range_1",
+      "sessions": "184",
+      "engagedSessions": "108",
+      "keyEvents": "7"
+    },
+    {
+      "sessionDefaultChannelGroup": "Paid Social",
+      "dateRange": "date_range_0",
+      "sessions": "81",
+      "engagedSessions": "52",
+      "keyEvents": "2"
+    },
+    {
+      "sessionDefaultChannelGroup": "Email",
+      "dateRange": "date_range_0",
+      "sessions": "48",
+      "engagedSessions": "33",
+      "keyEvents": "4"
+    },
+    {
+      "sessionDefaultChannelGroup": "AI Assistant",
+      "dateRange": "date_range_0",
+      "sessions": "44",
+      "engagedSessions": "36",
+      "keyEvents": "14"
+    },
+    {
+      "sessionDefaultChannelGroup": "Referral",
+      "dateRange": "date_range_1",
+      "sessions": "28",
+      "engagedSessions": "25",
+      "keyEvents": "1"
+    },
+    {
+      "sessionDefaultChannelGroup": "Referral",
+      "dateRange": "date_range_0",
+      "sessions": "18",
+      "engagedSessions": "14",
+      "keyEvents": "2"
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Social",
+      "dateRange": "date_range_1",
+      "sessions": "16",
+      "engagedSessions": "16",
+      "keyEvents": "1"
+    },
+    {
+      "sessionDefaultChannelGroup": "AI Assistant",
+      "dateRange": "date_range_1",
+      "sessions": "12",
+      "engagedSessions": "11",
+      "keyEvents": "3"
+    },
+    {
+      "sessionDefaultChannelGroup": "Email",
+      "dateRange": "date_range_1",
+      "sessions": "8",
+      "engagedSessions": "5",
+      "keyEvents": "3"
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Social",
+      "dateRange": "date_range_0",
+      "sessions": "8",
+      "engagedSessions": "7",
+      "keyEvents": "0"
+    },
+    {
+      "sessionDefaultChannelGroup": "Unassigned",
+      "dateRange": "date_range_1",
+      "sessions": "5",
+      "engagedSessions": "0",
+      "keyEvents": "0"
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Video",
+      "dateRange": "date_range_0",
+      "sessions": "3",
+      "engagedSessions": "0",
+      "keyEvents": "0"
+    },
+    {
+      "sessionDefaultChannelGroup": "Unassigned",
+      "dateRange": "date_range_0",
+      "sessions": "1",
+      "engagedSessions": "0",
+      "keyEvents": "0"
+    },
+    {
+      "sessionDefaultChannelGroup": "Organic Video",
+      "dateRange": "date_range_1",
+      "sessions": "0",
+      "engagedSessions": "0",
+      "keyEvents": "0"
+    }
+  ],
+  "filtered_marketing_baseline": {
+    "request": {
+      "dateRanges": [
+        {
+          "startDate": "2026-08-08",
+          "endDate": "2026-09-04"
+        },
+        {
+          "startDate": "2026-07-11",
+          "endDate": "2026-08-07"
+        }
+      ],
+      "dimensions": [],
+      "metrics": [
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        },
+        {
+          "name": "keyEvents"
+        }
+      ],
+      "dimensionFilter": {
+        "andGroup": {
+          "expressions": [
+            {
+              "filter": {
+                "fieldName": "sessionDefaultChannelGroup",
+                "stringFilter": {
+                  "matchType": "EXACT",
+                  "value": "Organic Search"
+                }
+              }
+            },
+            {
+              "notExpression": {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "stringFilter": {
+                    "matchType": "FULL_REGEXP",
+                    "value": "(\\(not set\\)|/(app|admin|portal|q|join)(/.*)?|/(google-calendar|reece|square|xero)/callback(/.*)?)"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "response": {
+      "dimensionHeaders": [
+        {
+          "name": "dateRange"
+        }
+      ],
+      "metricHeaders": [
+        {
+          "name": "sessions",
+          "type": "TYPE_INTEGER"
+        },
+        {
+          "name": "engagedSessions",
+          "type": "TYPE_INTEGER"
+        },
+        {
+          "name": "keyEvents",
+          "type": "TYPE_FLOAT"
+        }
+      ],
+      "rows": [
+        {
+          "dimensionValues": [
+            {
+              "value": "date_range_0"
+            }
+          ],
+          "metricValues": [
+            {
+              "value": "535"
+            },
+            {
+              "value": "432"
+            },
+            {
+              "value": "92"
+            }
+          ]
+        },
+        {
+          "dimensionValues": [
+            {
+              "value": "date_range_1"
+            }
+          ],
+          "metricValues": [
+            {
+              "value": "466"
+            },
+            {
+              "value": "389"
+            },
+            {
+              "value": "106"
+            }
+          ]
+        }
+      ],
+      "rowCount": 2,
+      "metadata": {
+        "currencyCode": "AUD",
+        "timeZone": "Australia/Brisbane"
+      },
+      "kind": "analyticsData#runReport"
+    }
+  },
+  "filtered_nonhome_marketing_baseline": {
+    "request": {
+      "dateRanges": [
+        {
+          "startDate": "2026-08-08",
+          "endDate": "2026-09-04"
+        },
+        {
+          "startDate": "2026-07-11",
+          "endDate": "2026-08-07"
+        }
+      ],
+      "dimensions": [],
+      "metrics": [
+        {
+          "name": "sessions"
+        },
+        {
+          "name": "engagedSessions"
+        },
+        {
+          "name": "keyEvents"
+        }
+      ],
+      "dimensionFilter": {
+        "andGroup": {
+          "expressions": [
+            {
+              "filter": {
+                "fieldName": "sessionDefaultChannelGroup",
+                "stringFilter": {
+                  "matchType": "EXACT",
+                  "value": "Organic Search"
+                }
+              }
+            },
+            {
+              "notExpression": {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "stringFilter": {
+                    "matchType": "FULL_REGEXP",
+                    "value": "(\\(not set\\)|/(app|admin|portal|q|join)(/.*)?|/(google-calendar|reece|square|xero)/callback(/.*)?)"
+                  }
+                }
+              }
+            },
+            {
+              "notExpression": {
+                "filter": {
+                  "fieldName": "landingPage",
+                  "stringFilter": {
+                    "matchType": "EXACT",
+                    "value": "/"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "response": {
+      "dimensionHeaders": [
+        {
+          "name": "dateRange"
+        }
+      ],
+      "metricHeaders": [
+        {
+          "name": "sessions",
+          "type": "TYPE_INTEGER"
+        },
+        {
+          "name": "engagedSessions",
+          "type": "TYPE_INTEGER"
+        },
+        {
+          "name": "keyEvents",
+          "type": "TYPE_FLOAT"
+        }
+      ],
+      "rows": [
+        {
+          "dimensionValues": [
+            {
+              "value": "date_range_0"
+            }
+          ],
+          "metricValues": [
+            {
+              "value": "411"
+            },
+            {
+              "value": "321"
+            },
+            {
+              "value": "64"
+            }
+          ]
+        },
+        {
+          "dimensionValues": [
+            {
+              "value": "date_range_1"
+            }
+          ],
+          "metricValues": [
+            {
+              "value": "360"
+            },
+            {
+              "value": "294"
+            },
+            {
+              "value": "71"
+            }
+          ]
+        }
+      ],
+      "rowCount": 2,
+      "metadata": {
+        "currencyCode": "AUD",
+        "timeZone": "Australia/Brisbane"
+      },
+      "kind": "analyticsData#runReport"
+    }
+  },
+  "filtered_marketing_australia": {
+    "current_sessions": 487,
+    "previous_sessions": 415
+  },
+  "organic_sources_current": [
+    {
+      "sessionSourceMedium": "google / organic",
+      "sessions": "558",
+      "engagedSessions": "410",
+      "keyEvents": "85"
+    },
+    {
+      "sessionSourceMedium": "bing / organic",
+      "sessions": "53",
+      "engagedSessions": "40",
+      "keyEvents": "6"
+    },
+    {
+      "sessionSourceMedium": "au.search.yahoo.com / referral",
+      "sessions": "9",
+      "engagedSessions": "8",
+      "keyEvents": "0"
+    },
+    {
+      "sessionSourceMedium": "duckduckgo / organic",
+      "sessions": "5",
+      "engagedSessions": "5",
+      "keyEvents": "0"
+    },
+    {
+      "sessionSourceMedium": "in.search.yahoo.com / referral",
+      "sessions": "1",
+      "engagedSessions": "0",
+      "keyEvents": "0"
+    },
+    {
+      "sessionSourceMedium": "nz.search.yahoo.com / referral",
+      "sessions": "1",
+      "engagedSessions": "1",
+      "keyEvents": "1"
+    }
+  ],
+  "caveats": [
+    "GA landing-page subtotals total 628 current sessions; channel aggregate is 627. Use the directly filtered 535-session marketing baseline.",
+    "GA key events here are CTA click occurrences, not unique signups, purchases or revenue."
+  ]
+}

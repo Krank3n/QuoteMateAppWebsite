@@ -9,6 +9,7 @@ import CTAButtons from '../../components/CTAButtons';
 import WalkthroughPlayer from '../../components/WalkthroughPlayer';
 import { quoteTemplates, getTemplateBySlug, getTradeBySlug, getTradeFAQs, getTemplateContent, rotated, rotatedTrades } from '@/lib/data';
 import { TEMPLATES_WITH_VIDEOS, VIDEO_UPLOAD_DATE } from '@/lib/videos';
+import { templateDownloadLinks } from '@/lib/templateDownloads';
 
 interface Props {
   params: Promise<{ templateSlug: string }>;
@@ -60,6 +61,7 @@ export default async function TemplatePage({ params }: Props) {
   const trade = getTradeBySlug(template.trade);
   const content = getTemplateContent(template.slug);
   const hasVideo = TEMPLATES_WITH_VIDEOS.has(template.slug);
+  const downloads = templateDownloadLinks(template.slug);
   const jobName = template.name.replace(/ Quote Template$/i, '');
   const faqItems = [
     ...(content?.faqs ?? []),
@@ -82,7 +84,16 @@ export default async function TemplatePage({ params }: Props) {
                 <span className="seo-badge">Free Template</span>
                 <h1 className="seo-hero-title">{template.name}</h1>
                 <p className="seo-hero-subtitle">{template.description}</p>
-                <p className="seo-hero-videocue">▶ Watch a real {jobName.toLowerCase()} quote built in under a minute</p>
+                <div className="template-downloads">
+                  <h2>Download the blank worksheet</h2>
+                  <p>No signup required. Print the PDF or edit the Excel sheet. Add your own quantities, rates, scope and GST treatment — no prices or complete specifications are supplied.</p>
+                  <div className="template-download-actions">
+                    <a href={downloads.pdf} download className="btn btn-primary" data-template-download="pdf" data-template-slug={template.slug}>Download PDF</a>
+                    <a href={downloads.excel} download className="btn btn-secondary" data-template-download="xlsx" data-template-slug={template.slug}>Download Excel (.xlsx)</a>
+                  </div>
+                </div>
+                {hasVideo && <p className="seo-hero-videocue">▶ Watch a real {jobName.toLowerCase()} quote built in under a minute</p>}
+                <p>Want to build, edit and send your quote? Try the QuoteMate app.</p>
                 <CTAButtons showWebLink />
               </div>
               {hasVideo && (

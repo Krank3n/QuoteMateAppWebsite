@@ -208,9 +208,36 @@ interface EventFunnelData {
   attribution?: {
     rows: { key: string; signups: number; trials: number; sent: number; monetized: number }[];
     attributedSignups: number;
+    /** Accounts with no first-touch record at all. Not "organic". */
+    unattributedSignups?: number;
+    /** @deprecated pre-rename mirror of unattributedSignups. */
     organicSignups: number;
+    /** Full funnel by acquisition channel; absent on pre-rollout payloads. */
+    channels?: {
+      channel: 'paid' | 'organic_search' | 'referral' | 'direct' | 'unknown';
+      signups: number;
+      trials: number;
+      sent: number;
+      monetized: number;
+    }[];
+    /** Landing pages that brought in confirmed-organic accounts. */
+    organicLandingPages?: {
+      landingPage: string;
+      signups: number;
+      trials: number;
+      sent: number;
+      monetized: number;
+    }[];
   };
 }
+
+const CHANNEL_LABELS: Record<string, string> = {
+  organic_search: 'Organic search',
+  referral: 'Referral',
+  direct: 'Direct',
+  paid: 'Paid campaign',
+  unknown: 'Unknown',
+};
 
 const DAY_OPTIONS = [7, 28, 90];
 
@@ -1296,8 +1323,11 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
               <div className={styles.cardTitle}>Acquisition by ad</div>
               <div className={styles.cardSubtitle}>
                 First-touch utm_content per signup ·{' '}
-                {data.attribution.attributedSignups.toLocaleString()} attributed,{' '}
-                {data.attribution.organicSignups.toLocaleString()} organic baseline
+                {data.attribution.attributedSignups.toLocaleString()} campaign-attributed,{' '}
+                {(
+                  data.attribution.unattributedSignups ?? data.attribution.organicSignups
+                ).toLocaleString()}{' '}
+                with no first-touch record
               </div>
             </div>
           </div>
@@ -1335,6 +1365,93 @@ function EventFunnelSection({ data, error }: { data: EventFunnelData | null; err
           )}
         </div>
       )}
+
+      {/* Acquisition by channel — the same durable funnel as the ad table,
+          cut by where the account actually came from. `unknown` is a real
+          answer, not a synonym for organic: it is every account whose origin
+          nothing durable records (native installs, cross-device journeys,
+          cleared storage, and everyone who signed up before the first-touch
+          record shipped). Do not read it as organic search. */}
+      {data.attribution?.channels && data.attribution.channels.length > 0 && (
+        <div className={styles.card} style={{ marginTop: 16 }}>
+          <div className={styles.cardHeader}>
+            <div>
+              <div className={styles.cardTitle}>Acquisition by channel</div>
+              <div className={styles.cardSubtitle}>
+                First touch → signup → first quote → sent → monetised (billed Pro or a
+                real Square payment, deduplicated). Unknown means no usable evidence of
+                origin — never read it as organic.
+              </div>
+            </div>
+          </div>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Channel</th>
+                  <th>Signups</th>
+                  <th>1st quote</th>
+                  <th>Sent</th>
+                  <th>Monetised</th>
+                  <th>Signup → monetised</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.attribution.channels.map((row) => (
+                  <tr key={row.channel}>
+                    <td>{CHANNEL_LABELS[row.channel] ?? row.channel}</td>
+                    <td>{row.signups.toLocaleString()}</td>
+                    <td>{row.trials.toLocaleString()}</td>
+                    <td>{row.sent.toLocaleString()}</td>
+                    <td>{row.monetized.toLocaleString()}</td>
+                    <td>{row.signups > 0 ? `${pct1(row.monetized / row.signups)}%` : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Which pages organic search actually converts through. Only accounts
+          whose first touch was a confirmed search referral appear here. */}
+      {data.attribution?.organicLandingPages &&
+        data.attribution.organicLandingPages.length > 0 && (
+          <div className={styles.card} style={{ marginTop: 16 }}>
+            <div className={styles.cardHeader}>
+              <div>
+                <div className={styles.cardTitle}>Organic landing pages that convert</div>
+                <div className={styles.cardSubtitle}>
+                  First-touch page for accounts that arrived from a search engine
+                </div>
+              </div>
+            </div>
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Landing page</th>
+                    <th>Signups</th>
+                    <th>1st quote</th>
+                    <th>Sent</th>
+                    <th>Monetised</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.attribution.organicLandingPages.map((row) => (
+                    <tr key={row.landingPage}>
+                      <td><code>{row.landingPage}</code></td>
+                      <td>{row.signups.toLocaleString()}</td>
+                      <td>{row.trials.toLocaleString()}</td>
+                      <td>{row.sent.toLocaleString()}</td>
+                      <td>{row.monetized.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
     </div>
   );
 }

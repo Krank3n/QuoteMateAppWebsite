@@ -1,0 +1,190 @@
+{
+  "checked_on": "2026-09-07",
+  "method": "Read-only HTTP GET and HTML parsing, no browser interaction. Download checks inspect rendered anchor links and download attributes; not every asset or page was crawled.",
+  "checks": [
+    {
+      "path": "/templates/bathroom-renovation-quote-template/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/templates/bathroom-renovation-quote-template/",
+      "redirects": [],
+      "title": "Free Bathroom Renovation Quote Template (PDF & Excel) \u2014 QuoteMate",
+      "canonical": [
+        "https://quotemateapp.au/templates/bathroom-renovation-quote-template/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": []
+    },
+    {
+      "path": "/templates/ducted-aircon-quote-template/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/templates/ducted-aircon-quote-template/",
+      "redirects": [],
+      "title": "Free Ducted Air Conditioning Quote Template (PDF & Excel) \u2014 QuoteMate",
+      "canonical": [
+        "https://quotemateapp.au/templates/ducted-aircon-quote-template/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": []
+    },
+    {
+      "path": "/quotes-for-cabinet-makers/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/quotes-for-cabinet-makers/",
+      "redirects": [],
+      "title": "Free Quoting App for Cabinet Makers (2026) \u2014 QuoteMate",
+      "canonical": [
+        "https://quotemateapp.au/quotes-for-cabinet-makers/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": []
+    },
+    {
+      "path": "/articles/how-to-quote-retaining-wall-installation/",
+      "status": 404,
+      "final_url": "https://quotemateapp.au/articles/how-to-quote-retaining-wall-installation/",
+      "redirects": [],
+      "title": "QuoteMate \u2014 Professional Quotes & Invoices for Australian Tradies",
+      "canonical": [],
+      "hreflang": [
+        {
+          "rel": "alternate",
+          "hreflang": "en-AU",
+          "href": "https://quotemateapp.au/"
+        }
+      ],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": [
+        "noindex"
+      ]
+    },
+    {
+      "path": "/articles/how-to-quote-an-epoxy-floor-coating/",
+      "status": 404,
+      "final_url": "https://quotemateapp.au/articles/how-to-quote-an-epoxy-floor-coating/",
+      "redirects": [],
+      "title": "QuoteMate \u2014 Professional Quotes & Invoices for Australian Tradies",
+      "canonical": [],
+      "hreflang": [
+        {
+          "rel": "alternate",
+          "hreflang": "en-AU",
+          "href": "https://quotemateapp.au/"
+        }
+      ],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": [
+        "noindex"
+      ]
+    },
+    {
+      "path": "/articles/how-to-price-a-fence-installation/",
+      "status": 404,
+      "final_url": "https://quotemateapp.au/articles/how-to-price-a-fence-installation/",
+      "redirects": [],
+      "title": "QuoteMate \u2014 Professional Quotes & Invoices for Australian Tradies",
+      "canonical": [],
+      "hreflang": [
+        {
+          "rel": "alternate",
+          "hreflang": "en-AU",
+          "href": "https://quotemateapp.au/"
+        }
+      ],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": [
+        "noindex"
+      ]
+    },
+    {
+      "path": "/quotes-for-electricians/newcastle/",
+      "status": 404,
+      "final_url": "https://quotemateapp.au/quotes-for-electricians/newcastle/",
+      "redirects": [],
+      "title": "QuoteMate \u2014 Professional Quotes & Invoices for Australian Tradies",
+      "canonical": [],
+      "hreflang": [
+        {
+          "rel": "alternate",
+          "hreflang": "en-AU",
+          "href": "https://quotemateapp.au/"
+        }
+      ],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": [
+        "noindex"
+      ]
+    },
+    {
+      "path": "/compare/tradify/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/compare/tradify/",
+      "redirects": [],
+      "title": "QuoteMate vs Tradify \u2014 Compare Quoting Apps for Tradies",
+      "canonical": [
+        "https://quotemateapp.au/compare/tradify/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": []
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/",
+      "redirects": [],
+      "title": "QuoteMate \u2014 Professional Quotes & Invoices for Australian Tradies",
+      "canonical": [
+        "https://quotemateapp.au/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 2,
+      "robots": []
+    },
+    {
+      "path": "/q/",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/q/",
+      "redirects": [],
+      "title": "Your Quote - QuoteMate \u2014 QuoteMate",
+      "canonical": [],
+      "hreflang": [
+        {
+          "rel": "alternate",
+          "hreflang": "en-AU",
+          "href": "https://quotemateapp.au/"
+        }
+      ],
+      "downloads": [],
+      "h1_count": 0,
+      "robots": [
+        "noindex, nofollow"
+      ]
+    },
+    {
+      "path": "/articles/how-to-quote-electrical-work",
+      "status": 200,
+      "final_url": "https://quotemateapp.au/articles/how-to-quote-electrical-work",
+      "redirects": [],
+      "title": "How to Quote Electrical Work in Australia \u2014 QuoteMate",
+      "canonical": [
+        "https://quotemateapp.au/articles/how-to-quote-electrical-work/"
+      ],
+      "hreflang": [],
+      "downloads": [],
+      "h1_count": 1,
+      "robots": []
+    }
+  ]
+}
