@@ -32,6 +32,8 @@ next-env.d.ts
 # large video files (originals)
 public/assets/videos/QuoteMateWalkThrough.mp4
 public/assets/videos/trades/QuoteMatePromo*.mp4
+# Blank quote worksheets are generated from content during predev/prebuild.
+/public/assets/quote-templates/
 # Generated visual-QA screenshots (re-creatable via qa-scripts/visual-capture.mjs)
 qa-artifacts/
 

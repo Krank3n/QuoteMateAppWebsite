@@ -7,7 +7,7 @@ import { quoteTemplates } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Free Quote Templates for Tradies (Australia 2026)',
-  description: 'Free quote templates for building, fencing, construction, concrete, electrical, painting and 40+ more trades. Materials, steps and pricing included — customise and send as a branded PDF.',
+  description: 'Download free PDF and Excel quote worksheets for Australian tradies. Suggested line items and blank quantities, rates and GST fields. No signup required.',
   alternates: { canonical: 'https://quotemateapp.au/templates' },
 };
 
@@ -25,7 +25,7 @@ export default function TemplatesDirectoryPage() {
             <div className="seo-hero-content">
               <span className="seo-badge">Free Templates</span>
               <h1 className="seo-hero-title">Quote Templates for Australian Tradies</h1>
-              <p className="seo-hero-subtitle">Browse our library of free quoting templates. Each template includes common materials, steps, and pricing — ready to customise and send as a professional PDF.</p>
+              <p className="seo-hero-subtitle">Download free PDF and Excel worksheets with suggested line items. Enter your own quantities, rates and GST treatment — no signup required. Use QuoteMate when you want to build and send quotes in the app.</p>
             </div>
           </div>
         </section>

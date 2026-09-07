@@ -1,0 +1,169 @@
+landing_page,family,current_sessions,previous_sessions,current_engaged_sessions,previous_engaged_sessions,current_cta_key_event_occurrences,previous_cta_key_event_occurrences
+/,Homepage,124,106,110,94,28,35
+(not set),Unknown landing,58,49,6,8,0,0
+/quotes-for-cabinet-makers,National trade,31,28,26,25,8,3
+/quotes-for-cleaners,National trade,17,12,13,11,1,5
+/get-paid/taking-deposits-australia,get-paid,15,7,14,6,0,0
+/quotes-for-concreters,National trade,15,10,12,8,4,2
+/best/app-for-electricians,best,14,3,9,1,1,0
+/quotes-for-landscapers,National trade,14,15,10,11,6,5
+/app/Main/Dashboard,Product / utility,12,12,11,8,0,0
+/quotes-for-electricians,National trade,12,12,11,9,3,3
+/quotes-for-painters,National trade,12,15,10,10,3,6
+/templates/bathroom-renovation-quote-template,templates,12,7,11,6,0,2
+/quotes-for-welders,National trade,11,8,7,6,3,3
+/templates/ducted-aircon-quote-template,templates,11,7,6,5,1,0
+/best/quoting-app-for-tradies,best,10,1,10,1,2,0
+/quotes-for-plumbers,National trade,10,3,9,3,2,0
+/articles/how-to-quote-electrical-work,articles,9,15,7,12,1,3
+/articles/how-to-quote-a-bathroom-renovation,articles,8,1,6,1,1,0
+/quotes-for-carpenters,National trade,8,14,6,10,3,7
+/articles/how-much-should-i-charge-for-callout-fees,articles,7,3,5,2,0,1
+/articles/how-to-quote-concrete-driveway,articles,7,9,6,8,1,1
+/best/app-for-plumbers,best,7,2,5,2,0,0
+/q,Product / utility,7,1,3,0,0,0
+/quotes-for-plasterers,National trade,7,9,5,6,0,2
+/templates/colorbond-fence-quote-template,templates,7,3,6,3,3,3
+/quotes-for-roofers,National trade,6,11,5,10,1,2
+/templates,templates,6,19,5,17,0,0
+/quotes-for-fencers,National trade,5,12,4,10,3,6
+/quotes-for-hvac-technicians,National trade,5,6,4,5,1,1
+/quotes-for-tilers,National trade,5,5,3,4,3,1
+/app,Product / utility,4,2,3,1,0,0
+/articles/how-to-quote-tile-and-slate-work,articles,4,4,3,3,0,3
+/compare/chatgpt,compare,4,0,4,0,0,0
+/quotes-for-builders,National trade,4,5,4,3,0,0
+/templates/fence-quote-template,templates,4,2,3,2,1,1
+/articles/how-to-quote-a-retaining-wall,articles,3,4,2,4,0,0
+/best,best,3,0,3,0,0,0
+/quotes-for-arborists,National trade,3,0,3,0,0,0
+/quotes-for-demolishers,National trade,3,5,2,3,1,1
+/quotes-for-flooring-installers,National trade,3,3,3,2,0,0
+/quotes-for-glaziers,National trade,3,0,1,0,0,0
+/quotes-for-renderers,National trade,3,1,2,1,1,0
+/templates/concrete-driveway-quote-template,templates,3,0,1,0,1,0
+/templates/concrete-slab-quote-template,templates,3,0,3,0,0,0
+/templates/end-of-lease-cleaning-quote-template,templates,3,3,1,2,0,0
+/templates/solar-installation-quote-template,templates,3,3,2,2,0,0
+/alternatives/servicem8,alternatives,2,1,2,1,0,0
+/alternatives/simpro,alternatives,2,2,2,1,0,0
+/alternatives/xero,alternatives,2,1,2,1,0,0
+/app/Main/Jobs,Product / utility,2,0,2,0,0,0
+/app/Main/Mate,Product / utility,2,0,1,0,0,0
+/app/NewJob/MaterialsList,Product / utility,2,2,1,2,0,0
+/app/ViewJob,Product / utility,2,1,2,1,0,0
+/articles/how-to-quote-a-driveway-gate-installation,articles,2,1,2,1,0,0
+/articles/how-to-quote-a-fence-installation,articles,2,2,2,2,0,1
+/articles/how-to-quote-a-granny-flat,articles,2,0,2,0,0,0
+/articles/how-to-quote-a-shed-build,articles,2,0,2,0,1,0
+/articles/how-to-quote-driveway-pressure-cleaning,articles,2,1,1,1,0,0
+/articles/how-to-quote-flooring,articles,2,0,2,0,0,0
+/articles/how-to-quote-landscaping,articles,2,1,2,1,0,0
+/articles/how-to-quote-paving-installation,articles,2,2,2,0,0,0
+/best/tradie-app-australia,best,2,2,1,1,0,0
+/compare/aroflo,compare,2,0,2,0,0,0
+/compare/fergus,compare,2,0,0,0,0,0
+/integrations/reece,integrations,2,3,2,3,0,0
+/integrations/reece/hot-water-system,integrations,2,0,1,0,0,0
+/quotes-for-solar-installers,National trade,2,1,1,1,1,0
+/templates/bathroom-tiling-quote-template,templates,2,2,0,2,0,1
+/templates/gutter-cleaning-quote-template,templates,2,0,2,0,2,0
+/templates/painting-quote-template,templates,2,0,2,0,1,0
+/templates/paving-quote-template,templates,2,1,2,1,1,0
+/templates/smoke-alarm-installation-quote-template,templates,2,0,2,0,1,0
+/templates/stump-grinding-quote-template,templates,2,0,1,0,0,0
+/templates/termite-treatment-quote-template,templates,2,0,1,0,0,0
+/about,Other marketing,1,1,1,1,0,0
+/app/NewJob/AddMaterial,Product / utility,1,0,1,0,0,0
+/app/NewJob/Details,Product / utility,1,0,1,0,0,0
+/app/NewJob/LaborMarkup,Product / utility,1,1,1,1,0,0
+/articles/how-to-quote-a-concrete-driveway,articles,1,0,1,0,0,0
+/articles/how-to-quote-a-deck-build,articles,1,0,1,0,0,0
+/articles/how-to-quote-a-garage-door-replacement,articles,1,0,1,0,0,0
+/articles/how-to-quote-led-downlight-installation,articles,1,1,1,1,0,0
+/articles/how-to-quote-retaining-wall-installation,articles,1,1,1,1,0,0
+/articles/how-to-quote-roof-replacement-australia,articles,1,0,1,0,0,0
+/articles/how-to-quote-split-system-air-conditioning,articles,1,0,1,0,0,0
+/articles/how-to-quote-window-replacement,articles,1,0,1,0,0,0
+/articles/tradie-job-management-app,articles,1,0,1,0,0,0
+/articles/tradie-job-management-app-vs-servicem8,articles,1,0,1,0,0,0
+/best/invoicing-app-for-tradies,best,1,0,1,0,0,0
+/best/job-management-software-for-tradies,best,1,0,0,0,0,0
+/compare,compare,1,1,0,0,0,0
+/compare/buildxact,compare,1,0,1,0,0,0
+/compare/housecallpro,compare,1,0,1,0,0,0
+/get-paid/chasing-unpaid-invoices,get-paid,1,1,0,1,0,0
+/integrations/reece/gas-fitting,integrations,1,0,1,0,0,0
+/quotes-for-builders/perth,Trade x city,1,0,1,0,0,0
+/quotes-for-cabinet-makers/melbourne,Trade x city,1,0,0,0,0,0
+/quotes-for-carpenters/melbourne,Trade x city,1,0,1,0,0,0
+/quotes-for-concreters/melbourne,Trade x city,1,0,0,0,0,0
+/quotes-for-demolishers/adelaide,Trade x city,1,0,1,0,0,0
+/quotes-for-fencers/perth,Trade x city,1,0,1,0,0,0
+/quotes-for-painters/wollongong,Trade x city,1,0,1,0,0,0
+/quotes-for-plumbers/melbourne,Trade x city,1,0,1,0,1,0
+/quotes-for-renderers/gold-coast,Trade x city,1,0,1,0,0,0
+/quotes-for-renderers/melbourne,Trade x city,1,0,0,0,0,0
+/quotes-for-tilers/melbourne,Trade x city,1,0,1,0,0,0
+/quotes-for-welders/newcastle,Trade x city,1,0,0,0,0,0
+/quotes-for-welders/sydney,Trade x city,1,0,1,0,1,0
+/square/callback,Product / utility,1,1,1,0,0,0
+/templates/commercial-cleaning-quote-template,templates,1,1,0,1,0,0
+/templates/deck-quote-template,templates,1,3,1,2,0,0
+/templates/ev-charger-installation-quote-template,templates,1,2,0,2,0,1
+/templates/general-pest-control-quote-template,templates,1,0,1,0,0,0
+/templates/kitchen-renovation-quote-template,templates,1,1,1,1,0,0
+/templates/pergola-quote-template,templates,1,1,1,1,0,0
+/templates/plasterboard-installation-quote-template,templates,1,0,1,0,0,0
+/templates/roof-restoration-quote-template,templates,1,1,1,1,0,1
+/templates/staircase-quote-template,templates,1,1,0,1,0,1
+/templates/tree-removal-quote-template,templates,1,0,0,0,0,0
+/templates/wardrobe-fitout-quote-template,templates,1,2,1,1,0,0
+/templates/window-replacement-quote-template,templates,1,1,1,1,0,0
+/Main/Dashboard,Other marketing,0,1,0,1,0,0
+/alternatives/aroflo,alternatives,0,1,0,1,0,0
+/alternatives/tradify,alternatives,0,1,0,1,0,0
+/app/NewJob/CustomerDetails,Product / utility,0,1,0,1,0,0
+/app/NewJob/JobPreview,Product / utility,0,3,0,2,0,0
+/articles,articles,0,1,0,1,0,0
+/articles/how-to-follow-up-on-a-quote-as-a-tradie,articles,0,1,0,1,0,0
+/articles/how-to-price-a-kitchen-renovation,articles,0,1,0,1,0,0
+/articles/how-to-quote-a-pergola,articles,0,1,0,1,0,0
+/articles/how-to-quote-bathroom-tiling,articles,0,1,0,1,0,0
+/articles/how-to-quote-carpet-cleaning,articles,0,1,0,1,0,0
+/articles/how-to-quote-commercial-cleaning,articles,0,3,0,3,0,0
+/articles/how-to-quote-insulation-installation,articles,0,2,0,2,0,0
+/articles/how-to-quote-painting-a-house,articles,0,1,0,1,0,0
+/articles/how-to-quote-painting-interior-house,articles,0,1,0,1,0,0
+/articles/how-to-quote-plumbing-work,articles,0,1,0,0,0,0
+/articles/how-to-quote-tiling,articles,0,1,0,1,0,0
+/articles/nsw-ecert-ccew-digital-lodgement,articles,0,1,0,1,0,0
+/compare/servicem8,compare,0,2,0,1,0,1
+/compare/spreadsheets,compare,0,1,0,1,0,0
+/integrations/reece/toilet-replacement,integrations,0,1,0,1,0,0
+/portal,Product / utility,0,2,0,1,0,0
+/pricing,Other marketing,0,2,0,0,0,0
+/quotes-for-builders/brisbane,Trade x city,0,1,0,1,0,0
+/quotes-for-carpenters/adelaide,Trade x city,0,1,0,1,0,0
+/quotes-for-carpenters/brisbane,Trade x city,0,1,0,1,0,0
+/quotes-for-cleaners/sydney,Trade x city,0,1,0,0,0,0
+/quotes-for-demolishers/perth,Trade x city,0,1,0,1,0,0
+/quotes-for-electricians/brisbane,Trade x city,0,2,0,1,0,0
+/quotes-for-garage-door-installers,National trade,0,2,0,2,0,1
+/quotes-for-locksmiths,National trade,0,1,0,1,0,0
+/quotes-for-painters/brisbane,Trade x city,0,1,0,1,0,0
+/quotes-for-painters/perth,Trade x city,0,1,0,1,0,0
+/quotes-for-pest-controllers,National trade,0,2,0,2,0,0
+/quotes-for-tilers/adelaide,Trade x city,0,1,0,1,0,0
+/quotes-for-welders/perth,Trade x city,0,1,0,1,0,0
+/shower-quoting-tool,Other marketing,0,1,0,1,0,0
+/templates/cabinet-door-replacement-quote-template,templates,0,1,0,1,0,0
+/templates/epoxy-floor-coating-quote-template,templates,0,1,0,1,0,0
+/templates/fence-repair-quote-template,templates,0,2,0,2,0,1
+/templates/granny-flat-quote-template,templates,0,1,0,1,0,1
+/templates/outdoor-kitchen-quote-template,templates,0,1,0,1,0,1
+/templates/render-house-quote-template,templates,0,1,0,1,0,0
+/templates/split-system-installation-quote-template,templates,0,2,0,2,0,0
+/templates/vinyl-plank-flooring-quote-template,templates,0,1,0,1,0,0
+/terms,Other marketing,0,1,0,1,0,0
+/trades,Other marketing,0,2,0,2,0,0
