@@ -44,9 +44,36 @@ comparable across 8 September. Details below.
 
 **STILL BLOCKED (the only un-shipped item).** `doctl` returns **401 Unable to authenticate** on every endpoint including `/v2/account`, so the stored Personal Access Token is revoked or expired, not merely under-scoped. Verified live 2026-09-07: all four source URLs and their slash variants return **404**, not 301. Git-based source deploys do not touch the App Platform ingress spec, so merging the repo file changed nothing — as designed.
 
-**Owner action:** mint a Read+Write token at <https://cloud.digitalocean.com/account/api/tokens> and run `doctl auth init` (the token goes into doctl's prompt, never into a chat or a file).
+**Owner action, either route.** Both need the same thing first: a Read+Write
+token from <https://cloud.digitalocean.com/account/api/tokens>. Nothing routes
+around that — the existing token is revoked, and an agent minting or typing a
+token is credential handling.
 
-Then `scripts/release/apply-do-redirects.sh` does the rest, and is written to be safe:
+*Route 1 — doctl (fewest moving parts).* `doctl auth init`, and paste the token
+into doctl's own prompt. It never touches a chat transcript or a file.
+
+*Route 2 — the MCP server (configured 2026-09-08).* `@digitalocean/mcp@1.0.68`
+is registered for this project, scoped to `--services apps` so it can reach App
+Platform and nothing else:
+
+```jsonc
+// ~/.claude.json → projects → QuoteMateAppWebsite → mcpServers.digitalocean
+{ "type": "stdio", "command": "npx",
+  "args": ["-y", "@digitalocean/mcp@1.0.68", "--services", "apps"],
+  "env": {} }
+```
+
+The `env` block is deliberately empty: the server inherits the token from Claude
+Code's own environment, so **no token is ever written into a config file**. Put
+`export DIGITALOCEAN_API_TOKEN="…"` in `~/.zshrc` and restart Claude Code — not
+on a command line inside a session, where it would land in the transcript. Until
+that is set the server exits immediately with *"DigitalOcean API token not
+provided"*, which is what `claude mcp get digitalocean` currently reports as
+`CONNECTION_CLOSED`. The version is pinned on purpose: this process holds a
+write-capable token, so upgrades should be a decision rather than a surprise.
+
+Either way, `scripts/release/apply-do-redirects.sh` does the rest, and is
+written to be safe:
 
 1. finds the app whose spec actually serves `quotemateapp.au`;
 2. saves the **live** spec to a private backup and prints the one-line rollback;
@@ -378,7 +405,7 @@ The property still has exactly one: `customEvent:variant` (Hero variant).
 
 | Task | Owner action |
 |---|---|
-| **Apply the four 301s** | Needs a fresh DigitalOcean token — the stored one is revoked (401 on `/v2/account`, not a scope problem). **An MCP server does not avoid this**: `@digitalocean/mcp` reads `DIGITALOCEAN_API_TOKEN`, so a token still has to exist first, and minting one and entering it is owner-only credential handling. Shortest path: `doctl auth init`, then `APPLY=1 scripts/release/apply-do-redirects.sh` and `scripts/release/verify-seo-live.sh` |
+| **Apply the four 301s** | Needs a fresh DigitalOcean token — the stored one is revoked (401 on `/v2/account`, not a scope problem). Both routes are now set up and waiting on it: `doctl auth init`, or `export DIGITALOCEAN_API_TOKEN` + restart for the MCP server registered on 2026-09-08. Then `APPLY=1 scripts/release/apply-do-redirects.sh` and `scripts/release/verify-seo-live.sh` |
 | **Watch the GA conversion series across 8 Sep** | Done, not outstanding — but the step change is a definition change, not a performance change. Both sides are annotated in GA |
 | **Full Search Console export** | **The `gcloud auth application-default login` route is a dead end** — Google returns *"This app is blocked: this app tried to access sensitive info in your Google Account"* for gcloud's generic auth client when `webmasters.readonly` is requested. Running that command yourself hits the same wall. The working route is the service account: add `ga-reader@hansendev.iam.gserviceaccount.com` as a **Restricted** user under Search Console → Settings → Users and permissions. Its key already exists locally, so `scripts/seo-report.py --credentials ~/.config/gcloud/ga-reader-hansendev.json --gsc --cwv --windows 28,90 --inspect 5` then works |
 | **The 180 URLs Google finds missing** | Newly surfaced. Four now have redirects prepared; ~176 have never been triaged, and exactly 1 URL on the site currently redirects. Largest unclaimed housekeeping the index knows about |
