@@ -26,9 +26,10 @@ replaces the exhausted anonymous PageSpeed quota with the project's own). No
 billing change, no new credential, no broadened account access.
 
 Measurement configuration changed 2026-09-08: `sign_up` marked a GA key event,
-and the release annotated. Both are described below, along with the discovery
-that GA had been counting five CTA click events as conversions while completed
-signups counted for nothing.
+the five CTA click events that had been standing in for conversions un-marked,
+and both changes annotated. A GA "conversion" now means an account was created;
+before that date it meant somebody pressed a button, so the series is not
+comparable across 8 September. Details below.
 
 ## Implemented
 
@@ -337,11 +338,32 @@ So every "conversion" figure in GA4 to date is a **button click**, and completed
 account creation counted for nothing. That is the exact inversion this sprint's
 website work was written to avoid, sitting in the property configuration.
 
-**Not changed — your call.** Un-marking those five would make GA conversions
-mean accounts rather than clicks, but it breaks continuity in the historical
-series. The usual reason not to touch them is ad bidding, and that reason does
-not apply here: **`list_google_ads_links` returns empty**, and Meta optimises on
-the Pixel/CAPI, not on GA key events. So the risk is reporting continuity only.
+**All five were un-marked on 2026-09-08**, on the owner's instruction. GA warns
+on each one that *"no data for this event will be associated with conversions in
+any linked account such as Google Ads"* — which does not bite here:
+`list_google_ads_links` returns empty, and Meta optimises on the Pixel/CAPI
+rather than GA key events. The only real cost was continuity in the historical
+conversion series, and that is annotated.
+
+Key events after the change, confirmed by a full page reload:
+
+| Key event | Stream data | Note |
+|---|---|---|
+| `sign_up` | **Quote Mate** | the only key event that actually fires |
+| `purchase` | none | left alone |
+| `qualify_lead` | none | left alone |
+| `close_convert_lead` | none | left alone |
+
+**A GA "conversion" now means an account was created.** Before 8 September 2026
+it meant somebody pressed a button, so the two halves of that series are not
+comparable — do not read the step change as a collapse in performance.
+
+Annotated as `reportingDataAnnotations/15739371562`, dated 2026-09-08:
+*"Unmarked app_store_click, cta_click, google_play_click, web_app_click,
+pricing_cta_click as key events. sign_up is now the only one with data."*
+
+CTA and download clicks keep firing as ordinary events and remain available in
+reports — they simply stopped counting as business outcomes.
 
 ### Custom dimensions: deliberately none registered
 
@@ -356,8 +378,8 @@ The property still has exactly one: `customEvent:variant` (Hero variant).
 
 | Task | Owner action |
 |---|---|
-| **Apply the four 301s** | Mint a DigitalOcean Read+Write PAT, run `doctl auth init`, then `APPLY=1 scripts/release/apply-do-redirects.sh`. Re-run the live checks afterwards, query strings included. This one is owner-only by design: creating a token and typing it into a prompt is credential handling |
-| **Decide on the five CTA key events** | See the section above. Un-marking them makes GA conversions mean accounts; nothing is bidding on them, so the only cost is a discontinuity in the historical series |
+| **Apply the four 301s** | Needs a fresh DigitalOcean token — the stored one is revoked (401 on `/v2/account`, not a scope problem). **An MCP server does not avoid this**: `@digitalocean/mcp` reads `DIGITALOCEAN_API_TOKEN`, so a token still has to exist first, and minting one and entering it is owner-only credential handling. Shortest path: `doctl auth init`, then `APPLY=1 scripts/release/apply-do-redirects.sh` and `scripts/release/verify-seo-live.sh` |
+| **Watch the GA conversion series across 8 Sep** | Done, not outstanding — but the step change is a definition change, not a performance change. Both sides are annotated in GA |
 | **Full Search Console export** | **The `gcloud auth application-default login` route is a dead end** — Google returns *"This app is blocked: this app tried to access sensitive info in your Google Account"* for gcloud's generic auth client when `webmasters.readonly` is requested. Running that command yourself hits the same wall. The working route is the service account: add `ga-reader@hansendev.iam.gserviceaccount.com` as a **Restricted** user under Search Console → Settings → Users and permissions. Its key already exists locally, so `scripts/seo-report.py --credentials ~/.config/gcloud/ga-reader-hansendev.json --gsc --cwv --windows 28,90 --inspect 5` then works |
 | **The 180 URLs Google finds missing** | Newly surfaced. Four now have redirects prepared; ~176 have never been triaged, and exactly 1 URL on the site currently redirects. Largest unclaimed housekeeping the index knows about |
 | **63 "Crawled – currently not indexed"** | Google fetched these and declined them. On programmatic trade×city pages that usually reads as thin or near-duplicate. Worth a look before publishing more of the same shape |
