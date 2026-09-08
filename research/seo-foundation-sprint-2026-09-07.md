@@ -10,7 +10,7 @@ This is the first tranche of phase 1 in `seo-5x-traffic-plan-2026-09-07.md`.
 | **Tested** | Website 148, app 4,354, functions 1,340, Firestore rules 35 — all green |
 | **Deployed** | Website (PR #7, #8), app web bundle, Firestore rules, `aggregateEventFunnel` |
 | **Verified live** | 29 of 38 acceptance checks; the 9 failures are all the un-applied redirects |
-| **Blocked** | 301 ingress rules (DigitalOcean token revoked); Search Console API (ADC scope) |
+| **Blocked** | 301 ingress rules (DigitalOcean token revoked — owner-only); Search Console API (needs the service account added to the property) |
 
 Read `research/seo-evidence-2026-09-07/README.md` for the fresh Search Console
 and Core Web Vitals findings. The short version: the site is **seen and not
@@ -24,6 +24,11 @@ Cloud configuration changed in this sprint, all free and read-only:
 enabled on project `hansendev` (the first was the recorded blocker; the second
 replaces the exhausted anonymous PageSpeed quota with the project's own). No
 billing change, no new credential, no broadened account access.
+
+Measurement configuration changed 2026-09-08: `sign_up` marked a GA key event,
+and the release annotated. Both are described below, along with the discovery
+that GA had been counting five CTA click events as conversions while completed
+signups counted for nothing.
 
 ## Implemented
 
@@ -302,14 +307,58 @@ invented. The organic row will fill from the next organic signup onward.
 **This is a measurement change, not growth.** Annotate the release. Nothing
 here moved a ranking or won a customer.
 
+## GA measurement changes made 2026-09-08
+
+Both applied to property 527922866 (QuoteMateWebsite) through the GA UI.
+
+**`sign_up` is now a key event.** Verified `aria-pressed: false → true` and confirmed
+it survived a full page reload. `login` deliberately stays a normal event.
+**Not retroactive** — it counts from 8 September 2026 onward only.
+
+**The release is annotated** (`reportingDataAnnotations/15736494953`, dated
+2026-09-07, purple): *"Worksheets, honest sitemap dates, organic first touch now
+persisted to new accounts. sign_up became a key event 8 Sep 2026 - not
+retroactive."*
+
+### Found while doing it: GA has been counting clicks as conversions
+
+`sign_up` was **not** a key event. Five CTA click events **were**:
+
+| Key event | What it actually is |
+|---|---|
+| `app_store_click` | a click on a store badge |
+| `cta_click` | a click on a call-to-action |
+| `google_play_click` | a click on a store badge |
+| `web_app_click` | a click through to `/app` |
+| `pricing_cta_click` | a click on a pricing button |
+| `purchase`, `qualify_lead`, `close_convert_lead` | no stream data |
+
+So every "conversion" figure in GA4 to date is a **button click**, and completed
+account creation counted for nothing. That is the exact inversion this sprint's
+website work was written to avoid, sitting in the property configuration.
+
+**Not changed — your call.** Un-marking those five would make GA conversions
+mean accounts rather than clicks, but it breaks continuity in the historical
+series. The usual reason not to touch them is ad bidding, and that reason does
+not apply here: **`list_google_ads_links` returns empty**, and Meta optimises on
+the Pixel/CAPI, not on GA key events. So the risk is reporting continuity only.
+
+### Custom dimensions: deliberately none registered
+
+`first_landing_page`, `acquisition_source` and `acquisition_medium` were **not**
+registered. The acquisition → monetisation reporting reads durable Firestore
+state through the admin dashboard, not GA, so nothing would consume them; GA's
+native session-source dimensions remain primary acquisition truth. Registering
+them would spend limited custom-dimension slots on dimensions with no reader.
+The property still has exactly one: `customEvent:variant` (Hero variant).
+
 ## Still required to finish phase 1
 
 | Task | Owner action |
 |---|---|
-| **Apply the four 301s** | Mint a DigitalOcean Read+Write PAT, run `doctl auth init`, then `APPLY=1 scripts/release/apply-do-redirects.sh`. Re-run the live checks afterwards, query strings included |
-| **Full Search Console export** | `gcloud auth application-default login --scopes=…,analytics.readonly,webmasters.readonly` — the API is now enabled; only the credential scope is missing. Then `scripts/seo-report.py --gsc --cwv --windows 28,90 --inspect 5` |
-| **GA `sign_up` as a key event** | Behaviour is now validated by test; marking it needs GA edit rights the read-only credential does not have. Owner marks it in GA. **Not retroactive** — note the date. Keep CTA/download events out of it |
-| **GA custom dimensions** | Register `first_landing_page`, `acquisition_source`, `acquisition_medium` only if a custom report needs them. GA's native session-source dimensions stay primary |
+| **Apply the four 301s** | Mint a DigitalOcean Read+Write PAT, run `doctl auth init`, then `APPLY=1 scripts/release/apply-do-redirects.sh`. Re-run the live checks afterwards, query strings included. This one is owner-only by design: creating a token and typing it into a prompt is credential handling |
+| **Decide on the five CTA key events** | See the section above. Un-marking them makes GA conversions mean accounts; nothing is bidding on them, so the only cost is a discontinuity in the historical series |
+| **Full Search Console export** | **The `gcloud auth application-default login` route is a dead end** — Google returns *"This app is blocked: this app tried to access sensitive info in your Google Account"* for gcloud's generic auth client when `webmasters.readonly` is requested. Running that command yourself hits the same wall. The working route is the service account: add `ga-reader@hansendev.iam.gserviceaccount.com` as a **Restricted** user under Search Console → Settings → Users and permissions. Its key already exists locally, so `scripts/seo-report.py --credentials ~/.config/gcloud/ga-reader-hansendev.json --gsc --cwv --windows 28,90 --inspect 5` then works |
 | **The 180 URLs Google finds missing** | Newly surfaced. Four now have redirects prepared; ~176 have never been triaged, and exactly 1 URL on the site currently redirects. Largest unclaimed housekeeping the index knows about |
 | **63 "Crawled – currently not indexed"** | Google fetched these and declined them. On programmatic trade×city pages that usually reads as thin or near-duplicate. Worth a look before publishing more of the same shape |
 | **Ranking position** | The actual constraint: position 26.8 over 30,100 AU impressions. `/best/app-for-electricians/` has 1,566 impressions and 1 click. Nothing in this sprint addresses it |
