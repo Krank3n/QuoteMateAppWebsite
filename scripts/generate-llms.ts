@@ -263,7 +263,7 @@ async function main() {
   full.push('Card payments are processed via Square Mobile SDK on iOS and Android. Real cost to the tradie:');
   full.push('- In-person tap-to-pay: ~3.1% (1.6% Square + 1.5% QuoteMate).');
   full.push('- Online payment links: ~2.9%.');
-  full.push('- Optional 2.9% surcharge passthrough so the customer pays the fee, not the tradie.');
+  full.push('- No card surcharge: fees come out of the tradie\'s payout and the customer pays the quoted amount.');
   full.push('- All other methods (PayID, BPAY, bank transfer, cash, cheque) have no QuoteMate fee.');
   full.push('');
 

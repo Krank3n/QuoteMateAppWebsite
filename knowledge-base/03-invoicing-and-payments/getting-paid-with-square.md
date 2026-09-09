@@ -4,7 +4,7 @@ title: Getting paid with Square (Tap to Pay, fees, payouts)
 category: Invoicing & Payments
 audience: [customers, prospects]
 last_updated: 2026-07-05
-keywords: [square, tap to pay, card payment, fees, surcharge, payout, get paid, contactless, apple pay, google pay, refund]
+keywords: [square, tap to pay, card payment, fees, payout, get paid, contactless, apple pay, google pay, refund]
 question_examples:
   - "How do I take card payments on-site?"
   - "What are the Square fees?"
@@ -45,11 +45,11 @@ Two fees apply to a card payment: Square's own processing fee, and QuoteMate's p
 
 As a rough guide, the **total cost of acceptance in-person on Pro is about 3.1%** (Square ~1.6% + QuoteMate 1.5%). Lowering the QuoteMate fee is one of the reasons tradies upgrade to Pro.
 
-> Both fees come out of **your payout** — neither is added to the customer's bill. The optional surcharge (below) is the only thing that changes what your customer is charged, and it's available on any plan once Square is connected.
+> Both fees come out of **your payout** — nothing is added to the customer's bill. Your customer always pays exactly the quoted amount.
 
-## Surcharge passthrough (optional)
+## Can I pass the card fee on to the customer?
 
-Turn on **"Surcharge payment fees"** in your Square settings and QuoteMate adds a clearly-labelled **2.9%** to the customer's total, so you receive the full quoted amount. The surcharge is capped at 2.9% to stay under the ACCC's excessive-surcharge rules for realistic card types. With it off, the fees come out of your margin.
+No. The Reserve Bank has removed card surcharging on eftpos, Mastercard and Visa from **1 October 2026**, so QuoteMate no longer offers a surcharge option (the old "Pass Card Fees to Customer" toggle has been retired). If card costs matter to your margin, build them into your pricing the same way you would fuel or insurance.
 
 ## Payouts
 
