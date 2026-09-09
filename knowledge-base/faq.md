@@ -59,7 +59,7 @@ Yes. Cancel from the app store (or the Stripe portal on web). You keep Pro until
 Square Tap to Pay on-site (tap a card or phone on your device), or an online payment link on the invoice. Also bank transfer, PayID, BPAY, PayPal, card, cash, and cheque. → [Getting paid with Square](03-invoicing-and-payments/getting-paid-with-square.md)
 
 **What are the fees?**
-Square's processing fee plus a QuoteMate platform fee. On Pro that's 1.0% online / 1.5% in-person (vs 1.7% on Free). You can optionally pass a 2.9% surcharge to the customer. → [Getting paid with Square](03-invoicing-and-payments/getting-paid-with-square.md)
+Square's processing fee plus a QuoteMate platform fee. On Pro that's 1.0% online / 1.5% in-person (vs 1.7% on Free). Both come out of your payout; card surcharges aren't allowed in Australia from 1 October 2026, so the customer always pays the quoted amount. → [Getting paid with Square](03-invoicing-and-payments/getting-paid-with-square.md)
 
 **How do I refund a customer?**
 Through your Square account — there's no refund button in the app. → [Troubleshooting](08-troubleshooting/troubleshooting-common-issues.md)

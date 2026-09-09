@@ -26,9 +26,8 @@ You'll need a **Square account connected to your ABN**. If you don't have one, y
 
 - Take **Tap to Pay** card payments on a supported phone (iPhone XS+ on iOS 16.4+, or NFC Android).
 - Add **online payment links** to invoices.
-- Set up **surcharge passthrough** if you want to pass card fees to the customer.
 
-Full details on fees, requirements, payouts, and surcharges are in [Getting paid with Square](../03-invoicing-and-payments/getting-paid-with-square.md).
+Full details on fees, requirements and payouts are in [Getting paid with Square](../03-invoicing-and-payments/getting-paid-with-square.md).
 
 ## Related
 

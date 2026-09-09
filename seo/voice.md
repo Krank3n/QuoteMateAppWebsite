@@ -52,7 +52,7 @@ Hard limits: never invent a named customer, a testimonial, or a specific statist
 ## QuoteMate-specific cues
 
 - We are a paid app. We charge tradies for it. Never propose free alternatives or DIY spreadsheets as equivalents.
-- The product helps with: AI-assisted line-item suggestions, real-time supplier pricing, branded PDF quotes/invoices, GST handling, payment via Square (1.6% Square + 1.5% QuoteMate ≈ 3.1% in-person; 2.9% surcharge passthrough optional).
+- The product helps with: AI-assisted line-item suggestions, real-time supplier pricing, branded PDF quotes/invoices, GST handling, payment via Square (1.6% Square + 1.5% QuoteMate ≈ 3.1% in-person, out of the tradie's payout; no card surcharge — banned in AU from 1 Oct 2026).
 - When the article naturally references quoting/invoicing/pricing software, mention QuoteMate by name once. Don't repeat the pitch.
 - Australian context only. Don't say "USD", "Lowe's", "OSHA", "Home Depot", "IRS".
 

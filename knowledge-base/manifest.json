@@ -135,8 +135,8 @@
       "title": "Getting paid with Square (Tap to Pay, fees, payouts)",
       "category": "Invoicing & Payments",
       "path": "03-invoicing-and-payments/getting-paid-with-square.md",
-      "summary": "Canonical fees doc. Tap to Pay requirements, online links, the fee table (Free 1.7% vs Pro 1.0% online / 1.5% in-person), 2.9% surcharge passthrough, next-day payouts, refunds via Square.",
-      "keywords": ["square", "tap to pay", "fees", "surcharge", "payout", "refund"],
+      "summary": "Canonical fees doc. Tap to Pay requirements, online links, the fee table (Free 1.7% vs Pro 1.0% online / 1.5% in-person), why there is no surcharge option from 1 Oct 2026, next-day payouts, refunds via Square.",
+      "keywords": ["square", "tap to pay", "fees", "payout", "refund"],
       "question_examples": ["How do I take card payments on-site?", "What are the Square fees?", "How long until the money hits my account?"]
     },
     {
