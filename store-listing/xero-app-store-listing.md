@@ -91,7 +91,7 @@ Full details: quotemate.app/pricing
 - **Industry:** Trades & construction
 - **Regions served:** Australia
 - **App runs on:** iOS, Android, Web
-- **Support:** [support email/URL — confirm before submission]
+- **Support:** https://quotemateapp.au/#contact (page) · tom@hansendev.com.au (email). Confirmed 2026-09-11: the site footer publishes tom@hansendev.com.au and the homepage has a #contact section; there is no separate /support page.
 - **Privacy policy:** quotemate.app/privacy
 - **Terms:** quotemate.app/terms
 
