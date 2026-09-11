@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '../admin.module.css';
 import { api, fmtDate, fmtDateTime, fmtRelative, initials } from '../lib/adminApi';
+import { activityLine, wasResent } from '../lib/documentActivity';
 import { useSetPageMeta } from '../lib/pageMeta';
 import { IconQuote, IconExternal } from '../components/icons';
 
@@ -57,6 +58,9 @@ interface DocumentRow {
   firstViewedAt: number | null;
   lastViewedAt: number | null;
   viewCount: number;
+  /** Re-send audit: stamped on every real send since 2026-09-11; sentAt stays first-send-only. */
+  lastSentAt: number | null;
+  sendCount: number;
   acceptedAt: number | null;
   invoicedAt: number | null;
   paidInFullAt: number | null;
@@ -503,16 +507,10 @@ function stageLabel(stage: DocStage, type: DocType): string {
 }
 
 function ActivityCell({ d }: { d: DocumentRow }) {
-  // Pick the most informative single line per stage. Avoids stuffing the cell.
-  if (d.paidInFullAt) return <>paid {fmtRelative(d.paidInFullAt)}</>;
-  if (d.depositPaidAt && d.stage === 'quote_accepted') return <>deposit {fmtRelative(d.depositPaidAt)}</>;
-  // An invoice only carries respondedAt because its quote was customer-accepted
-  // before conversion (same document id), so say what actually happened.
-  if (d.respondedAt && d.type === 'invoice') return <>accepted {fmtRelative(d.respondedAt)}</>;
-  if (d.respondedAt) return <>responded {fmtRelative(d.respondedAt)}</>;
-  if (d.lastViewedAt) return <>viewed {fmtRelative(d.lastViewedAt)}</>;
-  if (d.sentAt) return <>sent {fmtRelative(d.sentAt)}</>;
-  return <span style={{ opacity: 0.4 }}>—</span>;
+  // One most-informative line per row; the ordering lives in activityLine.
+  const line = activityLine(d);
+  if (!line) return <span style={{ opacity: 0.4 }}>—</span>;
+  return <>{line.word} {fmtRelative(line.at)}{line.suffix ? <span style={{ opacity: 0.6 }}> {line.suffix}</span> : null}</>;
 }
 
 function StatTile({ label, value, sub, accent, warn }: { label: string; value: number | string; sub?: string; accent?: boolean; warn?: boolean }) {
@@ -663,6 +661,8 @@ function DocModal({
                   <Fact label="Created" value={fmtDateTime(row.createdAt)} />
                   <Fact label="Updated" value={fmtDateTime(row.updatedAt)} />
                   {row.sentAt && <Fact label="First sent" value={fmtDateTime(row.sentAt)} />}
+                  {wasResent(row) && <Fact label="Last sent" value={fmtDateTime(row.lastSentAt)} />}
+                  {row.sendCount >= 2 && <Fact label="Times sent" value={String(row.sendCount)} />}
                   {row.firstViewedAt && <Fact label="First viewed" value={fmtDateTime(row.firstViewedAt)} />}
                   {row.respondedAt && <Fact label="Responded" value={fmtDateTime(row.respondedAt)} />}
                   {row.acceptedAt && <Fact label="Accepted" value={fmtDateTime(row.acceptedAt)} />}
