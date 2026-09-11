@@ -54,31 +54,34 @@ of insider honesty that earns profile clicks. No removable content.
 https://www.reddit.com/r/Plumbing/comments/1sr32k5/solo_guys_how_are_you_sending_quotes_to_customers/
 OP: US solo plumber typing quotes in the Notes app; Jobber/ServiceTitan too heavy.
 
-> Your Notes-app instinct is half right — speed is what wins jobs, and the
-> big platforms punish you for it. Jobber and ServiceTitan are
-> dispatch-and-scheduling systems priced for crews; solo, you're paying for
-> software layers you'll never open.
+**Rewritten 2026-09-11** per the 27 Jul plan §5: the earlier version told the
+reader to go and search for a "quoting-first app", a phrase an Australian
+competitor now ranks for. The five-point checklist was always the useful part
+and now stands alone.
+
+> Your Notes-app instinct is half right. Speed is what wins the job, and the
+> big platforms punish you for it: Jobber and ServiceTitan are
+> dispatch-and-scheduling systems priced for crews, so solo you're paying for
+> layers you'll never open.
 >
-> What you're actually shopping for is a quoting-first app, which is a
-> different (and much cheaper) category — there are solid options in the
-> $0–30/month range. The checklist I'd run any free trial against:
+> Ignore feature lists. Run whatever you trial against five questions, in
+> the customer's kitchen, on your phone:
 >
-> 1. Can you build the quote on your phone, standing in the customer's
-> kitchen, in under five minutes?
+> 1. Can you build the quote in under five minutes standing there?
 > 2. Does it keep a price book, so the second quote for the same kind of job
 > is mostly taps instead of typing?
-> 3. Clean PDF with your logo and license details?
-> 4. One-tap convert to invoice with a payment link, so you're not re-typing
-> line items?
-> 5. Does it show you which quotes are still sitting unanswered? That list is
-> where solo guys leak the most money — jobs lost to silence, not price.
+> 3. Clean PDF with your logo and licence number on it?
+> 4. One tap to turn the accepted quote into an invoice with a payment link,
+> so you're not re-typing line items?
+> 5. Does it show you which quotes are still sitting unanswered?
 >
-> Number 5 is the one nobody checks in a trial and the one that pays the
-> subscription by itself.
+> Number 5 is the one nobody checks in a trial and the one that pays for the
+> subscription on its own. Solo guys lose more jobs to silence than to
+> price, and a list of who hasn't replied is the whole fix.
 
-Why this works: complete, self-contained answer; the category framing
-("quoting-first") plants the exact search that finds QuoteMate-class apps
-without naming anything.
+Why this works: complete, self-contained, and every line is something the
+reader can act on today. No category name to go and search for; the bio does
+the attribution.
 
 ---
 
