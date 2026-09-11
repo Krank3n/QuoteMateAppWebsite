@@ -1,163 +1,450 @@
 {
   "quoting-app-for-tradies": {
-    "intro": "Finding the right quoting app can save you hours and protect your margins. We tested the top apps for Australian tradies on what actually matters on site: how fast you can build a quote, if it pulls live prices from Australian suppliers, and how easily you can get paid. We also looked at pricing models and proper GST handling. For most sole traders and small crews, QuoteMate is the best quoting app for Australian tradies thanks to its AI-assisted quoting and flat-rate pricing. The rest of the shortlist suits bigger crews or more specific needs.",
+    "intro": "A quoting app for tradies has one measure of success: an accurate, itemised quote sent while you are still on site, at material prices that are right today. Everything else, job tracking, invoicing, payments, is downstream of that. A job quoting app that takes twenty minutes at a desk is a spreadsheet with a logo. One that guesses material prices is a discount you did not mean to give. This guide compares six quoting apps Australian tradies use, from a quoting-first app built for the van to job management platforms with quoting attached and an estimating tool built for builders working from plans, on speed, supplier pricing, GST and the real cost for one person or a small crew.",
     "sections": [
       {
-        "heading": "What makes the best quoting app for Australian tradies",
-        "body": "The best app gets the details right for Australian tradies. First, speed. You need to build and send a quote while you're still on site, not spend your evening on admin. Second, price accuracy. The app must pull real-time prices from Australian suppliers, because using last month's price list costs you money. Third, the pricing model. Per-user fees, like Tradify's $48/user/mo, get expensive fast if you have a subbie or an apprentice. A flat monthly fee is predictable. Finally, it must handle GST and ABNs correctly and let you take payment on the spot. A 3% card fee is better than waiting 30 days to get paid."
+        "heading": "What a job quoting app has to do in five minutes on site",
+        "body": [
+          "Describe the job. Get an itemised list of materials and labour, not a blank form. Price the materials at what they cost this week. Add GST and your ABN. Send it as a branded PDF by email, SMS or WhatsApp before you leave. Let the customer accept it online. Chase it if they go quiet.",
+          "That is the whole test. Run each app on this page through it with a real job, a fence, a hot water swap, a switchboard, and time it. The apps built for quoting finish in two minutes. The platforms built for job management finish in ten, because quoting is a form inside a bigger system.",
+          "In QuoteMate the description is the input: type or say the job and the app suggests the line items, applies live supplier pricing, adds labour and GST and produces the PDF. Typical trade quotes run from $150 to $200,000 and the flow is the same."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "While QuoteMate is our top pick for quoting speed, other tools are better for specific jobs. Tradify is built for managing small crews with its timesheet and job dispatch features. ServiceM8 is a solid choice for teams running entirely on iPhones who need detailed digital job cards and forms. If you're a plumber or sparkie needing detailed project costing, Fergus is designed for you. For builders working from architectural plans, Buildxact is the specialised tool for take-offs and estimates. Quotient is a simple online quote builder, but it’s not tradie-focused and its pricing is in US dollars, which is a hassle with currency conversion and GST."
+        "heading": "Materials pricing is the difference between a quote and a guess",
+        "body": [
+          "Across the trades QuoteMate is built for, the quotes that get revised after sending are the ones where a material price moved between quoting and ordering. That is the pattern live supplier pricing exists to stop. A quote priced off a list you built in March is a guess with a date on it.",
+          "QuoteMate pulls live Australian supplier pricing into line items, and for plumbers and gasfitters connects directly to Reece maX so every line prices at your real trade-discounted rate, with ordering from inside the accepted quote. Of the other five apps here, none pull live supplier prices; they quote against lists you maintain. That is not a flaw in what they are, it is the difference between a quoting app and a job management app with a quote form.",
+          "Add a validity period to every quote, thirty days is standard, so a price that moves after that is the customer's problem to re-accept rather than yours to absorb."
+        ]
+      },
+      {
+        "heading": "Quoting app for builders: when you need takeoffs instead",
+        "body": [
+          "If you build from architectural plans, a quoting app is the wrong category. You need estimating software that does digital takeoffs, measuring quantities off the drawing, and that is Buildxact: desktop-first, from $169 a month, built for residential builders and large renovations.",
+          "QuoteMate does not do takeoffs and does not pretend to. It is for the tradie on the tools, including builders quoting a bathroom or a granny flat from a site visit rather than a plan set, where the job is described and itemised rather than measured off a PDF. Builders doing both often run both: Buildxact for the estimate, a quoting app for the service and renovation work."
+        ]
+      },
+      {
+        "heading": "The six quoting apps, honestly",
+        "body": [
+          "QuoteMate. Quoting-first for Australian sole traders and small crews. AI-assisted line items, live supplier pricing, Reece maX for plumbers, branded PDFs, GST and ABN, online acceptance, automatic chasing, one-tap invoice, Square tap-to-pay, Xero sync. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year. Not for crew dispatch, timesheets or takeoffs.",
+          "Tradify. Job management for small crews with quoting attached. Timesheets and dispatch are the strength. From $48 per user per month.",
+          "ServiceM8. Job cards, forms and scheduling for iPhone-based teams, quoting included but manual. Free tier for very low volume, then from $29 a month.",
+          "Fergus. Job costing for plumbing and electrical firms with office staff. From $53 a month. Manual quoting against your own price list.",
+          "Buildxact. Estimating from plans with digital takeoffs, for builders. From $169 a month. The right tool for its job and the wrong one for a service tradie.",
+          "Quotient. A clean, general online quoting tool used across many industries. From US$28 a month, priced in US dollars, with no trade materials or Australian supplier pricing. Fine for a service business that is not in the trades."
+        ]
+      },
+      {
+        "heading": "What a quoting app costs",
+        "body": [
+          "QuoteMate free, or Pro at $49 a month (about $27 a month paid annually at $328), flat for the business. ServiceM8 from $29. Tradify from $48 per user. Fergus from $53. Buildxact from $169. Quotient from US$28, which moves with the exchange rate and is not GST-inclusive.",
+          "For a crew of three, the per-user options multiply and the flat ones do not. For a sole trader the deciding cost is not the subscription; it is the one job a quarter that gets under-quoted because a material price was stale. That is worth more than a year of any app on this list."
+        ]
+      },
+      {
+        "heading": "How QuoteMate quotes a job, start to finish",
+        "body": [
+          "Describe the job in plain words, typed or spoken. The app drafts the line items: materials, quantities, labour, callout if there is one. Live supplier pricing fills in the material costs; for plumbers, that is your Reece trade rate. Adjust anything, add your margin, and the GST is calculated per line. The branded PDF goes out by email, SMS or WhatsApp and the customer accepts online. Accepted, it moves into the job pipeline and, when the work is done, becomes the invoice in one tap.",
+          "If you want to see the line items a good quote carries for your trade before you use any app, the free quote worksheets on this site are blank PDF and Excel versions for 45 common jobs, with no prices filled in. They are a checklist, not a quoting tool; the app is where the pricing happens."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free quoting app for Australian tradies?",
-        "answer": "QuoteMate offers the best free plan for tradies starting out. It lets you create professional quotes with your logo and handles GST automatically. ServiceM8 also has a free tier, but it's limited to 20 jobs per month. For a proper, unlimited free option that helps you price correctly from day one, QuoteMate is the clear choice."
+        "question": "What is the best app for quoting jobs in Australia?",
+        "answer": "For a tradie quoting on site, a quoting-first app that itemises the job, prices materials at live supplier rates and sends before you leave. QuoteMate does that in under two minutes, with a free plan for unlimited quotes and invoices and Pro at a flat $49 a month. Builders estimating from plans should look at Buildxact instead."
       },
       {
-        "question": "Why not just use Xero or MYOB for quoting?",
-        "answer": "Xero and MYOB are for accounting, not for quoting. They can create a basic invoice, but they can't build a detailed materials list with live supplier pricing. They're designed for your bookkeeper, not for you on site. A proper quoting app helps you win the work and price it profitably, then syncs the final invoice to Xero."
+        "question": "Is there a free quoting app for tradies?",
+        "answer": "QuoteMate's free plan is permanent and includes unlimited quotes and invoices with your logo and GST handled. A 14-day Pro trial starts when you create your first quote. ServiceM8 has a free tier limited to a small number of jobs a month."
       },
       {
-        "question": "Which quoting app is cheapest for a sole trader?",
-        "answer": "For a solo operator, QuoteMate's Pro plan at $49/month is the best value. While Tradify is $48/month, it's a per-user cost that bites you as soon as you hire someone. QuoteMate is a flat fee for the whole business. ServiceM8 starts at $29/month but scales up with job volume. QuoteMate’s price includes the AI features and live supplier data that prevent under-quoting."
+        "question": "What is the best quoting app for builders?",
+        "answer": "It depends on where the numbers come from. Estimating a whole house from plans needs digital takeoffs, which is Buildxact at $169 a month. Quoting a renovation or a granny flat from a site visit is what QuoteMate is built for. Many builders run both."
+      },
+      {
+        "question": "Do quoting apps include GST automatically?",
+        "answer": "The ones built for Australia do. QuoteMate calculates GST per line, totals it and puts your ABN on the quote and the invoice. Apps priced in US dollars, like Quotient, need checking, because GST handling is not their default."
+      },
+      {
+        "question": "Can customers accept a quote online?",
+        "answer": "In QuoteMate, yes. The quote goes out as a link and a PDF, the customer accepts online, and the acceptance moves the job into the pipeline and lets you take a deposit by card. Automatic chasing follows up if they do not respond."
       }
     ]
   },
   "invoicing-app-for-tradies": {
-    "intro": "Picking an invoicing app is about more than just sending a PDF. For a tradie, it’s about speed on site, accurate pricing, and getting paid faster. We judged the best apps on how quickly they build a quote, whether they use live prices from Australian suppliers, their GST handling, and how they take payment. The verdict: QuoteMate is the best invoicing app for most Australian tradies because it’s built for quoting first. But if you need full accounting or have simpler needs, one of the others on our shortlist might suit you better.",
+    "intro": "Quoting and invoicing software for tradies has to close one loop: the quote you sent becomes the invoice you get paid on, without anyone typing it twice. A generic invoicing app does the second half and leaves you building the quote somewhere else. An accounting package does the books and treats quoting as an afterthought. Most Australian tradies end up running two tools, a quoting and invoicing app on the phone and Xero or MYOB for the accountant, and the question is which two. This guide compares the six options tradies actually use, with GST, tap-to-pay fees and the real monthly cost spelled out, and is clear about what an invoicing app can and cannot replace.",
     "sections": [
       {
-        "heading": "What makes the best invoicing app for Australian tradies",
-        "body": "The best app gets the details right for Australian tradies. It needs to be fast on your phone, not just on a laptop in the office. It should pull live material prices from Australian suppliers, so your quote is accurate today, not last month. The pricing model should be simple—a flat fee, not a per-user cost that punishes you for growing your crew. It must handle GST and ABNs correctly without you thinking about it. And finally, it needs to help you get paid on the spot. An app with integrated tap-to-pay means you're not chasing invoices for weeks."
+        "heading": "The quote-to-invoice loop, and where tradies lose money in it",
+        "body": [
+          "The loop is: site visit, itemised quote, customer accepts, job done, tax invoice, payment. Money leaks at two joins. Between quote and invoice, when the invoice is retyped from a PDF and a line item drops off. Between invoice and payment, when the invoice goes out by email and nothing chases it.",
+          "Quoting and invoicing software closes both joins. In QuoteMate the accepted quote becomes the tax invoice in one tap, every line item intact, and goes out by email, SMS or WhatsApp. If it is not paid, automatic chasing follows up. For a job with stages, progress claims come off the same quote.",
+          "Generic invoicing apps like Invoice2go do the invoice well and the quote badly, because they have no idea what a switchboard upgrade or a bathroom rough-in is made of. Accounting packages can raise an invoice but were never built to itemise materials on a phone at a customer's kitchen bench."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "If your main job is accounting, Xero and MYOB are the industry standards. They handle your BAS and payroll properly but can be slower for on-site quoting. QuickBooks is another strong accounting option with unlimited invoices on its plans. For sole traders who just need simple invoicing and BAS tracking, Rounded is a good choice built specifically for that purpose. If you just want a basic, cross-industry invoicing tool without the trade-specific features, Invoice2go is a simple and cheap way to get started. Each is a solid tool, just built for a different job."
+        "heading": "Invoicing app or accounting software: they are not the same job",
+        "body": [
+          "Xero, MYOB and QuickBooks are accounting software. They reconcile the bank, lodge the BAS, run payroll and give your accountant the numbers at year end. They can send an invoice, and for a consultant that is enough. For a tradie the invoice has thirty line items that started life as a quote, and the accounting package has no way to build that on site.",
+          "A quoting and invoicing app is the front of house. It builds the quote, sends it, converts it, takes the payment. It should then hand the finished invoice to the accounting package so the books are right without re-entry. QuoteMate syncs invoices to Xero in one tap. It does not have a direct MYOB integration, so MYOB users export instead.",
+          "The most common question we get about invoicing in QuoteMate is whether it replaces Xero. It does not, and it is not trying to. It replaces quoting in Xero, which was never any good, and feeds Xero the result."
+        ]
+      },
+      {
+        "heading": "Getting paid: tap-to-pay fees and the surcharge ban",
+        "body": [
+          "The fastest invoice is the one paid before you leave. Tap-to-pay on your own phone does that. In QuoteMate the card is processed through Square at about 3.1% all in, which is 1.6% to Square and 1.5% to QuoteMate, taken out of your payout. There is no surcharge passed to the customer.",
+          "That matters because card surcharges are banned in Australia from 1 October 2026. Any app that has been adding a percentage to the customer's total has to stop, and the fee comes out of the job price instead. Price it in. A 3.1% fee on a $500 job is $15.50, against a 30-day wait and a follow-up call if you send an invoice and hope.",
+          "For invoices that do go out unpaid, the difference between apps is whether chasing is automatic or something you remember on a Sunday night."
+        ]
+      },
+      {
+        "heading": "The six options, honestly",
+        "body": [
+          "QuoteMate. Quoting and invoicing in one, built for Australian tradies. AI-assisted line items, live supplier pricing, one-tap quote-to-invoice, GST and ABN handled, Square tap-to-pay, automatic chasing, Xero sync. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year. It is not an accounting ledger: no BAS, no payroll.",
+          "Invoice2go. Simple, cheap, cross-industry invoicing from around $11 a month. Fine for emailing a basic PDF after a job. No materials, no supplier pricing, so quoting a real trade job means building it elsewhere. Entry tiers cap clients and invoices.",
+          "Xero. The Australian small-business accounting standard, from around $35 a month. Runs your books and BAS. Slow for on-site quoting. Most tradies keep it and stop quoting in it.",
+          "MYOB. Full accounting with a sole-trader app, from around $11 a month. Same story as Xero: right for the books, wrong for building a materials quote on a phone.",
+          "QuickBooks. Accounting with unlimited invoices on its plans, from around $33 a month. Strong if you want payroll and project reporting in the same place as your invoicing.",
+          "Rounded. Sole-trader invoicing and BAS tracking, from $23.95 a month. Built for freelancers and sole operators who need simple invoices and tax set aside, not itemised trade quotes."
+        ]
+      },
+      {
+        "heading": "What it costs a sole trader per month",
+        "body": [
+          "A quoting and invoicing app plus accounting is the realistic setup, so budget for both. QuoteMate is free, or $49 a month for Pro (about $27 a month paid annually). Xero from around $35. MYOB from around $11. QuickBooks from around $33. Invoice2go from around $11. Rounded from $23.95.",
+          "The cheapest combination that actually closes the loop is a free QuoteMate plan feeding a Xero subscription, around $35 a month total. The cheapest that adds AI material suggestions, the job pipeline and lower card fees is QuoteMate Pro plus Xero, around $84 a month, or less paid annually. Entry-tier generic invoicing apps look cheaper until you count the quotes still being built by hand."
+        ]
+      },
+      {
+        "heading": "What an Australian tradie tax invoice has to carry",
+        "body": [
+          "For a sale over $82.50 including GST, the ATO requires the words Tax invoice, your business identity and ABN, the date, a description of what was supplied and the price, and the GST amount or a statement that the total includes GST. Over $1,000 the customer's identity or ABN goes on too. A quote that is missing any of these cannot simply be relabelled an invoice.",
+          "Good software puts all of that on every invoice without you thinking about it. QuoteMate stamps your ABN, calculates GST per line and totals it, and carries the customer details through from the quote. If your current app makes you check the GST by hand, it is costing you time on every job and risk on some of them."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free invoicing app for Australian tradies?",
-        "answer": "QuoteMate is the best free option. Its free plan lets you create professional quotes and invoices using its core AI features for building line items. It's not a limited-time trial, so you can use it for as long as you need. This makes it a good way to get started without committing to a monthly fee while you're growing your business."
+        "question": "What is the best quoting and invoicing app for tradies in Australia?",
+        "answer": "One where the accepted quote becomes the invoice in a single tap and the invoice syncs to your accounting package. QuoteMate does both, with a free plan for unlimited quotes and invoices and Pro at a flat $49 a month, and hands each invoice to Xero. Pair it with Xero, MYOB or QuickBooks for the books."
       },
       {
-        "question": "What's the cheapest paid invoicing app?",
-        "answer": "For the lowest starting price, Invoice2go and MYOB both have plans from around $11 per month. Be aware that these entry-level plans often have limits on the number of clients, invoices, or features. Always check that the cheapest plan actually does what you need it to do before you sign up. The price isn't everything if the tool can't keep up."
+        "question": "Can I use Xero as my invoicing app?",
+        "answer": "For sending a simple invoice, yes. For building an itemised trade quote with materials on a phone at the customer's place, no. Most tradies keep Xero for accounting and use a quoting app in front of it. QuoteMate syncs the finished invoice into Xero so nothing is entered twice."
       },
       {
-        "question": "Do I need a quoting app if I already use Xero or MYOB?",
-        "answer": "Yes, they do different jobs. Xero and MYOB are for accounting—BAS, payroll, and end-of-year tax. A dedicated app like QuoteMate is for quoting—building accurate quotes fast with live supplier prices and getting paid on site. QuoteMate syncs with Xero, so you get the speed of a quoting tool and the power of a proper accounting system working together."
+        "question": "Is there a free invoicing app for tradies?",
+        "answer": "QuoteMate's free plan includes unlimited quotes and invoices with your logo and GST handled, and it is a permanent plan rather than a trial. The generic invoicing apps have cheap entry tiers from around $11 a month with limits on clients or invoices."
+      },
+      {
+        "question": "What does a tradie tax invoice need to include?",
+        "answer": "Over $82.50 including GST: the words Tax invoice, your identity and ABN, the date, what was supplied and the price, and the GST amount or a statement that the total includes GST. Over $1,000, the customer's identity or ABN as well. Software should add all of it automatically."
+      },
+      {
+        "question": "What is the cheapest invoicing app for a sole trader?",
+        "answer": "On sticker price, Invoice2go and MYOB from around $11 a month. For a tradie the true cost includes building the quote somewhere else, so a free quoting-and-invoicing plan feeding Xero is usually cheaper in hours than a cheap invoice-only app."
       }
     ]
   },
   "job-management-software-for-tradies": {
-    "intro": "Choosing the right job management software can be a pain. Most are built for bigger crews or different countries. We tested the main players for Aussie tradies on what actually matters: how fast you can build a quote, if it pulls real prices from Australian suppliers, its pricing model, and how easily it handles GST and payments. For most sole operators and small crews, QuoteMate is the top pick for its fast AI quoting and simple flat-rate pricing. If you have different needs, one of the other tools on this shortlist might be a better fit for your business.",
+    "intro": "Job management software for tradies covers five things: quoting the work, scheduling it, tracking it, invoicing it and getting paid. Most sole traders need three of those done well and the other two done at all. Most job management software in Australia is built the other way round, for crews of five or more with someone in an office running dispatch and timesheets. That is why a lot of tradies pay for a platform and use a tenth of it. This guide compares the six job management options Australian tradies actually run, with the real monthly cost for one person and for a crew of three, and is honest about the line between a quoting-first app like QuoteMate and a job-management-first system like simPRO. Pick your lane first. The app choice follows from it.",
     "sections": [
       {
-        "heading": "What makes the best job management software for Australian tradies",
-        "body": "The right software saves you time on site, not in an office. First, look for live pricing from Australian suppliers. Quoting with last month's prices from Reece or Tradelink costs you profit. Second, check the pricing model. Paying per user gets expensive fast if you have a couple of subbies; a flat rate is usually better for small businesses. Third, it has to be fast. If you can't build a quote and take a deposit with your phone while you're still at the customer's place, it's too slow. Good software automatically calculates GST and lets you get paid on the spot with something like Square."
+        "heading": "What job management software does, and which parts you actually need",
+        "body": [
+          "Every job management app does some mix of five jobs. Quoting: turning a site visit into an itemised price. Scheduling: putting the job on a calendar. Tracking: knowing which jobs are quoted, accepted, in progress and paid. Invoicing: turning the accepted quote into a tax invoice. Payment: taking the money, ideally on site.",
+          "A sole trader lives in quoting, invoicing and payment. Scheduling is a calendar. Tracking is a list of eight jobs in your head. A crew of four with an apprentice lives in scheduling and tracking, because the money is lost when two people turn up to one job and nobody turns up to another. That difference decides which end of this list you should be looking at.",
+          "The jobs a tradie loses most often are the ones that start with a phone call taken on a roof. If missed calls are where your leads die, an AI receptionist like https://callkatie.ai handles the qualifying and drops the lead into the pipeline so it exists before you get back to the ute."
+        ],
+        "bullets": [
+          "One person, no staff: quoting, invoicing, payment. A calendar sync is enough scheduling.",
+          "Two to three on the tools: add job tracking with stages, so nothing accepted gets forgotten.",
+          "Four or more with an office: dispatch, timesheets, purchase orders and inventory start to matter. That is a different category of software and a different price."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "If QuoteMate isn't for you, check these others. ServiceM8 is solid for teams running on iPhones who need detailed job cards and forms. Tradify is good for small crews needing timesheets and dispatching, but watch the per-user cost. Fergus is built specifically for plumbers and sparkies who need detailed job costing. For larger operations, AroFlo offers deep supplier and compliance tools, while simPRO is designed for mid-size commercial contractors. Both AroFlo and simPRO are powerful but often come with setup fees and are overkill for smaller outfits. They suit businesses with dedicated office staff to run the system."
+        "heading": "Quoting-first or job-management-first: pick the lane before the app",
+        "body": [
+          "Quoting-first apps start from the quote and add job tracking behind it. They are fast on a phone, cheap, and flat-priced. QuoteMate is one: describe the job, get an itemised quote with materials at live supplier prices, send it, and the accepted quote moves through a nine-stage pipeline from inquiry to paid with Google Calendar sync, on-site photos and automatic chasing when a customer goes quiet. What it does not do is dispatch a crew, run timesheets or hold stock.",
+          "Job-management-first platforms start from the schedule and the crew. ServiceM8, Tradify, Fergus, AroFlo and simPRO all live here, in roughly that order of size. Quoting is a module inside a bigger system, usually manual, usually without live supplier pricing. They charge per user, and several charge setup fees, because they are sold to businesses with an office.",
+          "If you are on the tools all day and the admin happens in the van, quoting-first wins on time saved per job. If you spend Monday mornings working out who goes where, job-management-first is what you are paying for. The wrong lane costs a second subscription every month for features you never open."
+        ]
+      },
+      {
+        "heading": "The six options, honestly",
+        "body": [
+          "QuoteMate. Quoting-first, built for Australian sole traders and small crews. AI-assisted line items, live Australian supplier pricing, a live Reece maX integration for plumbers, branded PDF quotes and invoices, GST and ABN handled, Square tap-to-pay on site. The job pipeline covers inquiry to paid with timestamps. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year for the whole business. Skip it if you need dispatch boards, timesheets or inventory.",
+          "ServiceM8. Job cards, forms and scheduling for teams that run on iPhones. Strong on the field-to-office loop. Free tier for very low volume, then from $29 a month, scaling with job numbers. Quoting is manual. Best for a small crew that already lives in Apple devices and needs detailed job documentation.",
+          "Tradify. Timesheets, dispatch and scheduling for small crews, with quoting attached. From $48 per user per month, and the per-user part is the catch: three people is three subscriptions. Good fit for a crew of three to eight where the owner is off the tools some of the week.",
+          "Fergus. Built around job costing for plumbing and electrical businesses with office staff. From $53 a month. No AI quoting and no live supplier prices, so quotes are built by hand against your own price list. Best for an established firm tracking cost against margin on larger jobs.",
+          "AroFlo. Deep supplier integrations, inventory and compliance paperwork. From around $45 per user per month plus setup. Powerful and heavy. Suits a business with someone whose job is to run the system.",
+          "simPRO. Mid-size and commercial contractors: warehouses, multi-crew scheduling, project costing. Quoted per user with a setup fee, no public price. Overkill for anyone without a service desk."
+        ]
+      },
+      {
+        "heading": "What you will actually pay: one person versus a crew of three",
+        "body": [
+          "Per-user pricing is where the monthly cost quietly triples. The figures below use each vendor's published starting price and multiply where the price is per user. Setup fees, where they exist, are on top and usually run into the hundreds.",
+          "For a sole trader: QuoteMate free, or Pro at $49 a month ($328 a year works out around $27 a month). ServiceM8 from $29. Fergus from $53. Tradify from $48. AroFlo from around $45 plus setup. simPRO is quoted.",
+          "For a crew of three who all need the app: QuoteMate stays flat at $49, because it is priced per business. Tradify becomes from $144 a month. AroFlo becomes from around $135 a month plus setup. ServiceM8 and Fergus depend on the tier and how many users you add. simPRO is still quoted, and at three users you are the size of business it is built for.",
+          "The honest comparison is not the sticker price. It is the sticker price multiplied by everyone who needs a login, plus setup, plus the hours the owner spends configuring it. A flat $49 for the whole business is the cheapest option for a small crew by a wide margin."
+        ]
+      },
+      {
+        "heading": "How to choose in ten minutes",
+        "body": "Answer these before you sign up for a trial. Each one rules half the list in or out.",
+        "bullets": [
+          "How many people need to log in? One or two: quoting-first, flat fee. Four or more: job-management-first, budget per user.",
+          "Where do you build quotes? In the van on a phone: you need live supplier pricing and a two-minute quote. At a desk from plans: you need takeoffs, which is Buildxact territory, not this list.",
+          "Who schedules? You, from a calendar: sync is enough. An office, across a crew: you need a dispatch board.",
+          "How do you get paid? On site by card: check the tap-to-pay fee. Thirty days later by transfer: check the automatic chasing.",
+          "Do you already run Xero? Then you need an app that syncs invoices into it, not a second accounting system."
+        ]
+      },
+      {
+        "heading": "Where QuoteMate fits, and where it does not",
+        "body": [
+          "QuoteMate is the right job management software for a tradie whose bottleneck is getting quotes out and getting paid, and whose job tracking needs are a clear list of what is quoted, accepted, scheduled and owed. It is the wrong choice for a business that needs to dispatch a crew, track hours per worker or manage stock. If that is you, ServiceM8 or Tradify at the small end and Fergus, AroFlo or simPRO at the large end are the honest recommendations.",
+          "The pattern we see with tradie quoting is that the job that goes wrong is rarely the one that was hard to price. It is the one that was quoted, accepted and never scheduled, because the acceptance sat in a text thread. That is the specific problem the QuoteMate pipeline exists to solve: every stage change is stamped automatically, and a quote that goes quiet gets chased without you remembering to.",
+          "Typical trade quotes on the platform run from a $150 cleaning job to a $200,000 build stage. The pipeline is the same for both."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free job management software for tradies?",
-        "answer": "QuoteMate has a permanent free plan that covers quoting and invoicing, not just a limited trial. It’s powerful enough for many sole traders starting out. ServiceM8 also has a free tier, but it has tighter limits on the number of jobs you can manage per month. Most other platforms only offer a 14-day trial."
+        "question": "Is job management software worth it for a sole trader?",
+        "answer": "Only the quoting, invoicing and payment parts, which is why a quoting-first app with a simple pipeline usually fits better than a full platform. A sole trader paying $100 a month for dispatch and timesheets is paying for two staff they do not have. QuoteMate's free plan covers quotes and invoices; Pro at $49 a month adds the pipeline, AI material suggestions and lower card fees."
       },
       {
-        "question": "Which software is cheapest for a small crew?",
-        "answer": "QuoteMate's Pro plan is a flat $49 per month for your whole business, which makes it the cheapest option if you have more than one person. Other tools like Tradify start at $48 but charge per user, so a two-person team costs $96. Always check if the price is a flat rate or per user."
+        "question": "What is the difference between job management software and a quoting app?",
+        "answer": "A quoting app starts from the quote and adds job tracking behind it. Job management software starts from the schedule and the crew and adds quoting as a module. The first is built for the person on the tools; the second for the office running several people. Most sole traders need the first and think they need the second."
       },
       {
-        "question": "Do I still need this if I use Xero or MYOB?",
-        "answer": "Yes. Xero and MYOB are for accounting after the work is done. Job management software is for running the actual job: quoting, ordering materials, and getting paid on site. Good software like QuoteMate syncs your invoices to Xero automatically, which saves you entering them twice and keeps your bookkeeper happy."
+        "question": "Which job management software is cheapest for a small crew in Australia?",
+        "answer": "For a crew of two or three, a flat-fee app is cheapest because per-user pricing multiplies. QuoteMate Pro is $49 a month for the whole business. Tradify starts at $48 per user, so three users is from $144. AroFlo starts around $45 per user plus a setup fee. Always multiply the sticker price by everyone who needs a login."
+      },
+      {
+        "question": "Do I still need Xero if I use job management software?",
+        "answer": "Yes. Xero does BAS, payroll and the books your accountant needs. Job management software runs the job itself: quote, schedule, invoice, get paid. They sit either side of the invoice. QuoteMate sends each invoice across to Xero in one tap so nothing is entered twice."
+      },
+      {
+        "question": "Is there job management software with a proper free plan?",
+        "answer": "QuoteMate has a permanent free plan with unlimited quotes and invoices, not a trial. ServiceM8 has a free tier limited to a small number of jobs a month. The bigger platforms offer trials, then per-user subscriptions and, in some cases, setup fees."
       }
     ]
   },
   "tradie-app-australia": {
-    "intro": "Finding the right app to run your business can be a pain. Most are built for the US market or charge a fortune per user. We judged the best tradie apps in Australia on what actually matters on site: how fast you can build a quote, if it pulls live prices from Australian suppliers, how you get paid, and whether the pricing is fair. For most sole operators and small crews, QuoteMate is the top pick for its AI-powered quoting and flat-fee pricing. The others on the list are better for specific needs like complex job costing or larger team dispatch.",
+    "intro": "A tradie app in Australia means five different things depending on who is selling it: a quoting app, a job management app, an invoicing app, accounting software or a payments app. Nobody needs all five. Most sole traders end up on two, a quoting and invoicing app on the phone and an accounting package for the accountant, and the mistake is paying for a third that overlaps both. This guide covers the five tradie apps that actually run an Australian trade business, what each one is for, what it costs for one person and for a small crew, and the honest signs that you have outgrown a quoting app and need a job management platform instead.",
     "sections": [
       {
-        "heading": "What makes the best app for Australian tradies",
-        "body": "The right app saves you time and makes you more money. The wrong one is just another subscription eating your profit. The main things to check are quoting speed and accuracy. An app should pull live material costs so you don't under-quote a job using last month's prices. It needs to handle GST and your ABN properly. It has to make getting paid easy, ideally with on-site card payments. Finally, check the price model. A flat monthly fee is predictable. Paying per user gets expensive as soon as you put on an apprentice or a subbie. A good app does the basics perfectly without needing a manual."
+        "heading": "The five jobs a tradie app can do",
+        "body": "Every app on this page does some of these. None does all five well, and the ones that claim to are expensive and heavy. Work out which two or three you are missing before you compare features.",
+        "bullets": [
+          "Quote: turn a site visit into an itemised price with materials at today's cost, GST included, sent before you leave.",
+          "Run the job: know what is quoted, accepted, scheduled, in progress and paid. Calendar, photos, follow-ups.",
+          "Invoice: turn the accepted quote into a tax invoice with your ABN on it, without retyping.",
+          "Accounts: reconcile the bank, lodge the BAS, run payroll. This is Xero's job and nothing on your phone replaces it.",
+          "Get paid: take a card on site, or chase the invoice automatically when it goes quiet."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "While QuoteMate wins for quoting, other apps are strong in different areas. ServiceM8 is a solid choice if your whole team uses iPhones and you rely heavily on job cards and custom forms in the field. Tradify is built for small crews, focusing on scheduling, timesheets, and dispatching jobs to different team members. Fergus is a heavy-hitter for job costing, making it popular with plumbers and electricians who need to track every cost against a big project. And Xero isn't a job app, it's a full accounting system. It does your BAS and payroll, but you'll still need a separate app for quoting and managing the actual work."
+        "heading": "The two-app setup most sole traders end up on",
+        "body": [
+          "A quoting and invoicing app in front, an accounting package behind. The front app builds the quote at live supplier prices, converts it to an invoice, takes the payment on site and tracks the job. The accounting package receives the finished invoice and does the books.",
+          "When tradies ask us which two apps to run, that is the honest answer, and QuoteMate is built to be the front one: it syncs each invoice into Xero in one tap so nothing is entered twice. The third app people add is usually a job management platform, and for a sole trader it overlaps the first app almost entirely.",
+          "The setup costs a free QuoteMate plan plus Xero from around $35 a month, or QuoteMate Pro at $49 plus Xero if you want the AI material suggestions, the job pipeline and lower card fees."
+        ]
+      },
+      {
+        "heading": "The five apps, honestly",
+        "body": [
+          "QuoteMate. Quoting, invoicing, job pipeline and on-site payment for sole traders and small crews. AI-assisted line items, live Australian supplier pricing, branded PDFs, GST and ABN, Square tap-to-pay, Xero sync. Web, iPhone and Android. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year. Not for dispatching a crew or holding stock.",
+          "ServiceM8. Job cards, forms and scheduling for teams that run on iPhones. Free tier for very low volume, then from $29 a month by job volume. Strong on documenting the job in the field; quoting is manual.",
+          "Tradify. Scheduling, timesheets and dispatch for small crews, quoting attached. From $48 per user per month. Right for a crew of three to eight; the per-user price is the catch below that.",
+          "Fergus. Job costing for plumbing and electrical businesses with office staff. From $53 a month. Tracks cost against margin on bigger jobs. Manual quoting, no live supplier prices.",
+          "Xero. Accounting, from around $35 a month. BAS, payroll, the books. Not a tradie app in the field sense, but the one almost every tradie business runs behind whichever app is in the van."
+        ]
+      },
+      {
+        "heading": "What you will pay per month",
+        "body": [
+          "One person: QuoteMate free or $49, ServiceM8 from $29, Tradify from $48, Fergus from $53, Xero from around $35. Three people who all need a login: QuoteMate stays at $49 for the business, Tradify becomes from $144, ServiceM8 and Fergus depend on tier and users, Xero is unchanged because it is per business.",
+          "The number that matters is the total for the two apps you actually need, multiplied by the people who need to log in. For a sole trader that is somewhere between $35 and $85 a month. Paying $150 for a platform built for a crew of six is the most common overspend we see described."
+        ]
+      },
+      {
+        "heading": "Signs you have outgrown a quoting app",
+        "body": "A quoting-first app like QuoteMate is the right tradie app until specific things start happening. When they do, the job management platforms earn their per-user price.",
+        "bullets": [
+          "Two people turned up to one job this month and nobody turned up to another. You need a dispatch board.",
+          "You are working out hours per worker from text messages at the end of the week. You need timesheets.",
+          "You carry stock in a shed and do not know what is in it. You need inventory.",
+          "Someone in an office spends Monday morning scheduling the crew. They need a scheduler, not your phone.",
+          "You are quoting commercial jobs where cost against margin has to be reported to a client. You need job costing."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free tradie app in Australia?",
-        "answer": "QuoteMate offers a proper free plan, not just a trial. It’s good for sole traders starting out, letting you send quotes and invoices with your logo. Most other quality apps don't have a permanent free option, so it’s the best place to start if you want to get organised without adding another monthly bill."
+        "question": "What is the best tradie app in Australia for a sole trader?",
+        "answer": "A quoting and invoicing app that works from a phone on site, prices materials at live supplier rates, takes payment and syncs to your accounting package. QuoteMate does that with a free plan for unlimited quotes and invoices and Pro at a flat $49 a month. Run it in front of Xero and you have covered the whole loop."
       },
       {
-        "question": "Which app is cheapest for a small crew?",
-        "answer": "Always check if the price is flat or per user. QuoteMate Pro is a flat $49 per month for your whole business. An app like Tradify starts at $48 per month but charges that for each user, so a team of three would cost you nearly $150 a month. For small crews, flat-rate pricing is almost always cheaper."
+        "question": "Do I need a tradie app if I already have Xero?",
+        "answer": "Yes. Xero is accounting: bank reconciliation, BAS, payroll. It was not built to itemise a trade quote at a customer's kitchen bench. A tradie app does the quoting, job tracking and on-site payment, then hands the invoice to Xero. QuoteMate syncs to Xero in one tap."
       },
       {
-        "question": "I already use Xero. Do I still need a separate tradie app?",
-        "answer": "Yes. Xero is for accounting: lodging your BAS, running payroll, and keeping your bookkeeper happy. It isn't designed for quoting on site, managing job progress, or pulling live material prices from suppliers. A quoting app does the on-the-tools admin and syncs the final invoice data to Xero for the accounting side."
+        "question": "Which tradie apps are free?",
+        "answer": "QuoteMate has a permanent free plan with unlimited quotes and invoices, with a 14-day Pro trial that starts when you create your first quote. ServiceM8 has a free tier limited to a small number of jobs a month. Tradify, Fergus and Xero are paid after a trial."
+      },
+      {
+        "question": "What is the difference between a tradie app and job management software?",
+        "answer": "A tradie app usually means a quoting and invoicing app built for the person on the tools. Job management software is built for an office running a crew, with scheduling, dispatch and timesheets, and quoting as a module. Most sole traders need the first and are sold the second."
+      },
+      {
+        "question": "Do tradie apps work on Android as well as iPhone?",
+        "answer": "QuoteMate runs on web, iPhone and Android. ServiceM8 is built around Apple devices in the field. Check before you commit if your crew is mixed, because an iPhone-only app on an Android crew is a dead subscription."
       }
     ]
   },
   "app-for-electricians": {
-    "intro": "Finding the right app can save you hours on quoting and paperwork. This guide cuts through the marketing noise to find the best apps for Australian electricians. We judged them on things that matter on site: how fast you can build a quote, if they pull live prices from Australian suppliers, their pricing model, and how easily they handle GST and ABNs. After testing the lot, QuoteMate is our top pick for its speed and live pricing. The rest of the shortlist is here too, as different tools suit different business sizes and needs.",
+    "intro": "Electrician software has a harder job than software for most trades, because the quote has to carry the compliance as well as the price. Every job from a single GPO to a switchboard upgrade has to meet AS/NZS 3000, needs a certificate of compliance, and on bigger work needs the network notified. Miss the isolator, the hole patching or the certificate line, and the margin is gone before the van is packed. This guide compares six electrician apps and software platforms used by Australian electrical contractors, from a sole-trader quoting app to systems built for a commercial crew with an office, on how they handle per-point pricing, compliance line items, job costing and what they cost.",
     "sections": [
       {
-        "heading": "What makes the best app for Australian electricians",
-        "body": "The best app is the one you actually use. For a sparkie, that means it has to be fast. You need to build a quote on your phone between jobs, not back at a desk. It must have up-to-date Australian supplier pricing built-in; otherwise, you're just guessing your materials cost. It also needs to handle GST properly without you thinking about it, and put your ABN and licence number on every quote and invoice. Finally, it should help you get paid on the spot. An app with tap-to-pay means you don't have to chase invoices for a small GPO install. These are the basics for running a modern electrical business."
+        "heading": "What electrician software has to get right on every quote",
+        "body": [
+          "Pricing structure first. Most Australian sparkies quote one of three ways: hourly at $80 to $120 plus materials, per point at $100 to $200 per power or light point, or fixed price for standard jobs like a $150 to $250 power point or a $1,500 to $4,000 switchboard upgrade. The software has to make all three fast, not force you into one.",
+          "Compliance second. Every quote should carry the compliance testing and the certificate as line items, and switchboard work should flag the distribution network notification. Smoke alarm work needs to reference AS 3786. The three items electricians most often leave off are hole cutting and patching for downlights and GPOs, isolators between the switchboard and high-load appliances, and the certificate itself. Software that puts those in front of you saves the argument later.",
+          "Materials third. Cable by type and length, GPOs, RCDs, MCBs, isolators and lugs priced at what they cost this week, not from a list you built in March."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "If QuoteMate isn't the right fit, other tools handle specific jobs well. ServiceM8 is solid for teams running entirely on iPhones who need detailed job cards and forms. Tradify is built for small crews who need to track timesheets and dispatch staff to different sites. Fergus has strong job-costing features aimed at plumbers and electricians. For bigger outfits, simPRO is designed for mid-size and commercial contractors. And AroFlo goes deep on supplier integrations and compliance paperwork, suiting businesses with strict reporting requirements. Each one has its strengths depending on your crew's size and workflow."
+        "heading": "Sole-trader quoting app or electrical contractor platform",
+        "body": [
+          "Electrical contractor apps split the same way plumbing ones do. A quoting-first app is built for the sparkie who is also the office: quote from the site on a phone, itemised, compliant, sent before you leave, paid on the spot. A contractor platform is built for a business with crews, a scheduler and someone tracking cost against margin on commercial jobs.",
+          "QuoteMate is the first kind. Describe the job, say twelve downlights and a switchboard upgrade, and it suggests the materials, applies live supplier pricing, adds labour and GST and produces a branded PDF in under two minutes. It adds electrical compliance notes to quotes and prices RCDs and safety switches as part of the materials list. The accepted quote becomes the invoice and the job runs through a pipeline to paid.",
+          "The most common question we get from electricians is whether the compliance items come through on the quote or get lost. They come through: compliance notes are a feature of the electrical quote template, not something you type each time. What QuoteMate does not do is dispatch four sparkies across Sydney or run timesheets. That is where the platforms below start."
+        ]
+      },
+      {
+        "heading": "The six options for electricians, honestly",
+        "body": [
+          "QuoteMate. Quoting-first for sole traders and small crews. AI-assisted materials, live supplier pricing, compliance notes, branded PDFs, GST and ABN, Square tap-to-pay on site, a nine-stage job pipeline. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year. Not for crew dispatch or inventory.",
+          "ServiceM8. Job cards, forms and scheduling for teams on iPhones. Free tier for very low volume, then from $29 a month by job volume. Strong for documenting the job on site; quoting is manual.",
+          "Tradify. Timesheets, dispatch and scheduling for small crews. From $48 per user per month, and the per-user cost adds up with an apprentice and a subbie.",
+          "Fergus. Job costing for electrical and plumbing businesses with office staff, tracking cost against margin on larger jobs. From $53 a month. Manual quoting, no live supplier pricing.",
+          "simPRO. Mid-size and commercial electrical contractors: multi-crew scheduling, project costing, warehousing. Quoted per user plus setup. Built for a service desk, not a van.",
+          "AroFlo. Deep supplier integrations, inventory and compliance paperwork for larger operations. From around $45 per user per month plus setup."
+        ]
+      },
+      {
+        "heading": "What a sole-trader sparkie pays, and why margin on the quote matters more",
+        "body": [
+          "QuoteMate free, or Pro at $49 a month (about $27 a month paid annually at $328). ServiceM8 from $29. Fergus from $53. Tradify from $48 per user. AroFlo from around $45 per user plus setup. simPRO quoted.",
+          "Set those against the jobs. A $2,500 switchboard upgrade with a forgotten isolator and no certificate line loses more than a year of any subscription on this page. The value of electrician software is not the monthly fee saved; it is the line items that stop being forgotten. Pick on that, then check the price."
+        ]
+      },
+      {
+        "heading": "Where to go from here",
+        "body": [
+          "If you quote on site and want the compliance items and materials handled, start with the QuoteMate electrical quoting page, which walks through a real switchboard and downlight quote, or read the guide on how to quote electrical work for the per-point and hourly maths. If you run a crew with an office, take the trials for ServiceM8 and Fergus and judge them on the scheduler and the costing report, since that is what you will be paying for.",
+          "Whichever you pick, the quote should leave the site with AS/NZS 3000 compliance, the certificate and the network notification already on it. Anything that makes you add those from memory is the wrong software."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free app for an Australian electrician?",
-        "answer": "QuoteMate is the top choice here as it's the only one on our list with a proper free plan, not just a trial. It lets you use the AI quoting and send quotes and invoices without paying a monthly fee. This is ideal for a solo operator just starting out or someone who only does a few quotes a month."
+        "question": "What is the best app for a sole-trader electrician in Australia?",
+        "answer": "A quoting-first app that handles per-point and hourly pricing, puts compliance items on the quote and gets you paid on site. QuoteMate does that with AI-assisted materials at live supplier prices, compliance notes, a free plan for unlimited quotes and invoices, and Pro at a flat $49 a month. Once you are dispatching a crew, ServiceM8 or Fergus fit better."
       },
       {
-        "question": "Which app is the cheapest for a solo operator?",
-        "answer": "Besides QuoteMate's free plan, ServiceM8 has the lowest starting price at $29 per month. However, QuoteMate's Pro plan at $49 per month is a flat fee, while others like Tradify charge per user. For a solo tradie, QuoteMate or ServiceM8 are the most affordable starting points, depending on the specific features you need."
+        "question": "Which electrical contractor software handles compliance certificates?",
+        "answer": "Any of them can carry a certificate as a line item if you add it. The difference is whether the software prompts you. QuoteMate adds electrical compliance notes to quotes automatically. Fergus and simPRO are built for larger contractors and handle compliance paperwork at the business level rather than on each quote."
       },
       {
-        "question": "Do I still need a job app if I use Xero or MYOB?",
-        "answer": "Yes. Xero and MYOB are for accounting—doing your BAS and end-of-year tax. A job app is for running the job itself: quoting, scheduling, ordering materials, and taking payment on site. They are designed for different tasks. A good app like QuoteMate will sync directly with Xero, sending your invoices across automatically, which saves you doing it twice."
+        "question": "Is there free electrician software?",
+        "answer": "QuoteMate has a permanent free plan with unlimited quotes and invoices. ServiceM8 has a free tier limited to a small number of jobs a month. The contractor platforms offer trials, then per-user pricing and in some cases setup fees."
+      },
+      {
+        "question": "ServiceM8 or Fergus for an electrical business?",
+        "answer": "ServiceM8 if your team runs on iPhones and you want strong job cards and forms. Fergus if you have office staff and want job costing against margin on bigger jobs. Neither has live supplier pricing, so both are job management tools rather than quoting tools."
+      },
+      {
+        "question": "Can I quote per point in electrician software?",
+        "answer": "In most of them, by setting a rate per power or light point as a line item and multiplying. The typical Australian range is $100 to $200 per point. The software should also let you switch to hourly at $80 to $120 plus materials or a fixed price for standard jobs, because most sparkies use all three depending on the work."
       }
     ]
   },
   "app-for-plumbers": {
-    "intro": "Finding the right app can save a plumber hours every week. We judged the best apps for Australian plumbers on what matters on site: how fast you can build a quote, if it pulls live prices from suppliers like Reece and Tradelink, and how quickly you can get paid. The pricing model and proper GST handling were also key. For most sole operators and small crews, QuoteMate is the best pick because its AI-assisted quoting is the fastest way to send an accurate, professional quote. The others on our shortlist are better for specific needs.",
+    "intro": "Plumbing software has one job that decides whether it pays for itself: pricing materials at what you actually pay for them. A hot water swap quoted off last month's price list, or off a generic supplier average instead of your trade rate, loses the job to the plumber who quoted 20% lower or loses the margin when the unit costs more than you allowed. Everything else the software does, invoicing, scheduling, job costing, matters after that. This guide compares the six plumbing software options Australian plumbers actually use, from a quoting app that prices every line at your real Reece maX trade rate to the job-costing platforms built for a crew with an office, with the real monthly cost for a sole trader and where each one stops being the right tool.",
     "sections": [
       {
-        "heading": "What makes the best app for Australian plumbers",
-        "body": "The best app fixes the biggest problems: quoting and cash flow. Look for one that pulls live material prices from Australian suppliers. This stops you from under-quoting on copper tube or tapware that went up last week. It needs to calculate GST automatically and create a professional PDF quote on the spot. Getting paid is just as important. An app with built-in card payments, like Square Tap to Pay, means you get paid before you leave the site. While some apps offer deep job management, the core features for a plumber are accurate quoting and fast payment."
+        "heading": "What plumbing software has to do before anything else",
+        "body": [
+          "Three things, in order. Quote at your real material cost, so a bathroom rough-in or a 250L gas unit replacement carries the price you will pay at the counter, not a guess. Turn the accepted quote into a tax invoice without retyping it, and take payment on the driveway. Track the job from callout to paid so a blocked drain done on Tuesday is not still unbilled on Friday.",
+          "Software that does those three well earns its subscription on the first job of the month. Software that does dispatch, timesheets and inventory as well is built for a different business. If you are the plumber and the office, you want the first kind, and you want it to work from a phone.",
+          "Typical plumbing quotes run from $200 for a tap change to $20,000 for a full re-pipe. After-hours callouts in metro areas run $180 to $350 before the first hour. Getting those numbers right on the quote is worth more than any feature list."
+        ]
       },
       {
-        "heading": "The rest of the shortlist",
-        "body": "If you need more than just quoting, other tools might be a better fit. Fergus is built specifically for detailed job costing in plumbing and electrical trades. ServiceM8 is a strong choice for teams running entirely on iPhones, with a focus on job cards and digital forms. For larger businesses needing deep compliance features and complex supplier integrations, AroFlo is a powerful option. Tradify suits small crews who need to manage timesheets and dispatch jobs to different plumbers. Lastly, Buildxact is less for service plumbers and more for builders who need to do take-offs and estimates from architectural plans."
+        "heading": "Supplier pricing is the whole game for plumbing quotes",
+        "body": [
+          "Generic supplier pricing is never your trade rate. Manually looking prices up in Reece maX before every quote is half a day a week you are not earning. That gap is the reason plumbing software exists as a category rather than a generic quoting tool with a plumbing template.",
+          "QuoteMate is the only Australian quoting app with a live Reece maX integration. Connect your maX account once via OAuth, and every plumbing line item prices at your real Reece trade-discounted rate. Your full purchasable catalogue syncs from Reece and refreshes every night, so the AI matches the right SKU for pipework, fittings, hot water units, gas gear, drainage and brassware. When the customer accepts, you place the order to Reece from inside the quote: pick a branch, pickup or delivery, required-by date, done. Reece is on by default for plumbers and gasfitters, and the integration is included on every paid plan and the 14-day trial.",
+          "The most common question we get from plumbers about QuoteMate is whether the Reece prices are really live or a cached price list. They are live. The catalogue refreshes from Reece nightly, and you can force a refresh from Settings if a price moved this morning.",
+          "None of the other five options on this page pull live supplier pricing. Fergus, ServiceM8, AroFlo and Tradify quote against price lists you maintain. Buildxact estimates from plans. That is not a criticism of them; it is the difference between plumbing software and job management software with a plumbing customer base."
+        ]
+      },
+      {
+        "heading": "Plumbing invoice apps: getting paid on the driveway",
+        "body": [
+          "A plumbing invoice app is worth having if it removes two things: retyping the quote into an invoice, and chasing. In QuoteMate the accepted quote becomes the tax invoice in one tap, GST and ABN already on it, and it goes out by email, SMS or WhatsApp. For a callout, tap-to-pay on your phone takes the card on site through Square at roughly 3.1% all in (1.6% Square plus 1.5% QuoteMate), out of your payout, with no surcharge to the customer. Card surcharges are banned in Australia from 1 October 2026, so the fee has to be priced into the job rather than added on.",
+          "Getting paid on the driveway rather than in 30 days changes the cash flow of a one-person plumbing business more than any other single feature. It also removes the follow-up call nobody enjoys making. For invoices that do go out unpaid, automatic chasing follows up without you remembering to."
+        ]
+      },
+      {
+        "heading": "The six options for plumbers, honestly",
+        "body": [
+          "QuoteMate. Quoting-first, with the Reece maX integration above. AI-assisted line items, branded PDF quotes and invoices, GST sorted, on-site payment, a nine-stage job pipeline with calendar sync. Free plan with unlimited quotes and invoices; Pro is a flat $49 a month or $328 a year. Not for dispatching a crew or holding stock.",
+          "Fergus. Job costing for plumbing and electrical businesses with office staff, tracking cost against margin on bigger jobs. From $53 a month. Quoting is manual against your own list, with no live supplier prices. Right for an established firm with someone in the office.",
+          "ServiceM8. Job cards, forms and scheduling for iPhone-based teams. Free tier for very low volume, then from $29 a month by job volume. Strong field documentation, manual quoting.",
+          "AroFlo. Inventory, compliance paperwork and deep supplier integrations for larger operations. From around $45 per user per month plus setup. Built for a business with a dedicated admin.",
+          "Tradify. Timesheets and dispatch for small crews, quoting attached. From $48 per user per month, which is the catch at three users.",
+          "Buildxact. Estimating from architectural plans with digital takeoffs, desktop-first, from $169 a month. For builders and large renovation work, not service plumbing."
+        ]
+      },
+      {
+        "heading": "What a one-person plumbing business actually pays",
+        "body": [
+          "QuoteMate: free, or $49 a month for Pro, which is $328 a year (about $27 a month) paid annually. Reece integration included. ServiceM8 from $29 a month. Fergus from $53. Tradify from $48 per user. AroFlo from around $45 per user plus setup. Buildxact from $169.",
+          "Add a second plumber and the per-user options double while QuoteMate stays at $49 for the business. Add an office and the picture changes: at that point Fergus or AroFlo may be worth the money for the job costing and paperwork, and QuoteMate becomes the wrong tool. Know which business you are before you compare prices."
+        ]
       }
     ],
     "faqs": [
       {
-        "question": "What's the best free app for a plumber in Australia?",
-        "answer": "QuoteMate offers the best free plan focused on quoting. It lets you build unlimited quotes with AI-suggested line items and live supplier pricing. ServiceM8 also has a free tier, but it's more for basic job management and scheduling for a very small number of jobs per month. For getting accurate quotes out the door without paying, QuoteMate is the one."
+        "question": "What is the best plumbing software for a sole trader in Australia?",
+        "answer": "For a plumber who is also the office, a quoting-first app that prices at your real trade rate and invoices from the van. QuoteMate does that with a live Reece maX integration, a free plan for unlimited quotes and invoices, and Pro at a flat $49 a month. Once you have staff to dispatch, Fergus or ServiceM8 become the better fit."
       },
       {
-        "question": "Which app is the cheapest for a small crew?",
-        "answer": "For a sole operator, ServiceM8's $29/month plan is the cheapest start. However, if you have even one other person on the tools, QuoteMate's flat $49/month Pro plan is cheaper than per-user apps like Tradify, which charges from $48 per user. Always check if the pricing is flat or per person, as 'per user' costs add up fast."
+        "question": "Does any plumbing software pull real Reece prices?",
+        "answer": "QuoteMate does, through a live Reece maX integration. Connect your maX account once and every line item prices at your Reece trade-discounted rate, with the catalogue refreshing nightly and ordering from inside the quote. The other options on this page quote against price lists you maintain yourself."
       },
       {
-        "question": "Do I need one of these apps if I already use Xero?",
-        "answer": "Yes, they do different jobs. Xero is for accounting—bank reconciliation, BAS, and payroll. A quoting app is for the front-end of your business: creating quotes, sending invoices, and taking payment on site. Most, including QuoteMate, sync with Xero. This means your paid invoices appear in your accounting software without you doing double entry, saving you time."
+        "question": "What should a plumbing invoice app do?",
+        "answer": "Turn the accepted quote into a tax invoice without retyping, carry your ABN and GST correctly, send by email or SMS, take a card on site, and chase unpaid invoices automatically. If it does not do the first one, you are entering every job twice."
+      },
+      {
+        "question": "Is Fergus or ServiceM8 better for a plumbing business?",
+        "answer": "Fergus if you have office staff and want job costing against margin on bigger jobs. ServiceM8 if your crew runs on iPhones and you want strong job cards and forms. Neither pulls live supplier prices, so both are job management tools rather than quoting tools. For a sole trader whose problem is quoting, neither is the first place to look."
+      },
+      {
+        "question": "Do I need plumbing software if I already use Xero?",
+        "answer": "Yes, they do different jobs. Xero is bank reconciliation, BAS and payroll. Plumbing software is the front end: quote at trade prices, invoice from the van, get paid on site. QuoteMate sends each invoice into Xero in one tap, so you keep Xero and stop quoting in it."
       }
     ]
   }
