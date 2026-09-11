@@ -92,7 +92,7 @@ week it reads as coordinated.
 
 | Day | Action | Channel |
 |---|---|---|
-| 0 | Send ServiceScale draft (from tom@hansendev.com.au) | Email |
+| 0 | **SENT 2026-09-11** to info@servicescale.com.au (Gmail message 1a08e1c0f43b80c7, thread 1a08e0242166f018). Follow-up window: 18–20 Sep, once only, then drop. | Email |
 | 0 | Post Flying Solo reply + set signature | Forum |
 | 1 | Post Whirlpool answer | Forum |
 | 3 | Submit TradieScaler form | Form |
