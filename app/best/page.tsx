@@ -6,8 +6,8 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { bestPages } from './data';
 
 export const metadata: Metadata = {
-  title: 'The Best Apps for Australian Tradies (2026 Guides)',
-  description: 'Honest, up-to-date roundups of the best quoting apps, invoicing apps, and job-management software for Australian tradies, electricians and plumbers.',
+  title: 'Quoting, Invoicing & Job Management Software for Tradies: Compared (2026)',
+  description: 'Six buyer\'s guides comparing quoting apps, invoicing apps, job management software and trade-specific apps for Australian tradies, with real monthly costs and honest fits.',
   alternates: { canonical: 'https://quotemateapp.au/best' },
 };
 
@@ -23,8 +23,33 @@ export default function BestHub() {
               { label: 'Best' },
             ]} />
             <div className="seo-hero-content">
-              <h1 className="seo-hero-title">Best Apps for Australian Tradies</h1>
-              <p className="seo-hero-subtitle">Straight-talking guides to the best quoting, invoicing and job-management tools for tradies — rated on price, speed and how they actually work on site.</p>
+              <h1 className="seo-hero-title">Software for Australian Tradies, Compared</h1>
+              <p className="seo-hero-subtitle">Six buyer&apos;s guides to quoting apps, invoicing apps, job management software and trade-specific apps. Real monthly costs for one person and a crew, and an honest line on where a quoting-first app stops and the bigger platforms start.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Search Console shows this hub for the broad category terms
+            ("job management software", "quoting app", "invoicing app") rather
+            than "best of" searches. Route each search to the guide that
+            answers it, in one screen. */}
+        <section className="seo-rich-content">
+          <div className="container">
+            <div className="rich-content-block">
+              <div className="rich-content-section">
+                <h2>Which guide answers your search</h2>
+                <ul>
+                  <li><Link href="/best/job-management-software-for-tradies">Job management software</Link>: scheduling, tracking and dispatch for crews, and where a quoting-first app is enough.</li>
+                  <li><Link href="/best/quoting-app-for-tradies">Quoting apps</Link>: two-minute itemised quotes on site with live supplier pricing, and when you need takeoffs instead.</li>
+                  <li><Link href="/best/invoicing-app-for-tradies">Quoting and invoicing software</Link>: closing the quote-to-invoice-to-payment loop, and what an invoicing app cannot replace.</li>
+                  <li><Link href="/best/tradie-app-australia">Tradie apps</Link>: the five that run a trade business and the two most sole traders end up on.</li>
+                  <li><Link href="/best/app-for-plumbers">Plumbing software</Link>: quoting at real Reece maX trade prices, invoicing from the van, job costing for bigger firms.</li>
+                  <li><Link href="/best/app-for-electricians">Electrician software</Link>: per-point and hourly quoting with the compliance line items on, through to commercial contractor platforms.</li>
+                </ul>
+                <p>
+                  Every guide uses the same rule: a quoting-first app is the right tool for the tradie who is also the office, and a job management platform is the right tool once there is a crew to dispatch. QuoteMate is the first kind, and each guide says where it stops.
+                </p>
+              </div>
             </div>
           </div>
         </section>

@@ -1257,10 +1257,16 @@
             "heading": "Factoring in Access and Cleanup for Window Replacements",
             "body": "The easiest way to lose money on a window job is to quote only the glass. Replacing a second-storey window might require hiring a small scissor lift, which costs around $250 a day. Removing broken glass from a frame takes time and care, and disposal isn't free. You also need to factor in the cost of new glazing tape, backing rubber, or putty for timber frames. A simple single-pane replacement can take an hour, but a double-glazed unit in an aluminium frame could take three. Always add a line item for waste disposal, as a trip to the tip can cost $60 or more."
           }
-        ]
+        ,
+        {
+          "heading": "Quoting a complete shower screen in one pass",
+          "body": "Shower screens are the job glaziers quote most and get caught on most, because the glass is the easy part and the hinges, channels, seals and cutouts are where the money hides. The shower quoting tool on this site walks a frameless, semi-frameless or framed screen through every line item in one pass, from the toughened panel to the last tube of sanitary silicone, so the quote leaves the site complete. Framed screens typically run $300–$800, semi-frameless $700–$1,500 and frameless $1,000–$3,000 or more.",
+          "link": { "href": "/shower-quoting-tool", "label": "Quote a shower screen with the shower quoting tool \u2192" }
+        }
+      ]
       },
-      "metaTitle": "Glass Quoting Program & Glazing Software for Glaziers",
-      "metaDescription": "Glass quoting program for Australian glaziers. Price by type, thickness and size: shower screens, splashbacks, windows, mirrors. Send branded PDF quotes on site.",
+      "metaTitle": "Glass Quoting Program: Price Shower Screens, Splashbacks & Windows",
+      "metaDescription": "Glass quoting program for Australian glaziers: describe the job, get an itemised quote with glass type, thickness, hardware and labour in under 2 minutes.",
       "extraFaqs": [
         {
           "question": "Is QuoteMate a proper glass quoting program or a generic quote app?",
@@ -1299,7 +1305,7 @@
         "sourceHref": "/articles/how-to-quote-a-shower-screen-installation",
         "sourceLabel": "How to quote a shower screen →"
       },
-      "summary": "QuoteMate is a glass quoting program built for Australian glaziers: describe the job — a frameless shower screen, a splashback, a balustrade — and it builds an itemised quote with materials, labour, and GST in under 2 minutes. Typical glazing quotes run $300 – $10,000, and every quote goes out as a branded PDF you can send from your phone on site."
+      "summary": "A glass quoting program prices the glass by type, thickness and size, then adds the hardware and labour the job needs. QuoteMate does that for Australian glaziers: describe a frameless shower screen, a splashback or a balustrade and it builds the itemised quote with GST in under 2 minutes. Typical glazing quotes run $300 – $10,000; toughened 6mm is around $140–$160 per square metre and the quote flags AS 1288 where it applies."
     },
     {
       "slug": "solar-installers",

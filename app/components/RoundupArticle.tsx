@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Breadcrumbs from './Breadcrumbs';
 import CTAButtons from './CTAButtons';
 import FAQ from './FAQ';
+import { renderBody } from './renderBody';
 
 export interface RoundupItem {
   name: string;
@@ -13,10 +14,33 @@ export interface RoundupItem {
   isQuoteMate?: boolean;
 }
 
+/** A section body is one paragraph, or several. `bullets` render after the
+ * paragraphs. Long comparisons read badly as a single block of text, and the
+ * pages this feeds are the ones Google shows two thousand times a month. */
+export interface RoundupSection {
+  heading: string;
+  body: string | string[];
+  bullets?: string[];
+}
+
 export interface RoundupContent {
   intro: string;
-  sections: { heading: string; body: string }[];
+  sections: RoundupSection[];
   faqs?: { question: string; answer: string }[];
+}
+
+function SectionBody({ section }: { section: RoundupSection }) {
+  const paragraphs = Array.isArray(section.body) ? section.body : [section.body];
+  return (
+    <>
+      {paragraphs.map((p, i) => <p key={i}>{renderBody(p)}</p>)}
+      {section.bullets && section.bullets.length > 0 && (
+        <ul>
+          {section.bullets.map((b, i) => <li key={i}>{renderBody(b)}</li>)}
+        </ul>
+      )}
+    </>
+  );
 }
 
 export interface RelatedLinkGroup {
@@ -74,7 +98,7 @@ export default function RoundupArticle({
               {content?.sections?.[0] && (
                 <div className="guide-section">
                   <h2>{content.sections[0].heading}</h2>
-                  <p>{content.sections[0].body}</p>
+                  <SectionBody section={content.sections[0]} />
                 </div>
               )}
 
@@ -113,7 +137,7 @@ export default function RoundupArticle({
               {content?.sections?.slice(1).map((sec, i) => (
                 <div key={i} className="guide-section">
                   <h2>{sec.heading}</h2>
-                  <p>{sec.body}</p>
+                  <SectionBody section={sec} />
                 </div>
               ))}
 
