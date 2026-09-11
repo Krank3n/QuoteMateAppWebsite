@@ -506,6 +506,9 @@ function ActivityCell({ d }: { d: DocumentRow }) {
   // Pick the most informative single line per stage. Avoids stuffing the cell.
   if (d.paidInFullAt) return <>paid {fmtRelative(d.paidInFullAt)}</>;
   if (d.depositPaidAt && d.stage === 'quote_accepted') return <>deposit {fmtRelative(d.depositPaidAt)}</>;
+  // An invoice only carries respondedAt because its quote was customer-accepted
+  // before conversion (same document id), so say what actually happened.
+  if (d.respondedAt && d.type === 'invoice') return <>accepted {fmtRelative(d.respondedAt)}</>;
   if (d.respondedAt) return <>responded {fmtRelative(d.respondedAt)}</>;
   if (d.lastViewedAt) return <>viewed {fmtRelative(d.lastViewedAt)}</>;
   if (d.sentAt) return <>sent {fmtRelative(d.sentAt)}</>;
