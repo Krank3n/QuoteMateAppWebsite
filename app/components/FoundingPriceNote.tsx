@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { showFoundingSpotCount } from './foundingSpots';
 
 /**
  * Founding-member price note, driven by the live config/foundingOffer doc
  * (public read, written server-side by the aggregateEventFunnel cron in the
  * app repo). Renders nothing until the doc confirms the cap is still open —
  * same rule as the app paywall: no invented scarcity, and no founding
- * framing left on the page after the cap fills.
+ * framing left on the page after the cap fills. The running "(N left)" tally
+ * is held back until spots are scarce, again matching the paywall.
  *
  * The post-cap prices here mirror NEXT_PRICE_AUD in
  * QuoteMate/functions/src/foundingOffer.ts ($99/mo, $658/yr).
@@ -68,7 +70,8 @@ export default function FoundingPriceNote({
   return (
     <>
       Founding member price &mdash; locked for life. Goes to {NEXT_PRICE[period]} for new members
-      once the first {status.cap} spots fill ({status.spotsLeft} left).{' '}
+      once the first {status.cap} spots fill
+      {showFoundingSpotCount(status.spotsLeft) ? ` (${status.spotsLeft} left)` : ''}.{' '}
     </>
   );
 }
