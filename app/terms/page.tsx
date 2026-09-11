@@ -21,7 +21,7 @@ export default function TermsPage() {
         <div className="container">
           <div className="legal-content">
             <h1>Terms of Service</h1>
-            <p className="legal-date">Effective date: 1 March 2026</p>
+            <p className="legal-date">Effective date: 11 September 2026</p>
 
             <p>Welcome to QuoteMate. These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the QuoteMate application, website, and related services (collectively, the &ldquo;Service&rdquo;) provided by QuoteMate (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;). By accessing or using the Service, you agree to be bound by these Terms.</p>
 
@@ -68,7 +68,7 @@ export default function TermsPage() {
             <p>The Pro subscription provides access to premium features, including additional payment options (bank transfer, PayID, BPAY, PayPal), AI material generation, all PDF templates, your business logo on documents, invoice and payment tracking, a lower Square processing fee, and priority support. Pro subscriptions are available on a monthly or annual basis. Pricing is displayed in Australian Dollars (AUD) and includes GST where applicable.</p>
 
             <h3>4.3 Free Trial</h3>
-            <p>We may offer a free trial period for the Pro subscription. At the end of the trial period, you will be charged the applicable subscription fee unless you cancel before the trial ends. You may only use one free trial per account.</p>
+            <p>New accounts get a 14-day Pro trial. It starts automatically when you create your first quote &mdash; not when you sign up &mdash; and no credit card or other payment details are required. The trial does not turn into a paid subscription and does not need to be cancelled: when the 14 days are up, your account simply moves to the Free plan and the Pro-only features switch off. You are not charged anything at the end of the trial. You will only ever be charged if you separately choose to subscribe to Pro and authorise that purchase as described in section 4.4. One trial is available per account.</p>
 
             <h3>4.4 Payment</h3>
             <p>Subscription payments are processed through the Apple App Store, Google Play Store, or our website payment processor, depending on your platform. By subscribing, you authorise recurring charges to your chosen payment method.</p>
