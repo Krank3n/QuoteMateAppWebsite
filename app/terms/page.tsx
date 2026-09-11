@@ -21,7 +21,7 @@ export default function TermsPage() {
         <div className="container">
           <div className="legal-content">
             <h1>Terms of Service</h1>
-            <p className="legal-date">Effective date: 1 March 2026</p>
+            <p className="legal-date">Effective date: 11 September 2026</p>
 
             <p>Welcome to QuoteMate. These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the QuoteMate application, website, and related services (collectively, the &ldquo;Service&rdquo;) provided by QuoteMate (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;). By accessing or using the Service, you agree to be bound by these Terms.</p>
 
