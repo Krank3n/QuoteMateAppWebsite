@@ -5,6 +5,7 @@ import { parse } from 'yaml';
 import * as XLSX from 'xlsx';
 import sitemap from '../app/sitemap';
 import { guides, quoteTemplates } from './data';
+import { getHelpArticles, getHelpLastUpdated } from './help';
 import data from '../seo/data.json';
 import redirects from '../seo/redirects.json';
 import { templateDownloadLinks, templateLineItems } from './templateDownloads';
@@ -41,7 +42,9 @@ describe('honest sitemap dates', () => {
       vi.setSystemTime(new Date('2031-01-01')); expect(sitemap()).toEqual(first);
       for (const page of first) {
         const guide = guides.find(g => page.url.endsWith(`/articles/${g.slug}/`));
-        expect(page.lastModified).toBe(guide?.dateModified || guide?.datePublished);
+        const help = getHelpArticles().find(a => page.url.endsWith(`/help/${a.slug}/`));
+        const helpIndex = page.url.endsWith('/help/') ? getHelpLastUpdated() : undefined;
+        expect(page.lastModified).toBe(guide?.dateModified || guide?.datePublished || help?.lastUpdated || helpIndex);
       }
     } finally { vi.useRealTimers(); }
   });

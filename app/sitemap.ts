@@ -4,6 +4,7 @@ import { competitors } from './compare/data';
 import { alternativePages } from './alternatives/data';
 import { bestPages } from './best/data';
 import { TEMPLATES_WITH_VIDEOS, TRADES_WITH_VIDEOS } from '@/lib/videos';
+import { getHelpArticles, getHelpLastUpdated } from '@/lib/help';
 
 export const dynamic = 'force-static';
 
@@ -38,7 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/manage-jobs/`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/quoting/`, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/integrations/reece/`, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/help/`, lastModified: getHelpLastUpdated(), changeFrequency: 'monthly', priority: 0.7 },
   ];
+
+  // Help Centre articles carry an explicit last_updated in their frontmatter.
+  const helpPages: MetadataRoute.Sitemap = getHelpArticles().map((article) => ({
+    url: `${baseUrl}/help/${article.slug}/`,
+    lastModified: article.lastUpdated,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
 
   const paymentSpokePages: MetadataRoute.Sitemap = (paymentHub?.spokes ?? []).map((spoke) => ({
     url: `${baseUrl}/get-paid/${spoke.slug}/`,
@@ -148,5 +158,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...alternativesPages, ...bestOfPages, ...paymentSpokePages, ...manageJobsSpokePages, ...quotingSpokePages, ...reeceSpokePages];
+  return [...staticPages, ...tradePages, ...tradeCityPages, ...templatePages, ...blogPages, ...comparePages, ...alternativesPages, ...bestOfPages, ...paymentSpokePages, ...manageJobsSpokePages, ...quotingSpokePages, ...reeceSpokePages, ...helpPages];
 }

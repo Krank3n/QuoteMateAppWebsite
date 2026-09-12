@@ -20,6 +20,7 @@ export default function Footer() {
               <li><Link href="/#features">Features</Link></li>
               <li><Link href="/#pricing">Pricing</Link></li>
               <li><Link href="/#faq">FAQ</Link></li>
+              <li><Link href="/help">Help Centre</Link></li>
               <li><Link href="/trades">Quoting by Trade</Link></li>
               <li><Link href="/templates">Quote Templates</Link></li>
               <li><Link href="/articles">Quoting Guides</Link></li>
