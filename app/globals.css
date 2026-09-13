@@ -3666,3 +3666,11 @@ ul {
     line-height: 1.6;
     text-align: center;
 }
+
+/* Help clips are full-height phone recordings (1206×2622), not the 9:16
+   walkthrough renders the mockup was built for. Match the frame to the
+   clip and show it whole: a cover-crop hid the sticky action bar at the
+   bottom, which is the button the voice-over is pointing at. */
+.help-video .qm-walk-player .screen { aspect-ratio: 1206 / 2622; }
+.help-video .qm-walk-player .screen video { object-fit: contain; transform: none; }
+.help-video .qm-walk-player .phone { width: 300px; }
