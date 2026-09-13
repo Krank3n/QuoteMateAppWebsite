@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getHelpArticles, getHelpArticleBySlug, getHelpCategories, rewriteHelpHref } from './help';
 
@@ -50,5 +52,19 @@ describe('help centre loader', () => {
       expect(article.html, article.slug).not.toContain('<h1');
       expect(article.title, article.slug).toBeTruthy();
     }
+  });
+});
+
+describe('help centre videos', () => {
+  it('attaches the take-payment clip to the Square article with files that exist on disk', () => {
+    const article = getHelpArticleBySlug('getting-paid-with-square');
+    expect(article?.video?.name).toBe('take-payment');
+    expect(article?.video?.duration).toBe('PT15S');
+    expect(article?.video?.uploadDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    for (const ext of ['.mp4', '.webm', '-poster.jpg']) {
+      expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
+    }
+    // Only the articles that declare a video carry one.
+    expect(getHelpArticles().filter((a) => a.video)).toHaveLength(1);
   });
 });

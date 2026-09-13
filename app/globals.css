@@ -3654,3 +3654,15 @@ ul {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
+.help-video {
+    margin: 0 0 40px;
+}
+
+.help-video figcaption {
+    margin-top: 12px;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+}
