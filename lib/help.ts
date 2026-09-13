@@ -32,6 +32,21 @@ export interface HelpArticle {
   summary: string;
   /** Rendered body, H1 removed, .md links rewritten to /help/ URLs. */
   html: string;
+  /**
+   * Real-screen how-to clip for this article, when one exists: the base name of
+   * /public/assets/videos/help/<name>.{mp4,webm} + <name>-poster.jpg, with the
+   * text shown under the player and in the VideoObject markup.
+   */
+  video?: HelpVideo;
+}
+
+export interface HelpVideo {
+  name: string;
+  title: string;
+  description: string;
+  /** ISO 8601 duration, e.g. PT15S. */
+  duration: string;
+  uploadDate: string;
 }
 
 const KB_DIR = path.join(process.cwd(), 'knowledge-base');
@@ -44,6 +59,7 @@ interface Frontmatter {
   last_updated: string | Date;
   keywords?: string[];
   question_examples?: string[];
+  video?: { name: string; title: string; description: string; duration: string; upload_date: string | Date };
 }
 
 interface ManifestDoc { path: string; summary?: string }
@@ -157,6 +173,19 @@ function renderMarkdown(body: string, knownSlugs: Set<string>, from: string): st
     .replace(/<\/table>/g, '</table></div>');
 }
 
+const VIDEO_DIR = path.join(process.cwd(), 'public', 'assets', 'videos', 'help');
+
+/** Validates the frontmatter video block against the files actually on disk, so a typo fails the build. */
+function helpVideo(v: NonNullable<Frontmatter['video']>, from: string): HelpVideo {
+  for (const ext of ['.mp4', '.webm', '-poster.jpg']) {
+    if (!fs.existsSync(path.join(VIDEO_DIR, `${v.name}${ext}`))) {
+      throw new Error(`Help article ${from} names video "${v.name}" but ${v.name}${ext} is missing from public/assets/videos/help`);
+    }
+  }
+  if (!/^PT(\d+M)?(\d+S)?$/.test(v.duration)) throw new Error(`Help article ${from}: video duration must be ISO 8601 like PT15S`);
+  return { name: v.name, title: v.title, description: v.description, duration: v.duration, uploadDate: isoDate(v.upload_date) };
+}
+
 let cache: HelpArticle[] | undefined;
 
 export function getHelpArticles(): HelpArticle[] {
@@ -179,6 +208,7 @@ export function getHelpArticles(): HelpArticle[] {
       questionExamples: a.meta.question_examples ?? [],
       summary: summaries.get(a.file) ?? firstParagraph(a.body),
       html: renderMarkdown(a.body, slugs, a.file),
+      ...(a.meta.video ? { video: helpVideo(a.meta.video, a.file) } : {}),
     }))
     .sort((x, y) => x.category.order - y.category.order || x.title.localeCompare(y.title));
   return cache;

@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CTAButtons from '../../components/CTAButtons';
+import WalkthroughPlayer from '../../components/WalkthroughPlayer';
 import { getHelpArticles, getHelpArticleBySlug } from '@/lib/help';
 
 interface Props {
@@ -67,6 +68,17 @@ export default async function HelpArticlePage({ params }: Props) {
         <section className="seo-guide-article">
           <div className="container">
             <div className="guide-content">
+              {article.video && (
+                <figure className="help-video">
+                  <WalkthroughPlayer
+                    basePath="help"
+                    slug={article.video.name}
+                    poster={`/assets/videos/help/${article.video.name}-poster.jpg`}
+                    label={article.video.title}
+                  />
+                  <figcaption>{article.video.description}</figcaption>
+                </figure>
+              )}
               <article className="help-article" dangerouslySetInnerHTML={{ __html: article.html }} />
 
               <div className="help-contact">
@@ -111,6 +123,21 @@ export default async function HelpArticlePage({ params }: Props) {
       </main>
       <Footer />
 
+      {article.video && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: article.video.title,
+          description: article.video.description,
+          thumbnailUrl: `https://quotemateapp.au/assets/videos/help/${article.video.name}-poster.jpg`,
+          uploadDate: article.video.uploadDate,
+          duration: article.video.duration,
+          contentUrl: `https://quotemateapp.au/assets/videos/help/${article.video.name}.mp4`,
+          embedUrl: `https://quotemateapp.au/help/${article.slug}/`,
+          inLanguage: 'en-AU',
+          publisher: { '@type': 'Organization', name: 'QuoteMate', url: 'https://quotemateapp.au', logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' } },
+        })}} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'TechArticle',
