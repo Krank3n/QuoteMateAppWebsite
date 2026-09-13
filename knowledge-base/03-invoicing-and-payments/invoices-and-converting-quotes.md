@@ -5,6 +5,12 @@ category: Invoicing & Payments
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [invoice, convert quote to invoice, deposit, partial payment, invoice status, draft, sent, paid, overdue]
+video:
+  name: quote-invoice
+  title: "Turn an accepted quote into an invoice in QuoteMate"
+  description: "Customer said yes? Open the job and tap Create Invoice. The quote becomes an invoice with the same numbers, nothing to retype. Send it from the menu, and if they're slow to pay, QuoteMate chases it up for you."
+  duration: PT14S
+  upload_date: 2026-09-13
 question_examples:
   - "How do I turn a quote into an invoice?"
   - "Can I create an invoice directly?"

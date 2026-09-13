@@ -65,6 +65,6 @@ describe('help centre videos', () => {
       expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
     }
     // Only the articles that declare a video carry one.
-    expect(getHelpArticles().filter((a) => a.video).map((a) => a.video!.name).sort()).toEqual(["pdf-template", "take-payment"]);
+    expect(getHelpArticles().filter((a) => a.video).map((a) => a.video!.name).sort()).toEqual(["pdf-template", "quote-invoice", "take-payment"]);
   });
 });
