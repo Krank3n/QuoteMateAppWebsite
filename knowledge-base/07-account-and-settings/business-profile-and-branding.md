@@ -5,7 +5,15 @@ category: Account & Settings
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [logo, branding, business details, abn, brand colour, business name, pdf branding, profile]
+video:
+  name: pdf-template
+  title: "Change your PDF template in QuoteMate"
+  description: "Go to Settings, then PDF Templates. Scroll through the styles, pick the one you like and tap Save. Every quote and invoice from then on uses it."
+  duration: PT15S
+  upload_date: 2026-09-13
 question_examples:
+  - "How do I change the PDF template?"
+  - "How do I change how my quotes look?"
   - "How do I add my logo?"
   - "Can I put my ABN on quotes?"
   - "How do I change my business details?"
