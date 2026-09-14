@@ -30,8 +30,11 @@ export interface HelpArticle {
   questionExamples: string[];
   /** One-sentence description for meta tags and index cards. */
   summary: string;
-  /** Rendered body, H1 removed, .md links rewritten to /help/ URLs. */
+  /** Rendered body, H1 removed, .md links rewritten to /help/ URLs, H2s carry ids. */
   html: string;
+  /** The article's H2s, for the on-page contents. */
+  headings: { id: string; text: string }[];
+  readingMinutes: number;
   /**
    * Real-screen how-to clip for this article, when one exists: the base name of
    * /public/assets/videos/help/<name>.{mp4,webm} + <name>-poster.jpg, with the
@@ -158,19 +161,39 @@ function stripLeadingH1(body: string): string {
   return body.replace(/^\s*# [^\n]*\r?\n/, '');
 }
 
-function renderMarkdown(body: string, knownSlugs: Set<string>, from: string): string {
+export function headingId(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function renderMarkdown(body: string, knownSlugs: Set<string>, from: string): { html: string; headings: { id: string; text: string }[] } {
+  const headings: { id: string; text: string }[] = [];
   const md = new Marked({
     gfm: true,
     walkTokens(token) {
       if (token.type === 'link') token.href = rewriteHelpHref(token.href, knownSlugs, from);
+      if (token.type === 'heading' && token.depth === 2) headings.push({ id: headingId(token.text), text: token.text });
+    },
+    renderer: {
+      heading({ tokens, depth, text }) {
+        const inner = this.parser.parseInline(tokens);
+        return depth === 2 ? `<h2 id="${headingId(text)}">${inner}</h2>\n` : `<h${depth}>${inner}</h${depth}>\n`;
+      },
     },
   });
   const html = md.parse(stripLeadingH1(body), { async: false }) as string;
   // Tables are the only thing allowed to be wider than a phone screen, and
   // only inside their own scroll container.
-  return html
-    .replace(/<table>/g, '<div class="help-table-wrap"><table>')
-    .replace(/<\/table>/g, '</table></div>');
+  return {
+    html: html
+      .replace(/<table>/g, '<div class="help-table-wrap"><table>')
+      .replace(/<\/table>/g, '</table></div>'),
+    headings,
+  };
+}
+
+function readingMinutes(html: string): number {
+  const words = html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 const VIDEO_DIR = path.join(process.cwd(), 'public', 'assets', 'videos', 'help');
@@ -207,7 +230,7 @@ export function getHelpArticles(): HelpArticle[] {
       keywords: a.meta.keywords ?? [],
       questionExamples: a.meta.question_examples ?? [],
       summary: summaries.get(a.file) ?? firstParagraph(a.body),
-      html: renderMarkdown(a.body, slugs, a.file),
+      ...(() => { const r = renderMarkdown(a.body, slugs, a.file); return { html: r.html, headings: r.headings, readingMinutes: readingMinutes(r.html) }; })(),
       ...(a.meta.video ? { video: helpVideo(a.meta.video, a.file) } : {}),
     }))
     .sort((x, y) => x.category.order - y.category.order || x.title.localeCompare(y.title));
