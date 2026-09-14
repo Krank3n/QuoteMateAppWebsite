@@ -5,7 +5,15 @@ category: Getting Started
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [first quote, quick start, how to quote, getting started, send quote, new quote]
+video:
+  name: send-sms
+  title: "Send a quote by SMS in QuoteMate"
+  description: "Tap Send Quote, then SMS. QuoteMate writes the text for you, with a link where the customer can read the quote and accept it on the spot."
+  duration: PT11S
+  upload_date: 2026-09-14
 question_examples:
+  - "How do I send a quote by text message?"
+  - "How do I SMS a quote to a customer?"
   - "How do I send my first quote?"
   - "What's the quickest way to make a quote?"
   - "Walk me through creating a quote"
