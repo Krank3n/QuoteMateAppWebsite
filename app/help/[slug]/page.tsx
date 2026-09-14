@@ -18,6 +18,12 @@ function formatMonthYear(iso: string): string {
   return new Intl.DateTimeFormat('en-AU', { month: 'long', year: 'numeric' }).format(new Date(iso));
 }
 
+function secondsOf(duration: string): string {
+  const m = duration.match(/^PT(?:(\d+)M)?(?:(\d+)S)?$/);
+  const s = (Number(m?.[1] ?? 0) * 60) + Number(m?.[2] ?? 0);
+  return `${s} s`;
+}
+
 export async function generateStaticParams() {
   return getHelpArticles().map((a) => ({ slug: a.slug }));
 }
@@ -42,82 +48,97 @@ export default async function HelpArticlePage({ params }: Props) {
     (a) => a.category.slug === article.category.slug && a.slug !== article.slug,
   );
   const isFaq = article.category.slug === 'faq';
+  const showContents = article.headings.length >= 3;
 
   return (
     <>
       <Header homeLinks />
-      <main>
-        <section className="seo-hero">
-          <div className="container">
+      <main className="help-page">
+        <section className="help-hero container">
+          <div>
             <Breadcrumbs items={[
               { label: 'Home', href: '/' },
               { label: 'Help', href: '/help' },
               ...(isFaq ? [] : [{ label: article.category.name, href: `/help/#${article.category.slug}` }]),
               { label: article.title },
             ]} />
-            <div className="seo-hero-content">
-              <div className="blog-meta">
-                <span className="seo-badge">{article.category.name}</span>
-                <span className="blog-meta-text">Updated {formatMonthYear(article.lastUpdated)}</span>
-              </div>
-              <h1 className="seo-hero-title">{article.title}</h1>
+            <div className="help-hero-meta">
+              <span className="seo-badge">{article.category.name}</span>
+              <span>Updated {formatMonthYear(article.lastUpdated)}</span>
+              <span>{article.readingMinutes} min read</span>
+              {article.video && <span className="help-hero-video">{secondsOf(article.video.duration)} video</span>}
             </div>
+            <h1 className="help-title">{article.title}</h1>
           </div>
         </section>
 
-        <section className="seo-guide-article">
-          <div className="container">
-            <div className="guide-content">
-              {article.video && (
-                <figure className="help-video">
-                  <WalkthroughPlayer
-                    basePath="help"
-                    slug={article.video.name}
-                    poster={`/assets/videos/help/${article.video.name}-poster.jpg`}
-                    label={article.video.title}
-                  />
-                  <figcaption>{article.video.description}</figcaption>
-                </figure>
-              )}
-              <article className="help-article" dangerouslySetInnerHTML={{ __html: article.html }} />
+        <section className="help-layout container">
+          <aside className="help-side">
+            {showContents && (
+              <nav className="help-contents" aria-label="On this page">
+                <h2>On this page</h2>
+                <ol>
+                  {article.headings.map((h) => (
+                    <li key={h.id}><a href={`#${h.id}`}>{h.text}</a></li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+            {article.video && (
+              <figure className="help-video-card">
+                <WalkthroughPlayer
+                  basePath="help"
+                  slug={article.video.name}
+                  poster={`/assets/videos/help/${article.video.name}-poster.jpg`}
+                  label={article.video.title}
+                />
+                <figcaption>
+                  <strong>Watch it done</strong>
+                  <span>{article.video.description}</span>
+                </figcaption>
+              </figure>
+            )}
+          </aside>
 
-              <div className="help-contact">
+          <div className="help-main">
+            <article className="help-article" dangerouslySetInnerHTML={{ __html: article.html }} />
+
+            <div className="help-contact">
+              <div>
                 <h2>Still stuck?</h2>
                 <p>Email <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> with what you were trying to do and a screenshot if you have one. You get a reply from the person who builds the app.</p>
               </div>
-
-              <div className="guide-cta-card">
-                <h2>New here? Send a quote in under 2 minutes</h2>
-                <p>Free plan, no card needed. Describe the job, check the priced materials list, send it from your phone.</p>
-                <CTAButtons showWebLink />
-              </div>
             </div>
-          </div>
-        </section>
 
-        <section className="seo-internal-links">
-          <div className="container">
-            <div className="links-grid">
-              {siblings.length > 0 && (
-                <div className="links-column">
-                  <h3>More in {article.category.name}</h3>
+            <div className="help-cta">
+              <h2>New here? Send a quote in under 2 minutes</h2>
+              <p>Free plan, no card needed. Describe the job, check the priced materials list, send it from your phone.</p>
+              <CTAButtons showWebLink />
+            </div>
+
+            {(siblings.length > 0 || !isFaq) && (
+              <div className="help-related">
+                {siblings.length > 0 && (
+                  <div>
+                    <h3>More in {article.category.name}</h3>
+                    <ul>
+                      {siblings.map((a) => (
+                        <li key={a.slug}><Link href={`/help/${a.slug}`}>{a.title}</Link></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div>
+                  <h3>Help Centre</h3>
                   <ul>
-                    {siblings.map((a) => (
-                      <li key={a.slug}><Link href={`/help/${a.slug}`}>{a.title}</Link></li>
-                    ))}
+                    <li><Link href="/help">All help articles</Link></li>
+                    {!isFaq && <li><Link href="/help/faq">Frequently asked questions</Link></li>}
+                    <li><Link href="/pricing">Pricing</Link></li>
+                    <li><Link href="/get-paid">Get Paid Faster</Link></li>
                   </ul>
                 </div>
-              )}
-              <div className="links-column">
-                <h3>Help Centre</h3>
-                <ul>
-                  <li><Link href="/help">All help articles</Link></li>
-                  {!isFaq && <li><Link href="/help/faq">Frequently asked questions</Link></li>}
-                  <li><Link href="/pricing">Pricing</Link></li>
-                  <li><Link href="/get-paid">Get Paid Faster</Link></li>
-                </ul>
               </div>
-            </div>
+            )}
           </div>
         </section>
       </main>
