@@ -3507,7 +3507,7 @@ ul {
 /* Article: text on the left, phone + contents on the right */
 .help-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px 56px; align-items: start; padding: 24px 0 48px; }
 .help-main { max-width: 680px; min-width: 0; order: 1; }
-.help-side { order: 2; position: sticky; top: 92px; display: flex; flex-direction: column; gap: 20px; }
+.help-side { order: 2; display: flex; flex-direction: column; gap: 20px; }
 
 .help-video-card { margin: 0; padding: 18px 16px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-dark); }
 .help-video-card .qm-walk-player .phone { width: 236px; }
@@ -3591,7 +3591,7 @@ ul {
 
 @media (max-width: 900px) {
   .help-layout { grid-template-columns: 1fr; gap: 24px; }
-  .help-side { position: static; order: 0; }
+  .help-side { order: 0; }
   .help-contents { display: none; }
   .help-video-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .help-video-card .qm-walk-player .phone { width: 220px; }
