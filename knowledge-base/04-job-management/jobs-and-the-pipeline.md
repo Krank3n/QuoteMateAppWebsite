@@ -3,13 +3,14 @@ id: jobs-and-the-pipeline
 title: Managing jobs and the pipeline
 category: Job Management
 audience: [customers, prospects]
-last_updated: 2026-07-05
-keywords: [jobs, pipeline, stages, schedule, calendar, photos, annotation, checklist, dashboard, google calendar]
+last_updated: 2026-09-16
+keywords: [jobs, pipeline, stages, schedule, calendar, photos, before and after, annotation, checklist, dashboard, google calendar]
 question_examples:
   - "Can I manage jobs after the quote is sent?"
   - "What are the job stages?"
   - "Can I schedule jobs?"
   - "Can I attach photos to a job?"
+  - "Can I keep before and after photos?"
   - "Does it sync with my calendar?"
 ---
 
@@ -31,9 +32,13 @@ Schedule jobs with a date so you know what's on. You can connect **Google Calend
 
 > **Calendar sync note:** connecting Google Calendar is available in Settings. If you rely on scheduled jobs appearing automatically on your Google Calendar, confirm the behaviour on your device first — see [Google Calendar integration](../05-integrations/google-calendar-integration.md).
 
-## On-site photos
+## Job photos
 
-Attach photos to a job and **annotate them** with arrows, circles, and dimensions — handy for recording site conditions, marking up where things go, or documenting completed work.
+Attach up to 30 photos or plans to a quote, or add them straight from the job page any time after. Open a job and the photo strip sits right under the header: tap **Add photos** (or the **+** tile) to take a shot or pick from your library. Tap a photo to see it full screen, then **Annotate** to mark it up with arrows, circles and dimensions, or **Remove** to take it off the job.
+
+Photos are grouped into **Before** and **After**. A photo added while you're still quoting is filed as Before. One added once the job is scheduled, under way or done is filed as After. Got it wrong? Tap the label on the photo to flip it.
+
+Photos that went out on a quote stay with that quote, so your customer's copy never changes. You can view them from the job page but not remove them there.
 
 ## Checklists
 
