@@ -5,7 +5,15 @@ category: Quoting
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [ai, artificial intelligence, material suggestions, plain english, describe job, auto generate, quantities]
+video:
+  name: mate-photo
+  title: "Quote a job from a photo with Mate"
+  description: "Open Mate, add a photo of the job and say what you need. Mate might ask a question or two, then works out the materials, checks the prices and prices it up, ready to send."
+  duration: PT16S
+  upload_date: 2026-09-15
 question_examples:
+  - "How do I quote from a photo?"
+  - "Can Mate price a job from a picture?"
   - "How does the AI quoting work?"
   - "Do I have to enter every material myself?"
   - "Can I just describe the job?"
