@@ -10,8 +10,8 @@ describe('help centre loader', () => {
     expect(new Set(slugs).size).toBe(slugs.length);
     expect(slugs).toContain('faq');
     expect(slugs).toContain('getting-paid-with-square');
-    // 27 articles in 8 folders + faq.md (README.md and manifest.json are not pages).
-    expect(articles).toHaveLength(28);
+    // 28 articles in 8 folders + faq.md (README.md and manifest.json are not pages).
+    expect(articles).toHaveLength(29);
     expect(slugs).not.toContain('README');
   });
 
