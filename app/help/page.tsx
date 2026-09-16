@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
+import CTAButtons from '../components/CTAButtons';
 import { getHelpArticles, getHelpCategories, getHelpLastUpdated } from '@/lib/help';
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function HelpIndex() {
   const faq = groups.find((g) => g.category.slug === 'faq')?.articles[0];
   const sections = groups.filter((g) => g.category.slug !== 'faq');
   const clips = getHelpArticles().flatMap((a) => a.videos.map((video) => ({ article: a, video })));
+  const articleCount = getHelpArticles().length;
 
   return (
     <>
@@ -45,16 +47,29 @@ export default function HelpIndex() {
             ]} />
             <h1 className="help-title">Help Centre</h1>
             <p className="help-summary">Short, plain-English answers on quoting, getting paid, invoices, integrations and your account. Can&rsquo;t find it? Email <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> and a real person replies.</p>
-            {faq && (
-              <p className="help-faq-link"><Link href={`/help/${faq.slug}`}>Start with the quick answers &rarr;</Link></p>
-            )}
+            <div className="help-hero-meta">
+              <span>{articleCount} articles</span>
+              <span>{clips.length} short videos</span>
+              <span>Updated {new Intl.DateTimeFormat('en-AU', { month: 'long', year: 'numeric' }).format(new Date(getHelpLastUpdated()))}</span>
+            </div>
           </div>
+          <nav className="help-jump" aria-label="Help topics">
+            {faq && <Link href={`/help/${faq.slug}`} className="help-jump-faq">Quick answers &rarr;</Link>}
+            {sections.map(({ category }) => (
+              <a key={category.slug} href={`#${category.slug}`}>{category.name}</a>
+            ))}
+          </nav>
         </section>
 
         {clips.length > 0 && (
           <section className="help-watch container" aria-labelledby="help-watch-title">
-            <h2 id="help-watch-title">Watch it done</h2>
-            <p>Real screen recordings, under 20 seconds each.</p>
+            <div className="help-watch-head">
+              <div>
+                <h2 id="help-watch-title">Watch it done</h2>
+                <p>Real screen recordings, under 30 seconds each.</p>
+              </div>
+              <span className="help-watch-hint" aria-hidden="true">Scroll &rarr;</span>
+            </div>
             <div className="help-watch-grid">
               {clips.map(({ article, video }) => (
                 <Link key={video.name} href={`/help/${article.slug}#video-${video.name}`} className="help-watch-card">
@@ -90,14 +105,17 @@ export default function HelpIndex() {
           ))}
         </section>
 
-        <section className="help-layout container">
-          <div className="help-main">
-            <div className="help-contact">
-              <div>
-                <h2>Still stuck?</h2>
-                <p>Email <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> with what you were trying to do and a screenshot if you have one. You get a reply from the person who builds the app.</p>
-              </div>
+        <section className="help-footer-row container">
+          <div className="help-contact">
+            <div>
+              <h2>Still stuck?</h2>
+              <p>Email <a href="mailto:tom@hansendev.com.au">tom@hansendev.com.au</a> with what you were trying to do and a screenshot if you have one. You get a reply from the person who builds the app.</p>
             </div>
+          </div>
+          <div className="help-cta">
+            <h2>New here? Send a quote in under 2 minutes</h2>
+            <p>Free plan, no card needed. Describe the job, check the priced materials list, send it from your phone.</p>
+            <CTAButtons showWebLink />
           </div>
         </section>
       </main>

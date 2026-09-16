@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getHelpArticleBySlug(slug);
   if (!article) return {};
   return {
-    title: `${article.title} | QuoteMate Help`,
+    // absolute: the layout template would otherwise append a second brand
+    title: { absolute: `${article.title} | QuoteMate Help` },
     description: article.summary,
     alternates: { canonical: `https://quotemateapp.au/help/${article.slug}/` },
   };
