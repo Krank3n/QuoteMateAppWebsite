@@ -4,22 +4,11 @@ title: Managing jobs and the pipeline
 category: Job Management
 audience: [customers, prospects]
 last_updated: 2026-09-16
-keywords: [jobs, pipeline, stages, schedule, calendar, photos, before and after, annotation, checklist, dashboard, google calendar]
-video:
-  name: job-photos
-  title: "Job photos: add, tag before and after, annotate"
-  description: "Tap Photos on the job and add site shots from your camera or library, as many as you need. Each one is tagged Before or After; tap the tag to flip it. Open a photo to see it big or annotate it with drawing, arrows, circles and notes. They go along on the quote, and the before-and-afters stay with the job."
-  duration: PT25S
-  upload_date: 2026-09-16
+keywords: [jobs, pipeline, stages, status, schedule, calendar, checklist, dashboard, google calendar]
 question_examples:
-  - "How do I add photos to a job?"
-  - "Can I mark photos as before and after?"
-  - "How do I draw on a job photo?"
   - "Can I manage jobs after the quote is sent?"
   - "What are the job stages?"
   - "Can I schedule jobs?"
-  - "Can I attach photos to a job?"
-  - "Can I keep before and after photos?"
   - "Does it sync with my calendar?"
 ---
 
@@ -43,11 +32,7 @@ Schedule jobs with a date so you know what's on. You can connect **Google Calend
 
 ## Job photos
 
-Attach up to 30 photos or plans to a quote, or add them straight from the job page any time after. Open a job and the photo strip sits right under the header: tap **Add photos** (or the **+** tile) to take a shot or pick from your library. Tap a photo to see it full screen, then **Annotate** to mark it up with arrows, circles and dimensions, or **Remove** to take it off the job.
-
-Photos are grouped into **Before** and **After**. A photo added while you're still quoting is filed as Before. One added once the job is scheduled, under way or done is filed as After. Got it wrong? Tap the label on the photo to flip it.
-
-Photos that went out on a quote stay with that quote, so your customer's copy never changes. You can view them from the job page but not remove them there.
+Site photos, before-and-after tagging and mark-up have their own guide: [Job photos and marking up what you'll do](job-photos.md).
 
 ## Checklists
 

@@ -67,7 +67,10 @@ Through your Square account — there's no refund button in the app. → [Troubl
 ## Jobs and integrations
 
 **Can I manage jobs after the quote is sent?**
-Yes — a 9-stage pipeline with scheduling, on-site photos with annotation, checklists, and automated follow-ups. → [Jobs and the pipeline](04-job-management/jobs-and-the-pipeline.md)
+Yes — a 9-stage pipeline with scheduling, checklists, and automated follow-ups. → [Jobs and the pipeline](04-job-management/jobs-and-the-pipeline.md)
+
+**Can I attach photos and mark them up?**
+Yes — up to 30 photos or plans per quote, tagged Before or After, with arrows, circles and labels so the customer can see what you'll do. → [Job photos](04-job-management/job-photos.md)
 
 **Does it integrate with Xero?**
 Yes — push invoices in one tap, auto-create contacts, bulk sync, and export Xero-compatible CSVs. → [Xero integration](05-integrations/xero-integration.md)

@@ -10,8 +10,8 @@ describe('help centre loader', () => {
     expect(new Set(slugs).size).toBe(slugs.length);
     expect(slugs).toContain('faq');
     expect(slugs).toContain('getting-paid-with-square');
-    // 28 articles in 8 folders + faq.md (README.md and manifest.json are not pages).
-    expect(articles).toHaveLength(29);
+    // 29 articles in 8 folders + faq.md (README.md and manifest.json are not pages).
+    expect(articles).toHaveLength(30);
     expect(slugs).not.toContain('README');
   });
 
@@ -67,5 +67,7 @@ describe('help centre videos', () => {
     // Only the articles that declare clips carry them; an article can carry several.
     expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["bank-payment", "chase-invoice", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
     expect(getHelpArticleBySlug('tracking-payments-and-reminders')?.videos.map((v) => v.name)).toEqual(['chase-invoice', 'bank-payment']);
+    expect(getHelpArticleBySlug('job-photos')?.videos.map((v) => v.name)).toEqual(['job-photos']);
+    expect(getHelpArticleBySlug('jobs-and-the-pipeline')?.videos).toEqual([]);
   });
 });
