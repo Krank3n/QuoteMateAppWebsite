@@ -36,11 +36,12 @@ export interface HelpArticle {
   headings: { id: string; text: string }[];
   readingMinutes: number;
   /**
-   * Real-screen how-to clip for this article, when one exists: the base name of
-   * /public/assets/videos/help/<name>.{mp4,webm} + <name>-poster.jpg, with the
-   * text shown under the player and in the VideoObject markup.
+   * Real-screen how-to clips for this article, in the order they appear: each
+   * is the base name of /public/assets/videos/help/<name>.{mp4,webm} +
+   * <name>-poster.jpg, with the text shown under the player and in the
+   * VideoObject markup. Empty when the article has none.
    */
-  video?: HelpVideo;
+  videos: HelpVideo[];
 }
 
 export interface HelpVideo {
@@ -62,8 +63,11 @@ interface Frontmatter {
   last_updated: string | Date;
   keywords?: string[];
   question_examples?: string[];
-  video?: { name: string; title: string; description: string; duration: string; upload_date: string | Date };
+  video?: HelpVideoMeta;
+  videos?: HelpVideoMeta[];
 }
+
+interface HelpVideoMeta { name: string; title: string; description: string; duration: string; upload_date: string | Date }
 
 interface ManifestDoc { path: string; summary?: string }
 
@@ -231,7 +235,7 @@ export function getHelpArticles(): HelpArticle[] {
       questionExamples: a.meta.question_examples ?? [],
       summary: summaries.get(a.file) ?? firstParagraph(a.body),
       ...(() => { const r = renderMarkdown(a.body, slugs, a.file); return { html: r.html, headings: r.headings, readingMinutes: readingMinutes(r.html) }; })(),
-      ...(a.meta.video ? { video: helpVideo(a.meta.video, a.file) } : {}),
+      videos: [...(a.meta.video ? [a.meta.video] : []), ...(a.meta.videos ?? [])].map((v) => helpVideo(v, a.file)),
     }))
     .sort((x, y) => x.category.order - y.category.order || x.title.localeCompare(y.title));
   return cache;

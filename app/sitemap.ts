@@ -48,16 +48,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: article.lastUpdated,
     changeFrequency: 'monthly',
     priority: 0.6,
-    ...(article.video
+    ...(article.videos.length > 0
       ? {
-          videos: [
-            {
-              title: xmlEscape(article.video.title),
-              thumbnail_loc: `${baseUrl}/assets/videos/help/${article.video.name}-poster.jpg`,
-              description: xmlEscape(article.video.description),
-              content_loc: `${baseUrl}/assets/videos/help/${article.video.name}.mp4`,
-            },
-          ],
+          videos: article.videos.map((video) => ({
+            title: xmlEscape(video.title),
+            thumbnail_loc: `${baseUrl}/assets/videos/help/${video.name}-poster.jpg`,
+            description: xmlEscape(video.description),
+            content_loc: `${baseUrl}/assets/videos/help/${video.name}.mp4`,
+          })),
         }
       : {}),
   }));

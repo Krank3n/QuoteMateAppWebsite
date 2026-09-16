@@ -66,7 +66,7 @@ export default async function HelpArticlePage({ params }: Props) {
               <span className="seo-badge">{article.category.name}</span>
               <span>Updated {formatMonthYear(article.lastUpdated)}</span>
               <span>{article.readingMinutes} min read</span>
-              {article.video && <span className="help-hero-video">{secondsOf(article.video.duration)} video</span>}
+              {article.videos.length > 0 && <span className="help-hero-video">{article.videos.length === 1 ? `${secondsOf(article.videos[0].duration)} video` : `${article.videos.length} short videos`}</span>}
             </div>
             <h1 className="help-title">{article.title}</h1>
           </div>
@@ -84,20 +84,20 @@ export default async function HelpArticlePage({ params }: Props) {
                 </ol>
               </nav>
             )}
-            {article.video && (
-              <figure className="help-video-card">
+            {article.videos.map((video) => (
+              <figure className="help-video-card" key={video.name} id={`video-${video.name}`}>
                 <WalkthroughPlayer
                   basePath="help"
-                  slug={article.video.name}
-                  poster={`/assets/videos/help/${article.video.name}-poster.jpg`}
-                  label={article.video.title}
+                  slug={video.name}
+                  poster={`/assets/videos/help/${video.name}-poster.jpg`}
+                  label={video.title}
                 />
                 <figcaption>
-                  <strong>Watch it done</strong>
-                  <span>{article.video.description}</span>
+                  <strong>{video.title.replace(/ in QuoteMate.*$/, '')}</strong>
+                  <span>{video.description}</span>
                 </figcaption>
               </figure>
-            )}
+            ))}
           </aside>
 
           <div className="help-main">
@@ -144,21 +144,21 @@ export default async function HelpArticlePage({ params }: Props) {
       </main>
       <Footer />
 
-      {article.video && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      {article.videos.map((video) => (
+        <script key={video.name} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
-          name: article.video.title,
-          description: article.video.description,
-          thumbnailUrl: `https://quotemateapp.au/assets/videos/help/${article.video.name}-poster.jpg`,
-          uploadDate: article.video.uploadDate,
-          duration: article.video.duration,
-          contentUrl: `https://quotemateapp.au/assets/videos/help/${article.video.name}.mp4`,
+          name: video.title,
+          description: video.description,
+          thumbnailUrl: `https://quotemateapp.au/assets/videos/help/${video.name}-poster.jpg`,
+          uploadDate: video.uploadDate,
+          duration: video.duration,
+          contentUrl: `https://quotemateapp.au/assets/videos/help/${video.name}.mp4`,
           embedUrl: `https://quotemateapp.au/help/${article.slug}/`,
           inLanguage: 'en-AU',
           publisher: { '@type': 'Organization', name: 'QuoteMate', url: 'https://quotemateapp.au', logo: { '@type': 'ImageObject', url: 'https://quotemateapp.au/assets/logo.png' } },
         })}} />
-      )}
+      ))}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'TechArticle',
