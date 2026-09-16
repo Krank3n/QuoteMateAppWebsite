@@ -3,14 +3,15 @@ id: quoting-creating-a-quote
 title: Creating a quote
 category: Quoting
 audience: [customers, prospects]
-last_updated: 2026-07-05
-keywords: [create quote, new quote, quoting flow, sections, section-based quoting, edit quote, send quote, pdf]
+last_updated: 2026-09-16
+keywords: [create quote, new quote, quoting flow, sections, section-based quoting, edit quote, send quote, pdf, multiple email addresses, cc, accounts department, more than one recipient]
 question_examples:
   - "How do I create a quote?"
   - "What are the steps to build a quote?"
   - "Can I split a quote into sections?"
   - "How do I send a quote to a customer?"
   - "Can I edit the materials on a quote?"
+  - "Can I send a quote to two email addresses?"
 ---
 
 # Creating a quote
@@ -36,6 +37,15 @@ You can save a section as a reusable **section template** (like a metre of Color
 ## Sending the quote
 
 Send the quote by email with a pre-written professional message and the PDF attached, or share it by SMS or WhatsApp. The customer can accept or decline online. When they accept, [convert the quote to an invoice](../03-invoicing-and-payments/invoices-and-converting-quotes.md) in one tap.
+
+### Send to more than one person at a customer
+
+Some customers want the quote to reach their accounts department as well as the owner. Two ways to do it:
+
+- **One-off:** on the email screen, type another address into the Recipient field. A comma or a space turns it into a chip, and the × on a chip removes it. Up to five addresses per email.
+- **Every time:** open the customer under Settings → Contacts (or from the job's customer card), tap Edit, then **Add another email**. Up to three extra addresses can sit on a customer, and every quote and invoice you email them prefills the lot.
+
+Everyone on the list gets the same email, including the Accept and Pay buttons, so any of them can accept or pay. Email me a copy still sends you one copy.
 
 ## Related
 
