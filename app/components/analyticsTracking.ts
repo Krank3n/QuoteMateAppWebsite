@@ -67,7 +67,7 @@ function sectionFor(el: Element): string {
   return 'unknown';
 }
 
-const CTA_SELECTOR = '.btn-store, .btn-store-lg, .pricing-btn, .nav-cta, .hero-web-link, [data-hero-cta]';
+const CTA_SELECTOR = '.btn-store, .btn-store-lg, .tag-rating, .pricing-btn, .nav-cta, .hero-web-link, [data-hero-cta]';
 
 function handleClick(e: MouseEvent) {
   if (!(e.target instanceof Element)) return;

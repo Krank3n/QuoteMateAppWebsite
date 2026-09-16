@@ -8,6 +8,7 @@ import InstallSheet from './components/InstallSheet';
 import FoundingPriceNote from './components/FoundingPriceNote';
 import Header from './components/Header';
 import { getHelpCategories } from '@/lib/help';
+import { getPlayRating, PLAY_STORE_URL } from '@/lib/playRating';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -126,7 +127,12 @@ const HeroIntroVideo = ({ id }: { id: string }) => (
   </div>
 );
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Real Google Play score, read from the listing at build time (falls back to
+  // the last hand-verified value). Drives the hero badge, the review card and
+  // both AggregateRating blocks below so the site never quotes two numbers.
+  const play = await getPlayRating();
+  const starFill = `${(play.value / 5) * 100}%`;
   return (
     <div className="eng-home">
       {/* ── TOPBAR (shared with every other page) ── */}
@@ -150,10 +156,13 @@ export default function HomePage() {
         </div>
         <div className="hero-wrap">
           <div>
-            <span className="tag">
-              <span className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span><b>5.0</b> on Google Play</span>
-            </span>
+            <a href={PLAY_STORE_URL} className="tag tag-rating" aria-label={`Rated ${play.label} out of 5 on Google Play — see the listing`}>
+              <span className="stars stars-live" aria-hidden="true">
+                <span className="stars-fill" style={{ width: starFill }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span className="stars-base">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              </span>
+              <span><b>{play.label}</b> on Google Play</span>
+            </a>
             <h1>Don&apos;t quote at night <span className="moon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg></span><br />Quote <span className="hl">On-site</span><span className="h1badge">in 2 min</span></h1>
             <ol className="sub-steps">
               <li><span className="sn">1</span>Describe the job.</li>
@@ -641,8 +650,8 @@ export default function HomePage() {
             </div>
             <div className="tcard">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p>Rated <b>5.0</b> by tradies on Google Play. Used QuoteMate on a job? We&apos;d genuinely love your honest review.</p>
-              <a href="https://play.google.com/store/apps/details?id=com.quotemate.app&hl=en_AU&referrer=utm_source%3Dquotemateapp.au%26utm_medium%3Dwebsite" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
+              <p>Rated <b>{play.label}</b> by tradies on Google Play. Used QuoteMate on a job? We&apos;d genuinely love your honest review.</p>
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--acc)', font: '600 .82rem var(--display)', textDecoration: 'none' }}>Leave a review on Google Play &rarr;</a>
             </div>
           </div>
         </div>
@@ -950,7 +959,8 @@ export default function HomePage() {
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "5.0",
+          "ratingValue": play.label,
+          "ratingCount": String(play.count),
           "reviewCount": "4",
           "bestRating": "5",
           "worstRating": "1",
@@ -1091,8 +1101,8 @@ export default function HomePage() {
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "2",
+          "ratingValue": play.label,
+          "ratingCount": String(play.count),
           "bestRating": "5",
         },
       })}} />
