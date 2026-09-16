@@ -31,7 +31,7 @@ export default function HelpIndex() {
   const groups = getHelpCategories();
   const faq = groups.find((g) => g.category.slug === 'faq')?.articles[0];
   const sections = groups.filter((g) => g.category.slug !== 'faq');
-  const withVideo = getHelpArticles().filter((a) => a.video);
+  const clips = getHelpArticles().flatMap((a) => a.videos.map((video) => ({ article: a, video })));
 
   return (
     <>
@@ -51,20 +51,20 @@ export default function HelpIndex() {
           </div>
         </section>
 
-        {withVideo.length > 0 && (
+        {clips.length > 0 && (
           <section className="help-watch container" aria-labelledby="help-watch-title">
             <h2 id="help-watch-title">Watch it done</h2>
             <p>Real screen recordings, under 20 seconds each.</p>
             <div className="help-watch-grid">
-              {withVideo.map((a) => (
-                <Link key={a.slug} href={`/help/${a.slug}`} className="help-watch-card">
+              {clips.map(({ article, video }) => (
+                <Link key={video.name} href={`/help/${article.slug}#video-${video.name}`} className="help-watch-card">
                   <span className="help-watch-thumb">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`/assets/videos/help/${a.video!.name}-poster.jpg`} alt="" loading="lazy" width={300} height={652} />
+                    <img src={`/assets/videos/help/${video.name}-poster.jpg`} alt="" loading="lazy" width={300} height={652} />
                     <span className="help-watch-play" aria-hidden="true">▶</span>
-                    <span className="help-watch-len">{secondsOf(a.video!.duration)}</span>
+                    <span className="help-watch-len">{secondsOf(video.duration)}</span>
                   </span>
-                  <span className="help-watch-title">{a.video!.title.replace(/ in QuoteMate.*$/, '')}</span>
+                  <span className="help-watch-title">{video.title.replace(/ (in|with) QuoteMate.*$/, '').replace(/ with Mate$/, '')}</span>
                 </Link>
               ))}
             </div>
@@ -80,7 +80,7 @@ export default function HelpIndex() {
                 {articles.map((article) => (
                   <li key={article.slug}>
                     <Link href={`/help/${article.slug}`}>
-                      <span className="help-link-title">{article.title}{article.video && <span className="help-link-video" title="Has a video">▶</span>}</span>
+                      <span className="help-link-title">{article.title}{article.videos.length > 0 && <span className="help-link-video" title="Has a video">▶</span>}</span>
                       <span className="help-link-summary">{article.summary}</span>
                     </Link>
                   </li>

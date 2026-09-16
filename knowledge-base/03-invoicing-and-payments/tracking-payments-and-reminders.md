@@ -5,13 +5,20 @@ category: Invoicing & Payments
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [track payments, overdue, reminders, follow up, chase invoice, unpaid, receipt, bas]
-video:
-  name: bank-payment
-  title: "Record a bank transfer payment in QuoteMate"
-  description: "Customer paid by bank transfer? Open the invoice, tap Take Payment, then Record Payment. Full balance, bank transfer, today. Tap Record and the invoice is marked paid."
-  duration: PT14S
-  upload_date: 2026-09-16
+videos:
+  - name: chase-invoice
+    title: "Chase an unpaid invoice in QuoteMate"
+    description: "Open the invoice and tap Follow Up. QuoteMate has a polite reminder ready that gets firmer the longer they leave it. Send it by text or email, or leave it to QuoteMate to chase automatically."
+    duration: PT16S
+    upload_date: 2026-09-16
+  - name: bank-payment
+    title: "Record a bank transfer payment in QuoteMate"
+    description: "Customer paid by bank transfer? Open the invoice, tap Take Payment, then Record Payment. Full balance, bank transfer, today. Tap Record and the invoice is marked paid."
+    duration: PT14S
+    upload_date: 2026-09-16
 question_examples:
+  - "How do I chase an unpaid invoice?"
+  - "How do I send a payment reminder?"
   - "How do I mark an invoice as paid?"
   - "How do I record a bank transfer payment?"
   - "Can I track which invoices are paid?"
