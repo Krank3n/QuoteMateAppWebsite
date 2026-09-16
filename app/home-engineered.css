@@ -30,6 +30,25 @@
 .eng-home .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 .eng-home .acc { color: var(--acc); }
 
+/* shared site header (app/components/Header.tsx): fixed like every other
+   page (.eng-home is overflow-x:hidden, which would defeat sticky), so the
+   page pads for it; variant B lightens it to match the cream page */
+.eng-home { padding-top: var(--nav-height); }
+html[data-home-variant="b"] .eng-home .site-header { background: rgba(245,244,239,.9); border-bottom-color: var(--line); }
+html[data-home-variant="b"] .eng-home .site-header.scrolled { background: rgba(245,244,239,.97); }
+html[data-home-variant="b"] .eng-home .site-header .logo-text,
+html[data-home-variant="b"] .eng-home .site-header .nav-links a:hover,
+html[data-home-variant="b"] .eng-home .site-header .nav-login:hover { color: var(--tx); }
+html[data-home-variant="b"] .eng-home .site-header .nav-links a,
+html[data-home-variant="b"] .eng-home .site-header .nav-login { color: var(--tx2); }
+html[data-home-variant="b"] .eng-home .site-header .nav-cta-group .btn-secondary { border-color: var(--line2); color: var(--tx); }
+html[data-home-variant="b"] .eng-home .site-header .nav-cta-group .btn-secondary:hover { border-color: var(--acc); color: var(--acc); }
+html[data-home-variant="b"] .eng-home .site-header .mobile-menu-toggle { border-color: var(--line2); }
+html[data-home-variant="b"] .eng-home .site-header .hamburger-line { background: var(--tx); }
+html[data-home-variant="b"] .eng-home .mobile-menu-overlay { background: rgba(245,244,239,.98); }
+html[data-home-variant="b"] .eng-home .mobile-menu-overlay a { color: var(--tx); }
+html[data-home-variant="b"] .eng-home .mobile-menu-overlay .btn-secondary { border-color: var(--line2); color: var(--tx); }
+
 /* section scaffolding */
 .eng-home .section { position: relative; padding: 84px 0; border-top: 1px solid var(--line); }
 .eng-home .sechead { max-width: 680px; margin: 0 auto 48px; text-align: center; }
@@ -38,39 +57,11 @@
 .eng-home .secsub { font: 400 1.02rem/1.6 var(--display); color: var(--tx2); }
 
 /* top nav */
-.eng-home .topbar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 32px; padding: 14px 28px; border-bottom: 1px solid var(--line); background: rgba(10,14,22,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
 .eng-home .brand { display: flex; align-items: center; gap: 10px; }
 .eng-home .mark { width: 24px; height: 24px; border-radius: 5px; object-fit: contain; display: block; flex-shrink: 0; }
 .eng-home .brand .name { font: 700 .9rem var(--display); letter-spacing: .12em; text-transform: uppercase; }
-.eng-home .nav { display: flex; align-items: center; gap: 22px; margin-right: auto; font: 400 .8rem var(--mono); color: var(--tx2); }
-.eng-home .nav a:hover { color: var(--tx); }
-.eng-home .nav-cta { display: flex; align-items: center; gap: 10px; }
-.eng-home .nav-login { padding: 9px 10px; font: 400 .8rem var(--mono); color: var(--tx2); }
-.eng-home .nav-login:hover { color: var(--tx); }
-.eng-home .nav-cta .btn { padding: 9px 16px; font: 600 .82rem var(--display); border-radius: 6px; border: 1px solid transparent; }
-.eng-home .ghost { background: transparent; border-color: var(--line2) !important; color: var(--tx); }
-.eng-home .ghost:hover { border-color: var(--acc) !important; color: var(--acc); }
-.eng-home .prim { background: var(--acc); color: #0A0E16; font-weight: 700; }
-.eng-home .prim:hover { background: var(--acc2); }
-.eng-home .navtoggle { display: none; }
-.eng-home .hamburger { display: none; }
-.eng-home .mobile-menu { display: none; }
-.eng-home .mobile-menu a { padding: 13px 4px; font: 500 .98rem var(--display); color: var(--tx2); border-bottom: 1px solid var(--line); text-decoration: none; }
-.eng-home .mobile-menu a:hover { color: var(--tx); }
-.eng-home .mobile-menu .btn { margin-top: 12px; justify-content: center; border-bottom: none; padding: 12px 18px; }
-.eng-home .mobile-menu .ghost { border: 1px solid var(--line2); color: var(--tx); }
-.eng-home .mobile-menu .prim { background: var(--acc); color: #0A0E16; font-weight: 700; }
 
 @media(max-width:880px) {
-  .eng-home .nav, .eng-home .nav-cta { display: none; }
-  .eng-home .topbar { justify-content: space-between; }
-  .eng-home .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 38px; height: 38px; border: 1px solid var(--line2); border-radius: 7px; cursor: pointer; }
-  .eng-home .hamburger span { display: block; width: 17px; height: 2px; background: var(--tx); border-radius: 2px; transition: transform .2s, opacity .2s; }
-  .eng-home .mobile-menu { position: absolute; top: 100%; left: 0; right: 0; z-index: 40; flex-direction: column; gap: 2px; background: rgba(10,14,22,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 12px 18px 20px; }
-  .eng-home .navtoggle:checked ~ .mobile-menu { display: flex; }
-  .eng-home .navtoggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .eng-home .navtoggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
-  .eng-home .navtoggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }
 
 /* buttons */
@@ -454,12 +445,30 @@
 .eng-home .btn-store:hover { border-color: var(--acc); }
 @media(max-width:760px) { .eng-home .foot-wrap { grid-template-columns: 1fr 1fr; gap: 32px; } }
 
+/* help centre teaser (section#help) */
+.eng-home .help-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.eng-home .hcard { display: flex; flex-direction: column; background: var(--bg); padding: 24px 22px; transition: .15s; }
+.eng-home .hcard:hover { background: var(--panel); }
+.eng-home .hcard .ix { font: 400 .7rem var(--mono); color: var(--acc); margin-bottom: 12px; }
+.eng-home .hcard h3 { font: 600 1.02rem var(--display); margin-bottom: 4px; }
+.eng-home .hcard h3 a:hover { color: var(--acc); }
+.eng-home .hcard .hblurb { font: 400 .84rem/1.5 var(--sans); color: var(--tx2); margin-bottom: 14px; }
+.eng-home .hcard ul { list-style: none; display: grid; gap: 7px; margin-top: auto; }
+.eng-home .hcard li a { display: flex; align-items: baseline; gap: 8px; font: 400 .86rem/1.4 var(--sans); color: var(--tx); }
+.eng-home .hcard li a::before { content: '\2192'; flex-shrink: 0; font: 400 .78rem var(--mono); color: var(--tx3); }
+.eng-home .hcard li a:hover { color: var(--acc); }
+.eng-home .hcard li a:hover::before { color: var(--acc); }
+.eng-home .hcard .vid { font: 400 .62rem var(--mono); color: var(--acc); margin-left: 4px; }
+.eng-home .help-more { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.eng-home .help-more .note { font: 400 .8rem var(--mono); color: var(--tx2); }
+@media(max-width:960px) { .eng-home .help-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:520px) { .eng-home .help-grid { grid-template-columns: 1fr; } }
+
 /* mobile global */
 @media(max-width:640px) {
   .eng-home .container { padding: 0 18px; }
   .eng-home .section { padding: 54px 0; }
   .eng-home .sechead { margin-bottom: 32px; }
-  .eng-home .topbar { gap: 14px; padding: 12px 18px; }
   .eng-home .hero-wrap { padding: 44px 18px 40px; gap: 34px; }
   .eng-home h1 { font-size: clamp(1.45rem,6.6vw,2.3rem); }
   .eng-home .win { max-width: 360px; margin: 0 auto; width: 100%; }
@@ -496,7 +505,6 @@
 .eng-home .hero { display: block; min-height: 0; padding: 0; align-items: normal; }
 .eng-home .hero::before { content: none; }
 .eng-home .faq { padding: 0; }
-.eng-home .nav-cta { padding: 0; font-size: inherit; }
 
 /* hero highlighted word: white text on a softly-pulsing orange block */
 .eng-home .hl { color: #fff; background: var(--acc); padding: 0 .14em; border-radius: 4px; animation: hl-pulse 3s ease-in-out infinite; }
@@ -518,17 +526,7 @@
 html[data-home-variant="b"] .eng-home .hero-a { display: none !important; }
 html[data-home-variant="b"] .eng-home .hero-b { display: block; }
 
-/* Variant B: lighten the shared topbar so it matches the cream hero */
-html[data-home-variant="b"] .eng-home .topbar { background: rgba(245,244,239,.9); border-bottom-color: rgba(0,0,0,.08); }
 html[data-home-variant="b"] .eng-home .brand .name { color: #1a1814; }
-html[data-home-variant="b"] .eng-home .nav { color: #6b6760; }
-html[data-home-variant="b"] .eng-home .nav a:hover { color: #1a1814; }
-html[data-home-variant="b"] .eng-home .ghost { border-color: rgba(0,0,0,.18) !important; color: #1a1814; }
-html[data-home-variant="b"] .eng-home .ghost:hover { border-color: var(--acc) !important; color: var(--acc); }
-html[data-home-variant="b"] .eng-home .hamburger { border-color: rgba(0,0,0,.2); }
-html[data-home-variant="b"] .eng-home .hamburger span { background: #1a1814; }
-html[data-home-variant="b"] .eng-home .mobile-menu { background: rgba(245,244,239,.98); }
-html[data-home-variant="b"] .eng-home .mobile-menu a { color: #6b6760; border-bottom-color: rgba(0,0,0,.08); }
 
 /* ============================================================
    VARIANT B — light / photo-led hero
@@ -831,30 +829,8 @@ html[data-home-variant="b"] .eng-home .hb-fade {
   background: linear-gradient(to bottom, transparent, var(--bg));
 }
 
-/* 3. Topbar sticky backdrop on light page */
-html[data-home-variant="b"] .eng-home .topbar {
-  background: rgba(245,244,239,.9);
-  border-bottom-color: var(--line);
-}
 
-/* Phase-1 already set topbar colours; these reinforce via token: */
-html[data-home-variant="b"] .eng-home .nav { color: var(--tx2); }
-html[data-home-variant="b"] .eng-home .nav a:hover { color: var(--tx); }
 
-/* 4. Mobile menu — dark hardcode needs to become light */
-html[data-home-variant="b"] .eng-home .mobile-menu {
-  background: rgba(245,244,239,.98);
-  border-bottom-color: var(--line);
-}
-html[data-home-variant="b"] .eng-home .mobile-menu a {
-  color: var(--tx2);
-  border-bottom-color: var(--line);
-}
-html[data-home-variant="b"] .eng-home .mobile-menu a:hover { color: var(--tx); }
-html[data-home-variant="b"] .eng-home .mobile-menu .ghost {
-  border-color: var(--line2);
-  color: var(--tx);
-}
 
 /* 5. Section top borders now use the light token (already token-driven,
       but the first section after hb-hero is integrations whose border-top

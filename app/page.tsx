@@ -6,6 +6,8 @@ import EngEmailSignup from './components/EngEmailSignup';
 import EngContactForm from './components/EngContactForm';
 import InstallSheet from './components/InstallSheet';
 import FoundingPriceNote from './components/FoundingPriceNote';
+import Header from './components/Header';
+import { getHelpCategories } from '@/lib/help';
 
 export const metadata: Metadata = {
   alternates: { canonical: 'https://quotemateapp.au' },
@@ -51,6 +53,22 @@ const trades = [
   { slug: 'welders', name: 'Welders' },
   { slug: 'arborists', name: 'Arborists' },
 ];
+
+// Help Centre teaser: four categories a new customer hits first, three
+// articles each. Content comes from knowledge-base/ at build time.
+const HELP_TEASER_SLUGS = ['getting-started', 'quoting', 'invoicing-and-payments', 'integrations'];
+const HELP_BLURB: Record<string, string> = {
+  'getting-started': 'Sign up, set up your business, send the first one.',
+  'quoting': 'Materials, prices, labour, GST and templates.',
+  'invoicing-and-payments': 'Invoices, Square, pay links and chasing money.',
+  'integrations': 'Xero, Square, Reece and Google Calendar.',
+};
+const helpGroups = getHelpCategories();
+const helpTeaser = HELP_TEASER_SLUGS
+  .map((slug) => helpGroups.find((g) => g.category.slug === slug))
+  .filter((g): g is NonNullable<typeof g> => Boolean(g));
+const helpArticleCount = helpGroups.reduce((n, g) => n + g.articles.length, 0);
+const helpClipCount = helpGroups.reduce((n, g) => n + g.articles.reduce((m, a) => m + a.videos.length, 0), 0);
 
 const CheckSvg = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
@@ -111,41 +129,8 @@ const HeroIntroVideo = ({ id }: { id: string }) => (
 export default function HomePage() {
   return (
     <div className="eng-home">
-      {/* ── TOPBAR ── */}
-      <header className="topbar">
-        <input type="checkbox" id="navtoggle" className="navtoggle" />
-        <div className="brand">
-          <img className="mark" src="/assets/logo.png" alt="QuoteMate logo" />
-          <span className="name">QuoteMate</span>
-        </div>
-        <nav className="nav">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#trades">Trades</a>
-          <a href="#faq">FAQ</a>
-          <a href="/articles">Articles</a>
-        </nav>
-        <div className="nav-cta">
-          <a href="/app" className="nav-login">Log in</a>
-          <a href="/portal" className="btn ghost">Supplier Portal</a>
-          <a href="#download" className="btn prim">Download App</a>
-        </div>
-        <label className="hamburger" htmlFor="navtoggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </label>
-        <div className="mobile-menu">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#trades">Trades</a>
-          <a href="#faq">FAQ</a>
-          <a href="/articles">Articles</a>
-          <a href="/app">Log in</a>
-          <a href="/portal" className="btn ghost">Supplier Portal</a>
-          <a href="#download" className="btn prim">Download App</a>
-        </div>
-      </header>
+      {/* ── TOPBAR (shared with every other page) ── */}
+      <Header />
 
       {/* ── HERO A (dark / engineered — variant A) ── */}
       <section className="hero hero-a" id="hero">
@@ -795,6 +780,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── HELP CENTRE ── */}
+      <section className="section" id="help">
+        <div className="container">
+          <div className="sechead">
+            <span className="seclabel">// 07 — help centre</span>
+            <h2 className="sectitle">Stuck? <span className="acc">Here&apos;s the manual.</span></h2>
+            <p className="secsub">Short, plain-English answers with real-screen clips, written by the person who builds the app.</p>
+          </div>
+          <div className="help-grid">
+            {helpTeaser.map(({ category, articles }, i) => (
+              <div className="hcard" key={category.slug}>
+                <div className="ix">{String(i + 1).padStart(2, '0')}</div>
+                <h3><a href={`/help/#${category.slug}`}>{category.name}</a></h3>
+                <p className="hblurb">{HELP_BLURB[category.slug]}</p>
+                <ul>
+                  {articles.slice(0, 3).map((a) => (
+                    <li key={a.slug}>
+                      <a href={`/help/${a.slug}`}>{a.title}{a.videos.length > 0 && <span className="vid" title="Has a video">&#9654;</span>}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="help-more">
+            <a href="/help" className="btn btn-cmd"><span className="p">$</span> open&nbsp;help&nbsp;centre</a>
+            <a href="/help/faq" className="btn btn-cmd"><span className="p">?</span> quick&nbsp;answers</a>
+            <span className="note">{helpArticleCount} articles &middot; {helpClipCount} short videos</span>
+          </div>
+        </div>
+      </section>
+
       {/* ── EMAIL SIGNUP ── */}
       <section className="section" id="signup">
         <div className="container">
@@ -850,6 +867,7 @@ export default function HomePage() {
             <a href="/#features">Features</a>
             <a href="/#pricing">Pricing</a>
             <a href="/#faq">FAQ</a>
+            <a href="/help">Help Centre</a>
             <a href="/trades">Quoting by Trade</a>
             <a href="/templates">Quote Templates</a>
             <a href="/articles">Quoting Guides</a>
