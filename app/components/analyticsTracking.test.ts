@@ -55,6 +55,14 @@ describe('route-aware marketing analytics', () => {
     start('/templates/'); cleanups[0]();
     expect(disconnect).toHaveBeenCalledOnce();
   });
+  it('counts the hero rating badge as a Google Play click, in the hero section', () => {
+    start('/');
+    document.body.innerHTML = '<section id="hero"><a class="tag tag-rating" aria-label="Rated 4.9 out of 5 on Google Play" href="https://play.google.com/store/apps/details?id=com.quotemate.app"><span class="stars"></span><span><b>4.9</b> on Google Play</span></a></section>';
+    click('b');
+    const clicks = events().filter((e: unknown[]) => e[1] === 'google_play_click');
+    expect(clicks).toHaveLength(1);
+    expect(clicks[0][2]).toMatchObject({ section: 'hero', button_text: 'Rated 4.9 out of 5 on Google Play' });
+  });
   it('classifies app/store links by the exact destination, not label text', () => {
     start('/templates/');
     document.body.innerHTML = '<a class="btn-store" href="https://apps.apple.com/au/app/id123">Get</a>';
