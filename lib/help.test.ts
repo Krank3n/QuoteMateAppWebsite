@@ -65,9 +65,10 @@ describe('help centre videos', () => {
       expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
     }
     // Only the articles that declare clips carry them; an article can carry several.
-    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["bank-payment", "chase-invoice", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
+    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["add-logo", "bank-payment", "chase-invoice", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
     expect(getHelpArticleBySlug('tracking-payments-and-reminders')?.videos.map((v) => v.name)).toEqual(['chase-invoice', 'bank-payment']);
     expect(getHelpArticleBySlug('job-photos')?.videos.map((v) => v.name)).toEqual(['job-photos']);
+    expect(getHelpArticleBySlug('business-profile-and-branding')?.videos.map((v) => v.name)).toEqual(['add-logo', 'pdf-template']);
     expect(getHelpArticleBySlug('jobs-and-the-pipeline')?.videos).toEqual([]);
   });
 });
