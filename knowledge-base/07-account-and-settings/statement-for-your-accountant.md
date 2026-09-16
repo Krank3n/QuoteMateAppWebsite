@@ -5,6 +5,12 @@ category: Account & Settings
 audience: [customers, prospects]
 last_updated: 2026-09-16
 keywords: [accountant, statement, tax, financial year, bookkeeping, invoices sent, payments received, csv, spreadsheet, bas]
+video:
+  name: statement
+  title: "Send a statement to your accountant from QuoteMate"
+  description: "Tap Earned this month, then Reports. Pick the period, and QuoteMate builds the statement: invoices, GST, payments and what's still outstanding. Tap Send to accountant and it goes as a PDF and a spreadsheet, from your business name."
+  duration: PT25S
+  upload_date: 2026-09-16
 question_examples:
   - "How do I send my accountant a summary of the year?"
   - "Can I get a list of invoices and payments for tax time?"
