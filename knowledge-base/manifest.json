@@ -283,19 +283,38 @@
       "title": "Managing jobs and the pipeline",
       "category": "Job Management",
       "path": "04-job-management/jobs-and-the-pipeline.md",
-      "summary": "The 9-stage job pipeline, scheduling, on-site photos with annotation, checklists, and follow-ups. Conservative note on Google Calendar sync.",
+      "summary": "The 9-stage job pipeline and status updates, scheduling, checklists, and follow-ups. Conservative note on Google Calendar sync.",
       "keywords": [
         "jobs",
         "pipeline",
         "stages",
         "schedule",
-        "photos",
         "checklist"
       ],
       "question_examples": [
         "Can I manage jobs after the quote is sent?",
-        "What are the job stages?",
-        "Can I attach photos?"
+        "What are the job stages?"
+      ]
+    },
+    {
+      "id": "job-photos",
+      "title": "Job photos and marking up what you'll do",
+      "category": "Job Management",
+      "path": "04-job-management/job-photos.md",
+      "summary": "Adding site photos and plans to a job or quote (up to 30 per quote), Before/After tagging, and marking photos up with arrows, circles and labels the customer understands. Photos show on the online quote.",
+      "keywords": [
+        "photos",
+        "job photos",
+        "before and after",
+        "annotate",
+        "mark up",
+        "plans"
+      ],
+      "question_examples": [
+        "How do I add photos to a job?",
+        "Can I mark photos as before and after?",
+        "How do I draw on a job photo?",
+        "Do my photos show on the quote?"
       ]
     },
     {
