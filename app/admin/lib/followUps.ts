@@ -14,7 +14,7 @@ export interface FollowUpUser {
   invoiceCount: number;
   supplierBookCount: number;
   healthScore: number;
-  squareStatus: 'connected' | 'broken' | 'none';
+  squareStatus: 'connected' | 'not_ready' | 'broken' | 'none';
   noteCount: number;
   lastNoteAt: number | null;
 }
@@ -121,6 +121,15 @@ export function buildFollowUps(source: FollowUpSource | null, now: number = Date
       kinds.push('square');
       reasons.push('Square connection needs help');
       score += 90;
+    }
+
+    // Connected, but Square hasn't switched on card payments: every Pay Now
+    // link is refused and a free-plan tradie can't send an invoice at all.
+    // They connected on purpose, so a nudge to finish activating lands well.
+    if (user.squareStatus === 'not_ready') {
+      kinds.push('square');
+      reasons.push('Square connected but not activated — can’t take payments yet');
+      score += 85;
     }
 
     if (signupAge <= 7 * DAY && (user.noteCount || 0) === 0) {
