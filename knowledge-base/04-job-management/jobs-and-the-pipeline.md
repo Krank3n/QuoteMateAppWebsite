@@ -5,7 +5,16 @@ category: Job Management
 audience: [customers, prospects]
 last_updated: 2026-09-16
 keywords: [jobs, pipeline, stages, schedule, calendar, photos, before and after, annotation, checklist, dashboard, google calendar]
+video:
+  name: job-photos
+  title: "Job photos: add, tag before and after, annotate"
+  description: "Tap Photos on the job and add site shots from your camera or library, as many as you need. Each one is tagged Before or After; tap the tag to flip it. Open a photo to see it big or annotate it with drawing, arrows, circles and notes. They go along on the quote, and the before-and-afters stay with the job."
+  duration: PT25S
+  upload_date: 2026-09-16
 question_examples:
+  - "How do I add photos to a job?"
+  - "Can I mark photos as before and after?"
+  - "How do I draw on a job photo?"
   - "Can I manage jobs after the quote is sent?"
   - "What are the job stages?"
   - "Can I schedule jobs?"
