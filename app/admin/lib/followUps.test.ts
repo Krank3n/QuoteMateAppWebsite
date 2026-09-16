@@ -104,6 +104,20 @@ describe('buildFollowUps trial reasons', () => {
   });
 });
 
+describe('buildFollowUps Square reasons', () => {
+  it('a connected account Square has not activated gets a nudge to finish, under the Square kind', () => {
+    const items = buildFollowUps(source([user({ uid: 'n', signupAt: NOW - 30 * DAY, quoteCount: 3, noteCount: 1, lastNoteAt: NOW - DAY, squareStatus: 'not_ready' })]), NOW);
+    expect(items).toHaveLength(1);
+    expect(items[0]?.kinds).toContain('square');
+    expect(items[0]?.reasons.join(' ')).toMatch(/not activated/);
+  });
+
+  it('a working connection is not on the list for Square', () => {
+    const items = buildFollowUps(source([user({ uid: 'ok', signupAt: NOW - 30 * DAY, quoteCount: 3, noteCount: 1, lastNoteAt: NOW - DAY, squareStatus: 'connected' })]), NOW);
+    expect(items.find((i) => i.kinds.includes('square'))).toBeUndefined();
+  });
+});
+
 describe('contactNoteText', () => {
   it('falls back to a readable default when no summary is typed', () => {
     expect(contactNoteText()).toBe('Contacted');

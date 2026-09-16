@@ -533,7 +533,7 @@ function FollowUpRow({
     { label: 'First quote', done: item.quoteCount > 0, warning: false },
     ...(item.squareStatus === 'none'
       ? []
-      : [{ label: 'Square', done: item.squareStatus === 'connected', warning: item.squareStatus === 'broken' }]),
+      : [{ label: 'Square', done: item.squareStatus === 'connected', warning: item.squareStatus === 'broken' || item.squareStatus === 'not_ready' }]),
   ];
 
   return (

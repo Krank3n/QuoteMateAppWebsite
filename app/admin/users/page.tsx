@@ -34,7 +34,8 @@ interface UserRow {
   tags: string[];
   marketingOptIn: boolean;
   healthScore: number;
-  squareStatus: 'connected' | 'broken' | 'none';
+  // 'not_ready' = connected, but Square hasn't switched on card payments for the account
+  squareStatus: 'connected' | 'not_ready' | 'broken' | 'none';
   squareMerchantName: string | null;
   squareEnv: string | null;
   appVersion: string | null;
@@ -64,6 +65,7 @@ type QuickFilterId =
   | 'no-quotes'
   | 'no-suppliers'
   | 'square-connected'
+  | 'square-not-ready'
   | 'square-broken'
   | 'contacted'
   | 'not-contacted'
@@ -87,6 +89,7 @@ const QUICK_FILTERS: Array<{ id: QuickFilterId; label: string; test: (u: UserRow
   { id: 'no-quotes', label: 'No quotes yet', test: (u) => (u.quoteCount || 0) === 0 },
   { id: 'no-suppliers', label: 'No suppliers', test: (u) => (u.supplierBookCount || 0) === 0 },
   { id: 'square-connected', label: 'Square: connected', test: (u) => u.squareStatus === 'connected' },
+  { id: 'square-not-ready', label: 'Square: not activated', test: (u) => u.squareStatus === 'not_ready' },
   { id: 'square-broken', label: 'Square: broken', test: (u) => u.squareStatus === 'broken' },
   { id: 'contacted', label: 'Contacted', test: (u) => (u.noteCount || 0) > 0 },
   { id: 'not-contacted', label: 'Not contacted', test: (u) => (u.noteCount || 0) === 0 },
@@ -440,11 +443,15 @@ function HealthDot({ score }: { score: number }) {
   );
 }
 
-function SquareDot({ status }: { status: 'connected' | 'broken' | 'none' }) {
+function SquareDot({ status }: { status: 'connected' | 'not_ready' | 'broken' | 'none' }) {
   if (status === 'none') return null;
-  const color = status === 'connected' ? '#10b981' : '#ef4444';
-  const text = status === 'connected' ? 'Square' : 'Square ⚠';
-  const title = status === 'connected' ? 'Square connected' : 'Square token refresh failed';
+  const color = status === 'connected' ? '#10b981' : status === 'not_ready' ? '#f59e0b' : '#ef4444';
+  const text = status === 'connected' ? 'Square' : status === 'not_ready' ? 'Square · not activated' : 'Square ⚠';
+  const title = status === 'connected'
+    ? 'Square connected and taking card payments'
+    : status === 'not_ready'
+      ? 'Square connected, but Square hasn’t switched on card payments for this account — every Pay Now link is refused'
+      : 'Square token refresh failed';
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--color-text-secondary)' }} title={title}>
       <span style={{ width: 6, height: 6, borderRadius: 3, background: color, display: 'inline-block' }} />
@@ -747,9 +754,25 @@ function SquareSection({ square }: { square: any }) {
     );
   }
   const connected = !!square.connected;
-  const statusColor = connected ? '#10b981' : '#ef4444';
-  const statusLabel = connected ? 'Connected' : 'Broken';
+  const readiness = square.paymentReadiness as
+    | { ready: boolean; reasons: string[]; checkedAt: number | null; currency: string | null; capabilities: string[] | null }
+    | null
+    | undefined;
+  const notReady = connected && readiness?.ready === false;
+  // Three states, three colours: green takes cards, amber is connected but
+  // can't, red has a dead token. "Connected" alone hid the amber case and
+  // made an account that can't be paid look fine from here.
+  const statusRgb = !connected ? '239, 68, 68' : notReady ? '245, 158, 11' : '16, 185, 129';
+  const statusColor = `rgb(${statusRgb})`;
+  const statusLabel = !connected ? 'Broken' : notReady ? 'Connected · not taking payments' : 'Connected';
   const connectedAt = square.connectedAt ? new Date(square.connectedAt).getTime() : null;
+  const readinessText = !readiness
+    ? 'Not checked yet'
+    : readiness.ready
+      ? 'Yes'
+      : readiness.reasons.includes('currency_mismatch')
+        ? `No — not an Australian account${readiness.currency ? ` (${readiness.currency})` : ''}`
+        : 'No — Square hasn’t activated the account (identity and bank details at squareup.com). Every Pay Now mint is refused; a free-plan tradie can’t send an invoice.';
   return (
     <>
       <div style={{
@@ -758,8 +781,8 @@ function SquareSection({ square }: { square: any }) {
         gap: 8,
         padding: '4px 10px',
         borderRadius: 999,
-        background: `rgba(${connected ? '16, 185, 129' : '239, 68, 68'}, 0.12)`,
-        border: `1px solid rgba(${connected ? '16, 185, 129' : '239, 68, 68'}, 0.3)`,
+        background: `rgba(${statusRgb}, 0.12)`,
+        border: `1px solid rgba(${statusRgb}, 0.3)`,
         fontSize: 12,
         fontWeight: 600,
         color: statusColor,
@@ -774,6 +797,13 @@ function SquareSection({ square }: { square: any }) {
         <Fact label="Merchant ID" value={square.merchantId ? <code style={{ fontSize: 11 }}>{square.merchantId}</code> : '—'} />
         <Fact label="Location" value={square.locationName || '—'} />
         <Fact label="Connected" value={fmtDate(connectedAt)} />
+        <Fact
+          label="Takes card payments"
+          value={<span style={{ color: notReady ? '#f59e0b' : undefined }}>{readinessText}</span>}
+        />
+        {readiness?.checkedAt && (
+          <Fact label="Square last asked" value={fmtDate(readiness.checkedAt)} />
+        )}
         {square.disconnectedReason && (
           <Fact label="Issue" value={<span style={{ color: '#ef4444' }}>{square.disconnectedReason}</span>} />
         )}
