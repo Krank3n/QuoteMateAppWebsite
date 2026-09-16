@@ -65,7 +65,7 @@ describe('help centre videos', () => {
       expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
     }
     // Only the articles that declare clips carry them; an article can carry several.
-    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["bank-payment", "chase-invoice", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
+    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["bank-payment", "chase-invoice", "how-you-quote", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
     expect(getHelpArticleBySlug('tracking-payments-and-reminders')?.videos.map((v) => v.name)).toEqual(['chase-invoice', 'bank-payment']);
   });
 });
