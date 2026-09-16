@@ -17,7 +17,7 @@ At tax time your accountant wants two things: what you invoiced, and what you ac
 
 ## Where to find it
 
-Open **Insights** from the dashboard. Tap **Statement for your accountant** under your stats, or tap the **Earned this month** tile. The statement card sits at the top of Insights.
+Tap **Statement for your accountant** under the stats on your dashboard. That opens **Insights & Reports** on the **Reports** side, where the statement lives. You can also open the screen from the **Earned this month** tile and switch to Reports at the top.
 
 ## Pick the period
 
