@@ -3,7 +3,7 @@ id: billing-plans-and-pricing
 title: Plans and pricing
 category: Pricing & Billing
 audience: [customers, prospects]
-last_updated: 2026-07-25
+last_updated: 2026-09-17
 keywords: [pricing, plans, free, pro, cost, price, monthly, annual, how much, subscription]
 question_examples:
   - "How much does QuoteMate cost?"
@@ -48,7 +48,7 @@ One subscription covers iPhone, iPad, Android, and web — there's no per-device
 
 ## Free trial
 
-New users get a **14-day Pro trial** that starts when you create your first quote, so you can try everything before deciding. See [Free trial: how it works](free-trial.md).
+New users get a **14-day Pro trial** that starts when you create your first quote, so you can try everything before deciding. Subscribe during the trial on iPhone or Android and the store gives you 14 days free before your first charge. See [Free trial: how it works](free-trial.md).
 
 ## Related
 

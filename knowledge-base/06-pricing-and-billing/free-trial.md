@@ -3,7 +3,7 @@ id: billing-free-trial
 title: Free trial — how it works
 category: Pricing & Billing
 audience: [customers, prospects]
-last_updated: 2026-07-05
+last_updated: 2026-09-17
 keywords: [free trial, 14 day trial, trial, pro trial, when does trial start, trial ends]
 question_examples:
   - "How does the free trial work?"
@@ -11,6 +11,7 @@ question_examples:
   - "When does my trial start?"
   - "Do I need a credit card for the trial?"
   - "What happens when the trial ends?"
+  - "If I subscribe during the trial, when am I charged?"
 ---
 
 # Free trial — how it works
@@ -28,6 +29,12 @@ Everything on Pro: AI material and title generation, all PDF templates, your log
 ## No credit card to sign up
 
 You don't need a card to create your account or to start the trial. You only enter payment details if you choose to subscribe to Pro.
+
+## Subscribing before the trial ends
+
+You can subscribe to Pro at any point during the trial. On iPhone, iPad and Android, the App Store and Google Play give you **14 days free before your first charge**, so subscribing early never costs you the rest of your trial. The purchase sheet shows the price and the date of the first charge before you confirm, and you can cancel in Settings on your phone during those 14 days and pay nothing.
+
+The store offers that free period once per Apple ID or Google account. If you have subscribed before, the paywall says "Billed today" instead, and the charge goes through when you confirm.
 
 ## What happens when it ends
 

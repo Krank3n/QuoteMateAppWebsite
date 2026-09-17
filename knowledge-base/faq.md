@@ -3,7 +3,7 @@ id: faq
 title: Frequently asked questions
 category: FAQ
 audience: [customers, prospects]
-last_updated: 2026-07-05
+last_updated: 2026-09-17
 keywords: [faq, questions, help, common questions]
 question_examples:
   - "Common questions about QuoteMate"
@@ -48,7 +48,7 @@ Yes — Free forever, no credit card, with **unlimited quotes and invoices**. Cu
 $49/month or $328/year (about $27.33/month). → [Plans and pricing](06-pricing-and-billing/plans-and-pricing.md)
 
 **How does the free trial work?**
-A 14-day Pro trial that starts when you create your first quote. No card needed. → [Free trial](06-pricing-and-billing/free-trial.md)
+A 14-day Pro trial that starts when you create your first quote. No card needed. If you subscribe during the trial on iPhone or Android, the store gives you 14 days free before the first charge. → [Free trial](06-pricing-and-billing/free-trial.md)
 
 **Can I cancel anytime?**
 Yes. Cancel from the app store (or the Stripe portal on web). You keep Pro until the end of your billing period, then move to Free. → [Managing your subscription](06-pricing-and-billing/managing-your-subscription.md)

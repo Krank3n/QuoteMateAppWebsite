@@ -69,6 +69,7 @@ export default function TermsPage() {
 
             <h3>4.3 Free Trial</h3>
             <p>New accounts get a 14-day Pro trial. It starts automatically when you create your first quote &mdash; not when you sign up &mdash; and no credit card or other payment details are required. The trial does not turn into a paid subscription and does not need to be cancelled: when the 14 days are up, your account simply moves to the Free plan and the Pro-only features switch off. You are not charged anything at the end of the trial. You will only ever be charged if you separately choose to subscribe to Pro and authorise that purchase as described in section 4.4. One trial is available per account.</p>
+            <p>If you subscribe through the Apple App Store or Google Play, the store may offer a 14-day free introductory period before your first charge. Where it does, the price and the date of your first charge are shown on the store&rsquo;s purchase sheet before you confirm, and you can cancel during that period and pay nothing. The store makes an introductory period available once per store account.</p>
 
             <h3>4.4 Payment</h3>
             <p>Subscription payments are processed through the Apple App Store, Google Play Store, or our website payment processor, depending on your platform. By subscribing, you authorise recurring charges to your chosen payment method.</p>
