@@ -36,7 +36,9 @@ import {
 
 interface Stats {
   users: { total: number; signupsToday: number; signupsThisWeek: number; activeSevenDay: number };
-  subscriptions: { active: number; canceling: number; canceled: number; trialing: number; trialExpired: number };
+  // activeBilled: the subset of `active` with a real billing record. The rest
+  // are comps, bare isPro flags and sandbox purchases — Pro, not paying.
+  subscriptions: { active: number; activeBilled?: number; canceling: number; canceled: number; trialing: number; trialExpired: number };
   suppliers: { total: number; top: Array<{ id: string; name: string; subscriberCount: number }> };
   // Billed revenue, deduped per store purchase (subscription.helpers
   // rollupRevenue). Absent on a payload cached before this shipped.
@@ -49,6 +51,9 @@ interface Stats {
     estimatedPricing: number;
   };
   feedback: Array<{ id: string; message?: string; rating?: number; email?: string; createdAt?: any; replied?: boolean }>;
+  /** Test seeds, anonymous harnesses and the admin login, left out of every
+   *  count above. Absent on a payload cached before the population was unified. */
+  excluded?: { internalAccounts: number };
   generatedAt: string;
 }
 
@@ -202,7 +207,11 @@ export default function AdminDashboard() {
             <StatCard
               label="Total users"
               value={stats.users.total}
-              sub={`${stats.users.signupsToday} new today · ${stats.users.signupsThisWeek} this week`}
+              sub={
+                stats.excluded
+                  ? `${stats.users.signupsToday} new today · ${stats.users.signupsThisWeek} this week · ${stats.excluded.internalAccounts} internal left out`
+                  : `${stats.users.signupsToday} new today · ${stats.users.signupsThisWeek} this week`
+              }
               icon={<IconUsers />}
               series={usersTrend}
             />
@@ -216,7 +225,11 @@ export default function AdminDashboard() {
             <StatCard
               label="Pro + trials"
               value={stats.subscriptions.active + stats.subscriptions.canceling + stats.subscriptions.trialing}
-              sub={`${stats.subscriptions.active} pro · ${stats.subscriptions.trialing} trial · ${stats.subscriptions.canceling} canceling`}
+              sub={
+                typeof stats.subscriptions.activeBilled === 'number'
+                  ? `${stats.subscriptions.active} pro (${stats.subscriptions.activeBilled} billed, ${stats.subscriptions.active - stats.subscriptions.activeBilled} comped) · ${stats.subscriptions.trialing} trial · ${stats.subscriptions.canceling} canceling`
+                  : `${stats.subscriptions.active} pro · ${stats.subscriptions.trialing} trial · ${stats.subscriptions.canceling} canceling`
+              }
               icon={<IconSubscription />}
               series={proTrend}
             />

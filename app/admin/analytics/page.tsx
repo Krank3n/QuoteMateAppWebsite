@@ -21,13 +21,22 @@ interface Traffic {
     pageViews: number;
     avgSessionDuration: number;
     engagementRate: number;
+    engagedSessions?: number;
   };
   channels: Array<{ channel: string; sessions: number; users: number; newUsers: number }>;
   daily: Array<{ date: string; sessions: number; users: number }>;
   funnel: {
     sessions: number;
+    /** Engaged sessions (GA engagedSessions) — same unit as `sessions`. */
     engaged: number;
+    /** Raw CTA button presses; one session can press several. */
     ctaClicks: number;
+    /** Sessions with ≥1 CTA press, deduped. Optional until the redeployed
+     *  adminTrafficStats lands in the local cache. */
+    ctaSessions?: number;
+    ctaUsers?: number;
+    /** sign_up events from the /app web build — accounts made on the web. */
+    webSignups?: number;
     byCta: { web: number; appStore: number; googlePlay: number; cta: number; pricing: number };
     formStarts: number;
   };
@@ -129,6 +138,9 @@ interface Funnel {
   };
   asOf: number;
   cached: boolean;
+  /** Accounts left out of every count: test seeds, anonymous harnesses, the
+   *  admin login. Absent on a payload cached before the population was unified. */
+  excluded?: { internalAccounts: number };
 }
 
 type OutcomeBucket = 'never_opened' | 'opened_no_answer' | 'rejected' | 'accepted';
@@ -675,17 +687,27 @@ function FullJourney({
   const useAllTime = allTime || cohortsUnavailable || !cohort;
   const app = funnel?.funnel;
 
+  // One unit top to bottom: sessions. Clicks are deduped to sessions (a
+  // payload cached before that shipped only has raw presses, so fall back).
+  const clickedSessions = w.ctaSessions ?? w.ctaClicks;
   const webStages: Stage[] = [
     { label: 'Sessions', value: w.sessions, note: 'landed on the site' },
     { label: 'Engaged', value: w.engaged, note: 'stayed and read' },
-    { label: 'Clicked to get it', value: w.ctaClicks, note: 'store link or web app' },
+    {
+      label: 'Clicked to get it',
+      value: clickedSessions,
+      note: w.ctaSessions !== undefined ? `store link or web app · ${w.ctaClicks.toLocaleString()} presses` : 'store link or web app',
+    },
+    ...(w.webSignups !== undefined
+      ? [{ label: 'Signed up on the web', value: w.webSignups, note: 'account made in the web app — store installs are invisible here' }]
+      : []),
   ];
 
   const appSource = useAllTime ? app : cohort;
   const appStages: Stage[] = buildAppStages(appSource);
   const wizardDetail = hasWizardDetail(appSource);
 
-  const clicksPerWeek = data.days > 0 ? Math.round((w.ctaClicks / data.days) * 7) : 0;
+  const clicksPerWeek = data.days > 0 ? Math.round((clickedSessions / data.days) * 7) : 0;
   // Prefer the funnel's own 7-day cohort over dashboardStats.signupsThisWeek:
   // both mean "signups last week" but they're computed by different endpoints,
   // and the card must never show two different numbers for the same thing.
@@ -786,7 +808,7 @@ function FullJourney({
         <div>
           <strong style={{ color: 'var(--color-text-primary)' }}>The two halves don&apos;t join up.</strong>{' '}
           {signupsPerWeek !== null
-            ? `≈${clicksPerWeek.toLocaleString()} website clicks a week vs ${signupsPerWeek.toLocaleString()} app signups last week — `
+            ? `≈${clicksPerWeek.toLocaleString()} clicking sessions a week vs ${signupsPerWeek.toLocaleString()} app signups last week — `
             : ''}
           most tradies install straight from the App Store or Play, so the website never sees them. Read each side on its
           own; there is no website → signup rate to compute.
@@ -1514,7 +1536,11 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
           label="Activation"
           value={pct1(c.activationRate)}
           valueSuffix="%"
-          sub={`${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} sent a quote`}
+          sub={
+            funnel.excluded
+              ? `${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} sent a quote · ${funnel.excluded.internalAccounts.toLocaleString()} internal accounts left out`
+              : `${f.sentQuote.toLocaleString()} of ${f.signups.toLocaleString()} sent a quote`
+          }
         />
         <StatCard
           label="Paying customers"
