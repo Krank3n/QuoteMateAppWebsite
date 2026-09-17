@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTAButtons from '../components/CTAButtons';
 import HelpSearch from '../components/HelpSearch';
+import HelpClipCarousel from '../components/HelpClipCarousel';
 import { getHelpArticles, getHelpCategories, getHelpLastUpdated } from '@/lib/help';
 
 export const metadata: Metadata = {
@@ -36,9 +37,9 @@ const CATEGORY_ICON: Record<string, React.ReactNode> = {
   'troubleshooting': <><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-2.1z" /></>,
 };
 
-function secondsOf(duration: string): string {
+function secondsOf(duration: string): number {
   const m = duration.match(/^PT(?:(\d+)M)?(?:(\d+)S)?$/);
-  return `${(Number(m?.[1] ?? 0) * 60) + Number(m?.[2] ?? 0)} s`;
+  return (Number(m?.[1] ?? 0) * 60) + Number(m?.[2] ?? 0);
 }
 
 function searchText(a: { title: string; summary: string; keywords: string[]; category: { name: string } }): string {
@@ -78,26 +79,25 @@ export default function HelpIndex() {
         {clips.length > 0 && (
           <section className="help-watch container" aria-labelledby="help-watch-title">
             <div className="help-watch-panel">
+              <div className="help-watch-bg" aria-hidden="true">
+                <div className="grid"></div>
+                <div className="glow"></div>
+                <div className="glow2"></div>
+                <div className="grain"></div>
+              </div>
               <div className="help-watch-head">
                 <div>
-                  <h2 id="help-watch-title">Watch it done</h2>
-                  <p>{clips.length} real screen recordings, each under 30 seconds.</p>
+                  <span className="help-watch-label">// watch it done</span>
+                  <h2 id="help-watch-title">See it on a real screen</h2>
+                  <p>{clips.length} recordings from the app, each under 30 seconds. Drag to browse.</p>
                 </div>
-                <span className="help-watch-hint" aria-hidden="true">Scroll &rarr;</span>
               </div>
-              <div className="help-watch-grid">
-                {clips.map(({ article, video }) => (
-                  <Link key={video.name} href={`/help/${article.slug}#video-${video.name}`} className="help-watch-card">
-                    <span className="help-watch-thumb">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/assets/videos/help/${video.name}-poster.jpg`} alt="" loading="lazy" width={300} height={652} />
-                      <span className="help-watch-play" aria-hidden="true">▶</span>
-                      <span className="help-watch-len">{secondsOf(video.duration)}</span>
-                    </span>
-                    <span className="help-watch-title">{video.title.replace(/ (in|with) QuoteMate.*$/, '').replace(/ with Mate$/, '')}</span>
-                  </Link>
-                ))}
-              </div>
+              <HelpClipCarousel clips={clips.map(({ article, video }) => ({
+                href: `/help/${article.slug}#video-${video.name}`,
+                poster: `/assets/videos/help/${video.name}-poster.jpg`,
+                title: video.title.replace(/ (in|with) QuoteMate.*$/, '').replace(/ with Mate$/, ''),
+                seconds: secondsOf(video.duration),
+              }))} />
             </div>
           </section>
         )}
