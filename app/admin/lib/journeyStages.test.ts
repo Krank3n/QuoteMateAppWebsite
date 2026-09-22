@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildAppStages, hasWizardDetail, type AppFunnelSource } from './journeyStages';
+import { buildAppStages, hasPaywallStep, hasWizardDetail, type AppFunnelSource } from './journeyStages';
 
 const full: AppFunnelSource = {
   signups: 134,
@@ -79,6 +79,21 @@ describe('buildAppStages', () => {
     const stages = buildAppStages(partial);
     expect(stages.find((s) => s.label === 'Added materials')?.value).toBe(0);
     expect(stages).toHaveLength(8);
+  });
+
+  it('puts "Hit the paywall" between sending and paying once the payload has it', () => {
+    const stages = buildAppStages({ ...full, hitPaywall: 9 });
+    const labels = stages.map((s) => s.label);
+    expect(labels.slice(-3)).toEqual(['Sent a quote', 'Hit the paywall', 'Paying']);
+    expect(stages.find((s) => s.label === 'Hit the paywall')?.value).toBe(9);
+    expect(hasPaywallStep({ ...full, hitPaywall: 0 })).toBe(true);
+  });
+
+  // Absent ≠ zero: a payload from before the paywall read shows no step at
+  // all, rather than a 100% drop at the paywall.
+  it('leaves the paywall step out when the payload does not carry it', () => {
+    expect(buildAppStages(full).map((s) => s.label)).not.toContain('Hit the paywall');
+    expect(hasPaywallStep(full)).toBe(false);
   });
 
   it('returns nothing without a source', () => {

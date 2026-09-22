@@ -8,7 +8,7 @@ import { getCached, setCached } from '../lib/cache';
 import { useSetPageMeta } from '../lib/pageMeta';
 import { Sparkline } from '../components/Sparkline';
 import { IconTrendUp, IconUsers, IconExternal } from '../components/icons';
-import { buildAppStages, hasWizardDetail } from '../lib/journeyStages';
+import { buildAppStages, hasPaywallStep, hasWizardDetail } from '../lib/journeyStages';
 
 interface Traffic {
   propertyId: string;
@@ -72,6 +72,9 @@ interface FunnelCohort {
   addedMaterials?: number;
   reachedPreview?: number;
   sentQuote: number;
+  // Paywall steps: absent until the funnel reads paywall_viewed events.
+  hitPaywall?: number;
+  sawPaywallAny?: number;
   paying: number;
   trialToPaid: number;
   activationRate: number;
@@ -87,6 +90,7 @@ interface WeekCohortRow {
   signups: number;
   startedTrial: number;
   sentQuote: number;
+  hitPaywall?: number;
   paying: number;
 }
 
@@ -111,6 +115,8 @@ interface Funnel {
     addedMaterials?: number;
     reachedPreview?: number;
     sentQuote: number;
+    hitPaywall?: number;
+    sawPaywallAny?: number;
     paying: number;
     payingBilled?: number;
     payingRestored?: number;
@@ -706,6 +712,12 @@ function FullJourney({
   const appSource = useAllTime ? app : cohort;
   const appStages: Stage[] = buildAppStages(appSource);
   const wizardDetail = hasWizardDetail(appSource);
+  const paywallStep = hasPaywallStep(appSource);
+  // Paywall views from tradies who never sent — the step above can't show them.
+  const paywallNoSend =
+    paywallStep && appSource?.sawPaywallAny !== undefined
+      ? Math.max(appSource.sawPaywallAny - (appSource.hitPaywall ?? 0), 0)
+      : 0;
 
   const clicksPerWeek = data.days > 0 ? Math.round((clickedSessions / data.days) * 7) : 0;
   // Prefer the funnel's own 7-day cohort over dashboardStats.signupsThisWeek:
@@ -779,6 +791,11 @@ function FullJourney({
                 wizardDetail
                   ? 'Wizard steps read the screen each draft was last parked on. Drafts saved before that marker shipped are read from their contents instead, which can understate a step but never inflate it.'
                   : 'Wizard steps appear once the funnel cache refreshes (within 15 min of deploy).',
+                paywallStep
+                  ? `Paywall views are recorded from mid-July 2026, so older signups can read low there; a payer who sent always counts.${
+                      paywallNoSend > 0 ? ` Another ${paywallNoSend.toLocaleString()} saw the paywall without ever sending a quote.` : ''
+                    }`
+                  : null,
               ]
                 .filter(Boolean)
                 .join(' ') || undefined
@@ -862,6 +879,7 @@ function CohortSegments({ funnel }: { funnel: Funnel | null }) {
   };
   const rateNote: React.CSSProperties = { color: 'var(--color-text-tertiary)', fontWeight: 400 };
   const anyImmature = (weeks || []).some((w) => !w.matureForPaid);
+  const showPaywall = (weeks || []).some((w) => w.hitPaywall !== undefined);
 
   return (
     <div className={styles.card} style={{ marginBottom: 16 }}>
@@ -884,6 +902,7 @@ function CohortSegments({ funnel }: { funnel: Funnel | null }) {
                 <th style={{ textAlign: 'right' }}>Signed up</th>
                 <th style={{ textAlign: 'right' }}>Made a quote</th>
                 <th style={{ textAlign: 'right' }}>Sent a quote</th>
+                {showPaywall && <th style={{ textAlign: 'right' }}>Hit the paywall</th>}
                 <th style={{ textAlign: 'right' }}>Paying</th>
               </tr>
             </thead>
@@ -907,6 +926,12 @@ function CohortSegments({ funnel }: { funnel: Funnel | null }) {
                     {w.sentQuote.toLocaleString()}{' '}
                     <span style={rateNote}>· {pct(w.sentQuote, w.signups)}</span>
                   </td>
+                  {showPaywall && (
+                    <td style={numCell}>
+                      {(w.hitPaywall ?? 0).toLocaleString()}{' '}
+                      <span style={rateNote}>· {pct(w.hitPaywall ?? 0, w.sentQuote)} of senders</span>
+                    </td>
+                  )}
                   <td style={numCell}>
                     {w.paying > 0 ? (
                       <span style={{ color: '#fb923c', fontWeight: 700 }}>

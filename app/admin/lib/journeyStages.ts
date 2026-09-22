@@ -20,6 +20,9 @@ export interface AppFunnelSource {
   addedMaterials?: number;
   reachedPreview?: number;
   sentQuote: number;
+  /** Sent a quote, then reached the paywall (payers who sent always count).
+   *  Optional: absent until the funnel reads paywall events. */
+  hitPaywall?: number;
   paying: number;
 }
 
@@ -60,8 +63,16 @@ export function buildAppStages(source: AppFunnelSource | null | undefined): Jour
     { label: 'Made a first quote', value: source.startedTrial, note: 'opened the builder — starts the trial clock, not proof of value' },
     ...wizard,
     { label: 'Sent a quote', value: source.sentQuote, note: 'went to a customer' },
+    ...(source.hitPaywall === undefined
+      ? []
+      : [{ label: 'Hit the paywall', value: source.hitPaywall, note: 'sent a quote, then saw the upgrade screen' }]),
     { label: 'Paying', value: source.paying, note: 'billed subscription', accent: true },
   ];
+}
+
+/** True once the payload carries the paywall step. */
+export function hasPaywallStep(source: AppFunnelSource | null | undefined): boolean {
+  return !!source && source.hitPaywall !== undefined;
 }
 
 /** True once the payload carries the wizard breakdown. */
