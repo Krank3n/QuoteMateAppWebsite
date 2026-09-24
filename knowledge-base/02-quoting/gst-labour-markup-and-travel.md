@@ -23,11 +23,11 @@ QuoteMate automatically calculates and displays **10% GST** on all quotes and in
 
 ## Labour
 
-Add labour as **hours or days**, with your labour rate. If your quote is split into sections, you can set labour per section. There's a sensible default labour rate you set during onboarding, and you can change it any time in Settings.
+Add labour as **hours or days**, with your labour rate. If your quote is split into sections, you can set labour per section. There's a sensible default labour rate you set during onboarding, and you can change it any time in **Settings → Rates & GST**.
 
 ## Markup
 
-You can apply **separate markup to materials and to labour**, so you're not forced into one blended margin. Set defaults in Settings and override per quote.
+You can apply **separate markup to materials and to labour**, so you're not forced into one blended margin. Set defaults in **Settings → Rates & GST** and override per quote.
 
 ## Travel
 

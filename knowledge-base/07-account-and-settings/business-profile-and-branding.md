@@ -13,7 +13,7 @@ videos:
     upload_date: 2026-09-16
   - name: pdf-template
     title: "Change your PDF template in QuoteMate"
-    description: "Go to Settings, then PDF Templates. Scroll through the styles, pick the one you like and tap Save. Every quote and invoice from then on uses it."
+    description: "Go to Settings, then Quotes & Invoices, and tap Template style. Scroll through the styles, pick the one you like and tap Save. Every quote and invoice from then on uses it."
     duration: PT15S
     upload_date: 2026-09-13
 question_examples:
@@ -43,9 +43,11 @@ Your logo, brand colour, business name, ABN, and payment details are all pulled 
 
 Adding your **business logo to documents is a Pro feature** (included in your 14-day trial). On Free you get the professional PDF template without the custom logo.
 
+Your template style, terms and conditions, deposit default and customer follow-ups live in **Settings → Quotes & Invoices**. That's also where you add an **extra section** that prints on every quote after your terms, handy for trades you recommend, licence and insurance details, or your warranty.
+
 ## Defaults and rates
 
-Under Settings you can also set your **default labour rate**, **default markup**, and other business defaults, so new quotes start with your numbers already filled in. See [GST, labour, markup, and travel](../02-quoting/gst-labour-markup-and-travel.md).
+Under **Settings → Rates & GST** you can set your **default labour rate**, **default markups** and **GST**, so new quotes start with your numbers already filled in. See [GST, labour, markup, and travel](../02-quoting/gst-labour-markup-and-travel.md).
 
 ## Related
 
