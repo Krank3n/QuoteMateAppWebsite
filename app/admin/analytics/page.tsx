@@ -120,6 +120,11 @@ interface Funnel {
     paying: number;
     payingBilled?: number;
     payingRestored?: number;
+    // trialToPaid's numerator and denominator: trials at least 17 days old
+    // (trial + billing lag) and the payers among them. Absent until the
+    // adminFunnelStats cache refreshes after the 30 Sep 2026 deploy.
+    trialsMatured?: number;
+    payingFromMaturedTrial?: number;
     generatedList?: number;
     fetchedPrices?: number;
     usedConversation?: number;
@@ -1554,7 +1559,11 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
           label="Trial → paid"
           value={pct1(c.trialToPaid)}
           valueSuffix="%"
-          sub={`${f.paying.toLocaleString()} of ${f.startedTrial.toLocaleString()} who made a first quote · target 5%`}
+          sub={
+            f.trialsMatured !== undefined
+              ? `${(f.payingFromMaturedTrial ?? 0).toLocaleString()} of ${f.trialsMatured.toLocaleString()} finished trials paid · target 5%`
+              : `${f.paying.toLocaleString()} of ${f.startedTrial.toLocaleString()} who made a first quote · target 5%`
+          }
           accent
         />
         <StatCard
@@ -1619,7 +1628,7 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
             />
           )}
           <FunnelStep label="Sent a quote" value={f.sentQuote} max={f.signups} detail={`${pct1(f.pctSentQuote)}% of first-quote makers send one · THE activation gate`} />
-          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of first-quote makers pay · north star`} accent />
+          <FunnelStep label="Paying" value={f.paying} max={f.signups} detail={`${pct1(c.trialToPaid)}% of finished trials pay · north star`} accent />
           <WorkflowUserSnapshot funnel={funnel} />
         </div>
 
@@ -1648,9 +1657,13 @@ function BusinessHealth({ funnel, error, subAudit }: { funnel: Funnel | null; er
           <MetricRow
             label="Trial → paid"
             value={`${pct1(c.trialToPaid)}%`}
-            detail={`${Math.max(f.startedTrial - f.paying, 0).toLocaleString()} first-quote makers have not converted yet`}
-            barValue={f.paying}
-            barMax={f.startedTrial}
+            detail={
+              f.trialsMatured !== undefined
+                ? `${Math.max(f.trialsMatured - (f.payingFromMaturedTrial ?? 0), 0).toLocaleString()} finished trials did not convert · ${Math.max(f.startedTrial - f.trialsMatured, 0).toLocaleString()} still in trial`
+                : `${Math.max(f.startedTrial - f.paying, 0).toLocaleString()} first-quote makers have not converted yet`
+            }
+            barValue={f.payingFromMaturedTrial ?? f.paying}
+            barMax={f.trialsMatured ?? f.startedTrial}
             accent
           />
         </div>
