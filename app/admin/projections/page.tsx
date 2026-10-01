@@ -729,6 +729,7 @@ function ProjectionChart({
   goals: { month: number; target: number }[];
   logScale: boolean;
 }) {
+  const [hover, setHover] = useState<number | null>(null);
   const W = 640;
   const H = 240;
   const pad = { top: 12, right: 12, bottom: 24, left: 52 };
@@ -754,7 +755,7 @@ function ProjectionChart({
 
   // Each doubling of today's MRR along the scenario line, interpolated
   // between months so the marker sits where the line actually crosses.
-  const doublings: { k: number; px: number; py: number }[] = [];
+  const doublings: { k: number; m: number; px: number; py: number }[] = [];
   if (startMrr > 0) {
     let k = 1;
     for (let i = 1; i <= n && k <= 20; i++) {
@@ -762,7 +763,7 @@ function ProjectionChart({
         const target = startMrr * 2 ** k;
         const prev = series[i - 1];
         const t = series[i] > prev ? Math.max(0, (target - prev) / (series[i] - prev)) : 1;
-        doublings.push({ k, px: x(i - 1 + t), py: y(target) });
+        doublings.push({ k, m: i - 1 + t, px: x(i - 1 + t), py: y(target) });
         k++;
       }
     }
@@ -842,6 +843,59 @@ function ProjectionChart({
           <text x={pad.left + 130} y={pad.top + 9} fill="var(--color-text-secondary)">Live trend</text>
         </g>
       )}
+      {hover !== null && (() => {
+        const i = hover;
+        const hx = x(i);
+        const lines: { label: string; value: string; color: string }[] = [
+          { label: liveSeries.length ? 'Scenario' : 'MRR', value: `${money0(series[i])}/mo`, color: '#f97316' },
+        ];
+        if (liveSeries.length) lines.push({ label: 'Live trend', value: `${money0(liveSeries[i])}/mo`, color: '#60a5fa' });
+        // The hit area covers the markers, so carry their info in here.
+        for (const g of goals.filter((g) => g.month === i)) {
+          lines.push({ label: 'Goal', value: `${money0(g.target)}/mo`, color: '#6ee7b7' });
+        }
+        for (const d of doublings.filter((d) => Math.ceil(d.m - 1e-9) === i)) {
+          lines.push({ label: `Passes ${2 ** d.k}× today`, value: `${money0(startMrr * 2 ** d.k)}/mo`, color: '#fdba74' });
+        }
+        const boxW = 168;
+        const boxH = 22 + lines.length * 15;
+        // Flip to the left of the cursor near the right edge.
+        const bx = hx + 10 + boxW > W - pad.right ? hx - 10 - boxW : hx + 10;
+        const by = pad.top + 4;
+        return (
+          <g pointerEvents="none">
+            <line x1={hx} x2={hx} y1={pad.top} y2={H - pad.bottom} stroke="rgba(255,255,255,0.2)" />
+            {liveSeries.length > 0 && <circle cx={hx} cy={y(liveSeries[i])} r={3.5} fill="#60a5fa" />}
+            <circle cx={hx} cy={y(series[i])} r={4} fill="#f97316" stroke="var(--color-bg-card)" strokeWidth={1.5} />
+            <rect x={bx} y={by} width={boxW} height={boxH} rx={8} fill="var(--color-bg-card)" stroke="rgba(255,255,255,0.12)" />
+            <text x={bx + 10} y={by + 15} fontSize="10.5" fontWeight={700} fill="var(--color-text-primary)">
+              {i === 0 ? 'Now' : monthLabel(i)}
+            </text>
+            {lines.map((l, j) => (
+              <g key={l.label} fontSize="10.5">
+                <circle cx={bx + 13} cy={by + 27 + j * 15} r={3} fill={l.color} />
+                <text x={bx + 21} y={by + 31 + j * 15} fill="var(--color-text-secondary)">{l.label}</text>
+                <text x={bx + boxW - 10} y={by + 31 + j * 15} textAnchor="end" fontWeight={600} fill="var(--color-text-primary)">{l.value}</text>
+              </g>
+            ))}
+          </g>
+        );
+      })()}
+      <rect
+        x={pad.left}
+        y={pad.top}
+        width={W - pad.left - pad.right}
+        height={H - pad.top - pad.bottom}
+        fill="transparent"
+        style={{ cursor: 'crosshair', touchAction: 'pan-y' }}
+        onPointerMove={(e) => {
+          const box = (e.currentTarget.ownerSVGElement as SVGSVGElement).getBoundingClientRect();
+          const vx = ((e.clientX - box.left) / box.width) * W;
+          const i = Math.round(((vx - pad.left) / (W - pad.left - pad.right)) * n);
+          setHover(Math.max(0, Math.min(n, i)));
+        }}
+        onPointerLeave={() => setHover(null)}
+      />
     </svg>
   );
 }
