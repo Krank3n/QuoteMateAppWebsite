@@ -11,7 +11,7 @@ describe('help centre loader', () => {
     expect(slugs).toContain('faq');
     expect(slugs).toContain('getting-paid-with-square');
     // 29 articles in 8 folders + faq.md (README.md and manifest.json are not pages).
-    expect(articles).toHaveLength(30);
+    expect(articles).toHaveLength(31);
     expect(slugs).not.toContain('README');
   });
 
@@ -65,9 +65,13 @@ describe('help centre videos', () => {
       expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
     }
     // Only the articles that declare clips carry them; an article can carry several.
-    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["add-logo", "bank-payment", "chase-invoice", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
+    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["add-logo", "bank-payment", "chase-invoice", "crew-time", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
     expect(getHelpArticleBySlug('tracking-payments-and-reminders')?.videos.map((v) => v.name)).toEqual(['chase-invoice', 'bank-payment']);
     expect(getHelpArticleBySlug('job-photos')?.videos.map((v) => v.name)).toEqual(['job-photos']);
+    expect(getHelpArticleBySlug('timesheets-and-crew')?.videos.map((v) => v.name)).toEqual(['crew-time']);
+    for (const ext of ['.mp4', '.webm', '-poster.jpg']) {
+      expect(fs.existsSync(path.join('public/assets/videos/help', `crew-time${ext}`)), ext).toBe(true);
+    }
     expect(getHelpArticleBySlug('business-profile-and-branding')?.videos.map((v) => v.name)).toEqual(['add-logo', 'pdf-template']);
     expect(getHelpArticleBySlug('jobs-and-the-pipeline')?.videos).toEqual([]);
   });
