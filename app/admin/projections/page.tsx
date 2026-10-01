@@ -143,6 +143,11 @@ export default function ProjectionsPage() {
   const [funnel, setFunnel] = useState<FunnelLite | null>(() => getCached<FunnelLite>('analytics-funnel'));
   const [error, setError] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Assumptions | null>(() => getCached<Assumptions>(SCENARIO_KEY));
+  const [logScale, setLogScale] = useState<boolean>(() => getCached<boolean>('projections-log-scale') === true);
+  const toggleLogScale = (on: boolean) => {
+    setLogScale(on);
+    setCached('projections-log-scale', on);
+  };
   const [goals, setGoals] = useState<Goal[]>(() => getCached<Goal[]>(GOALS_KEY) || []);
   const [draft, setDraft] = useState<{ metric: Goal['metric']; target: string; by: string }>({ metric: 'mrr', target: '', by: defaultGoalMonth(12) });
 
@@ -467,12 +472,25 @@ export default function ProjectionsPage() {
                   {h} mo
                 </button>
               ))}
+              <span style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.08)', margin: '0 2px' }} />
+              {[{ on: false, label: 'Linear' }, { on: true, label: 'Log' }].map((o) => (
+                <button
+                  key={o.label}
+                  className={styles.chip}
+                  onClick={() => toggleLogScale(o.on)}
+                  title={o.on ? 'Log scale — steady % growth shows as a straight line' : 'Linear scale'}
+                  style={logScale === o.on ? { background: 'rgba(249, 115, 22, 0.15)', color: 'var(--color-accent-light)', borderColor: 'rgba(249, 115, 22, 0.3)' } : undefined}
+                >
+                  {o.label}
+                </button>
+              ))}
             </div>
           </div>
           <ProjectionChart
             rows={rows}
             liveRows={edited ? liveRows : []}
             startMrr={rollup!.mrrGross}
+            logScale={logScale}
             goals={goals.filter((g) => g.metric === 'mrr' && monthsUntil(g.by) >= 1 && monthsUntil(g.by) <= current.horizon)
               .map((g) => ({ month: monthsUntil(g.by), target: g.target }))}
           />
@@ -649,29 +667,53 @@ function Field({
 }
 
 function ProjectionChart({
-  rows, liveRows, startMrr, goals,
+  rows, liveRows, startMrr, goals, logScale,
 }: {
   rows: MonthRow[];
   liveRows: MonthRow[];
   startMrr: number;
   goals: { month: number; target: number }[];
+  logScale: boolean;
 }) {
   const W = 640;
   const H = 240;
   const pad = { top: 12, right: 12, bottom: 24, left: 52 };
   const series = [startMrr, ...rows.map((r) => r.mrr)];
   const liveSeries = liveRows.length ? [startMrr, ...liveRows.map((r) => r.mrr)] : [];
-  const max = Math.max(...series, ...liveSeries, ...goals.map((g) => g.target), 1) * 1.08;
+  const all = [...series, ...liveSeries, ...goals.map((g) => g.target)];
+  const max = Math.max(...all, 1) * 1.08;
   const n = series.length - 1;
   const x = (i: number) => pad.left + (i / Math.max(n, 1)) * (W - pad.left - pad.right);
-  const y = (v: number) => pad.top + (1 - v / max) * (H - pad.top - pad.bottom);
+  const plotH = H - pad.top - pad.bottom;
+
+  // Log scale spans whole decades around the data. $0 (no payers yet) has no
+  // log, so it pins to the floor rather than vanishing off the chart.
+  const positives = all.filter((v) => v > 0);
+  const logLo = Math.pow(10, Math.floor(Math.log10(Math.max(Math.min(...positives, max), 1))));
+  const logHi = Math.max(Math.pow(10, Math.ceil(Math.log10(Math.max(...all, 1)))), logLo * 10);
+  const y = logScale
+    ? (v: number) => pad.top + (1 - (Math.log10(Math.max(v, logLo)) - Math.log10(logLo)) / (Math.log10(logHi) - Math.log10(logLo))) * plotH
+    : (v: number) => pad.top + (1 - v / max) * plotH;
+  const floor = logScale ? logLo : 0;
   const line = (s: number[]) => s.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
-  const area = `${line(series)} L ${x(n)} ${y(0)} L ${x(0)} ${y(0)} Z`;
-  const ticks = [0, 0.25, 0.5, 0.75, 1].map((t) => (max / 1.08) * t);
+  const area = `${line(series)} L ${x(n)} ${y(floor)} L ${x(0)} ${y(floor)} Z`;
+
+  let ticks: number[];
+  if (logScale) {
+    const decades = Math.round(Math.log10(logHi / logLo));
+    ticks = [];
+    for (let d = logLo; d <= logHi * 1.0001; d *= 10) {
+      ticks.push(d);
+      // Few decades on screen → add 2× and 5× gridlines so it isn't bare.
+      if (decades <= 2 && d < logHi) ticks.push(d * 2, d * 5);
+    }
+  } else {
+    ticks = [0, 0.25, 0.5, 0.75, 1].map((t) => (max / 1.08) * t);
+  }
   const xTicks = Array.from({ length: n + 1 }, (_, i) => i).filter((i) => i % (n > 12 ? 6 : 3) === 0);
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }} role="img" aria-label="Projected MRR by month">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }} role="img" aria-label={`Projected MRR by month, ${logScale ? 'log' : 'linear'} scale`}>
       {ticks.map((t) => (
         <g key={t}>
           <line x1={pad.left} x2={W - pad.right} y1={y(t)} y2={y(t)} stroke="rgba(255,255,255,0.06)" />
@@ -691,7 +733,7 @@ function ProjectionChart({
       <circle cx={x(n)} cy={y(series[n])} r={3.5} fill="#f97316" />
       {goals.map((g) => (
         <g key={`${g.month}-${g.target}`}>
-          <line x1={x(g.month)} x2={x(g.month)} y1={y(g.target)} y2={y(0)} stroke="rgba(110, 231, 183, 0.25)" strokeDasharray="2 3" />
+          <line x1={x(g.month)} x2={x(g.month)} y1={y(g.target)} y2={y(floor)} stroke="rgba(110, 231, 183, 0.25)" strokeDasharray="2 3" />
           <circle cx={x(g.month)} cy={y(g.target)} r={4.5} fill="none" stroke="#6ee7b7" strokeWidth={1.5} />
           <text x={x(g.month)} y={y(g.target) - 8} textAnchor="middle" fontSize="10" fill="#6ee7b7">Goal {money0(g.target)}</text>
         </g>
