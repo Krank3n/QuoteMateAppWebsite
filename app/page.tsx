@@ -76,6 +76,49 @@ const CheckSvg = () => (
   </svg>
 );
 
+// Shared player chrome — EngHomeClient wires every `video.qm-video` to the
+// controls, progress bar and "Tap for sound" hint that sit beside it.
+const PlayerChrome = () => (
+  <>
+    <div className="video-paused-overlay" style={{ display: 'none' }}></div>
+    <div className="video-controls">
+      <button className="vc-btn" data-a="play" aria-label="Play">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3" /></svg>
+      </button>
+      <button className="vc-btn" data-a="reset" aria-label="Restart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </svg>
+      </button>
+      <button className="vc-btn" data-a="mute" aria-label="Mute">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+        </svg>
+      </button>
+      <button className="vc-btn" data-a="full" aria-label="Fullscreen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
+          <line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
+        </svg>
+      </button>
+    </div>
+    <div className="video-progress">
+      <div className="video-progress-track">
+        <div className="video-progress-fill"></div>
+        <div className="video-progress-thumb"></div>
+      </div>
+    </div>
+    <div className="tap-for-sound">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+        <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
+      </svg>
+      <span>Tap for sound</span>
+    </div>
+  </>
+);
+
 // Phone-framed intro video — same player chrome/behaviour as the walkthrough
 // (EngHomeClient wires every `video.qm-video` with the shared controls).
 const HeroIntroVideo = ({ id }: { id: string }) => (
@@ -86,42 +129,7 @@ const HeroIntroVideo = ({ id }: { id: string }) => (
         <source src="/assets/videos/intro.webm" type="video/webm" />
         <source src="/assets/videos/intro.mp4" type="video/mp4" />
       </video>
-      <div className="video-paused-overlay" style={{ display: 'none' }}></div>
-      <div className="video-controls">
-        <button className="vc-btn" data-a="play" aria-label="Play">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3" /></svg>
-        </button>
-        <button className="vc-btn" data-a="reset" aria-label="Restart">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-          </svg>
-        </button>
-        <button className="vc-btn" data-a="mute" aria-label="Mute">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-            <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
-          </svg>
-        </button>
-        <button className="vc-btn" data-a="full" aria-label="Fullscreen">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
-            <line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
-          </svg>
-        </button>
-      </div>
-      <div className="video-progress">
-        <div className="video-progress-track">
-          <div className="video-progress-fill"></div>
-          <div className="video-progress-thumb"></div>
-        </div>
-      </div>
-      <div className="tap-for-sound">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-          <line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" />
-        </svg>
-        <span>Tap for sound</span>
-      </div>
+      <PlayerChrome />
     </div>
   </div>
 );
@@ -557,7 +565,13 @@ export default function HomePage() {
           </div>
           <div className="pay-wrap">
             <div className="pay-media">
-              <img src="/assets/get-paid-onsite-online.svg" alt="Get paid on-site with tap-to-pay or online with payment links" />
+              <div className="pay-video">
+                <video className="qm-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/videos/tap-to-pay-poster.jpg" aria-label="A customer taps their card on the tradie's phone and the invoice is paid; a customer who isn't home pays from a texted pay link">
+                  <source src="/assets/videos/tap-to-pay.webm" type="video/webm" />
+                  <source src="/assets/videos/tap-to-pay.mp4" type="video/mp4" />
+                </video>
+                <PlayerChrome />
+              </div>
             </div>
             <div>
               <div className="spec-list">
