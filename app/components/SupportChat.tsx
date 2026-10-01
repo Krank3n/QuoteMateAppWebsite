@@ -68,7 +68,9 @@ export default function SupportChat() {
   }, [messages, busy, open]);
 
   // Keep the bot off internal/utility surfaces.
-  if (pathname?.startsWith('/admin') || pathname?.startsWith('/portal') || pathname?.startsWith('/join')) {
+  // /t is a crew member putting their hours in for their boss — not someone
+  // we're selling to, so no sales chat over the form.
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/portal') || pathname?.startsWith('/join') || pathname === '/t' || pathname?.startsWith('/t/')) {
     return null;
   }
 
