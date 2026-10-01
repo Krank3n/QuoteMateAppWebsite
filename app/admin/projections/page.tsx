@@ -752,6 +752,29 @@ function ProjectionChart({
   const line = (s: number[]) => s.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
   const area = `${line(series)} L ${x(n)} ${y(floor)} L ${x(0)} ${y(floor)} Z`;
 
+  // Each doubling of today's MRR along the scenario line, interpolated
+  // between months so the marker sits where the line actually crosses.
+  const doublings: { k: number; px: number; py: number }[] = [];
+  if (startMrr > 0) {
+    let k = 1;
+    for (let i = 1; i <= n && k <= 20; i++) {
+      while (series[i] >= startMrr * 2 ** k && k <= 20) {
+        const target = startMrr * 2 ** k;
+        const prev = series[i - 1];
+        const t = series[i] > prev ? Math.max(0, (target - prev) / (series[i] - prev)) : 1;
+        doublings.push({ k, px: x(i - 1 + t), py: y(target) });
+        k++;
+      }
+    }
+  }
+  // Labels only where they won't collide with the previous labelled marker.
+  let lastLabelX = -Infinity;
+  const doublingMarks = doublings.map((d) => {
+    const labelled = d.px - lastLabelX >= 26;
+    if (labelled) lastLabelX = d.px;
+    return { ...d, labelled };
+  });
+
   let ticks: number[];
   if (logScale) {
     const decades = Math.round(Math.log10(logHi / logLo));
@@ -785,6 +808,17 @@ function ProjectionChart({
       )}
       <path d={line(series)} fill="none" stroke="#f97316" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
       <circle cx={x(n)} cy={y(series[n])} r={3.5} fill="#f97316" />
+      {doublingMarks.map((d) => (
+        <g key={d.k}>
+          <title>{`${2 ** d.k}× today’s MRR (${money0(startMrr * 2 ** d.k)}/mo)`}</title>
+          <circle cx={d.px} cy={d.py} r={3} fill="var(--color-bg-card)" stroke="#fdba74" strokeWidth={1.5} />
+          {d.labelled && (
+            <text x={d.px - 6} y={d.py - 7} textAnchor="end" fontSize="9.5" fontWeight={600} fill="#fdba74">
+              {2 ** d.k}×
+            </text>
+          )}
+        </g>
+      ))}
       {goals.map((g) => (
         <g key={`${g.month}-${g.target}`}>
           <line x1={x(g.month)} x2={x(g.month)} y1={y(g.target)} y2={y(floor)} stroke="rgba(110, 231, 183, 0.25)" strokeDasharray="2 3" />
