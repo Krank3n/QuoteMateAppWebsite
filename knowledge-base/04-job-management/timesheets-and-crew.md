@@ -7,17 +7,20 @@ last_updated: 2026-10-01
 keywords: [timesheet, timesheets, hours, log time, time tracking, crew, workers, employees, apprentice, approve hours, charge logged hours, labour, quoted vs actual]
 video:
   name: crew-time
-  title: "Log hours on a job, and get your crew's sent in"
-  description: "Add someone to your crew with their email and tap Email link. They get a link from your business, open it on their phone, pick the job, the day and their hours, and send it. No app, no account. Their hours land on the job waiting for you; approve them, log your own, and see logged against quoted. Ran over? Charge the hours you logged and the invoice updates in one tap."
-  duration: PT28S
+  title: "Your crew putting their own hours in"
+  description: "Add someone to your crew with their email and tap Email link. They get a link from your business that opens on their week with today picked. They choose the job and the hours and save, and can change them until you approve them. It all lands in Timesheets, right from the job, where you can change any entry or approve it."
+  duration: PT24S
   upload_date: 2026-10-01
 question_examples:
   - "How do I log my hours on a job?"
   - "Can my workers put in their own hours?"
+  - "Can my crew change their hours after they've sent them?"
+  - "Where do I see everyone's hours for the week?"
   - "How does my crew get their link?"
   - "Do I have to approve my crew's hours?"
   - "Can I bill the hours I actually worked instead of what I quoted?"
   - "How do I see which jobs ran over?"
+  - "Can I change hours my crew sent in?"
   - "Can I export a timesheet for my accountant?"
 ---
 
@@ -49,15 +52,23 @@ It's only offered when the hours can be charged cleanly: an unpaid invoice with 
 
 Go to **Settings → Crew** and tap **Add someone**: their name, their email (optional), and what they cost you an hour (optional, and only you see it; it's for your timesheet, never a quote or invoice).
 
-Tap **Email link** and they get an email from your business with their own link. They open it on their phone, pick the job, the day and their hours, add a note, and tap **Send my hours**. There's no app to install and no account to set up. They only see your open jobs (name and address), never prices or your customers' details.
+Tap **Email link** and they get an email from your business with their own link. It's theirs to keep, and it stays the same until you send them a new one. There's no app to install and no account to set up. They only see your open jobs (name and address), never prices or your customers' details.
+
+Their link opens on **their week**, with today already picked. A strip across the top shows each day's hours, the arrows go to other weeks, and the week's total sits underneath. They tap a day, then **Add hours**, pick the job and the hours, add a note if they like, and save. Hours they've sent stay **waiting** until you approve them, and until then they can tap them to change or delete them. Once you've approved them they're locked on their side; if something needs fixing, they ask you. The page also shows them how to add it to their phone's home screen, so it sits there like an app.
 
 No email address? **Send link** opens your phone's share sheet so you can text it instead.
 
-Their hours land on the job as **sent in, waiting for you**, and you get a push notification ("Hours sent in, tap to approve"). Open the job's time, then **Approve** or delete them. Hours waiting for approval don't count towards anything: not the job's total, not the invoice, not your timesheet.
+When hours come in you get a push notification ("Hours sent in, tap to approve"). Waiting hours don't count towards anything (the job's total, the invoice or your timesheet) until you approve them.
 
 Sending a new link turns the old one off. **Turn off** stops a link straight away, and **Take off crew** removes them and their link. Hours they already worked stay on your jobs under their name.
 
 You can switch the crew notifications off under **Settings → Push Notifications → Crew Hours**.
+
+## Timesheets: everyone's hours, and changing anything
+
+**Timesheets** shows every job's hours a week at a time, grouped by person with their totals. Open it from any job (the **Log time** sheet's **See all timesheets**, or the job's **⋯** menu), or from **Settings → Timesheets**. Filter to one person, or use **Approve all** for everything waiting.
+
+Tap any entry to change anything about it: who worked it, the job (handy when hours went on the wrong one), the day, the hours, the note, or whether it's charged. Waiting hours have **Approve** and **Save, keep waiting**. On a job's own **Log time** sheet you can also tap waiting hours to change them before approving, and move any entry to a different job.
 
 ## Seeing which jobs ran over, and timesheets
 
