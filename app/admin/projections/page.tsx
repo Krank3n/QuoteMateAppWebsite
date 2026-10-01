@@ -812,7 +812,7 @@ function ProjectionChart({
       )}
       <path d={area} fill="rgba(249, 115, 22, 0.12)" />
       {liveSeries.length > 0 && (
-        <path d={line(liveSeries)} fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth={1.5} strokeDasharray="4 4" />
+        <path d={line(liveSeries)} fill="none" stroke="#60a5fa" strokeWidth={1.75} strokeDasharray="4 4" />
       )}
       <path d={line(series)} fill="none" stroke="#f97316" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
       <circle cx={x(n)} cy={y(series[n])} r={3.5} fill="#f97316" />
@@ -838,7 +838,7 @@ function ProjectionChart({
         <g fontSize="10">
           <line x1={pad.left + 6} x2={pad.left + 22} y1={pad.top + 6} y2={pad.top + 6} stroke="#f97316" strokeWidth={2} />
           <text x={pad.left + 26} y={pad.top + 9} fill="var(--color-text-secondary)">Your scenario</text>
-          <line x1={pad.left + 110} x2={pad.left + 126} y1={pad.top + 6} y2={pad.top + 6} stroke="rgba(255,255,255,0.45)" strokeWidth={1.5} strokeDasharray="4 4" />
+          <line x1={pad.left + 110} x2={pad.left + 126} y1={pad.top + 6} y2={pad.top + 6} stroke="#60a5fa" strokeWidth={1.75} strokeDasharray="4 4" />
           <text x={pad.left + 130} y={pad.top + 9} fill="var(--color-text-secondary)">Live trend</text>
         </g>
       )}
