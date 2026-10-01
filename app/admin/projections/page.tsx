@@ -143,10 +143,12 @@ export default function ProjectionsPage() {
   const [funnel, setFunnel] = useState<FunnelLite | null>(() => getCached<FunnelLite>('analytics-funnel'));
   const [error, setError] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Assumptions | null>(() => getCached<Assumptions>(SCENARIO_KEY));
-  const [logScale, setLogScale] = useState<boolean>(() => getCached<boolean>('projections-log-scale') === true);
+  // Log by default; only an explicit pick of Linear sticks. Key bumped when
+  // the default flipped so earlier clicks don't hold anyone on linear.
+  const [logScale, setLogScale] = useState<boolean>(() => getCached<boolean>('projections-log-scale-v2') !== false);
   const toggleLogScale = (on: boolean) => {
     setLogScale(on);
-    setCached('projections-log-scale', on);
+    setCached('projections-log-scale-v2', on);
   };
   const [goals, setGoals] = useState<Goal[]>(() => getCached<Goal[]>(GOALS_KEY) || []);
   const [draft, setDraft] = useState<{ metric: Goal['metric']; target: string; by: string }>({ metric: 'mrr', target: '', by: defaultGoalMonth(12) });
