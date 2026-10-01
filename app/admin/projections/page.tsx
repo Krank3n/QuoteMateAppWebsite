@@ -33,6 +33,9 @@ interface Assumptions {
   signupGrowth: number;
   trialStartRate: number;
   trialToPaid: number;
+  // Where trial → paid climbs to, linearly over trialToPaidRampMonths, then holds.
+  trialToPaidTarget: number;
+  trialToPaidRampMonths: number;
   churn: number;
   monthlyCosts: number;
   horizon: number;
@@ -41,6 +44,7 @@ interface Assumptions {
 interface MonthRow {
   month: number;
   signups: number;
+  trialToPaid: number;
   newPayers: number;
   churned: number;
   payers: number;
@@ -59,7 +63,8 @@ interface Goal {
 }
 
 // v2: earlier scenarios were seeded from a 30-day cohort that never existed.
-const SCENARIO_KEY = 'projections-scenario-v2';
+// v3: added the trial → paid ramp fields.
+const SCENARIO_KEY = 'projections-scenario-v3';
 const GOALS_KEY = 'projections-goals';
 const HORIZONS = [12, 24, 36];
 // Annual is A$328 → A$27.33/mo; monthly is A$49. Used only when nobody is paying yet.
@@ -67,28 +72,39 @@ const FALLBACK_ARPU = 328 / 12;
 // GST out, then the 15% store cut — the same net the Revenue page uses.
 const FALLBACK_NET_RATIO = (1 / 1.1) * 0.85;
 const DEFAULT_CHURN = 3;
+// Not measured — a planning assumption that onboarding/paywall work lifts
+// conversion over time. Today's rate is the start; it never ramps down by default.
+const DEFAULT_TRIAL_TO_PAID_TARGET = 5;
+const DEFAULT_RAMP_MONTHS = 12;
 
 const money0 = (n: number) => `${n < 0 ? '-' : ''}$${Math.abs(Math.round(n)).toLocaleString()}`;
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 function project(a: Assumptions): MonthRow[] {
   const rows: MonthRow[] = [];
-  const signupToPaid = (a.trialStartRate / 100) * (a.trialToPaid / 100);
   // Fractional payers on purpose: at ~1% conversion, rounding each month
   // would flatten the whole curve to zero.
   let payers = a.startPayers;
   let cumulativeNet = 0;
   for (let m = 1; m <= a.horizon; m++) {
     const signups = a.signupsPerMonth * Math.pow(1 + a.signupGrowth / 100, m - 1);
-    const newPayers = signups * signupToPaid;
+    const trialToPaid = trialToPaidAt(a, m);
+    const newPayers = signups * (a.trialStartRate / 100) * (trialToPaid / 100);
     const churned = payers * (a.churn / 100);
     payers = payers - churned + newPayers;
     const mrr = payers * a.arpu;
     const net = mrr * a.netRatio;
     cumulativeNet += net;
-    rows.push({ month: m, signups, newPayers, churned, payers, mrr, net, profit: net - a.monthlyCosts, cumulativeNet });
+    rows.push({ month: m, signups, trialToPaid, newPayers, churned, payers, mrr, net, profit: net - a.monthlyCosts, cumulativeNet });
   }
   return rows;
+}
+
+// Month 1 converts at today's rate; month 1 + ramp months reaches the target.
+function trialToPaidAt(a: Assumptions, m: number): number {
+  if (a.trialToPaidRampMonths <= 0) return a.trialToPaidTarget;
+  const t = Math.min((m - 1) / a.trialToPaidRampMonths, 1);
+  return a.trialToPaid + (a.trialToPaidTarget - a.trialToPaid) * t;
 }
 
 function monthsUntil(by: string): number {
@@ -115,11 +131,14 @@ function fmtGoal(metric: Goal['metric'], v: number): string {
 
 // Smallest value of one assumption that hits the goal, everything else held.
 // Both levers we solve for only ever push the curve up, so bisection is safe.
+// trial → paid is solved as a flat rate from now (start = target), since a
+// ramp that lands after the goal date can't be what gets there.
 function solveFor(a: Assumptions, goal: Goal, field: 'trialToPaid' | 'signupsPerMonth', hi: number): number | null {
   const months = monthsUntil(goal.by);
   if (months < 1) return null;
   const hits = (v: number) => {
-    const r = project({ ...a, [field]: v, horizon: months });
+    const patch = field === 'trialToPaid' ? { trialToPaid: v, trialToPaidTarget: v } : { [field]: v };
+    const r = project({ ...a, ...patch, horizon: months });
     return goalValue(r[r.length - 1], goal.metric) >= goal.target;
   };
   if (!hits(hi)) return null;
@@ -226,6 +245,7 @@ export default function ProjectionsPage() {
     }
     const startBase = c28 && c28.signups > 0 ? c28 : funnel.funnel;
     const trialStartRate = startBase.signups > 0 ? (startBase.startedTrial / startBase.signups) * 100 : 100;
+    const trialToPaid = round1((funnel.conversion?.trialToPaid || 0) * 100);
     return {
       startPayers: rollup.payers,
       arpu: rollup.payers > 0 ? round1(rollup.mrrGross / rollup.payers) : round1(FALLBACK_ARPU),
@@ -233,7 +253,9 @@ export default function ProjectionsPage() {
       signupsPerMonth: Math.round(signupsPerMonth),
       signupGrowth,
       trialStartRate: round1(Math.min(trialStartRate, 100)),
-      trialToPaid: round1((funnel.conversion?.trialToPaid || 0) * 100),
+      trialToPaid,
+      trialToPaidTarget: Math.max(trialToPaid, DEFAULT_TRIAL_TO_PAID_TARGET),
+      trialToPaidRampMonths: DEFAULT_RAMP_MONTHS,
       churn: DEFAULT_CHURN,
       monthlyCosts: 0,
       horizon: 24,
@@ -283,11 +305,11 @@ export default function ProjectionsPage() {
   const breakEven = current.monthlyCosts > 0 ? rows.find((r) => r.profit >= 0) : undefined;
   // Steady state: where payers settle when inflow equals churn.
   const steadyPayers = current.churn > 0 && current.signupGrowth === 0
-    ? (current.signupsPerMonth * (current.trialStartRate / 100) * (current.trialToPaid / 100)) / (current.churn / 100)
+    ? (current.signupsPerMonth * (current.trialStartRate / 100) * (current.trialToPaidTarget / 100)) / (current.churn / 100)
     : null;
 
   const levers: { label: string; patch: Partial<Assumptions> }[] = [
-    { label: `Trial → paid ${current.trialToPaid}% → ${round1(current.trialToPaid + 2)}%`, patch: { trialToPaid: current.trialToPaid + 2 } },
+    { label: `Trial → paid +2 pts (${current.trialToPaid}→${current.trialToPaidTarget}% becomes ${round1(current.trialToPaid + 2)}→${round1(current.trialToPaidTarget + 2)}%)`, patch: { trialToPaid: current.trialToPaid + 2, trialToPaidTarget: current.trialToPaidTarget + 2 } },
     { label: `Signups ×2 (${current.signupsPerMonth} → ${current.signupsPerMonth * 2}/mo)`, patch: { signupsPerMonth: current.signupsPerMonth * 2 } },
     { label: `Signups grow +10%/mo`, patch: { signupGrowth: current.signupGrowth + 10 } },
     { label: `Churn ${current.churn}% → ${Math.max(0, round1(current.churn - 1))}%/mo`, patch: { churn: Math.max(0, current.churn - 1) } },
@@ -321,6 +343,15 @@ export default function ProjectionsPage() {
     };
   });
   const goalsOnTrack = goalRows.filter((g) => g.onTrack).length;
+
+  // Doubling time at the pace the projection settles into: compound monthly
+  // growth over its last 6 months. Early months run faster (each new payer is
+  // a big share of a small base), so the tail rate is the honest steady one.
+  const tailSpan = Math.min(6, rows.length - 1);
+  const tailFrom = rows[rows.length - 1 - tailSpan]?.mrr || 0;
+  const tailGrowth = tailSpan > 0 && tailFrom > 0 ? Math.pow(end.mrr / tailFrom, 1 / tailSpan) - 1 : 0;
+  const doublingMonths = tailGrowth > 0.0005 ? Math.log(2) / Math.log(1 + tailGrowth) : null;
+  const firstDouble = rollup!.mrrGross > 0 ? rows.find((r) => r.mrr >= rollup!.mrrGross * 2) : undefined;
 
   return (
     <>
@@ -401,8 +432,8 @@ export default function ProjectionsPage() {
                     <>
                       {' · '}To get there, holding everything else:{' '}
                       {needTrialToPaid !== null ? (
-                        <button style={{ all: 'unset', cursor: 'pointer', color: 'var(--color-accent-light)', fontWeight: 600 }} onClick={() => update({ trialToPaid: round1(needTrialToPaid + 0.05) })} title="Apply to scenario">
-                          trial → paid {round1(needTrialToPaid + 0.05)}%
+                        <button style={{ all: 'unset', cursor: 'pointer', color: 'var(--color-accent-light)', fontWeight: 600 }} onClick={() => update({ trialToPaid: round1(needTrialToPaid + 0.05), trialToPaidTarget: round1(needTrialToPaid + 0.05) })} title="Apply to scenario">
+                          trial → paid {round1(needTrialToPaid + 0.05)}% from now
                         </button>
                       ) : <span>no trial → paid rate gets there alone</span>}
                       {' or '}
@@ -488,6 +519,22 @@ export default function ProjectionsPage() {
               ))}
             </div>
           </div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', margin: '-4px 0 10px' }}>
+            <span style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 1, color: 'var(--color-text-secondary)' }}>Doubling time</span>
+            <span style={{ fontSize: 20, fontWeight: 700, color: doublingMonths ? 'var(--color-accent-light)' : 'var(--color-text-secondary)' }}>
+              {doublingMonths
+                ? doublingMonths > 120 ? '10+ yrs' : `${doublingMonths < 10 ? doublingMonths.toFixed(1) : Math.round(doublingMonths)} mo`
+                : 'Not doubling'}
+            </span>
+            <span style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>
+              {doublingMonths
+                ? `at ${round1(tailGrowth * 100)}%/mo, the pace by ${monthLabel(current.horizon)}`
+                : 'MRR is flat or shrinking by the end of the projection'}
+              {rollup!.mrrGross > 0 && (firstDouble
+                ? ` · today’s ${money0(rollup!.mrrGross)} first doubles by ${monthLabel(firstDouble.month)}`
+                : ` · today’s ${money0(rollup!.mrrGross)} doesn’t double within ${current.horizon} mo`)}
+            </span>
+          </div>
           <ProjectionChart
             rows={rows}
             liveRows={edited ? liveRows : []}
@@ -543,7 +590,9 @@ export default function ProjectionsPage() {
             <Field label="Signups per month" value={current.signupsPerMonth} live={live.signupsPerMonth} hint="Last 28 days" onChange={(v) => update({ signupsPerMonth: v })} />
             <Field label="Signup growth" suffix="%/mo" value={current.signupGrowth} live={live.signupGrowth} hint="Measured, last 90 days" onChange={(v) => update({ signupGrowth: v })} />
             <Field label="Signups who start a trial" suffix="%" value={current.trialStartRate} live={live.trialStartRate} onChange={(v) => update({ trialStartRate: v })} />
-            <Field label="Trial → paid" suffix="%" value={current.trialToPaid} live={live.trialToPaid} hint="Finished trials" onChange={(v) => update({ trialToPaid: v })} />
+            <Field label="Trial → paid today" suffix="%" value={current.trialToPaid} live={live.trialToPaid} hint="Finished trials" onChange={(v) => update({ trialToPaid: v })} />
+            <Field label="Trial → paid climbs to" suffix="%" value={current.trialToPaidTarget} live={live.trialToPaidTarget} hint="Assumed — conversion work" onChange={(v) => update({ trialToPaidTarget: v })} />
+            <Field label="…over" suffix="months" value={current.trialToPaidRampMonths} live={live.trialToPaidRampMonths} hint="Then holds" onChange={(v) => update({ trialToPaidRampMonths: Math.round(v) })} />
             <Field label="Monthly churn" suffix="%" value={current.churn} live={live.churn} hint="Assumed — not measured yet" onChange={(v) => update({ churn: v })} />
             <Field label="Revenue per payer" prefix="$" suffix="/mo" value={current.arpu} live={live.arpu} hint="Gross, store price" onChange={(v) => update({ arpu: v })} />
             <Field label="Monthly running costs" prefix="$" value={current.monthlyCosts} live={live.monthlyCosts} hint="Optional — adds break-even" onChange={(v) => update({ monthlyCosts: v })} />
@@ -565,6 +614,7 @@ export default function ProjectionsPage() {
                 <tr>
                   <th>Month</th>
                   <th style={{ textAlign: 'right' }}>Signups</th>
+                  <th style={{ textAlign: 'right' }}>Trial → paid</th>
                   <th style={{ textAlign: 'right' }}>New payers</th>
                   <th style={{ textAlign: 'right' }}>Churned</th>
                   <th style={{ textAlign: 'right' }}>Payers</th>
@@ -579,6 +629,7 @@ export default function ProjectionsPage() {
                     <tr key={r.month} style={{ cursor: 'default' }}>
                       <td>{monthLabel(r.month)}</td>
                       <td style={{ textAlign: 'right' }}>{Math.round(r.signups).toLocaleString()}</td>
+                      <td style={{ textAlign: 'right', color: 'var(--color-text-secondary)' }}>{r.trialToPaid.toFixed(1)}%</td>
                       <td style={{ textAlign: 'right' }}>{r.newPayers.toFixed(1)}</td>
                       <td style={{ textAlign: 'right', color: 'var(--color-text-secondary)' }}>{r.churned.toFixed(1)}</td>
                       <td style={{ textAlign: 'right', fontWeight: 600 }}>{r.payers.toFixed(1)}</td>
@@ -618,7 +669,8 @@ export default function ProjectionsPage() {
             ))}
           </div>
           <div style={{ fontSize: 11, color: 'var(--color-text-secondary)', marginTop: 12, lineHeight: 1.5, borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 10 }}>
-            Model: payers = last month × (1 − churn) + signups × trial-start × trial→paid. Annual plans are folded into
+            Model: payers = last month × (1 − churn) + signups × trial-start × trial→paid, with trial→paid
+            ramping linearly from today's rate to the target, then holding. Annual plans are folded into
             revenue per payer and churn is spread evenly, so a cohort of annual renewals will land lumpier than this.
             Square app fees aren't included.
           </div>
