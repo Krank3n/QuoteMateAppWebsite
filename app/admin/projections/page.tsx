@@ -9,7 +9,7 @@ import { useSetPageMeta } from '../lib/pageMeta';
 // A forward model, not a report: every number below is a month-by-month
 // simulation seeded from live data (adminListSubscriptions + adminFunnelStats)
 // and then bent by whatever assumptions are typed in. Nothing here is stored
-// server-side — the edited scenario lives in this browser only.
+// server-side except the goals list — the what-if scenario lives in this browser.
 
 interface Rollup {
   payers: number;
@@ -145,9 +145,17 @@ export default function ProjectionsPage() {
   const [goals, setGoals] = useState<Goal[]>(() => getCached<Goal[]>(GOALS_KEY) || []);
   const [draft, setDraft] = useState<{ metric: Goal['metric']; target: string; by: string }>({ metric: 'mrr', target: '', by: defaultGoalMonth(12) });
 
+  const [goalsError, setGoalsError] = useState<string | null>(null);
+
+  // Goals are shared across devices via adminSaveProjectionGoals; the local
+  // copy only paints instantly while the server read is in flight.
   const saveGoals = (next: Goal[]) => {
     setGoals(next);
     setCached(GOALS_KEY, next);
+    setGoalsError(null);
+    api.saveProjectionGoals({ goals: next }).catch((e) => {
+      setGoalsError(e?.message || 'Couldn’t save goals — they’re only on this device until it works.');
+    });
   };
   const addGoal = () => {
     const target = parseFloat(draft.target);
@@ -169,6 +177,18 @@ export default function ProjectionsPage() {
       setFunnel(f);
       setCached('analytics-funnel', f);
     }).catch((e) => { if (!cancelled) setError(e?.message || 'Failed to load funnel'); });
+    api.getProjectionGoals({}).then((r: any) => {
+      if (cancelled) return;
+      const server: Goal[] = r?.goals || [];
+      const local = getCached<Goal[]>(GOALS_KEY) || [];
+      // First load after goals moved server-side: carry this browser's goals up.
+      if (server.length === 0 && !r?.updatedAt && local.length > 0) {
+        api.saveProjectionGoals({ goals: local }).catch(() => {});
+        return;
+      }
+      setGoals(server);
+      setCached(GOALS_KEY, server);
+    }).catch((e) => { if (!cancelled) setGoalsError(e?.message || 'Couldn’t load shared goals'); });
     return () => { cancelled = true; };
   }, []);
 
@@ -317,11 +337,14 @@ export default function ProjectionsPage() {
           <div>
             <div className={styles.cardTitle}>Goals</div>
             <div className={styles.cardSubtitle}>
-              Checked against the scenario below · {edited ? 'your scenario' : 'live trend'} · saved in this browser
+              Checked against the {edited ? 'scenario below' : 'live trend'} · synced across devices
             </div>
           </div>
         </div>
 
+        {goalsError && (
+          <div style={{ fontSize: 12, color: '#fca5a5', marginBottom: 10 }}>{goalsError}</div>
+        )}
         {goalRows.length === 0 ? (
           <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', marginBottom: 12 }}>
             No goals yet. Set a target MRR or payer count and a month — you'll see whether the projection gets there, and what it would take if not.
@@ -472,7 +495,7 @@ export default function ProjectionsPage() {
           <div className={styles.cardHeader}>
             <div>
               <div className={styles.cardTitle}>Assumptions</div>
-              <div className={styles.cardSubtitle}>Seeded from live data · edits stay in this browser</div>
+              <div className={styles.cardSubtitle}>Seeded from live data · what-if edits stay in this browser</div>
             </div>
             {scenario && (
               <button className={`${styles.btn} ${styles.btnGhost} ${styles.btnSmall}`} onClick={resetToLive}>

@@ -63,6 +63,8 @@ export const api = {
   listAssistantConversations: call<{ limit?: number; userId?: string }>('adminListAssistantConversations'),
   getAssistantConversation: call<{ uid: string; id: string }>('adminGetAssistantConversation'),
   listPayments: call<{ limit?: number }>('adminListPayments'),
+  getProjectionGoals: call('adminGetProjectionGoals'),
+  saveProjectionGoals: call<{ goals: unknown[] }>('adminSaveProjectionGoals'),
   // Lead outreach pipeline
   leadDiscovery: call<{ trade: string; suburbs: string[]; maxResults?: number; dryRun?: boolean }>('adminLeadDiscovery'),
   enrichLeads: call<{ leadIds: string[] }>('adminEnrichLeads'),
