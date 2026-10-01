@@ -58,7 +58,8 @@ interface Goal {
   by: string;
 }
 
-const SCENARIO_KEY = 'projections-scenario';
+// v2: earlier scenarios were seeded from a 30-day cohort that never existed.
+const SCENARIO_KEY = 'projections-scenario-v2';
 const GOALS_KEY = 'projections-goals';
 const HORIZONS = [12, 24, 36];
 // Annual is A$328 → A$27.33/mo; monthly is A$49. Used only when nobody is paying yet.
@@ -195,21 +196,35 @@ export default function ProjectionsPage() {
   // What today's data says, untouched. The "Live" line is always this.
   const live = useMemo<Assumptions | null>(() => {
     if (!rollup || !funnel) return null;
-    const c30 = funnel.cohorts?.['30'];
-    const weeks = (funnel.weekCohorts || []).slice(-4);
-    const signupsPerMonth = c30
-      ? c30.signups
+    // The backend's windows are 7/28/90 days (adminFunnel COHORT_WINDOW_DAYS).
+    const c28 = funnel.cohorts?.['28'];
+    const c90 = funnel.cohorts?.['90'];
+    const DAYS_PER_MONTH = 365 / 12;
+    // weekCohorts is newest-first and [0] is the partial current week — skip it.
+    const weeks = (funnel.weekCohorts || []).slice(1, 5);
+    const signupsPerMonth = c28
+      ? (c28.signups / 28) * DAYS_PER_MONTH
       : weeks.length > 0
         ? (weeks.reduce((s, w) => s + w.signups, 0) / weeks.length) * (52 / 12)
         : 0;
-    const startBase = c30 && c30.signups > 0 ? c30 : funnel.funnel;
+    // Measured signup growth: the last 28 days' daily rate against the 62 days
+    // before it. Window midpoints sit 45 days apart, so compound to a monthly
+    // rate. Clamped — a single viral week shouldn't project to the moon.
+    let signupGrowth = 0;
+    if (c28 && c90 && c90.signups > c28.signups && c28.signups > 0) {
+      const recentDaily = c28.signups / 28;
+      const priorDaily = (c90.signups - c28.signups) / 62;
+      const monthly = Math.pow(recentDaily / priorDaily, DAYS_PER_MONTH / 45) - 1;
+      signupGrowth = Math.max(-15, Math.min(15, round1(monthly * 100)));
+    }
+    const startBase = c28 && c28.signups > 0 ? c28 : funnel.funnel;
     const trialStartRate = startBase.signups > 0 ? (startBase.startedTrial / startBase.signups) * 100 : 100;
     return {
       startPayers: rollup.payers,
       arpu: rollup.payers > 0 ? round1(rollup.mrrGross / rollup.payers) : round1(FALLBACK_ARPU),
       netRatio: rollup.mrrGross > 0 ? rollup.mrrNet / rollup.mrrGross : FALLBACK_NET_RATIO,
       signupsPerMonth: Math.round(signupsPerMonth),
-      signupGrowth: 0,
+      signupGrowth,
       trialStartRate: round1(Math.min(trialStartRate, 100)),
       trialToPaid: round1((funnel.conversion?.trialToPaid || 0) * 100),
       churn: DEFAULT_CHURN,
@@ -505,8 +520,8 @@ export default function ProjectionsPage() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <Field label="Paying subscribers today" value={current.startPayers} live={live.startPayers} onChange={(v) => update({ startPayers: v })} />
-            <Field label="Signups per month" value={current.signupsPerMonth} live={live.signupsPerMonth} hint="Last 30 days" onChange={(v) => update({ signupsPerMonth: v })} />
-            <Field label="Signup growth" suffix="%/mo" value={current.signupGrowth} live={live.signupGrowth} hint="Compounding" onChange={(v) => update({ signupGrowth: v })} />
+            <Field label="Signups per month" value={current.signupsPerMonth} live={live.signupsPerMonth} hint="Last 28 days" onChange={(v) => update({ signupsPerMonth: v })} />
+            <Field label="Signup growth" suffix="%/mo" value={current.signupGrowth} live={live.signupGrowth} hint="Measured, last 90 days" onChange={(v) => update({ signupGrowth: v })} />
             <Field label="Signups who start a trial" suffix="%" value={current.trialStartRate} live={live.trialStartRate} onChange={(v) => update({ trialStartRate: v })} />
             <Field label="Trial → paid" suffix="%" value={current.trialToPaid} live={live.trialToPaid} hint="Finished trials" onChange={(v) => update({ trialToPaid: v })} />
             <Field label="Monthly churn" suffix="%" value={current.churn} live={live.churn} hint="Assumed — not measured yet" onChange={(v) => update({ churn: v })} />
