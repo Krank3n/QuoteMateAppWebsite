@@ -802,6 +802,14 @@ function ProjectionChart({
           {i === 0 ? 'Now' : monthLabel(i)}
         </text>
       ))}
+      {startMrr > 0 && (
+        <g>
+          <line x1={pad.left} x2={W - pad.right} y1={y(startMrr)} y2={y(startMrr)} stroke="rgba(255,255,255,0.35)" strokeDasharray="6 4" />
+          <text x={W - pad.right - 2} y={y(startMrr) - 5} textAnchor="end" fontSize="10" fill="var(--color-text-secondary)">
+            Today {money0(startMrr)}/mo
+          </text>
+        </g>
+      )}
       <path d={area} fill="rgba(249, 115, 22, 0.12)" />
       {liveSeries.length > 0 && (
         <path d={line(liveSeries)} fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth={1.5} strokeDasharray="4 4" />
