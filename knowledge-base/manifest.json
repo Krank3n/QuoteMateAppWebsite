@@ -318,6 +318,27 @@
       ]
     },
     {
+      "id": "timesheets-and-crew",
+      "title": "Logging hours on a job, and your crew's",
+      "category": "Job Management",
+      "path": "04-job-management/timesheets-and-crew.md",
+      "summary": "Logging hours on a job, charging the logged hours on an invoice, crew putting their own hours in from an emailed link (a week view they can change until approved), the Timesheets screen to change or approve anyone's hours, Mate logging time, and the quoted-vs-actual and timesheet reports.",
+      "keywords": [
+        "timesheet",
+        "hours",
+        "log time",
+        "crew",
+        "approve hours",
+        "charge logged hours"
+      ],
+      "question_examples": [
+        "How do I log my hours on a job?",
+        "Can my workers put in their own hours?",
+        "Do I have to approve my crew's hours?",
+        "Can I bill the hours I actually worked?"
+      ]
+    },
+    {
       "id": "integrations-xero",
       "title": "Xero integration",
       "category": "Integrations",
