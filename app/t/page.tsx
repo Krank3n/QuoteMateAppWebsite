@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   description: 'Send your hours to the business you work for.',
   robots: { index: false, follow: false },
   referrer: 'no-referrer',
+  // Saved to a phone's home screen this is the crew member's hours app: a
+  // short name under the icon, and it opens full screen like one.
+  appleWebApp: { capable: true, title: 'My hours', statusBarStyle: 'black-translucent' },
+  applicationName: 'My hours',
 };
+
+export const viewport = { themeColor: '#0f172a' };
 
 /**
  * Crew time link (quotemateapp.au/t?token=...). A crew member opens this on
