@@ -28,6 +28,7 @@ import {
   IconAiCost,
   IconBoard,
   IconTrendUp,
+  IconTarget,
 } from './icons';
 import { initials } from '../lib/adminApi';
 
@@ -44,6 +45,7 @@ const NAV = [
   { href: '/admin/support-chats', label: 'Support chats', Icon: IconChat },
   { href: '/admin/ai-costs', label: 'AI costs', Icon: IconAiCost },
   { href: '/admin/revenue', label: 'Revenue', Icon: IconRevenue },
+  { href: '/admin/projections', label: 'Goals & projections', Icon: IconTarget },
   { href: '/admin/pipeline', label: 'Pipeline', Icon: IconPipeline },
   { href: '/admin/campaigns', label: 'Campaigns', Icon: IconCampaign },
   { href: '/admin/emails', label: 'Email log', Icon: IconEmail },
