@@ -56,16 +56,19 @@ describe('help centre loader', () => {
 });
 
 describe('help centre videos', () => {
-  it('attaches the take-payment clip to the Square article with files that exist on disk', () => {
+  it('attaches the tap-to-pay and take-payment clips to the Square article with files that exist on disk', () => {
     const article = getHelpArticleBySlug('getting-paid-with-square');
-    expect(article?.videos.map((v) => v.name)).toEqual(['take-payment']);
-    expect(article?.videos[0].duration).toBe('PT15S');
-    expect(article?.videos[0].uploadDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    for (const ext of ['.mp4', '.webm', '-poster.jpg']) {
-      expect(fs.existsSync(path.join('public/assets/videos/help', `take-payment${ext}`)), ext).toBe(true);
+    expect(article?.videos.map((v) => v.name)).toEqual(['tap-to-pay', 'take-payment']);
+    expect(article?.videos.map((v) => v.frame)).toEqual(['square', 'phone']);
+    expect(article?.videos[1].duration).toBe('PT15S');
+    expect(article?.videos[1].uploadDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    for (const name of ['tap-to-pay', 'take-payment']) {
+      for (const ext of ['.mp4', '.webm', '-poster.jpg']) {
+        expect(fs.existsSync(path.join('public/assets/videos/help', `${name}${ext}`)), name + ext).toBe(true);
+      }
     }
     // Only the articles that declare clips carry them; an article can carry several.
-    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["add-logo", "bank-payment", "chase-invoice", "crew-time", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment"]);
+    expect(getHelpArticles().flatMap((a) => a.videos.map((v) => v.name)).sort()).toEqual(["add-logo", "bank-payment", "chase-invoice", "crew-time", "how-you-quote", "job-photos", "mate-photo", "pdf-template", "quote-invoice", "send-sms", "statement", "take-payment", "tap-to-pay"]);
     expect(getHelpArticleBySlug('tracking-payments-and-reminders')?.videos.map((v) => v.name)).toEqual(['chase-invoice', 'bank-payment']);
     expect(getHelpArticleBySlug('job-photos')?.videos.map((v) => v.name)).toEqual(['job-photos']);
     expect(getHelpArticleBySlug('timesheets-and-crew')?.videos.map((v) => v.name)).toEqual(['crew-time']);
