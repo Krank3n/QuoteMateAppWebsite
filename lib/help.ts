@@ -51,6 +51,8 @@ export interface HelpVideo {
   /** ISO 8601 duration, e.g. PT15S. */
   duration: string;
   uploadDate: string;
+  /** 'phone' = a portrait screen recording in the phone mock-up; 'square' = a 1:1 clip shown flat. */
+  frame: 'phone' | 'square';
 }
 
 const KB_DIR = path.join(process.cwd(), 'knowledge-base');
@@ -67,7 +69,7 @@ interface Frontmatter {
   videos?: HelpVideoMeta[];
 }
 
-interface HelpVideoMeta { name: string; title: string; description: string; duration: string; upload_date: string | Date }
+interface HelpVideoMeta { name: string; title: string; description: string; duration: string; upload_date: string | Date; frame?: 'square' }
 
 interface ManifestDoc { path: string; summary?: string }
 
@@ -210,7 +212,8 @@ function helpVideo(v: NonNullable<Frontmatter['video']>, from: string): HelpVide
     }
   }
   if (!/^PT(\d+M)?(\d+S)?$/.test(v.duration)) throw new Error(`Help article ${from}: video duration must be ISO 8601 like PT15S`);
-  return { name: v.name, title: v.title, description: v.description, duration: v.duration, uploadDate: isoDate(v.upload_date) };
+  if (v.frame !== undefined && v.frame !== 'square') throw new Error(`Help article ${from}: video frame must be 'square' or left out`);
+  return { name: v.name, title: v.title, description: v.description, duration: v.duration, uploadDate: isoDate(v.upload_date), frame: v.frame ?? 'phone' };
 }
 
 let cache: HelpArticle[] | undefined;

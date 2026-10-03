@@ -3592,6 +3592,10 @@ body.help-searching .help-categories { columns: 1; max-width: 720px; }
 .help-video-card .qm-walk-player .phone { width: 236px; }
 .help-video-card .qm-walk-player .screen { aspect-ratio: 1206 / 2622; }
 .help-video-card .qm-walk-player .screen video { object-fit: contain; transform: none; }
+/* Square clips (frame: square) sit flat, without the phone mock-up. */
+.help-video-card--square .qm-walk-player .phone { width: 100%; padding: 0; border-radius: var(--radius-md); background: none; box-shadow: none; }
+.help-video-card--square .qm-walk-player .notch { display: none; }
+.help-video-card--square .qm-walk-player .screen { aspect-ratio: 1 / 1; border-radius: var(--radius-md); }
 .help-video-card figcaption { margin-top: 14px; font-size: 0.875rem; line-height: 1.6; color: var(--color-text-secondary); }
 .help-video-card figcaption strong { display: block; color: var(--color-text-primary); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
 
@@ -3724,4 +3728,6 @@ body.help-searching .help-link-summary { display: block; }
   .help-contents { display: none; }
   .help-video-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .help-video-card .qm-walk-player .phone { width: 220px; }
+  .help-video-card--square .qm-walk-player { width: 100%; }
+  .help-video-card--square .qm-walk-player .phone { width: 100%; max-width: 420px; }
 }

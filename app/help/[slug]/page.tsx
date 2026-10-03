@@ -86,7 +86,7 @@ export default async function HelpArticlePage({ params }: Props) {
               </nav>
             )}
             {article.videos.map((video) => (
-              <figure className="help-video-card" key={video.name} id={`video-${video.name}`}>
+              <figure className={video.frame === 'square' ? 'help-video-card help-video-card--square' : 'help-video-card'} key={video.name} id={`video-${video.name}`}>
                 <WalkthroughPlayer
                   basePath="help"
                   slug={video.name}

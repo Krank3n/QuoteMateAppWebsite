@@ -5,12 +5,18 @@ category: Invoicing & Payments
 audience: [customers, prospects]
 last_updated: 2026-07-05
 keywords: [square, tap to pay, card payment, fees, payout, get paid, contactless, apple pay, google pay, refund]
-video:
-  name: take-payment
-  title: "Take a payment in QuoteMate: share a Square pay link"
-  description: "Open the job that's owed, tap Take Payment, then Share Pay Link. QuoteMate makes a Square checkout link you can text or email, and the invoice marks itself paid when the customer pays by card."
-  duration: PT15S
-  upload_date: 2026-09-13
+videos:
+  - name: tap-to-pay
+    title: "Get paid on the spot with Tap to Pay"
+    description: "Your customer taps their card or phone on yours and the invoice marks itself paid. No card reader to buy. Customer not home? Text them a pay link and they pay from the couch."
+    duration: PT24S
+    upload_date: 2026-10-02
+    frame: square
+  - name: take-payment
+    title: "Take a payment in QuoteMate: share a Square pay link"
+    description: "Open the job that's owed, tap Take Payment, then Share Pay Link. QuoteMate makes a Square checkout link you can text or email, and the invoice marks itself paid when the customer pays by card."
+    duration: PT15S
+    upload_date: 2026-09-13
 question_examples:
   - "How do I take card payments on-site?"
   - "What are the Square fees?"

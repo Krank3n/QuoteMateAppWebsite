@@ -566,9 +566,9 @@ export default function HomePage() {
           <div className="pay-wrap">
             <div className="pay-media">
               <div className="pay-video">
-                <video className="qm-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/videos/tap-to-pay-poster.jpg" aria-label="A customer taps their card on the tradie's phone and the invoice is paid; a customer who isn't home pays from a texted pay link">
-                  <source src="/assets/videos/tap-to-pay.webm" type="video/webm" />
-                  <source src="/assets/videos/tap-to-pay.mp4" type="video/mp4" />
+                <video className="qm-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/videos/help/tap-to-pay-poster.jpg" aria-label="A customer taps their card on the tradie's phone and the invoice is paid; a customer who isn't home pays from a texted pay link">
+                  <source src="/assets/videos/help/tap-to-pay.webm" type="video/webm" />
+                  <source src="/assets/videos/help/tap-to-pay.mp4" type="video/mp4" />
                 </video>
                 <PlayerChrome />
               </div>
